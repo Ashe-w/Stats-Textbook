@@ -1,0 +1,44 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Stats Textbook"
+  author: "Norah Jones"
+  date: "1/26/2026"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - chapter1.qmd
+    - chapter2.qmd
+    - chapter3.qmd
+    - chapter4.qmd
+    - chapter5.qmd
+    - chapter6.qmd
+    - chapter7.qmd
+    - chapter8.qmd
+    - chapter9.qmd
+    - chapter10.qmd
+    - chapter11.qmd
+    - chapter12.qmd
+    - chapter13.qmd
+    - chapter14.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-copy: true
+    theme: 
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+
+
