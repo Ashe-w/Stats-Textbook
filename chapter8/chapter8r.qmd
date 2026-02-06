@@ -1,0 +1,49 @@
+# Chapter 8: One-Sample t Test and Goodness-of-Fit Analysis in R {.unnumbered}
+
+This section demonstrates how to conduct a One-Sample t Test and a Chi-Square Goodness-of-Fit Test using R. These tests are useful for evaluating whether a sample mean significantly differs from a known benchmark and for comparing observed frequencies to an expected distribution. We will use the PISA 2022 U.S. dataset to illustrate these methods. 
+
+## 1 One-Sample t Test {.unnumbered}
+Example: Comparing U.S. Math Scores to an International Benchmark 
+
+We will compare PV1MATH (math plausible value 1) for U.S. students to a benchmark value of 441, which represents the approximate mean of participants from all participating countries. 
+
+### 1.1 Define Hypothesis {.unnumbered}
+
+
+$$
+\begin{aligned}
+H_0 &: \text{The mean PV1MATH score is equal to } 441 \; (\mu = 441). \\
+H_a &: \text{The mean PV1MATH score is not equal to } 441 \; (\mu \ne 441).
+\end{aligned}
+$$.
+
+### 1.2	Conduct the Test {.unnumbered}
+
+(code here)
+
+**Interpretation**: The results show that U.S. students scored significantly higher than the international benchmark of 441. With an average score of 461.87, the difference is large enough that it is very unlikely to have occurred by random chance ($(p < 2.2 \times 10^{-16})$). The confidence interval [459.11, 464.64] tells us that, with 95% certainty, the true average score for U.S. students falls within this range. Since the entire confidence interval is above 441, we can confidently say that U.S. students outperform the international average in mathematics. 
+
+### 1.3	Calculate Effect Size (Cohen’s d) {.unnumbered}
+(code here)
+Interpretation: With an effect size of 0.22, the difference between the U.S. mean and the international benchmark is statistically significant but relatively small. This means that while U.S. students score higher on average, the difference is not large enough to suggest a dramatic practical advantage. 
+
+## 2 Chi-Square Goodness-of-Fit Test {.unnumbered}
+**Example: Evaluating Perception of Mathematics as Easier Than Other Subjects **
+
+We will analyze MATHEASE, which is a binary variable (0 = No, 1 = Yes) measuring students’ perceptions of whether mathematics is easier than other subjects. The goal is to test whether responses are equally distributed (50/50). 
+
+### 2.1	Define Hypothesis {.unnumbered}
+$$
+\begin{aligned}
+H_0 &: \text{The responses are equally distributed (50\% ``Yes'', 50\% ``No'').} \\
+H_a &: \text{The responses are not equally distributed (deviation from 50/50 split).}
+\end{aligned}
+$$
+
+### 2.2	Conduct the Test {.unnumbered}
+(code)
+Interpretation: The results show a highly significant difference between observed and expected responses (
+X2=2245.1 
+, 
+p<2.2e−16 
+). This means that students’ perceptions of whether math is easier than other subjects are far from evenly split. In reality, only 501 students (12.5%) felt math was easier, while 3497 students (87.5%) believed otherwise. The large chi-square statistic suggests this imbalance is not due to random chance but reflects a real tendency among students to find math more difficult compared to other subjects. 

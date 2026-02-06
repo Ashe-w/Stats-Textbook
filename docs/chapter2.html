@@ -71,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -226,7 +255,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#chapter-2" id="toc-chapter-2" class="nav-link active" data-scroll-target="#chapter-2"><span class="header-section-number">3</span> Chapter 2</a></li>
+  <li><a href="#understanding-the-center-measures-of-central-tendency" id="toc-understanding-the-center-measures-of-central-tendency" class="nav-link active" data-scroll-target="#understanding-the-center-measures-of-central-tendency">Understanding the Center: Measures of Central Tendency</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#what-is-central-tendency" id="toc-what-is-central-tendency" class="nav-link" data-scroll-target="#what-is-central-tendency"><span class="header-section-number">2.1</span> What is Central Tendency?</a></li>
+  <li><a href="#advantages-and-disadvantages-of-the-mode-median-and-mean" id="toc-advantages-and-disadvantages-of-the-mode-median-and-mean" class="nav-link" data-scroll-target="#advantages-and-disadvantages-of-the-mode-median-and-mean"><span class="header-section-number">2.2</span> Advantages and Disadvantages of the Mode, Median and Mean</a></li>
+  <li><a href="#skewness-and-measures-of-central-tendency" id="toc-skewness-and-measures-of-central-tendency" class="nav-link" data-scroll-target="#skewness-and-measures-of-central-tendency"><span class="header-section-number">2.3</span> Skewness and Measures of Central Tendency</a></li>
+  <li><a href="#modal-distributions" id="toc-modal-distributions" class="nav-link" data-scroll-target="#modal-distributions"><span class="header-section-number">2.4</span> Modal Distributions</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2.5</span> Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways-for-educational-researchers-from-chapter-2" id="toc-key-takeaways-for-educational-researchers-from-chapter-2" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-2"><span class="header-section-number">2.5.1</span> Key Takeaways for Educational Researchers from Chapter 2</a></li>
+  </ul></li>
+  <li><a href="#key-definitions-from-chapter-2" id="toc-key-definitions-from-chapter-2" class="nav-link" data-scroll-target="#key-definitions-from-chapter-2"><span class="header-section-number">2.6</span> Key Definitions from Chapter 2</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">2.7</span> Check Your Understanding</a></li>
+  </ul></li>
+  <li><a href="#chapter-2-central-tendency-in-r" id="toc-chapter-2-central-tendency-in-r" class="nav-link" data-scroll-target="#chapter-2-central-tendency-in-r">Chapter 2: Central Tendency in R</a></li>
   </ul>
 </nav>
     </div>
@@ -252,9 +295,312 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="chapter-2" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Chapter 2</h1>
-<p>This is Chapter 2.</p>
+<section id="understanding-the-center-measures-of-central-tendency" class="level1 unnumbered">
+<h1 class="unnumbered">Understanding the Center: Measures of Central Tendency</h1>
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ul>
+<li><p>Define and distinguish among the three main measures of central tendency—mean, median, and mode—and describe situations in which each is most appropriate to use.</p></li>
+<li><p>Accurately calculate the mean, median, and mode for a given dataset and interpret the results in context.</p></li>
+<li><p>Describe the concept of skewness and its relationship to measures of central tendency.</p></li>
+</ul>
+<p>In this chapter and the next two, we will discuss three ways of summarizing data. First, we look at how to generate a <em>typical score</em> – one value that can tell us something important about the data. In the next chapter, we will talk about variability, which refers to how spread out the data are. In other words, how well does that <em>typical score</em> represent the entire dataset? In chapter three, we will learn how to visually represent data. For now, we are going to focus on different ways to summarize data with a single value, which is known as the <em>central tendency</em> of the data.</p>
+</section>
+<section id="what-is-central-tendency" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="what-is-central-tendency"><span class="header-section-number">2.1</span> What is Central Tendency?</h2>
+<p><strong>Central tendency</strong> refers to the statistical measure that identifies the single value or point that best represents a dataset’s center, or typical, value. The most common measures of central tendency are the mean (average), median (middle value), and mode (most frequent value). These measures are used to provide a reasonably accurate description, or summary, of a group (think of a whole class, grade level, school, etc.). How do you know when to use the mean, median, or mode to describe a dataset? Let’s walk through an example.</p>
+<p>A teacher gave a quiz to 8 students. Which measure of central tendency would be the most appropriate for summarizing the following scores?</p>
+<p><span class="math display">\[
+13, 14, 10, 18, 11, 10, 16, 15.
+\]</span></p>
+<p>Let’s use the three different measures of central tendency introduced above to summarize the scores and then decide which one provides the best description of the data. The first step is to reorder the scores from smallest to largest:</p>
+<p><span class="math display">\[
+10, 10, 11, 13, 14, 15, 16, 18
+\]</span></p>
+<p>The <strong>mode</strong> is simply the most frequently occurring number in a dataset. The most frequently occurring number in this example is 10 as it appears twice, and other numbers only appear once.</p>
+<p>The <strong>median</strong> is the center point in a set of numbers listed in numerical order. It is also the 50th percentile. Sometimes the median is referred to in terms of depth (i.e., the value halfway into the ordered score distribution). The median provides a measure that is less influenced by extreme values compared to the mean.</p>
+<ul>
+<li><p>To calculate the median by hand, you first put your numbers in ascending or descending order, then check to see which of the following two rules apply:</p>
+<ul>
+<li><p>Rule One. If you have an odd number of values, the median is the center number (e.g., 3 is the median for the numbers 1, 1, 3, 4, 9).</p></li>
+<li><p>Rule Two. If you have an even number of numbers, the median is the average of the two innermost numbers (e.g., 2.5 is the median for the numbers 1, 2, 3, 7).</p></li>
+</ul></li>
+<li><p>We can always define the median for N ordered raw scores with this formula: <span class="math inline">\(\frac{(N + 1)}{2}\)</span> We have an even number of scores (rule 2) for our score data, so the median is the <span class="math inline">\(\frac{9 + 1}{2} = 4.5\)</span> <em>th</em> ordered value.</p>
+<ul>
+<li><p>The fourth value is 13. The fifth value is 14.</p></li>
+<li><p>(13 + 14)/2 = 13.5</p></li>
+<li><p>The median of our dataset is 13.5</p></li>
+</ul></li>
+</ul>
+<p>The <strong>mean</strong> is the most commonly reported measure of central tendency in educational statistics. It is the arithmetic average of a dataset. More specifically, a sample mean, often denoted as <span class="math inline">\(\bar{X}\)</span> can be defined as <span class="math inline">\(\bar{X} = \frac{\sum_{i=1}^{n} x_i}{n}\)</span> where <em>n</em> represents the number of cases and <span class="math inline">\(x_i\)</span> represents the <em>i</em>th value of variable <em>x</em>. In other words, <span class="math inline">\(\sum_{i=1}^{n} x_i\)</span> means the sum of first to <em>n</em>th values of x. The sample mean is said to estimate <span class="math inline">\(\mu\)</span> which is the population mean. For our score data, the mean is: <span class="math display">\[
+\bar{X} = \frac{10 + 10 + 11 + 13 + 14 + 15 + 16 + 18}{8}
+= \frac{107}{8}
+= 13.4
+\]</span></p>
+<p>The mean provides a central value that represents the overall distribution, but it can be heavily influenced by outliers or extreme values.</p>
+<p>There are <em>five key characteristics of the mean</em> that are typically important when dealing with statistics in educational research:</p>
+<ol type="1">
+<li><p>Adding a new score or removing an existing score will change the mean, unless the value is equal to the mean. For example, adding a score of 1 to our dataset would change the mean to 12.</p></li>
+<li><p>Changing an existing score will change the mean. For example, changing the first 10 in our dataset to 6 would change the mean to 12.9.</p></li>
+<li><p>Adding, subtracting, multiplying, or dividing each score by a constant will change the mean by that constant. For example, if we added 100 to each score in our sample, the new mean would be 113.4.</p></li>
+<li><p>The sum of the differences of scores from their mean is equal to 0. The table below illustrates this for our example. Note that the exact mean of 13.375 is used to avoid rounding error.</p>
+<p><strong>Sum of the Difference of Scores from the Mean</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(x_i\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(x_i - \bar{X}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(10 - 13.375 = -3.375\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(10 - 13.375 = -3.375\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(11\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(11 - 13.375 = -2.375\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(13\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(13 - 13.375 = -0.375\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(14\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(14 - 13.375 = 0.625\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(15\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(15 - 13.375 = 1.625\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(16\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(16 - 13.375 = 2.625\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(18\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(18 - 13.375 = 4.625\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><strong><span class="math inline">\(\sum x_i = 107\)</span></strong></td>
+<td style="text-align: right;"><strong><span class="math inline">\(\sum (x_i - \bar{X}) = 0\)</span></strong></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>The sum of squared distances of scores from the mean is minimal, meaning no other value would lead to a lower sum of squared distances. Using squared distances will always produce a positive number. The larger the final product, the further scores deviate from the mean. The smaller the final product, the less scores deviate from the mean.</p>
+<p><strong>Sum of Squared Difference of Scores from the Mean</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(x_i\)</span></th>
+<th style="text-align: right;"><span class="math inline">\((x_i - \bar{X})^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\((10 - 13.4)^2 = 11.56\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\((10 - 13.4)^2 = 11.56\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(11\)</span></td>
+<td style="text-align: right;"><span class="math inline">\((11 - 13.4)^2 = 5.76\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(13\)</span></td>
+<td style="text-align: right;"><span class="math inline">\((13 - 13.4)^2 = 0.16\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(14\)</span></td>
+<td style="text-align: right;"><span class="math inline">\((14 - 13.4)^2 = 0.36\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(15\)</span></td>
+<td style="text-align: right;"><span class="math inline">\((15 - 13.4)^2 = 2.56\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(16\)</span></td>
+<td style="text-align: right;"><span class="math inline">\((16 - 13.4)^2 = 6.76\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(18\)</span></td>
+<td style="text-align: right;"><span class="math inline">\((18 - 13.4)^2 = 21.16\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><strong><span class="math inline">\(\sum x_i = 107\)</span></strong></td>
+<td style="text-align: right;"><strong><span class="math inline">\(\sum (x_i - \bar{X})^2 = 59.88\)</span></strong></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<p>Often, we only collect data from a subgroup of cases (a sample) from the entire collection of cases (population). The mean of a subsample of the data, <span class="math inline">\(\bar{X}\)</span>, or the sample mean, is said to estimate the population mean. The formula for a population mean is: <span class="math inline">\(\mu_x = \frac{\sum x_i}{N}\)</span> The difference between this and the formula for a sample mean as seen above is “<em>n</em>” and “<em>N</em>”. The “<em>N</em>” represents the entire collection of cases that belong to your target population (e.g., all undergraduate students at a university) while “<em>n</em>” represents the sample size you obtained from the population (e.g., a random sample of 20 undergraduate students at the university). The difference between <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\mu_x\)</span> is typically not zero and considered to be sampling error.</p>
+<p>We have three possible measures of central tendency for our data:</p>
+<p><span class="math display">\[
+\text{Mode} = 10,  \text{Median} = 13.5,  \text{Mean} = 13.4
+\]</span></p>
+<p>Which measure of central tendency do you think is the most appropriate to summarize how the students performed on the quiz? Why?</p>
+</section>
+<section id="advantages-and-disadvantages-of-the-mode-median-and-mean" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="advantages-and-disadvantages-of-the-mode-median-and-mean"><span class="header-section-number">2.2</span> Advantages and Disadvantages of the Mode, Median and Mean</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 21%">
+<col style="width: 25%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Mode</strong></th>
+<th><strong>Median</strong></th>
+<th><strong>Mean</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Advantages</strong></td>
+<td>Represents the most frequently occurring number<br><br>Applicable to nominal data<br><br>Not affected by outliers</td>
+<td>Not affected by outliers<br><br>Does not assume the scale is interval</td>
+<td>Can be manipulated algebraically (i.e., inferential analyses are possible)<br><br>Uses all data to compute<br><br>Allows inference about population characteristics<br><br>More stable with large data</td>
+</tr>
+<tr class="even">
+<td><strong>Disadvantages</strong></td>
+<td>Does not represent the entire collection of data</td>
+<td>Difficult to apply inferential analysis to the median</td>
+<td>Influenced by outliers<br><br>Requires interval properties of the data</td>
+</tr>
+</tbody>
+</table>
+<p>The word outlier comes up a few times in the prior table, and it means a score that is much higher than the next highest score, or much lower than the next lowest score in your dataset. For example, imagine that instead of our original dataset, the scores looked like this:</p>
+<p><span class="math display">\[
+10, 10, 11, 13, 14, 15, 16, 50
+\]</span></p>
+<p>In this case, the mode and median stay the same, but the mean changes to 17.4. With the first dataset, either the median or the mean would have been an appropriate measure of central tendency. Why? We would probably use the mean due to the advantages listed in the table above, but clearly the results were very similar. However, this second dataset has an outlier – one student who managed to score a 50. That single score has a major influence on the mean, so much in this case that the mean is higher than the second highest quiz score. You can imagine the outlier <em>pulling</em> the dataset up (or to the right), which makes the mean a less useful measure to summarize our dataset. That <em>pulling</em> is referred to as skewness, or lack of symmetry in the dataset. In the second example, we would use the median to describe the dataset.</p>
+</section>
+<section id="skewness-and-measures-of-central-tendency" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="skewness-and-measures-of-central-tendency"><span class="header-section-number">2.3</span> Skewness and Measures of Central Tendency</h2>
+<p>We will learn a lot more in the next few chapters about distribution and the normal curve. For now, just know that if you plot all the numeric data points from a dataset and drew a curved line to connect them, it would look like one of the examples below. The curve in the middle is <em>normal</em>, which has many important properties. For now, we care about the extent to which the curve is skewed, or pulled to one side or the other. A <strong>negatively skewed</strong> curve will be pulled to the left, meaning the longer tail of the curve is on the left side. A <strong>positively skewed</strong> curve will be pulled to the right, meaning the longer tail of the curve is on the right side. The dataset above (10, 10, 11, 13, 14, 15, 16, 50) would be positively skewed because the outlier of 50 would pull the curve to the right.</p>
+<p>(fig 2.1) (fig 2.2) (fig 2.3)</p>
+<p>Note that when a variable is perfectly normally distributed, the mean, median, and mode are the same number. When the distribution is skewed to the left (i.e., negatively skewed), the mean shifts to the left the most, the median shifts to the left the second most, and the mode is the least affected by the presence of skew in the data. Therefore, when the data are negatively skewed, mean &lt; median &lt; mode.</p>
+<p>When the variable is skewed to the right (i.e., positively skewed), the mean is shifted to the right the most, the median is shifted to the right the second most, and the mode is the least affected. Therefore, when the data are positively skewed, mean &gt; median &gt; mode. Again, this is what happened with our second dataset example (10, 10, 11, 13, 14, 15, 16, 50).</p>
+<p>If you go to the end of the curve, to where it is pulled out the most, you will see that the order goes mean, median, and mode as you “walk up the curve” for negatively and positively skewed curves.  </p>
+<p>You can use the following two rules to provide some information about skewness, even when you cannot see a line graph on the data (i.e., all you need is the mean and the median):</p>
+<div class="text-center">
+<p><strong>Rule One:</strong> <em>If the mean is less than the median, the data are skewed to the left.</em></p>
+<p><strong>Rule Two:</strong> <em>If the mean is greater than the median, the data are skewed to the right.</em></p>
+</div>
+</section>
+<section id="modal-distributions" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="modal-distributions"><span class="header-section-number">2.4</span> Modal Distributions</h2>
+<p>Any distribution in which one or more numbers occur most often can be referred to as a modal distribution. We typically describe these distributions in one of four ways. <strong>Unimodal distributions</strong> have a single mode, or single score that occurs most often, and take the shape of a curve. The normal distribution, or bell curve, is a good example. <strong>Bimodal distributions</strong> have two modes, and the mean and median are typically located between the humps. <strong>Multimodal distributions</strong> have more than two modes.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="720"></p>
+<figcaption>Figure 2.4: Example of a Bimodal Distribution</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="720"></p>
+<figcaption>Figure 2.5: Example of a Multimodal Distribution</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Nonmodal</strong> or <strong>uniform distributions</strong> have no mode because every value is the same. As an example, 12 people take a test with scores ranging from 1 to 4. Three people each earn scores of 1, 2, 3, and 4. There is no mode, but the mean score is 2.5 and the mode is 2.5 - either would be an appropriate description of central tendency.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="720"></p>
+<figcaption>Figure 2.6: Example of Nonmodal or Uniform Distribution</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">2.5</span> Conclusion</h2>
+<p>This chapter has provided a comprehensive overview of measures of central tendency, emphasizing the significance of the mean, median, and mode in summarizing data. Understanding these measures is essential for accurately interpreting datasets and making informed decisions in educational research and statistical analysis. The chapter highlighted the impact of skewness on central tendency and the importance of selecting the most appropriate measure based on data distribution. By mastering these concepts, readers can develop a strong foundation in statistical reasoning, enabling them to analyze and communicate data effectively. Moving forward, the next chapter will explore variability, providing further insight into how data spreads around these central measures.</p>
+<section id="key-takeaways-for-educational-researchers-from-chapter-2" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-2"><span class="header-section-number">2.5.1</span> Key Takeaways for Educational Researchers from Chapter 2</h3>
+<ul>
+<li><p>The mean, median, and mode are the three main measures of central tendency used to summarize a dataset. Mode represents the most frequently occurring value in a dataset; useful for nominal data and not affected by outliers. Median is the middle value in a dataset when ordered and less influenced by outliers than the mean. Mean is the arithmetic average computed all data in the variable, but sensitive to outliers.</p></li>
+<li><p>Adding, removing or altering value in the dataset will directly impact the mean, but not necessarily the median or mode.</p></li>
+<li><p>Choosing an appropriate measure of central tendency depends on the shape of score distribution. As a general rule, use the mean for symmetric data, the median for skewed data, and the mode for nominal or categorical data.</p></li>
+<li><p>Understand the context of data and analyze the interested variables in the data set to decide which measure of central tendency best summarize the variables of interest.</p></li>
+</ul>
+</section>
+</section>
+<section id="key-definitions-from-chapter-2" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="key-definitions-from-chapter-2"><span class="header-section-number">2.6</span> Key Definitions from Chapter 2</h2>
+<p><strong>Bimodal distributions</strong> are a distribution of scores where two scores occur most frequently.</p>
+<p><strong>Central tendency</strong> refers to the statistical measure that identifies the single value or point that best represents a dataset’s center, or typical, value.</p>
+<p><strong>Mean</strong> is the arithmetic average of a dataset. The sum of a set of scores in a distribution, divided by the total number of scores.</p>
+<p><strong>Median</strong> is the center point in a set of numbers listed in numerical order.</p>
+<p><strong>Mode</strong> is simply the most frequently occurring number in a dataset.</p>
+<p><strong>Multimodal distributions</strong> have more than two modes.</p>
+<p><strong>Negatively skewed</strong> data have a mean that is less than the median. When graphed, the left tail is longer than the right tail.</p>
+<p><strong>Nonmodal, or uniform, distributions</strong> have no mode because every value is the same.</p>
+<p>An <strong>outlier</strong> is a score that is much higher than the next highest score, or much lower than the next lowest score in your dataset.</p>
+<p><strong>Positively skewed</strong> data have a mean that is greater than the median. When graphed, the right tail is longer than the left tail.</p>
+<p><strong>Skewness</strong> means the extent to which a curve is pulled to one side or another.</p>
+<p><strong>Unimodal distributions</strong> have a single mode, or single score that occurs most often.</p>
+</section>
+<section id="check-your-understanding" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">2.7</span> Check Your Understanding</h2>
+<ol type="1">
+<li><p><strong>A researcher is investigating if any relationship exists between the hours a student sleeps at night and their math performance across a school district with more than 1,000 students. However, they can only survey 50 students. What notation below would be used to indicate the number of students surveyed?</strong></p>
+<ol type="a">
+<li>N = 50</li>
+<li>n = 50</li>
+</ol></li>
+<li><p><strong>The ______ is the value or values in a dataset that appear most frequently.</strong></p>
+<ol type="a">
+<li>Mean</li>
+<li>Median</li>
+<li>Mode</li>
+</ol></li>
+<li><p><strong>An educational researcher records the following sample of scores: 1, 2, 4, 4, 4, 5, 5, 7, 8, 10. Calculate the sample mean, median, and mode.</strong></p>
+<ol type="a">
+<li>Mean __________</li>
+<li>Median ________</li>
+<li>Mode ________</li>
+</ol></li>
+<li><p><strong>An educational researcher obtains the following sample scores: 1, 3, 3, 4, 6, 100. Using what method of central tendency to describe these sample scores might be problematic?</strong></p>
+<ol type="a">
+<li>Mean</li>
+<li>Median</li>
+<li>Mode</li>
+</ol></li>
+<li><p><strong>What direction of skewness is created by the following data? 1, 1, 2, 2, 10</strong></p>
+<ol type="a">
+<li>Positive skewness</li>
+<li>Negative skewness</li>
+<li>No skewness</li>
+</ol></li>
+</ol>
+</section>
+</section>
+<section id="chapter-2-central-tendency-in-r" class="level1 unnumbered">
+<h1 class="unnumbered">Chapter 2: Central Tendency in R</h1>
+<p>This section demonstrates how to calculate and interpret the mean, median, and mode in R using data from the Programme for International Student Assessment (PISA). Additionally, we will explore skewness on the distribution of math achievement scores. All examples below use R code that can be adapted for your own datasets.</p>
+<p>To illustrate the calculations, let’s extract plausible value 1 math achievement (PV1MATH) from the PISA U.S. dataset.</p>
 
 
 </section>

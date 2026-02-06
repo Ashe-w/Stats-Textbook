@@ -246,9 +246,544 @@ This is Chapter 1.
 
 \bookmarksetup{startatroot}
 
-\chapter{Chapter 2}\label{chapter-2-1}
+\chapter*{Understanding the Center: Measures of Central
+Tendency}\label{understanding-the-center-measures-of-central-tendency}
+\addcontentsline{toc}{chapter}{Understanding the Center: Measures of
+Central Tendency}
 
-This is Chapter 2.
+\markboth{Understanding the Center: Measures of Central
+Tendency}{Understanding the Center: Measures of Central Tendency}
+
+\section*{Learning Objectives}\label{learning-objectives}
+\addcontentsline{toc}{section}{Learning Objectives}
+
+\markright{Learning Objectives}
+
+By the end of this chapter, you will be able to:
+
+\begin{itemize}
+\item
+  Define and distinguish among the three main measures of central
+  tendency---mean, median, and mode---and describe situations in which
+  each is most appropriate to use.
+\item
+  Accurately calculate the mean, median, and mode for a given dataset
+  and interpret the results in context.
+\item
+  Describe the concept of skewness and its relationship to measures of
+  central tendency.
+\end{itemize}
+
+In this chapter and the next two, we will discuss three ways of
+summarizing data. First, we look at how to generate a \emph{typical
+score} -- one value that can tell us something important about the data.
+In the next chapter, we will talk about variability, which refers to how
+spread out the data are. In other words, how well does that
+\emph{typical score} represent the entire dataset? In chapter three, we
+will learn how to visually represent data. For now, we are going to
+focus on different ways to summarize data with a single value, which is
+known as the \emph{central tendency} of the data.
+
+\section{What is Central Tendency?}\label{what-is-central-tendency}
+
+\textbf{Central tendency} refers to the statistical measure that
+identifies the single value or point that best represents a dataset's
+center, or typical, value. The most common measures of central tendency
+are the mean (average), median (middle value), and mode (most frequent
+value). These measures are used to provide a reasonably accurate
+description, or summary, of a group (think of a whole class, grade
+level, school, etc.). How do you know when to use the mean, median, or
+mode to describe a dataset? Let's walk through an example.
+
+A teacher gave a quiz to 8 students. Which measure of central tendency
+would be the most appropriate for summarizing the following scores?
+
+\[
+13, 14, 10, 18, 11, 10, 16, 15. 
+\]
+
+Let's use the three different measures of central tendency introduced
+above to summarize the scores and then decide which one provides the
+best description of the data. The first step is to reorder the scores
+from smallest to largest:
+
+\[
+10, 10, 11, 13, 14, 15, 16, 18 
+\]
+
+The \textbf{mode} is simply the most frequently occurring number in a
+dataset. The most frequently occurring number in this example is 10 as
+it appears twice, and other numbers only appear once.
+
+The \textbf{median} is the center point in a set of numbers listed in
+numerical order. It is also the 50th percentile. Sometimes the median is
+referred to in terms of depth (i.e., the value halfway into the ordered
+score distribution). The median provides a measure that is less
+influenced by extreme values compared to the mean.
+
+\begin{itemize}
+\item
+  To calculate the median by hand, you first put your numbers in
+  ascending or descending order, then check to see which of the
+  following two rules apply:
+
+  \begin{itemize}
+  \item
+    Rule One. If you have an odd number of values, the median is the
+    center number (e.g., 3 is the median for the numbers 1, 1, 3, 4, 9).
+  \item
+    Rule Two. If you have an even number of numbers, the median is the
+    average of the two innermost numbers (e.g., 2.5 is the median for
+    the numbers 1, 2, 3, 7).
+  \end{itemize}
+\item
+  We can always define the median for N ordered raw scores with this
+  formula: \(\frac{(N + 1)}{2}\) We have an even number of scores (rule
+  2) for our score data, so the median is the \(\frac{9 + 1}{2} = 4.5\)
+  \emph{th} ordered value.
+
+  \begin{itemize}
+  \item
+    The fourth value is 13. The fifth value is 14.
+  \item
+    (13 + 14)/2 = 13.5
+  \item
+    The median of our dataset is 13.5
+  \end{itemize}
+\end{itemize}
+
+The \textbf{mean} is the most commonly reported measure of central
+tendency in educational statistics. It is the arithmetic average of a
+dataset. More specifically, a sample mean, often denoted as \(\bar{X}\)
+can be defined as \(\bar{X} = \frac{\sum_{i=1}^{n} x_i}{n}\) where
+\emph{n} represents the number of cases and \(x_i\) represents the
+\emph{i}th value of variable \emph{x}. In other words,
+\(\sum_{i=1}^{n} x_i\) means the sum of first to \emph{n}th values of x.
+The sample mean is said to estimate \(\mu\) which is the population
+mean. For our score data, the mean is: \[
+\bar{X} = \frac{10 + 10 + 11 + 13 + 14 + 15 + 16 + 18}{8}
+= \frac{107}{8}
+= 13.4
+\]
+
+The mean provides a central value that represents the overall
+distribution, but it can be heavily influenced by outliers or extreme
+values.
+
+There are \emph{five key characteristics of the mean} that are typically
+important when dealing with statistics in educational research:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Adding a new score or removing an existing score will change the mean,
+  unless the value is equal to the mean. For example, adding a score of
+  1 to our dataset would change the mean to 12.
+\item
+  Changing an existing score will change the mean. For example, changing
+  the first 10 in our dataset to 6 would change the mean to 12.9.
+\item
+  Adding, subtracting, multiplying, or dividing each score by a constant
+  will change the mean by that constant. For example, if we added 100 to
+  each score in our sample, the new mean would be 113.4.
+\item
+  The sum of the differences of scores from their mean is equal to 0.
+  The table below illustrates this for our example. Note that the exact
+  mean of 13.375 is used to avoid rounding error.
+
+  \textbf{Sum of the Difference of Scores from the Mean}
+
+  \begin{longtable}[]{@{}rr@{}}
+  \toprule\noalign{}
+  \(x_i\) & \(x_i - \bar{X}\) \\
+  \midrule\noalign{}
+  \endhead
+  \bottomrule\noalign{}
+  \endlastfoot
+  \(10\) & \(10 - 13.375 = -3.375\) \\
+  \(10\) & \(10 - 13.375 = -3.375\) \\
+  \(11\) & \(11 - 13.375 = -2.375\) \\
+  \(13\) & \(13 - 13.375 = -0.375\) \\
+  \(14\) & \(14 - 13.375 = 0.625\) \\
+  \(15\) & \(15 - 13.375 = 1.625\) \\
+  \(16\) & \(16 - 13.375 = 2.625\) \\
+  \(18\) & \(18 - 13.375 = 4.625\) \\
+  \textbf{\(\sum x_i = 107\)} & \textbf{\(\sum (x_i - \bar{X}) = 0\)} \\
+  \end{longtable}
+\item
+  The sum of squared distances of scores from the mean is minimal,
+  meaning no other value would lead to a lower sum of squared distances.
+  Using squared distances will always produce a positive number. The
+  larger the final product, the further scores deviate from the mean.
+  The smaller the final product, the less scores deviate from the mean.
+
+  \textbf{Sum of Squared Difference of Scores from the Mean}
+
+  \begin{longtable}[]{@{}rr@{}}
+  \toprule\noalign{}
+  \(x_i\) & \((x_i - \bar{X})^2\) \\
+  \midrule\noalign{}
+  \endhead
+  \bottomrule\noalign{}
+  \endlastfoot
+  \(10\) & \((10 - 13.4)^2 = 11.56\) \\
+  \(10\) & \((10 - 13.4)^2 = 11.56\) \\
+  \(11\) & \((11 - 13.4)^2 = 5.76\) \\
+  \(13\) & \((13 - 13.4)^2 = 0.16\) \\
+  \(14\) & \((14 - 13.4)^2 = 0.36\) \\
+  \(15\) & \((15 - 13.4)^2 = 2.56\) \\
+  \(16\) & \((16 - 13.4)^2 = 6.76\) \\
+  \(18\) & \((18 - 13.4)^2 = 21.16\) \\
+  \textbf{\(\sum x_i = 107\)} &
+  \textbf{\(\sum (x_i - \bar{X})^2 = 59.88\)} \\
+  \end{longtable}
+\end{enumerate}
+
+Often, we only collect data from a subgroup of cases (a sample) from the
+entire collection of cases (population). The mean of a subsample of the
+data, \(\bar{X}\), or the sample mean, is said to estimate the
+population mean. The formula for a population mean is:
+\(\mu_x = \frac{\sum x_i}{N}\) The difference between this and the
+formula for a sample mean as seen above is ``\emph{n}'' and
+``\emph{N}''. The ``\emph{N}'' represents the entire collection of cases
+that belong to your target population (e.g., all undergraduate students
+at a university) while ``\emph{n}'' represents the sample size you
+obtained from the population (e.g., a random sample of 20 undergraduate
+students at the university). The difference between \(\bar{X}\) and
+\(\mu_x\) is typically not zero and considered to be sampling error.
+
+We have three possible measures of central tendency for our data:
+
+\[
+\text{Mode} = 10,  \text{Median} = 13.5,  \text{Mean} = 13.4
+\]
+
+Which measure of central tendency do you think is the most appropriate
+to summarize how the students performed on the quiz? Why?
+
+\section{Advantages and Disadvantages of the Mode, Median and
+Mean}\label{advantages-and-disadvantages-of-the-mode-median-and-mean}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3191}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2128}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2553}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2128}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Mode}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Median}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Mean}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Advantages} & Represents the most frequently occurring
+numberApplicable to nominal dataNot affected by outliers & Not affected
+by outliersDoes not assume the scale is interval & Can be manipulated
+algebraically (i.e., inferential analyses are possible)Uses all data to
+computeAllows inference about population characteristicsMore stable with
+large data \\
+\textbf{Disadvantages} & Does not represent the entire collection of
+data & Difficult to apply inferential analysis to the median &
+Influenced by outliersRequires interval properties of the data \\
+\end{longtable}
+
+The word outlier comes up a few times in the prior table, and it means a
+score that is much higher than the next highest score, or much lower
+than the next lowest score in your dataset. For example, imagine that
+instead of our original dataset, the scores looked like this:
+
+\[
+10, 10, 11, 13, 14, 15, 16, 50 
+\]
+
+In this case, the mode and median stay the same, but the mean changes to
+17.4. With the first dataset, either the median or the mean would have
+been an appropriate measure of central tendency. Why? We would probably
+use the mean due to the advantages listed in the table above, but
+clearly the results were very similar. However, this second dataset has
+an outlier -- one student who managed to score a 50. That single score
+has a major influence on the mean, so much in this case that the mean is
+higher than the second highest quiz score. You can imagine the outlier
+\emph{pulling} the dataset up (or to the right), which makes the mean a
+less useful measure to summarize our dataset. That \emph{pulling} is
+referred to as skewness, or lack of symmetry in the dataset. In the
+second example, we would use the median to describe the dataset.
+
+\section{Skewness and Measures of Central
+Tendency}\label{skewness-and-measures-of-central-tendency}
+
+We will learn a lot more in the next few chapters about distribution and
+the normal curve. For now, just know that if you plot all the numeric
+data points from a dataset and drew a curved line to connect them, it
+would look like one of the examples below. The curve in the middle is
+\emph{normal}, which has many important properties. For now, we care
+about the extent to which the curve is skewed, or pulled to one side or
+the other. A \textbf{negatively skewed} curve will be pulled to the
+left, meaning the longer tail of the curve is on the left side. A
+\textbf{positively skewed} curve will be pulled to the right, meaning
+the longer tail of the curve is on the right side. The dataset above
+(10, 10, 11, 13, 14, 15, 16, 50) would be positively skewed because the
+outlier of 50 would pull the curve to the right.
+
+(fig 2.1) (fig 2.2) (fig 2.3)
+
+Note that when a variable is perfectly normally distributed, the mean,
+median, and mode are the same number. When the distribution is skewed to
+the left (i.e., negatively skewed), the mean shifts to the left the
+most, the median shifts to the left the second most, and the mode is the
+least affected by the presence of skew in the data. Therefore, when the
+data are negatively skewed, mean \textless{} median \textless{} mode.
+
+When the variable is skewed to the right (i.e., positively skewed), the
+mean is shifted to the right the most, the median is shifted to the
+right the second most, and the mode is the least affected. Therefore,
+when the data are positively skewed, mean \textgreater{} median
+\textgreater{} mode. Again, this is what happened with our second
+dataset example (10, 10, 11, 13, 14, 15, 16, 50).
+
+If you go to the end of the curve, to where it is pulled out the most,
+you will see that the order goes mean, median, and mode as you ``walk up
+the curve'' for negatively and positively skewed curves. \,
+
+You can use the following two rules to provide some information about
+skewness, even when you cannot see a line graph on the data (i.e., all
+you need is the mean and the median):
+
+\textbf{Rule One:} \emph{If the mean is less than the median, the data
+are skewed to the left.}
+
+\textbf{Rule Two:} \emph{If the mean is greater than the median, the
+data are skewed to the right.}
+
+\section{Modal Distributions}\label{modal-distributions}
+
+Any distribution in which one or more numbers occur most often can be
+referred to as a modal distribution. We typically describe these
+distributions in one of four ways. \textbf{Unimodal distributions} have
+a single mode, or single score that occurs most often, and take the
+shape of a curve. The normal distribution, or bell curve, is a good
+example. \textbf{Bimodal distributions} have two modes, and the mean and
+median are typically located between the humps. \textbf{Multimodal
+distributions} have more than two modes.
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter2_files/figure-pdf/unnamed-chunk-1-1.pdf}}
+
+}
+
+\caption{Figure 2.4: Example of a Bimodal Distribution}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter2_files/figure-pdf/unnamed-chunk-2-1.pdf}}
+
+}
+
+\caption{Figure 2.5: Example of a Multimodal Distribution}
+
+\end{figure}%
+
+\textbf{Nonmodal} or \textbf{uniform distributions} have no mode because
+every value is the same. As an example, 12 people take a test with
+scores ranging from 1 to 4. Three people each earn scores of 1, 2, 3,
+and 4. There is no mode, but the mean score is 2.5 and the mode is 2.5 -
+either would be an appropriate description of central tendency.
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter2_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+}
+
+\caption{Figure 2.6: Example of Nonmodal or Uniform Distribution}
+
+\end{figure}%
+
+\section{Conclusion}\label{conclusion}
+
+This chapter has provided a comprehensive overview of measures of
+central tendency, emphasizing the significance of the mean, median, and
+mode in summarizing data. Understanding these measures is essential for
+accurately interpreting datasets and making informed decisions in
+educational research and statistical analysis. The chapter highlighted
+the impact of skewness on central tendency and the importance of
+selecting the most appropriate measure based on data distribution. By
+mastering these concepts, readers can develop a strong foundation in
+statistical reasoning, enabling them to analyze and communicate data
+effectively. Moving forward, the next chapter will explore variability,
+providing further insight into how data spreads around these central
+measures.
+
+\subsection{Key Takeaways for Educational Researchers from Chapter
+2}\label{key-takeaways-for-educational-researchers-from-chapter-2}
+
+\begin{itemize}
+\item
+  The mean, median, and mode are the three main measures of central
+  tendency used to summarize a dataset. Mode represents the most
+  frequently occurring value in a dataset; useful for nominal data and
+  not affected by outliers. Median is the middle value in a dataset when
+  ordered and less influenced by outliers than the mean. Mean is the
+  arithmetic average computed all data in the variable, but sensitive to
+  outliers.
+\item
+  Adding, removing or altering value in the dataset will directly impact
+  the mean, but not necessarily the median or mode.
+\item
+  Choosing an appropriate measure of central tendency depends on the
+  shape of score distribution. As a general rule, use the mean for
+  symmetric data, the median for skewed data, and the mode for nominal
+  or categorical data.
+\item
+  Understand the context of data and analyze the interested variables in
+  the data set to decide which measure of central tendency best
+  summarize the variables of interest.
+\end{itemize}
+
+\section{Key Definitions from Chapter
+2}\label{key-definitions-from-chapter-2}
+
+\textbf{Bimodal distributions} are a distribution of scores where two
+scores occur most frequently.
+
+\textbf{Central tendency} refers to the statistical measure that
+identifies the single value or point that best represents a dataset's
+center, or typical, value.
+
+\textbf{Mean} is the arithmetic average of a dataset. The sum of a set
+of scores in a distribution, divided by the total number of scores.
+
+\textbf{Median} is the center point in a set of numbers listed in
+numerical order.
+
+\textbf{Mode} is simply the most frequently occurring number in a
+dataset.
+
+\textbf{Multimodal distributions} have more than two modes.
+
+\textbf{Negatively skewed} data have a mean that is less than the
+median. When graphed, the left tail is longer than the right tail.
+
+\textbf{Nonmodal, or uniform, distributions} have no mode because every
+value is the same.
+
+An \textbf{outlier} is a score that is much higher than the next highest
+score, or much lower than the next lowest score in your dataset.
+
+\textbf{Positively skewed} data have a mean that is greater than the
+median. When graphed, the right tail is longer than the left tail.
+
+\textbf{Skewness} means the extent to which a curve is pulled to one
+side or another.
+
+\textbf{Unimodal distributions} have a single mode, or single score that
+occurs most often.
+
+\section{Check Your Understanding}\label{check-your-understanding}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{A researcher is investigating if any relationship exists
+  between the hours a student sleeps at night and their math performance
+  across a school district with more than 1,000 students. However, they
+  can only survey 50 students. What notation below would be used to
+  indicate the number of students surveyed?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    N = 50
+  \item
+    n = 50
+  \end{enumerate}
+\item
+  \textbf{The \_\_\_\_\_\_ is the value or values in a dataset that
+  appear most frequently.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Mean
+  \item
+    Median
+  \item
+    Mode
+  \end{enumerate}
+\item
+  \textbf{An educational researcher records the following sample of
+  scores: 1, 2, 4, 4, 4, 5, 5, 7, 8, 10. Calculate the sample mean,
+  median, and mode.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Mean \_\_\_\_\_\_\_\_\_\_
+  \item
+    Median \_\_\_\_\_\_\_\_
+  \item
+    Mode \_\_\_\_\_\_\_\_
+  \end{enumerate}
+\item
+  \textbf{An educational researcher obtains the following sample scores:
+  1, 3, 3, 4, 6, 100. Using what method of central tendency to describe
+  these sample scores might be problematic?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Mean
+  \item
+    Median
+  \item
+    Mode
+  \end{enumerate}
+\item
+  \textbf{What direction of skewness is created by the following data?
+  1, 1, 2, 2, 10}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Positive skewness
+  \item
+    Negative skewness
+  \item
+    No skewness
+  \end{enumerate}
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Chapter 2: Central Tendency in
+R}\label{chapter-2-central-tendency-in-r}
+\addcontentsline{toc}{chapter}{Chapter 2: Central Tendency in R}
+
+\markboth{Chapter 2: Central Tendency in R}{Chapter 2: Central Tendency
+in R}
+
+This section demonstrates how to calculate and interpret the mean,
+median, and mode in R using data from the Programme for International
+Student Assessment (PISA). Additionally, we will explore skewness on the
+distribution of math achievement scores. All examples below use R code
+that can be adapted for your own datasets.
+
+To illustrate the calculations, let's extract plausible value 1 math
+achievement (PV1MATH) from the PISA U.S. dataset.
 
 \bookmarksetup{startatroot}
 
@@ -316,7 +851,7 @@ Benchmark: One-Sample t Test and Goodness-of-Fit Analysis}
 Test and Goodness-of-Fit Analysis}{Evaluating Group Averages Against a
 Benchmark: One-Sample t Test and Goodness-of-Fit Analysis}
 
-\section*{Learning Objectives}\label{learning-objectives}
+\section*{Learning Objectives}\label{learning-objectives-1}
 \addcontentsline{toc}{section}{Learning Objectives}
 
 \markright{Learning Objectives}
@@ -554,7 +1089,8 @@ significantly lower than the overall state population on the test. Let's
 assume we use statistical software to land on a p value of 0.03 for this
 analysis.
 
-\#\# Reporting Results in APA Format
+\section{Reporting Results in APA
+Format}\label{reporting-results-in-apa-format}
 
 The American Psychological Association, 7th edition (APA, 2019) has
 decided that there is a correct way to report the results of a t test.
@@ -1310,7 +1846,7 @@ females selected for the program (\textbf{\emph{Equation broken here}}).
 These findings suggest that the enrichment program provides equitable
 access by gender.
 
-\section{Conclusion}\label{conclusion}
+\section{Conclusion}\label{conclusion-1}
 
 Hypothesis testing bridges theoretical research questions and practical
 data analysis, offering a structured framework for making evidence-based
@@ -1414,7 +1950,7 @@ the normal distribution.
 statistical results but misinterpret or apply them to the wrong question
 or hypothesis.
 
-\section{Check Your Understanding}\label{check-your-understanding}
+\section{Check Your Understanding}\label{check-your-understanding-1}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1499,6 +2035,105 @@ or hypothesis.
     Increased power
   \end{enumerate}
 \end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Chapter 8: One-Sample t Test and Goodness-of-Fit Analysis in
+R}\label{chapter-8-one-sample-t-test-and-goodness-of-fit-analysis-in-r}
+\addcontentsline{toc}{chapter}{Chapter 8: One-Sample t Test and
+Goodness-of-Fit Analysis in R}
+
+\markboth{Chapter 8: One-Sample t Test and Goodness-of-Fit Analysis in
+R}{Chapter 8: One-Sample t Test and Goodness-of-Fit Analysis in R}
+
+This section demonstrates how to conduct a One-Sample t Test and a
+Chi-Square Goodness-of-Fit Test using R. These tests are useful for
+evaluating whether a sample mean significantly differs from a known
+benchmark and for comparing observed frequencies to an expected
+distribution. We will use the PISA 2022 U.S. dataset to illustrate these
+methods.
+
+\section*{1 One-Sample t Test}\label{one-sample-t-test}
+\addcontentsline{toc}{section}{1 One-Sample t Test}
+
+\markright{1 One-Sample t Test}
+
+Example: Comparing U.S. Math Scores to an International Benchmark
+
+We will compare PV1MATH (math plausible value 1) for U.S. students to a
+benchmark value of 441, which represents the approximate mean of
+participants from all participating countries.
+
+\subsection*{1.1 Define Hypothesis}\label{define-hypothesis}
+\addcontentsline{toc}{subsection}{1.1 Define Hypothesis}
+
+\[
+\begin{aligned}
+H_0 &: \text{The mean PV1MATH score is equal to } 441 \; (\mu = 441). \\
+H_a &: \text{The mean PV1MATH score is not equal to } 441 \; (\mu \ne 441).
+\end{aligned}
+\].
+
+\subsection*{1.2 Conduct the Test}\label{conduct-the-test}
+\addcontentsline{toc}{subsection}{1.2 Conduct the Test}
+
+(code here)
+
+\textbf{Interpretation}: The results show that U.S. students scored
+significantly higher than the international benchmark of 441. With an
+average score of 461.87, the difference is large enough that it is very
+unlikely to have occurred by random chance
+(\((p < 2.2 \times 10^{-16})\)). The confidence interval {[}459.11,
+464.64{]} tells us that, with 95\% certainty, the true average score for
+U.S. students falls within this range. Since the entire confidence
+interval is above 441, we can confidently say that U.S. students
+outperform the international average in mathematics.
+
+\subsection*{1.3 Calculate Effect Size (Cohen's
+d)}\label{calculate-effect-size-cohens-d}
+\addcontentsline{toc}{subsection}{1.3 Calculate Effect Size (Cohen's d)}
+
+(code here) Interpretation: With an effect size of 0.22, the difference
+between the U.S. mean and the international benchmark is statistically
+significant but relatively small. This means that while U.S. students
+score higher on average, the difference is not large enough to suggest a
+dramatic practical advantage.
+
+\section*{2 Chi-Square Goodness-of-Fit
+Test}\label{chi-square-goodness-of-fit-test-1}
+\addcontentsline{toc}{section}{2 Chi-Square Goodness-of-Fit Test}
+
+\markright{2 Chi-Square Goodness-of-Fit Test}
+
+\textbf{Example: Evaluating Perception of Mathematics as Easier Than
+Other Subjects }
+
+We will analyze MATHEASE, which is a binary variable (0 = No, 1 = Yes)
+measuring students' perceptions of whether mathematics is easier than
+other subjects. The goal is to test whether responses are equally
+distributed (50/50).
+
+\subsection*{2.1 Define Hypothesis}\label{define-hypothesis-1}
+\addcontentsline{toc}{subsection}{2.1 Define Hypothesis}
+
+\[
+\begin{aligned}
+H_0 &: \text{The responses are equally distributed (50\% ``Yes'', 50\% ``No'').} \\
+H_a &: \text{The responses are not equally distributed (deviation from 50/50 split).}
+\end{aligned}
+\]
+
+\subsection*{2.2 Conduct the Test}\label{conduct-the-test-1}
+\addcontentsline{toc}{subsection}{2.2 Conduct the Test}
+
+(code) Interpretation: The results show a highly significant difference
+between observed and expected responses ( X2=2245.1 , p\textless2.2e−16
+). This means that students' perceptions of whether math is easier than
+other subjects are far from evenly split. In reality, only 501 students
+(12.5\%) felt math was easier, while 3497 students (87.5\%) believed
+otherwise. The large chi-square statistic suggests this imbalance is not
+due to random chance but reflects a real tendency among students to find
+math more difficult compared to other subjects.
 
 \bookmarksetup{startatroot}
 
