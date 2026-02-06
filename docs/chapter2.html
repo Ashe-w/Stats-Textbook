@@ -601,6 +601,27 @@ window.Quarto = {
 <h1 class="unnumbered">Chapter 2: Central Tendency in R</h1>
 <p>This section demonstrates how to calculate and interpret the mean, median, and mode in R using data from the Programme for International Student Assessment (PISA). Additionally, we will explore skewness on the distribution of math achievement scores. All examples below use R code that can be adapted for your own datasets.</p>
 <p>To illustrate the calculations, let’s extract plausible value 1 math achievement (PV1MATH) from the PISA U.S. dataset.</p>
+<!-- ```{r}
+#| echo: true
+#| message: false
+#| warning: false
+
+library(haven)
+library(dplyr)
+
+# Load PISA 2022 student data (SAS file)
+stu <- read_sas("chapter2/CY08MSP_STU_QQQ.SAS7BDAT")
+
+# Select a country (example: United States)
+usa <- stu %>%
+  filter(CNT == "USA")
+
+# Extract PV1MATH
+math_achi <- usa$PV1MATH
+
+# Quick check
+head(math_achi)
+``` -->
 
 
 </section>

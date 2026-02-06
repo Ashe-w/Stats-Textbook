@@ -140,7 +140,7 @@ Another way to look at this is that the t distribution is related to the degrees
 
 Now, let's walk through an example of conducting a one-sample t test. Let’s think back to the example from the last chapter, where we compared a sample mean to a population mean with the z test. We have a similar, but slightly different, scenario this time. We have a sample of just 35 test scores from a single third grade class. The teacher is concerned that their students are underperforming in English Language Arts (ELA) and hypothesize their class will score below the state average of 440. When the results were returned to the school, the class's average score was 425.26. Is this average significantly lower than the expected value of 440? Let's conduct a hypothesis test to find out. 
 
-### Step 1: Determine the null and alternative hypotheses. 
+#### Step 1: Determine the null and alternative hypotheses. {.unnumbered}
 
 Just like last time, the null hypothesis is that there is no difference between the teacher’s class and the overall state population. So, the null hypothesis is: 
 
@@ -224,7 +224,7 @@ ggplot(df_plot, aes(x = x, y = y, color = curve, linetype = curve)) +
   scale_x_continuous(breaks = seq(410, 470, by = 10))
 ```
 
-### Step 2: Set the criteria for a decision. 
+#### Step 2: Set the criteria for a decision. {.unnumbered}
 
 We will set the alpha level (α) to 0.05. So, we will reject the null hypothesis if the p value is less than 0.05. Since we are conducting a one-sided directional test, the entire rejection region is in the left tail of the distribution. To find the critical value we first need to consider our degrees of freedom. For a t test, df = n – 1, so we have 34 degrees of freedom. In the Critical Values of t distribution table in the appendix, there is no line for df = 34, so round down to the nearest degrees of freedom (30) as a conservative estimate. If you use an online calculator, which allows you to enter precise degrees of freedom, you will find that the critical value for 34 degrees of freedom at a .05 alpha level is -1.69. It is negative because we expect the sample mean to be lower than the population mean.  
 ```{r}
@@ -316,7 +316,7 @@ ggplot(dens, aes(x = x, y = y)) +
 ```
 
 
-### Step 3: Check assumptions and compute the test statistic. 
+#### Step 3: Check assumptions and compute the test statistic. {.unnumbered}
 There are three assumptions underlying this test. They are: 
 
 1. Random sampling: The scores come from a random, representative sample. 
@@ -351,7 +351,7 @@ t
 = -1.938
 $$
 
-### Step 4
+### Step 4 {.unnumbered}
 
 #### a: Find the p value. {.unnumbered} 
 
@@ -634,7 +634,7 @@ Suppose you want to investigate whether a state-level STEM enrichment program pr
 
 The distribution is clearly not 50/50, but is it different enough that the outcome is likely not a result of random chance? To answer this question, we apply a chi-square goodness-of-fit test. This is another way to test a hypothesis, so we follow the same steps we have already learned.   
 
-### Step 1: State the research question and determine the null and alternative hypotheses. {.unnumbered}
+#### Step 1: State the research question and determine the null and alternative hypotheses. {.unnumbered}
 
 Typically, we can make two types of predictions for goodness-of-fit tests. We often expect all categories to be equal. We would expect a 50/50 gender split if participants are limited to only selecting between female and male. Similarly, we would expect 25% of students to choose each menu item if limited to four quality lunch options. But other times, we have reason to expect distributions to not be evenly split across options. For example, imagine we wanted to investigate the proportion of students identified as gifted by race/ethnicity. If we had participants from five different groups, we would not necessarily expect 20% of the gifted students to come from each group. Instead, we would expect that the distribution of gifted students match the percentage of students from each group in the student body overall.  
 
@@ -642,7 +642,7 @@ Typically, we can make two types of predictions for goodness-of-fit tests. We of
 
 In this example, our null hypothesis is that there is no difference in proportions by gender, or mathematically, the proportions of males and females selected are equal to the expected proportions (i.e., 50% each). The alternative hypothesis is that there is a significant difference by gender, or the proportions of males and females selected are NOT equal to expected proportions.  
 
-### Step 2: Set the criteria for a decision.  {.unnumbered}
+#### Step 2: Set the criteria for a decision.  {.unnumbered}
 We will once again use our typical alpha level of 0.05. If the p value is smaller than 0.05, we will reject the null hypothesis. The next part of this step is finding the critical value, and that brings us to a new distribution: the chi-square distribution. Like the t distribution, the chi-square distribution is a whole family of distributions that varies depending on the degrees of freedom. The chi-square distribution is a probability distribution that arises when a sum of the squares of ￼ independent standard normal random variables is calculated. If 
 (***Equation broken here in original doc need fixing***) follows a chi-square distribution with ￼ degrees of freedom (df). 
 
@@ -798,7 +798,7 @@ ggplot() +
 ```
 One thing you might notice about this table of critical values is that unlike most of the tables we have used, the critical value increases as degrees of freedom increase. The reason for this will make sense when you see the formula for the test statistic. Another important point is that the chi-square test is always one-tailed, even though our alternative hypothesis does not imply any specific direction for the difference. Instead, we test for the total deviation from the expected values. We reject the null hypothesis if our observed chi-square statistic exceeds the critical value.  
 
-###  Step 3: Verify that data meet necessary assumptions for the statistical method, and calculate the test statistic. {.unnumbered}
+####  Step 3: Verify that data meet necessary assumptions for the statistical method, and calculate the test statistic. {.unnumbered}
 
 There are two data conditions that are required for the use of a chi-square test:  
 
@@ -830,7 +830,7 @@ $$
 \chi^2 = \frac{(216 - 237)^2}{237} + \frac{(258 - 237)^2}{237} = 3.72
 $$
 
-### Step 4: Draw a conclusion for your research question.  {.unnumbered}
+#### Step 4: Draw a conclusion for your research question.  {.unnumbered}
 We compare our observed chi-square test statistic to the critical value we determined earlier. Remember, if our observed value is greater than the critical value, we reject the null. In this case, 3.72 < 3.84, so we fail to reject the null. While there is not an exact 50/50 split in employees along gender lines, the difference is not large enough to be considered significant.  The exact p value associated with 
 (***Equation broken again pls fix***)
  
