@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -798,16 +833,49 @@ CI(\mu) = \bar{X} \pm t_{\text{critical}} \times \frac{s}{\sqrt{n}}
 H_0 &amp;: \text{The mean PV1MATH score is equal to } 441 \; (\mu = 441). \\
 H_a &amp;: \text{The mean PV1MATH score is not equal to } 441 \; (\mu \ne 441).
 \end{aligned}
-\]</span>.</p>
+\]</span></p>
 </section>
 <section id="conduct-the-test" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="conduct-the-test">1.2 Conduct the Test</h3>
-<p>(code here)</p>
+<p><strong>(Reading data is hidden right now, but maybe should include anyways?)</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract math scores </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>math_scores <span class="ot">&lt;-</span> data<span class="sc">$</span>PV1MATH </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Conduct the one-sample t test </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>benchmark <span class="ot">&lt;-</span> <span class="dv">441</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(math_scores, <span class="at">mu =</span> benchmark, <span class="at">alternative =</span> <span class="st">"two.sided"</span>) </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>t_test_result </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  math_scores
+t = 14.804, df = 4551, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 441
+95 percent confidence interval:
+ 459.1090 464.6375
+sample estimates:
+mean of x 
+ 461.8733 </code></pre>
+</div>
+</div>
 <p><strong>Interpretation</strong>: The results show that U.S. students scored significantly higher than the international benchmark of 441. With an average score of 461.87, the difference is large enough that it is very unlikely to have occurred by random chance (<span class="math inline">\((p &lt; 2.2 \times 10^{-16})\)</span>). The confidence interval [459.11, 464.64] tells us that, with 95% certainty, the true average score for U.S. students falls within this range. Since the entire confidence interval is above 441, we can confidently say that U.S. students outperform the international average in mathematics.</p>
 </section>
 <section id="calculate-effect-size-cohens-d" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="calculate-effect-size-cohens-d">1.3 Calculate Effect Size (Cohen’s d)</h3>
-<p>(code here) Interpretation: With an effect size of 0.22, the difference between the U.S. mean and the international benchmark is statistically significant but relatively small. This means that while U.S. students score higher on average, the difference is not large enough to suggest a dramatic practical advantage.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract math scores </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Cohen's d </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>effect_size <span class="ot">&lt;-</span> (<span class="fu">mean</span>(math_scores) <span class="sc">-</span> benchmark) <span class="sc">/</span> <span class="fu">sd</span>(math_scores) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>effect_size </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2194198</code></pre>
+</div>
+</div>
+<p>Interpretation: With an effect size of 0.22, the difference between the U.S. mean and the international benchmark is statistically significant but relatively small. This means that while U.S. students score higher on average, the difference is not large enough to suggest a dramatic practical advantage.</p>
 </section>
 </section>
 <section id="chi-square-goodness-of-fit-test-1" class="level2 unnumbered">
@@ -825,7 +893,48 @@ H_a &amp;: \text{The responses are not equally distributed (deviation from 50/50
 </section>
 <section id="conduct-the-test-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="conduct-the-test-1">2.2 Conduct the Test</h3>
-<p>(code) Interpretation: The results show a highly significant difference between observed and expected responses ( X2=2245.1 , p&lt;2.2e−16 ). This means that students’ perceptions of whether math is easier than other subjects are far from evenly split. In reality, only 501 students (12.5%) felt math was easier, while 3497 students (87.5%) believed otherwise. The large chi-square statistic suggests this imbalance is not due to random chance but reflects a real tendency among students to find math more difficult compared to other subjects.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing values from MATHEASE </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mathease_data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(data<span class="sc">$</span>MATHEASE) </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(mathease_data) <span class="co">#used sample size </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3998</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count occurrences of Yes (1) and No (0) </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>observed_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(mathease_data) </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>observed_counts </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mathease_data
+   0    1 
+3497  501 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected counts under the null hypothesis (50/50 distribution) </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>expected_counts <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">sum</span>(observed_counts) <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">2</span>) </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>expected_counts </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1999 1999</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Perform chi-square test </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>chi_sq_result <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> observed_counts, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>chi_sq_result </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  observed_counts
+X-squared = 2245.1, df = 1, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><strong>Interpretation</strong>: The results show a highly significant difference between observed and expected responses ( X2=2245.1 , p&lt;2.2e−16 ). This means that students’ perceptions of whether math is easier than other subjects are far from evenly split. In reality, only 501 students (12.5%) felt math was easier, while 3497 students (87.5%) believed otherwise. The large chi-square statistic suggests this imbalance is not due to random chance but reflects a real tendency among students to find math more difficult compared to other subjects.</p>
 
 
 </section>

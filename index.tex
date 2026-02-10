@@ -65,6 +65,46 @@
 \fi
 \makeatother
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
@@ -784,6 +824,119 @@ that can be adapted for your own datasets.
 
 To illustrate the calculations, let's extract plausible value 1 math
 achievement (PV1MATH) from the PISA U.S. dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(haven) }\CommentTok{\#to read .sav files }
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read\_sav}\NormalTok{(}\StringTok{"chapter2/US\_Data\_22.sav"}\NormalTok{) }
+ 
+\NormalTok{math\_achi }\OtherTok{\textless{}{-}}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{PV1MATH }
+\FunctionTok{head}\NormalTok{(math\_achi) }\CommentTok{\#display the first few values }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 575.451 442.014 680.277 461.899 501.214 322.342
+\end{verbatim}
+
+\section*{1 Calculating the Mean}\label{calculating-the-mean}
+\addcontentsline{toc}{section}{1 Calculating the Mean}
+
+\markright{1 Calculating the Mean}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean\_math\_achi }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(math\_achi) }
+\NormalTok{mean\_math\_achi }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 461.8733
+\end{verbatim}
+
+\section*{2 Calculating the Median}\label{calculating-the-median}
+\addcontentsline{toc}{section}{2 Calculating the Median}
+
+\markright{2 Calculating the Median}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{median\_math\_achi }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(math\_achi) }
+\NormalTok{median\_math\_achi }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 457.907
+\end{verbatim}
+
+\section*{3 Calculating the Mode}\label{calculating-the-mode}
+\addcontentsline{toc}{section}{3 Calculating the Mode}
+
+\markright{3 Calculating the Mode}
+
+Since R does not have a built-in function for mode, we will define a
+custom function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Custom function to calculate mode }
+\NormalTok{calculate\_mode }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{ }
+\NormalTok{  uniq\_x }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(x) }\SpecialCharTok{|\textgreater{}} \FunctionTok{sort}\NormalTok{() }
+\NormalTok{  uniq\_x[}\FunctionTok{table}\NormalTok{(x) }\SpecialCharTok{|\textgreater{}} \FunctionTok{which.max}\NormalTok{()] }
+\NormalTok{\} }
+ 
+\CommentTok{\# Calculate the mode }
+\CommentTok{\#the data are rounded to the nearest whole number to calculate the mode }
+\NormalTok{mode\_math\_achi }\OtherTok{\textless{}{-}} \FunctionTok{calculate\_mode}\NormalTok{(math\_achi }\SpecialCharTok{|\textgreater{}} \FunctionTok{round}\NormalTok{()) }
+\NormalTok{mode\_math\_achi }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 415
+\end{verbatim}
+
+\section*{4 Examining Skewness}\label{examining-skewness}
+\addcontentsline{toc}{section}{4 Examining Skewness}
+
+\markright{4 Examining Skewness}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(psych) }\CommentTok{\#for skew function }
+\NormalTok{skewness\_math\_achi }\OtherTok{\textless{}{-}} \FunctionTok{skew}\NormalTok{(math\_achi, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }
+\NormalTok{skewness\_math\_achi }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.1730788
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualize the distribution }
+\FunctionTok{hist}\NormalTok{(math\_achi, }\AttributeTok{main =} \StringTok{"Distribution of Math Scores"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Math Scores"}\NormalTok{,  }
+     \AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{border =} \StringTok{"white"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter2_files/figure-pdf/unnamed-chunk-9-1.pdf}}
+
+Recall that:
+
+\begin{itemize}
+\item
+  a positive skewness value indicates a right-skewed distribution
+  (longer tail on the right), which is consistent with the histogram
+  above.
+\item
+  when the data are right-skewed, the mean is greater than the median,
+  and the mode is less than the median. These are consistent with what
+  we observed in the calculations above.
+\end{itemize}
 
 \bookmarksetup{startatroot}
 
@@ -2079,12 +2232,41 @@ participants from all participating countries.
 H_0 &: \text{The mean PV1MATH score is equal to } 441 \; (\mu = 441). \\
 H_a &: \text{The mean PV1MATH score is not equal to } 441 \; (\mu \ne 441).
 \end{aligned}
-\].
+\]
 
 \subsection*{1.2 Conduct the Test}\label{conduct-the-test}
 \addcontentsline{toc}{subsection}{1.2 Conduct the Test}
 
-(code here)
+\textbf{(Reading data is hidden right now, but maybe should include
+anyways?)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract math scores }
+\NormalTok{math\_scores }\OtherTok{\textless{}{-}}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{PV1MATH }
+ 
+\CommentTok{\# Conduct the one{-}sample t test }
+\NormalTok{benchmark }\OtherTok{\textless{}{-}} \DecValTok{441} 
+\NormalTok{t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(math\_scores, }\AttributeTok{mu =}\NormalTok{ benchmark, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{) }
+
+\CommentTok{\# Display results }
+\NormalTok{t\_test\_result }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+    One Sample t-test
+
+data:  math_scores
+t = 14.804, df = 4551, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 441
+95 percent confidence interval:
+ 459.1090 464.6375
+sample estimates:
+mean of x 
+ 461.8733 
+\end{verbatim}
 
 \textbf{Interpretation}: The results show that U.S. students scored
 significantly higher than the international benchmark of 441. With an
@@ -2100,11 +2282,24 @@ outperform the international average in mathematics.
 d)}\label{calculate-effect-size-cohens-d}
 \addcontentsline{toc}{subsection}{1.3 Calculate Effect Size (Cohen's d)}
 
-(code here) Interpretation: With an effect size of 0.22, the difference
-between the U.S. mean and the international benchmark is statistically
-significant but relatively small. This means that while U.S. students
-score higher on average, the difference is not large enough to suggest a
-dramatic practical advantage.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract math scores }
+\CommentTok{\# Calculate Cohen\textquotesingle{}s d }
+\NormalTok{effect\_size }\OtherTok{\textless{}{-}}\NormalTok{ (}\FunctionTok{mean}\NormalTok{(math\_scores) }\SpecialCharTok{{-}}\NormalTok{ benchmark) }\SpecialCharTok{/} \FunctionTok{sd}\NormalTok{(math\_scores) }
+\NormalTok{effect\_size }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.2194198
+\end{verbatim}
+
+Interpretation: With an effect size of 0.22, the difference between the
+U.S. mean and the international benchmark is statistically significant
+but relatively small. This means that while U.S. students score higher
+on average, the difference is not large enough to suggest a dramatic
+practical advantage.
 
 \section*{2 Chi-Square Goodness-of-Fit
 Test}\label{chi-square-goodness-of-fit-test-1}
@@ -2133,14 +2328,75 @@ H_a &: \text{The responses are not equally distributed (deviation from 50/50 spl
 \subsection*{2.2 Conduct the Test}\label{conduct-the-test-1}
 \addcontentsline{toc}{subsection}{2.2 Conduct the Test}
 
-(code) Interpretation: The results show a highly significant difference
-between observed and expected responses ( X2=2245.1 , p\textless2.2e−16
-). This means that students' perceptions of whether math is easier than
-other subjects are far from evenly split. In reality, only 501 students
-(12.5\%) felt math was easier, while 3497 students (87.5\%) believed
-otherwise. The large chi-square statistic suggests this imbalance is not
-due to random chance but reflects a real tendency among students to find
-math more difficult compared to other subjects.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove missing values from MATHEASE }
+\NormalTok{mathease\_data }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHEASE) }
+\FunctionTok{length}\NormalTok{(mathease\_data) }\CommentTok{\#used sample size }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3998
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Count occurrences of Yes (1) and No (0) }
+\NormalTok{observed\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(mathease\_data) }
+\NormalTok{observed\_counts }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+mathease_data
+   0    1 
+3497  501 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Expected counts under the null hypothesis (50/50 distribution) }
+\NormalTok{expected\_counts }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\FunctionTok{sum}\NormalTok{(observed\_counts) }\SpecialCharTok{/} \DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{) }
+\NormalTok{expected\_counts }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1999 1999
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 2. Perform chi{-}square test }
+\NormalTok{chi\_sq\_result }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(}\AttributeTok{x =}\NormalTok{ observed\_counts, }\AttributeTok{p =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display results }
+\NormalTok{chi\_sq\_result }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+    Chi-squared test for given probabilities
+
+data:  observed_counts
+X-squared = 2245.1, df = 1, p-value < 2.2e-16
+\end{verbatim}
+
+\textbf{Interpretation}: The results show a highly significant
+difference between observed and expected responses ( X2=2245.1 ,
+p\textless2.2e−16 ). This means that students' perceptions of whether
+math is easier than other subjects are far from evenly split. In
+reality, only 501 students (12.5\%) felt math was easier, while 3497
+students (87.5\%) believed otherwise. The large chi-square statistic
+suggests this imbalance is not due to random chance but reflects a real
+tendency among students to find math more difficult compared to other
+subjects.
 
 \bookmarksetup{startatroot}
 

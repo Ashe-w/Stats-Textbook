@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -269,7 +304,13 @@ window.Quarto = {
   <li><a href="#key-definitions-from-chapter-2" id="toc-key-definitions-from-chapter-2" class="nav-link" data-scroll-target="#key-definitions-from-chapter-2"><span class="header-section-number">2.6</span> Key Definitions from Chapter 2</a></li>
   <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">2.7</span> Check Your Understanding</a></li>
   </ul></li>
-  <li><a href="#chapter-2-central-tendency-in-r" id="toc-chapter-2-central-tendency-in-r" class="nav-link" data-scroll-target="#chapter-2-central-tendency-in-r">Chapter 2: Central Tendency in R</a></li>
+  <li><a href="#chapter-2-central-tendency-in-r" id="toc-chapter-2-central-tendency-in-r" class="nav-link" data-scroll-target="#chapter-2-central-tendency-in-r">Chapter 2: Central Tendency in R</a>
+  <ul class="collapse">
+  <li><a href="#calculating-the-mean" id="toc-calculating-the-mean" class="nav-link" data-scroll-target="#calculating-the-mean">1 Calculating the Mean</a></li>
+  <li><a href="#calculating-the-median" id="toc-calculating-the-median" class="nav-link" data-scroll-target="#calculating-the-median">2 Calculating the Median</a></li>
+  <li><a href="#calculating-the-mode" id="toc-calculating-the-mode" class="nav-link" data-scroll-target="#calculating-the-mode">3 Calculating the Mode</a></li>
+  <li><a href="#examining-skewness" id="toc-examining-skewness" class="nav-link" data-scroll-target="#examining-skewness">4 Examining Skewness</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -601,29 +642,85 @@ window.Quarto = {
 <h1 class="unnumbered">Chapter 2: Central Tendency in R</h1>
 <p>This section demonstrates how to calculate and interpret the mean, median, and mode in R using data from the Programme for International Student Assessment (PISA). Additionally, we will explore skewness on the distribution of math achievement scores. All examples below use R code that can be adapted for your own datasets.</p>
 <p>To illustrate the calculations, let’s extract plausible value 1 math achievement (PV1MATH) from the PISA U.S. dataset.</p>
-<!-- ```{r}
-#| echo: true
-#| message: false
-#| warning: false
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) <span class="co">#to read .sav files </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter2/US_Data_22.sav"</span>) </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>math_achi <span class="ot">&lt;-</span> data<span class="sc">$</span>PV1MATH </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(math_achi) <span class="co">#display the first few values </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 575.451 442.014 680.277 461.899 501.214 322.342</code></pre>
+</div>
+</div>
+<section id="calculating-the-mean" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="calculating-the-mean">1 Calculating the Mean</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mean_math_achi <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi) </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mean_math_achi </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 461.8733</code></pre>
+</div>
+</div>
+</section>
+<section id="calculating-the-median" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="calculating-the-median">2 Calculating the Median</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>median_math_achi <span class="ot">&lt;-</span> <span class="fu">median</span>(math_achi) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>median_math_achi </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 457.907</code></pre>
+</div>
+</div>
+</section>
+<section id="calculating-the-mode" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="calculating-the-mode">3 Calculating the Mode</h2>
+<p>Since R does not have a built-in function for mode, we will define a custom function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom function to calculate mode </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>calculate_mode <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  uniq_x <span class="ot">&lt;-</span> <span class="fu">unique</span>(x) <span class="sc">|&gt;</span> <span class="fu">sort</span>() </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  uniq_x[<span class="fu">table</span>(x) <span class="sc">|&gt;</span> <span class="fu">which.max</span>()] </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mode </span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#the data are rounded to the nearest whole number to calculate the mode </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>mode_math_achi <span class="ot">&lt;-</span> <span class="fu">calculate_mode</span>(math_achi <span class="sc">|&gt;</span> <span class="fu">round</span>()) </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>mode_math_achi </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 415</code></pre>
+</div>
+</div>
+</section>
+<section id="examining-skewness" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="examining-skewness">4 Examining Skewness</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych) <span class="co">#for skew function </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>skewness_math_achi <span class="ot">&lt;-</span> <span class="fu">skew</span>(math_achi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>skewness_math_achi </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1730788</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the distribution </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(math_achi, <span class="at">main =</span> <span class="st">"Distribution of Math Scores"</span>, <span class="at">xlab =</span> <span class="st">"Math Scores"</span>,  </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"white"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Recall that:</p>
+<ul>
+<li><p>a positive skewness value indicates a right-skewed distribution (longer tail on the right), which is consistent with the histogram above.</p></li>
+<li><p>when the data are right-skewed, the mean is greater than the median, and the mode is less than the median. These are consistent with what we observed in the calculations above.</p></li>
+</ul>
 
-library(haven)
-library(dplyr)
 
-# Load PISA 2022 student data (SAS file)
-stu <- read_sas("chapter2/CY08MSP_STU_QQQ.SAS7BDAT")
-
-# Select a country (example: United States)
-usa <- stu %>%
-  filter(CNT == "USA")
-
-# Extract PV1MATH
-math_achi <- usa$PV1MATH
-
-# Quick check
-head(math_achi)
-``` -->
-
-
+</section>
 </section>
 
 </main> <!-- /main -->

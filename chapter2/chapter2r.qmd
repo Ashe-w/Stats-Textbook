@@ -4,24 +4,72 @@ This section demonstrates how to calculate and interpret the mean, median, and m
 
 To illustrate the calculations, let’s extract plausible value 1 math achievement (PV1MATH) from the PISA U.S. dataset. 
 
-<!-- ```{r}
+```{r}
 #| echo: true
 #| message: false
 #| warning: false
+library(haven) #to read .sav files 
+data <- read_sav("chapter2/US_Data_22.sav") 
+ 
+math_achi <- data$PV1MATH 
+head(math_achi) #display the first few values 
 
-library(haven)
-library(dplyr)
+```
+## 1	Calculating the Mean {.unnumbered}
 
-# Load PISA 2022 student data (SAS file)
-stu <- read_sas("chapter2/CY08MSP_STU_QQQ.SAS7BDAT")
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+mean_math_achi <- mean(math_achi) 
+mean_math_achi 
 
-# Select a country (example: United States)
-usa <- stu %>%
-  filter(CNT == "USA")
+```
 
-# Extract PV1MATH
-math_achi <- usa$PV1MATH
+## 2  Calculating the Median {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+median_math_achi <- median(math_achi) 
+median_math_achi 
+```
+## 3  Calculating the Mode {.unnumbered}
+Since R does not have a built-in function for mode, we will define a custom function. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Custom function to calculate mode 
+calculate_mode <- function(x) { 
+  uniq_x <- unique(x) |> sort() 
+  uniq_x[table(x) |> which.max()] 
+} 
+ 
+# Calculate the mode 
+#the data are rounded to the nearest whole number to calculate the mode 
+mode_math_achi <- calculate_mode(math_achi |> round()) 
+mode_math_achi 
+```
+## 4 	Examining Skewness {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+library(psych) #for skew function 
+skewness_math_achi <- skew(math_achi, na.rm = TRUE) 
+skewness_math_achi 
+```
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Visualize the distribution 
+hist(math_achi, main = "Distribution of Math Scores", xlab = "Math Scores",  
+     col = "lightblue", border = "white") 
+```
+Recall that: 
 
-# Quick check
-head(math_achi)
-``` -->
+- a positive skewness value indicates a right-skewed distribution (longer tail on the right), which is consistent with the histogram above. 
+
+- when the data are right-skewed, the mean is greater than the median, and the mode is less than the median. These are consistent with what we observed in the calculations above. 

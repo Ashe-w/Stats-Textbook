@@ -15,16 +15,47 @@ $$
 H_0 &: \text{The mean PV1MATH score is equal to } 441 \; (\mu = 441). \\
 H_a &: \text{The mean PV1MATH score is not equal to } 441 \; (\mu \ne 441).
 \end{aligned}
-$$.
+$$
 
 ### 1.2	Conduct the Test {.unnumbered}
 
-(code here)
 
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+library(haven) #to read .sav files 
+data <- read_sav("chapter8/chap8data.sav") 
+```
+
+**(Reading data is hidden right now, but maybe should include anyways?)**
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Extract math scores 
+math_scores <- data$PV1MATH 
+ 
+# Conduct the one-sample t test 
+benchmark <- 441 
+t_test_result <- t.test(math_scores, mu = benchmark, alternative = "two.sided") 
+
+# Display results 
+t_test_result 
+```
 **Interpretation**: The results show that U.S. students scored significantly higher than the international benchmark of 441. With an average score of 461.87, the difference is large enough that it is very unlikely to have occurred by random chance ($(p < 2.2 \times 10^{-16})$). The confidence interval [459.11, 464.64] tells us that, with 95% certainty, the true average score for U.S. students falls within this range. Since the entire confidence interval is above 441, we can confidently say that U.S. students outperform the international average in mathematics. 
 
 ### 1.3	Calculate Effect Size (Cohen’s d) {.unnumbered}
-(code here)
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Extract math scores 
+# Calculate Cohen's d 
+effect_size <- (mean(math_scores) - benchmark) / sd(math_scores) 
+effect_size 
+```
 Interpretation: With an effect size of 0.22, the difference between the U.S. mean and the international benchmark is statistically significant but relatively small. This means that while U.S. students score higher on average, the difference is not large enough to suggest a dramatic practical advantage. 
 
 ## 2 Chi-Square Goodness-of-Fit Test {.unnumbered}
@@ -41,8 +72,48 @@ H_a &: \text{The responses are not equally distributed (deviation from 50/50 spl
 $$
 
 ### 2.2	Conduct the Test {.unnumbered}
-(code)
-Interpretation: The results show a highly significant difference between observed and expected responses (
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| #1. Prepare the Data 
+# Remove missing values from MATHEASE 
+mathease_data <- na.omit(data$MATHEASE) 
+length(mathease_data) #used sample size 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Count occurrences of Yes (1) and No (0) 
+observed_counts <- table(mathease_data) 
+observed_counts 
+```
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Expected counts under the null hypothesis (50/50 distribution) 
+expected_counts <- rep(sum(observed_counts) / 2, 2) 
+expected_counts 
+```
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# 2. Perform chi-square test 
+chi_sq_result <- chisq.test(x = observed_counts, p = c(0.5, 0.5)) 
+```
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Display results 
+chi_sq_result 
+```
+
+**Interpretation**: The results show a highly significant difference between observed and expected responses (
 X2=2245.1 
 , 
 p<2.2e−16 
