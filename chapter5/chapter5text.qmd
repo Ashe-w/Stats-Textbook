@@ -1,0 +1,704 @@
+# The Normal Distribution {.unnumbered}
+
+## Learning Objectives {.unnumbered}
+
+ 
+
+By the end of this chapter, you will be able to:  
+ 
+- Identify the defining characteristics of a normal distribution. 
+
+- Compute z scores from raw data and interpret their meaning in terms of standard deviations from the mean. 
+
+- Use the properties of a normal distribution to calculate probabilities and interpret results for real-world scenarios using z tables and statistical software or applets. 
+ 
+
+The objectives for this chapter are to learn about the normal distribution, sometimes called the bell curve due to its shape, and to understand the concepts of probability associated with the normal distribution. An understanding of the normal distribution is very important because we use what we know about the normal distribution to make inferences about populations based on samples.  
+
+## What is a Normal Distribution? 
+
+A **normal distribution**, or bell-shaped distribution, has the following characteristics:  
+
+- The shape is symmetric, unimodal, and bell-shaped. 
+
+- The mean, median, and mode are the same—all are right in the center of the distribution.  
+
+- Following the empirical rule, approximately 68% of the values in a normal distribution fall within 1 standard deviation of the mean, approximately 95% of the values fall within 2 standard deviations of the mean, and approximately 99.7% of the values fall within 3 standard deviations of the mean.  
+
+```{r}
+#| label: fig-empirical-rule-normal
+#| fig-cap: "Normal Distribution Showing the Empirical Rule"
+#| fig-width: 7
+#| fig-height: 4
+#| warning: false
+#| message: false
+#| echo: false
+
+library(ggplot2)
+
+# Parameters (edit if you want a different mean/SD)
+mu <- 0
+sigma <- 1
+
+# Curve data
+x <- seq(mu - 4*sigma, mu + 4*sigma, length.out = 2000)
+df <- data.frame(
+  x = x,
+  y = dnorm(x, mean = mu, sd = sigma)
+)
+
+ggplot(df, aes(x, y)) +
+  # Shade ±3 SD (lightest) first
+  geom_area(
+    data = subset(df, x >= mu - 3*sigma & x <= mu + 3*sigma),
+    aes(fill = "99.7% area (±3 SD)"),
+    alpha = 0.25
+  ) +
+  # Shade ±2 SD (medium)
+  geom_area(
+    data = subset(df, x >= mu - 2*sigma & x <= mu + 2*sigma),
+    aes(fill = "95% area (±2 SD)"),
+    alpha = 0.35
+  ) +
+  # Shade ±1 SD (darkest)
+  geom_area(
+    data = subset(df, x >= mu - 1*sigma & x <= mu + 1*sigma),
+    aes(fill = "68% area (±1 SD)"),
+    alpha = 0.55
+  ) +
+  # Normal curve line
+  geom_line(aes(color = "Normal Distribution"), linewidth = 1) +
+  # Mean (dashed)
+  geom_vline(aes(linetype = "Mean"), xintercept = mu, color = "black", linewidth = 0.8) +
+  coord_cartesian(xlim = c(mu - 4*sigma, mu + 4*sigma), expand = FALSE) +
+  labs(x = NULL, y = NULL) +
+  scale_fill_manual(
+    values = c(
+      "68% area (±1 SD)"  = "#3B4BFF",
+      "95% area (±2 SD)"  = "#6C78FF",
+      "99.7% area (±3 SD)"= "#9AA2FF"
+    )
+  ) +
+  scale_color_manual(values = c("Normal Distribution" = "#1F2BFF")) +
+  scale_linetype_manual(values = c("Mean" = "dashed")) +
+  guides(
+    fill = guide_legend(order = 2),
+    color = guide_legend(order = 1),
+    linetype = guide_legend(order = 3)
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.minor = element_blank(),
+    legend.position = "left",
+    legend.title = element_blank()
+  )
+```
+
+For example, suppose a class took a science test and their scores were normally distributed. The distribution of student scores had a mean of 50 points (the center of the normal distribution) and a standard deviation of 15 points. Based on the empirical rule, you know that about 68% of the students scored between 35 (1 SD below the mean) and 65 (1 SD above the mean) points.  
+
+```{r}
+#| label: fig-empirical-rule-green
+#| fig-cap: "Normal Distribution with Empirical Rule"
+#| fig-width: 7
+#| fig-height: 4
+#| warning: false
+#| message: false
+#| echo: false
+
+library(ggplot2)
+
+# Parameters from the figure
+mu <- 50
+sigma <- 15
+
+x <- seq(mu - 4*sigma, mu + 4*sigma, length.out = 2000)
+df <- data.frame(x = x, y = dnorm(x, mean = mu, sd = sigma))
+
+ggplot(df, aes(x, y)) +
+  # ±3 SD (lightest)
+  geom_area(
+    data = subset(df, x >= mu - 3*sigma & x <= mu + 3*sigma),
+    aes(fill = "99.7% area (±3 SD)"),
+    alpha = 0.20
+  ) +
+  # ±2 SD
+  geom_area(
+    data = subset(df, x >= mu - 2*sigma & x <= mu + 2*sigma),
+    aes(fill = "95% area (±2 SD)"),
+    alpha = 0.30
+  ) +
+  # ±1 SD (darkest)
+  geom_area(
+    data = subset(df, x >= mu - 1*sigma & x <= mu + 1*sigma),
+    aes(fill = "68% area (±1 SD)"),
+    alpha = 0.45
+  ) +
+  # Normal curve
+  geom_line(aes(color = "Normal Distribution"), linewidth = 1) +
+  # Mean line
+  geom_vline(xintercept = mu, linetype = "dashed", linewidth = 0.8) +
+  labs(
+    title = "Normal Distribution with Empirical Rule",
+    x = paste0("Values (Mean: ", mu, ", SD: ", sigma, ")"),
+    y = NULL
+  ) +
+  coord_cartesian(xlim = c(mu - 4*sigma, mu + 4*sigma), expand = FALSE) +
+  scale_fill_manual(
+    values = c(
+      "68% area (±1 SD)"   = "#2E7D32",
+      "95% area (±2 SD)"   = "#66BB6A",
+      "99.7% area (±3 SD)" = "#A5D6A7"
+    )
+  ) +
+  scale_color_manual(values = c("Normal Distribution" = "#2E7D32")) +
+  guides(
+    fill = guide_legend(order = 2),
+    color = guide_legend(order = 1)
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.minor = element_blank(),
+    legend.title = element_blank(),
+    legend.position = "left",
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+It is important to understand the characteristics of the normal distribution not only because certain variables (e.g., weight, height, test scores) are likely to have normal distributions, but because many of the statistical techniques used to make inferences about populations rely on the properties of the normal distribution.  
+
+ 
+
+This rule is something you can use to interpret results from normally distributed data, but it is also part of what defines a normal distribution. Not all tests that students take are normally distributed. In those cases, the empirical rule would not apply. 
+
+ 
+
+Software programs like SPSS® and JASP can provide tests of normality that tell you how close your distribution is to the normal distribution. You can assess how closely your data approximate normality by examining two key statistics: skewness and kurtosis. 
+
+- As we learned in chapter 2, **skewness** means the extent to which a curve is pulled to one side or the other. Skewness is about symmetry, or really, the lack of symmetry. In a true normal distribution, half of the data points are above the mean, and half are below. A skewed distribution has more outliers on one side of the mean.  
+
+- Kurtosis measures the *tailedness* of a distribution, or how heavy or light the tails are compared to a normal distribution. The strict definition can be confusing. For now, think about it in terms of how likely it is that there are outliers, or extreme values, in your data. A heavy-tailed distribution will have a higher kurtosis value, and a greater percentage of scores in the distribution will be out in the tails rather than the *shoulders*. 
+
+```{r}
+#| label: fig-kurtosis-compare-true
+#| fig-cap: "Distributions with K>0, K=0, and K<0 (true excess kurtosis), standardized to mean 0 and SD 1"
+#| fig-width: 10
+#| fig-height: 3
+#| warning: false
+#| message: false
+#| echo: false
+
+library(ggplot2)
+library(patchwork)
+
+# Common x-grid
+z <- seq(-4, 4, length.out = 2000)
+cut <- 2  # where we color center vs tails
+
+# --- 1) High positive kurtosis: standardized t distribution ---
+df_t <- 6
+sd_t <- sqrt(df_t / (df_t - 2))     # SD of t_df (df>2)
+# Y = X / sd_t => Var(Y)=1
+y_t <- dt(z * sd_t, df = df_t) * sd_t  # pdf under scaling
+
+# Excess kurtosis for t_df: 6/(df-4) for df>4
+excess_t <- 6 / (df_t - 4)
+
+# --- 2) Zero kurtosis: standard normal ---
+y_n <- dnorm(z)
+excess_n <- 0
+
+# --- 3) Low negative kurtosis: standardized Beta(a,a) ---
+a <- 2
+# Beta(a,a): mean=0.5, var = a*a / ((2a)^2(2a+1)) = 1 / (4(2a+1))
+sd_bx <- sqrt(1 / (4 * (2*a + 1)))
+
+# Transform: X~Beta(a,a) on [0,1]; Z = (X-0.5)/sd_bx  => mean 0, sd 1
+x_from_z <- 0.5 + z * sd_bx
+y_b <- ifelse(
+  x_from_z >= 0 & x_from_z <= 1,
+  dbeta(x_from_z, shape1 = a, shape2 = a) * sd_bx,  # jacobian
+  0
+)
+
+# Excess kurtosis for Beta(α,β): formula; for α=β=a this is negative
+excess_b <- 6 * (-(a*a) * (2*a + 2)) / (a*a * (2*a + 2) * (2*a + 3))  # simplifies to -6/(2a+3)
+
+make_panel <- function(z, y, col, title) {
+  df <- data.frame(z = z, y = y)
+  df_center <- subset(df, z >= -cut & z <= cut)
+  df_left   <- subset(df, z <  -cut)
+  df_right  <- subset(df, z >   cut)
+
+  ggplot(df, aes(z, y)) +
+    geom_area(data = df_left,  fill = "black", alpha = 0.9) +
+    geom_area(data = df_right, fill = "black", alpha = 0.9) +
+    geom_area(data = df_center, fill = col, alpha = 0.30) +
+    geom_line(color = col, linewidth = 1) +
+    scale_x_continuous(breaks = -4:4, limits = c(-4, 4)) +
+    scale_y_continuous(limits = c(0, 1.02), breaks = seq(0, 1, 0.2)) +
+    labs(title = title, x = "Values", y = NULL) +
+    theme_minimal(base_size = 10) +
+    theme(
+      plot.title = element_text(hjust = 0.5, face = "bold", size = 10),
+      panel.grid.minor = element_blank()
+    )
+}
+
+p1 <- make_panel(
+  z, y_t, "blue",
+  sprintf("High Positive Kurtosis (K > 0)\nStandardized t(df=%d), excess=%.3f", df_t, excess_t)
+)
+
+p2 <- make_panel(
+  z, y_n, "green",
+  sprintf("Zero Kurtosis (K = 0)\nNormal(0,1), excess=%.3f", excess_n)
+)
+
+p3 <- make_panel(
+  z, y_b, "red",
+  sprintf("Low Negative Kurtosis (K < 0)\nStandardized Beta(%d,%d), excess=%.3f", a, a, excess_b)
+)
+
+p1 + p2 + p3
+
+```
+**Positive Kurtosis** (K > 0): The blue plot represents a distribution with a narrow peak and thick tails. 
+
+**Zero Kurtosis** (K = 0): The green plot represents a standard normal distribution with neither exaggerated tails nor an unusually sharp peak. 
+
+**Negative Kurtosis** (K < 0): The red plot represents a distribution with a flatter peak and thinner tails 
+
+ 
+
+A true normal distribution will have skewness and kurtosis values of 0. The closer the reported values are to 0, the more normal the distribution. A common rule of thumb is that a distribution with skewness and kurtosis values between -1 and 1 can be considered approximately normal. 
+
+(fig 5.4 here)
+
+A normal distribution can have any mean and any standard deviation – it is about the shape of the distribution, not the specific numbers. For example, if you are looking at the heights of people, the mean and standard deviation will be quite different depending on whether your sample includes all people in the United States or all kindergarten students in one elementary school. Both height distributions will likely be normal and have the same basic shape, but the average height and variation in heights will probably both be lower if we are just looking at kindergartners.  
+
+(fig 5.5)
+
+## $z$ Scores and the Standard Normal Distribution 
+
+We often convert raw data values in a normal distribution to z scores, or standardized scores. A z score is a statistical measure that describes how far a particular data point is from the mean, center, of its distribution. Instead of describing the difference between one score and the mean in terms of points, or inches, or whatever unit was used for the original distribution, we are using standard deviation units. This allows for the comparison of scores from different distributions or scales. We do this because simply knowing the difference between one score and the overall mean doesn’t tell us much. For example, you learn you scored 5 points above the mean. Is your performance a lot better than average? Is your performance barely above average? The answer depends on the standard deviation. If the standard deviation of this distribution were 20, your score of 5 points above the mean would be considered close to average. However, if the standard deviation were only 2, your score would be considered outstanding. 
+
+ 
+
+Using the example above, if you scored 5 points above the mean and the standard deviation was 20, your z score would be 0.25. Your score would be a quarter of a standard deviation above the mean. However, if the standard deviation were 2, your z score would be 2.5. In this case, you would have scored 2.5 standard deviations above the mean. Remember this graph from chapter 3? Boxes have been added to illustrate our example to help visualize how far different z scores are from the mean. 
+
+(fig 5.6)
+
+If we convert an entire distribution from raw scores to z scores, that means we are standardizing the dataset. The mean of the distribution then becomes 0, the standard deviation becomes 1, and we refer to the distribution as the **standard normal distribution**.  
+
+ 
+
+What we have discussed so far are likely the most important concepts for you to understand. The rest of this chapter will mostly involve finding areas under the normal curve by using z scores and the z table. You will also learn how you can get to the same answer using online applets.  
+
+ 
+
+### Finding Areas Under the Normal Curve  
+
+Let's say we have a continuous random variable: body temperature. Imagine that we have access to the body temperatures of a particular population (e.g., all residents of the United States), and when we graph this data, we see a normal distribution with a mean of 98.2 and a standard deviation of 0.73. Remember that we collected data from individuals who belong to a particular population (i.e., all Americans). So, these numbers ($\mu$ =  98.2 and $\sigma$ =  0.73 ) are not sample statistics, they are population parameters. Our normal distribution is illustrated in figure 5.7. 
+
+```{r}
+#| label: fig-normal-mu-sd
+#| fig-cap: "Normal Distribution with Mean and Standard Deviation"
+#| fig-width: 7
+#| fig-height: 4
+#| warning: false
+#| message: false
+#| echo: false
+
+library(ggplot2)
+
+# Parameters from the figure
+mu <- 98.2
+sigma <- 0.8   # chosen to match spacing visually
+
+x <- seq(mu - 4*sigma, mu + 4*sigma, length.out = 2000)
+df <- data.frame(x = x, y = dnorm(x, mean = mu, sd = sigma))
+
+ggplot(df, aes(x, y)) +
+  
+  # Shaded area
+  geom_area(fill = "blue", alpha = 0.25) +
+  
+  # Normal curve outline
+  geom_line(color = "blue", linewidth = 1) +
+  
+  # Mean line
+  geom_vline(xintercept = mu, linetype = "dashed", color = "black", linewidth = 0.9) +
+  
+  # ±1 SD lines
+  geom_vline(xintercept = c(mu - sigma, mu + sigma),
+             linetype = "dotted",
+             color = "red",
+             linewidth = 1) +
+  
+  # μ label under axis
+  annotate("segment", x = mu, xend = mu,
+           y = -0.02, yend = 0,
+           arrow = arrow(length = unit(0.15, "inches"))) +
+  
+  annotate("text", x = mu, y = -0.035,
+           label = expression(mu == 98.2),
+           size = 3.5) +
+  
+  scale_x_continuous(limits = c(mu - 3*sigma, mu + 3*sigma)) +
+  labs(x = NULL, y = NULL) +
+  
+  coord_cartesian(ylim = c(-0.04, max(df$y))) +
+  
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+
+We now have three questions we want to answer based on this distribution.  
+
+**Question #1: *What is the probability that a randomly sampled individual from this population has a body temperature of 98.6 degrees or higher?*** 
+
+If we let X denote body temperature, we are basically asking what is *the probability that X is greater than or equal* to 98.6 degrees? We can equivalently express this as follows: $P(X \ge 98.6) = \, ?$ In shorthand, $P$ represents probability.  
+
+ 
+
+To answer the question, we first need to turn our random variable X into a z score. We then need to use this z score to find the area under the normal curve.  
+
+ 
+
+We convert X to a z score using the *z transformation formula*. The formula differs for a population of scores versus a sample of scores. 
+
+$\text{Population of scores: } z = \frac{x - \mu}{\sigma}$
+
+$\text{Sample of scores: } z = \frac{x - M}{SD}$
+
+Since we obtained information for the entire population of the United States: $z = \frac{98.6 - 98.2}{.73} = .55$
+
+Our z-score is 0.55. So, we can re-express the above shorthand notation like this: $P(X \ge 98.6) = P(z \ge 0.55) = ?$
+
+Therefore, the probability that we would obtain a temperature that is 98.6 degrees or higher is the same as the probability of obtaining a z score of 0.55 or higher. The probability is the area under the curve, to the right of a z score of 0.55, or to the right of the body temperature of 98.6. Figure 5.8 shows you this area—it is the area to the right of the red line.  
+
+(fig 5.8 here... need to figure out how to do the little thought cloud ... :/  )
+
+Now, let's determine the probability of obtaining a body temperature of 98.6 or higher, which corresponds to a z score of 0.55 or above. Here, we want to introduce a [free applet](https://homepage.divms.uiowa.edu/~mbognar/applets/normal.html) to help find the probability (Bognar, 2021). Enter the population mean, µ, of 98.2 and the standard deviation, $\sigma$, of .73 to define the normal distribution as shown in Figure 5.9. You will see that the X-axis has been scaled using the specified mean and standard deviation. This is a good example of how the normal distribution can take on different values for μ and σ without changing shape.  
+
+![Fig 5.9: Aplet Demo 1](chapter5/fig5-9.png){fig-align="center" width=60%}
+
+Next, enter the value of 98.6 in the box for x. Figure 5.10 shows the output.  
+
+![Fig 5.10: Aplet Demo 2](chapter5/fig5-10.png){fig-align="center" width=60%}
+
+According to the applet, the probability of obtaining a temperature of 98.6, or a z score of 0.55, is roughly 0.29. Recall that probabilities range from 0 to 1, with the total area under the normal curve equaling 1 (or 100%). Thus, a probability of 0.29 indicates there is approximately a 29% chance of randomly selecting an individual from this population who has a body temperature of at least 98.6 degrees. 
+
+ 
+
+Although it is easy to use an applet to find our answer, let's learn how to use the Standard Normal Cumulative Probability Table in the back of the book to find the answer. Remember that we are now expressing our question as follows: $P(z \ge 0.55) = ?$
+
+We must go to Standard Normal Cumulative Probability Table in the back of the book and look up our z score of 0.55.  The column on the far left indicates the first two values of the z score, so find 0.5. The top row indicates the next two values, so find 0.05.  Follow the 0.05 column down to where it intersects the 0.5 column to find a value of .7088. This indicates the cumulative probability up to 0.55 standard deviations above the mean. Since we are interested in the area on the opposite side of 0.55 (a body temperature of at least 98.6), we subtract .7088 from 1 to get .2912 - roughly the same number given by the applet. This means that the probability of selecting an individual at random who has a body temperature of 98.6 degrees or greater is .2912, or 29.12%. 
+
+ 
+
+**Question #2: *What is the probability that a randomly sampled individual from this population has a body temperature of 97.5 degrees or lower?***
+
+Hopefully, this question will now be easy to answer. In shorthand notation, we are asking: $P(X < 97.5) = ?$
+
+```{r}
+#| label: fig-px-less-97-5
+#| fig-cap: "Figure 5.11 Area representing $P(X < 97.5)$ for a normal distribution with $\\mu=98.2$"
+#| fig-width: 8
+#| fig-height: 4.6
+#| warning: false
+#| message: false
+#| echo: false
+
+library(ggplot2)
+library(grid)  # unit()
+
+# Parameters (from your figure)
+mu <- 98.2
+sigma <- 0.73   # choose/adjust if your earlier section uses a different SD
+x0 <- 97.5     # cutoff
+
+# Curve data
+x <- seq(mu - 4*sigma, mu + 4*sigma, length.out = 3000)
+df <- data.frame(x = x, y = dnorm(x, mean = mu, sd = sigma))
+
+# Shaded region: X < 97.5
+df_left <- subset(df, x <= x0)
+
+# y-limits so we can place labels below axis
+ymax <- max(df$y)
+
+ggplot(df, aes(x, y)) +
+  # shaded probability area
+  geom_area(data = df_left, fill = "blue", alpha = 0.20) +
+  # normal curve
+  geom_line(color = "blue", linewidth = 1) +
+  # mean line
+  geom_vline(xintercept = mu, linetype = "dashed", color = "black", linewidth = 0.9) +
+  # cutoff line at 97.5
+  geom_vline(xintercept = x0, linetype = "dashed", color = "red", linewidth = 0.9) +
+  # arrow up to the cutoff line
+  annotate(
+    "segment",
+    x = x0, xend = x0,
+    y = -0.02*ymax, yend = 0,
+    arrow = arrow(length = unit(0.14, "inches")),
+    color = "red", linewidth = 0.8
+  ) +
+  # arrow up to mean line
+  annotate(
+    "segment",
+    x = mu, xend = mu,
+    y = -0.02*ymax, yend = 0,
+    arrow = arrow(length = unit(0.14, "inches")),
+    color = "black", linewidth = 0.8
+  ) +
+  # x-axis labels in little boxes
+  annotate(
+    "label",
+    x = x0, y = -0.06*ymax,
+    label = "97.5",
+    color = "red",
+    label.size = 0.6,
+    fill = "white"
+  ) +
+  annotate(
+    "label",
+    x = mu, y = -0.06*ymax,
+    label = expression(mu == 98.2),
+    color = "black",
+    label.size = 0.6,
+    fill = "white"
+  ) +
+  scale_x_continuous(breaks = seq(95, 101, 1)) +
+  labs(x = NULL, y = NULL) +
+  coord_cartesian(
+    xlim = c(95.5, 101.2),
+    ylim = c(-0.10*ymax, ymax*1.05),
+    expand = FALSE
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+
+Now, we are looking for the probability of having a body temperature of 97.5 or below, which is represented by the left side of the red line. To answer this question, we first turn 97.5 into a z score:  
+
+$$
+z=\frac{97.5-98.2}{0.73}=-0.96
+$$
+
+$$
+z=\frac{X-\mu}{\sigma}
+$$
+
+Let’s use [the applet](https://homepage.divms.uiowa.edu/~mbognar/applets/normal.html) to find $P(x\le 97.5) = P(z\le -0.96)$ or the probability of $z$ is less than or equal to -0.96.
+
+![Fig 5.12: Aplet Demo 2](chapter5/fig5-12.png){fig-align="center" width=60%}
+
+The probability that a randomly selected individual from the population has a body temperature less than 97.5 is 0.1688, or 16.9%.  
+ 
+
+Now, let’s find this probability using the Standard Normal Cumulative Probability Table. Since our z score is –0.96, find the intersection of the –0.9 row and 0.06 column. The stated value is .1685. Since we are interested in the probability of having a body temperature less than or equal to 97.5 and the table represents cumulative probability up until that point, we can simply report that value. The proportion of temperatures that fall at, or below, 97.5 is about 0.1685, or there is a 16.85% chance we would randomly sample an individual who has a body temperature of 97.5 degrees or less. Again, the value is slightly off from the one obtained from the applet due to rounding differences.  
+
+**Question #3: *What is the probability that a randomly sampled individual from this population has a body temperature between 97.5 and 98.6 degrees?***
+
+With this final question, we are asking: 
+$P(97.5 \le X \le 98.6) = ?$ Although this might seem like a more difficult question, it is actually the same basic concept. The first step is to convert both values to $z$ scores, which we have already done. We know that 98.6 expressed as a $z$ score is about 0.55, and 97.5 expressed as a $z$ score is about -0.96. We have also already figured out the probability of having a temperature above 98.6, $z$ = 0.55, and the probability of having a temperature below 97.5, $z$ = -0.96. We know that the entire probability under the normal distribution is 1.0, so we can get to the probability of scoring between these two $z$ scores by subtracting the probabilities we already know.  
+
+Here’s how the math works out: 
+
+$$
+P(97.5 \le X \le 98.6)
+= 1 - P(X \le 97.5) - P(X \ge 98.6)
+= 1 - (0.1685 + 0.2912)
+= 1 - 0.4597
+= 0.5403
+$$
+ 
+
+This means there is a probability of about 0.54, or 54%, that we would randomly sample an individual from this population who has a body temperature between 97.5 and 98.6 degrees. 
+
+```{r}
+#| label: fig-between-97-5-98-6
+#| fig-cap: "Area representing"
+#| fig-width: 8
+#| fig-height: 4.6
+#| warning: false
+#| message: false
+#| echo: false
+
+library(ggplot2)
+library(grid)
+
+mu <- 98.2
+sigma <- 0.73
+
+lower <- 97.5
+upper <- 98.6
+
+x <- seq(mu - 4*sigma, mu + 4*sigma, length.out = 4000)
+df <- data.frame(x = x, y = dnorm(x, mu, sigma))
+
+df_mid <- subset(df, x >= lower & x <= upper)
+
+ymax <- max(df$y)
+
+ggplot(df, aes(x, y)) +
+  
+  # shaded region between 97.5 and 98.6
+  geom_area(data = df_mid, fill = "blue", alpha = 0.25) +
+  
+  # curve
+  geom_line(color = "blue", linewidth = 1) +
+  
+  # mean line
+  geom_vline(xintercept = mu, linetype = "dashed", color = "black", linewidth = 0.9) +
+  
+  # boundary lines
+  geom_vline(xintercept = c(lower, upper),
+             linetype = "dashed",
+             color = "red",
+             linewidth = 0.9) +
+  
+  # arrows under lines
+  annotate("segment", x = lower, xend = lower,
+           y = -0.02*ymax, yend = 0,
+           arrow = arrow(length = unit(0.14, "inches")),
+           color = "red") +
+  
+  annotate("segment", x = upper, xend = upper,
+           y = -0.02*ymax, yend = 0,
+           arrow = arrow(length = unit(0.14, "inches")),
+           color = "red") +
+  
+  annotate("segment", x = mu, xend = mu,
+           y = -0.02*ymax, yend = 0,
+           arrow = arrow(length = unit(0.14, "inches")),
+           color = "black") +
+  
+  # labels
+  annotate("label", x = lower, y = -0.06*ymax,
+           label = "97.5", color = "red",
+           fill = "white", label.size = 0.6) +
+  
+  annotate("label", x = upper, y = -0.06*ymax,
+           label = "98.6", color = "red",
+           fill = "white", label.size = 0.6) +
+  
+  annotate("label", x = mu, y = -0.06*ymax,
+           label = expression(mu == 98.2),
+           fill = "white", label.size = 0.6) +
+  
+  scale_x_continuous(breaks = seq(95, 101, 1)) +
+  coord_cartesian(
+    xlim = c(95.5, 101.2),
+    ylim = c(-0.10*ymax, ymax*1.05),
+    expand = FALSE
+  ) +
+  
+  labs(x = NULL, y = NULL) +
+  
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+
+## Conclusion 
+
+Chapter 5 delved into the fundamental concepts of the normal distribution, a cornerstone of statistical analysis. It outlined the key features of this distribution, including its symmetric, bell-shaped curve, unimodal nature, and the alignment of its mean, median, and mode at the center. The chapter revisited the empirical rule (68-95-99.7%), explaining how it provides a framework for interpreting the proportion of data within one, two, or three standard deviations from the mean. Additionally, it emphasized the importance of understanding normal distribution properties for making population inferences and highlighted how skewness and kurtosis helped assess a distribution’s symmetry and the likelihood of outliers. 
+
+The chapter also introduced z scores as a way to standardize data, enabling meaningful comparisons across different datasets or scales. It explained how to calculate z scores, interpret their significance as standard deviations from the mean, and apply them in the context of the standard normal distribution, where the mean was 0 and the standard deviation was 1. Key applications, such as using z scores to compute probabilities and find areas under the normal curve, were explored through practical examples involving real-world scenarios like body temperature analysis. Tools like z tables and statistical software were presented as essential for calculating probabilities and interpreting results, building a strong foundation for further statistical methods like sampling distributions. Together, the chapter equipped readers with essential skills for understanding and applying the principles of the normal distribution in various contexts. 
+
+### Key Takeaways for Educational Researchers from Chapter 5 
+- Understanding the characteristics of a normal distribution (symmetry, unimodal shape, and alignment of mean, median, and mode) is important for interpreting data and essential for assessing its appropriateness for applying statistical analyses you will learn later in this book.  
+
+- Skewness and kurtosis are key metrics for assessing the symmetry and *tailedness* of a distribution, helping researchers evaluate how closely their data approximates a normal distribution. A distribution is generally considered approximately normal when these two statistics fall within the range of -1 to 1. 
+
+- The empirical rule (68-95-99.7%) helps researchers interpret the portion of data within standard deviations from the means, making it a critical tool for understanding variability of data in education research contexts.  
+
+- Z scores provide a standardized measure of how far a data point deviates from the mean, expressed in terms of standard deviation units. By converting raw scores into z scores—a process known as standardization—we enable meaningful comparisons of relative positions across different datasets, even when the original scores are measured on varying scales. Understanding standardization is essential for cross-study comparisons and evaluating individual performance within a population or reference group. 
+
+- Although probabilities are rarely calculated manually using z scores in practice, understanding the process provides researchers with a foundational knowledge of probability, enabling them to make population inferences and conduct hypothesis testing—essential components of quantitative analysis in educational research.    
+
+
+
+## Key Definitions from Chapter 5 
+
+**Kurtosis** measures the tailedness of a distribution, or how heavy or light the tails are compared to a normal distribution. 
+
+**Normal distribution (bell curve)** is a statistical distribution that is symmetric about its mean. All three measures of central tendency (mean, median, and mode) are equal and located at the center of the distribution, and the left and right halves of the curve are mirror images of each other. 
+
+**Skewness** means the extent to which a curve is pulled to one side or another.   
+
+The **standard normal distribution** is a specific type of normal distribution that has been standardized so that the mean is 0, the standard deviation is 1, and the distribution is symmetric. 
+
+A **z score** (standardized score) is a statistical measure that describes how far a particular data point is from the mean of its distribution, measured in terms of standard deviations.  
+
+
+
+## Check Your Understanding  
+
+1. **A distribution with high kurtosis has lighter tails than a normal distribution.** 
+
+    a. True 
+
+    b. False  
+
+ 
+
+2. **Which of the following values for skewness and kurtosis indicates that a distribution is approximately normal?** 
+
+    a. Skewness = 0.5, Kurtosis = 2.5 
+
+    b. Skewness = 0.25, Kurtosis = 0.5 
+
+    c. Skewness = 1.0, Kurtosis = 3.5 
+
+    d. Skewness = -2.0, Kurtosis = 4.0 
+
+ 
+
+3. **What is the probability of a data point falling within 1 standard deviation of the mean in a normal distribution?** 
+
+    a. 68% 
+
+    b. 95% 
+
+    c. 99.7% 
+
+    d. 50% 
+
+ 
+
+4. **A standardized test has a mean score of 500 and a standard deviation of 100. What is the probability that a randomly selected student scores higher than 650? Use the z score formula and the standard normal distribution table to find the answer.** 
+
+    a. 0.1056 (10.56%) 
+
+    b. 0.1587 (15.87%) 
+
+    c. 0.0668 (6.68%) 
+
+    d. 0.0228 (2.28%) 
+
+ 
+
+5. **What is the purpose of converting raw data to z scores?** 
+
+    a. To reduce the range of the data. 
+
+    b. To standardize data for comparison across distributions. 
+
+    c. To eliminate outliers. 
+
+    d. To calculate the mean and median more accurately. 

@@ -1,0 +1,200 @@
+# Chapter 4: Displaying Data Graphically in R {.unnumbered}
+
+This section demonstrates various data visualization techniques using the PISA 2022 U.S. dataset. We will illustrate how to effectively present categorical and continuous variables using **pie charts, bar charts, histograms, stem-and-leaf plots, box plots, scatterplot matrices**, and **Q-Q plots**. 
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Load required package 
+library(haven) 
+library(ggplot2) 
+library(dplyr) 
+library(car)        # for QQ plot helper if desired 
+library(GGally)     # for scatterplot matrix 
+library(ggrepel)    # for better text labels in plots 
+library(ggpubr)     # for Q-Q plot 
+ 
+# Load the dataset 
+data <- read_sav("chapter3/Clean-data_mar6.sav") 
+```
+
+## 1    Pie Chart: Categorical Distribution {.unnumbered}
+
+We begin by visualizing the distribution of school governance types (SC014Q01TA: “What kind of organization runs your school?”). 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Convert the SPSS‑labelled variable to an R factor 
+data <- data |> mutate(OrgType = as_factor(SC014Q01TA)) 
+# Create a frequency table and calculate percentages 
+school_org_df <- data |> 
+  count(OrgType) |> 
+  filter(!is.na(OrgType)) |> # Filter out NA values 
+  mutate(Percent = round(100 * n / sum(n), 1)) # Calculate percentage 
+school_org_df 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Create the pie chart 
+# Create a label that combines OrgType, Count, and Percent 
+school_org_df <- school_org_df |> 
+  mutate(Label = ifelse(Percent<5, "", paste0("n=", n, ", ", Percent, "%"))) 
+  #data label appear when percentage is greater than 5% 
+ 
+ggplot(school_org_df, aes(x = "", y = n, fill = OrgType)) + 
+  geom_bar(width = 1, stat = "identity", color = "white") + 
+  coord_polar("y") + #wrapping the bars around a circle, using the y-axis (the count) as the angle for each slice 
+  theme_void() + 
+  geom_text(aes(label = Label), 
+            position = position_stack(vjust = 0.5), 
+            size = 4) + 
+  labs(title = "Distribution of School Governance Types") 
+```
+**Interpretation**: The frequency table and pie chart above indicates that, within this PISA sample, most students attend government-run schools (n=4013, 93.5%), while relatively few are enrolled in schools managed by religious (n=97, 2.3%) or other not-for-profit organizations (n=181, 4.2%). 
+
+## 2	Bar Chart: Comparing Mean Math Scores by School Type {.unnumbered}
+We will now create a bar chart to compare the mean math scores (MATH) across different school governance types. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Calculate means for each school type 
+mean_scores <- data |> 
+  group_by(OrgType) |> 
+  summarise(MeanMath = round(mean(PV1MATH, na.rm = TRUE))) |> 
+  filter(!is.na(OrgType)) 
+ 
+# recode the values for concise display 
+mean_scores <- mean_scores |> 
+  mutate( 
+    SchoolType = case_when( 
+      OrgType == "A church or other religious organisation" ~ "Religious", 
+      OrgType == "Another not-for-profit organisation" ~ "Non-profit", 
+      OrgType == "The government" ~ "Government" 
+    ) 
+  ) 
+mean_scores 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Plot bar chart 
+ggplot(mean_scores, aes(x = SchoolType, y = MeanMath, fill = OrgType)) + 
+  geom_col() + 
+  geom_text(aes(label = MeanMath),    
+          vjust = -0.1,                     # Position labels just above the bar 
+          size = 4) +                        
+  labs(title = "Average Math Score by School Type", 
+       x = "School Organization", 
+       y = "Mean Math Score") + 
+  theme_minimal() + 
+  theme(legend.position = "none") 
+```
+**Interpretation**: The bar chart shows that students in government-run schools have the highest average math score (464), closely followed by those in schools run by religious organizations (462). Students in schools operated by other not-for-profit organizations have a lower average math score (398). 
+## 3    Histogram: Overall Distribution of Math Scores {.unnumberred}
+We now inspect the distribution of math scores (PV1MATH) across all students. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Calculate summary statistics 
+mean_math <- mean(data$PV1MATH, na.rm = TRUE) 
+sd_math <- sd(data$PV1MATH, na.rm = TRUE) 
+n_math <- sum(!is.na(data$PV1MATH)) 
+ 
+# Format summary text 
+summary_text <- paste0( 
+  "Mean = ", round(mean_math, 1),  
+  "\nSD = ", round(sd_math, 1),  
+  "\nN = ", n_math 
+) 
+ 
+ggplot(data, aes(x = PV1MATH)) + 
+  geom_histogram(binwidth = 25, fill = "lightblue", color = "white") + 
+  geom_vline(aes(xintercept = mean_math), color = "red", size = 1.2) + 
+  labs(title = "Histogram of Math Scores (PV1MATH)", 
+       x = "Math Score", y = "Frequency") + 
+    annotate( 
+    "text", 
+    x = max(data$PV1MATH, na.rm = TRUE) - 100, # Adjust as needed 
+    y = Inf, label = summary_text, hjust = 0, vjust = 1, 
+    size = 4 
+  ) + 
+  theme_minimal() 
+```
+**Interpretation**: The histogram shows the distribution of U.S. students’ math scores (PV1MATH) on the PISA assessment. The distribution is approximately symmetric and bell-shaped, centered around a mean of 461.9 with a standard deviation of 95.1.This pattern suggests that math achievement is fairly normally distributed in the sample. 
+## 4	Q-Q Plot: Assessing Normality of Math Scores {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+ggqqplot(data$PV1MATH, 
+         title = "Q-Q Plot of Math Scores (PV1MATH)", 
+         xlab = "Theoretical Quantiles", ylab = "Sample Quantiles") 
+```
+**Interpretation**: The Q-Q plot compares the distribution of math scores (PV1MATH) to a theoretical normal distribution. Most of the data points fall close to the reference line, indicating that the distribution of math scores is approximately normal. However, In the lower tail, the observed quantiles sit above the reference line (i.e. less extreme than a normal lower tail would predict); in the upper tail, they lie below the line (again, less extreme than normal). That pattern at both ends means the math‑score distribution has slightly lighter tails than a true normal distribution. 
+
+Overall, the distribution of math scores appears reasonably normal, supporting the use of parametric statistical methods for further analysis, which will be introduced in the following chapters. 
+
+## 5    Stem-and-Leaf Plot and Box Plot {.unnumbered}
+We will create a stem-and-leaf plot and a box plot to further visualize the distribution of math scores (PV1MATH). 
+
+Note that the stem-and-leaf plots are best for small to moderate datasets (e.g., N < 100–200). For illustration, we will randomly select 100 math scores to create the plot. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Stem-and-leaf plot 
+set.seed(12345) 
+subset_scores <- sample(data$PV1MATH, 100) # randomly select 100 scores 
+stem(subset_scores) 
+```
+**Interpretation**: The stem-and-leaf plot provides a compact visualization of the distribution of the selected math scores, displaying the actual data values in a way that preserves information about the shape and spread. 
+
+- **Range of Scores**: The math scores in this subset range from approximately 260 (2 | 66) up to around 660 (6 | 5556). 
+
+- **Central Tendency**: The 400s and 500s stems are the most densely populated, indicating that most students scored between 400 and 599. 
+
+- **Skewness and Symmetry**: The plot appears slightly right-skewed, evidenced by a longer tail on the higher end (the 600s). 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Box plot 
+ggplot(data, aes(x = "", y = PV1MATH)) + 
+  geom_boxplot(fill = "lightblue", width=0.3) + 
+  labs(title = "Box Plot of Math Scores (PV1MATH)", 
+       y = "Math Score", x = NULL) + 
+  theme_minimal() 
+```
+**Interpretation**: The box plot shows that most students’ math scores are clustered in the mid-range, with a few students scoring exceptionally high. The distribution is slightly right-skewed, and the presence of upper outliers indicates that some students performed much better than their peers. 
+## 6 	Scatterplot Matrix: Exploring Relationships Between Math Subscores {.unnumberred}
+We use a scatterplot matrix to explore relationships between different cognitive dimensions of math: reasoning (PV1MPRE), change & relationships (PV1MCCR), quantity (PV1MCQN). 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Subset relevant variables 
+math_subscores <- data |> 
+  select(PV1MPRE, PV1MCCR, PV1MCQN) 
+ 
+# Plot scatterplot matrix 
+ggpairs(math_subscores, 
+        title = "Scatterplot Matrix of Math Cognitive Subscores") 
+```
+**Interpretation**: This scatterplot matrix provides a comprehensive overview of the relationships between three cognitive subscores of math achievement: 
+
+- Lower panels show scatterplots for each pair of subscores. These plots visually reveal strong, positive associations; as one subscore increases, the other tends to increase as well. 
+
+Additionally: 
+
+- Diagonal panels display the distribution (density curves) of each subscore, giving a quick sense of how each score is spread. 
+
+- Upper panels present the numerical correlations for each pair. For example, the correlation between PV1MPRE (reasoning) and PV1MCCR (change & relationships) is 0.85, indicating a strong positive relationship. We will formally introduce the concept of correlation and how to interpret it in a later chapter. 

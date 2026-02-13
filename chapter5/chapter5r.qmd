@@ -1,0 +1,153 @@
+# Chapter 5: Exploring the Normal Distribution in R  {.unnumbered}
+
+This section demonstrates how to work with the normal distribution in R, including checking for normality, calculating skewness and kurtosis, standardizing scores (z-scores), and computing probabilities using the properties of the normal curve. We use the PV1MATH variable as an example. 
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Load required package 
+# Load required package 
+library(haven) 
+ 
+# Load the dataset 
+data <- read_sav("chapter2/US_Data_22.sav") 
+```
+## 1    Visualizing and Summarizing the Distribution {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Histogram and summary 
+hist(data$PV1MATH, breaks=30, main="Distribution of Math Scores", xlab="PV1MATH", col="lightblue") 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+summary(data$PV1MATH) 
+```
+As a recap, the first step in exploring a continuous variable, such as math achievement scores (PV1MATH), is to visualize its distribution and review key summary statistics. As covered in Chapters 2 and 3, these basic descriptive measures and visualizations help us quickly understand the main features of the data before proceeding to more advanced analyses. 
+
+## 2	Checking for Normality {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+library(psych) 
+skew(data$PV1MATH, na.rm = TRUE) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+kurtosi(data$PV1MATH, na.rm = TRUE) 
+```
+**Interpretation**: The skewness of PV1MATH is 0.17, indicating a slight right (positive) skew, meaning there are a few more high values than low values. The kurtosis is –0.32, suggesting the distribution is slightly flatter (platykurtic) than a perfectly normal distribution. Both values fall well within the range of –1 to 1, so the math scores are approximately normal, with only minor deviations from perfect symmetry and peakedness. 
+
+## 3	Standardizing Scores: Calculating Z-scores {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Standardize PV1MATH to obtain z-scores 
+z_scores <- scale(data$PV1MATH) 
+# View summary statistics for the standardized scores 
+mean(z_scores, na.rm=TRUE)      # Should be 0 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+sd(z_scores, na.rm=TRUE)        # Should be 1 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+data$z_PV1MATH <- z_scores # Add z-scores to the dataset 
+head(data[, c("PV1MATH", "z_PV1MATH")]) #show first 6 rows of PV1MATH and z_PV1MATH 
+```
+
+**Interpretation:** 
+
+To standardize the math scores (PV1MATH), we calculated z-scores for each student. The mean of the z-scores is effectively 0 and the standard deviation is 1, as expected. This confirms that the z-scores represent how many standard deviations each math score is from the mean. 
+
+Let’s look at two example students from the first six rows: 
+
+- The first student has a raw math score of 573, which corresponds to a z-score of 1.17. This means their math score is 1.17 standard deviations above the mean (with the mean previously reported as about 462). 
+
+- The second student has a math score of 440, giving a z-score of –0.23. This means their score is slightly below the mean (about 0.23 standard deviations lower). 
+
+By adding the z-scores to the dataset, it’s easier to compare each student’s performance relative to the whole group, regardless of the scale of the original scores. 
+
+## 4	Example: Calculating Z-scores and Probabilities (Questions 1-3) {.unnumbered
+Suppose the mean (𝜇) = 98.2 and standard deviation (𝜎) = 0.73, as in the body temperature example. 
+
+**Q1. Probability that X ≥ 98.6**
+
+Here we replicate the example from section Finding Areas Under the Normal Curve, calculating the probability that a randomly selected person has a body temperature of 98.6°F or higher. }
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+mu <- 98.2 
+sigma <- 0.73 
+x1 <- 98.6 
+ 
+# Calculate z 
+z1 <- (x1 - mu) / sigma 
+z1 #~0.55 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Probability that X >= 98.6 
+prob1 <- pnorm(z1, lower.tail = FALSE) #lower.tail = FALSE gives the right tail probability 
+prob1   # ~0.2912 
+```
+**Interpretation**: About 29.1% of the population have a body temperature of 98.6 or higher. 
+
+**Q2. Probability that X ≤ 97.5**
+Now we calculate the probability that a randomly selected person has a body temperature of 97.5°F or lower. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+x2 <- 97.5 
+z2 <- (x2 - mu) / sigma 
+z2 # ~-0.96 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Probability that X <= 97.5 (left tail) 
+prob2 <- pnorm(z2) # lower.tail = TRUE is the default, so we can omit it to get the left tail probability 
+prob2   # ~0.1688 
+```
+**Interpretation**: About 16.9% of the population have a body temperature of 97.5°F or lower. 
+
+**Q3. Probability between 97.5 and 98.6**
+
+Finally, we calculate the probability that a randomly selected person has a body temperature between 97.5°F and 98.6°F. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Load required package 
+# Probability that 97.5 <= X <= 98.6 
+prob_between <- 1-(prob1+prob2) #same as in previous section 
+#prob_between <- pnorm(z1) - pnorm(z2) #alternative 
+ 
+prob_between  # ~0.54 
+```
+
+**Interpretation**: About 53.9% (difference due to rounding) of the population have a body temperature between 97.5°F and 98.6°F. 

@@ -2,6 +2,6 @@
 title: "Chapter 5"
 ---
 
-# Chapter 5
 
-This is Chapter 5.
+{{< include chapter5/chapter5text.qmd >}}
+{{< include chapter5/chapter5r.qmd >}}

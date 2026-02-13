@@ -81,3 +81,41 @@
   margin: .35rem 0;          /* tighter spacing between bullets */
   line-height: 1.35;
 }
+
+.variability-table.two-col{
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.two-col-table{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.two-col-table .vcell{
+  padding: 1.1rem 1.2rem;
+}
+
+.two-col-table .vcell + .vcell{
+  border-left: 1px solid #cfcfcf;
+}
+
+.two-col-table .vtitle{
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: .6rem;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.two-col-table ul{
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.two-col-table li{
+  margin: .35rem 0;
+  line-height: 1.35;
+}

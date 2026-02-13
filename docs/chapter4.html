@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -227,7 +262,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#chapter-4" id="toc-chapter-4" class="nav-link active" data-scroll-target="#chapter-4"><span class="header-section-number">5</span> Chapter 4</a></li>
+  <li><a href="#displaying-data-graphically" id="toc-displaying-data-graphically" class="nav-link active" data-scroll-target="#displaying-data-graphically">Displaying Data Graphically</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">4.1</span> Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways-for-educational-researchers-from-chapter-4" id="toc-key-takeaways-for-educational-researchers-from-chapter-4" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-4"><span class="header-section-number">4.1.1</span> Key Takeaways for Educational Researchers from Chapter 4</a></li>
+  </ul></li>
+  <li><a href="#key-definitions-from-chapter-4" id="toc-key-definitions-from-chapter-4" class="nav-link" data-scroll-target="#key-definitions-from-chapter-4"><span class="header-section-number">4.2</span> Key Definitions from Chapter 4</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">4.3</span> Check Your Understanding</a></li>
+  </ul></li>
+  <li><a href="#chapter-4-displaying-data-graphically-in-r" id="toc-chapter-4-displaying-data-graphically-in-r" class="nav-link" data-scroll-target="#chapter-4-displaying-data-graphically-in-r">Chapter 4: Displaying Data Graphically in R</a>
+  <ul class="collapse">
+  <li><a href="#pie-chart-categorical-distribution" id="toc-pie-chart-categorical-distribution" class="nav-link" data-scroll-target="#pie-chart-categorical-distribution">1 Pie Chart: Categorical Distribution</a></li>
+  <li><a href="#bar-chart-comparing-mean-math-scores-by-school-type" id="toc-bar-chart-comparing-mean-math-scores-by-school-type" class="nav-link" data-scroll-target="#bar-chart-comparing-mean-math-scores-by-school-type">2 Bar Chart: Comparing Mean Math Scores by School Type</a></li>
+  <li><a href="#stem-and-leaf-plot-and-box-plot" id="toc-stem-and-leaf-plot-and-box-plot" class="nav-link" data-scroll-target="#stem-and-leaf-plot-and-box-plot">5 Stem-and-Leaf Plot and Box Plot</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -253,11 +303,457 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="chapter-4" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Chapter 4</h1>
-<p>This is Chapter 4.</p>
+<section id="displaying-data-graphically" class="level1 unnumbered">
+<h1 class="unnumbered">Displaying Data Graphically</h1>
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ul>
+<li><p>Identify appropriate graphical methods (e.g., bar graphs, histograms, box plots, scatter plots) to summarize and communicate patterns, trends, and variability in categorical and continuous data.</p></li>
+<li><p>Construct clear, accurate, and meaningful data visualizations that effectively communicate key insights while avoiding common pitfalls such as distortion, poor labeling, or overcomplicated designs.</p></li>
+</ul>
+<p><strong>Exploratory data analysis</strong> is an approach that involves examining datasets to summarize their main characteristics, identify patterns, and uncover insights, often using visual methods. This technique is widely used in education-related fields to gain insights from educational data, improve decision-making, and inform policy and practice. You could take an entire course about data visualization, so for now we will only summarize some of the key concepts.</p>
+<p>Data visualization refers to the graphical representation or structured representation of information and data to facilitate understanding and interpretation. By using charts, graphs, figures and tables, we present information in a way that highlights trends, outliers, and patterns in raw data. While graphs and charts are commonly associated with data visualization in educational research, tables also serve as a fundamental tool by systematically organizing numerical and categorical data for easy comparison. Unlike graphical displays, which emphasize patterns and relationships, tables provide precise values and detailed breakdowns, making them particularly useful when exact numerical reporting is required. Understanding how to display data is important for multiple steps in the research process. You may notice an interesting pattern that you want to investigate more closely, so creating well-designed tables and graphs might be the start of deeper investigation into your research.</p>
+<p>Frequently, the first step in data analysis is visualizing the data to confirm it meets the assumptions of your planned analysis method. For example:</p>
+<ul>
+<li><p>If you want to know whether your dependent variable is approximately normally distributed, you create a histogram.</p></li>
+<li><p>If you want to see if the amount of variation is similar between two groups, you create a box plot.</p></li>
+<li><p>If you want to see if there is a linear relationship between two variables, you create a scatter plot.</p></li>
+</ul>
+<p>Displaying your data graphically can also be a critical part of sharing the results of any analysis, and you want to do so in a way that communicates your message effectively.</p>
+<div class="two-col-table">
+<div class="vcell">
+<div class="vtitle">
+<p>A good graph should</p>
+</div>
+<ul>
+<li>Show the data with the appropriate visualization (e.g., bar chart, scatter plot, histogram) based on the type of data and relationships being displayed</li>
+<li>Induce the reader to think about the data being presented</li>
+<li>Get as much information across as possible within limited space (use a clean and simple design that enhances clarity without excessive grid lines or redundant elements)</li>
+<li>Make large data sets coherent</li>
+<li>Encourage the reader to ask additional questions about the data</li>
+<li>Communicate the findings or your key message about the data</li>
+<li>Maintain uniform styles, colors, and labeling conventions across multiple graphs</li>
+</ul>
+</div>
+<div class="vcell">
+<div class="vtitle">
+<p>A good graph should NOT</p>
+</div>
+<ul>
+<li>Distort the data (intentionally or unintentionally)</li>
+<li>Use 3-D effects for a graph plotting two variables</li>
+<li>Go overboard with patterns and effects that distract from the key message (overloading a graph with too many data series can make it unreadable)</li>
+<li>Have badly labeled axes (number of what???)</li>
+</ul>
+</div>
+</div>
+<p>While graphical representations are powerful for identifying patterns and trends, there are instances where a structured, numerical representation is more effective. In cases where precision, exact comparisons, or detailed breakdowns are needed, tables serve as an essential tool for organizing and presenting data.</p>
+<p>A <strong>table</strong> is an organized arrangement of data in rows and columns, designed to systematically display values, frequencies, or relationships for easy comparison and interpretation. Tables are essential tools for summarizing data in educational contexts because they provide a clear, structured way to organize and present information. They allow educators, administrators, and policymakers to quickly interpret numerical and categorical data, making it easier to identify trends, compare variables, and draw meaningful conclusions. For instance, tables can display student performance across subjects, attendance rates, or resource allocation across schools, enabling stakeholders to make data-driven decisions. Unlike graphical displays, tables provide precise values, making them particularly useful when exact numbers are necessary for analysis or reporting. Moreover, tables are versatile, as they can accommodate large amounts of data and be customized to highlight specific details, such as subgroup comparisons or longitudinal trends, fostering better understanding and informed actions in educational settings.</p>
+<p>Let’s walk through a scenario to illustrate how tables and graphical displays can be used. A school administrator wants to compare the average test scores of students across grade levels in one middle school. The table below shows average scores. It is very easy to see that the average scores for grades 6, 7, and 8 are 78, 85, and 92, respectively.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Grade Level</th>
+<th>Average Test Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6</td>
+<td>78</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>85</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>92</td>
+</tr>
+</tbody>
+</table>
+<p>Another way we could visual this data is through the use of a <strong>bar graph</strong>. Bar graphs are particularly effective for displaying data across discrete categories, such as grade levels, school districts, or subject areas, making complex information easier to understand. For example, bar charts can be used to compare average test scores across grade levels, participation rates in extracurricular activities, or funding allocations across departments. Their straightforward design allows educators and administrators to quickly identify patterns, trends, and disparities, such as gaps in performance or resource distribution. Bar graphs also help communicate findings effectively to diverse audiences, including students, parents, and policymakers, as the visual format is easy to interpret. By simplifying the presentation of categorical data, bar graphs support data-driven decision-making and facilitate meaningful discussions about improving educational outcomes.</p>
+<p>Bar graphs use vertical bars to represent the data. The height of the bars often represents the frequencies of some dependent variable for the categories that are displayed along the X-axis. Note that by tradition, the X-axis (independent variable) is the horizontal axis and the Y-axis (dependent variable) is the vertical axis. The following bar graph shows the same information as the previous table.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-avg-test-scores" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-avg-test-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter4_files/figure-html/fig-avg-test-scores-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-avg-test-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Average Test Scores by Grade Level
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Histograms</strong> summarize the frequency of continuous data that are grouped. Values of the independent variable are along the X-axis, grouped by equal intervals. Typically, the height of the rectangle, measured by the Y-axis, equals the frequency recorded for each interval. The base of each rectangle begins and ends at the lower and upper boundaries, seen from left to right, of each interval, and each rectangle touches adjacent rectangles at the boundaries of each interval.</p>
+<p>It may seem like a bar graph and a histogram are the same, but in the world of statistics, it matters whether the bars touch each other. A bar graph, with separated bars, is used for categorical or discrete variables, or sometimes for variables based on ordinal scales as well. The separation shows that these are discrete categories rather than groupings of a continuous variable where the group size could be adjusted to whatever you want. Unlike bar charts, histograms group data into intervals, bins, to show the distribution of a dataset, making them useful for identifying skewness, outliers, or overall patterns in continuous variables.</p>
+<p>Our school administrator now wants to look at the distribution of test scores for just 7th graders, but they decided to group scores in the following categories: 50-60, &lt;60-70, &lt;70-80, &lt;80-90, and &lt;90-100. The histogram showing a summary of the dataset is included below in Figure 4.2.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-7th-histogram" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-7th-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter4_files/figure-html/fig-7th-histogram-1.png" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7th-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: Distribution of 7th Grade Test Scores
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>A <strong>stem-and-leaf plot</strong> is a graphic display where each individual score from the original data set is listed in a relatively compact manner. Common digits shared by all scores are listed to the left, and the remaining digits for each score are listed to the right. So, the stems are the first digit(s) and the leaves are the last digit(s). Rather than giving a frequency count, this is a way of summarizing the data visually because you can see which stems have the most leaves while also displaying the actual scores. Stem-and-leaf plots are best suited for small datasets where all numbers are greater than 0 (Moore, McCabe, &amp; Craig, 2021). Here is a stem-and-leaf plot for our example:</p>
+<p><strong>Stem-and-Leaf Plot of Test Scores</strong></p>
+<pre><code>5 | 4 5 5 5 6
+6 | 3 4 4 5 5 5 5 6 6 6 6 7 7
+7 | 3 4 4 4 5 5 5 5 5 6 6 6 6 6 7 7
+8 | 3 3 4 4 4 5 5 5 5 5 5 5 6 6 6 6 6 6
+9 | 4 4 5 5 5 6 6
+
+Key: 7 | 5 represents a score of 75</code></pre>
+<p>A <strong>box plot</strong>, or box-and-whisker plot, is a graphical representation of data that shows its central tendency, variability, and distribution through a box indicating the interquartile range (IQR), a line for the median, and <em>whiskers</em> extending to the smallest and largest non-outlier values. They are typically oriented vertically, but the example below is horizontal for ease of displaying the various parts. At the center of the box plot is a line representing the median (50th percentile) for the data, surrounded by a box representing the inter-quartile range (IQR, or the 25th to 75th percentile). Then there are lines extending out from the box (these are the <em>whiskers</em>). Most often these will extend to the smallest and largest observed points in the dataset that are within 1.5 times the IQR. If there are outliers in the dataset that fall beyond the whiskers, they are typically represented by individual circles.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-boxplot-iqr-demo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-boxplot-iqr-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter4_files/figure-html/fig-boxplot-iqr-demo-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-iqr-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.3: Boxplot anatomy with IQR, 1.5×IQR and 3×IQR boundaries (using the stem-and-leaf data)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-boxplot-five-number" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-boxplot-five-number-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter4_files/figure-html/fig-boxplot-five-number-1.png" class="img-fluid figure-img" width="307">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-five-number-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.4: Boxplot of test scores with five-number summary (using the stem-and-leaf data)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>A <strong>scatterplot</strong> is a graphical representation that displays individual data points based on two variables, with one variable plotted along the X-axis and the other along the Y-axis, allowing researchers to visualize relationships between them. In educational research, scatterplots are essential for identifying correlations and trends, such as the relationship between socioeconomic status and academic performance or hours spent studying and test scores. By highlighting patterns, such as positive, negative, or no correlation, scatterplots provide insights into potential causal or influential factors that can guide further investigation. Additionally, scatterplots help researchers detect outliers or anomalies, such as students performing significantly above or below the expected trend, which can inform targeted interventions or support. This ability to visually explore complex data relationships makes scatterplots a valuable tool in understanding and improving educational outcomes. Examples of scatterplots showing each individual test score are included below in Figure 4.5. (figure 4.5 here)</p>
+<p>A <strong>Q-Q (Quantile-Quantile) plot</strong> is a graphical tool used to assess whether a dataset follows a specific theoretical distribution, most commonly the normal distribution. In a Q-Q plot, the quantiles of the observed data are plotted against the quantiles of the chosen distribution (e.g., normal distribution). If the points in the plot fall approximately along a 45-degree reference line, it suggests that the data conforms to that distribution. Deviations from this line indicate departures from the expected distribution, such as skewness, kurtosis, or outliers. Q-Q plots are particularly valuable in educational research when determining if data, such as student test scores or survey responses, meet the assumptions required for parametric statistical tests that we will cover later in the book. For instance, a researcher analyzing standardized test scores might use a Q-Q plot to check for normality before conducting a t test or an analysis of variance (ANOVA) – we will learn both methods later. While histograms provide a general sense of distribution, Q-Q plots offer a more precise visual check by directly comparing observed data with a theoretical model.</p>
+<p>Imagine an educational researcher wants to assess whether a sample of students’ math scores follows a normal distribution. The Q-Q plot below demonstrates how well the data aligns with a normal distribution. Most points fall along the 45-degree line, indicating normality, though a few points deviate slightly at the ends, suggesting potential outliers.</p>
+<p>(fig 4.6 here)</p>
+<p>Including Q-Q plots in your data visualization toolkit enhances your ability to diagnose data distribution issues, ensuring that your chosen analytical methods are appropriate and reliable. This tool, combined with histograms, box plots, and other visualizations, provides a comprehensive approach to exploratory data analysis.</p>
+<p>A <strong>pie chart</strong> is a circular graph divided into slices, where each slice represents a proportion of a whole, making it ideal for visualizing percentages or relative frequencies. In educational research, pie charts are often used to illustrate the composition of groups or categories, such as the distribution of students by socioeconomic status, the percentage of students enrolled in various extracurricular activities, or the allocation of a school’s budget across different programs. For example, a pie chart could show the proportion of students achieving different performance levels on a standardized test, allowing researchers to identify the largest and smallest groups at a quick glance. Pie charts are particularly effective for presenting summary data to audiences who may not have extensive statistical training, as they provide an intuitive and visually engaging way to communicate the breakdown of categories. However, they are most useful when there are relatively few categories, as too many slices can make interpretation challenging. An example showing students enrollment across grades 6, 7, and 8 from the administrator’s middle school is included in figure 4.7. (FIG 4.7)</p>
+</section>
+<section id="conclusion" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">4.1</span> Conclusion</h2>
+<p>Chapter 4 emphasizes the importance of data visualization in educational research, providing an overview of various graphical methods and their applications. From bar charts and histograms to box plots and scatterplots, each visualization tool serves a unique purpose in summarizing and communicating data. These tools help researchers and educators uncover patterns, trends, and outliers, offering valuable insights that inform decision-making and policy development. The chapter also highlights the distinction between categorical and continuous data representations and underscores the importance of designing graphs that are clear, accurate, and effective in delivering key messages.</p>
+<p>Through practical examples, such as comparing test scores across grade levels or visualizing the relationship between two continuous variables like study hours and academic performance, this chapter demonstrates how graphical displays can reveal meaningful patterns and insights from raw data. By integrating tables, stem-and-leaf plots, and pie charts alongside more complex visualizations, educators and researchers are equipped with the tools to present findings in ways that are both clear and informative. This foundational understanding of data visualization sets the stage for exploring deeper analytical techniques and leveraging data to improve educational outcomes. As we move forward, the next chapter will explore the normal distribution, an essential statistical concept that will further refine our ability to interpret data and make meaningful inferences.</p>
+<section id="key-takeaways-for-educational-researchers-from-chapter-4" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-4"><span class="header-section-number">4.1.1</span> Key Takeaways for Educational Researchers from Chapter 4</h3>
+<ul>
+<li><p>Incorporate data visualization to summarize patterns and trends. In educational research, data visualization helps uncover meaningful insights from student performance metrics, survey responses, and institutional data. Bar graphs, histograms, and scatterplots allow researchers to identify trends in student achievement, compare subgroup differences, and detect outliers that may indicate unique challenges or exceptional performance. By transforming raw numbers into graphical representations, educators and policymakers can more easily interpret and act on findings.</p></li>
+<li><p>Choose the right visualization for your data and analysis needs. Different types of data require different graphical techniques to accurately convey insights. Choose the correct visualization (e.g., box plots for variability, Q-Q plots for checking normality) based on the type of data and analysis requirements to ensure clarity and enhance interpretability.</p></li>
+<li><p>Ensure clarity and accuracy in graph design. Well-designed graphs improve comprehension and reduce the risk of misinterpretation. In educational research, this means clearly labeling axes, ensuring consistent scales when comparing multiple groups, and avoiding misleading visual distortions (e.g., truncating axes to exaggerate differences). Additionally, color choices and legends should enhance readability, especially when presenting findings to diverse audiences, including educators, administrators, and policymakers. A clear, accurate graph allows stakeholders to draw valid conclusions and make informed decisions.</p></li>
+<li><p>Use data visualization for exploratory analysis. Before applying statistical models, researchers can use graphical methods to check assumptions. For instance, histograms and box plots help assess the distribution of student test scores before conducting an ANOVA, while scatterplots with trendlines can reveal nonlinear relationships between study time and GPA. Detecting patterns early through visualization can prevent errors in model selection and improve the robustness of conclusions in educational research.</p></li>
+<li><p>Incorporate visualizations in research reporting for effective communication. Effective visualizations bridge the gap between complex analyses and actionable insights. When reporting findings on student achievement or the effectiveness of instructional interventions, incorporating well-crafted charts, tables, and dashboards can make data accessible to decision-makers. Visuals enhance storytelling in research, making data-driven recommendations more compelling and easier to act upon.</p></li>
+</ul>
+</section>
+</section>
+<section id="key-definitions-from-chapter-4" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="key-definitions-from-chapter-4"><span class="header-section-number">4.2</span> Key Definitions from Chapter 4</h2>
+<p>A <strong>bar graph</strong> is a graphical representation of data using rectangular bars, where the length or height of each bar corresponds to the value or frequency of a specific category or group. There is a gap between each bar.</p>
+<p>A <strong>box plot</strong> (or box-and-whisker plot) is a graphical representation of data that shows its central tendency, variability, and distribution through a box indicating the interquartile range (IQR), a line for the median, and “whiskers” extending to the smallest and largest non-outlier values.</p>
+<p><strong>Exploratory data analysis</strong> is an approach that involves examining datasets to summarize their main characteristics, identify patterns, and uncover insights, often using visual methods.</p>
+<p><strong>Histograms</strong> summarize the frequency of continuous data that are grouped. The bars on a histogram touch one another.</p>
+<p>A <strong>pie chart</strong> is a circular graph divided into slices, where each slice represents a proportion of a whole, making it ideal for visualizing percentages or relative frequencies.</p>
+<p>A <strong>scatterplot</strong> is a graphical representation that displays individual data points based on two variables, with one variable plotted along the x-axis and the other along the y-axis, allowing researchers to visualize relationships between them.</p>
+<p>A <strong>stem-and-leaf plot</strong> is a graphic display where each individual score from the original data set is listed in a relatively compact manner. Common digits shared by all scores are listed to the left, and the remaining digits for each score are listed to the right.</p>
+<p>A <strong>Q-Q (Quantile-Quantile) plot</strong> is a graphical tool used to assess whether a dataset follows a specific theoretical distribution, most commonly the normal distribution.</p>
+<p>A <strong>table</strong> is an organized arrangement of data in rows and columns, designed to systematically display values, frequencies, or relationships for easy comparison and interpretation.</p>
+</section>
+<section id="check-your-understanding" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">4.3</span> Check Your Understanding</h2>
+<ol type="1">
+<li><p><strong>What is the primary purpose of using a histogram in educational research?</strong></p>
+<ol type="a">
+<li><p>To compare categories of data.</p></li>
+<li><p>To display the relationship between two variables.</p></li>
+<li><p>To summarize the frequency of continuous data grouped into intervals.</p></li>
+<li><p>To show proportions of a whole.</p></li>
+</ol></li>
+<li><p><strong>Which visualization method is best suited for identifying relationships or correlations between two variables?</strong></p>
+<ol type="a">
+<li><p>Pie chart</p></li>
+<li><p>Box plot</p></li>
+<li><p>Scatterplot</p></li>
+<li><p>Stem-and-leaf plot</p></li>
+</ol></li>
+<li><p><strong>In a box-and-whisker plot, the interquartile range (IQR) is represented by:</strong></p>
+<ol type="a">
+<li><p>The lines extending from the box to the smallest and largest values.</p></li>
+<li><p>The box itself, showing the range between the 25th and 75th percentiles.</p></li>
+<li><p>The line in the center of the box representing the median.</p></li>
+<li><p>The individual dots outside the whiskers.</p></li>
+</ol></li>
+<li><p><strong>What is a key advantage of tables in presenting data?</strong></p>
+<ol type="a">
+<li><p>They simplify relationships between variables visually.</p></li>
+<li><p>They display trends and patterns intuitively.</p></li>
+<li><p>They highlight outliers in large datasets.</p></li>
+<li><p>They summarize data with precise values for comparison.</p></li>
+</ol></li>
+<li><p><strong>What is the key difference between a bar chart and a histogram?</strong></p>
+<ol type="a">
+<li><p>Bar charts use touching bars to represent continuous data, while histograms use separated bars for discrete data.</p></li>
+<li><p>Bar charts use separated bars for discrete data, while histograms use touching bars for continuous data.</p></li>
+<li><p>Bar charts are only used for percentages, while histograms are used for counts.</p></li>
+<li><p>There is no difference; the terms are interchangeable.</p></li>
+</ol></li>
+</ol>
+</section>
+</section>
+<section id="chapter-4-displaying-data-graphically-in-r" class="level1 unnumbered">
+<h1 class="unnumbered">Chapter 4: Displaying Data Graphically in R</h1>
+<p>This section demonstrates various data visualization techniques using the PISA 2022 U.S. dataset. We will illustrate how to effectively present categorical and continuous variables using <strong>pie charts, bar charts, histograms, stem-and-leaf plots, box plots, scatterplot matrices</strong>, and <strong>Q-Q plots</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required package </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)        <span class="co"># for QQ plot helper if desired </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)     <span class="co"># for scatterplot matrix </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)    <span class="co"># for better text labels in plots </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)     <span class="co"># for Q-Q plot </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter3/Clean-data_mar6.sav"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="pie-chart-categorical-distribution" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="pie-chart-categorical-distribution">1 Pie Chart: Categorical Distribution</h2>
+<p>We begin by visualizing the distribution of school governance types (SC014Q01TA: “What kind of organization runs your school?”).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the SPSS‑labelled variable to an R factor </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">OrgType =</span> <span class="fu">as_factor</span>(SC014Q01TA)) </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a frequency table and calculate percentages </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>school_org_df <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(OrgType) <span class="sc">|&gt;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(OrgType)) <span class="sc">|&gt;</span> <span class="co"># Filter out NA values </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Percent =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="dv">1</span>)) <span class="co"># Calculate percentage </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>school_org_df </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  OrgType                                      n Percent
+  &lt;fct&gt;                                    &lt;int&gt;   &lt;dbl&gt;
+1 A church or other religious organisation    97     2.3
+2 Another not-for-profit organisation        181     4.2
+3 The government                            4013    93.5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the pie chart </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a label that combines OrgType, Count, and Percent </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>school_org_df <span class="ot">&lt;-</span> school_org_df <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Label =</span> <span class="fu">ifelse</span>(Percent<span class="sc">&lt;</span><span class="dv">5</span>, <span class="st">""</span>, <span class="fu">paste0</span>(<span class="st">"n="</span>, n, <span class="st">", "</span>, Percent, <span class="st">"%"</span>))) </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#data label appear when percentage is greater than 5% </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(school_org_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> n, <span class="at">fill =</span> OrgType)) <span class="sc">+</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>, <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">"y"</span>) <span class="sc">+</span> <span class="co">#wrapping the bars around a circle, using the y-axis (the count) as the angle for each slice </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span> </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> Label), </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of School Governance Types"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation</strong>: The frequency table and pie chart above indicates that, within this PISA sample, most students attend government-run schools (n=4013, 93.5%), while relatively few are enrolled in schools managed by religious (n=97, 2.3%) or other not-for-profit organizations (n=181, 4.2%).</p>
+</section>
+<section id="bar-chart-comparing-mean-math-scores-by-school-type" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="bar-chart-comparing-mean-math-scores-by-school-type">2 Bar Chart: Comparing Mean Math Scores by School Type</h2>
+<p>We will now create a bar chart to compare the mean math scores (MATH) across different school governance types.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate means for each school type </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mean_scores <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(OrgType) <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MeanMath =</span> <span class="fu">round</span>(<span class="fu">mean</span>(PV1MATH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(OrgType)) </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># recode the values for concise display </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>mean_scores <span class="ot">&lt;-</span> mean_scores <span class="sc">|&gt;</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">SchoolType =</span> <span class="fu">case_when</span>( </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      OrgType <span class="sc">==</span> <span class="st">"A church or other religious organisation"</span> <span class="sc">~</span> <span class="st">"Religious"</span>, </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      OrgType <span class="sc">==</span> <span class="st">"Another not-for-profit organisation"</span> <span class="sc">~</span> <span class="st">"Non-profit"</span>, </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      OrgType <span class="sc">==</span> <span class="st">"The government"</span> <span class="sc">~</span> <span class="st">"Government"</span> </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>mean_scores </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  OrgType                                  MeanMath SchoolType
+  &lt;fct&gt;                                       &lt;dbl&gt; &lt;chr&gt;     
+1 A church or other religious organisation      462 Religious 
+2 Another not-for-profit organisation           398 Non-profit
+3 The government                                464 Government</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot bar chart </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_scores, <span class="fu">aes</span>(<span class="at">x =</span> SchoolType, <span class="at">y =</span> MeanMath, <span class="at">fill =</span> OrgType)) <span class="sc">+</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> MeanMath),    </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.1</span>,                     <span class="co"># Position labels just above the bar </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span>                        </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Math Score by School Type"</span>, </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"School Organization"</span>, </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Mean Math Score"</span>) <span class="sc">+</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter4_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation</strong>: The bar chart shows that students in government-run schools have the highest average math score (464), closely followed by those in schools run by religious organizations (462). Students in schools operated by other not-for-profit organizations have a lower average math score (398). ## 3 Histogram: Overall Distribution of Math Scores {.unnumberred} We now inspect the distribution of math scores (PV1MATH) across all students.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate summary statistics </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mean_math <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>PV1MATH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sd_math <span class="ot">&lt;-</span> <span class="fu">sd</span>(data<span class="sc">$</span>PV1MATH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>n_math <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(data<span class="sc">$</span>PV1MATH)) </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Format summary text </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>summary_text <span class="ot">&lt;-</span> <span class="fu">paste0</span>( </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Mean = "</span>, <span class="fu">round</span>(mean_math, <span class="dv">1</span>),  </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"</span><span class="sc">\n</span><span class="st">SD = "</span>, <span class="fu">round</span>(sd_math, <span class="dv">1</span>),  </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"</span><span class="sc">\n</span><span class="st">N = "</span>, n_math </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> PV1MATH)) <span class="sc">+</span> </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">25</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> mean_math), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span> </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Math Scores (PV1MATH)"</span>, </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Math Score"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) <span class="sc">+</span> </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>( </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text"</span>, </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">max</span>(data<span class="sc">$</span>PV1MATH, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="dv">100</span>, <span class="co"># Adjust as needed </span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">Inf</span>, <span class="at">label =</span> summary_text, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">1</span>, </span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span> </span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter4_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation</strong>: The histogram shows the distribution of U.S. students’ math scores (PV1MATH) on the PISA assessment. The distribution is approximately symmetric and bell-shaped, centered around a mean of 461.9 with a standard deviation of 95.1.This pattern suggests that math achievement is fairly normally distributed in the sample. ## 4 Q-Q Plot: Assessing Normality of Math Scores {.unnumbered}</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggqqplot</span>(data<span class="sc">$</span>PV1MATH, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Q-Q Plot of Math Scores (PV1MATH)"</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab =</span> <span class="st">"Theoretical Quantiles"</span>, <span class="at">ylab =</span> <span class="st">"Sample Quantiles"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter4_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation</strong>: The Q-Q plot compares the distribution of math scores (PV1MATH) to a theoretical normal distribution. Most of the data points fall close to the reference line, indicating that the distribution of math scores is approximately normal. However, In the lower tail, the observed quantiles sit above the reference line (i.e. less extreme than a normal lower tail would predict); in the upper tail, they lie below the line (again, less extreme than normal). That pattern at both ends means the math‑score distribution has slightly lighter tails than a true normal distribution.</p>
+<p>Overall, the distribution of math scores appears reasonably normal, supporting the use of parametric statistical methods for further analysis, which will be introduced in the following chapters.</p>
+</section>
+<section id="stem-and-leaf-plot-and-box-plot" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="stem-and-leaf-plot-and-box-plot">5 Stem-and-Leaf Plot and Box Plot</h2>
+<p>We will create a stem-and-leaf plot and a box plot to further visualize the distribution of math scores (PV1MATH).</p>
+<p>Note that the stem-and-leaf plots are best for small to moderate datasets (e.g., N &lt; 100–200). For illustration, we will randomly select 100 math scores to create the plot.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stem-and-leaf plot </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>) </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>subset_scores <span class="ot">&lt;-</span> <span class="fu">sample</span>(data<span class="sc">$</span>PV1MATH, <span class="dv">100</span>) <span class="co"># randomly select 100 scores </span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(subset_scores) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 2 digit(s) to the right of the |
+
+  2 | 66
+  3 | 000133344
+  3 | 55667777788888889999
+  4 | 00000011122334444
+  4 | 55566777999999
+  5 | 00011223334444
+  5 | 677777888999
+  6 | 00111224
+  6 | 5556</code></pre>
+</div>
+</div>
+<p><strong>Interpretation</strong>: The stem-and-leaf plot provides a compact visualization of the distribution of the selected math scores, displaying the actual data values in a way that preserves information about the shape and spread.</p>
+<ul>
+<li><p><strong>Range of Scores</strong>: The math scores in this subset range from approximately 260 (2 | 66) up to around 660 (6 | 5556).</p></li>
+<li><p><strong>Central Tendency</strong>: The 400s and 500s stems are the most densely populated, indicating that most students scored between 400 and 599.</p></li>
+<li><p><strong>Skewness and Symmetry</strong>: The plot appears slightly right-skewed, evidenced by a longer tail on the higher end (the 600s).</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> PV1MATH)) <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Box Plot of Math Scores (PV1MATH)"</span>, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Math Score"</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter4_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation</strong>: The box plot shows that most students’ math scores are clustered in the mid-range, with a few students scoring exceptionally high. The distribution is slightly right-skewed, and the presence of upper outliers indicates that some students performed much better than their peers. ## 6 Scatterplot Matrix: Exploring Relationships Between Math Subscores {.unnumberred} We use a scatterplot matrix to explore relationships between different cognitive dimensions of math: reasoning (PV1MPRE), change &amp; relationships (PV1MCCR), quantity (PV1MCQN).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset relevant variables </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>math_subscores <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PV1MPRE, PV1MCCR, PV1MCQN) </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot scatterplot matrix </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(math_subscores, </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Scatterplot Matrix of Math Cognitive Subscores"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter4_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation</strong>: This scatterplot matrix provides a comprehensive overview of the relationships between three cognitive subscores of math achievement:</p>
+<ul>
+<li>Lower panels show scatterplots for each pair of subscores. These plots visually reveal strong, positive associations; as one subscore increases, the other tends to increase as well.</li>
+</ul>
+<p>Additionally:</p>
+<ul>
+<li><p>Diagonal panels display the distribution (density curves) of each subscore, giving a quick sense of how each score is spread.</p></li>
+<li><p>Upper panels present the numerical correlations for each pair. For example, the correlation between PV1MPRE (reasoning) and PV1MCCR (change &amp; relationships) is 0.85, indicating a strong positive relationship. We will formally introduce the concept of correlation and how to interpret it in a later chapter.</p></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

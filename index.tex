@@ -944,13 +944,652 @@ Recall that:
 
 \bookmarksetup{startatroot}
 
-\chapter*{Chapter 2: Exploring Data Spread - Measures of Variability in
-R}\label{chapter-2-exploring-data-spread---measures-of-variability-in-r}
-\addcontentsline{toc}{chapter}{Chapter 2: Exploring Data Spread -
+\chapter*{Exploring Data Spread: Measures of
+Variability}\label{exploring-data-spread-measures-of-variability}
+\addcontentsline{toc}{chapter}{Exploring Data Spread: Measures of
+Variability}
+
+\markboth{Exploring Data Spread: Measures of Variability}{Exploring Data
+Spread: Measures of Variability}
+
+\section*{Learning Objectives}\label{learning-objectives-1}
+\addcontentsline{toc}{section}{Learning Objectives}
+
+\markright{Learning Objectives}
+
+By the end of this chapter, you will be able to:
+
+\begin{itemize}
+\item
+  Define and explain the concept of variability and its importance in
+  statistical analysis, distinguishing between measures such as range,
+  variance, and standard deviation.
+\item
+  Calculate measures of variability (range, interquartile range,
+  variance, and standard deviation) for a given dataset and interpret
+  what these values indicate about the spread of the data.
+\end{itemize}
+
+In this chapter, we are continuing the discussion about summarizing
+data. In the last chapter, we discussed how we can use one statistic to
+represent the central tendency of a dataset. Most people are likely
+already familiar with the concept of using an average, or the mean, to
+summarize data. In this chapter, we will explore how we can use other
+statistics to represent the spread, or variability, in a dataset.
+Variability refers to the extent to which data points in a dataset
+differ from each other and/or from the central value (e.g., the mean).
+It is a measure of how spread out or dispersed the data are. High
+variability indicates that the data points are more spread out, while
+low variability means they are closer together. A measure of variability
+should be reported along with any measure of central tendency because
+they provide different, but complementary information.
+
+Variability is often a little tricky to understand, so let's look at two
+simple datasets to help with our learning.
+
+\begin{itemize}
+\item
+  \textbf{Set A}: 47, 48, 49, 50, 51, 52, 53
+\item
+  \textbf{Set B}: 20, 30, 40, 50, 60, 70, 80
+\end{itemize}
+
+The mean for each dataset is 50, but these sets of numbers are quite
+different! The numbers in Set B are more spread out from the center,
+which is another way of saying they have greater variability. If we only
+report the mean for each dataset, then we have really not summarized the
+data well.
+
+Before we talk about the different measures of variability, the table
+below includes some examples of variables with high, low, and no
+variability.
+
+High variability
+
+\begin{itemize}
+\tightlist
+\item
+  Semester tuition rates across all public and private colleges and
+  universities in the United States.
+\item
+  Salaries of college graduates entering the workforce.
+\end{itemize}
+
+Low variability
+
+\begin{itemize}
+\tightlist
+\item
+  Starting salaries of state employees in similar positions.
+\item
+  High school GPAs of students who are accepted to elite private
+  colleges.
+\item
+  Standardized math scores for 8th grade students in a gifted education
+  program.
+\end{itemize}
+
+No variability
+
+\begin{itemize}
+\tightlist
+\item
+  Grade level (for a program that only includes 5th graders).
+\item
+  Fixed-rate mortgage payments over the course of a loan.
+\item
+  Enrollment fee for a program in dollars.
+\end{itemize}
+
+\section{Measures of Variability}\label{measures-of-variability}
+
+\textbf{\emph{note: Perhpas splitting into sections would be nice
+here?}}
+
+Just like with central tendency, there are several different ways to
+measure and report the variability of a dataset. We introduce four
+different measures of variability: range, interquartile range, standard
+deviation and variance.
+
+A relatively crude or simple indicator of variability is the
+\textbf{range}. The range is a measure of variability that represents
+the difference between the largest and smallest values in a dataset. It
+provides a simple indication of how spread out the data are. For
+example, the range in Set A above is 6 (the range = the largest value --
+the smallest value, i.e., \(53 - 47 = 6\)), and the range in Set B is
+\(60\) (\(80 - 20\)). You can see that even if we only knew the range,
+we would get a sense that these two datasets were different.
+
+However, a major limitation of range is that it is affected by outliers.
+Let's insert a third dataset that looks like this:
+\(0, 56, 57, 58, 59, 60, 60\). We still have a mean of \(50\) and a
+range of \(60\), but the range seems misleading. That \(0\) in our third
+dataset is a complete outlier because it is far below the rest of the
+values. It could be an odd case, or even a typo, but it changes the
+range of our third dataset from \(4\) to \(60\), completely changing our
+understanding of what the data look like.
+
+\textbf{Interquartile range}, or \textbf{IQR}, is the difference between
+the first and third quartiles, or the 25th and 75th percentiles. Much
+like how the median was better than the mean when the data included
+major outliers, the IQR is better than the range in the same
+circumstances, because it is less likely to be affected by extreme
+values.
+
+To find the IQR, start by organizing your dataset in ascending order.
+Next, divide the data into two halves to calculate the first quartile
+(\(Q_1\)) and third quartile (\(Q_3\)). The first quartile (\(Q_1\)) is
+the median of the lower half of the data, representing the 25th
+percentile, while the third quartile (\(Q_3\)) is the median of the
+upper half of the data, representing the 75th percentile. The IQR is
+then calculated as \(Q_3\)−\(Q_1\), which measures the range of the
+middle 50\% of the data, providing a robust indicator of variability
+that is less sensitive to outliers. Let's compute the IQR with a sample
+set of data.
+
+Suppose you have the dataset: \(3, 7, 8, 12, 13, 15, 16, 20, 21\).
+
+\begin{itemize}
+\item
+  We first find the median.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Since we have 9 values, the median is the fifth value:
+    \((9+1)/2 = 5\). The fifth value is \(13\). The median of this
+    dataset is \(13\).
+  \end{itemize}
+\item
+  We next find the median of the lower half of the dataset. Since we
+  have four values, we will need to add the two middle values
+  (\(7 + 8\)) and then divide by \(2\) to get \(7.5\). The first
+  quartile is equal to \(7.5\).
+\item
+  We then find the median of the upper half of the dataset. Since we
+  again have four values, we will need to add the two middle values
+  (\(16 + 20\)) and divide by \(2\) to get \(18\). The third quartile is
+  equal to \(18\).
+\item
+  Last, we find the difference between the third quartile and first
+  quartile (\(18 – 7.5\)), which is equal to \(10.5\). Thus, the IQR for
+  this example is \(10.5\).
+\end{itemize}
+
+\textbf{Standard deviation (SD)} tells us how far away, on average, each
+individual data point is from the mean. In other words, is this a
+dataset where most of the individual points are clustered close
+together, so each point is very close to the mean (small standard
+deviation)? Or are the individual points spread much farther apart, so
+any given value could be quite different from the mean (large standard
+deviation)?
+
+Think about how you might figure out the standard deviation if you had
+to invent statistics yourself. It was stated earlier that it is how far
+away each data point is, on average. We know that we find an average by
+adding up a bunch of values and dividing by the number of values, right?
+So, in theory, we could find the mean, then take every single individual
+data point, and figure out how far away they are from the mean. Add them
+all up, divide by the number of data points, and then we have the
+average distance away, right?
+
+Not quite, due to one problem -- negative numbers. By definition, some
+data points are going to be above the mean and some will be below. Say
+you have a mean of 50, and one data point is 45 while another is 55. If
+we take the differences and add them up, we get -5 + 5 = 0. This is not
+helpful at all. So, what do we do? Think back to the last chapter when
+we were learning about the mean. The mathematical way to solve this
+problem is to square the differences, which results in only positive
+numbers.
+
+This brings us to \textbf{variance}, which is a measure of variability
+that indicates how far the data points in a dataset are spread out from
+the mean. It is calculated as the average of the squared differences
+between each data point and the mean, and the equation is listed in the
+next table. By squaring the differences, variance gives greater weight
+to larger deviations, making it sensitive to extreme values in the
+dataset. While variance effectively quantifies dispersion, it is
+expressed in squared units of the original data, which can make it less
+intuitive for interpretation compared to the standard deviation.
+Variance is a fundamental concept in statistics, as it forms the basis
+for other measures of variability, such as the standard deviation, and
+is crucial in fields like probability, regression, and hypothesis
+testing.
+
+Let's calculate the variance for a very simple dataset containing just
+four numbers: \(5, 7, 9, 11\).
+
+\begin{itemize}
+\item
+  The mean for our dataset is \(8\):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \((5 + 7 + 9 + 11)/4 = 8\)
+  \end{itemize}
+\item
+  Subtract the mean from each of our values and square the result:
+
+  \begin{itemize}
+  \item
+    \(5 – 8 = -3, -3^2 = 9\)
+  \item
+    \(7 – 8 = -1, -1^2 = 1\)
+  \item
+    \(9 – 8 = 1, 1^2 = 1\)
+  \item
+    \(11 – 8 = 3, 3^2 = 9\)
+  \end{itemize}
+\item
+  Sum the squared differences and divide by the number of data points:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(9 + 1 + 1 + 9 = 20, 20/4 = 5\)
+  \end{itemize}
+\item
+  The variance for our dataset is \(5\).
+\end{itemize}
+
+This concept of the ``sum of squares'' is going to become very important
+when we learn topics like Analysis of Variance (ANOVA) in later
+chapters. If you find yourself confused later about what ``sum of
+squares'' means, just remember that it has to do with variance.
+
+Back to the current topic, we now have a value of 5, the variance, that
+tells us the average squared distance each point is from the mean.
+However, it is hard to interpret squared values, so what is our last
+step? We take the square root of the variance, and we call that the
+standard deviation, which is on the same scale as the original variable.
+Essentially, we square the differences to deal with negative numbers,
+and then we un-square the result so the statistic is easier to work with
+for interpretation. This means the standard deviation for our example is
+approximately 2.24 (i.e., 5--√ 5
+
+). Any time you see variance and standard deviation reported, the second
+value will be the square root of the first.
+
+A couple more notes before we get to the formulas. First, we can find
+the variance and standard deviation for a population or a sample, and
+the notation is different for each (see the following table). Most of
+the time we're working with samples, but it's good to know both. Second,
+if we only have a sample, then we have to divide by (n -- 1) rather than
+N, where N represents the population size and n represents sample size,
+respectively. The quantity of (n -- 1) for the sample variance and
+standard deviation estimators is known as the ``degrees of freedom'' (or
+df). We use the df to obtain an unbiased, or more accurate, estimate of
+the population parameter when we only have a sample to analyze.
+
+The table below shows how to calculate the variance and standard
+deviation by hand, with the correct notations for populations and
+samples: \(σ_x^2\) and \(σ_x\) represent population variance and
+standard deviation of variable \(x\), respectively. \(s_x^2\) and
+\(s_x\) represent sample variance and standard deviation of variable
+\(x\), respectively. \(\mu\) is a population mean and \(\bar{x}\) is a
+sample mean of variable \(x\).
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Population (\(\sigma^2,\,\sigma\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sample (\(s^2,\,s\))
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Variance} & \(\sigma_x^2=\dfrac{\sum (x_i-\mu)^2}{N}\) &
+\(s_x^2=\dfrac{\sum (x_i-\bar{x})^2}{n-1}\) \\
+\textbf{StandardDeviation} &
+\(\sigma_x=\sqrt{\dfrac{\sum (x_i-\mu)^2}{N}}\) &
+\(s_x=\sqrt{\dfrac{\sum (x_i-\bar{x})^2}{n-1}}\) \\
+\end{longtable}
+
+\section{Characteristics of
+Variability}\label{characteristics-of-variability}
+
+Here is a summary of the characteristics of data variability measures.
+
+\begin{itemize}
+\item
+  Higher values indicate a larger amount of variability than lower
+  numbers.
+\item
+  When you have no variability, the numbers are constant (e.g., for the
+  dataset 3, 3, 3, 3, 3, 3, the variance and standard deviation equal
+  0).
+\item
+  The variance tells you the average distance from the mean, in squared
+  units.
+\item
+  The standard deviation is just the square root of the variance (i.e.,
+  it brings the squared units back to regular units).
+\item
+  The standard deviation tells you approximately how far the numbers
+  tend to vary from the mean. Making a judgment about how large or small
+  the standard deviation is depends entirely on the unit of measurement
+  for your variable.
+
+  \begin{itemize}
+  \item
+    If the entire range of scores is 1 to 100, then you can say a
+    dataset with a standard deviation of 20 has more variability than a
+    dataset with a standard deviation of 10.
+  \item
+    However, a standard deviation of 10 on a dataset that ranges from 1
+    to 100 could indicate much greater variability than a standard
+    deviation of 20 on a dataset that ranges from 1 to 1,000.
+  \end{itemize}
+\end{itemize}
+
+\section{Standard Deviation and the Normal
+Curve}\label{standard-deviation-and-the-normal-curve}
+
+We are going to learn a lot more about the normal curve, or bell curve,
+later but many current and future educators already have at least some
+knowledge of the concept. Thus, let's focus on how the normal curve
+relates to standard deviation.
+
+If data are normally distributed, then an easy rule to apply to the data
+is the \textbf{empirical rule}, or \emph{68/95/99.7 percent rule}. That
+is:
+
+\begin{itemize}
+\item
+  Approximately 68\%, or just over two-thirds, of all individual cases
+  will fall within one standard deviation of the mean, either above or
+  below.
+\item
+  Approximately 95\% of cases will fall within two standard deviations
+  of the mean.
+\item
+  Approximately 99.7\% of cases will fall within three standard
+  deviations of the mean.
+\end{itemize}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter3_files/figure-pdf/fig-empirical-rule-1.pdf}}
+
+}
+
+\caption{\label{fig-empirical-rule}Figure 3.1 Normal Distribution
+Showing the Empirical Rule}
+
+\end{figure}%
+
+When you hear the term standardized tests, what that usually means is
+that the test has been standardized to fit the normal distribution. If
+you hear that a national standardized test has a mean of 500 and a
+standard deviation of 100, then you can apply the empirical rule and
+know that 68\% of test takers score between 400 and 600 points.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter3_files/figure-pdf/fig-standardized-test-scores-1.pdf}}
+
+}
+
+\caption{\label{fig-standardized-test-scores}Figure 3.2 Normal
+Distribution of Standardized Test Scores}
+
+\end{figure}%
+
+\subsection{Common Misconceptions About
+Variability}\label{common-misconceptions-about-variability}
+
+Here are some common past misconceptions that students have had about
+variability, with brief explanations of the correct understanding for
+each concept.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Misconception}: Variability is undesirable and should be
+  minimized or eliminated.
+
+  \textbf{Reality}: Variability is an inherent and necessary component
+  of any dataset. In many cases, it offers crucial insights and is
+  essential for understanding differences within a dataset and patterns.
+\item
+  \textbf{Misconception}: Variability in data occurs due to measurement
+  errors.
+
+  \textbf{Reality}: Although variability may include measurement error,
+  it also reflects genuine differences between observations, which are
+  essential for understanding patterns and drawing meaningful
+  conclusions.
+\item
+  \textbf{Misconception}: Low variability is often interpreted as a sign
+  of grader accuracy and consistency in the data and considered a
+  desired characteristic of data.
+
+  \textbf{Reality}: While low variability may indicate precision, it
+  does not necessarily ensure accuracy or representativeness. For
+  example, a thermometer that consistently provides incorrect readings
+  has low variability but isn't accurate.
+\item
+  \textbf{Misconception}: Increasing the sample size (e.g., from 10
+  cases to 100 cases) eliminates variability in the data.
+
+  \textbf{Reality}: Larger sample sizes reduce sampling variability (the
+  differences between sample statistics and the population parameters,
+  which is sampling error), but the natural variability in the
+  population remains unchanged. This means that, in theory, the sample
+  size doesn't affect the inherent variability in data.
+\item
+  \textbf{Misconception}: It is commonly believed that all measures of
+  variability, such as range, variance, standard deviation, or
+  interquartile range, tell the same story.
+
+  \textbf{Reality}: Various measures of variability emphasize different
+  characteristics of a dataset. For example, the range focuses solely on
+  the extremes, whereas the standard deviation accounts for the
+  distances of all data points from the mean.
+\item
+  \textbf{Misconception}: Variability measures, like standard deviation,
+  are unrelated to measures of central tendency, like the mean.
+
+  \textbf{Reality}: Variability is closely linked to the central value
+  used in its calculation. For instance, variance is calculated relative
+  to the mean, highlighting the importance of the chosen measures of
+  central tendency in interpreting variability.
+\item
+  \textbf{Misconception}: Mean and standard deviation values alone give
+  enough insights into a dataset.
+
+  \textbf{Reality}: Mean and standard deviation offer valuable
+  statistical summaries, but they may miss crucial patterns like extreme
+  values (outliers), asymmetric distributions (skewed distributions), or
+  multiple peaks in the data. Additional analysis beyond these basic
+  measures is often needed for a complete understanding.
+\item
+  \textbf{Misconception}: High variability indicates that the data may
+  be unreliable.
+
+  \textbf{Reality}: Actually, high variability in data doesn't
+  necessarily mean the data are untrustworthy. High variability simply
+  means there's a wide spread or dispersion in the values. The data
+  could be perfectly accurate and reliable while still showing large
+  variations.
+\item
+  \textbf{Misconception}: Knowing standard deviation of a dataset is
+  sufficient to understand how data are spread.
+
+  \textbf{Reality}: While standard deviation measures typical distance
+  from the mean, it fails to capture the full picture of how data are
+  distributed, including the shape, symmetry, and concentration of
+  values.
+\end{enumerate}
+
+\section{Conclusion}\label{conclusion-1}
+
+In conclusion, this chapter has provided a thorough exploration of
+variability, a crucial aspect of statistical analysis that complements
+measures of central tendency. By understanding range, interquartile
+range, variance, and standard deviation, readers can better assess how
+data are spread and how individual data points deviate from the mean.
+This chapter emphasized the importance of selecting the appropriate
+measure of variability based on data characteristics, ensuring a more
+accurate interpretation of statistical findings. Additionally, it
+highlighted common misconceptions about variability, reinforcing the
+idea that variability is not an error but an essential component of data
+analysis. As we move forward, the next chapter will introduce visual
+representations of data, providing further insights into how data
+distributions can be effectively communicated and understood.
+
+\subsection{Key Takeaways for Educational Researchers from Chapter
+3\,}\label{key-takeaways-for-educational-researchers-from-chapter-3}
+
+\begin{verbatim}
+- Variability highlights the extent of differences of each data point within a dataset beyond the central value. Two datasets may have the same mean values but differ drastically in their spread, impacting the interpretation of results.  
+
+- High variability in datasets (e.g., 8th graders’ standardized reading test scores across states) may suggest diverse population characteristics. On the other hand, low variability (e.g., standardized test scores within a specialized or sub-group) indicates uniformity, useful for specific interventions.   
+
+- Range can be largely impacted by outliers, while IQR or standard deviation will be less impacted by outliers. 
+
+- Central tendency, such as mean, median and mode, and variability are complementary metrics for understanding how data look. Reporting both metrics (e.g., mean and standard deviation) ensures a more complete summary.  
+
+- Educational researchers should choose measures of central tendency and variability that align with their data characteristics and research questions.
+\end{verbatim}
+
+\section{Key Definitions from Chapter
+3}\label{key-definitions-from-chapter-3}
+
+The \textbf{empirical rule}, also known as the 68-95-99.7 rule, is a
+guideline stating that 68\% of the data falls within 1 standard
+deviation of the mean, 95\% of the data falls within 2 standard
+deviations of the mean, and 99.7\% of the data falls within 3 standard
+deviations of the mean.
+
+\textbf{First quartile} is another name for the median of the lower half
+of the values in a dataset (25th percentile).
+
+\textbf{Interquartile range (IQR)} is a measure of variability that
+indicates the spread of the middle 50\% of a dataset. It is the
+difference between the third quartile and the first quartile.
+
+\textbf{Range} is a measure of variability that represents the
+difference between the largest and smallest values in a dataset. It
+provides a simple indication of how spread out the data is.
+
+\textbf{Standard deviation (SD)} is the square root of the variance and
+is expressed in the same units as the data. It quantifies how much the
+individual data points deviate, on average, from the mean of the
+dataset.
+
+\textbf{Third quartile} is another name for the median of the upper half
+of the values in a dataset (75th percentile).
+
+\textbf{Variability} refers to the extent to which data points in a
+dataset differ from each other and from the central value (e.g., the
+mean or median). It is a measure of how spread out or dispersed the data
+is. High variability indicates that the data points are more spread out,
+while low variability means they are closer together.
+
+\textbf{Variance} is a measure of variability that indicates how far the
+data points in a dataset are spread out from the mean.
+
+\section{Check Your Understanding}\label{check-your-understanding-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is the range of the following dataset? (1, 2, 3, 4, 5, 6,
+  7, 8, 9, 10)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    10
+  \item
+    9
+  \item
+    1
+  \item
+    0
+  \end{enumerate}
+\item
+  \textbf{The \_\_\_\_\_\_ is the square root of the variance?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Interquartile Range
+  \item
+    Range
+  \item
+    Standard Deviation
+  \item
+    Mean
+  \end{enumerate}
+\item
+  \textbf{What is the population variance of the following dataset? (1,
+  2, 3, 4, 5)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    1
+  \item
+    2
+  \item
+    2.5
+  \item
+    3
+  \end{enumerate}
+\item
+  \textbf{What is the population standard deviation of the following
+  dataset? (1, 2, 3, 4, 5)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    1.41
+  \item
+    1.73
+  \item
+    4.00
+  \item
+    9.00
+  \end{enumerate}
+\item
+  \textbf{What percentage of values fall within 1 SD of the mean if data
+  are normally distributed?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    50\%
+  \item
+    68\%
+  \item
+    95\%
+  \item
+    99.7\%
+  \end{enumerate}
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Chapter 3: Exploring Data Spread - Measures of Variability in
+R}\label{chapter-3-exploring-data-spread---measures-of-variability-in-r}
+\addcontentsline{toc}{chapter}{Chapter 3: Exploring Data Spread -
 Measures of Variability in R}
 
-\markboth{Chapter 2: Exploring Data Spread - Measures of Variability in
-R}{Chapter 2: Exploring Data Spread - Measures of Variability in R}
+\markboth{Chapter 3: Exploring Data Spread - Measures of Variability in
+R}{Chapter 3: Exploring Data Spread - Measures of Variability in R}
 
 In this section, we demonstrate how to compute and interpret measures of
 variability---\textbf{range, interquartile range (IQR), variance}, and
@@ -1134,7 +1773,7 @@ Achievement Scores}
 \markright{5 Interpreting Variability in Math Achievement Scores}
 
 \subsection*{5.1 5.1 Measures of
-Variability}\label{measures-of-variability}
+Variability}\label{measures-of-variability-1}
 \addcontentsline{toc}{subsection}{5.1 5.1 Measures of Variability}
 
 The analysis of math achievement scores (PV1MATH) from the PISA U.S.
@@ -1189,9 +1828,906 @@ data-informed decision-making.
 
 \bookmarksetup{startatroot}
 
-\chapter{Chapter 4}\label{chapter-4-1}
+\chapter*{Displaying Data
+Graphically}\label{displaying-data-graphically}
+\addcontentsline{toc}{chapter}{Displaying Data Graphically}
 
-This is Chapter 4.
+\markboth{Displaying Data Graphically}{Displaying Data Graphically}
+
+\section*{Learning Objectives}\label{learning-objectives-2}
+\addcontentsline{toc}{section}{Learning Objectives}
+
+\markright{Learning Objectives}
+
+By the end of this chapter, you will be able to:
+
+\begin{itemize}
+\item
+  Identify appropriate graphical methods (e.g., bar graphs, histograms,
+  box plots, scatter plots) to summarize and communicate patterns,
+  trends, and variability in categorical and continuous data.
+\item
+  Construct clear, accurate, and meaningful data visualizations that
+  effectively communicate key insights while avoiding common pitfalls
+  such as distortion, poor labeling, or overcomplicated designs.
+\end{itemize}
+
+\textbf{Exploratory data analysis} is an approach that involves
+examining datasets to summarize their main characteristics, identify
+patterns, and uncover insights, often using visual methods. This
+technique is widely used in education-related fields to gain insights
+from educational data, improve decision-making, and inform policy and
+practice. You could take an entire course about data visualization, so
+for now we will only summarize some of the key concepts.
+
+Data visualization refers to the graphical representation or structured
+representation of information and data to facilitate understanding and
+interpretation. By using charts, graphs, figures and tables, we present
+information in a way that highlights trends, outliers, and patterns in
+raw data. While graphs and charts are commonly associated with data
+visualization in educational research, tables also serve as a
+fundamental tool by systematically organizing numerical and categorical
+data for easy comparison. Unlike graphical displays, which emphasize
+patterns and relationships, tables provide precise values and detailed
+breakdowns, making them particularly useful when exact numerical
+reporting is required. Understanding how to display data is important
+for multiple steps in the research process. You may notice an
+interesting pattern that you want to investigate more closely, so
+creating well-designed tables and graphs might be the start of deeper
+investigation into your research.
+
+Frequently, the first step in data analysis is visualizing the data to
+confirm it meets the assumptions of your planned analysis method. For
+example:
+
+\begin{itemize}
+\item
+  If you want to know whether your dependent variable is approximately
+  normally distributed, you create a histogram.
+\item
+  If you want to see if the amount of variation is similar between two
+  groups, you create a box plot.
+\item
+  If you want to see if there is a linear relationship between two
+  variables, you create a scatter plot.
+\end{itemize}
+
+Displaying your data graphically can also be a critical part of sharing
+the results of any analysis, and you want to do so in a way that
+communicates your message effectively.
+
+A good graph should
+
+\begin{itemize}
+\tightlist
+\item
+  Show the data with the appropriate visualization (e.g., bar chart,
+  scatter plot, histogram) based on the type of data and relationships
+  being displayed
+\item
+  Induce the reader to think about the data being presented
+\item
+  Get as much information across as possible within limited space (use a
+  clean and simple design that enhances clarity without excessive grid
+  lines or redundant elements)
+\item
+  Make large data sets coherent
+\item
+  Encourage the reader to ask additional questions about the data
+\item
+  Communicate the findings or your key message about the data
+\item
+  Maintain uniform styles, colors, and labeling conventions across
+  multiple graphs
+\end{itemize}
+
+A good graph should NOT
+
+\begin{itemize}
+\tightlist
+\item
+  Distort the data (intentionally or unintentionally)
+\item
+  Use 3-D effects for a graph plotting two variables
+\item
+  Go overboard with patterns and effects that distract from the key
+  message (overloading a graph with too many data series can make it
+  unreadable)
+\item
+  Have badly labeled axes (number of what???)
+\end{itemize}
+
+While graphical representations are powerful for identifying patterns
+and trends, there are instances where a structured, numerical
+representation is more effective. In cases where precision, exact
+comparisons, or detailed breakdowns are needed, tables serve as an
+essential tool for organizing and presenting data.
+
+A \textbf{table} is an organized arrangement of data in rows and
+columns, designed to systematically display values, frequencies, or
+relationships for easy comparison and interpretation. Tables are
+essential tools for summarizing data in educational contexts because
+they provide a clear, structured way to organize and present
+information. They allow educators, administrators, and policymakers to
+quickly interpret numerical and categorical data, making it easier to
+identify trends, compare variables, and draw meaningful conclusions. For
+instance, tables can display student performance across subjects,
+attendance rates, or resource allocation across schools, enabling
+stakeholders to make data-driven decisions. Unlike graphical displays,
+tables provide precise values, making them particularly useful when
+exact numbers are necessary for analysis or reporting. Moreover, tables
+are versatile, as they can accommodate large amounts of data and be
+customized to highlight specific details, such as subgroup comparisons
+or longitudinal trends, fostering better understanding and informed
+actions in educational settings.
+
+Let's walk through a scenario to illustrate how tables and graphical
+displays can be used. A school administrator wants to compare the
+average test scores of students across grade levels in one middle
+school. The table below shows average scores. It is very easy to see
+that the average scores for grades 6, 7, and 8 are 78, 85, and 92,
+respectively.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Grade Level & Average Test Score \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+6 & 78 \\
+7 & 85 \\
+8 & 92 \\
+\end{longtable}
+
+Another way we could visual this data is through the use of a
+\textbf{bar graph}. Bar graphs are particularly effective for displaying
+data across discrete categories, such as grade levels, school districts,
+or subject areas, making complex information easier to understand. For
+example, bar charts can be used to compare average test scores across
+grade levels, participation rates in extracurricular activities, or
+funding allocations across departments. Their straightforward design
+allows educators and administrators to quickly identify patterns,
+trends, and disparities, such as gaps in performance or resource
+distribution. Bar graphs also help communicate findings effectively to
+diverse audiences, including students, parents, and policymakers, as the
+visual format is easy to interpret. By simplifying the presentation of
+categorical data, bar graphs support data-driven decision-making and
+facilitate meaningful discussions about improving educational outcomes.
+
+Bar graphs use vertical bars to represent the data. The height of the
+bars often represents the frequencies of some dependent variable for the
+categories that are displayed along the X-axis. Note that by tradition,
+the X-axis (independent variable) is the horizontal axis and the Y-axis
+(dependent variable) is the vertical axis. The following bar graph shows
+the same information as the previous table.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/fig-avg-test-scores-1.pdf}}
+
+}
+
+\caption{\label{fig-avg-test-scores}Average Test Scores by Grade Level}
+
+\end{figure}%
+
+\textbf{Histograms} summarize the frequency of continuous data that are
+grouped. Values of the independent variable are along the X-axis,
+grouped by equal intervals. Typically, the height of the rectangle,
+measured by the Y-axis, equals the frequency recorded for each interval.
+The base of each rectangle begins and ends at the lower and upper
+boundaries, seen from left to right, of each interval, and each
+rectangle touches adjacent rectangles at the boundaries of each
+interval.
+
+It may seem like a bar graph and a histogram are the same, but in the
+world of statistics, it matters whether the bars touch each other. A bar
+graph, with separated bars, is used for categorical or discrete
+variables, or sometimes for variables based on ordinal scales as well.
+The separation shows that these are discrete categories rather than
+groupings of a continuous variable where the group size could be
+adjusted to whatever you want. Unlike bar charts, histograms group data
+into intervals, bins, to show the distribution of a dataset, making them
+useful for identifying skewness, outliers, or overall patterns in
+continuous variables.
+
+Our school administrator now wants to look at the distribution of test
+scores for just 7th graders, but they decided to group scores in the
+following categories: 50-60, \textless60-70, \textless70-80,
+\textless80-90, and \textless90-100. The histogram showing a summary of
+the dataset is included below in Figure 4.2.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/fig-7th-histogram-1.pdf}}
+
+}
+
+\caption{\label{fig-7th-histogram}Distribution of 7th Grade Test Scores}
+
+\end{figure}%
+
+A \textbf{stem-and-leaf plot} is a graphic display where each individual
+score from the original data set is listed in a relatively compact
+manner. Common digits shared by all scores are listed to the left, and
+the remaining digits for each score are listed to the right. So, the
+stems are the first digit(s) and the leaves are the last digit(s).
+Rather than giving a frequency count, this is a way of summarizing the
+data visually because you can see which stems have the most leaves while
+also displaying the actual scores. Stem-and-leaf plots are best suited
+for small datasets where all numbers are greater than 0 (Moore, McCabe,
+\& Craig, 2021). Here is a stem-and-leaf plot for our example:
+
+\textbf{Stem-and-Leaf Plot of Test Scores}
+
+\begin{verbatim}
+5 | 4 5 5 5 6
+6 | 3 4 4 5 5 5 5 6 6 6 6 7 7
+7 | 3 4 4 4 5 5 5 5 5 6 6 6 6 6 7 7
+8 | 3 3 4 4 4 5 5 5 5 5 5 5 6 6 6 6 6 6
+9 | 4 4 5 5 5 6 6
+
+Key: 7 | 5 represents a score of 75
+\end{verbatim}
+
+A \textbf{box plot}, or box-and-whisker plot, is a graphical
+representation of data that shows its central tendency, variability, and
+distribution through a box indicating the interquartile range (IQR), a
+line for the median, and \emph{whiskers} extending to the smallest and
+largest non-outlier values. They are typically oriented vertically, but
+the example below is horizontal for ease of displaying the various
+parts. At the center of the box plot is a line representing the median
+(50th percentile) for the data, surrounded by a box representing the
+inter-quartile range (IQR, or the 25th to 75th percentile). Then there
+are lines extending out from the box (these are the \emph{whiskers}).
+Most often these will extend to the smallest and largest observed points
+in the dataset that are within 1.5 times the IQR. If there are outliers
+in the dataset that fall beyond the whiskers, they are typically
+represented by individual circles.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/fig-boxplot-iqr-demo-1.pdf}}
+
+}
+
+\caption{\label{fig-boxplot-iqr-demo}Boxplot anatomy with IQR, 1.5×IQR
+and 3×IQR boundaries (using the stem-and-leaf data)}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/fig-boxplot-five-number-1.pdf}}
+
+}
+
+\caption{\label{fig-boxplot-five-number}Boxplot of test scores with
+five-number summary (using the stem-and-leaf data)}
+
+\end{figure}%
+
+A \textbf{scatterplot} is a graphical representation that displays
+individual data points based on two variables, with one variable plotted
+along the X-axis and the other along the Y-axis, allowing researchers to
+visualize relationships between them. In educational research,
+scatterplots are essential for identifying correlations and trends, such
+as the relationship between socioeconomic status and academic
+performance or hours spent studying and test scores. By highlighting
+patterns, such as positive, negative, or no correlation, scatterplots
+provide insights into potential causal or influential factors that can
+guide further investigation. Additionally, scatterplots help researchers
+detect outliers or anomalies, such as students performing significantly
+above or below the expected trend, which can inform targeted
+interventions or support. This ability to visually explore complex data
+relationships makes scatterplots a valuable tool in understanding and
+improving educational outcomes. Examples of scatterplots showing each
+individual test score are included below in Figure 4.5. (figure 4.5
+here)
+
+A \textbf{Q-Q (Quantile-Quantile) plot} is a graphical tool used to
+assess whether a dataset follows a specific theoretical distribution,
+most commonly the normal distribution. In a Q-Q plot, the quantiles of
+the observed data are plotted against the quantiles of the chosen
+distribution (e.g., normal distribution). If the points in the plot fall
+approximately along a 45-degree reference line, it suggests that the
+data conforms to that distribution. Deviations from this line indicate
+departures from the expected distribution, such as skewness, kurtosis,
+or outliers. Q-Q plots are particularly valuable in educational research
+when determining if data, such as student test scores or survey
+responses, meet the assumptions required for parametric statistical
+tests that we will cover later in the book. For instance, a researcher
+analyzing standardized test scores might use a Q-Q plot to check for
+normality before conducting a t test or an analysis of variance (ANOVA)
+-- we will learn both methods later. While histograms provide a general
+sense of distribution, Q-Q plots offer a more precise visual check by
+directly comparing observed data with a theoretical model.
+
+Imagine an educational researcher wants to assess whether a sample of
+students' math scores follows a normal distribution. The Q-Q plot below
+demonstrates how well the data aligns with a normal distribution. Most
+points fall along the 45-degree line, indicating normality, though a few
+points deviate slightly at the ends, suggesting potential outliers.
+
+(fig 4.6 here)
+
+Including Q-Q plots in your data visualization toolkit enhances your
+ability to diagnose data distribution issues, ensuring that your chosen
+analytical methods are appropriate and reliable. This tool, combined
+with histograms, box plots, and other visualizations, provides a
+comprehensive approach to exploratory data analysis.
+
+A \textbf{pie chart} is a circular graph divided into slices, where each
+slice represents a proportion of a whole, making it ideal for
+visualizing percentages or relative frequencies. In educational
+research, pie charts are often used to illustrate the composition of
+groups or categories, such as the distribution of students by
+socioeconomic status, the percentage of students enrolled in various
+extracurricular activities, or the allocation of a school's budget
+across different programs. For example, a pie chart could show the
+proportion of students achieving different performance levels on a
+standardized test, allowing researchers to identify the largest and
+smallest groups at a quick glance. Pie charts are particularly effective
+for presenting summary data to audiences who may not have extensive
+statistical training, as they provide an intuitive and visually engaging
+way to communicate the breakdown of categories. However, they are most
+useful when there are relatively few categories, as too many slices can
+make interpretation challenging. An example showing students enrollment
+across grades 6, 7, and 8 from the administrator's middle school is
+included in figure 4.7. (FIG 4.7)
+
+\section{Conclusion}\label{conclusion-2}
+
+Chapter 4 emphasizes the importance of data visualization in educational
+research, providing an overview of various graphical methods and their
+applications. From bar charts and histograms to box plots and
+scatterplots, each visualization tool serves a unique purpose in
+summarizing and communicating data. These tools help researchers and
+educators uncover patterns, trends, and outliers, offering valuable
+insights that inform decision-making and policy development. The chapter
+also highlights the distinction between categorical and continuous data
+representations and underscores the importance of designing graphs that
+are clear, accurate, and effective in delivering key messages.
+
+Through practical examples, such as comparing test scores across grade
+levels or visualizing the relationship between two continuous variables
+like study hours and academic performance, this chapter demonstrates how
+graphical displays can reveal meaningful patterns and insights from raw
+data. By integrating tables, stem-and-leaf plots, and pie charts
+alongside more complex visualizations, educators and researchers are
+equipped with the tools to present findings in ways that are both clear
+and informative. This foundational understanding of data visualization
+sets the stage for exploring deeper analytical techniques and leveraging
+data to improve educational outcomes. As we move forward, the next
+chapter will explore the normal distribution, an essential statistical
+concept that will further refine our ability to interpret data and make
+meaningful inferences.
+
+\subsection{Key Takeaways for Educational Researchers from Chapter
+4}\label{key-takeaways-for-educational-researchers-from-chapter-4}
+
+\begin{itemize}
+\item
+  Incorporate data visualization to summarize patterns and trends. In
+  educational research, data visualization helps uncover meaningful
+  insights from student performance metrics, survey responses, and
+  institutional data. Bar graphs, histograms, and scatterplots allow
+  researchers to identify trends in student achievement, compare
+  subgroup differences, and detect outliers that may indicate unique
+  challenges or exceptional performance. By transforming raw numbers
+  into graphical representations, educators and policymakers can more
+  easily interpret and act on findings.
+\item
+  Choose the right visualization for your data and analysis needs.
+  Different types of data require different graphical techniques to
+  accurately convey insights. Choose the correct visualization (e.g.,
+  box plots for variability, Q-Q plots for checking normality) based on
+  the type of data and analysis requirements to ensure clarity and
+  enhance interpretability.
+\item
+  Ensure clarity and accuracy in graph design. Well-designed graphs
+  improve comprehension and reduce the risk of misinterpretation. In
+  educational research, this means clearly labeling axes, ensuring
+  consistent scales when comparing multiple groups, and avoiding
+  misleading visual distortions (e.g., truncating axes to exaggerate
+  differences). Additionally, color choices and legends should enhance
+  readability, especially when presenting findings to diverse audiences,
+  including educators, administrators, and policymakers. A clear,
+  accurate graph allows stakeholders to draw valid conclusions and make
+  informed decisions.
+\item
+  Use data visualization for exploratory analysis. Before applying
+  statistical models, researchers can use graphical methods to check
+  assumptions. For instance, histograms and box plots help assess the
+  distribution of student test scores before conducting an ANOVA, while
+  scatterplots with trendlines can reveal nonlinear relationships
+  between study time and GPA. Detecting patterns early through
+  visualization can prevent errors in model selection and improve the
+  robustness of conclusions in educational research.
+\item
+  Incorporate visualizations in research reporting for effective
+  communication. Effective visualizations bridge the gap between complex
+  analyses and actionable insights. When reporting findings on student
+  achievement or the effectiveness of instructional interventions,
+  incorporating well-crafted charts, tables, and dashboards can make
+  data accessible to decision-makers. Visuals enhance storytelling in
+  research, making data-driven recommendations more compelling and
+  easier to act upon.
+\end{itemize}
+
+\section{Key Definitions from Chapter
+4}\label{key-definitions-from-chapter-4}
+
+A \textbf{bar graph} is a graphical representation of data using
+rectangular bars, where the length or height of each bar corresponds to
+the value or frequency of a specific category or group. There is a gap
+between each bar.
+
+A \textbf{box plot} (or box-and-whisker plot) is a graphical
+representation of data that shows its central tendency, variability, and
+distribution through a box indicating the interquartile range (IQR), a
+line for the median, and ``whiskers'' extending to the smallest and
+largest non-outlier values.
+
+\textbf{Exploratory data analysis} is an approach that involves
+examining datasets to summarize their main characteristics, identify
+patterns, and uncover insights, often using visual methods.
+
+\textbf{Histograms} summarize the frequency of continuous data that are
+grouped. The bars on a histogram touch one another.
+
+A \textbf{pie chart} is a circular graph divided into slices, where each
+slice represents a proportion of a whole, making it ideal for
+visualizing percentages or relative frequencies.
+
+A \textbf{scatterplot} is a graphical representation that displays
+individual data points based on two variables, with one variable plotted
+along the x-axis and the other along the y-axis, allowing researchers to
+visualize relationships between them.
+
+A \textbf{stem-and-leaf plot} is a graphic display where each individual
+score from the original data set is listed in a relatively compact
+manner. Common digits shared by all scores are listed to the left, and
+the remaining digits for each score are listed to the right.
+
+A \textbf{Q-Q (Quantile-Quantile) plot} is a graphical tool used to
+assess whether a dataset follows a specific theoretical distribution,
+most commonly the normal distribution.
+
+A \textbf{table} is an organized arrangement of data in rows and
+columns, designed to systematically display values, frequencies, or
+relationships for easy comparison and interpretation.
+
+\section{Check Your Understanding}\label{check-your-understanding-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is the primary purpose of using a histogram in
+  educational research?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    To compare categories of data.
+  \item
+    To display the relationship between two variables.
+  \item
+    To summarize the frequency of continuous data grouped into
+    intervals.
+  \item
+    To show proportions of a whole.
+  \end{enumerate}
+\item
+  \textbf{Which visualization method is best suited for identifying
+  relationships or correlations between two variables?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Pie chart
+  \item
+    Box plot
+  \item
+    Scatterplot
+  \item
+    Stem-and-leaf plot
+  \end{enumerate}
+\item
+  \textbf{In a box-and-whisker plot, the interquartile range (IQR) is
+  represented by:}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    The lines extending from the box to the smallest and largest values.
+  \item
+    The box itself, showing the range between the 25th and 75th
+    percentiles.
+  \item
+    The line in the center of the box representing the median.
+  \item
+    The individual dots outside the whiskers.
+  \end{enumerate}
+\item
+  \textbf{What is a key advantage of tables in presenting data?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    They simplify relationships between variables visually.
+  \item
+    They display trends and patterns intuitively.
+  \item
+    They highlight outliers in large datasets.
+  \item
+    They summarize data with precise values for comparison.
+  \end{enumerate}
+\item
+  \textbf{What is the key difference between a bar chart and a
+  histogram?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Bar charts use touching bars to represent continuous data, while
+    histograms use separated bars for discrete data.
+  \item
+    Bar charts use separated bars for discrete data, while histograms
+    use touching bars for continuous data.
+  \item
+    Bar charts are only used for percentages, while histograms are used
+    for counts.
+  \item
+    There is no difference; the terms are interchangeable.
+  \end{enumerate}
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Chapter 4: Displaying Data Graphically in
+R}\label{chapter-4-displaying-data-graphically-in-r}
+\addcontentsline{toc}{chapter}{Chapter 4: Displaying Data Graphically in
+R}
+
+\markboth{Chapter 4: Displaying Data Graphically in R}{Chapter 4:
+Displaying Data Graphically in R}
+
+This section demonstrates various data visualization techniques using
+the PISA 2022 U.S. dataset. We will illustrate how to effectively
+present categorical and continuous variables using \textbf{pie charts,
+bar charts, histograms, stem-and-leaf plots, box plots, scatterplot
+matrices}, and \textbf{Q-Q plots}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load required package }
+\FunctionTok{library}\NormalTok{(haven) }
+\FunctionTok{library}\NormalTok{(ggplot2) }
+\FunctionTok{library}\NormalTok{(dplyr) }
+\FunctionTok{library}\NormalTok{(car)        }\CommentTok{\# for QQ plot helper if desired }
+\FunctionTok{library}\NormalTok{(GGally)     }\CommentTok{\# for scatterplot matrix }
+\FunctionTok{library}\NormalTok{(ggrepel)    }\CommentTok{\# for better text labels in plots }
+\FunctionTok{library}\NormalTok{(ggpubr)     }\CommentTok{\# for Q{-}Q plot }
+ 
+\CommentTok{\# Load the dataset }
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read\_sav}\NormalTok{(}\StringTok{"chapter3/Clean{-}data\_mar6.sav"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\section*{1 Pie Chart: Categorical
+Distribution}\label{pie-chart-categorical-distribution}
+\addcontentsline{toc}{section}{1 Pie Chart: Categorical Distribution}
+
+\markright{1 Pie Chart: Categorical Distribution}
+
+We begin by visualizing the distribution of school governance types
+(SC014Q01TA: ``What kind of organization runs your school?'').
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert the SPSS‑labelled variable to an R factor }
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{|\textgreater{}} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{OrgType =} \FunctionTok{as\_factor}\NormalTok{(SC014Q01TA)) }
+\CommentTok{\# Create a frequency table and calculate percentages }
+\NormalTok{school\_org\_df }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{count}\NormalTok{(OrgType) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(OrgType)) }\SpecialCharTok{|\textgreater{}} \CommentTok{\# Filter out NA values }
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Percent =} \FunctionTok{round}\NormalTok{(}\DecValTok{100} \SpecialCharTok{*}\NormalTok{ n }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(n), }\DecValTok{1}\NormalTok{)) }\CommentTok{\# Calculate percentage }
+\NormalTok{school\_org\_df }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 3 x 3
+  OrgType                                      n Percent
+  <fct>                                    <int>   <dbl>
+1 A church or other religious organisation    97     2.3
+2 Another not-for-profit organisation        181     4.2
+3 The government                            4013    93.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the pie chart }
+\CommentTok{\# Create a label that combines OrgType, Count, and Percent }
+\NormalTok{school\_org\_df }\OtherTok{\textless{}{-}}\NormalTok{ school\_org\_df }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Label =} \FunctionTok{ifelse}\NormalTok{(Percent}\SpecialCharTok{\textless{}}\DecValTok{5}\NormalTok{, }\StringTok{""}\NormalTok{, }\FunctionTok{paste0}\NormalTok{(}\StringTok{"n="}\NormalTok{, n, }\StringTok{", "}\NormalTok{, Percent, }\StringTok{"\%"}\NormalTok{))) }
+  \CommentTok{\#data label appear when percentage is greater than 5\% }
+ 
+\FunctionTok{ggplot}\NormalTok{(school\_org\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{fill =}\NormalTok{ OrgType)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{width =} \DecValTok{1}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{color =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{coord\_polar}\NormalTok{(}\StringTok{"y"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\#wrapping the bars around a circle, using the y{-}axis (the count) as the angle for each slice }
+  \FunctionTok{theme\_void}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ Label), }
+            \AttributeTok{position =} \FunctionTok{position\_stack}\NormalTok{(}\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{), }
+            \AttributeTok{size =} \DecValTok{4}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribution of School Governance Types"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+\textbf{Interpretation}: The frequency table and pie chart above
+indicates that, within this PISA sample, most students attend
+government-run schools (n=4013, 93.5\%), while relatively few are
+enrolled in schools managed by religious (n=97, 2.3\%) or other
+not-for-profit organizations (n=181, 4.2\%).
+
+\section*{2 Bar Chart: Comparing Mean Math Scores by School
+Type}\label{bar-chart-comparing-mean-math-scores-by-school-type}
+\addcontentsline{toc}{section}{2 Bar Chart: Comparing Mean Math Scores
+by School Type}
+
+\markright{2 Bar Chart: Comparing Mean Math Scores by School Type}
+
+We will now create a bar chart to compare the mean math scores (MATH)
+across different school governance types.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate means for each school type }
+\NormalTok{mean\_scores }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{group\_by}\NormalTok{(OrgType) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{MeanMath =} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(PV1MATH, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(OrgType)) }
+ 
+\CommentTok{\# recode the values for concise display }
+\NormalTok{mean\_scores }\OtherTok{\textless{}{-}}\NormalTok{ mean\_scores }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{( }
+    \AttributeTok{SchoolType =} \FunctionTok{case\_when}\NormalTok{( }
+\NormalTok{      OrgType }\SpecialCharTok{==} \StringTok{"A church or other religious organisation"} \SpecialCharTok{\textasciitilde{}} \StringTok{"Religious"}\NormalTok{, }
+\NormalTok{      OrgType }\SpecialCharTok{==} \StringTok{"Another not{-}for{-}profit organisation"} \SpecialCharTok{\textasciitilde{}} \StringTok{"Non{-}profit"}\NormalTok{, }
+\NormalTok{      OrgType }\SpecialCharTok{==} \StringTok{"The government"} \SpecialCharTok{\textasciitilde{}} \StringTok{"Government"} 
+\NormalTok{    ) }
+\NormalTok{  ) }
+\NormalTok{mean\_scores }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 3 x 3
+  OrgType                                  MeanMath SchoolType
+  <fct>                                       <dbl> <chr>     
+1 A church or other religious organisation      462 Religious 
+2 Another not-for-profit organisation           398 Non-profit
+3 The government                                464 Government
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot bar chart }
+\FunctionTok{ggplot}\NormalTok{(mean\_scores, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ SchoolType, }\AttributeTok{y =}\NormalTok{ MeanMath, }\AttributeTok{fill =}\NormalTok{ OrgType)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ MeanMath),    }
+          \AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.1}\NormalTok{,                     }\CommentTok{\# Position labels just above the bar }
+          \AttributeTok{size =} \DecValTok{4}\NormalTok{) }\SpecialCharTok{+}                        
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Average Math Score by School Type"}\NormalTok{, }
+       \AttributeTok{x =} \StringTok{"School Organization"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Mean Math Score"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/unnamed-chunk-5-1.pdf}}
+
+\textbf{Interpretation}: The bar chart shows that students in
+government-run schools have the highest average math score (464),
+closely followed by those in schools run by religious organizations
+(462). Students in schools operated by other not-for-profit
+organizations have a lower average math score (398). \#\# 3 Histogram:
+Overall Distribution of Math Scores \{.unnumberred\} We now inspect the
+distribution of math scores (PV1MATH) across all students.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate summary statistics }
+\NormalTok{mean\_math }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }
+\NormalTok{sd\_math }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }
+\NormalTok{n\_math }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH)) }
+ 
+\CommentTok{\# Format summary text }
+\NormalTok{summary\_text }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{( }
+  \StringTok{"Mean = "}\NormalTok{, }\FunctionTok{round}\NormalTok{(mean\_math, }\DecValTok{1}\NormalTok{),  }
+  \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{SD = "}\NormalTok{, }\FunctionTok{round}\NormalTok{(sd\_math, }\DecValTok{1}\NormalTok{),  }
+  \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{N = "}\NormalTok{, n\_math }
+\NormalTok{) }
+ 
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ PV1MATH)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{25}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_vline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean\_math), }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{size =} \FloatTok{1.2}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Histogram of Math Scores (PV1MATH)"}\NormalTok{, }
+       \AttributeTok{x =} \StringTok{"Math Score"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frequency"}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{annotate}\NormalTok{( }
+    \StringTok{"text"}\NormalTok{, }
+    \AttributeTok{x =} \FunctionTok{max}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{{-}} \DecValTok{100}\NormalTok{, }\CommentTok{\# Adjust as needed }
+    \AttributeTok{y =} \ConstantTok{Inf}\NormalTok{, }\AttributeTok{label =}\NormalTok{ summary\_text, }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{, }\AttributeTok{vjust =} \DecValTok{1}\NormalTok{, }
+    \AttributeTok{size =} \DecValTok{4} 
+\NormalTok{  ) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/unnamed-chunk-6-1.pdf}}
+
+\textbf{Interpretation}: The histogram shows the distribution of U.S.
+students' math scores (PV1MATH) on the PISA assessment. The distribution
+is approximately symmetric and bell-shaped, centered around a mean of
+461.9 with a standard deviation of 95.1.This pattern suggests that math
+achievement is fairly normally distributed in the sample. \#\# 4 Q-Q
+Plot: Assessing Normality of Math Scores \{.unnumbered\}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggqqplot}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH, }
+         \AttributeTok{title =} \StringTok{"Q{-}Q Plot of Math Scores (PV1MATH)"}\NormalTok{, }
+         \AttributeTok{xlab =} \StringTok{"Theoretical Quantiles"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Sample Quantiles"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/unnamed-chunk-7-1.pdf}}
+
+\textbf{Interpretation}: The Q-Q plot compares the distribution of math
+scores (PV1MATH) to a theoretical normal distribution. Most of the data
+points fall close to the reference line, indicating that the
+distribution of math scores is approximately normal. However, In the
+lower tail, the observed quantiles sit above the reference line
+(i.e.\,less extreme than a normal lower tail would predict); in the
+upper tail, they lie below the line (again, less extreme than normal).
+That pattern at both ends means the math‑score distribution has slightly
+lighter tails than a true normal distribution.
+
+Overall, the distribution of math scores appears reasonably normal,
+supporting the use of parametric statistical methods for further
+analysis, which will be introduced in the following chapters.
+
+\section*{5 Stem-and-Leaf Plot and Box
+Plot}\label{stem-and-leaf-plot-and-box-plot}
+\addcontentsline{toc}{section}{5 Stem-and-Leaf Plot and Box Plot}
+
+\markright{5 Stem-and-Leaf Plot and Box Plot}
+
+We will create a stem-and-leaf plot and a box plot to further visualize
+the distribution of math scores (PV1MATH).
+
+Note that the stem-and-leaf plots are best for small to moderate
+datasets (e.g., N \textless{} 100--200). For illustration, we will
+randomly select 100 math scores to create the plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Stem{-}and{-}leaf plot }
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{12345}\NormalTok{) }
+\NormalTok{subset\_scores }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH, }\DecValTok{100}\NormalTok{) }\CommentTok{\# randomly select 100 scores }
+\FunctionTok{stem}\NormalTok{(subset\_scores) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+  The decimal point is 2 digit(s) to the right of the |
+
+  2 | 66
+  3 | 000133344
+  3 | 55667777788888889999
+  4 | 00000011122334444
+  4 | 55566777999999
+  5 | 00011223334444
+  5 | 677777888999
+  6 | 00111224
+  6 | 5556
+\end{verbatim}
+
+\textbf{Interpretation}: The stem-and-leaf plot provides a compact
+visualization of the distribution of the selected math scores,
+displaying the actual data values in a way that preserves information
+about the shape and spread.
+
+\begin{itemize}
+\item
+  \textbf{Range of Scores}: The math scores in this subset range from
+  approximately 260 (2 \textbar{} 66) up to around 660 (6 \textbar{}
+  5556).
+\item
+  \textbf{Central Tendency}: The 400s and 500s stems are the most
+  densely populated, indicating that most students scored between 400
+  and 599.
+\item
+  \textbf{Skewness and Symmetry}: The plot appears slightly
+  right-skewed, evidenced by a longer tail on the higher end (the 600s).
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Box plot }
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =}\NormalTok{ PV1MATH)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{width=}\FloatTok{0.3}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Box Plot of Math Scores (PV1MATH)"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Math Score"}\NormalTok{, }\AttributeTok{x =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/unnamed-chunk-9-1.pdf}}
+
+\textbf{Interpretation}: The box plot shows that most students' math
+scores are clustered in the mid-range, with a few students scoring
+exceptionally high. The distribution is slightly right-skewed, and the
+presence of upper outliers indicates that some students performed much
+better than their peers. \#\# 6 Scatterplot Matrix: Exploring
+Relationships Between Math Subscores \{.unnumberred\} We use a
+scatterplot matrix to explore relationships between different cognitive
+dimensions of math: reasoning (PV1MPRE), change \& relationships
+(PV1MCCR), quantity (PV1MCQN).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Subset relevant variables }
+\NormalTok{math\_subscores }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{select}\NormalTok{(PV1MPRE, PV1MCCR, PV1MCQN) }
+ 
+\CommentTok{\# Plot scatterplot matrix }
+\FunctionTok{ggpairs}\NormalTok{(math\_subscores, }
+        \AttributeTok{title =} \StringTok{"Scatterplot Matrix of Math Cognitive Subscores"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter4_files/figure-pdf/unnamed-chunk-10-1.pdf}}
+
+\textbf{Interpretation}: This scatterplot matrix provides a
+comprehensive overview of the relationships between three cognitive
+subscores of math achievement:
+
+\begin{itemize}
+\tightlist
+\item
+  Lower panels show scatterplots for each pair of subscores. These plots
+  visually reveal strong, positive associations; as one subscore
+  increases, the other tends to increase as well.
+\end{itemize}
+
+Additionally:
+
+\begin{itemize}
+\item
+  Diagonal panels display the distribution (density curves) of each
+  subscore, giving a quick sense of how each score is spread.
+\item
+  Upper panels present the numerical correlations for each pair. For
+  example, the correlation between PV1MPRE (reasoning) and PV1MCCR
+  (change \& relationships) is 0.85, indicating a strong positive
+  relationship. We will formally introduce the concept of correlation
+  and how to interpret it in a later chapter.
+\end{itemize}
 
 \bookmarksetup{startatroot}
 
@@ -1199,9 +2735,867 @@ This is Chapter 4.
 
 \bookmarksetup{startatroot}
 
-\chapter{Chapter 5}\label{chapter-5-1}
+\chapter*{The Normal Distribution}\label{the-normal-distribution}
+\addcontentsline{toc}{chapter}{The Normal Distribution}
 
-This is Chapter 5.
+\markboth{The Normal Distribution}{The Normal Distribution}
+
+\section*{Learning Objectives}\label{learning-objectives-3}
+\addcontentsline{toc}{section}{Learning Objectives}
+
+\markright{Learning Objectives}
+
+By the end of this chapter, you will be able to:
+
+\begin{itemize}
+\item
+  Identify the defining characteristics of a normal distribution.
+\item
+  Compute z scores from raw data and interpret their meaning in terms of
+  standard deviations from the mean.
+\item
+  Use the properties of a normal distribution to calculate probabilities
+  and interpret results for real-world scenarios using z tables and
+  statistical software or applets.
+\end{itemize}
+
+The objectives for this chapter are to learn about the normal
+distribution, sometimes called the bell curve due to its shape, and to
+understand the concepts of probability associated with the normal
+distribution. An understanding of the normal distribution is very
+important because we use what we know about the normal distribution to
+make inferences about populations based on samples.
+
+\section{What is a Normal
+Distribution?}\label{what-is-a-normal-distribution}
+
+A \textbf{normal distribution}, or bell-shaped distribution, has the
+following characteristics:
+
+\begin{itemize}
+\item
+  The shape is symmetric, unimodal, and bell-shaped.
+\item
+  The mean, median, and mode are the same---all are right in the center
+  of the distribution.
+\item
+  Following the empirical rule, approximately 68\% of the values in a
+  normal distribution fall within 1 standard deviation of the mean,
+  approximately 95\% of the values fall within 2 standard deviations of
+  the mean, and approximately 99.7\% of the values fall within 3
+  standard deviations of the mean.
+\end{itemize}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter5_files/figure-pdf/fig-empirical-rule-normal-1.pdf}}
+
+}
+
+\caption{\label{fig-empirical-rule-normal}Normal Distribution Showing
+the Empirical Rule}
+
+\end{figure}%
+
+For example, suppose a class took a science test and their scores were
+normally distributed. The distribution of student scores had a mean of
+50 points (the center of the normal distribution) and a standard
+deviation of 15 points. Based on the empirical rule, you know that about
+68\% of the students scored between 35 (1 SD below the mean) and 65 (1
+SD above the mean) points.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter5_files/figure-pdf/fig-empirical-rule-green-1.pdf}}
+
+}
+
+\caption{\label{fig-empirical-rule-green}Normal Distribution with
+Empirical Rule}
+
+\end{figure}%
+
+It is important to understand the characteristics of the normal
+distribution not only because certain variables (e.g., weight, height,
+test scores) are likely to have normal distributions, but because many
+of the statistical techniques used to make inferences about populations
+rely on the properties of the normal distribution.
+
+This rule is something you can use to interpret results from normally
+distributed data, but it is also part of what defines a normal
+distribution. Not all tests that students take are normally distributed.
+In those cases, the empirical rule would not apply.
+
+Software programs like SPSS® and JASP can provide tests of normality
+that tell you how close your distribution is to the normal distribution.
+You can assess how closely your data approximate normality by examining
+two key statistics: skewness and kurtosis.
+
+\begin{itemize}
+\item
+  As we learned in chapter 2, \textbf{skewness} means the extent to
+  which a curve is pulled to one side or the other. Skewness is about
+  symmetry, or really, the lack of symmetry. In a true normal
+  distribution, half of the data points are above the mean, and half are
+  below. A skewed distribution has more outliers on one side of the
+  mean.
+\item
+  Kurtosis measures the \emph{tailedness} of a distribution, or how
+  heavy or light the tails are compared to a normal distribution. The
+  strict definition can be confusing. For now, think about it in terms
+  of how likely it is that there are outliers, or extreme values, in
+  your data. A heavy-tailed distribution will have a higher kurtosis
+  value, and a greater percentage of scores in the distribution will be
+  out in the tails rather than the \emph{shoulders}.
+\end{itemize}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter5_files/figure-pdf/fig-kurtosis-compare-true-1.pdf}}
+
+}
+
+\caption{\label{fig-kurtosis-compare-true}Distributions with
+K\textgreater0, K=0, and K\textless0 (true excess kurtosis),
+standardized to mean 0 and SD 1}
+
+\end{figure}%
+
+\textbf{Positive Kurtosis} (K \textgreater{} 0): The blue plot
+represents a distribution with a narrow peak and thick tails.
+
+\textbf{Zero Kurtosis} (K = 0): The green plot represents a standard
+normal distribution with neither exaggerated tails nor an unusually
+sharp peak.
+
+\textbf{Negative Kurtosis} (K \textless{} 0): The red plot represents a
+distribution with a flatter peak and thinner tails
+
+A true normal distribution will have skewness and kurtosis values of 0.
+The closer the reported values are to 0, the more normal the
+distribution. A common rule of thumb is that a distribution with
+skewness and kurtosis values between -1 and 1 can be considered
+approximately normal.
+
+(fig 5.4 here)
+
+A normal distribution can have any mean and any standard deviation -- it
+is about the shape of the distribution, not the specific numbers. For
+example, if you are looking at the heights of people, the mean and
+standard deviation will be quite different depending on whether your
+sample includes all people in the United States or all kindergarten
+students in one elementary school. Both height distributions will likely
+be normal and have the same basic shape, but the average height and
+variation in heights will probably both be lower if we are just looking
+at kindergartners.
+
+(fig 5.5)
+
+\section{\texorpdfstring{\(z\) Scores and the Standard Normal
+Distribution}{z Scores and the Standard Normal Distribution}}\label{z-scores-and-the-standard-normal-distribution}
+
+We often convert raw data values in a normal distribution to z scores,
+or standardized scores. A z score is a statistical measure that
+describes how far a particular data point is from the mean, center, of
+its distribution. Instead of describing the difference between one score
+and the mean in terms of points, or inches, or whatever unit was used
+for the original distribution, we are using standard deviation units.
+This allows for the comparison of scores from different distributions or
+scales. We do this because simply knowing the difference between one
+score and the overall mean doesn't tell us much. For example, you learn
+you scored 5 points above the mean. Is your performance a lot better
+than average? Is your performance barely above average? The answer
+depends on the standard deviation. If the standard deviation of this
+distribution were 20, your score of 5 points above the mean would be
+considered close to average. However, if the standard deviation were
+only 2, your score would be considered outstanding.
+
+Using the example above, if you scored 5 points above the mean and the
+standard deviation was 20, your z score would be 0.25. Your score would
+be a quarter of a standard deviation above the mean. However, if the
+standard deviation were 2, your z score would be 2.5. In this case, you
+would have scored 2.5 standard deviations above the mean. Remember this
+graph from chapter 3? Boxes have been added to illustrate our example to
+help visualize how far different z scores are from the mean.
+
+(fig 5.6)
+
+If we convert an entire distribution from raw scores to z scores, that
+means we are standardizing the dataset. The mean of the distribution
+then becomes 0, the standard deviation becomes 1, and we refer to the
+distribution as the \textbf{standard normal distribution}.
+
+What we have discussed so far are likely the most important concepts for
+you to understand. The rest of this chapter will mostly involve finding
+areas under the normal curve by using z scores and the z table. You will
+also learn how you can get to the same answer using online applets.
+
+\subsection{Finding Areas Under the Normal
+Curve}\label{finding-areas-under-the-normal-curve}
+
+Let's say we have a continuous random variable: body temperature.
+Imagine that we have access to the body temperatures of a particular
+population (e.g., all residents of the United States), and when we graph
+this data, we see a normal distribution with a mean of 98.2 and a
+standard deviation of 0.73. Remember that we collected data from
+individuals who belong to a particular population (i.e., all Americans).
+So, these numbers (\(\mu\) =  98.2 and \(\sigma\) =  0.73 ) are not
+sample statistics, they are population parameters. Our normal
+distribution is illustrated in figure 5.7.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter5_files/figure-pdf/fig-normal-mu-sd-1.pdf}}
+
+}
+
+\caption{\label{fig-normal-mu-sd}Normal Distribution with Mean and
+Standard Deviation}
+
+\end{figure}%
+
+We now have three questions we want to answer based on this
+distribution.
+
+\textbf{Question \#1: \emph{What is the probability that a randomly
+sampled individual from this population has a body temperature of 98.6
+degrees or higher?}}
+
+If we let X denote body temperature, we are basically asking what is
+\emph{the probability that X is greater than or equal} to 98.6 degrees?
+We can equivalently express this as follows: \(P(X \ge 98.6) = \, ?\) In
+shorthand, \(P\) represents probability.
+
+To answer the question, we first need to turn our random variable X into
+a z score. We then need to use this z score to find the area under the
+normal curve.
+
+We convert X to a z score using the \emph{z transformation formula}. The
+formula differs for a population of scores versus a sample of scores.
+
+\(\text{Population of scores: } z = \frac{x - \mu}{\sigma}\)
+
+\(\text{Sample of scores: } z = \frac{x - M}{SD}\)
+
+Since we obtained information for the entire population of the United
+States: \(z = \frac{98.6 - 98.2}{.73} = .55\)
+
+Our z-score is 0.55. So, we can re-express the above shorthand notation
+like this: \(P(X \ge 98.6) = P(z \ge 0.55) = ?\)
+
+Therefore, the probability that we would obtain a temperature that is
+98.6 degrees or higher is the same as the probability of obtaining a z
+score of 0.55 or higher. The probability is the area under the curve, to
+the right of a z score of 0.55, or to the right of the body temperature
+of 98.6. Figure 5.8 shows you this area---it is the area to the right of
+the red line.
+
+(fig 5.8 here\ldots{} need to figure out how to do the little thought
+cloud \ldots{} :/ )
+
+Now, let's determine the probability of obtaining a body temperature of
+98.6 or higher, which corresponds to a z score of 0.55 or above. Here,
+we want to introduce a
+\href{https://homepage.divms.uiowa.edu/~mbognar/applets/normal.html}{free
+applet} to help find the probability (Bognar, 2021). Enter the
+population mean, µ, of 98.2 and the standard deviation, \(\sigma\), of
+.73 to define the normal distribution as shown in Figure 5.9. You will
+see that the X-axis has been scaled using the specified mean and
+standard deviation. This is a good example of how the normal
+distribution can take on different values for μ and σ without changing
+shape.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5-9.png}
+
+}
+
+\caption{Fig 5.9: Aplet Demo 1}
+
+\end{figure}%
+
+Next, enter the value of 98.6 in the box for x. Figure 5.10 shows the
+output.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5-10.png}
+
+}
+
+\caption{Fig 5.10: Aplet Demo 2}
+
+\end{figure}%
+
+According to the applet, the probability of obtaining a temperature of
+98.6, or a z score of 0.55, is roughly 0.29. Recall that probabilities
+range from 0 to 1, with the total area under the normal curve equaling 1
+(or 100\%). Thus, a probability of 0.29 indicates there is approximately
+a 29\% chance of randomly selecting an individual from this population
+who has a body temperature of at least 98.6 degrees.
+
+Although it is easy to use an applet to find our answer, let's learn how
+to use the Standard Normal Cumulative Probability Table in the back of
+the book to find the answer. Remember that we are now expressing our
+question as follows: \(P(z \ge 0.55) = ?\)
+
+We must go to Standard Normal Cumulative Probability Table in the back
+of the book and look up our z score of 0.55. The column on the far left
+indicates the first two values of the z score, so find 0.5. The top row
+indicates the next two values, so find 0.05. Follow the 0.05 column down
+to where it intersects the 0.5 column to find a value of .7088. This
+indicates the cumulative probability up to 0.55 standard deviations
+above the mean. Since we are interested in the area on the opposite side
+of 0.55 (a body temperature of at least 98.6), we subtract .7088 from 1
+to get .2912 - roughly the same number given by the applet. This means
+that the probability of selecting an individual at random who has a body
+temperature of 98.6 degrees or greater is .2912, or 29.12\%.
+
+\textbf{Question \#2: \emph{What is the probability that a randomly
+sampled individual from this population has a body temperature of 97.5
+degrees or lower?}}
+
+Hopefully, this question will now be easy to answer. In shorthand
+notation, we are asking: \(P(X < 97.5) = ?\)
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter5_files/figure-pdf/fig-px-less-97-5-1.pdf}}
+
+}
+
+\caption{\label{fig-px-less-97-5}Figure 5.11 Area representing
+\(P(X < 97.5)\) for a normal distribution with \(\mu=98.2\)}
+
+\end{figure}%
+
+Now, we are looking for the probability of having a body temperature of
+97.5 or below, which is represented by the left side of the red line. To
+answer this question, we first turn 97.5 into a z score:
+
+\[
+z=\frac{97.5-98.2}{0.73}=-0.96
+\]
+
+\[
+z=\frac{X-\mu}{\sigma}
+\]
+
+Let's use
+\href{https://homepage.divms.uiowa.edu/~mbognar/applets/normal.html}{the
+applet} to find \(P(x\le 97.5) = P(z\le -0.96)\) or the probability of
+\(z\) is less than or equal to -0.96.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5-12.png}
+
+}
+
+\caption{Fig 5.12: Aplet Demo 2}
+
+\end{figure}%
+
+The probability that a randomly selected individual from the population
+has a body temperature less than 97.5 is 0.1688, or 16.9\%.
+
+Now, let's find this probability using the Standard Normal Cumulative
+Probability Table. Since our z score is --0.96, find the intersection of
+the --0.9 row and 0.06 column. The stated value is .1685. Since we are
+interested in the probability of having a body temperature less than or
+equal to 97.5 and the table represents cumulative probability up until
+that point, we can simply report that value. The proportion of
+temperatures that fall at, or below, 97.5 is about 0.1685, or there is a
+16.85\% chance we would randomly sample an individual who has a body
+temperature of 97.5 degrees or less. Again, the value is slightly off
+from the one obtained from the applet due to rounding differences.
+
+\textbf{Question \#3: \emph{What is the probability that a randomly
+sampled individual from this population has a body temperature between
+97.5 and 98.6 degrees?}}
+
+With this final question, we are asking: \(P(97.5 \le X \le 98.6) = ?\)
+Although this might seem like a more difficult question, it is actually
+the same basic concept. The first step is to convert both values to
+\(z\) scores, which we have already done. We know that 98.6 expressed as
+a \(z\) score is about 0.55, and 97.5 expressed as a \(z\) score is
+about -0.96. We have also already figured out the probability of having
+a temperature above 98.6, \(z\) = 0.55, and the probability of having a
+temperature below 97.5, \(z\) = -0.96. We know that the entire
+probability under the normal distribution is 1.0, so we can get to the
+probability of scoring between these two \(z\) scores by subtracting the
+probabilities we already know.
+
+Here's how the math works out:
+
+\[
+P(97.5 \le X \le 98.6)
+= 1 - P(X \le 97.5) - P(X \ge 98.6)
+= 1 - (0.1685 + 0.2912)
+= 1 - 0.4597
+= 0.5403
+\]
+
+This means there is a probability of about 0.54, or 54\%, that we would
+randomly sample an individual from this population who has a body
+temperature between 97.5 and 98.6 degrees.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter5_files/figure-pdf/fig-between-97-5-98-6-1.pdf}}
+
+}
+
+\caption{\label{fig-between-97-5-98-6}Area representing}
+
+\end{figure}%
+
+\section{Conclusion}\label{conclusion-3}
+
+Chapter 5 delved into the fundamental concepts of the normal
+distribution, a cornerstone of statistical analysis. It outlined the key
+features of this distribution, including its symmetric, bell-shaped
+curve, unimodal nature, and the alignment of its mean, median, and mode
+at the center. The chapter revisited the empirical rule (68-95-99.7\%),
+explaining how it provides a framework for interpreting the proportion
+of data within one, two, or three standard deviations from the mean.
+Additionally, it emphasized the importance of understanding normal
+distribution properties for making population inferences and highlighted
+how skewness and kurtosis helped assess a distribution's symmetry and
+the likelihood of outliers.
+
+The chapter also introduced z scores as a way to standardize data,
+enabling meaningful comparisons across different datasets or scales. It
+explained how to calculate z scores, interpret their significance as
+standard deviations from the mean, and apply them in the context of the
+standard normal distribution, where the mean was 0 and the standard
+deviation was 1. Key applications, such as using z scores to compute
+probabilities and find areas under the normal curve, were explored
+through practical examples involving real-world scenarios like body
+temperature analysis. Tools like z tables and statistical software were
+presented as essential for calculating probabilities and interpreting
+results, building a strong foundation for further statistical methods
+like sampling distributions. Together, the chapter equipped readers with
+essential skills for understanding and applying the principles of the
+normal distribution in various contexts.
+
+\subsection{Key Takeaways for Educational Researchers from Chapter
+5\,}\label{key-takeaways-for-educational-researchers-from-chapter-5}
+
+\begin{itemize}
+\item
+  Understanding the characteristics of a normal distribution (symmetry,
+  unimodal shape, and alignment of mean, median, and mode) is important
+  for interpreting data and essential for assessing its appropriateness
+  for applying statistical analyses you will learn later in this book.
+\item
+  Skewness and kurtosis are key metrics for assessing the symmetry and
+  \emph{tailedness} of a distribution, helping researchers evaluate how
+  closely their data approximates a normal distribution. A distribution
+  is generally considered approximately normal when these two statistics
+  fall within the range of -1 to 1.
+\item
+  The empirical rule (68-95-99.7\%) helps researchers interpret the
+  portion of data within standard deviations from the means, making it a
+  critical tool for understanding variability of data in education
+  research contexts.
+\item
+  Z scores provide a standardized measure of how far a data point
+  deviates from the mean, expressed in terms of standard deviation
+  units. By converting raw scores into z scores---a process known as
+  standardization---we enable meaningful comparisons of relative
+  positions across different datasets, even when the original scores are
+  measured on varying scales. Understanding standardization is essential
+  for cross-study comparisons and evaluating individual performance
+  within a population or reference group.
+\item
+  Although probabilities are rarely calculated manually using z scores
+  in practice, understanding the process provides researchers with a
+  foundational knowledge of probability, enabling them to make
+  population inferences and conduct hypothesis testing---essential
+  components of quantitative analysis in educational research. \,
+\end{itemize}
+
+\section{Key Definitions from Chapter
+5}\label{key-definitions-from-chapter-5}
+
+\textbf{Kurtosis} measures the tailedness of a distribution, or how
+heavy or light the tails are compared to a normal distribution.
+
+\textbf{Normal distribution (bell curve)} is a statistical distribution
+that is symmetric about its mean. All three measures of central tendency
+(mean, median, and mode) are equal and located at the center of the
+distribution, and the left and right halves of the curve are mirror
+images of each other.
+
+\textbf{Skewness} means the extent to which a curve is pulled to one
+side or another.
+
+The \textbf{standard normal distribution} is a specific type of normal
+distribution that has been standardized so that the mean is 0, the
+standard deviation is 1, and the distribution is symmetric.
+
+A \textbf{z score} (standardized score) is a statistical measure that
+describes how far a particular data point is from the mean of its
+distribution, measured in terms of standard deviations.
+
+\section{Check Your Understanding}\label{check-your-understanding-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{A distribution with high kurtosis has lighter tails than a
+  normal distribution.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    True
+  \item
+    False
+  \end{enumerate}
+\item
+  \textbf{Which of the following values for skewness and kurtosis
+  indicates that a distribution is approximately normal?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Skewness = 0.5, Kurtosis = 2.5
+  \item
+    Skewness = 0.25, Kurtosis = 0.5
+  \item
+    Skewness = 1.0, Kurtosis = 3.5
+  \item
+    Skewness = -2.0, Kurtosis = 4.0
+  \end{enumerate}
+\item
+  \textbf{What is the probability of a data point falling within 1
+  standard deviation of the mean in a normal distribution?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    68\%
+  \item
+    95\%
+  \item
+    99.7\%
+  \item
+    50\%
+  \end{enumerate}
+\item
+  \textbf{A standardized test has a mean score of 500 and a standard
+  deviation of 100. What is the probability that a randomly selected
+  student scores higher than 650? Use the z score formula and the
+  standard normal distribution table to find the answer.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    0.1056 (10.56\%)
+  \item
+    0.1587 (15.87\%)
+  \item
+    0.0668 (6.68\%)
+  \item
+    0.0228 (2.28\%)
+  \end{enumerate}
+\item
+  \textbf{What is the purpose of converting raw data to z scores?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    To reduce the range of the data.
+  \item
+    To standardize data for comparison across distributions.
+  \item
+    To eliminate outliers.
+  \item
+    To calculate the mean and median more accurately.
+  \end{enumerate}
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Chapter 5: Exploring the Normal Distribution in
+R}\label{chapter-5-exploring-the-normal-distribution-in-r}
+\addcontentsline{toc}{chapter}{Chapter 5: Exploring the Normal
+Distribution in R}
+
+\markboth{Chapter 5: Exploring the Normal Distribution in R}{Chapter 5:
+Exploring the Normal Distribution in R}
+
+This section demonstrates how to work with the normal distribution in R,
+including checking for normality, calculating skewness and kurtosis,
+standardizing scores (z-scores), and computing probabilities using the
+properties of the normal curve. We use the PV1MATH variable as an
+example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load required package }
+\CommentTok{\# Load required package }
+\FunctionTok{library}\NormalTok{(haven) }
+ 
+\CommentTok{\# Load the dataset }
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read\_sav}\NormalTok{(}\StringTok{"chapter2/US\_Data\_22.sav"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\section*{1 Visualizing and Summarizing the
+Distribution}\label{visualizing-and-summarizing-the-distribution}
+\addcontentsline{toc}{section}{1 Visualizing and Summarizing the
+Distribution}
+
+\markright{1 Visualizing and Summarizing the Distribution}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram and summary }
+\FunctionTok{hist}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH, }\AttributeTok{breaks=}\DecValTok{30}\NormalTok{, }\AttributeTok{main=}\StringTok{"Distribution of Math Scores"}\NormalTok{, }\AttributeTok{xlab=}\StringTok{"PV1MATH"}\NormalTok{, }\AttributeTok{col=}\StringTok{"lightblue"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter5_files/figure-pdf/unnamed-chunk-2-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  188.4   391.3   457.9   461.9   528.9   819.5 
+\end{verbatim}
+
+As a recap, the first step in exploring a continuous variable, such as
+math achievement scores (PV1MATH), is to visualize its distribution and
+review key summary statistics. As covered in Chapters 2 and 3, these
+basic descriptive measures and visualizations help us quickly understand
+the main features of the data before proceeding to more advanced
+analyses.
+
+\section*{2 Checking for Normality}\label{checking-for-normality}
+\addcontentsline{toc}{section}{2 Checking for Normality}
+
+\markright{2 Checking for Normality}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(psych) }
+\FunctionTok{skew}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.1730788
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kurtosi}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -0.3150574
+\end{verbatim}
+
+\textbf{Interpretation}: The skewness of PV1MATH is 0.17, indicating a
+slight right (positive) skew, meaning there are a few more high values
+than low values. The kurtosis is --0.32, suggesting the distribution is
+slightly flatter (platykurtic) than a perfectly normal distribution.
+Both values fall well within the range of --1 to 1, so the math scores
+are approximately normal, with only minor deviations from perfect
+symmetry and peakedness.
+
+\section*{3 Standardizing Scores: Calculating
+Z-scores}\label{standardizing-scores-calculating-z-scores}
+\addcontentsline{toc}{section}{3 Standardizing Scores: Calculating
+Z-scores}
+
+\markright{3 Standardizing Scores: Calculating Z-scores}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Standardize PV1MATH to obtain z{-}scores }
+\NormalTok{z\_scores }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH) }
+\CommentTok{\# View summary statistics for the standardized scores }
+\FunctionTok{mean}\NormalTok{(z\_scores, }\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)      }\CommentTok{\# Should be 0 }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -2.350414e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(z\_scores, }\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)        }\CommentTok{\# Should be 1 }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data}\SpecialCharTok{$}\NormalTok{z\_PV1MATH }\OtherTok{\textless{}{-}}\NormalTok{ z\_scores }\CommentTok{\# Add z{-}scores to the dataset }
+\FunctionTok{head}\NormalTok{(data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"PV1MATH"}\NormalTok{, }\StringTok{"z\_PV1MATH"}\NormalTok{)]) }\CommentTok{\#show first 6 rows of PV1MATH and z\_PV1MATH }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 6 x 2
+  PV1MATH z_PV1MATH[,1]
+    <dbl>         <dbl>
+1    575.      1.19    
+2    442.     -0.209   
+3    680.      2.30    
+4    462.      0.000270
+5    501.      0.414   
+6    322.     -1.47    
+\end{verbatim}
+
+\textbf{Interpretation:}
+
+To standardize the math scores (PV1MATH), we calculated z-scores for
+each student. The mean of the z-scores is effectively 0 and the standard
+deviation is 1, as expected. This confirms that the z-scores represent
+how many standard deviations each math score is from the mean.
+
+Let's look at two example students from the first six rows:
+
+\begin{itemize}
+\item
+  The first student has a raw math score of 573, which corresponds to a
+  z-score of 1.17. This means their math score is 1.17 standard
+  deviations above the mean (with the mean previously reported as about
+  462).
+\item
+  The second student has a math score of 440, giving a z-score of
+  --0.23. This means their score is slightly below the mean (about 0.23
+  standard deviations lower).
+\end{itemize}
+
+By adding the z-scores to the dataset, it's easier to compare each
+student's performance relative to the whole group, regardless of the
+scale of the original scores.
+
+\section{4 Example: Calculating Z-scores and Probabilities (Questions
+1-3)
+\{.unnumbered}\label{example-calculating-z-scores-and-probabilities-questions-1-3-.unnumbered}
+
+Suppose the mean (𝜇) = 98.2 and standard deviation (𝜎) = 0.73, as in the
+body temperature example.
+
+\textbf{Q1. Probability that X ≥ 98.6}
+
+Here we replicate the example from section Finding Areas Under the
+Normal Curve, calculating the probability that a randomly selected
+person has a body temperature of 98.6°F or higher. \}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu }\OtherTok{\textless{}{-}} \FloatTok{98.2} 
+\NormalTok{sigma }\OtherTok{\textless{}{-}} \FloatTok{0.73} 
+\NormalTok{x1 }\OtherTok{\textless{}{-}} \FloatTok{98.6} 
+ 
+\CommentTok{\# Calculate z }
+\NormalTok{z1 }\OtherTok{\textless{}{-}}\NormalTok{ (x1 }\SpecialCharTok{{-}}\NormalTok{ mu) }\SpecialCharTok{/}\NormalTok{ sigma }
+\NormalTok{z1 }\CommentTok{\#\textasciitilde{}0.55 }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.5479452
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Probability that X \textgreater{}= 98.6 }
+\NormalTok{prob1 }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{(z1, }\AttributeTok{lower.tail =} \ConstantTok{FALSE}\NormalTok{) }\CommentTok{\#lower.tail = FALSE gives the right tail probability }
+\NormalTok{prob1   }\CommentTok{\# \textasciitilde{}0.2912 }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.2918648
+\end{verbatim}
+
+\textbf{Interpretation}: About 29.1\% of the population have a body
+temperature of 98.6 or higher.
+
+\textbf{Q2. Probability that X ≤ 97.5} Now we calculate the probability
+that a randomly selected person has a body temperature of 97.5°F or
+lower.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x2 }\OtherTok{\textless{}{-}} \FloatTok{97.5} 
+\NormalTok{z2 }\OtherTok{\textless{}{-}}\NormalTok{ (x2 }\SpecialCharTok{{-}}\NormalTok{ mu) }\SpecialCharTok{/}\NormalTok{ sigma }
+\NormalTok{z2 }\CommentTok{\# \textasciitilde{}{-}0.96 }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -0.9589041
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Probability that X \textless{}= 97.5 (left tail) }
+\NormalTok{prob2 }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{(z2) }\CommentTok{\# lower.tail = TRUE is the default, so we can omit it to get the left tail probability }
+\NormalTok{prob2   }\CommentTok{\# \textasciitilde{}0.1688 }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.1688035
+\end{verbatim}
+
+\textbf{Interpretation}: About 16.9\% of the population have a body
+temperature of 97.5°F or lower.
+
+\textbf{Q3. Probability between 97.5 and 98.6}
+
+Finally, we calculate the probability that a randomly selected person
+has a body temperature between 97.5°F and 98.6°F.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load required package }
+\CommentTok{\# Probability that 97.5 \textless{}= X \textless{}= 98.6 }
+\NormalTok{prob\_between }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{{-}}\NormalTok{(prob1}\SpecialCharTok{+}\NormalTok{prob2) }\CommentTok{\#same as in previous section }
+\CommentTok{\#prob\_between \textless{}{-} pnorm(z1) {-} pnorm(z2) \#alternative }
+ 
+\NormalTok{prob\_between  }\CommentTok{\# \textasciitilde{}0.54 }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.5393317
+\end{verbatim}
+
+\textbf{Interpretation}: About 53.9\% (difference due to rounding) of
+the population have a body temperature between 97.5°F and 98.6°F.
 
 \bookmarksetup{startatroot}
 
@@ -1239,7 +3633,7 @@ Benchmark: One-Sample t Test and Goodness-of-Fit Analysis}
 Test and Goodness-of-Fit Analysis}{Evaluating Group Averages Against a
 Benchmark: One-Sample t Test and Goodness-of-Fit Analysis}
 
-\section*{Learning Objectives}\label{learning-objectives-1}
+\section*{Learning Objectives}\label{learning-objectives-4}
 \addcontentsline{toc}{section}{Learning Objectives}
 
 \markright{Learning Objectives}
@@ -2241,7 +4635,7 @@ females selected for the program (\textbf{\emph{Equation broken here}}).
 These findings suggest that the enrichment program provides equitable
 access by gender.
 
-\section{Conclusion}\label{conclusion-1}
+\section{Conclusion}\label{conclusion-4}
 
 Hypothesis testing bridges theoretical research questions and practical
 data analysis, offering a structured framework for making evidence-based
@@ -2345,7 +4739,7 @@ the normal distribution.
 statistical results but misinterpret or apply them to the wrong question
 or hypothesis.
 
-\section{Check Your Understanding}\label{check-your-understanding-1}
+\section{Check Your Understanding}\label{check-your-understanding-4}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}

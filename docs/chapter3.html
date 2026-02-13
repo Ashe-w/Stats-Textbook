@@ -291,7 +291,23 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#chapter-2-exploring-data-spread---measures-of-variability-in-r" id="toc-chapter-2-exploring-data-spread---measures-of-variability-in-r" class="nav-link active" data-scroll-target="#chapter-2-exploring-data-spread---measures-of-variability-in-r">Chapter 2: Exploring Data Spread - Measures of Variability in R</a>
+  <li><a href="#exploring-data-spread-measures-of-variability" id="toc-exploring-data-spread-measures-of-variability" class="nav-link active" data-scroll-target="#exploring-data-spread-measures-of-variability">Exploring Data Spread: Measures of Variability</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#measures-of-variability" id="toc-measures-of-variability" class="nav-link" data-scroll-target="#measures-of-variability"><span class="header-section-number">3.1</span> Measures of Variability</a></li>
+  <li><a href="#characteristics-of-variability" id="toc-characteristics-of-variability" class="nav-link" data-scroll-target="#characteristics-of-variability"><span class="header-section-number">3.2</span> Characteristics of Variability</a></li>
+  <li><a href="#standard-deviation-and-the-normal-curve" id="toc-standard-deviation-and-the-normal-curve" class="nav-link" data-scroll-target="#standard-deviation-and-the-normal-curve"><span class="header-section-number">3.3</span> Standard Deviation and the Normal Curve</a>
+  <ul class="collapse">
+  <li><a href="#common-misconceptions-about-variability" id="toc-common-misconceptions-about-variability" class="nav-link" data-scroll-target="#common-misconceptions-about-variability"><span class="header-section-number">3.3.1</span> Common Misconceptions About Variability</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3.4</span> Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways-for-educational-researchers-from-chapter-3" id="toc-key-takeaways-for-educational-researchers-from-chapter-3" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-3"><span class="header-section-number">3.4.1</span> Key Takeaways for Educational Researchers from Chapter 3 </a></li>
+  </ul></li>
+  <li><a href="#key-definitions-from-chapter-3" id="toc-key-definitions-from-chapter-3" class="nav-link" data-scroll-target="#key-definitions-from-chapter-3"><span class="header-section-number">3.5</span> Key Definitions from Chapter 3</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">3.6</span> Check Your Understanding</a></li>
+  </ul></li>
+  <li><a href="#chapter-3-exploring-data-spread---measures-of-variability-in-r" id="toc-chapter-3-exploring-data-spread---measures-of-variability-in-r" class="nav-link" data-scroll-target="#chapter-3-exploring-data-spread---measures-of-variability-in-r">Chapter 3: Exploring Data Spread - Measures of Variability in R</a>
   <ul class="collapse">
   <li><a href="#calculating-the-range" id="toc-calculating-the-range" class="nav-link" data-scroll-target="#calculating-the-range">1 Calculating the Range</a></li>
   <li><a href="#calculating-the-interquartile-range-iqr" id="toc-calculating-the-interquartile-range-iqr" class="nav-link" data-scroll-target="#calculating-the-interquartile-range-iqr">2 Calculating the Interquartile Range (IQR)</a></li>
@@ -301,7 +317,7 @@ window.Quarto = {
   <li><a href="#visualizing-the-distribution-with-mean-and-sd" id="toc-visualizing-the-distribution-with-mean-and-sd" class="nav-link" data-scroll-target="#visualizing-the-distribution-with-mean-and-sd">4 Visualizing the Distribution with Mean and SD</a></li>
   <li><a href="#interpreting-variability-in-math-achievement-scores" id="toc-interpreting-variability-in-math-achievement-scores" class="nav-link" data-scroll-target="#interpreting-variability-in-math-achievement-scores">5 Interpreting Variability in Math Achievement Scores</a>
   <ul class="collapse">
-  <li><a href="#measures-of-variability" id="toc-measures-of-variability" class="nav-link" data-scroll-target="#measures-of-variability">5.1 5.1 Measures of Variability</a></li>
+  <li><a href="#measures-of-variability-1" id="toc-measures-of-variability-1" class="nav-link" data-scroll-target="#measures-of-variability-1">5.1 5.1 Measures of Variability</a></li>
   <li><a href="#visualizing-spread-and-normality" id="toc-visualizing-spread-and-normality" class="nav-link" data-scroll-target="#visualizing-spread-and-normality">5.2 Visualizing Spread and Normality</a></li>
   </ul></li>
   </ul></li>
@@ -330,32 +346,302 @@ window.Quarto = {
 </header>
 
 
-<section id="chapter-2-exploring-data-spread---measures-of-variability-in-r" class="level1 unnumbered">
-<h1 class="unnumbered">Chapter 2: Exploring Data Spread - Measures of Variability in R</h1>
+<section id="exploring-data-spread-measures-of-variability" class="level1 unnumbered">
+<h1 class="unnumbered">Exploring Data Spread: Measures of Variability</h1>
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ul>
+<li><p>Define and explain the concept of variability and its importance in statistical analysis, distinguishing between measures such as range, variance, and standard deviation.</p></li>
+<li><p>Calculate measures of variability (range, interquartile range, variance, and standard deviation) for a given dataset and interpret what these values indicate about the spread of the data.</p></li>
+</ul>
+<p>In this chapter, we are continuing the discussion about summarizing data. In the last chapter, we discussed how we can use one statistic to represent the central tendency of a dataset. Most people are likely already familiar with the concept of using an average, or the mean, to summarize data. In this chapter, we will explore how we can use other statistics to represent the spread, or variability, in a dataset. Variability refers to the extent to which data points in a dataset differ from each other and/or from the central value (e.g., the mean). It is a measure of how spread out or dispersed the data are. High variability indicates that the data points are more spread out, while low variability means they are closer together. A measure of variability should be reported along with any measure of central tendency because they provide different, but complementary information.</p>
+<p>Variability is often a little tricky to understand, so let’s look at two simple datasets to help with our learning.</p>
+<ul>
+<li><p><strong>Set A</strong>: 47, 48, 49, 50, 51, 52, 53</p></li>
+<li><p><strong>Set B</strong>: 20, 30, 40, 50, 60, 70, 80</p></li>
+</ul>
+<p>The mean for each dataset is 50, but these sets of numbers are quite different! The numbers in Set B are more spread out from the center, which is another way of saying they have greater variability. If we only report the mean for each dataset, then we have really not summarized the data well.</p>
+<p>Before we talk about the different measures of variability, the table below includes some examples of variables with high, low, and no variability.</p>
+<div class="variability-table">
+<div class="vcell">
+<div class="vtitle">
+High variability
+</div>
+<ul>
+<li>Semester tuition rates across all public and private colleges and universities in the United States.</li>
+<li>Salaries of college graduates entering the workforce.</li>
+</ul>
+</div>
+<div class="vcell">
+<div class="vtitle">
+Low variability
+</div>
+<ul>
+<li>Starting salaries of state employees in similar positions.</li>
+<li>High school GPAs of students who are accepted to elite private colleges.</li>
+<li>Standardized math scores for 8th grade students in a gifted education program.</li>
+</ul>
+</div>
+<div class="vcell">
+<div class="vtitle">
+No variability
+</div>
+<ul>
+<li>Grade level (for a program that only includes 5th graders).</li>
+<li>Fixed-rate mortgage payments over the course of a loan.</li>
+<li>Enrollment fee for a program in dollars.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="measures-of-variability" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="measures-of-variability"><span class="header-section-number">3.1</span> Measures of Variability</h2>
+<p><strong><em>note: Perhpas splitting into sections would be nice here?</em></strong></p>
+<p>Just like with central tendency, there are several different ways to measure and report the variability of a dataset. We introduce four different measures of variability: range, interquartile range, standard deviation and variance.</p>
+<p>A relatively crude or simple indicator of variability is the <strong>range</strong>. The range is a measure of variability that represents the difference between the largest and smallest values in a dataset. It provides a simple indication of how spread out the data are. For example, the range in Set A above is 6 (the range = the largest value – the smallest value, i.e., <span class="math inline">\(53 - 47 = 6\)</span>), and the range in Set B is <span class="math inline">\(60\)</span> (<span class="math inline">\(80 - 20\)</span>). You can see that even if we only knew the range, we would get a sense that these two datasets were different.</p>
+<p>However, a major limitation of range is that it is affected by outliers. Let’s insert a third dataset that looks like this: <span class="math inline">\(0, 56, 57, 58, 59, 60, 60\)</span>. We still have a mean of <span class="math inline">\(50\)</span> and a range of <span class="math inline">\(60\)</span>, but the range seems misleading. That <span class="math inline">\(0\)</span> in our third dataset is a complete outlier because it is far below the rest of the values. It could be an odd case, or even a typo, but it changes the range of our third dataset from <span class="math inline">\(4\)</span> to <span class="math inline">\(60\)</span>, completely changing our understanding of what the data look like.</p>
+<p><strong>Interquartile range</strong>, or <strong>IQR</strong>, is the difference between the first and third quartiles, or the 25th and 75th percentiles. Much like how the median was better than the mean when the data included major outliers, the IQR is better than the range in the same circumstances, because it is less likely to be affected by extreme values.</p>
+<p>To find the IQR, start by organizing your dataset in ascending order. Next, divide the data into two halves to calculate the first quartile (<span class="math inline">\(Q_1\)</span>) and third quartile (<span class="math inline">\(Q_3\)</span>). The first quartile (<span class="math inline">\(Q_1\)</span>) is the median of the lower half of the data, representing the 25th percentile, while the third quartile (<span class="math inline">\(Q_3\)</span>) is the median of the upper half of the data, representing the 75th percentile. The IQR is then calculated as <span class="math inline">\(Q_3\)</span>−<span class="math inline">\(Q_1\)</span>, which measures the range of the middle 50% of the data, providing a robust indicator of variability that is less sensitive to outliers. Let’s compute the IQR with a sample set of data.</p>
+<p>Suppose you have the dataset: <span class="math inline">\(3, 7, 8, 12, 13, 15, 16, 20, 21\)</span>.</p>
+<ul>
+<li><p>We first find the median.</p>
+<ul>
+<li>Since we have 9 values, the median is the fifth value: <span class="math inline">\((9+1)/2 = 5\)</span>. The fifth value is <span class="math inline">\(13\)</span>. The median of this dataset is <span class="math inline">\(13\)</span>.</li>
+</ul></li>
+<li><p>We next find the median of the lower half of the dataset. Since we have four values, we will need to add the two middle values (<span class="math inline">\(7 + 8\)</span>) and then divide by <span class="math inline">\(2\)</span> to get <span class="math inline">\(7.5\)</span>. The first quartile is equal to <span class="math inline">\(7.5\)</span>.</p></li>
+<li><p>We then find the median of the upper half of the dataset. Since we again have four values, we will need to add the two middle values (<span class="math inline">\(16 + 20\)</span>) and divide by <span class="math inline">\(2\)</span> to get <span class="math inline">\(18\)</span>. The third quartile is equal to <span class="math inline">\(18\)</span>.</p></li>
+<li><p>Last, we find the difference between the third quartile and first quartile (<span class="math inline">\(18 – 7.5\)</span>), which is equal to <span class="math inline">\(10.5\)</span>. Thus, the IQR for this example is <span class="math inline">\(10.5\)</span>.</p></li>
+</ul>
+<p><strong>Standard deviation (SD)</strong> tells us how far away, on average, each individual data point is from the mean. In other words, is this a dataset where most of the individual points are clustered close together, so each point is very close to the mean (small standard deviation)? Or are the individual points spread much farther apart, so any given value could be quite different from the mean (large standard deviation)?</p>
+<p>Think about how you might figure out the standard deviation if you had to invent statistics yourself. It was stated earlier that it is how far away each data point is, on average. We know that we find an average by adding up a bunch of values and dividing by the number of values, right? So, in theory, we could find the mean, then take every single individual data point, and figure out how far away they are from the mean. Add them all up, divide by the number of data points, and then we have the average distance away, right?</p>
+<p>Not quite, due to one problem – negative numbers. By definition, some data points are going to be above the mean and some will be below. Say you have a mean of 50, and one data point is 45 while another is 55. If we take the differences and add them up, we get -5 + 5 = 0. This is not helpful at all. So, what do we do? Think back to the last chapter when we were learning about the mean. The mathematical way to solve this problem is to square the differences, which results in only positive numbers.</p>
+<p>This brings us to <strong>variance</strong>, which is a measure of variability that indicates how far the data points in a dataset are spread out from the mean. It is calculated as the average of the squared differences between each data point and the mean, and the equation is listed in the next table. By squaring the differences, variance gives greater weight to larger deviations, making it sensitive to extreme values in the dataset. While variance effectively quantifies dispersion, it is expressed in squared units of the original data, which can make it less intuitive for interpretation compared to the standard deviation. Variance is a fundamental concept in statistics, as it forms the basis for other measures of variability, such as the standard deviation, and is crucial in fields like probability, regression, and hypothesis testing.</p>
+<p>Let’s calculate the variance for a very simple dataset containing just four numbers: <span class="math inline">\(5, 7, 9, 11\)</span>.</p>
+<ul>
+<li><p>The mean for our dataset is <span class="math inline">\(8\)</span>:</p>
+<ul>
+<li><span class="math inline">\((5 + 7 + 9 + 11)/4 = 8\)</span></li>
+</ul></li>
+<li><p>Subtract the mean from each of our values and square the result:</p>
+<ul>
+<li><p><span class="math inline">\(5 – 8 = -3, -3^2 = 9\)</span></p></li>
+<li><p><span class="math inline">\(7 – 8 = -1, -1^2 = 1\)</span></p></li>
+<li><p><span class="math inline">\(9 – 8 = 1, 1^2 = 1\)</span></p></li>
+<li><p><span class="math inline">\(11 – 8 = 3, 3^2 = 9\)</span></p></li>
+</ul></li>
+<li><p>Sum the squared differences and divide by the number of data points:</p>
+<ul>
+<li><span class="math inline">\(9 + 1 + 1 + 9 = 20, 20/4 = 5\)</span></li>
+</ul></li>
+<li><p>The variance for our dataset is <span class="math inline">\(5\)</span>.</p></li>
+</ul>
+<p>This concept of the “sum of squares” is going to become very important when we learn topics like Analysis of Variance (ANOVA) in later chapters. If you find yourself confused later about what “sum of squares” means, just remember that it has to do with variance.</p>
+<p>Back to the current topic, we now have a value of 5, the variance, that tells us the average squared distance each point is from the mean. However, it is hard to interpret squared values, so what is our last step? We take the square root of the variance, and we call that the standard deviation, which is on the same scale as the original variable. Essentially, we square the differences to deal with negative numbers, and then we un-square the result so the statistic is easier to work with for interpretation. This means the standard deviation for our example is approximately 2.24 (i.e., 5–√ 5</p>
+<p>). Any time you see variance and standard deviation reported, the second value will be the square root of the first.</p>
+<p>A couple more notes before we get to the formulas. First, we can find the variance and standard deviation for a population or a sample, and the notation is different for each (see the following table). Most of the time we’re working with samples, but it’s good to know both. Second, if we only have a sample, then we have to divide by (n – 1) rather than N, where N represents the population size and n represents sample size, respectively. The quantity of (n – 1) for the sample variance and standard deviation estimators is known as the “degrees of freedom” (or df). We use the df to obtain an unbiased, or more accurate, estimate of the population parameter when we only have a sample to analyze.</p>
+<p>The table below shows how to calculate the variance and standard deviation by hand, with the correct notations for populations and samples: <span class="math inline">\(σ_x^2\)</span> and <span class="math inline">\(σ_x\)</span> represent population variance and standard deviation of variable <span class="math inline">\(x\)</span>, respectively. <span class="math inline">\(s_x^2\)</span> and <span class="math inline">\(s_x\)</span> represent sample variance and standard deviation of variable <span class="math inline">\(x\)</span>, respectively. <span class="math inline">\(\mu\)</span> is a population mean and <span class="math inline">\(\bar{x}\)</span> is a sample mean of variable <span class="math inline">\(x\)</span>.</p>
+<div class="formula-table">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Population (<span class="math inline">\(\sigma^2,\,\sigma\)</span>)</th>
+<th>Sample (<span class="math inline">\(s^2,\,s\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Variance</strong></td>
+<td><span class="math inline">\(\sigma_x^2=\dfrac{\sum (x_i-\mu)^2}{N}\)</span></td>
+<td><span class="math inline">\(s_x^2=\dfrac{\sum (x_i-\bar{x})^2}{n-1}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Standard<br>Deviation</strong></td>
+<td><span class="math inline">\(\sigma_x=\sqrt{\dfrac{\sum (x_i-\mu)^2}{N}}\)</span></td>
+<td><span class="math inline">\(s_x=\sqrt{\dfrac{\sum (x_i-\bar{x})^2}{n-1}}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="characteristics-of-variability" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="characteristics-of-variability"><span class="header-section-number">3.2</span> Characteristics of Variability</h2>
+<p>Here is a summary of the characteristics of data variability measures.</p>
+<ul>
+<li><p>Higher values indicate a larger amount of variability than lower numbers.</p></li>
+<li><p>When you have no variability, the numbers are constant (e.g., for the dataset 3, 3, 3, 3, 3, 3, the variance and standard deviation equal 0).</p></li>
+<li><p>The variance tells you the average distance from the mean, in squared units.</p></li>
+<li><p>The standard deviation is just the square root of the variance (i.e., it brings the squared units back to regular units).</p></li>
+<li><p>The standard deviation tells you approximately how far the numbers tend to vary from the mean. Making a judgment about how large or small the standard deviation is depends entirely on the unit of measurement for your variable.</p>
+<ul>
+<li><p>If the entire range of scores is 1 to 100, then you can say a dataset with a standard deviation of 20 has more variability than a dataset with a standard deviation of 10.</p></li>
+<li><p>However, a standard deviation of 10 on a dataset that ranges from 1 to 100 could indicate much greater variability than a standard deviation of 20 on a dataset that ranges from 1 to 1,000.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="standard-deviation-and-the-normal-curve" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="standard-deviation-and-the-normal-curve"><span class="header-section-number">3.3</span> Standard Deviation and the Normal Curve</h2>
+<p>We are going to learn a lot more about the normal curve, or bell curve, later but many current and future educators already have at least some knowledge of the concept. Thus, let’s focus on how the normal curve relates to standard deviation.</p>
+<p>If data are normally distributed, then an easy rule to apply to the data is the <strong>empirical rule</strong>, or <em>68/95/99.7 percent rule</em>. That is:</p>
+<ul>
+<li><p>Approximately 68%, or just over two-thirds, of all individual cases will fall within one standard deviation of the mean, either above or below.</p></li>
+<li><p>Approximately 95% of cases will fall within two standard deviations of the mean.</p></li>
+<li><p>Approximately 99.7% of cases will fall within three standard deviations of the mean.</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-empirical-rule" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-empirical-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter3_files/figure-html/fig-empirical-rule-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-empirical-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Figure 3.1 Normal Distribution Showing the Empirical Rule
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>When you hear the term standardized tests, what that usually means is that the test has been standardized to fit the normal distribution. If you hear that a national standardized test has a mean of 500 and a standard deviation of 100, then you can apply the empirical rule and know that 68% of test takers score between 400 and 600 points.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-standardized-test-scores" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-standardized-test-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter3_files/figure-html/fig-standardized-test-scores-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standardized-test-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="common-misconceptions-about-variability" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="common-misconceptions-about-variability"><span class="header-section-number">3.3.1</span> Common Misconceptions About Variability</h3>
+<p>Here are some common past misconceptions that students have had about variability, with brief explanations of the correct understanding for each concept.</p>
+<ol type="1">
+<li><p><strong>Misconception</strong>: Variability is undesirable and should be minimized or eliminated.</p>
+<p><strong>Reality</strong>: Variability is an inherent and necessary component of any dataset. In many cases, it offers crucial insights and is essential for understanding differences within a dataset and patterns.</p></li>
+<li><p><strong>Misconception</strong>: Variability in data occurs due to measurement errors.</p>
+<p><strong>Reality</strong>: Although variability may include measurement error, it also reflects genuine differences between observations, which are essential for understanding patterns and drawing meaningful conclusions.</p></li>
+<li><p><strong>Misconception</strong>: Low variability is often interpreted as a sign of grader accuracy and consistency in the data and considered a desired characteristic of data.</p>
+<p><strong>Reality</strong>: While low variability may indicate precision, it does not necessarily ensure accuracy or representativeness. For example, a thermometer that consistently provides incorrect readings has low variability but isn’t accurate.</p></li>
+<li><p><strong>Misconception</strong>: Increasing the sample size (e.g., from 10 cases to 100 cases) eliminates variability in the data.</p>
+<p><strong>Reality</strong>: Larger sample sizes reduce sampling variability (the differences between sample statistics and the population parameters, which is sampling error), but the natural variability in the population remains unchanged. This means that, in theory, the sample size doesn’t affect the inherent variability in data.</p></li>
+<li><p><strong>Misconception</strong>: It is commonly believed that all measures of variability, such as range, variance, standard deviation, or interquartile range, tell the same story.</p>
+<p><strong>Reality</strong>: Various measures of variability emphasize different characteristics of a dataset. For example, the range focuses solely on the extremes, whereas the standard deviation accounts for the distances of all data points from the mean.</p></li>
+<li><p><strong>Misconception</strong>: Variability measures, like standard deviation, are unrelated to measures of central tendency, like the mean.</p>
+<p><strong>Reality</strong>: Variability is closely linked to the central value used in its calculation. For instance, variance is calculated relative to the mean, highlighting the importance of the chosen measures of central tendency in interpreting variability.</p></li>
+<li><p><strong>Misconception</strong>: Mean and standard deviation values alone give enough insights into a dataset.</p>
+<p><strong>Reality</strong>: Mean and standard deviation offer valuable statistical summaries, but they may miss crucial patterns like extreme values (outliers), asymmetric distributions (skewed distributions), or multiple peaks in the data. Additional analysis beyond these basic measures is often needed for a complete understanding.</p></li>
+<li><p><strong>Misconception</strong>: High variability indicates that the data may be unreliable.</p>
+<p><strong>Reality</strong>: Actually, high variability in data doesn’t necessarily mean the data are untrustworthy. High variability simply means there’s a wide spread or dispersion in the values. The data could be perfectly accurate and reliable while still showing large variations.</p></li>
+<li><p><strong>Misconception</strong>: Knowing standard deviation of a dataset is sufficient to understand how data are spread.</p>
+<p><strong>Reality</strong>: While standard deviation measures typical distance from the mean, it fails to capture the full picture of how data are distributed, including the shape, symmetry, and concentration of values.</p></li>
+</ol>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3.4</span> Conclusion</h2>
+<p>In conclusion, this chapter has provided a thorough exploration of variability, a crucial aspect of statistical analysis that complements measures of central tendency. By understanding range, interquartile range, variance, and standard deviation, readers can better assess how data are spread and how individual data points deviate from the mean. This chapter emphasized the importance of selecting the appropriate measure of variability based on data characteristics, ensuring a more accurate interpretation of statistical findings. Additionally, it highlighted common misconceptions about variability, reinforcing the idea that variability is not an error but an essential component of data analysis. As we move forward, the next chapter will introduce visual representations of data, providing further insights into how data distributions can be effectively communicated and understood.</p>
+<section id="key-takeaways-for-educational-researchers-from-chapter-3" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-3"><span class="header-section-number">3.4.1</span> Key Takeaways for Educational Researchers from Chapter 3 </h3>
+<pre><code>- Variability highlights the extent of differences of each data point within a dataset beyond the central value. Two datasets may have the same mean values but differ drastically in their spread, impacting the interpretation of results.  
+
+- High variability in datasets (e.g., 8th graders’ standardized reading test scores across states) may suggest diverse population characteristics. On the other hand, low variability (e.g., standardized test scores within a specialized or sub-group) indicates uniformity, useful for specific interventions.   
+
+- Range can be largely impacted by outliers, while IQR or standard deviation will be less impacted by outliers. 
+
+- Central tendency, such as mean, median and mode, and variability are complementary metrics for understanding how data look. Reporting both metrics (e.g., mean and standard deviation) ensures a more complete summary.  
+
+- Educational researchers should choose measures of central tendency and variability that align with their data characteristics and research questions.</code></pre>
+</section>
+</section>
+<section id="key-definitions-from-chapter-3" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="key-definitions-from-chapter-3"><span class="header-section-number">3.5</span> Key Definitions from Chapter 3</h2>
+<p>The <strong>empirical rule</strong>, also known as the 68-95-99.7 rule, is a guideline stating that 68% of the data falls within 1 standard deviation of the mean, 95% of the data falls within 2 standard deviations of the mean, and 99.7% of the data falls within 3 standard deviations of the mean.</p>
+<p><strong>First quartile</strong> is another name for the median of the lower half of the values in a dataset (25th percentile).</p>
+<p><strong>Interquartile range (IQR)</strong> is a measure of variability that indicates the spread of the middle 50% of a dataset. It is the difference between the third quartile and the first quartile.</p>
+<p><strong>Range</strong> is a measure of variability that represents the difference between the largest and smallest values in a dataset. It provides a simple indication of how spread out the data is.</p>
+<p><strong>Standard deviation (SD)</strong> is the square root of the variance and is expressed in the same units as the data. It quantifies how much the individual data points deviate, on average, from the mean of the dataset.</p>
+<p><strong>Third quartile</strong> is another name for the median of the upper half of the values in a dataset (75th percentile).</p>
+<p><strong>Variability</strong> refers to the extent to which data points in a dataset differ from each other and from the central value (e.g., the mean or median). It is a measure of how spread out or dispersed the data is. High variability indicates that the data points are more spread out, while low variability means they are closer together.</p>
+<p><strong>Variance</strong> is a measure of variability that indicates how far the data points in a dataset are spread out from the mean.</p>
+</section>
+<section id="check-your-understanding" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">3.6</span> Check Your Understanding</h2>
+<ol type="1">
+<li><p><strong>What is the range of the following dataset? (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</strong></p>
+<ol type="a">
+<li><p>10</p></li>
+<li><p>9</p></li>
+<li><p>1</p></li>
+<li><p>0</p></li>
+</ol></li>
+<li><p><strong>The ______ is the square root of the variance?</strong></p>
+<ol type="a">
+<li><p>Interquartile Range</p></li>
+<li><p>Range</p></li>
+<li><p>Standard Deviation</p></li>
+<li><p>Mean</p></li>
+</ol></li>
+<li><p><strong>What is the population variance of the following dataset? (1, 2, 3, 4, 5)</strong></p>
+<ol type="a">
+<li><p>1</p></li>
+<li><p>2</p></li>
+<li><p>2.5</p></li>
+<li><p>3</p></li>
+</ol></li>
+<li><p><strong>What is the population standard deviation of the following dataset? (1, 2, 3, 4, 5)</strong></p>
+<ol type="a">
+<li><p>1.41</p></li>
+<li><p>1.73</p></li>
+<li><p>4.00</p></li>
+<li><p>9.00</p></li>
+</ol></li>
+<li><p><strong>What percentage of values fall within 1 SD of the mean if data are normally distributed?</strong></p>
+<ol type="a">
+<li><p>50%</p></li>
+<li><p>68%</p></li>
+<li><p>95%</p></li>
+<li><p>99.7%</p></li>
+</ol></li>
+</ol>
+</section>
+</section>
+<section id="chapter-3-exploring-data-spread---measures-of-variability-in-r" class="level1 unnumbered">
+<h1 class="unnumbered">Chapter 3: Exploring Data Spread - Measures of Variability in R</h1>
 <p>In this section, we demonstrate how to compute and interpret measures of variability—<strong>range, interquartile range (IQR), variance</strong>, and <strong>standard deviation</strong>—using math achievement data from the U.S. sample in the Programme for International Student Assessment (PISA). We will use the PV1MATH variable (Math Plausible Value 1) as an illustrative example.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required package </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter3/Clean-data_mar6.sav"</span>) </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the math plausible value </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>math_achi <span class="ot">&lt;-</span> data<span class="sc">$</span>PV1MATH </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required package </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter3/Clean-data_mar6.sav"</span>) </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the math plausible value </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>math_achi <span class="ot">&lt;-</span> data<span class="sc">$</span>PV1MATH </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="calculating-the-range" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="calculating-the-range">1 Calculating the Range</h2>
 <p>The range shows the spread between the smallest and largest scores.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>range_math <span class="ot">&lt;-</span> <span class="fu">range</span>(math_achi) <span class="co">#return the minimum and maximum values </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>range_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>range_math <span class="ot">&lt;-</span> <span class="fu">range</span>(math_achi) <span class="co">#return the minimum and maximum values </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>range_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 188.352 819.508</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>range_diff <span class="ot">&lt;-</span> <span class="fu">diff</span>(range_math) <span class="co">#calculate the difference between the two values </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>range_diff </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>range_diff <span class="ot">&lt;-</span> <span class="fu">diff</span>(range_math) <span class="co">#calculate the difference between the two values </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>range_diff </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 631.156</code></pre>
 </div>
@@ -365,15 +651,15 @@ window.Quarto = {
 <h2 class="unnumbered anchored" data-anchor-id="calculating-the-interquartile-range-iqr">2 Calculating the Interquartile Range (IQR)</h2>
 <p>IQR represents the middle 50% of the scores and is more robust to outliers.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>iqr_math <span class="ot">&lt;-</span> <span class="fu">IQR</span>(math_achi) <span class="co"># Calculate the IQR </span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>iqr_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>iqr_math <span class="ot">&lt;-</span> <span class="fu">IQR</span>(math_achi) <span class="co"># Calculate the IQR </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>iqr_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 137.578</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#return the 1st quartile (25th percentile), median (50th percentile), and 3rd quartile (75th percentile) </span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(math_achi, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#return the 1st quartile (25th percentile), median (50th percentile), and 3rd quartile (75th percentile) </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(math_achi, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     25%      50%      75% 
 391.3428 457.9070 528.9207 </code></pre>
@@ -385,40 +671,40 @@ window.Quarto = {
 <h1 class="unnumbered">3 Calculating the Variance and Standard Deviation</h1>
 <p>Variance shows the average squared distance from the mean, and the standard deviation is its square root. By default, R calculates the <em>sample</em> variance and <em>sample</em> standard deviation, which divide by <span class="math inline">\((n - 1)\)</span>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>var_math <span class="ot">&lt;-</span> <span class="fu">var</span>(math_achi) <span class="co"># Calculate the variance </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>var_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>var_math <span class="ot">&lt;-</span> <span class="fu">var</span>(math_achi) <span class="co"># Calculate the variance </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>var_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9049.605</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sd_math <span class="ot">&lt;-</span> <span class="fu">sd</span>(math_achi) <span class="co"># Calculate the standard deviation </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sd_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sd_math <span class="ot">&lt;-</span> <span class="fu">sd</span>(math_achi) <span class="co"># Calculate the standard deviation </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sd_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 95.12941</code></pre>
 </div>
 </div>
 <p>If needed, we can approximate population variance from the sample variance using the following adjustment:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(math_achi))  </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pop_var_math <span class="ot">&lt;-</span> var_math <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n  <span class="co"># Convert sample variance to population variance </span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pop_sd_math <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pop_var_math) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(math_achi))  </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>pop_var_math <span class="ot">&lt;-</span> var_math <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n  <span class="co"># Convert sample variance to population variance </span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>pop_sd_math <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pop_var_math) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="visualizing-the-distribution-with-mean-and-sd" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="visualizing-the-distribution-with-mean-and-sd">4 Visualizing the Distribution with Mean and SD</h2>
 <p>We can use a histogram to examine how the scores are spread around the mean.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mean_math <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi) </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with mean and ±1 SD </span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(math_achi), <span class="fu">aes</span>(<span class="at">x =</span> math_achi)) <span class="sc">+</span> </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math <span class="sc">+</span> sd_math, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math <span class="sc">-</span> sd_math, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Math Scores with Mean and ±1 SD"</span>, </span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Math Scores (PV1MATH)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mean_math <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi) </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with mean and ±1 SD </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(math_achi), <span class="fu">aes</span>(<span class="at">x =</span> math_achi)) <span class="sc">+</span> </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math <span class="sc">+</span> sd_math, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math <span class="sc">-</span> sd_math, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Math Scores with Mean and ±1 SD"</span>, </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Math Scores (PV1MATH)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -429,10 +715,10 @@ window.Quarto = {
 </div>
 <p>Let’s see how many students scored within 1, 2, and 3 standard deviations of the mean.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>within_1sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> sd_math)) </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>within_2sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>sd_math)) </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>within_3sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>sd_math)) </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(within_1sd, within_2sd, within_3sd) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>within_1sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> sd_math)) </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>within_2sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>sd_math)) </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>within_3sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>sd_math)) </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(within_1sd, within_2sd, within_3sd) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6612478 0.9611160 0.9989016</code></pre>
 </div>
@@ -440,8 +726,8 @@ window.Quarto = {
 </section>
 <section id="interpreting-variability-in-math-achievement-scores" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="interpreting-variability-in-math-achievement-scores">5 Interpreting Variability in Math Achievement Scores</h2>
-<section id="measures-of-variability" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="measures-of-variability">5.1 5.1 Measures of Variability</h3>
+<section id="measures-of-variability-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="measures-of-variability-1">5.1 5.1 Measures of Variability</h3>
 <p>The analysis of math achievement scores (PV1MATH) from the PISA U.S. dataset provides key insights into the distribution using measures of variability.</p>
 <ul>
 <li><p><strong>Range</strong> : The math scores in the U.S. sample range from 188.35 to 819.51, giving a total spread of 631.16 points. This wide range suggests a broad performance gap among students, though extreme scores may influence this value.</p></li>

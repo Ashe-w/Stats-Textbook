@@ -1,4 +1,4 @@
-# Chapter 2: Exploring Data Spread - Measures of Variability in R {.unnumbered}
+# Chapter 3: Exploring Data Spread - Measures of Variability in R {.unnumbered}
 
 In this section, we demonstrate how to compute and interpret measures of variability—**range, interquartile range (IQR), variance**, and **standard deviation**—using math achievement data from the U.S. sample in the Programme for International Student Assessment (PISA). We will use the PV1MATH variable (Math Plausible Value 1) as an illustrative example. 
 
