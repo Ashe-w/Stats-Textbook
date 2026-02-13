@@ -1,0 +1,83 @@
+
+.formula-table table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.formula-table th,
+.formula-table td{
+  padding: 1rem 1.25rem;
+  vertical-align: middle;
+}
+
+.formula-table thead th{
+  text-align: center;
+  font-weight: 700;
+  border-bottom: 2px solid #cfcfcf;
+}
+
+/* Outer top/bottom rules */
+.formula-table table{
+  border-top: 2px solid #cfcfcf;
+  border-bottom: 2px solid #cfcfcf;
+}
+
+/* Row divider between Variance and Std Dev */
+.formula-table tbody tr:first-child td{
+  border-bottom: 1px solid #cfcfcf;
+}
+
+/* Left label column styling + divider */
+.formula-table tbody td:first-child{
+  font-weight: 700;
+  width: 22%;
+  border-right: 2px solid #cfcfcf; /* divider after label column */
+}
+
+/* Divider BETWEEN population and sample columns (the one you care about) */
+.formula-table thead th:nth-child(2),
+.formula-table tbody td:nth-child(2){
+  border-right: 2px solid #cfcfcf;
+}
+
+/* Center equations */
+.formula-table tbody td:nth-child(2),
+.formula-table tbody td:nth-child(3){
+  text-align: center;
+}
+
+
+.variability-table{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  overflow: hidden;          /* makes dividers flush to rounded border */
+  background: #fff;
+}
+
+.variability-table .vcell{
+  padding: 1.1rem 1.2rem;
+}
+
+.variability-table .vcell + .vcell{
+  border-left: 1px solid #cfcfcf;   /* vertical dividers */
+}
+
+.variability-table .vtitle{
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: .6rem;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.variability-table ul{
+  margin: 0;
+  padding-left: 1.1rem;      /* tighter bullet indent */
+}
+
+.variability-table li{
+  margin: .35rem 0;          /* tighter spacing between bullets */
+  line-height: 1.35;
+}
