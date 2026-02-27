@@ -312,6 +312,12 @@ window.Quarto = {
   <li><a href="#calculating-the-mode" id="toc-calculating-the-mode" class="nav-link" data-scroll-target="#calculating-the-mode">3 Calculating the Mode</a></li>
   <li><a href="#examining-skewness" id="toc-examining-skewness" class="nav-link" data-scroll-target="#examining-skewness">4 Examining Skewness</a></li>
   </ul></li>
+  <li><a href="#understanding-the-center-measures-of-central-tendency-in-spss" id="toc-understanding-the-center-measures-of-central-tendency-in-spss" class="nav-link" data-scroll-target="#understanding-the-center-measures-of-central-tendency-in-spss">Understanding the Center: Measures of Central Tendency in SPSS</a>
+  <ul class="collapse">
+  <li><a href="#importing-data-into-spss" id="toc-importing-data-into-spss" class="nav-link" data-scroll-target="#importing-data-into-spss">1 Importing Data into SPSS</a></li>
+  <li><a href="#computing-mean-median-mode-and-skewness" id="toc-computing-mean-median-mode-and-skewness" class="nav-link" data-scroll-target="#computing-mean-median-mode-and-skewness">2 Computing Mean, Median, Mode, and Skewness</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">3 Histogram</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -718,6 +724,73 @@ window.Quarto = {
 <ul>
 <li><p>a positive skewness value indicates a right-skewed distribution (longer tail on the right), which is consistent with the histogram above.</p></li>
 <li><p>when the data are right-skewed, the mean is greater than the median, and the mode is less than the median. These are consistent with what we observed in the calculations above.</p></li>
+</ul>
+</section>
+</section>
+<section id="understanding-the-center-measures-of-central-tendency-in-spss" class="level1 unnumbered">
+<h1 class="unnumbered">Understanding the Center: Measures of Central Tendency in SPSS</h1>
+<p>Unlike statistical software such as R or SAS, which primarily rely on programming for data analysis, SPSS allows users to perform most statistical operations through an intuitive graphical user interface. For the procedures demonstrated in this book, the majority can be completed through menu selections without the need for coding.</p>
+<p>This document provides a step-by-step guide on calculating and interpreting measures of central tendency—including mean, median, mode, and skewness—in SPSS. The demonstration uses data from the 2022 Programme for International Student Assessment (PISA) U.S. dataset, specifically the variable PV1MATH. <a href="&quot;https://www.oecd.org/en/about/programmes/pisa.html&quot;">The dataset can be downloaded here from the OECD site</a></p>
+<section id="importing-data-into-spss" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="importing-data-into-spss">1 Importing Data into SPSS</h2>
+<p>To begin the analysis, the dataset must first be loaded into SPSS. Follow these steps to import the data:</p>
+<ol type="1">
+<li><p>Open SPSS.</p></li>
+<li><p>Click on File &gt; Open &gt; Data.</p></li>
+<li><p>Select the dataset file (US_Data_22.sav) and click Open.</p></li>
+</ol>
+<p>This will load the dataset into SPSS for analysis.</p>
+<p>SPSS supports various data formats, including but not limited to Excel and text files. When working with a file in a different format, the import process is very similar:</p>
+<ol type="1">
+<li><p>Click on File &gt; Import Data.</p></li>
+<li><p>Select the appropriate file format from the available options.</p></li>
+<li><p>Follow the on-screen prompts to complete the import process.</p></li>
+</ol>
+<p>Once the data is imported, it will be displayed in the Data View tab in SPSS.</p>
+</section>
+<section id="computing-mean-median-mode-and-skewness" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="computing-mean-median-mode-and-skewness">2 Computing Mean, Median, Mode, and Skewness</h2>
+<p>After importing the dataset, the next step is to calculate key measures of central tendency and distribution. SPSS allows users to compute the <strong>mean, median, mode, and skewness</strong> through its menu-driven interface. Follow the steps below to perform this analysis:</p>
+<ol type="1">
+<li><p>Click on Analyze &gt; Descriptive Statistics &gt; Frequencies.</p></li>
+<li><p>Select PV1MATH as the variable.</p></li>
+<li><p>In the lower-left corner, uncheck “Display frequency tables” since this analysis does not require frequency tables.</p></li>
+<li><p>Click Statistics and check the boxes for Mean, Median, Mode, and Skewness.</p></li>
+<li><p>Click Continue, then click OK.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter2/fig2-1.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 2.1</figcaption>
+</figure>
+</div>
+<p>The results will be displayed in the Output Viewer, showing the computed values for mean, median, mode, and skewness of the PV1MATH variable.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter2/fig2-2.png" class="img-fluid figure-img" style="width:30.0%"></p>
+<figcaption>Fig 2.2</figcaption>
+</figure>
+</div>
+<p>You may notice that SPSS warns that multiple modes exist for PV1MATH because all values are unique. To better illustrate how the mode works, a new variable, PV1MATH_INT, was created by rounding all values to the nearest integer. Checking its mode in SPSS results in a unique value: 415.</p>
+</section>
+<section id="histogram" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="histogram">3 Histogram</h2>
+<p>To better visualize the distribution of PV1MATH, we can generate a histogram. To create the plot in SPSS, follow these steps:</p>
+<ol type="1">
+<li><p>Click Graphs &gt; Histogram.</p></li>
+<li><p>Select PV1MATH as the variable, then click OK.</p></li>
+</ol>
+<p>Below is the histogram for PV1MATH. The bin width has been adjusted for better readability—you may see narrower bins depending on the default settings in SPSS.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter2/fig2-3.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 2.3</figcaption>
+</figure>
+</div>
+<p>Recall that:</p>
+<ul>
+<li><p>a positive skewness value indicates a right-skewed distribution (longer tail on the right), which is consistent with the histogram above.</p></li>
+<li><p>when the data are right-skewed (here it is slightly right-skewed), the mean is greater than the median, and the mode is less than the median. These are consistent with what we observed in the calculations above.</p></li>
 </ul>
 
 

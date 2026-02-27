@@ -1,0 +1,70 @@
+# Understanding the Center: Measures of Central Tendency in SPSS {.unnumbered}
+
+Unlike statistical software such as R or SAS, which primarily rely on programming for data analysis, SPSS allows users to perform most statistical operations through an intuitive graphical user interface. For the procedures demonstrated in this book, the majority can be completed through menu selections without the need for coding. 
+
+This document provides a step-by-step guide on calculating and interpreting measures of central tendency—including mean, median, mode, and skewness—in SPSS. The demonstration uses data from the 2022 Programme for International Student Assessment (PISA) U.S. dataset, specifically the variable PV1MATH. [The dataset can be downloaded here from the OECD site]("https://www.oecd.org/en/about/programmes/pisa.html")
+
+## 1    Importing Data into SPSS {.unnumbered}
+
+To begin the analysis, the dataset must first be loaded into SPSS. Follow these steps to import the data: 
+
+1. Open SPSS. 
+
+2. Click on File > Open > Data. 
+
+3. Select the dataset file (US_Data_22.sav) and click Open. 
+
+This will load the dataset into SPSS for analysis. 
+
+SPSS supports various data formats, including but not limited to Excel and text files. When working with a file in a different format, the import process is very similar: 
+
+1. Click on File > Import Data. 
+
+2. Select the appropriate file format from the available options. 
+
+3. Follow the on-screen prompts to complete the import process. 
+
+Once the data is imported, it will be displayed in the Data View tab in SPSS. 
+
+## 2    Computing Mean, Median, Mode, and Skewness {.unnumbered}
+
+After importing the dataset, the next step is to calculate key measures of central tendency and distribution. SPSS allows users to compute the **mean, median, mode, and skewness** through its menu-driven interface. Follow the steps below to perform this analysis: 
+
+1. Click on Analyze > Descriptive Statistics > Frequencies. 
+
+2. Select PV1MATH as the variable. 
+
+3. In the lower-left corner, uncheck "Display frequency tables" since this analysis does not require frequency tables. 
+
+4. Click Statistics and check the boxes for Mean, Median, Mode, and Skewness. 
+
+5. Click Continue, then click OK. 
+
+![Fig 2.1](chapter2/fig2-1.png){fig-align="center" width=60%}
+
+The results will be displayed in the Output Viewer, showing the computed values for mean, median, mode, and skewness of the PV1MATH variable.  
+
+![Fig 2.2](chapter2/fig2-2.png){fig-align="center" width=30%}
+
+
+You may notice that SPSS warns that multiple modes exist for PV1MATH because all values are unique. To better illustrate how the mode works, a new variable, PV1MATH_INT, was created by rounding all values to the nearest integer. Checking its mode in SPSS results in a unique value: 415. 
+
+## 3    Histogram  {.unnumbered}
+
+To better visualize the distribution of PV1MATH, we can generate a histogram. To create the plot in SPSS, follow these steps: 
+
+1. Click Graphs > Histogram. 
+
+2. Select PV1MATH as the variable, then click OK. 
+
+Below is the histogram for PV1MATH. The bin width has been adjusted for better readability—you may see narrower bins depending on the default settings in SPSS. 
+
+![Fig 2.3](chapter2/fig2-3.png){fig-align="center" width=60%}
+
+Recall that: 
+
+- a positive skewness value indicates a right-skewed distribution (longer tail on the right), which is consistent with the histogram above. 
+
+- when the data are right-skewed (here it is slightly right-skewed), the mean is greater than the median, and the mode is less than the median. These are consistent with what we observed in the calculations above. 
+
+ 

@@ -36,7 +36,7 @@
 }
 
 /* Divider BETWEEN population and sample columns (the one you care about) */
-.formula-table thead th:nth-child(2),
+
 .formula-table tbody td:nth-child(2){
   border-right: 2px solid #cfcfcf;
 }

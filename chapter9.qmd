@@ -1,7 +1,6 @@
 ---
 title: "Chapter 9"
+number-sections: true
 ---
-
-# Chapter 9
-
-This is Chapter 9.
+{{< include chapter9/chapter9text.qmd >}}
+{{< include chapter9/chapter9r.qmd >}}

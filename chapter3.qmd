@@ -5,4 +5,4 @@ title: "Chapter 3"
 
 {{< include chapter3/chapter3text.qmd >}}
 {{< include chapter3/chapter3r.qmd >}}
- 
+{{< include chapter3/chapter3spss.qmd >}}

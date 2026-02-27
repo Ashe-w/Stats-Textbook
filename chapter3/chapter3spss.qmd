@@ -1,0 +1,103 @@
+# Exploring Data Spread - Measures of Variability in SPSS {.unnumbered}
+
+In this section, we demonstrate how to compute and interpret measures of variability—**range, interquartile range (IQR), variance**, and **standard deviation**—using math achievement data from the U.S. sample in the Programme for International Student Assessment (PISA). We will use the PV1MATH variable (Math Plausible Value 1) as an illustrative example. 
+
+## 1    Computing and Visualizing Variability {.unnumbered}
+
+The first step, as introduced in Chapter 2, is to import the data into SPSS. To examine the variability of PV1MATH, SPSS offers several approaches. In this section, we use the Explore function under Descriptive Statistics, which conveniently provides a full summary of key statistics and a visual distribution in one step. Although the method Descriptive Statistics → Descriptives (introduced in Chapter 2) can compute values such as the mean, standard deviation, and range, it does not include the interquartile range or quartile values. 
+
+To run the Explore procedure: 
+
+1. Open the Analyze menu, go to Descriptive Statistics, and select Explore. 
+
+2. Move the variable PV1MATH into the Dependent List. 
+
+3. Click the Statistics button and ensure that both Descriptives and Percentiles are selected. 
+
+4. Click the Plots button, choose Histogram, and optionally select Normality plots with tests if normality assessment is needed. 
+
+5. Click Continue, then OK to generate the output. 
+
+![Fig 3.1](chapter3/fig3-1.png){fig-align="center" width=50%}
+
+Once you run the Explore procedure, the results appear in the Output Viewer, providing a comprehensive summary of the PV1MATH variable. This output includes both numerical statistics and a histogram. 
+
+![Fig 3.2](chapter3/fig3-2.png){fig-align="center" width=60%}
+
+In the Descriptives table, we see that the mean math score is 461.87, with a 95% confidence interval ranging from 459.19 to 464.64. The median is 457.91, and the 5% trimmed mean is also close, suggesting a relatively balanced distribution. The minimum and maximum scores are 188.35 and 819.51, respectively, yielding a **range** of 631.16, which shows the spread between the lowest and highest scores. 
+
+The **interquartile range (IQR)** is 137.67, representing the middle 50 percent of scores. It is calculated using the **25th percentile** and **75th percentile**, also referred to as the **first quartile (Q1)** and **third quartile (Q3)**. These values, shown in the Percentiles table, are 391.25 for Q1 and 528.93 for Q3. The IQR provides a more robust measure of variability because it is less affected by extreme scores than the full range. 
+
+The **variance** is 9049.61, and the standard deviation is 95.13, reflecting how much scores typically deviate from the mean. SPSS calculates these as sample statistics, dividing by (n − 1). 
+
+The Percentiles table also includes values at the 5th, 10th, 50th, 90th, and 95th percentiles. These can be used to understand where a student’s score falls within the broader distribution. In addition to the numerical output, we can also look at the histogram to examine how the scores are spread around the mean and to get a visual sense of the distribution’s overall shape. 
+
+![Fig 3.3](chapter3/fig3-3.png){fig-align="center" width=60%}
+
+## 2    Examining Score Concentration Around the Mean {.unnumbered}
+
+After computing and visualizing variability, we can take a further step to examine how scores are distributed in relation to the mean. Specifically, we were interested in how many students scored within one, two, and three standard deviations from the average math score. 
+
+To explore this, we used SPSS syntax commands rather than menu options. First, the AGGREGATE command was used to compute the overall mean and standard deviation of the PV1MATH variable, and these values were saved as new variables (mean_math and sd_math) for use in further calculations. Next, we created new variables to indicate whether each score fell within $\pm1$, $\pm2$, or $\pm3$ standard deviations of the mean. Finally, the FREQUENCIES command was used to calculate the proportion of students in each category by computing the mean of these binary indicators. The SPSS syntax is as below:
+
+```{SPSS}
+AGGREGATE 
+
+  /OUTFILE=* MODE=ADDVARIABLES 
+
+  /BREAK= 
+
+  /mean_math = MEAN(PV1MATH) 
+
+  /sd_math = SD(PV1MATH). 
+
+ 
+
+COMPUTE within_1sd = (PV1MATH >= (mean_math - 1*sd_math)) AND (PV1MATH <= (mean_math + 1*sd_math)). 
+
+COMPUTE within_2sd = (PV1MATH >= (mean_math - 2*sd_math)) AND (PV1MATH <= (mean_math + 2*sd_math)). 
+
+COMPUTE within_3sd = (PV1MATH >= (mean_math - 3*sd_math)) AND (PV1MATH <= (mean_math + 3*sd_math)). 
+
+EXECUTE. 
+
+ 
+
+FREQUENCIES VARIABLES=within_1sd within_2sd within_3sd 
+
+  /STATISTICS=MEAN. 
+```
+
+The result includes three frequency tables, each showing how many students fall within one, two, and three standard deviations of the mean. What we need to focus on is the “Valid Percent” column for the value 1.00, which indicates the proportion of students whose scores fall within the specified range. 
+
+According to the output, 66.1 percent of students scored within one standard deviation of the mean, 96.1 percent were within two standard deviations, and 99.9 percent fell within three standard deviations. These values are taken directly from the highlighted rows in the Valid Percent column. These proportions closely match the empirical rule (68–95–99.7), which is typically expected for a normally distributed variable. 
+
+
+![Fig 3.4](chapter3/fig3-4.png){fig-align="center" width=40%}
+
+
+## 3    Interpreting Variability in Math Achievement Scores {.unnumbered}
+
+### 3.1 Measures of Variability {.unnumbered}
+
+The analysis of math achievement scores (PV1MATH) from the PISA U.S. dataset provides key insights into the distribution using measures of variability. 
+
+- **Range**: The math scores in the U.S. sample range from 188.35 to 819.51, giving a total spread of 631.16 points. This wide range suggests a broad performance gap among students, though extreme scores may influence this value. 
+
+- **Interquartile Range**: The IQR is 137.58, with the 25th percentile at 391.34 and the 75th percentile at 528.92. This indicates that the middle 50% of students scored within this 138-point window, providing a more stable summary of typical score spread. 
+
+- **Variance and Standard Deviation**: The sample variance is 9049.61, and the standard deviation is 95.13. This tells us that, on average, individual scores deviate by about 95 points from the mean score. 
+
+The histogram confirms a roughly symmetric distribution centered around the mean, with the bulk of scores falling within one standard deviation. 
+
+### 3.2	Visualizing Spread and Normality {.unnumbered}
+
+- About 66.1% of students scored within 1 SD of the mean (approximately between 366.74 and 557.00). 
+
+- About 96.1% fell within 2 SDs, and 99.9% were within 3 SDs. 
+
+These proportions align well with the 68-95-99.7% empirical rule, indicating that the distribution of math scores is approximately normal. 
+
+In summary, these metrics offer a comprehensive picture of performance variation, helping educational researchers understand both how typical students perform and how much their scores vary. Such insights are essential for designing instruction, identifying gaps, and guiding data-informed decision-making. 
+
+ 

@@ -321,6 +321,16 @@ window.Quarto = {
   <li><a href="#visualizing-spread-and-normality" id="toc-visualizing-spread-and-normality" class="nav-link" data-scroll-target="#visualizing-spread-and-normality">5.2 Visualizing Spread and Normality</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#exploring-data-spread---measures-of-variability-in-spss" id="toc-exploring-data-spread---measures-of-variability-in-spss" class="nav-link" data-scroll-target="#exploring-data-spread---measures-of-variability-in-spss">Exploring Data Spread - Measures of Variability in SPSS</a>
+  <ul class="collapse">
+  <li><a href="#computing-and-visualizing-variability" id="toc-computing-and-visualizing-variability" class="nav-link" data-scroll-target="#computing-and-visualizing-variability">1 Computing and Visualizing Variability</a></li>
+  <li><a href="#examining-score-concentration-around-the-mean" id="toc-examining-score-concentration-around-the-mean" class="nav-link" data-scroll-target="#examining-score-concentration-around-the-mean">2 Examining Score Concentration Around the Mean</a></li>
+  <li><a href="#interpreting-variability-in-math-achievement-scores-1" id="toc-interpreting-variability-in-math-achievement-scores-1" class="nav-link" data-scroll-target="#interpreting-variability-in-math-achievement-scores-1">3 Interpreting Variability in Math Achievement Scores</a>
+  <ul class="collapse">
+  <li><a href="#measures-of-variability-2" id="toc-measures-of-variability-2" class="nav-link" data-scroll-target="#measures-of-variability-2">3.1 Measures of Variability</a></li>
+  <li><a href="#visualizing-spread-and-normality-1" id="toc-visualizing-spread-and-normality-1" class="nav-link" data-scroll-target="#visualizing-spread-and-normality-1">3.2 Visualizing Spread and Normality</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -553,15 +563,13 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 <p>In conclusion, this chapter has provided a thorough exploration of variability, a crucial aspect of statistical analysis that complements measures of central tendency. By understanding range, interquartile range, variance, and standard deviation, readers can better assess how data are spread and how individual data points deviate from the mean. This chapter emphasized the importance of selecting the appropriate measure of variability based on data characteristics, ensuring a more accurate interpretation of statistical findings. Additionally, it highlighted common misconceptions about variability, reinforcing the idea that variability is not an error but an essential component of data analysis. As we move forward, the next chapter will introduce visual representations of data, providing further insights into how data distributions can be effectively communicated and understood.</p>
 <section id="key-takeaways-for-educational-researchers-from-chapter-3" class="level3" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-3"><span class="header-section-number">3.4.1</span> Key Takeaways for Educational Researchers from Chapter 3 </h3>
-<pre><code>- Variability highlights the extent of differences of each data point within a dataset beyond the central value. Two datasets may have the same mean values but differ drastically in their spread, impacting the interpretation of results.  
-
-- High variability in datasets (e.g., 8th graders’ standardized reading test scores across states) may suggest diverse population characteristics. On the other hand, low variability (e.g., standardized test scores within a specialized or sub-group) indicates uniformity, useful for specific interventions.   
-
-- Range can be largely impacted by outliers, while IQR or standard deviation will be less impacted by outliers. 
-
-- Central tendency, such as mean, median and mode, and variability are complementary metrics for understanding how data look. Reporting both metrics (e.g., mean and standard deviation) ensures a more complete summary.  
-
-- Educational researchers should choose measures of central tendency and variability that align with their data characteristics and research questions.</code></pre>
+<ul>
+<li><p>Variability highlights the extent of differences of each data point within a dataset beyond the central value. Two datasets may have the same mean values but differ drastically in their spread, impacting the interpretation of results.</p></li>
+<li><p>High variability in datasets (e.g., 8th graders’ standardized reading test scores across states) may suggest diverse population characteristics. On the other hand, low variability (e.g., standardized test scores within a specialized or sub-group) indicates uniformity, useful for specific interventions.</p></li>
+<li><p>Range can be largely impacted by outliers, while IQR or standard deviation will be less impacted by outliers.</p></li>
+<li><p>Central tendency, such as mean, median and mode, and variability are complementary metrics for understanding how data look. Reporting both metrics (e.g., mean and standard deviation) ensures a more complete summary.</p></li>
+<li><p>Educational researchers should choose measures of central tendency and variability that align with their data characteristics and research questions.</p></li>
+</ul>
 </section>
 </section>
 <section id="key-definitions-from-chapter-3" class="level2" data-number="3.5">
@@ -620,28 +628,28 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 <h1 class="unnumbered">Chapter 3: Exploring Data Spread - Measures of Variability in R</h1>
 <p>In this section, we demonstrate how to compute and interpret measures of variability—<strong>range, interquartile range (IQR), variance</strong>, and <strong>standard deviation</strong>—using math achievement data from the U.S. sample in the Programme for International Student Assessment (PISA). We will use the PV1MATH variable (Math Plausible Value 1) as an illustrative example.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required package </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset </span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter3/Clean-data_mar6.sav"</span>) </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the math plausible value </span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>math_achi <span class="ot">&lt;-</span> data<span class="sc">$</span>PV1MATH </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required package </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter3/Clean-data_mar6.sav"</span>) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the math plausible value </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>math_achi <span class="ot">&lt;-</span> data<span class="sc">$</span>PV1MATH </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="calculating-the-range" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="calculating-the-range">1 Calculating the Range</h2>
 <p>The range shows the spread between the smallest and largest scores.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>range_math <span class="ot">&lt;-</span> <span class="fu">range</span>(math_achi) <span class="co">#return the minimum and maximum values </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>range_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>range_math <span class="ot">&lt;-</span> <span class="fu">range</span>(math_achi) <span class="co">#return the minimum and maximum values </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>range_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 188.352 819.508</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>range_diff <span class="ot">&lt;-</span> <span class="fu">diff</span>(range_math) <span class="co">#calculate the difference between the two values </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>range_diff </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>range_diff <span class="ot">&lt;-</span> <span class="fu">diff</span>(range_math) <span class="co">#calculate the difference between the two values </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>range_diff </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 631.156</code></pre>
 </div>
@@ -651,15 +659,15 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 <h2 class="unnumbered anchored" data-anchor-id="calculating-the-interquartile-range-iqr">2 Calculating the Interquartile Range (IQR)</h2>
 <p>IQR represents the middle 50% of the scores and is more robust to outliers.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>iqr_math <span class="ot">&lt;-</span> <span class="fu">IQR</span>(math_achi) <span class="co"># Calculate the IQR </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>iqr_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>iqr_math <span class="ot">&lt;-</span> <span class="fu">IQR</span>(math_achi) <span class="co"># Calculate the IQR </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>iqr_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 137.578</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#return the 1st quartile (25th percentile), median (50th percentile), and 3rd quartile (75th percentile) </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(math_achi, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#return the 1st quartile (25th percentile), median (50th percentile), and 3rd quartile (75th percentile) </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(math_achi, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     25%      50%      75% 
 391.3428 457.9070 528.9207 </code></pre>
@@ -671,40 +679,40 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 <h1 class="unnumbered">3 Calculating the Variance and Standard Deviation</h1>
 <p>Variance shows the average squared distance from the mean, and the standard deviation is its square root. By default, R calculates the <em>sample</em> variance and <em>sample</em> standard deviation, which divide by <span class="math inline">\((n - 1)\)</span>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>var_math <span class="ot">&lt;-</span> <span class="fu">var</span>(math_achi) <span class="co"># Calculate the variance </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>var_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>var_math <span class="ot">&lt;-</span> <span class="fu">var</span>(math_achi) <span class="co"># Calculate the variance </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>var_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9049.605</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sd_math <span class="ot">&lt;-</span> <span class="fu">sd</span>(math_achi) <span class="co"># Calculate the standard deviation </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sd_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sd_math <span class="ot">&lt;-</span> <span class="fu">sd</span>(math_achi) <span class="co"># Calculate the standard deviation </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sd_math </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 95.12941</code></pre>
 </div>
 </div>
 <p>If needed, we can approximate population variance from the sample variance using the following adjustment:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(math_achi))  </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>pop_var_math <span class="ot">&lt;-</span> var_math <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n  <span class="co"># Convert sample variance to population variance </span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>pop_sd_math <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pop_var_math) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(math_achi))  </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pop_var_math <span class="ot">&lt;-</span> var_math <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n  <span class="co"># Convert sample variance to population variance </span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pop_sd_math <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pop_var_math) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="visualizing-the-distribution-with-mean-and-sd" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="visualizing-the-distribution-with-mean-and-sd">4 Visualizing the Distribution with Mean and SD</h2>
 <p>We can use a histogram to examine how the scores are spread around the mean.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mean_math <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi) </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with mean and ±1 SD </span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(math_achi), <span class="fu">aes</span>(<span class="at">x =</span> math_achi)) <span class="sc">+</span> </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> </span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math <span class="sc">+</span> sd_math, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math <span class="sc">-</span> sd_math, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Math Scores with Mean and ±1 SD"</span>, </span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Math Scores (PV1MATH)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mean_math <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi) </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with mean and ±1 SD </span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(math_achi), <span class="fu">aes</span>(<span class="at">x =</span> math_achi)) <span class="sc">+</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math <span class="sc">+</span> sd_math, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean_math <span class="sc">-</span> sd_math, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Math Scores with Mean and ±1 SD"</span>, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Math Scores (PV1MATH)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -715,10 +723,10 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 </div>
 <p>Let’s see how many students scored within 1, 2, and 3 standard deviations of the mean.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>within_1sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> sd_math)) </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>within_2sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>sd_math)) </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>within_3sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>sd_math)) </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(within_1sd, within_2sd, within_3sd) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>within_1sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> sd_math)) </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>within_2sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>sd_math)) </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>within_3sd <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi <span class="sc">&gt;</span> (mean_math <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>sd_math) <span class="sc">&amp;</span> math_achi <span class="sc">&lt;</span> (mean_math <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>sd_math)) </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(within_1sd, within_2sd, within_3sd) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6612478 0.9611160 0.9989016</code></pre>
 </div>
@@ -738,6 +746,107 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 <section id="visualizing-spread-and-normality" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="visualizing-spread-and-normality">5.2 Visualizing Spread and Normality</h3>
 <p>The histogram confirms a roughly symmetric distribution centered around the mean, with the bulk of scores falling within one standard deviation.</p>
+<ul>
+<li><p>About 66.1% of students scored within 1 SD of the mean (approximately between 366.74 and 557.00).</p></li>
+<li><p>About 96.1% fell within 2 SDs, and 99.9% were within 3 SDs.</p></li>
+</ul>
+<p>These proportions align well with the 68-95-99.7% empirical rule, indicating that the distribution of math scores is approximately normal.</p>
+<p>In summary, these metrics offer a comprehensive picture of performance variation, helping educational researchers understand both how typical students perform and how much their scores vary. Such insights are essential for designing instruction, identifying gaps, and guiding data-informed decision-making.</p>
+</section>
+</section>
+</section>
+<section id="exploring-data-spread---measures-of-variability-in-spss" class="level1 unnumbered">
+<h1 class="unnumbered">Exploring Data Spread - Measures of Variability in SPSS</h1>
+<p>In this section, we demonstrate how to compute and interpret measures of variability—<strong>range, interquartile range (IQR), variance</strong>, and <strong>standard deviation</strong>—using math achievement data from the U.S. sample in the Programme for International Student Assessment (PISA). We will use the PV1MATH variable (Math Plausible Value 1) as an illustrative example.</p>
+<section id="computing-and-visualizing-variability" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="computing-and-visualizing-variability">1 Computing and Visualizing Variability</h2>
+<p>The first step, as introduced in Chapter 2, is to import the data into SPSS. To examine the variability of PV1MATH, SPSS offers several approaches. In this section, we use the Explore function under Descriptive Statistics, which conveniently provides a full summary of key statistics and a visual distribution in one step. Although the method Descriptive Statistics → Descriptives (introduced in Chapter 2) can compute values such as the mean, standard deviation, and range, it does not include the interquartile range or quartile values.</p>
+<p>To run the Explore procedure:</p>
+<ol type="1">
+<li><p>Open the Analyze menu, go to Descriptive Statistics, and select Explore.</p></li>
+<li><p>Move the variable PV1MATH into the Dependent List.</p></li>
+<li><p>Click the Statistics button and ensure that both Descriptives and Percentiles are selected.</p></li>
+<li><p>Click the Plots button, choose Histogram, and optionally select Normality plots with tests if normality assessment is needed.</p></li>
+<li><p>Click Continue, then OK to generate the output.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter3/fig3-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Fig 3.1</figcaption>
+</figure>
+</div>
+<p>Once you run the Explore procedure, the results appear in the Output Viewer, providing a comprehensive summary of the PV1MATH variable. This output includes both numerical statistics and a histogram.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter3/fig3-2.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 3.2</figcaption>
+</figure>
+</div>
+<p>In the Descriptives table, we see that the mean math score is 461.87, with a 95% confidence interval ranging from 459.19 to 464.64. The median is 457.91, and the 5% trimmed mean is also close, suggesting a relatively balanced distribution. The minimum and maximum scores are 188.35 and 819.51, respectively, yielding a <strong>range</strong> of 631.16, which shows the spread between the lowest and highest scores.</p>
+<p>The <strong>interquartile range (IQR)</strong> is 137.67, representing the middle 50 percent of scores. It is calculated using the <strong>25th percentile</strong> and <strong>75th percentile</strong>, also referred to as the <strong>first quartile (Q1)</strong> and <strong>third quartile (Q3)</strong>. These values, shown in the Percentiles table, are 391.25 for Q1 and 528.93 for Q3. The IQR provides a more robust measure of variability because it is less affected by extreme scores than the full range.</p>
+<p>The <strong>variance</strong> is 9049.61, and the standard deviation is 95.13, reflecting how much scores typically deviate from the mean. SPSS calculates these as sample statistics, dividing by (n − 1).</p>
+<p>The Percentiles table also includes values at the 5th, 10th, 50th, 90th, and 95th percentiles. These can be used to understand where a student’s score falls within the broader distribution. In addition to the numerical output, we can also look at the histogram to examine how the scores are spread around the mean and to get a visual sense of the distribution’s overall shape.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter3/fig3-3.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 3.3</figcaption>
+</figure>
+</div>
+</section>
+<section id="examining-score-concentration-around-the-mean" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="examining-score-concentration-around-the-mean">2 Examining Score Concentration Around the Mean</h2>
+<p>After computing and visualizing variability, we can take a further step to examine how scores are distributed in relation to the mean. Specifically, we were interested in how many students scored within one, two, and three standard deviations from the average math score.</p>
+<p>To explore this, we used SPSS syntax commands rather than menu options. First, the AGGREGATE command was used to compute the overall mean and standard deviation of the PV1MATH variable, and these values were saved as new variables (mean_math and sd_math) for use in further calculations. Next, we created new variables to indicate whether each score fell within <span class="math inline">\(\pm1\)</span>, <span class="math inline">\(\pm2\)</span>, or <span class="math inline">\(\pm3\)</span> standard deviations of the mean. Finally, the FREQUENCIES command was used to calculate the proportion of students in each category by computing the mean of these binary indicators. The SPSS syntax is as below:</p>
+<div class="cell">
+<pre class="spss cell-code"><code>AGGREGATE 
+
+  /OUTFILE=* MODE=ADDVARIABLES 
+
+  /BREAK= 
+
+  /mean_math = MEAN(PV1MATH) 
+
+  /sd_math = SD(PV1MATH). 
+
+ 
+
+COMPUTE within_1sd = (PV1MATH &gt;= (mean_math - 1*sd_math)) AND (PV1MATH &lt;= (mean_math + 1*sd_math)). 
+
+COMPUTE within_2sd = (PV1MATH &gt;= (mean_math - 2*sd_math)) AND (PV1MATH &lt;= (mean_math + 2*sd_math)). 
+
+COMPUTE within_3sd = (PV1MATH &gt;= (mean_math - 3*sd_math)) AND (PV1MATH &lt;= (mean_math + 3*sd_math)). 
+
+EXECUTE. 
+
+ 
+
+FREQUENCIES VARIABLES=within_1sd within_2sd within_3sd 
+
+  /STATISTICS=MEAN. </code></pre>
+</div>
+<p>The result includes three frequency tables, each showing how many students fall within one, two, and three standard deviations of the mean. What we need to focus on is the “Valid Percent” column for the value 1.00, which indicates the proportion of students whose scores fall within the specified range.</p>
+<p>According to the output, 66.1 percent of students scored within one standard deviation of the mean, 96.1 percent were within two standard deviations, and 99.9 percent fell within three standard deviations. These values are taken directly from the highlighted rows in the Valid Percent column. These proportions closely match the empirical rule (68–95–99.7), which is typically expected for a normally distributed variable.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter3/fig3-4.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Fig 3.4</figcaption>
+</figure>
+</div>
+</section>
+<section id="interpreting-variability-in-math-achievement-scores-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="interpreting-variability-in-math-achievement-scores-1">3 Interpreting Variability in Math Achievement Scores</h2>
+<section id="measures-of-variability-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="measures-of-variability-2">3.1 Measures of Variability</h3>
+<p>The analysis of math achievement scores (PV1MATH) from the PISA U.S. dataset provides key insights into the distribution using measures of variability.</p>
+<ul>
+<li><p><strong>Range</strong>: The math scores in the U.S. sample range from 188.35 to 819.51, giving a total spread of 631.16 points. This wide range suggests a broad performance gap among students, though extreme scores may influence this value.</p></li>
+<li><p><strong>Interquartile Range</strong>: The IQR is 137.58, with the 25th percentile at 391.34 and the 75th percentile at 528.92. This indicates that the middle 50% of students scored within this 138-point window, providing a more stable summary of typical score spread.</p></li>
+<li><p><strong>Variance and Standard Deviation</strong>: The sample variance is 9049.61, and the standard deviation is 95.13. This tells us that, on average, individual scores deviate by about 95 points from the mean score.</p></li>
+</ul>
+<p>The histogram confirms a roughly symmetric distribution centered around the mean, with the bulk of scores falling within one standard deviation.</p>
+</section>
+<section id="visualizing-spread-and-normality-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="visualizing-spread-and-normality-1">3.2 Visualizing Spread and Normality</h3>
 <ul>
 <li><p>About 66.1% of students scored within 1 SD of the mean (approximately between 366.74 and 557.00).</p></li>
 <li><p>About 96.1% fell within 2 SDs, and 99.9% were within 3 SDs.</p></li>

@@ -405,15 +405,16 @@ In conclusion, this chapter has provided a thorough exploration of variability, 
 
 ### Key Takeaways for Educational Researchers from Chapter 3  
 
-    - Variability highlights the extent of differences of each data point within a dataset beyond the central value. Two datasets may have the same mean values but differ drastically in their spread, impacting the interpretation of results.  
+- Variability highlights the extent of differences of each data point within a dataset beyond the central value. Two datasets may have the same mean values but differ drastically in their spread, impacting the interpretation of results.  
 
-    - High variability in datasets (e.g., 8th graders’ standardized reading test scores across states) may suggest diverse population characteristics. On the other hand, low variability (e.g., standardized test scores within a specialized or sub-group) indicates uniformity, useful for specific interventions.   
+- High variability in datasets (e.g., 8th graders’ standardized reading test scores across states) may suggest diverse population characteristics. On the other hand, low variability (e.g., standardized test scores within a specialized or sub-group) indicates uniformity, useful for specific interventions.   
 
-    - Range can be largely impacted by outliers, while IQR or standard deviation will be less impacted by outliers. 
+- Range can be largely impacted by outliers, while IQR or standard deviation will be less impacted by outliers. 
 
-    - Central tendency, such as mean, median and mode, and variability are complementary metrics for understanding how data look. Reporting both metrics (e.g., mean and standard deviation) ensures a more complete summary.  
+- Central tendency, such as mean, median and mode, and variability are complementary metrics for understanding how data look. Reporting both metrics (e.g., mean and standard deviation) ensures a more complete summary.  
 
-    - Educational researchers should choose measures of central tendency and variability that align with their data characteristics and research questions.
+- Educational researchers should choose measures of central tendency and variability that align with their data characteristics and research questions.
+
 
 ## Key Definitions from Chapter 3 
 

@@ -940,6 +940,168 @@ Recall that:
 
 \bookmarksetup{startatroot}
 
+\chapter*{Understanding the Center: Measures of Central Tendency in
+SPSS}\label{understanding-the-center-measures-of-central-tendency-in-spss}
+\addcontentsline{toc}{chapter}{Understanding the Center: Measures of
+Central Tendency in SPSS}
+
+\markboth{Understanding the Center: Measures of Central Tendency in
+SPSS}{Understanding the Center: Measures of Central Tendency in SPSS}
+
+Unlike statistical software such as R or SAS, which primarily rely on
+programming for data analysis, SPSS allows users to perform most
+statistical operations through an intuitive graphical user interface.
+For the procedures demonstrated in this book, the majority can be
+completed through menu selections without the need for coding.
+
+This document provides a step-by-step guide on calculating and
+interpreting measures of central tendency---including mean, median,
+mode, and skewness---in SPSS. The demonstration uses data from the 2022
+Programme for International Student Assessment (PISA) U.S. dataset,
+specifically the variable PV1MATH.
+\href{\%22https://www.oecd.org/en/about/programmes/pisa.html\%22}{The
+dataset can be downloaded here from the OECD site}
+
+\section*{1 Importing Data into SPSS}\label{importing-data-into-spss}
+\addcontentsline{toc}{section}{1 Importing Data into SPSS}
+
+\markright{1 Importing Data into SPSS}
+
+To begin the analysis, the dataset must first be loaded into SPSS.
+Follow these steps to import the data:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Open SPSS.
+\item
+  Click on File \textgreater{} Open \textgreater{} Data.
+\item
+  Select the dataset file (US\_Data\_22.sav) and click Open.
+\end{enumerate}
+
+This will load the dataset into SPSS for analysis.
+
+SPSS supports various data formats, including but not limited to Excel
+and text files. When working with a file in a different format, the
+import process is very similar:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click on File \textgreater{} Import Data.
+\item
+  Select the appropriate file format from the available options.
+\item
+  Follow the on-screen prompts to complete the import process.
+\end{enumerate}
+
+Once the data is imported, it will be displayed in the Data View tab in
+SPSS.
+
+\section*{2 Computing Mean, Median, Mode, and
+Skewness}\label{computing-mean-median-mode-and-skewness}
+\addcontentsline{toc}{section}{2 Computing Mean, Median, Mode, and
+Skewness}
+
+\markright{2 Computing Mean, Median, Mode, and Skewness}
+
+After importing the dataset, the next step is to calculate key measures
+of central tendency and distribution. SPSS allows users to compute the
+\textbf{mean, median, mode, and skewness} through its menu-driven
+interface. Follow the steps below to perform this analysis:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click on Analyze \textgreater{} Descriptive Statistics \textgreater{}
+  Frequencies.
+\item
+  Select PV1MATH as the variable.
+\item
+  In the lower-left corner, uncheck ``Display frequency tables'' since
+  this analysis does not require frequency tables.
+\item
+  Click Statistics and check the boxes for Mean, Median, Mode, and
+  Skewness.
+\item
+  Click Continue, then click OK.
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter2/fig2-1.png}
+
+}
+
+\caption{Fig 2.1}
+
+\end{figure}%
+
+The results will be displayed in the Output Viewer, showing the computed
+values for mean, median, mode, and skewness of the PV1MATH variable.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.3\linewidth,height=\textheight,keepaspectratio]{chapter2/fig2-2.png}
+
+}
+
+\caption{Fig 2.2}
+
+\end{figure}%
+
+You may notice that SPSS warns that multiple modes exist for PV1MATH
+because all values are unique. To better illustrate how the mode works,
+a new variable, PV1MATH\_INT, was created by rounding all values to the
+nearest integer. Checking its mode in SPSS results in a unique value:
+415.
+
+\section*{3 Histogram}\label{histogram}
+\addcontentsline{toc}{section}{3 Histogram}
+
+\markright{3 Histogram}
+
+To better visualize the distribution of PV1MATH, we can generate a
+histogram. To create the plot in SPSS, follow these steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Graphs \textgreater{} Histogram.
+\item
+  Select PV1MATH as the variable, then click OK.
+\end{enumerate}
+
+Below is the histogram for PV1MATH. The bin width has been adjusted for
+better readability---you may see narrower bins depending on the default
+settings in SPSS.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter2/fig2-3.png}
+
+}
+
+\caption{Fig 2.3}
+
+\end{figure}%
+
+Recall that:
+
+\begin{itemize}
+\item
+  a positive skewness value indicates a right-skewed distribution
+  (longer tail on the right), which is consistent with the histogram
+  above.
+\item
+  when the data are right-skewed (here it is slightly right-skewed), the
+  mean is greater than the median, and the mode is less than the median.
+  These are consistent with what we observed in the calculations above.
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
 \chapter{Chapter 3}\label{chapter-3}
 
 \bookmarksetup{startatroot}
@@ -1452,17 +1614,31 @@ distributions can be effectively communicated and understood.
 \subsection{Key Takeaways for Educational Researchers from Chapter
 3\,}\label{key-takeaways-for-educational-researchers-from-chapter-3}
 
-\begin{verbatim}
-- Variability highlights the extent of differences of each data point within a dataset beyond the central value. Two datasets may have the same mean values but differ drastically in their spread, impacting the interpretation of results.  
-
-- High variability in datasets (e.g., 8th graders’ standardized reading test scores across states) may suggest diverse population characteristics. On the other hand, low variability (e.g., standardized test scores within a specialized or sub-group) indicates uniformity, useful for specific interventions.   
-
-- Range can be largely impacted by outliers, while IQR or standard deviation will be less impacted by outliers. 
-
-- Central tendency, such as mean, median and mode, and variability are complementary metrics for understanding how data look. Reporting both metrics (e.g., mean and standard deviation) ensures a more complete summary.  
-
-- Educational researchers should choose measures of central tendency and variability that align with their data characteristics and research questions.
-\end{verbatim}
+\begin{itemize}
+\item
+  Variability highlights the extent of differences of each data point
+  within a dataset beyond the central value. Two datasets may have the
+  same mean values but differ drastically in their spread, impacting the
+  interpretation of results.
+\item
+  High variability in datasets (e.g., 8th graders' standardized reading
+  test scores across states) may suggest diverse population
+  characteristics. On the other hand, low variability (e.g.,
+  standardized test scores within a specialized or sub-group) indicates
+  uniformity, useful for specific interventions.
+\item
+  Range can be largely impacted by outliers, while IQR or standard
+  deviation will be less impacted by outliers.
+\item
+  Central tendency, such as mean, median and mode, and variability are
+  complementary metrics for understanding how data look. Reporting both
+  metrics (e.g., mean and standard deviation) ensures a more complete
+  summary.
+\item
+  Educational researchers should choose measures of central tendency and
+  variability that align with their data characteristics and research
+  questions.
+\end{itemize}
 
 \section{Key Definitions from Chapter
 3}\label{key-definitions-from-chapter-3}
@@ -1804,6 +1980,250 @@ Normality}\label{visualizing-spread-and-normality}
 
 The histogram confirms a roughly symmetric distribution centered around
 the mean, with the bulk of scores falling within one standard deviation.
+
+\begin{itemize}
+\item
+  About 66.1\% of students scored within 1 SD of the mean (approximately
+  between 366.74 and 557.00).
+\item
+  About 96.1\% fell within 2 SDs, and 99.9\% were within 3 SDs.
+\end{itemize}
+
+These proportions align well with the 68-95-99.7\% empirical rule,
+indicating that the distribution of math scores is approximately normal.
+
+In summary, these metrics offer a comprehensive picture of performance
+variation, helping educational researchers understand both how typical
+students perform and how much their scores vary. Such insights are
+essential for designing instruction, identifying gaps, and guiding
+data-informed decision-making.
+
+\bookmarksetup{startatroot}
+
+\chapter*{Exploring Data Spread - Measures of Variability in
+SPSS}\label{exploring-data-spread---measures-of-variability-in-spss}
+\addcontentsline{toc}{chapter}{Exploring Data Spread - Measures of
+Variability in SPSS}
+
+\markboth{Exploring Data Spread - Measures of Variability in
+SPSS}{Exploring Data Spread - Measures of Variability in SPSS}
+
+In this section, we demonstrate how to compute and interpret measures of
+variability---\textbf{range, interquartile range (IQR), variance}, and
+\textbf{standard deviation}---using math achievement data from the U.S.
+sample in the Programme for International Student Assessment (PISA). We
+will use the PV1MATH variable (Math Plausible Value 1) as an
+illustrative example.
+
+\section*{1 Computing and Visualizing
+Variability}\label{computing-and-visualizing-variability}
+\addcontentsline{toc}{section}{1 Computing and Visualizing Variability}
+
+\markright{1 Computing and Visualizing Variability}
+
+The first step, as introduced in Chapter 2, is to import the data into
+SPSS. To examine the variability of PV1MATH, SPSS offers several
+approaches. In this section, we use the Explore function under
+Descriptive Statistics, which conveniently provides a full summary of
+key statistics and a visual distribution in one step. Although the
+method Descriptive Statistics → Descriptives (introduced in Chapter 2)
+can compute values such as the mean, standard deviation, and range, it
+does not include the interquartile range or quartile values.
+
+To run the Explore procedure:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Open the Analyze menu, go to Descriptive Statistics, and select
+  Explore.
+\item
+  Move the variable PV1MATH into the Dependent List.
+\item
+  Click the Statistics button and ensure that both Descriptives and
+  Percentiles are selected.
+\item
+  Click the Plots button, choose Histogram, and optionally select
+  Normality plots with tests if normality assessment is needed.
+\item
+  Click Continue, then OK to generate the output.
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{chapter3/fig3-1.png}
+
+}
+
+\caption{Fig 3.1}
+
+\end{figure}%
+
+Once you run the Explore procedure, the results appear in the Output
+Viewer, providing a comprehensive summary of the PV1MATH variable. This
+output includes both numerical statistics and a histogram.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter3/fig3-2.png}
+
+}
+
+\caption{Fig 3.2}
+
+\end{figure}%
+
+In the Descriptives table, we see that the mean math score is 461.87,
+with a 95\% confidence interval ranging from 459.19 to 464.64. The
+median is 457.91, and the 5\% trimmed mean is also close, suggesting a
+relatively balanced distribution. The minimum and maximum scores are
+188.35 and 819.51, respectively, yielding a \textbf{range} of 631.16,
+which shows the spread between the lowest and highest scores.
+
+The \textbf{interquartile range (IQR)} is 137.67, representing the
+middle 50 percent of scores. It is calculated using the \textbf{25th
+percentile} and \textbf{75th percentile}, also referred to as the
+\textbf{first quartile (Q1)} and \textbf{third quartile (Q3)}. These
+values, shown in the Percentiles table, are 391.25 for Q1 and 528.93 for
+Q3. The IQR provides a more robust measure of variability because it is
+less affected by extreme scores than the full range.
+
+The \textbf{variance} is 9049.61, and the standard deviation is 95.13,
+reflecting how much scores typically deviate from the mean. SPSS
+calculates these as sample statistics, dividing by (n − 1).
+
+The Percentiles table also includes values at the 5th, 10th, 50th, 90th,
+and 95th percentiles. These can be used to understand where a student's
+score falls within the broader distribution. In addition to the
+numerical output, we can also look at the histogram to examine how the
+scores are spread around the mean and to get a visual sense of the
+distribution's overall shape.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter3/fig3-3.png}
+
+}
+
+\caption{Fig 3.3}
+
+\end{figure}%
+
+\section*{2 Examining Score Concentration Around the
+Mean}\label{examining-score-concentration-around-the-mean}
+\addcontentsline{toc}{section}{2 Examining Score Concentration Around
+the Mean}
+
+\markright{2 Examining Score Concentration Around the Mean}
+
+After computing and visualizing variability, we can take a further step
+to examine how scores are distributed in relation to the mean.
+Specifically, we were interested in how many students scored within one,
+two, and three standard deviations from the average math score.
+
+To explore this, we used SPSS syntax commands rather than menu options.
+First, the AGGREGATE command was used to compute the overall mean and
+standard deviation of the PV1MATH variable, and these values were saved
+as new variables (mean\_math and sd\_math) for use in further
+calculations. Next, we created new variables to indicate whether each
+score fell within \(\pm1\), \(\pm2\), or \(\pm3\) standard deviations of
+the mean. Finally, the FREQUENCIES command was used to calculate the
+proportion of students in each category by computing the mean of these
+binary indicators. The SPSS syntax is as below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{AGGREGATE }
+
+\NormalTok{  /OUTFILE=* MODE=ADDVARIABLES }
+
+\NormalTok{  /BREAK= }
+
+\NormalTok{  /mean\_math = MEAN(PV1MATH) }
+
+\NormalTok{  /sd\_math = SD(PV1MATH). }
+
+ 
+
+\NormalTok{COMPUTE within\_1sd = (PV1MATH \textgreater{}= (mean\_math {-} 1*sd\_math)) AND (PV1MATH \textless{}= (mean\_math + 1*sd\_math)). }
+
+\NormalTok{COMPUTE within\_2sd = (PV1MATH \textgreater{}= (mean\_math {-} 2*sd\_math)) AND (PV1MATH \textless{}= (mean\_math + 2*sd\_math)). }
+
+\NormalTok{COMPUTE within\_3sd = (PV1MATH \textgreater{}= (mean\_math {-} 3*sd\_math)) AND (PV1MATH \textless{}= (mean\_math + 3*sd\_math)). }
+
+\NormalTok{EXECUTE. }
+
+ 
+
+\NormalTok{FREQUENCIES VARIABLES=within\_1sd within\_2sd within\_3sd }
+
+\NormalTok{  /STATISTICS=MEAN. }
+\end{Highlighting}
+\end{Shaded}
+
+The result includes three frequency tables, each showing how many
+students fall within one, two, and three standard deviations of the
+mean. What we need to focus on is the ``Valid Percent'' column for the
+value 1.00, which indicates the proportion of students whose scores fall
+within the specified range.
+
+According to the output, 66.1 percent of students scored within one
+standard deviation of the mean, 96.1 percent were within two standard
+deviations, and 99.9 percent fell within three standard deviations.
+These values are taken directly from the highlighted rows in the Valid
+Percent column. These proportions closely match the empirical rule
+(68--95--99.7), which is typically expected for a normally distributed
+variable.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.4\linewidth,height=\textheight,keepaspectratio]{chapter3/fig3-4.png}
+
+}
+
+\caption{Fig 3.4}
+
+\end{figure}%
+
+\section*{3 Interpreting Variability in Math Achievement
+Scores}\label{interpreting-variability-in-math-achievement-scores-1}
+\addcontentsline{toc}{section}{3 Interpreting Variability in Math
+Achievement Scores}
+
+\markright{3 Interpreting Variability in Math Achievement Scores}
+
+\subsection*{3.1 Measures of
+Variability}\label{measures-of-variability-2}
+\addcontentsline{toc}{subsection}{3.1 Measures of Variability}
+
+The analysis of math achievement scores (PV1MATH) from the PISA U.S.
+dataset provides key insights into the distribution using measures of
+variability.
+
+\begin{itemize}
+\item
+  \textbf{Range}: The math scores in the U.S. sample range from 188.35
+  to 819.51, giving a total spread of 631.16 points. This wide range
+  suggests a broad performance gap among students, though extreme scores
+  may influence this value.
+\item
+  \textbf{Interquartile Range}: The IQR is 137.58, with the 25th
+  percentile at 391.34 and the 75th percentile at 528.92. This indicates
+  that the middle 50\% of students scored within this 138-point window,
+  providing a more stable summary of typical score spread.
+\item
+  \textbf{Variance and Standard Deviation}: The sample variance is
+  9049.61, and the standard deviation is 95.13. This tells us that, on
+  average, individual scores deviate by about 95 points from the mean
+  score.
+\end{itemize}
+
+The histogram confirms a roughly symmetric distribution centered around
+the mean, with the bulk of scores falling within one standard deviation.
+
+\subsection*{3.2 Visualizing Spread and
+Normality}\label{visualizing-spread-and-normality-1}
+\addcontentsline{toc}{subsection}{3.2 Visualizing Spread and Normality}
 
 \begin{itemize}
 \item
@@ -6296,9 +6716,689 @@ subjects.
 
 \bookmarksetup{startatroot}
 
-\chapter{Chapter 9}\label{chapter-9-1}
+\chapter*{Analyzing Differences Between Two
+Groups\,}\label{analyzing-differences-between-two-groups}
+\addcontentsline{toc}{chapter}{Analyzing Differences Between Two
+Groups\,}
 
-This is Chapter 9.
+\markboth{Analyzing Differences Between Two Groups\,}{Analyzing
+Differences Between Two Groups\,}
+
+\section*{Learning Objectives}\label{learning-objectives-7}
+\addcontentsline{toc}{section}{Learning Objectives}
+
+\markright{Learning Objectives}
+
+By the end of this chapter, you will be able to:
+
+\begin{itemize}
+\item
+  Identify and differentiate between different types of tests to compare
+  two groups, understanding their appropriate applications based on the
+  nature of the data and comparisons being made.
+\item
+  Understand differences between parametric and nonparametric tests.
+\item
+  Explain the logic behind conducting independent - and related-samples
+  t tests on continuous variables, including verifying assumptions,
+  calculating the test statistic, and interpreting results within the
+  context of hypothesis testing.
+\item
+  Apply the Mann-Whitney \(U\) test and Wilcoxon's Matched-Pairs
+  Signed-Ranks Test, demonstrating an understanding of their logic,
+  appropriate use cases, and result interpretation.
+\item
+  Evaluate the practical significance of statistical results using
+  measures such as Cohen's \(d\) and eta-squared, providing context for
+  the findings of t test analyses.
+\end{itemize}
+
+In the previous chapter, we explored the one-sample \(t\) test, a method
+used to compare a single group's mean to a known population mean. This
+gave us the foundation for understanding how \(t\) tests work and their
+role in hypothesis testing. Now, we are moving on to explore additional
+types of \(t\) tests to compare two groups. Before diving into the
+details of the independent-samples \(t\) test, which is commonly used in
+educational research, let's take a brief look at three types of \(t\)
+tests. These include the one-sample \(t\) test (covered in chapter 8),
+two independent-samples \(t\) test, and two related-samples \(t\) test,
+each tailored to different types of comparisons. Understanding the
+distinctions between these tests will help clarify when and how to use
+them effectively.
+
+\section{\texorpdfstring{Types of \(t\)
+Tests}{Types of t Tests}}\label{types-of-t-tests}
+
+All three types of t tests involve comparing the values of a variable
+from one group of individuals to something else -- and that
+\emph{something else} tells you what kind of t test you should use. To
+explain the three tests, imagine that you have a class of third grade
+students, and you have a list of each student's reading achievement
+scores. The following table explains how you might analyze those scores
+with each type of t test, depending on what you're comparing them to.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+What to Compare
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+T-Test Used
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{One single number} & One-sample \emph{t} test & You want to see
+if this group's scores are, on average, significantly different from the
+state average for reading achievement scores. \\
+\textbf{A different group's scores on the same variable} &
+Two-independent-samples \emph{t} test & You want to compare this group's
+reading achievement scores to those from another third-grade class. \\
+\textbf{The same group's scores on a different variableor at a different
+time} & Two related-samples \emph{t} test & You want to compare this
+group's reading scores to their math achievement scores, to see if their
+achievement levels are different across the two subjects.\textbf{OR}You
+want to compare this group's reading scores after third grade to the
+same group's reading scores after fourth grade, to see if they change
+over time. \\
+\end{longtable}
+
+Now, we will provide a very brief overview of each type.
+
+\subsection{One-sample t test}\label{one-sample-t-test-1}
+
+This should be very familiar since we just learned it in the last
+chapter. You use this t test if you know the population mean (\(\mu\)),
+but you do not know the population standard deviation (\(\sigma\)). You
+are trying to find out if your sample mean (\(\bar{X}\)) is
+significantly different from a known population mean. To run this
+analysis, we will use only one continuous variable or column of data --
+each individual in the group has one value or score for the variable of
+interest.
+
+\subsection{Two-independent-samples t
+test}\label{two-independent-samples-t-test}
+
+Commonly in practice, you do not know a population mean to use as a
+comparison point. You are instead comparing sets of numbers obtained
+from two separate groups in order to draw inferences about their
+populations. Maybe you have two groups of students, one of which
+received some kind of intervention, and you want to compare end-of-year
+achievement scores between them. You might want to know if female
+college students have higher GPAs than male students. This time, your
+dataset will need two columns to run the test: one to indicate which
+group the individual is in, and one with their value for the dependent
+variable.
+
+\subsection{Related-samples t test}\label{related-samples-t-test}
+
+You are still comparing two sets of numbers, but this time both sets
+belong to the same people or two groups that are somewhat related. For
+example, you might be comparing achievement scores at the beginning and
+end of a year to see if a class improved. You might also compare
+outcomes under two different conditions, such as how many times students
+were absent when class met in-person compared to the number of absences
+for the same students when the school shifted to remote learning.
+Instead of having the same group of people, you sometimes have a matched
+group (e.g., siblings or a set of individuals who have been matched
+based on their scores on other variables). Either way, your dataset will
+look different yet again. Like with the one-sample t test, you only have
+a single list of individuals or a single set of matched pairs. However,
+this time they each have two columns of information (e.g., pre-test and
+post-test scores, or English scores and math scores).
+
+We hope this helps you avoid getting confused about the three different
+types of t tests. The details for how to conduct each analysis are
+similar but there are important differences. The names are actually
+pretty good clues:
+
+\begin{itemize}
+\item
+  \emph{One}-sample: you only have one set of data (e.g., a set of
+  reading scores from a sample of third graders), so you need a
+  population value (e.g., the national average of reading score) for
+  comparison.
+\item
+  Two \emph{independent}-samples: you have two distinct groups that are
+  not related or connected in any way -- one might even say they are two
+  independent groups. Membership in a group is mutually exclusive,
+  meaning that no individual or case can belong to both groups
+  simultaneously.
+\item
+  Two \emph{related}-samples (also known as paired-sample or
+  repeated-measures test): here you have two sets of numbers that are
+  connected -- either the same people at different times or different
+  conditions, or people who are paired together.
+\end{itemize}
+
+And now we will dive into the details of the independent-samples t test.
+This is probably one of the most used methods to compare two groups in
+educational research.
+
+\section{Overview of the Two-Independent-Samples t
+Test}\label{overview-of-the-two-independent-samples-t-test}
+
+As we did when learning about the one-sample t test, let's again walk
+through an example from educational research. Similar to the previous
+example, the teacher is now concerned if her class average of English
+Language Arts (ELA) scores (\(\bar{X} = 425.26, SD = 44.99\)) is
+significantly different from another class of third graders whose
+teacher joined the pilot implementation of a new reading intervention.
+When the result was returned the class average of the fellow teacher was
+440 with a SD of 35. Are these two averages significantly different?
+Let's find out.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/fig-9.1-1.pdf}}
+
+}
+
+\caption{\label{fig-9.1}Figure 9.1. Overlapping histograms of ELA scores
+for two third-grade classes}
+
+\end{figure}%
+
+Similar to the previous one-sample t test example, we will complete four
+steps of hypothesis testing.
+
+\subsection{Step 1: Determine the null and alternative
+hypotheses.}\label{step-1-determine-the-null-and-alternative-hypotheses.-1}
+
+With a one-sample test, the null hypothesis states there is no
+difference between the sample mean and the population mean. We are now
+comparing the means of two independent samples, to determine
+statistically if their population means are identical or different. So,
+the null hypothesis about population means is that there is no
+difference between the population means of the two groups. The way we
+indicate is that one population mean (\(\mu_1\) for Group 1) minus the
+other (\(\mu_2\) for Group 2) is zero.
+
+\[
+H_0: \mu_1− \mu_2=0
+\]
+
+Therefore, the alternative hypothesis is that there is a difference
+between the two groups:
+
+\[
+H_A: \mu_1− \mu_2\ne 0
+\]
+
+Note that this is the alternative hypothesis for a two-sided or
+two-tailed test. We are not assuming that one mean is larger than the
+other, just that they are different. If you had reason to believe that
+one group mean would be larger than the other, your alternative
+hypothesis would be:
+
+\[
+H_A: \mu_1 > \mu_2
+\]
+
+,
+
+or
+
+\[
+H_A: \mu_1 < \mu_2
+\]
+
+\subsection{Step 2: Set the criteria for a decision.}\label{step-two}
+
+The next step in testing the null hypothesis is to set the criteria for
+a decision: how much of a difference is significant enough that we can
+conclude it is not only due to random chance? We decide that
+\(\alpha = 0.05\) as usual, but the degrees of freedom are slightly
+different for an independent-samples t test compared to a one-sample t
+test. This time, we must subtract one from each group, so
+\(df = (n_1 − 1)+(n_2 − 1) = n_1 + n_2−2 = N - 2\), where \(n_1\) and
+\(n_2\) refer to the sample size of Group 1 and Group 2, respectively,
+and \(N\) refers to the total number of subjects in both groups
+combined.
+
+Flip to the Critical Values of \(t\) Distribution Table at the back of
+the book like before, looking for the intersection between your alpha
+level and your degrees of freedom to find the critical value. For our
+example, both groups have a sample size of \(35\) so the
+\(df  = 70 - 2 = 68\). Since we don't have \(df = 68\), round down to
+\(50\) df to be conservative. The critical \(t\) value associated with
+50 df at \(\alpha = 0.05\) for a two-tailed test is \(\pm2.009\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#| label: fig{-}9.2}
+\CommentTok{\#| fig{-}cap: "t{-}distribution with two{-}tailed rejection regions ($\textbackslash{}alpha = 0.05$)"}
+\CommentTok{\#| fig{-}width: 8}
+\CommentTok{\#| fig{-}height: 4.6}
+\CommentTok{\#| warning: false}
+\CommentTok{\#| message: false}
+\CommentTok{\#| echo: false}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+
+\CommentTok{\# {-}{-}{-} Settings (edit these as needed) {-}{-}{-}}
+\NormalTok{df }\OtherTok{\textless{}{-}} \DecValTok{49}
+\NormalTok{alpha }\OtherTok{\textless{}{-}} \FloatTok{0.05}
+\NormalTok{tcrit }\OtherTok{\textless{}{-}} \FunctionTok{qt}\NormalTok{(}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ alpha}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, df)}
+
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\AttributeTok{length.out =} \DecValTok{2000}\NormalTok{)}
+\NormalTok{curve\_df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =} \FunctionTok{dt}\NormalTok{(x, df))}
+
+\FunctionTok{ggplot}\NormalTok{(curve\_df, }\FunctionTok{aes}\NormalTok{(x, y)) }\SpecialCharTok{+}
+
+  \CommentTok{\# T distribution line}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"T{-}Distribution"}\NormalTok{), }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+
+  \CommentTok{\# Rejection regions (tails only)}
+  \FunctionTok{geom\_area}\NormalTok{(}
+    \AttributeTok{data =} \FunctionTok{subset}\NormalTok{(curve\_df, x }\SpecialCharTok{\textless{}=} \SpecialCharTok{{-}}\NormalTok{tcrit),}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Rejection Region"}\NormalTok{),}
+    \AttributeTok{alpha =} \FloatTok{0.3}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_area}\NormalTok{(}
+    \AttributeTok{data =} \FunctionTok{subset}\NormalTok{(curve\_df, x }\SpecialCharTok{\textgreater{}=}\NormalTok{ tcrit),}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Rejection Region"}\NormalTok{),}
+    \AttributeTok{alpha =} \FloatTok{0.3}
+\NormalTok{  ) }\SpecialCharTok{+}
+
+  \CommentTok{\# Critical value lines}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \SpecialCharTok{{-}}\NormalTok{tcrit, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ tcrit,  }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+
+  \CommentTok{\# Null line}
+  \FunctionTok{geom\_vline}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{linetype =} \StringTok{"Null Hypothesis (Mean Diff = 0)"}\NormalTok{),}
+    \AttributeTok{xintercept =} \DecValTok{0}\NormalTok{,}
+    \AttributeTok{color =} \StringTok{"black"}
+\NormalTok{  ) }\SpecialCharTok{+}
+
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"T{-}Distribution"} \OtherTok{=} \StringTok{"blue"}\NormalTok{), }\AttributeTok{name =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Rejection Region"} \OtherTok{=} \StringTok{"red"}\NormalTok{), }\AttributeTok{name =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_linetype\_manual}\NormalTok{(}
+    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Null Hypothesis (Mean Diff = 0)"} \OtherTok{=} \StringTok{"dashed"}\NormalTok{),}
+    \AttributeTok{name =} \ConstantTok{NULL}
+\NormalTok{  ) }\SpecialCharTok{+}
+
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Standardized Difference in Sample Means (t)"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Density"}
+\NormalTok{  ) }\SpecialCharTok{+}
+
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.72}\NormalTok{, }\FloatTok{0.62}\NormalTok{),}
+    \AttributeTok{legend.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =} \StringTok{"white"}\NormalTok{, }\AttributeTok{color =} \StringTok{"grey80"}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: `geom_vline()`: Ignoring `mapping` because `xintercept` was provided.
+\end{verbatim}
+
+\begin{verbatim}
+Warning: No shared levels found between `names(values)` of the manual scale and the
+data's linetype values.
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/unnamed-chunk-1-1.pdf}}
+
+\subsection{Step 3: Check assumptions and compute the test
+statistic.\,}\label{step-3-check-assumptions-and-compute-the-test-statistic.-1}
+
+The third step has a few parts. First, we verify that our data meet the
+assumptions required for this method of analysis, and then we calculate
+the test statistic. The assumptions for an independent-samples t test
+are:
+
+\begin{itemize}
+\item
+  Normality: The dependent variable is approximately normally
+  distributed (as before, this requirement is less important if n
+  \textgreater{} 30).
+\item
+  Random sampling: You are using a random sample of independent
+  observations.
+\item
+  Independence: The scores are independent of one another.
+\item
+  Equal variances: The variances of the dependent variable are equal
+  across two groups or populations being compared.
+\end{itemize}
+
+Equal variance is new, but it is important to keep in mind for this
+method. Remember earlier in the book when we said means are important
+and so is standard deviation (or variance, which is the same basic
+concept)? Here is one place where that comes into play. Imagine you are
+comparing scores of two groups on the same test. In one group, all
+scores are tightly clustered near the mean. In the other group, they are
+completely spread out with a much wider range than compared to the first
+group. It is harder to make a solid conclusion about the differences
+between two group means when the distributions are completely different.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#| label: fig{-}9.3}
+\CommentTok{\#| fig{-}cap: "Normal distributions with equal vs. unequal variances"}
+\CommentTok{\#| fig{-}width: 8}
+\CommentTok{\#| fig{-}height: 4.6}
+\CommentTok{\#| warning: false}
+\CommentTok{\#| message: false}
+\CommentTok{\#| echo: false}
+
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# {-}{-}{-}{-} Parameters from the figure {-}{-}{-}{-}}
+\NormalTok{x\_min }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{x\_max }\OtherTok{\textless{}{-}} \DecValTok{125}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(x\_min, x\_max, }\AttributeTok{length.out =} \DecValTok{2000}\NormalTok{)}
+
+\NormalTok{params }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{scenario =} \FunctionTok{c}\NormalTok{(}\StringTok{"Equal Variances (X: 0{-}125)"}\NormalTok{, }\StringTok{"Equal Variances (X: 0{-}125)"}\NormalTok{,}
+               \StringTok{"Unequal Variances (X: 0{-}125)"}\NormalTok{, }\StringTok{"Unequal Variances (X: 0{-}125)"}\NormalTok{),}
+  \AttributeTok{group    =} \FunctionTok{c}\NormalTok{(}\StringTok{"Group 1"}\NormalTok{, }\StringTok{"Group 2"}\NormalTok{, }\StringTok{"Group 1"}\NormalTok{, }\StringTok{"Group 2"}\NormalTok{),}
+  \AttributeTok{mean     =} \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{),}
+  \AttributeTok{sd       =} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{),}
+  \AttributeTok{color    =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"darkgreen"}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Build curve data}
+\NormalTok{curve\_df }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, }\FunctionTok{lapply}\NormalTok{(}\FunctionTok{seq\_len}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(params)), }\ControlFlowTok{function}\NormalTok{(i)\{}
+\NormalTok{  p }\OtherTok{\textless{}{-}}\NormalTok{ params[i, ]}
+  \FunctionTok{data.frame}\NormalTok{(}
+    \AttributeTok{x =}\NormalTok{ x,}
+    \AttributeTok{y =} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{mean, }\AttributeTok{sd =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{sd),}
+    \AttributeTok{scenario =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{scenario,}
+    \AttributeTok{group =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%s (Mean=\%d, SD=\%d)"}\NormalTok{, p}\SpecialCharTok{$}\NormalTok{group, p}\SpecialCharTok{$}\NormalTok{mean, p}\SpecialCharTok{$}\NormalTok{sd),}
+    \AttributeTok{mean =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{mean,}
+    \AttributeTok{color =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{color}
+\NormalTok{  )}
+\NormalTok{\}))}
+
+\CommentTok{\# Means for vlines/legend}
+\NormalTok{means\_df }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(curve\_df[, }\FunctionTok{c}\NormalTok{(}\StringTok{"scenario"}\NormalTok{, }\StringTok{"group"}\NormalTok{, }\StringTok{"mean"}\NormalTok{, }\StringTok{"color"}\NormalTok{)])}
+
+\FunctionTok{ggplot}\NormalTok{(curve\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{color =}\NormalTok{ group)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}
+    \AttributeTok{data =}\NormalTok{ means\_df,}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean, }\AttributeTok{color =}\NormalTok{ group),}
+    \AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{,}
+    \AttributeTok{linewidth =} \FloatTok{0.8}\NormalTok{,}
+    \AttributeTok{show.legend =} \ConstantTok{FALSE}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{scenario, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(x\_min, x\_max)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Scores"}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}
+    \AttributeTok{values =} \FunctionTok{setNames}\NormalTok{(means\_df}\SpecialCharTok{$}\NormalTok{color, means\_df}\SpecialCharTok{$}\NormalTok{group)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"top"}\NormalTok{,}
+    \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),}
+    \AttributeTok{strip.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/unnamed-chunk-2-1.pdf}}
+
+When analyzing data from two groups, it is essential to compute and
+evaluate the size of variance for each group. This helps in
+understanding the spread of the data and determining if the variances
+are similar or different. Drawing histograms for each group is
+particularly useful for visually inspecting the data spread and
+identifying any noticeable differences between two distributions.
+
+\subsubsection*{Levene's Test for Assessing Equal
+Variances}\label{levenes-test-for-assessing-equal-variances}
+\addcontentsline{toc}{subsubsection}{Levene's Test for Assessing Equal
+Variances}
+
+\textbf{Levene's Test} is a statistical procedure used to assess whether
+the variances of a dependent variable are equal across different groups.
+This test is typically performed before conducting analyses that assume
+equal variances, such as t tests or ANOVA, to determine if this
+assumption holds. We won't show you how to calculate Levene's Test by
+hand because statistical software packages will do this for you.
+
+However, the important thing to remember is that if the result of
+Levene's Test is statistically significant \((p < .05)\), your variances
+are \emph{not equal}. If your variances are not equal, you should
+consider using a different test that we will learn later or, at minimum,
+report the statistical results adjusted for unequal variances between
+two groups, which is provided by most software packages as well. If your
+Levene's Test results are not statistically significant \((p > .05)\),
+your group variances are considered equal.
+
+\subsection{Step 4a: Find the p
+value.\,}\label{step-4a-find-the-p-value.}
+
+Next, we calculate the test statistic. We are going to show you the
+formula first, but please don't panic. It is not as bad as it seems.
+
+\[
+t = \frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{\sqrt{s_p^2(\frac{1}{n_1}+\frac{1}{n_2})}}
+\]
+
+Let's take that a little at a time, starting with the numerator. The
+first part is the difference between group means in your sample. Then we
+are comparing that to the expected difference between group means in the
+population (i.e., the mean differences specified in the null
+hypothesis). Look back at the null hypothesis for this type of test.
+What is the expected difference between group means in the population?
+Zero! For practical purposes, the top half of the fraction is just the
+difference between group means.
+
+Do you remember what was in the denominator of the t statistic for a
+one-sample t test? It was the standard error, or the sample standard
+deviation divided by the square root of the sample size. This
+denominator is more complicated because we have two separate groups.
+Under the null hypothesis, we assume that both sample groups came from
+the same population, but most likely the standard errors are not exactly
+the same. So which sample variance do we use as an estimate for the
+population variance? The optimal solution is to make full use of the
+variance estimates from both samples to obtain a more accurate estimate
+of the population variance.
+
+There is another new value in the denominator, s2p, s p 2 ,
+
+which represents the pooled sample variance. The formula for this looks
+very complicated, but it is just a way of weighting the two sample
+variances by the sample size. If one group is bigger than the other,
+their sample variance is weighted more heavily by this formula. If you
+notice this looks a little different from what you might find elsewhere,
+that is because we are being more specific about how you get to the
+degrees of freedom, with n -- 1.
+
+\[
+s_p^2 = \frac{(n_1 − 1)s_1^2 + (n_2 − 1)s_2^2}{(n_1+ n_2)−2}
+\]
+
+What does all that mean? You are multiplying the sample variance for
+group one by the degrees of freedom for group one and adding that to the
+same thing for group two. Then you are dividing the outcome by the
+degrees of freedom for the whole test. In our example, the sample size
+of each group is 35. Thus,
+
+\[
+s_p^2 = \frac{(34)s_1^2 + (34)s_2^2}{68}
+\]
+
+Now you have a measure of sample variance that you can use for the whole
+combined sample of both groups. If both groups have the same sample
+size, like our example, there is a much simpler version of the formula
+you can use.
+
+\[
+s_p^2 = \frac{s_1^2 + s_2^2}{2}
+\]
+
+In our example, \(s_1^2 = (44.99)^2\), and \(s_2^2 = (35)^2\). Let's
+plug in these values and compute the \(s_p^2\)
+
+\[
+s_p^2 = \frac{s_1^2 + s_2^2}{2} = \frac{(44.99)^2 + (35)^2}{2} = 1624.55
+\]
+
+Either way, once you have the value for \(s_p^2\), you bring that back
+to the \(t\) statistic formula and do what we always do: standard
+deviation divided by the square root of the sample size. It just looks
+more complicated when we have two separate sample sizes, and because
+this formula starts with sample variance and then takes the square root,
+rather than starting with standard deviation, which is already the
+square root of the variance.
+
+\[
+t = \frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{\sqrt{s_p^2(\frac{1}{n_1}+\frac{1}{n_2})}}
+= \frac{(425.26−440)−0}{\sqrt{1624.55(\frac{1}{35}+\frac{1}{35})}} 
+= \frac{-14.74}{9.634}
+= -1.53
+\]
+
+If you are completely lost, try not to get too caught up in the math and
+focus on the concept. We are finding the difference between the two
+group means and dividing it by the standard error for the difference. It
+is just more complicated to calculate this version of standard error
+than it has been for other tests. The good news is that statistical
+software programs will do the math for you.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#| label: fig{-}9.4}
+\CommentTok{\#| fig{-}cap: "Two{-}tailed t{-}test with critical values $\textbackslash{}pm2.009$"}
+\CommentTok{\#| fig{-}width: 8}
+\CommentTok{\#| fig{-}height: 4.6}
+\CommentTok{\#| warning: false}
+\CommentTok{\#| message: false}
+\CommentTok{\#| echo: false}
+
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# {-}{-}{-} Parameters {-}{-}{-}}
+\NormalTok{df }\OtherTok{\textless{}{-}} \DecValTok{49}
+\NormalTok{tcrit }\OtherTok{\textless{}{-}} \FloatTok{2.009}
+\NormalTok{t\_stat }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FloatTok{1.53}
+
+\CommentTok{\# Curve data}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\AttributeTok{length.out =} \DecValTok{2000}\NormalTok{)}
+\NormalTok{curve\_df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{x =}\NormalTok{ x,}
+  \AttributeTok{y =} \FunctionTok{dt}\NormalTok{(x, df)}
+\NormalTok{)}
+
+\CommentTok{\# Tail shading data}
+\NormalTok{left\_tail  }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(curve\_df, x }\SpecialCharTok{\textless{}=} \SpecialCharTok{{-}}\NormalTok{tcrit)}
+\NormalTok{right\_tail }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(curve\_df, x }\SpecialCharTok{\textgreater{}=}\NormalTok{  tcrit)}
+
+\FunctionTok{ggplot}\NormalTok{(curve\_df, }\FunctionTok{aes}\NormalTok{(x, y)) }\SpecialCharTok{+}
+
+  \CommentTok{\# t distribution curve}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"t{-}distribution"}\NormalTok{), }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+
+  \CommentTok{\# rejection regions}
+  \FunctionTok{geom\_area}\NormalTok{(}\AttributeTok{data =}\NormalTok{ left\_tail,}
+            \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Rejection Region"}\NormalTok{),}
+            \AttributeTok{alpha =} \FloatTok{0.3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_area}\NormalTok{(}\AttributeTok{data =}\NormalTok{ right\_tail,}
+            \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Rejection Region"}\NormalTok{),}
+            \AttributeTok{alpha =} \FloatTok{0.3}\NormalTok{) }\SpecialCharTok{+}
+
+  \CommentTok{\# critical value lines}
+  \FunctionTok{geom\_vline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{linetype =} \StringTok{"Critical values: ±2.009"}\NormalTok{),}
+             \AttributeTok{xintercept =} \SpecialCharTok{{-}}\NormalTok{tcrit,}
+             \AttributeTok{color =} \StringTok{"black"}\NormalTok{,}
+             \AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{linetype =} \StringTok{"Critical values: ±2.009"}\NormalTok{),}
+             \AttributeTok{xintercept =}\NormalTok{ tcrit,}
+             \AttributeTok{color =} \StringTok{"black"}\NormalTok{,}
+             \AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
+
+  \CommentTok{\# test statistic line}
+  \FunctionTok{geom\_vline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"Test Statistic"}\NormalTok{),}
+             \AttributeTok{xintercept =}\NormalTok{ t\_stat,}
+             \AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+
+  \CommentTok{\# label for test statistic}
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"label"}\NormalTok{,}
+           \AttributeTok{x =}\NormalTok{ t\_stat,}
+           \AttributeTok{y =} \FloatTok{0.02}\NormalTok{,}
+           \AttributeTok{label =} \StringTok{"{-}1.53"}\NormalTok{,}
+           \AttributeTok{size =} \DecValTok{3}\NormalTok{,}
+           \AttributeTok{label.size =} \FloatTok{0.25}\NormalTok{,}
+           \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}
+    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}
+      \StringTok{"t{-}distribution"} \OtherTok{=} \StringTok{"blue"}\NormalTok{,}
+      \StringTok{"Test Statistic"} \OtherTok{=} \StringTok{"darkgreen"}
+\NormalTok{    ),}
+    \AttributeTok{name =} \ConstantTok{NULL}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}
+    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Rejection Region"} \OtherTok{=} \StringTok{"red"}\NormalTok{),}
+    \AttributeTok{name =} \ConstantTok{NULL}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{scale\_linetype\_manual}\NormalTok{(}
+    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Critical values: ±2.009"} \OtherTok{=} \StringTok{"dashed"}\NormalTok{),}
+    \AttributeTok{name =} \ConstantTok{NULL}
+\NormalTok{  ) }\SpecialCharTok{+}
+
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"t{-}value"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Density"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{expand =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{expand =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{+}
+
+  \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{)) }\SpecialCharTok{+}
+
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.78}\NormalTok{, }\FloatTok{0.80}\NormalTok{),}
+    \AttributeTok{legend.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =} \StringTok{"white"}\NormalTok{, }\AttributeTok{color =} \StringTok{"grey80"}\NormalTok{),}
+    \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{()}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: `geom_vline()`: Ignoring `mapping` because `xintercept` was provided.
+`geom_vline()`: Ignoring `mapping` because `xintercept` was provided.
+`geom_vline()`: Ignoring `mapping` because `xintercept` was provided.
+\end{verbatim}
+
+\begin{verbatim}
+Warning in annotate("label", x = t_stat, y = 0.02, label = "-1.53", size = 3, :
+Ignoring unknown parameters: `label.size`
+\end{verbatim}
+
+\begin{verbatim}
+Warning: No shared levels found between `names(values)` of the manual scale and the
+data's linetype values.
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+The last step in testing a hypothesis is more straightforward: compare
+the value of the \(t\) statistic you just calculated to the critical
+value you identified in (\textbf{step-two?}). If the \(t\) statistic is
+larger, meaning farther out from the center of the distribution in
+either direction, then a significant difference exists between the
+groups.
+
+In this example, the observed \(t\) value is \(= -1.53\) which is
+greater than the lower critical \(t\) value of \(-2.009\). Therefore, we
+fail to reject the null hypothesis. The actual \(p\) value for
+\(t = -1.53\) in a two-tail test is \(0.131\).
 
 \bookmarksetup{startatroot}
 

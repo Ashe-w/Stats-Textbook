@@ -4,4 +4,5 @@ title: "Chapter 2"
 
 {{< include chapter2/chapter2text.qmd >}}
 {{< include chapter2/chapter2r.qmd >}}
+{{< include chapter2/chapter2spss.qmd >}}
  
