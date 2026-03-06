@@ -4,3 +4,4 @@ number-sections: true
 ---
 {{< include chapter9/chapter9text.qmd >}}
 {{< include chapter9/chapter9r.qmd >}}
+{{< include chapter9/chapter9spss.qmd >}}

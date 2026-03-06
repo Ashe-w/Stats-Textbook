@@ -86,6 +86,8 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
+
+
 .two-col-table{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -118,4 +120,143 @@
 .two-col-table li{
   margin: .35rem 0;
   line-height: 1.35;
+}
+
+/* Make code blocks with class "spss" look like SPSS syntax editor */
+pre.spss {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px 14px;
+  overflow-x: auto;
+}
+
+pre.spss code {
+  color: #d4d4d4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95em;
+  line-height: 1.35;
+}
+
+.striped-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.striped-table thead th {
+  font-weight: 700;
+  text-align: center;
+}
+
+.striped-table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.striped-table th,
+.striped-table td {
+  padding: 0.75rem;
+  width: 50%;
+}
+
+/* vertical divider */
+.striped-table td:first-child {
+  border-right: 1px solid #999;
+}
+
+.score-table table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.score-table th,
+.score-table td {
+  border: 1px solid #4aa3df;
+  padding: 0.35rem 0.6rem;
+  text-align: center;
+}
+
+.score-table th:first-child,
+.score-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+
+.rank-table th:nth-child(2),
+.rank-table td:nth-child(2) {
+  border-right: 1px solid #999;
+}
+
+.wilcoxon-table table{
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-bottom: 0.25rem;
+}
+
+.wilcoxon-table th:nth-child(1),
+.wilcoxon-table td:nth-child(1){
+  width: 8%;
+}
+
+.wilcoxon-table th:nth-child(n+2),
+.wilcoxon-table td:nth-child(n+2) {
+  width: 11.5%;
+}
+
+/* cell borders */
+.wilcoxon-table th,
+.wilcoxon-table td{
+  border: 1px solid #6aa2c9;
+  text-align: center;
+}
+
+/* header styling */
+.wilcoxon-table thead th{
+  font-weight: 700;
+  border-bottom: 2px solid #6aa2c9;
+}
+
+/* subtle row striping */
+.wilcoxon-table tbody tr:nth-child(odd){
+  background-color: #f7f7f7;
+}
+
+/* SUM row */
+.wilcoxon-table tbody tr:last-child td{
+  font-weight: 700;
+  border-top: 2px solid #6aa2c9;
+}
+
+
+
+.wilcoxon-table-header table{
+  margin-top: 0;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  table-layout: fixed;
+}
+
+.wilcoxon-table-header th:nth-child(1),
+.wilcoxon-table-header td:nth-child(1){
+  width: 8%;
+}
+.wilcoxon-table-header th:nth-child(2),
+.wilcoxon-table-header td:nth-child(2){
+  width: 23%;
+}
+.wilcoxon-table-header th:nth-child(4),
+.wilcoxon-table-header td:nth-child(4){
+  width: 23%;
+}
+.wilcoxon-table-header th:nth-child(6),
+.wilcoxon-table-header td:nth-child(6){
+  width: 23%;
+}
+.wilcoxon-table-header th,
+.wilcoxon-table-header td{
+  border: 1px solid #6aa2c9;
+  padding: 0.35rem 0.6rem;
+  text-align: center;
 }

@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -270,6 +305,15 @@ window.Quarto = {
   <li><a href="#key-definitions-from-chapter-6" id="toc-key-definitions-from-chapter-6" class="nav-link" data-scroll-target="#key-definitions-from-chapter-6"><span class="header-section-number">6.6</span> Key Definitions from Chapter 6 </a></li>
   <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">6.7</span> Check Your Understanding</a></li>
   </ul></li>
+  <li><a href="#exploring-sampling-distributions-in-r" id="toc-exploring-sampling-distributions-in-r" class="nav-link" data-scroll-target="#exploring-sampling-distributions-in-r">Exploring Sampling Distributions in R</a>
+  <ul class="collapse">
+  <li><a href="#examining-the-population-distribution" id="toc-examining-the-population-distribution" class="nav-link" data-scroll-target="#examining-the-population-distribution">1 Examining the “Population” Distribution</a></li>
+  <li><a href="#simulating-the-sampling-distribution" id="toc-simulating-the-sampling-distribution" class="nav-link" data-scroll-target="#simulating-the-sampling-distribution">2 Simulating the Sampling Distribution</a>
+  <ul class="collapse">
+  <li><a href="#n-5-10000-samples" id="toc-n-5-10000-samples" class="nav-link" data-scroll-target="#n-5-10000-samples">2.1 n = 5; 10,000 Samples</a></li>
+  <li><a href="#n-25-10000-samples" id="toc-n-25-10000-samples" class="nav-link" data-scroll-target="#n-25-10000-samples">2.2 n = 25; 10,000 Samples</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -448,8 +492,236 @@ s_M = \frac{s}{\sqrt{n}}
 <li><p>The sampling distribution will be normal, regardless of sample size.</p></li>
 </ol></li>
 </ol>
+</section>
+</section>
+<section id="exploring-sampling-distributions-in-r" class="level1 unnumbered">
+<h1 class="unnumbered">Exploring Sampling Distributions in R</h1>
+<p>This section uses R to demonstrate the key concepts of <strong>sampling distributions</strong> and the <strong>Central Limit Theorem</strong>, using the MATHPERS variable (Effort and Persistence in Mathematics) as an example. Through hands-on simulation and data visualization, you will see how sample statistics behave, how sampling distributions form, and how the standard error is affected by sample size.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter6/chapter6data.sav"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="examining-the-population-distribution" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="examining-the-population-distribution">1 Examining the “Population” Distribution</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych) </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize MATHPERS in the full data </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>MATHPERS) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+-3.0955 -0.3006  0.1873  0.2643  0.7784  2.8491     602 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(data<span class="sc">$</span>MATHPERS, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># Standard deviation </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9845507</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skew</span>(data<span class="sc">$</span>MATHPERS, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># Skewness </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0587306</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosi</span>(data<span class="sc">$</span>MATHPERS, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># Kurtosis </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.947218</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>MATHPERS, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">main =</span> <span class="st">"Histogram of MATHPERS"</span>, <span class="at">xlab =</span> <span class="st">"MATHPERS"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter6_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data<span class="sc">$</span>MATHPERS, <span class="at">main =</span> <span class="st">"QQ Plot of MATHPERS"</span>) </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data<span class="sc">$</span>MATHPERS)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter6_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The mean is 0.26 and the standard deviation is about 0.98, with skewness (0.06) and kurtosis (0.95) both within the range (-1, 1) considered approximately normal. However, the histogram and QQ plot suggest that the distribution is not perfectly normal: the QQ plot shows noticeable deviation from the straight line at both tails, and the histogram suggests slightly heavier tails (i.e., more extreme values) than expected in a true normal distribution.</p>
+<p>Later, we will see how the sampling distribution of the mean becomes more normal even when the original data is only approximately normal.</p>
+</section>
+<section id="simulating-the-sampling-distribution" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="simulating-the-sampling-distribution">2 Simulating the Sampling Distribution</h2>
+<section id="n-5-10000-samples" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="n-5-10000-samples">2.1 n = 5; 10,000 Samples</h3>
+<p>Next, we simulate the process of taking many random samples (each of size 5) from our population. By calculating the mean of each sample, we can observe the shape and properties of the sampling distribution of the mean.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)  <span class="co"># For reproducibility </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">10000</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="dv">5</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a function to draw one sample mean </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>draw_sample_mean <span class="ot">&lt;-</span> <span class="cf">function</span>() { </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">sample</span>(data<span class="sc">$</span>MATHPERS, <span class="at">size =</span> sample_size, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>} <span class="co">#replace = TRUE to every sample to be independent </span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate sampling distribution of sample means </span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>sample_means_5 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(n_samples, <span class="fu">draw_sample_mean</span>()) </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics for the sampling distribution </span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sample_means_5) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-2.41780 -0.04378  0.26076  0.26440  0.56954  2.66630 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(sample_means_5) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4800974</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skew</span>(sample_means_5) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03987006</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosi</span>(sample_means_5) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6669525</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize sampling distribution </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_means_5, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">main =</span> <span class="st">"Sampling Distribution (n=5)"</span>, <span class="at">xlab =</span> <span class="st">"Sample Mean (n=5)"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter6_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(sample_means_5, <span class="at">main =</span> <span class="st">"QQ Plot: Sampling Dist. (n=5)"</span>) </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(sample_means_5) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter6_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The histogram of the sampling distribution of the mean (from 10,000 samples, each of size 5) show that the distribution of sample means is more symmetric and bell-shaped compared to the original variable, MATHPERS. The QQ plot confirms this improvement: most points fall closer to the straight line, particularly on the two tails, showing the sample means distribution better approximates a normal distribution. Additionally, the original data had a slightly high kurtosis of 0.98, but the sampling distribution has a kurtosis of 0.67 (closer to zero), indicating it is more normal. This demonstrates the Central Limit Theorem in action: the distribution of sample means tends to be normal, even when the population distribution is not perfectly normal.</p>
+<p><strong>Standard Error of the Mean</strong></p>
+<p>The standard error of the mean quantifies the variability of sample means around the population mean. Let’s compare the theoretical SEM to the actual SEM from our simulated sampling distribution.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Theoretical standard error </span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sem_5_theo <span class="ot">&lt;-</span> <span class="fu">sd</span>(data<span class="sc">$</span>MATHPERS, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(sample_size) </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>sem_5_theo </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4403045</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Empirical standard error (from simulation) </span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sem_5_emp <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_means_5) </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>sem_5_emp </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4800974</code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong> The theoretical standard error of the mean (SEM) for samples of size 5, calculated from the formula <span class="math inline">\(SEM = \frac{SD}{\sqrt{n}}\)</span>, is 0.44. The empirical standard error, estimated directly from the simulated sampling distribution, is 0.48. These values are close, confirming that the standard error formula provides a good approximation of the variability in sample means.</p>
+</section>
+<section id="n-25-10000-samples" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="n-25-10000-samples">2.2 n = 25; 10,000 Samples</h3>
+<p>To see how increasing sample size affects the sampling distribution, we repeat the simulation using samples of size 25.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>) </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="dv">25</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>sample_means_25 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(n_samples, <span class="fu">draw_sample_mean</span>()) </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics </span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sample_means_25) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-0.5075  0.1233  0.2660  0.2646  0.4068  1.0848 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(sample_means_25) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2134498</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skew</span>(sample_means_25) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.03540274</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosi</span>(sample_means_25) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0499314</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize </span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_means_25, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">main =</span> <span class="st">"Sampling Distribution (n=25)"</span>, <span class="at">xlab =</span> <span class="st">"Sample Mean (n=25)"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter6_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(sample_means_25, <span class="at">main =</span> <span class="st">"QQ Plot: Sampling Dist. (n=25)"</span>) </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(sample_means_25) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter6_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare SEMs </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>sem_25_theo <span class="ot">&lt;-</span> <span class="fu">sd</span>(data<span class="sc">$</span>MATHPERS, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(sample_size) </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>sem_25_theo <span class="co"># Theoretical standard error </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1969101</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sem_25_emp <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_means_25) </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>sem_25_emp <span class="co"># Empirical standard error </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2134498</code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>When the sample size increases from 5 to 25, the sampling distribution of the mean becomes much more tightly clustered around the population mean, and its shape becomes even closer to a perfect normal distribution. Notably, the kurtosis value drops further, from about 0.67 (for n = 5) to about 0.05 (for n = 25), indicating the distribution of sample means is now not just symmetric but also matches the “peakedness” of a normal distribution closely. The histogram is nearly symmetric and bell-shaped, and the QQ plot shows most points falling almost exactly on the 45-degree reference line, indicating excellent normality.</p>
+<p>The empirical standard error decreases from about 0.48 (for n = 5) to about 0.21 (for n = 25), consistent with the theoretical standard error calculated by dividing the population standard deviation by the square root of the sample size (0.44 for n = 5 and 0.20 for n = 25). This demonstrates how increasing the sample size improves the precision of the sample mean by reducing variability.</p>
+<p>In summary, increasing the sample size causes the sampling distribution to more closely approximate a normal distribution, as predicted by the Central Limit Theorem, and reduces the standard error, making our estimates more precise.</p>
 
 
+</section>
 </section>
 </section>
 

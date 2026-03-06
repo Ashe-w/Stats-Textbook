@@ -278,6 +278,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#bar-chart-comparing-mean-math-scores-by-school-type" id="toc-bar-chart-comparing-mean-math-scores-by-school-type" class="nav-link" data-scroll-target="#bar-chart-comparing-mean-math-scores-by-school-type">2 Bar Chart: Comparing Mean Math Scores by School Type</a></li>
   <li><a href="#stem-and-leaf-plot-and-box-plot" id="toc-stem-and-leaf-plot-and-box-plot" class="nav-link" data-scroll-target="#stem-and-leaf-plot-and-box-plot">5 Stem-and-Leaf Plot and Box Plot</a></li>
   </ul></li>
+  <li><a href="#displaying-data-graphically-in-spss" id="toc-displaying-data-graphically-in-spss" class="nav-link" data-scroll-target="#displaying-data-graphically-in-spss">Displaying Data Graphically in SPSS</a>
+  <ul class="collapse">
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">1 Data Exploration</a></li>
+  <li><a href="#pie-chart-of-school-organization-type" id="toc-pie-chart-of-school-organization-type" class="nav-link" data-scroll-target="#pie-chart-of-school-organization-type">2 Pie Chart of School Organization Type</a></li>
+  <li><a href="#bar-chart-of-mean-math-scores-by-school-organization-type" id="toc-bar-chart-of-mean-math-scores-by-school-organization-type" class="nav-link" data-scroll-target="#bar-chart-of-mean-math-scores-by-school-organization-type">3 Bar Chart of Mean Math Scores by School Organization Type</a></li>
+  <li><a href="#histogram-of-pv1math" id="toc-histogram-of-pv1math" class="nav-link" data-scroll-target="#histogram-of-pv1math">4 Histogram of PV1MATH</a></li>
+  <li><a href="#q-q-plot-of-pv1math" id="toc-q-q-plot-of-pv1math" class="nav-link" data-scroll-target="#q-q-plot-of-pv1math">5 Q-Q Plot of PV1MATH</a></li>
+  <li><a href="#stem-and-leaf-plot-and-box-plot-of-pv1math" id="toc-stem-and-leaf-plot-and-box-plot-of-pv1math" class="nav-link" data-scroll-target="#stem-and-leaf-plot-and-box-plot-of-pv1math">6 Stem-and-Leaf Plot and Box Plot of PV1MATH</a></li>
+  <li><a href="#scatterplot-matrix-of-math-subscales" id="toc-scatterplot-matrix-of-math-subscales" class="nav-link" data-scroll-target="#scatterplot-matrix-of-math-subscales">7 Scatterplot Matrix of Math Subscales</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -751,6 +761,151 @@ Figure&nbsp;4.4: Boxplot of test scores with five-number summary (using the stem
 <li><p>Diagonal panels display the distribution (density curves) of each subscore, giving a quick sense of how each score is spread.</p></li>
 <li><p>Upper panels present the numerical correlations for each pair. For example, the correlation between PV1MPRE (reasoning) and PV1MCCR (change &amp; relationships) is 0.85, indicating a strong positive relationship. We will formally introduce the concept of correlation and how to interpret it in a later chapter.</p></li>
 </ul>
+</section>
+</section>
+<section id="displaying-data-graphically-in-spss" class="level1 unnumbered">
+<h1 class="unnumbered">Displaying Data Graphically in SPSS</h1>
+<p>In this section, we demonstrate how to use different graphical methods (e.g., bar graphs, histograms, box plots, scatter plots) to summarize and communicate patterns, trends, and variability in categorical and continuous data. For demonstration purposes, we will continue using the continuous variable, PV1MATH (Math Plausible Value 1), along with a new categorical variable, SC014Q01TA (What kind of organization runs your school). In addition, three more continuous variables will be used specifically for creating scatterplots.</p>
+<section id="data-exploration" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="data-exploration">1 Data Exploration</h2>
+<p>Before creating visualizations, we begin by checking how many students are in each school organization category. This helps us understand how the grouping variable is distributed.</p>
+<p>To check frequencies:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Descriptive Statistics &gt; Frequencies</p></li>
+<li><p>Move SC014Q01TA into the Variable(s) box</p></li>
+<li><p>Click OK</p></li>
+</ol>
+<p>In your results, you will see a frequency table showing that out of 4,552 students:</p>
+<ul>
+<li><p>97 (2.3%) attend schools run by a church or other religious organization</p></li>
+<li><p>181 (4.2%) attend schools run by another not-for-profit organization</p></li>
+<li><p>4,013 (93.5%) attend schools run by the government</p></li>
+</ul>
+<p>There are 261 students (5.7%) with missing responses, including 170 no-response cases and 91 system-missing cases. The vast majority of students attend schools run by the government. This imbalance in group sizes should be kept in mind when comparing patterns across categories.</p>
+</section>
+<section id="pie-chart-of-school-organization-type" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="pie-chart-of-school-organization-type">2 Pie Chart of School Organization Type</h2>
+<p>To complement the frequency table, we use a pie chart to visualize the proportion of students in each school organization category.</p>
+<p>To create a pie chart:</p>
+<ol type="1">
+<li><p>Click Graphs &gt; Legacy Dialogs &gt; Pie</p></li>
+<li><p>Choose Summaries for groups of cases, then click Define</p></li>
+<li><p>Move SC014Q01TA into the Define Slices by field</p></li>
+<li><p>Select % of cases</p></li>
+<li><p>Click OK</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter4/fig4s-1.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 4.s.1</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>This pie chart provides a clear visual representation of how students are distributed across different types of school organizations. As shown, the majority attend government-run schools, with much smaller portions enrolled in schools run by religious or not-for-profit organizations. This visual confirms the proportions reported in the frequency table.</p>
+</section>
+<section id="bar-chart-of-mean-math-scores-by-school-organization-type" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="bar-chart-of-mean-math-scores-by-school-organization-type">3 Bar Chart of Mean Math Scores by School Organization Type</h2>
+<p>To compare average math achievement across different types of school organizations, we use a bar chart that summarizes the mean of PV1MATH for each category of the variable SC014Q01TA (What kind of organization runs your school?).</p>
+<p>To create the bar chart:</p>
+<ol type="1">
+<li><p>Click Graphs &gt; Bar</p></li>
+<li><p>Select Simple, then choose Summaries for groups of cases, and click Define</p></li>
+<li><p>Under Bars Represent, select Other statistic (e.g., mean) - by default, this is set to mean, which is what we want</p></li>
+<li><p>Move SC014Q01TA (school organization variable) into the Category Axis</p></li>
+<li><p>Move PV1MATH into the Bars Represent field</p></li>
+<li><p>Click OK</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter4/fig4s-2.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 4.s.2</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The bar chart shows the mean mathematics scores (PV1MATH) for students across different school organization types, based on the variable SC014Q01TA. Students attending schools run by a church or other religious organization and those run by the government had relatively higher average math scores. In contrast, students in schools operated by another not-for-profit organization had lower mean scores.</p>
+</section>
+<section id="histogram-of-pv1math" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="histogram-of-pv1math">4 Histogram of PV1MATH</h2>
+<p>A histogram allows us to examine the overall distribution of math scores (PV1MATH) across all students.</p>
+<p>To create the histogram:</p>
+<ol type="1">
+<li><p>Click Graphs &gt; Histogram</p></li>
+<li><p>Move PV1MATH into the Variable box</p></li>
+<li><p>Check the option Display normal curve</p></li>
+<li><p>Click OK</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter4/fig4s-3.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 4.s.3</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The histogram displays the overall distribution of math scores (PV1MATH) for all students, with a normal curve overlaid for reference. Unlike the bar chart used earlier - which summarizes the mean score within each school category - the histogram focuses on how individual scores are spread across the full sample. It divides the continuous PV1MATH variable into score ranges (or bins) and shows how many students fall into each range. The bars are touching because the data represent a continuous scale. The distribution appears roughly symmetric and bell-shaped, centered around a mean of 461.87, with a standard deviation of 95.13.</p>
+</section>
+<section id="q-q-plot-of-pv1math" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="q-q-plot-of-pv1math">5 Q-Q Plot of PV1MATH</h2>
+<p>To supplement the histogram, we use a Q-Q (quantile-quantile) plot to more precisely evaluate whether the math scores follow a normal distribution.</p>
+<p>To create the Q-Q plot:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Descriptive Statistics &gt; Explore</p></li>
+<li><p>Move PV1MATH into the Dependent List</p></li>
+<li><p>Click Plots, then under Descriptive, check Normality plots with tests</p></li>
+<li><p>Click Continue, then OK</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter4/fig4s-4.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 4.s.4</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The Q-Q plot compares the observed quantiles of PV1MATH to those expected under a normal distribution. If the values fall closely along the diagonal reference line, the distribution can be considered approximately normal. In this case, the math scores largely align with the line, showing only mild deviations at the tails. This confirms the roughly normal shape seen in the histogram and supports the use of statistical methods that assume normality.</p>
+</section>
+<section id="stem-and-leaf-plot-and-box-plot-of-pv1math" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="stem-and-leaf-plot-and-box-plot-of-pv1math">6 Stem-and-Leaf Plot and Box Plot of PV1MATH</h2>
+<p>SPSS has a convenient function that allows us to create both a stem-and-leaf plot and a box plot together to gain detailed distributional insight:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Descriptive Statistics &gt; Explore</p></li>
+<li><p>Move PV1MATH into the Dependent List</p></li>
+<li><p>Under Display, make sure Both is selected (this generates both numerical summaries and plots)</p></li>
+<li><p>Click OK</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter4/fig4s-5.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 4.s.5</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The stem-and-leaf plot above displays the distribution of PV1MATH scores in a compact, numeric format. Each “stem” represents a range of scores grouped by the hundreds place (e.g., 3.0 = 300–399), and each “leaf” shows clusters of individual scores within that range. In this output, each leaf represents 9 students, allowing the entire dataset of 4,552 students to be visualized. Most scores fall between 300 and 600, with the highest concentration around the 400–499 range, suggesting that the bulk of students scored near the average. While stem-and-leaf plots are traditionally used for smaller datasets, SPSS adjusts the level of detail automatically to accommodate larger samples.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter4/fig4s-6.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 4.s.6</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>This box plot above displays the median math score (central line in the box), the interquartile range (the length of the box), and the range of most scores (whiskers). A few individual values fall outside the whiskers and are shown as small circles, indicating outliers. While this SPSS-generated plot does not label quartiles or display values for whisker endpoints, it still allows us to identify the general shape and spread of the distribution. Compared to the more detailed, annotated box plots found in some textbooks, SPSS provides a cleaner version focused on the essentials—useful for spotting asymmetry or unusually high/low scores.</p>
+</section>
+<section id="scatterplot-matrix-of-math-subscales" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="scatterplot-matrix-of-math-subscales">7 Scatterplot Matrix of Math Subscales</h2>
+<p>A scatterplot matrix is useful for examining the relationship between multiple continuous variables at once. In this case, we compare students’ scores across three mathematics subscales to explore potential associations between them.</p>
+<p>To create the scatterplot matrix:</p>
+<ol type="1">
+<li><p>Click Graphs &gt; Scatter/Dot</p></li>
+<li><p>Select Matrix Scatter, then click Define</p></li>
+<li><p>Move all three subscale variables into the Matrix Variables box (e.g., PV1MATH_Reasoning, PV1MATH_Change, PV1MATH_Quantity)</p></li>
+<li><p>Click OK</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter4/fig4s-7.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 4.s.7</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The scatterplot matrix displays pairwise relationships between the three math subscales: Reasoning, Change and Relationships, and Quantity. Each panel shows how two variables vary together across students. The tight, upward-sloping patterns suggest strong positive linear relationships between all three subscales, indicating that students who perform well on one subscale tend to perform well on the others as well. There are no obvious outliers or nonlinear patterns, and the points are tightly clustered along a diagonal trend in each panel, supporting the idea of a general consistency across these dimensions of math achievement.</p>
 
 
 </section>

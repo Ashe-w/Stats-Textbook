@@ -1,0 +1,92 @@
+# Hypothesis Testing in R {.unnumbered}
+
+In this section, we will walk through the implementation of hypothesis testing in R, using the **one-sample z test** as introduced in this chapter. Our empirical example uses the PISA U.S. math achievement scores (PV1MATH) and compares them against the OECD mean of 500 points, as reported by OECD. Note that the OECD scaling assumes approximately normal distributions with a mean around 500 and a standard deviation of about 100. 
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+library(haven) 
+data <- read_sav("chapter6/chapter6data.sav") 
+```
+
+## 1    Manual Implementation of the One-Sample z Test {.unnumbered}
+
+We will follow the four key steps of hypothesis testing: 
+
+### 1.1	State the Hypotheses {.unnumbered}
+
+Our research question is: 
+
+*Is the average math performance of U.S. students ($\mu$) significantly different from the OECD mean of 500? *
+
+The hypotheses are stated as: 
+
+- $H_0:\,\mu=500$
+- $H_a:\,\mu\ne500$
+
+This is a **two-tailed test**, since we are checking whether U.S. students score either higher or lower than the OECD mean. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Compute sample statistics 
+mean_us <- mean(data$PV1MATH, na.rm = TRUE) # mean of PV1MATH, excluding NAs 
+n_us <- sum(!is.na(data$PV1MATH)) #sample size, excluding NAs 
+ 
+mean_us; n_us 
+```
+### 1.2	Set the Decision Criteria {.unnumbered}
+
+We adopt the conventional significance level: 
+
+- $\alpha=0.05$
+- Corresponding critical $z$-values: $\pm1.96$. 
+
+If the $p$ value < 0.05 (or equivalently, the test statistic falls beyond $\pm1.96$), we will reject $H_0$.
+
+### 1.3	Compute the Test Statistic {.unnumbered}
+
+Review Chapters 4 and 5 for normality assumption checking. Given our data meet the assumptions, we move on to compute the z statistic. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Parameters 
+mu_oecd <- 500      # OECD population mean 
+sigma_oecd <- 100   # OECD population standard deviation 
+ 
+# Standard error 
+sem <- sigma_oecd / sqrt(n_us) 
+ 
+# z statistic 
+z_value <- (mean_us - mu_oecd) / sem 
+z_value 
+```
+z = -25.72 indicates that the U.S. mean is 25.72 standard deviations below the OECD mean. 
+
+### 1.4	Compute the p Value and Draw a Conclusion {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# p value for two-tailed test 
+p_value <- 2 * (1 - pnorm(abs(z_value))) #1-pnorm(abs(z_value)) gives the upper tail probability  
+p_value 
+```
+As $p<0.05$, we reject the null hypothesis and conclude that U.S. students’ average math score is significantly different from the OECD mean of 500. 
+
+## 2    Using R’s Built-in Functions {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+library(BSDA) 
+# two-tailed test: H0: mu = 500 vs. Ha: mu != 500 
+z_out <- z.test(x = data$PV1MATH, 
+                mu = 500, 
+                sigma.x = 100,          # OECD-population SD (assumed known) 
+                alternative = "two.sided") 
+z_out 
+```
+The output confirms our manual calculations, with a $z$ statistic of -25.72 and a $p$ value close to 0, leading to the same conclusion: we reject the null hypothesis. 

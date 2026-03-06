@@ -38,6 +38,8 @@ format:
     theme: 
       - cosmo
       - brand
+    table:
+      striped: true
   pdf:
     documentclass: scrreprt
 

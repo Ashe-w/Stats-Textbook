@@ -3,3 +3,4 @@ title: "Chapter 8"
 ---
 {{< include chapter8/chapter8text.qmd >}}
 {{< include chapter8/chapter8r.qmd >}}
+{{< include chapter8/chapter8spss.qmd >}}

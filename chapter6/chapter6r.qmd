@@ -1,0 +1,229 @@
+# Exploring Sampling Distributions in R {.unnumbered}
+
+This section uses R to demonstrate the key concepts of **sampling distributions** and the **Central Limit Theorem**, using the MATHPERS variable (Effort and Persistence in Mathematics) as an example. Through hands-on simulation and data visualization, you will see how sample statistics behave, how sampling distributions form, and how the standard error is affected by sample size. 
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+library(haven) 
+data <- read_sav("chapter6/chapter6data.sav") 
+```
+
+## 1    Examining the “Population” Distribution {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+library(psych) 
+library(ggplot2) 
+
+# Summarize MATHPERS in the full data 
+summary(data$MATHPERS) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+sd(data$MATHPERS, na.rm = TRUE) # Standard deviation 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+skew(data$MATHPERS, na.rm = TRUE) # Skewness 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+kurtosi(data$MATHPERS, na.rm = TRUE) # Kurtosis 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+hist(data$MATHPERS, breaks = 30, main = "Histogram of MATHPERS", xlab = "MATHPERS") 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+qqnorm(data$MATHPERS, main = "QQ Plot of MATHPERS") 
+qqline(data$MATHPERS)
+```
+**Interpretation:**
+
+The mean is 0.26 and the standard deviation is about 0.98, with skewness (0.06) and kurtosis (0.95) both within the range (-1, 1) considered approximately normal. However, the histogram and QQ plot suggest that the distribution is not perfectly normal: the QQ plot shows noticeable deviation from the straight line at both tails, and the histogram suggests slightly heavier tails (i.e., more extreme values) than expected in a true normal distribution. 
+
+Later, we will see how the sampling distribution of the mean becomes more normal even when the original data is only approximately normal. 
+
+## 2    Simulating the Sampling Distribution {.unnumbered}
+
+### 2.1	n = 5; 10,000 Samples {.unnumbered}
+
+Next, we simulate the process of taking many random samples (each of size 5) from our population. By calculating the mean of each sample, we can observe the shape and properties of the sampling distribution of the mean. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+set.seed(12345)  # For reproducibility 
+n_samples <- 10000 
+sample_size <- 5 
+ 
+# Create a function to draw one sample mean 
+draw_sample_mean <- function() { 
+  mean(sample(data$MATHPERS, size = sample_size, replace = TRUE), na.rm = TRUE) 
+} #replace = TRUE to every sample to be independent 
+ 
+# Generate sampling distribution of sample means 
+sample_means_5 <- replicate(n_samples, draw_sample_mean()) 
+ 
+# Summary statistics for the sampling distribution 
+summary(sample_means_5) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+sd(sample_means_5) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+skew(sample_means_5) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+kurtosi(sample_means_5) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Visualize sampling distribution 
+hist(sample_means_5, breaks = 30, main = "Sampling Distribution (n=5)", xlab = "Sample Mean (n=5)") 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+qqnorm(sample_means_5, main = "QQ Plot: Sampling Dist. (n=5)") 
+qqline(sample_means_5) 
+```
+**Interpretation:** 
+
+The histogram of the sampling distribution of the mean (from 10,000 samples, each of size 5) show that the distribution of sample means is more symmetric and bell-shaped compared to the original variable, MATHPERS. The QQ plot confirms this improvement: most points fall closer to the straight line, particularly on the two tails, showing the sample means distribution better approximates a normal distribution. Additionally, the original data had a slightly high kurtosis of 0.98, but the sampling distribution has a kurtosis of 0.67 (closer to zero), indicating it is more normal. This demonstrates the Central Limit Theorem in action: the distribution of sample means tends to be normal, even when the population distribution is not perfectly normal. 
+
+
+**Standard Error of the Mean**
+
+The standard error of the mean quantifies the variability of sample means around the population mean. Let’s compare the theoretical SEM to the actual SEM from our simulated sampling distribution. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Theoretical standard error 
+sem_5_theo <- sd(data$MATHPERS, na.rm = TRUE) / sqrt(sample_size) 
+sem_5_theo 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Empirical standard error (from simulation) 
+sem_5_emp <- sd(sample_means_5) 
+sem_5_emp 
+```
+**Interpretation:** 
+The theoretical standard error of the mean (SEM) for samples of size 5, calculated from the formula $SEM = \frac{SD}{\sqrt{n}}$, is 0.44. The empirical standard error, estimated directly from the simulated sampling distribution, is 0.48. These values are close, confirming that the standard error formula provides a good approximation of the variability in sample means. 
+
+### 2.2 n = 25; 10,000 Samples {.unnumbered}
+To see how increasing sample size affects the sampling distribution, we repeat the simulation using samples of size 25. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+set.seed(12345) 
+sample_size <- 25 
+ 
+sample_means_25 <- replicate(n_samples, draw_sample_mean()) 
+ 
+# Summary statistics 
+summary(sample_means_25) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+sd(sample_means_25) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+skew(sample_means_25) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+kurtosi(sample_means_25) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Visualize 
+hist(sample_means_25, breaks = 30, main = "Sampling Distribution (n=25)", xlab = "Sample Mean (n=25)") 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+qqnorm(sample_means_25, main = "QQ Plot: Sampling Dist. (n=25)") 
+qqline(sample_means_25) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Compare SEMs 
+sem_25_theo <- sd(data$MATHPERS, na.rm = TRUE) / sqrt(sample_size) 
+sem_25_theo # Theoretical standard error 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+sem_25_emp <- sd(sample_means_25) 
+sem_25_emp # Empirical standard error 
+```
+**Interpretation:**
+
+When the sample size increases from 5 to 25, the sampling distribution of the mean becomes much more tightly clustered around the population mean, and its shape becomes even closer to a perfect normal distribution. Notably, the kurtosis value drops further, from about 0.67 (for n = 5) to about 0.05 (for n = 25), indicating the distribution of sample means is now not just symmetric but also matches the “peakedness” of a normal distribution closely. The histogram is nearly symmetric and bell-shaped, and the QQ plot shows most points falling almost exactly on the 45-degree reference line, indicating excellent normality. 
+
+The empirical standard error decreases from about 0.48 (for n = 5) to about 0.21 (for n = 25), consistent with the theoretical standard error calculated by dividing the population standard deviation by the square root of the sample size (0.44 for n = 5 and 0.20 for n = 25). This demonstrates how increasing the sample size improves the precision of the sample mean by reducing variability. 
+
+In summary, increasing the sample size causes the sampling distribution to more closely approximate a normal distribution, as predicted by the Central Limit Theorem, and reduces the standard error, making our estimates more precise. 

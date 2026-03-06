@@ -3151,6 +3151,367 @@ Additionally:
 
 \bookmarksetup{startatroot}
 
+\chapter*{Displaying Data Graphically in
+SPSS}\label{displaying-data-graphically-in-spss}
+\addcontentsline{toc}{chapter}{Displaying Data Graphically in SPSS}
+
+\markboth{Displaying Data Graphically in SPSS}{Displaying Data
+Graphically in SPSS}
+
+In this section, we demonstrate how to use different graphical methods
+(e.g., bar graphs, histograms, box plots, scatter plots) to summarize
+and communicate patterns, trends, and variability in categorical and
+continuous data. For demonstration purposes, we will continue using the
+continuous variable, PV1MATH (Math Plausible Value 1), along with a new
+categorical variable, SC014Q01TA (What kind of organization runs your
+school). In addition, three more continuous variables will be used
+specifically for creating scatterplots.
+
+\section*{1 Data Exploration}\label{data-exploration}
+\addcontentsline{toc}{section}{1 Data Exploration}
+
+\markright{1 Data Exploration}
+
+Before creating visualizations, we begin by checking how many students
+are in each school organization category. This helps us understand how
+the grouping variable is distributed.
+
+To check frequencies:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Descriptive Statistics \textgreater{}
+  Frequencies
+\item
+  Move SC014Q01TA into the Variable(s) box
+\item
+  Click OK
+\end{enumerate}
+
+In your results, you will see a frequency table showing that out of
+4,552 students:
+
+\begin{itemize}
+\item
+  97 (2.3\%) attend schools run by a church or other religious
+  organization
+\item
+  181 (4.2\%) attend schools run by another not-for-profit organization
+\item
+  4,013 (93.5\%) attend schools run by the government
+\end{itemize}
+
+There are 261 students (5.7\%) with missing responses, including 170
+no-response cases and 91 system-missing cases. The vast majority of
+students attend schools run by the government. This imbalance in group
+sizes should be kept in mind when comparing patterns across categories.
+
+\section*{2 Pie Chart of School Organization
+Type}\label{pie-chart-of-school-organization-type}
+\addcontentsline{toc}{section}{2 Pie Chart of School Organization Type}
+
+\markright{2 Pie Chart of School Organization Type}
+
+To complement the frequency table, we use a pie chart to visualize the
+proportion of students in each school organization category.
+
+To create a pie chart:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Graphs \textgreater{} Legacy Dialogs \textgreater{} Pie
+\item
+  Choose Summaries for groups of cases, then click Define
+\item
+  Move SC014Q01TA into the Define Slices by field
+\item
+  Select \% of cases
+\item
+  Click OK
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter4/fig4s-1.png}
+
+}
+
+\caption{Fig 4.s.1}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+This pie chart provides a clear visual representation of how students
+are distributed across different types of school organizations. As
+shown, the majority attend government-run schools, with much smaller
+portions enrolled in schools run by religious or not-for-profit
+organizations. This visual confirms the proportions reported in the
+frequency table.
+
+\section*{3 Bar Chart of Mean Math Scores by School Organization
+Type}\label{bar-chart-of-mean-math-scores-by-school-organization-type}
+\addcontentsline{toc}{section}{3 Bar Chart of Mean Math Scores by School
+Organization Type}
+
+\markright{3 Bar Chart of Mean Math Scores by School Organization Type}
+
+To compare average math achievement across different types of school
+organizations, we use a bar chart that summarizes the mean of PV1MATH
+for each category of the variable SC014Q01TA (What kind of organization
+runs your school?).
+
+To create the bar chart:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Graphs \textgreater{} Bar
+\item
+  Select Simple, then choose Summaries for groups of cases, and click
+  Define
+\item
+  Under Bars Represent, select Other statistic (e.g., mean) - by
+  default, this is set to mean, which is what we want
+\item
+  Move SC014Q01TA (school organization variable) into the Category Axis
+\item
+  Move PV1MATH into the Bars Represent field
+\item
+  Click OK
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter4/fig4s-2.png}
+
+}
+
+\caption{Fig 4.s.2}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+The bar chart shows the mean mathematics scores (PV1MATH) for students
+across different school organization types, based on the variable
+SC014Q01TA. Students attending schools run by a church or other
+religious organization and those run by the government had relatively
+higher average math scores. In contrast, students in schools operated by
+another not-for-profit organization had lower mean scores.
+
+\section*{4 Histogram of PV1MATH}\label{histogram-of-pv1math}
+\addcontentsline{toc}{section}{4 Histogram of PV1MATH}
+
+\markright{4 Histogram of PV1MATH}
+
+A histogram allows us to examine the overall distribution of math scores
+(PV1MATH) across all students.
+
+To create the histogram:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Graphs \textgreater{} Histogram
+\item
+  Move PV1MATH into the Variable box
+\item
+  Check the option Display normal curve
+\item
+  Click OK
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter4/fig4s-3.png}
+
+}
+
+\caption{Fig 4.s.3}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+The histogram displays the overall distribution of math scores (PV1MATH)
+for all students, with a normal curve overlaid for reference. Unlike the
+bar chart used earlier - which summarizes the mean score within each
+school category - the histogram focuses on how individual scores are
+spread across the full sample. It divides the continuous PV1MATH
+variable into score ranges (or bins) and shows how many students fall
+into each range. The bars are touching because the data represent a
+continuous scale. The distribution appears roughly symmetric and
+bell-shaped, centered around a mean of 461.87, with a standard deviation
+of 95.13.
+
+\section*{5 Q-Q Plot of PV1MATH}\label{q-q-plot-of-pv1math}
+\addcontentsline{toc}{section}{5 Q-Q Plot of PV1MATH}
+
+\markright{5 Q-Q Plot of PV1MATH}
+
+To supplement the histogram, we use a Q-Q (quantile-quantile) plot to
+more precisely evaluate whether the math scores follow a normal
+distribution.
+
+To create the Q-Q plot:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Descriptive Statistics \textgreater{}
+  Explore
+\item
+  Move PV1MATH into the Dependent List
+\item
+  Click Plots, then under Descriptive, check Normality plots with tests
+\item
+  Click Continue, then OK
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter4/fig4s-4.png}
+
+}
+
+\caption{Fig 4.s.4}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+The Q-Q plot compares the observed quantiles of PV1MATH to those
+expected under a normal distribution. If the values fall closely along
+the diagonal reference line, the distribution can be considered
+approximately normal. In this case, the math scores largely align with
+the line, showing only mild deviations at the tails. This confirms the
+roughly normal shape seen in the histogram and supports the use of
+statistical methods that assume normality.
+
+\section*{6 Stem-and-Leaf Plot and Box Plot of
+PV1MATH}\label{stem-and-leaf-plot-and-box-plot-of-pv1math}
+\addcontentsline{toc}{section}{6 Stem-and-Leaf Plot and Box Plot of
+PV1MATH}
+
+\markright{6 Stem-and-Leaf Plot and Box Plot of PV1MATH}
+
+SPSS has a convenient function that allows us to create both a
+stem-and-leaf plot and a box plot together to gain detailed
+distributional insight:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Descriptive Statistics \textgreater{}
+  Explore
+\item
+  Move PV1MATH into the Dependent List
+\item
+  Under Display, make sure Both is selected (this generates both
+  numerical summaries and plots)
+\item
+  Click OK
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter4/fig4s-5.png}
+
+}
+
+\caption{Fig 4.s.5}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+The stem-and-leaf plot above displays the distribution of PV1MATH scores
+in a compact, numeric format. Each ``stem'' represents a range of scores
+grouped by the hundreds place (e.g., 3.0 = 300--399), and each ``leaf''
+shows clusters of individual scores within that range. In this output,
+each leaf represents 9 students, allowing the entire dataset of 4,552
+students to be visualized. Most scores fall between 300 and 600, with
+the highest concentration around the 400--499 range, suggesting that the
+bulk of students scored near the average. While stem-and-leaf plots are
+traditionally used for smaller datasets, SPSS adjusts the level of
+detail automatically to accommodate larger samples.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter4/fig4s-6.png}
+
+}
+
+\caption{Fig 4.s.6}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+This box plot above displays the median math score (central line in the
+box), the interquartile range (the length of the box), and the range of
+most scores (whiskers). A few individual values fall outside the
+whiskers and are shown as small circles, indicating outliers. While this
+SPSS-generated plot does not label quartiles or display values for
+whisker endpoints, it still allows us to identify the general shape and
+spread of the distribution. Compared to the more detailed, annotated box
+plots found in some textbooks, SPSS provides a cleaner version focused
+on the essentials---useful for spotting asymmetry or unusually high/low
+scores.
+
+\section*{7 Scatterplot Matrix of Math
+Subscales}\label{scatterplot-matrix-of-math-subscales}
+\addcontentsline{toc}{section}{7 Scatterplot Matrix of Math Subscales}
+
+\markright{7 Scatterplot Matrix of Math Subscales}
+
+A scatterplot matrix is useful for examining the relationship between
+multiple continuous variables at once. In this case, we compare
+students' scores across three mathematics subscales to explore potential
+associations between them.
+
+To create the scatterplot matrix:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Graphs \textgreater{} Scatter/Dot
+\item
+  Select Matrix Scatter, then click Define
+\item
+  Move all three subscale variables into the Matrix Variables box (e.g.,
+  PV1MATH\_Reasoning, PV1MATH\_Change, PV1MATH\_Quantity)
+\item
+  Click OK
+\end{enumerate}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter4/fig4s-7.png}
+
+}
+
+\caption{Fig 4.s.7}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+The scatterplot matrix displays pairwise relationships between the three
+math subscales: Reasoning, Change and Relationships, and Quantity. Each
+panel shows how two variables vary together across students. The tight,
+upward-sloping patterns suggest strong positive linear relationships
+between all three subscales, indicating that students who perform well
+on one subscale tend to perform well on the others as well. There are no
+obvious outliers or nonlinear patterns, and the points are tightly
+clustered along a diagonal trend in each panel, supporting the idea of a
+general consistency across these dimensions of math achievement.
+
+\bookmarksetup{startatroot}
+
 \chapter{Chapter 5}\label{chapter-5}
 
 \bookmarksetup{startatroot}
@@ -4019,6 +4380,319 @@ the population have a body temperature between 97.5°F and 98.6°F.
 
 \bookmarksetup{startatroot}
 
+\chapter*{Exploring the Normal Distribution in
+SPSS}\label{exploring-the-normal-distribution-in-spss}
+\addcontentsline{toc}{chapter}{Exploring the Normal Distribution in
+SPSS}
+
+\markboth{Exploring the Normal Distribution in SPSS}{Exploring the
+Normal Distribution in SPSS}
+
+This section demonstrates how to work with the normal distribution in
+SPSS, including checking for normality, calculating skewness and
+kurtosis, standardizing scores (z-scores), and computing probabilities
+using the properties of the normal curve. We use the PV1MATH variable as
+an example.
+
+\section*{1 Visualizing and Summarizing the Distribution (with Normality
+Check)}\label{visualizing-and-summarizing-the-distribution-with-normality-check}
+\addcontentsline{toc}{section}{1 Visualizing and Summarizing the
+Distribution (with Normality Check)}
+
+\markright{1 Visualizing and Summarizing the Distribution (with
+Normality Check)}
+
+As a recap, the first step in exploring a continuous variable, such as
+math achievement scores (PV1MATH), is to visualize its distribution and
+review key summary statistics. As covered in Chapters 2 and 3, these
+basic descriptive measures and visualizations help us quickly understand
+the main features of the data before proceeding to more advanced
+analyses.
+
+To visualize and summarize PV1MATH:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Descriptive Statistics \textgreater{}
+  Explore.
+\item
+  Move PV1MATH into the Dependent List box.
+\item
+  Under Plots, check Histogram and Normality plots with tests.
+\item
+  Click Continue, then OK.
+\end{enumerate}
+
+SPSS produces a histogram, summary statistics (min, max, mean, median,
+quartiles, skewness and kurtosis, etc.), and a QQ plot for normality
+testing.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-1.png}
+
+}
+
+\caption{Fig 5.s.1}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-2.png}
+
+}
+
+\caption{Fig 5.s.2}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-3.png}
+
+}
+
+\caption{Fig 5.s.3}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+The skewness of PV1MATH is 0.173, indicating a slight right (positive)
+skew, meaning there are a few more high values than low values. The
+kurtosis is --0.313, suggesting the distribution is slightly flatter
+(platykurtic) than a perfectly normal distribution. Both values fall
+well within the range of --1 to 1, so the math scores are approximately
+normal, with only minor deviations from perfect symmetry and peakedness.
+The Q--Q plot further confirms that the distribution is close to normal,
+as the observed values fall closely along the diagonal line.
+
+\section*{2 Standardizing Scores: Calculating
+Z-scores}\label{standardizing-scores-calculating-z-scores-1}
+\addcontentsline{toc}{section}{2 Standardizing Scores: Calculating
+Z-scores}
+
+\markright{2 Standardizing Scores: Calculating Z-scores}
+
+To calculate z-scores in SPSS:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Descriptive Statistics \textgreater{}
+  Descriptives.
+\item
+  Move PV1MATH into the Variable(s) box.
+\item
+  Check the box Save standardized values as variables.
+\item
+  Click OK.
+\end{enumerate}
+
+SPSS creates a new variable, ZPV1MATH, in the dataset (you may have
+different row order). Below are the first 10 rows of PV1MATH and their
+corresponding Z-scores.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.3\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-4.png}
+
+}
+
+\caption{Fig 5.s.4}
+
+\end{figure}%
+
+\textbf{Interpretation:} The mean of ZPV1MATH is 0, and the standard
+deviation is 1, by definition. We can confirm this by checking the
+descriptive statistics of the newly created ZPV1MATH. The result is as
+below, as expected. This confirms that the z-scores represent how many
+standard deviations each math score is from the mean.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-5.png}
+
+}
+
+\caption{Fig 5.s.5}
+
+\end{figure}%
+
+Let's look at two example students from the first six rows:
+
+\begin{itemize}
+\item
+  The first student has a raw math score of 575.451, which corresponds
+  to a z-score of 1.194. This means their math score is 1.194 standard
+  deviations above the mean (with the mean previously reported as about
+  461.87).
+\item
+  The second student has a math score of 442.014, giving a z-score of -
+  0.209. This means their score is slightly below the mean (about 0.209
+  standard deviations lower).
+\end{itemize}
+
+By adding the z-scores to the dataset, it's easier to compare each
+student's performance relative to the whole group, regardless of the
+scale of the original scores.
+
+\section*{3 Example: Calculating Z-scores and Probabilities (Questions
+1-3)}\label{example-calculating-z-scores-and-probabilities-questions-1-3}
+\addcontentsline{toc}{section}{3 Example: Calculating Z-scores and
+Probabilities (Questions 1-3)}
+
+\markright{3 Example: Calculating Z-scores and Probabilities (Questions
+1-3)}
+
+Suppose the mean (\(\mu\)) = 98.2 and standard deviation (\(\sigma\)) =
+0.73, as in the body temperature example.
+
+Unlike R and some other software, SPSS does not have a point-and-click
+menu to calculate probabilities under the normal curve. Instead, we need
+to use SPSS syntax with the function
+\emph{CDF.NORMAL}(\(x,\,\mu,\,\sigma\)). This function returns the
+probability that a normally distributed random variable is less than or
+equal to x. To calculate right-tail or interval probabilities, we simply
+combine these values.
+
+One important difference is that SPSS is case-oriented: every
+computation is applied to each row of the dataset. When we use constants
+(like 98.6), SPSS creates a new variable and fills it with the same
+value for all cases. As a result, the output may look repetitive, but
+what matters is the single constant value itself.
+
+\subsection*{\texorpdfstring{Q1. Probability that
+\(X \ge 98.6\)}{Q1. Probability that X \textbackslash ge 98.6}}\label{q1.-probability-that-x-ge-98.6}
+\addcontentsline{toc}{subsection}{Q1. Probability that \(X \ge 98.6\)}
+
+Here we replicate the example from section \emph{Finding Areas Under the
+Normal Curve}, calculating the probability that a randomly selected
+person has a body temperature of 98.6°F or higher.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{* Step 1: Compute the z{-}score using the formula (x {-} mu) / sigma.}
+\NormalTok{COMPUTE Z1 = (98.6 {-} 98.2) / 0.73.}
+\NormalTok{FORMATS Z1 (F8.3).}
+
+\NormalTok{* F8.3 simply ensures that results like the z{-}score or probability are shown with three}
+\NormalTok{digits after the decimal point.}
+
+\NormalTok{* Step 2: Compute the probability in the right tail.}
+\NormalTok{COMPUTE Prob1 = 1 {-} CDF.NORMAL(98.6, 98.2, 0.73).}
+
+\NormalTok{* CDF.NORMAL(x, mu, sigma) gives P(X ≤ x).}
+\NormalTok{* To get P(X ≥ x), we calculate 1 {-} CDF.NORMAL(x, mu, sigma).}
+\NormalTok{FORMATS Prob1 (F8.3).}
+\NormalTok{LIST Z1 Prob1. }
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Results:}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.15\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-6.png}
+
+}
+
+\caption{Fig 5.s.6}
+
+\end{figure}%
+
+\textbf{Interpretation:} The z-score of 98.6 is 0.548. The corresponding
+probability is 0.292, meaning that about 29.2\% of the population have a
+body temperature of 98.6°F or higher.
+
+\subsection*{Q2. Probability that X ≤
+97.5}\label{q2.-probability-that-x-97.5}
+\addcontentsline{toc}{subsection}{Q2. Probability that X ≤ 97.5}
+
+Now we calculate the probability that a randomly selected person has a
+body temperature of 97.5°F or lower.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{* Step 1: Compute the probability of the left tail (≤ 97.5). }
+
+\NormalTok{COMPUTE Prob2 =CDF.NORMAL(97.5, 98.2, 0.73). }
+
+\NormalTok{* CDF.NORMAL(x, mu, sigma) directly returns P(X ≤ x). }
+
+\NormalTok{FORMATS Prob2 (F8.3). }
+
+\NormalTok{EXECUTE. }
+
+\NormalTok{* Step 2: Display the result. }
+
+\NormalTok{LIST Prob2. }
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Results:}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.15\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-7.png}
+
+}
+
+\caption{Fig 5.s.7}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+About 16.9\% of the population have a body temperature of 97.5°F or
+lower.
+
+\subsection*{Q3. Probability between 97.5 and
+98.6}\label{q3.-probability-between-97.5-and-98.6}
+\addcontentsline{toc}{subsection}{Q3. Probability between 97.5 and 98.6}
+
+Finally, we calculate the probability that a randomly selected person
+has a body temperature between 97.5°F and 98.6°F.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{* Step 1: Compute the probability of the interval [97.5, 98.6]. }
+
+\NormalTok{COMPUTE Prob3 = CDF.NORMAL(98.6, 98.2, 0.73) {-} CDF.NORMAL(97.5, 98.2, 0.73). }
+
+\NormalTok{* This subtracts the left{-}tail probability up to 97.5 from the left{-}tail probability up to 98.6. }
+
+\NormalTok{FORMATS Prob3 (F8.3). }
+
+\NormalTok{EXECUTE. }
+
+\NormalTok{* Step 2: Display the result. }
+
+\NormalTok{LIST Prob3. }
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Results:}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.15\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-8.png}
+
+}
+
+\caption{Fig 5.s.8}
+
+\end{figure}%
+
+\textbf{Interpretation:}
+
+About 53.9\% (difference due to rounding) of the population have a body
+temperature between 97.5°F and 98.6°F.
+
+\bookmarksetup{startatroot}
+
 \chapter{Chapter 6}\label{chapter-6}
 
 \bookmarksetup{startatroot}
@@ -4580,6 +5254,367 @@ mean.
     The sampling distribution will be normal, regardless of sample size.
   \end{enumerate}
 \end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Exploring Sampling Distributions in
+R}\label{exploring-sampling-distributions-in-r}
+\addcontentsline{toc}{chapter}{Exploring Sampling Distributions in R}
+
+\markboth{Exploring Sampling Distributions in R}{Exploring Sampling
+Distributions in R}
+
+This section uses R to demonstrate the key concepts of \textbf{sampling
+distributions} and the \textbf{Central Limit Theorem}, using the
+MATHPERS variable (Effort and Persistence in Mathematics) as an example.
+Through hands-on simulation and data visualization, you will see how
+sample statistics behave, how sampling distributions form, and how the
+standard error is affected by sample size.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(haven) }
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read\_sav}\NormalTok{(}\StringTok{"chapter6/chapter6data.sav"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\section*{1 Examining the ``Population''
+Distribution}\label{examining-the-population-distribution}
+\addcontentsline{toc}{section}{1 Examining the ``Population''
+Distribution}
+
+\markright{1 Examining the ``Population'' Distribution}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(psych) }
+\FunctionTok{library}\NormalTok{(ggplot2) }
+
+\CommentTok{\# Summarize MATHPERS in the full data }
+\FunctionTok{summary}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+-3.0955 -0.3006  0.1873  0.2643  0.7784  2.8491     602 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\# Standard deviation }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.9845507
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{skew}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\# Skewness }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.0587306
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kurtosi}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\# Kurtosis }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.947218
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS, }\AttributeTok{breaks =} \DecValTok{30}\NormalTok{, }\AttributeTok{main =} \StringTok{"Histogram of MATHPERS"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"MATHPERS"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter6_files/figure-pdf/unnamed-chunk-6-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS, }\AttributeTok{main =} \StringTok{"QQ Plot of MATHPERS"}\NormalTok{) }
+\FunctionTok{qqline}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter6_files/figure-pdf/unnamed-chunk-7-1.pdf}}
+
+\textbf{Interpretation:}
+
+The mean is 0.26 and the standard deviation is about 0.98, with skewness
+(0.06) and kurtosis (0.95) both within the range (-1, 1) considered
+approximately normal. However, the histogram and QQ plot suggest that
+the distribution is not perfectly normal: the QQ plot shows noticeable
+deviation from the straight line at both tails, and the histogram
+suggests slightly heavier tails (i.e., more extreme values) than
+expected in a true normal distribution.
+
+Later, we will see how the sampling distribution of the mean becomes
+more normal even when the original data is only approximately normal.
+
+\section*{2 Simulating the Sampling
+Distribution}\label{simulating-the-sampling-distribution}
+\addcontentsline{toc}{section}{2 Simulating the Sampling Distribution}
+
+\markright{2 Simulating the Sampling Distribution}
+
+\subsection*{2.1 n = 5; 10,000 Samples}\label{n-5-10000-samples}
+\addcontentsline{toc}{subsection}{2.1 n = 5; 10,000 Samples}
+
+Next, we simulate the process of taking many random samples (each of
+size 5) from our population. By calculating the mean of each sample, we
+can observe the shape and properties of the sampling distribution of the
+mean.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{12345}\NormalTok{)  }\CommentTok{\# For reproducibility }
+\NormalTok{n\_samples }\OtherTok{\textless{}{-}} \DecValTok{10000} 
+\NormalTok{sample\_size }\OtherTok{\textless{}{-}} \DecValTok{5} 
+ 
+\CommentTok{\# Create a function to draw one sample mean }
+\NormalTok{draw\_sample\_mean }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{ }
+  \FunctionTok{mean}\NormalTok{(}\FunctionTok{sample}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS, }\AttributeTok{size =}\NormalTok{ sample\_size, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }
+\NormalTok{\} }\CommentTok{\#replace = TRUE to every sample to be independent }
+ 
+\CommentTok{\# Generate sampling distribution of sample means }
+\NormalTok{sample\_means\_5 }\OtherTok{\textless{}{-}} \FunctionTok{replicate}\NormalTok{(n\_samples, }\FunctionTok{draw\_sample\_mean}\NormalTok{()) }
+ 
+\CommentTok{\# Summary statistics for the sampling distribution }
+\FunctionTok{summary}\NormalTok{(sample\_means\_5) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-2.41780 -0.04378  0.26076  0.26440  0.56954  2.66630 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(sample\_means\_5) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.4800974
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{skew}\NormalTok{(sample\_means\_5) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.03987006
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kurtosi}\NormalTok{(sample\_means\_5) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.6669525
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualize sampling distribution }
+\FunctionTok{hist}\NormalTok{(sample\_means\_5, }\AttributeTok{breaks =} \DecValTok{30}\NormalTok{, }\AttributeTok{main =} \StringTok{"Sampling Distribution (n=5)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Sample Mean (n=5)"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter6_files/figure-pdf/unnamed-chunk-12-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(sample\_means\_5, }\AttributeTok{main =} \StringTok{"QQ Plot: Sampling Dist. (n=5)"}\NormalTok{) }
+\FunctionTok{qqline}\NormalTok{(sample\_means\_5) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter6_files/figure-pdf/unnamed-chunk-13-1.pdf}}
+
+\textbf{Interpretation:}
+
+The histogram of the sampling distribution of the mean (from 10,000
+samples, each of size 5) show that the distribution of sample means is
+more symmetric and bell-shaped compared to the original variable,
+MATHPERS. The QQ plot confirms this improvement: most points fall closer
+to the straight line, particularly on the two tails, showing the sample
+means distribution better approximates a normal distribution.
+Additionally, the original data had a slightly high kurtosis of 0.98,
+but the sampling distribution has a kurtosis of 0.67 (closer to zero),
+indicating it is more normal. This demonstrates the Central Limit
+Theorem in action: the distribution of sample means tends to be normal,
+even when the population distribution is not perfectly normal.
+
+\textbf{Standard Error of the Mean}
+
+The standard error of the mean quantifies the variability of sample
+means around the population mean. Let's compare the theoretical SEM to
+the actual SEM from our simulated sampling distribution.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Theoretical standard error }
+\NormalTok{sem\_5\_theo }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(sample\_size) }
+\NormalTok{sem\_5\_theo }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.4403045
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Empirical standard error (from simulation) }
+\NormalTok{sem\_5\_emp }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(sample\_means\_5) }
+\NormalTok{sem\_5\_emp }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.4800974
+\end{verbatim}
+
+\textbf{Interpretation:} The theoretical standard error of the mean
+(SEM) for samples of size 5, calculated from the formula
+\(SEM = \frac{SD}{\sqrt{n}}\), is 0.44. The empirical standard error,
+estimated directly from the simulated sampling distribution, is 0.48.
+These values are close, confirming that the standard error formula
+provides a good approximation of the variability in sample means.
+
+\subsection*{2.2 n = 25; 10,000 Samples}\label{n-25-10000-samples}
+\addcontentsline{toc}{subsection}{2.2 n = 25; 10,000 Samples}
+
+To see how increasing sample size affects the sampling distribution, we
+repeat the simulation using samples of size 25.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{12345}\NormalTok{) }
+\NormalTok{sample\_size }\OtherTok{\textless{}{-}} \DecValTok{25} 
+ 
+\NormalTok{sample\_means\_25 }\OtherTok{\textless{}{-}} \FunctionTok{replicate}\NormalTok{(n\_samples, }\FunctionTok{draw\_sample\_mean}\NormalTok{()) }
+ 
+\CommentTok{\# Summary statistics }
+\FunctionTok{summary}\NormalTok{(sample\_means\_25) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-0.5075  0.1233  0.2660  0.2646  0.4068  1.0848 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(sample\_means\_25) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.2134498
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{skew}\NormalTok{(sample\_means\_25) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -0.03540274
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kurtosi}\NormalTok{(sample\_means\_25) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.0499314
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualize }
+\FunctionTok{hist}\NormalTok{(sample\_means\_25, }\AttributeTok{breaks =} \DecValTok{30}\NormalTok{, }\AttributeTok{main =} \StringTok{"Sampling Distribution (n=25)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Sample Mean (n=25)"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter6_files/figure-pdf/unnamed-chunk-20-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(sample\_means\_25, }\AttributeTok{main =} \StringTok{"QQ Plot: Sampling Dist. (n=25)"}\NormalTok{) }
+\FunctionTok{qqline}\NormalTok{(sample\_means\_25) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter6_files/figure-pdf/unnamed-chunk-21-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compare SEMs }
+\NormalTok{sem\_25\_theo }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHPERS, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(sample\_size) }
+\NormalTok{sem\_25\_theo }\CommentTok{\# Theoretical standard error }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.1969101
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sem\_25\_emp }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(sample\_means\_25) }
+\NormalTok{sem\_25\_emp }\CommentTok{\# Empirical standard error }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.2134498
+\end{verbatim}
+
+\textbf{Interpretation:}
+
+When the sample size increases from 5 to 25, the sampling distribution
+of the mean becomes much more tightly clustered around the population
+mean, and its shape becomes even closer to a perfect normal
+distribution. Notably, the kurtosis value drops further, from about 0.67
+(for n = 5) to about 0.05 (for n = 25), indicating the distribution of
+sample means is now not just symmetric but also matches the
+``peakedness'' of a normal distribution closely. The histogram is nearly
+symmetric and bell-shaped, and the QQ plot shows most points falling
+almost exactly on the 45-degree reference line, indicating excellent
+normality.
+
+The empirical standard error decreases from about 0.48 (for n = 5) to
+about 0.21 (for n = 25), consistent with the theoretical standard error
+calculated by dividing the population standard deviation by the square
+root of the sample size (0.44 for n = 5 and 0.20 for n = 25). This
+demonstrates how increasing the sample size improves the precision of
+the sample mean by reducing variability.
+
+In summary, increasing the sample size causes the sampling distribution
+to more closely approximate a normal distribution, as predicted by the
+Central Limit Theorem, and reduces the standard error, making our
+estimates more precise.
 
 \bookmarksetup{startatroot}
 
@@ -5299,6 +6334,179 @@ true.
  d. To ensure data is normally distributed 
 \end{verbatim}
 \end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Hypothesis Testing in R}\label{hypothesis-testing-in-r}
+\addcontentsline{toc}{chapter}{Hypothesis Testing in R}
+
+\markboth{Hypothesis Testing in R}{Hypothesis Testing in R}
+
+In this section, we will walk through the implementation of hypothesis
+testing in R, using the \textbf{one-sample z test} as introduced in this
+chapter. Our empirical example uses the PISA U.S. math achievement
+scores (PV1MATH) and compares them against the OECD mean of 500 points,
+as reported by OECD. Note that the OECD scaling assumes approximately
+normal distributions with a mean around 500 and a standard deviation of
+about 100.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(haven) }
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read\_sav}\NormalTok{(}\StringTok{"chapter6/chapter6data.sav"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\section*{1 Manual Implementation of the One-Sample z
+Test}\label{manual-implementation-of-the-one-sample-z-test}
+\addcontentsline{toc}{section}{1 Manual Implementation of the One-Sample
+z Test}
+
+\markright{1 Manual Implementation of the One-Sample z Test}
+
+We will follow the four key steps of hypothesis testing:
+
+\subsection*{1.1 State the Hypotheses}\label{state-the-hypotheses}
+\addcontentsline{toc}{subsection}{1.1 State the Hypotheses}
+
+Our research question is:
+
+\emph{Is the average math performance of U.S. students (\(\mu\))
+significantly different from the OECD mean of 500? }
+
+The hypotheses are stated as:
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_0:\,\mu=500\)
+\item
+  \(H_a:\,\mu\ne500\)
+\end{itemize}
+
+This is a \textbf{two-tailed test}, since we are checking whether U.S.
+students score either higher or lower than the OECD mean.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute sample statistics }
+\NormalTok{mean\_us }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\# mean of PV1MATH, excluding NAs }
+\NormalTok{n\_us }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MATH)) }\CommentTok{\#sample size, excluding NAs }
+ 
+\NormalTok{mean\_us; n\_us }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 461.8733
+\end{verbatim}
+
+\begin{verbatim}
+[1] 4552
+\end{verbatim}
+
+\subsection*{1.2 Set the Decision
+Criteria}\label{set-the-decision-criteria}
+\addcontentsline{toc}{subsection}{1.2 Set the Decision Criteria}
+
+We adopt the conventional significance level:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\alpha=0.05\)
+\item
+  Corresponding critical \(z\)-values: \(\pm1.96\).
+\end{itemize}
+
+If the \(p\) value \textless{} 0.05 (or equivalently, the test statistic
+falls beyond \(\pm1.96\)), we will reject \(H_0\).
+
+\subsection*{1.3 Compute the Test
+Statistic}\label{compute-the-test-statistic}
+\addcontentsline{toc}{subsection}{1.3 Compute the Test Statistic}
+
+Review Chapters 4 and 5 for normality assumption checking. Given our
+data meet the assumptions, we move on to compute the z statistic.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Parameters }
+\NormalTok{mu\_oecd }\OtherTok{\textless{}{-}} \DecValTok{500}      \CommentTok{\# OECD population mean }
+\NormalTok{sigma\_oecd }\OtherTok{\textless{}{-}} \DecValTok{100}   \CommentTok{\# OECD population standard deviation }
+ 
+\CommentTok{\# Standard error }
+\NormalTok{sem }\OtherTok{\textless{}{-}}\NormalTok{ sigma\_oecd }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(n\_us) }
+ 
+\CommentTok{\# z statistic }
+\NormalTok{z\_value }\OtherTok{\textless{}{-}}\NormalTok{ (mean\_us }\SpecialCharTok{{-}}\NormalTok{ mu\_oecd) }\SpecialCharTok{/}\NormalTok{ sem }
+\NormalTok{z\_value }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -25.72353
+\end{verbatim}
+
+z = -25.72 indicates that the U.S. mean is 25.72 standard deviations
+below the OECD mean.
+
+\subsection*{1.4 Compute the p Value and Draw a
+Conclusion}\label{compute-the-p-value-and-draw-a-conclusion}
+\addcontentsline{toc}{subsection}{1.4 Compute the p Value and Draw a
+Conclusion}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# p value for two{-}tailed test }
+\NormalTok{p\_value }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\FunctionTok{abs}\NormalTok{(z\_value))) }\CommentTok{\#1{-}pnorm(abs(z\_value)) gives the upper tail probability  }
+\NormalTok{p\_value }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0
+\end{verbatim}
+
+As \(p<0.05\), we reject the null hypothesis and conclude that U.S.
+students' average math score is significantly different from the OECD
+mean of 500.
+
+\section*{2 Using R's Built-in
+Functions}\label{using-rs-built-in-functions}
+\addcontentsline{toc}{section}{2 Using R's Built-in Functions}
+
+\markright{2 Using R's Built-in Functions}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(BSDA) }
+\CommentTok{\# two{-}tailed test: H0: mu = 500 vs. Ha: mu != 500 }
+\NormalTok{z\_out }\OtherTok{\textless{}{-}} \FunctionTok{z.test}\NormalTok{(}\AttributeTok{x =}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{PV1MATH, }
+                \AttributeTok{mu =} \DecValTok{500}\NormalTok{, }
+                \AttributeTok{sigma.x =} \DecValTok{100}\NormalTok{,          }\CommentTok{\# OECD{-}population SD (assumed known) }
+                \AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{) }
+\NormalTok{z\_out }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+    One-sample z-Test
+
+data:  data$PV1MATH
+z = -25.724, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 500
+95 percent confidence interval:
+ 458.9683 464.7783
+sample estimates:
+mean of x 
+ 461.8733 
+\end{verbatim}
+
+The output confirms our manual calculations, with a \(z\) statistic of
+-25.72 and a \(p\) value close to 0, leading to the same conclusion: we
+reject the null hypothesis.
 
 \bookmarksetup{startatroot}
 
@@ -6942,15 +8150,14 @@ hypothesis would be:
 H_A: \mu_1 > \mu_2
 \]
 
-,
-
 or
 
 \[
 H_A: \mu_1 < \mu_2
 \]
 
-\subsection{Step 2: Set the criteria for a decision.}\label{step-two}
+\subsection{Step 2: Set the criteria for a
+decision.}\label{step-2-set-the-criteria-for-a-decision.-2}
 
 The next step in testing the null hypothesis is to set the criteria for
 a decision: how much of a difference is significant enough that we can
@@ -6971,84 +8178,18 @@ example, both groups have a sample size of \(35\) so the
 \(50\) df to be conservative. The critical \(t\) value associated with
 50 df at \(\alpha = 0.05\) for a two-tailed test is \(\pm2.009\).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#| label: fig{-}9.2}
-\CommentTok{\#| fig{-}cap: "t{-}distribution with two{-}tailed rejection regions ($\textbackslash{}alpha = 0.05$)"}
-\CommentTok{\#| fig{-}width: 8}
-\CommentTok{\#| fig{-}height: 4.6}
-\CommentTok{\#| warning: false}
-\CommentTok{\#| message: false}
-\CommentTok{\#| echo: false}
-\FunctionTok{library}\NormalTok{(ggplot2)}
+\begin{figure}
 
+\centering{
 
-\CommentTok{\# {-}{-}{-} Settings (edit these as needed) {-}{-}{-}}
-\NormalTok{df }\OtherTok{\textless{}{-}} \DecValTok{49}
-\NormalTok{alpha }\OtherTok{\textless{}{-}} \FloatTok{0.05}
-\NormalTok{tcrit }\OtherTok{\textless{}{-}} \FunctionTok{qt}\NormalTok{(}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ alpha}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, df)}
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/fig-9.2-1.pdf}}
 
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\AttributeTok{length.out =} \DecValTok{2000}\NormalTok{)}
-\NormalTok{curve\_df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =} \FunctionTok{dt}\NormalTok{(x, df))}
+}
 
-\FunctionTok{ggplot}\NormalTok{(curve\_df, }\FunctionTok{aes}\NormalTok{(x, y)) }\SpecialCharTok{+}
+\caption{\label{fig-9.2}t-distribution with two-tailed rejection
+regions}
 
-  \CommentTok{\# T distribution line}
-  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"T{-}Distribution"}\NormalTok{), }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
-
-  \CommentTok{\# Rejection regions (tails only)}
-  \FunctionTok{geom\_area}\NormalTok{(}
-    \AttributeTok{data =} \FunctionTok{subset}\NormalTok{(curve\_df, x }\SpecialCharTok{\textless{}=} \SpecialCharTok{{-}}\NormalTok{tcrit),}
-    \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Rejection Region"}\NormalTok{),}
-    \AttributeTok{alpha =} \FloatTok{0.3}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{geom\_area}\NormalTok{(}
-    \AttributeTok{data =} \FunctionTok{subset}\NormalTok{(curve\_df, x }\SpecialCharTok{\textgreater{}=}\NormalTok{ tcrit),}
-    \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Rejection Region"}\NormalTok{),}
-    \AttributeTok{alpha =} \FloatTok{0.3}
-\NormalTok{  ) }\SpecialCharTok{+}
-
-  \CommentTok{\# Critical value lines}
-  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \SpecialCharTok{{-}}\NormalTok{tcrit, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ tcrit,  }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
-
-  \CommentTok{\# Null line}
-  \FunctionTok{geom\_vline}\NormalTok{(}
-    \FunctionTok{aes}\NormalTok{(}\AttributeTok{linetype =} \StringTok{"Null Hypothesis (Mean Diff = 0)"}\NormalTok{),}
-    \AttributeTok{xintercept =} \DecValTok{0}\NormalTok{,}
-    \AttributeTok{color =} \StringTok{"black"}
-\NormalTok{  ) }\SpecialCharTok{+}
-
-  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"T{-}Distribution"} \OtherTok{=} \StringTok{"blue"}\NormalTok{), }\AttributeTok{name =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Rejection Region"} \OtherTok{=} \StringTok{"red"}\NormalTok{), }\AttributeTok{name =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_linetype\_manual}\NormalTok{(}
-    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Null Hypothesis (Mean Diff = 0)"} \OtherTok{=} \StringTok{"dashed"}\NormalTok{),}
-    \AttributeTok{name =} \ConstantTok{NULL}
-\NormalTok{  ) }\SpecialCharTok{+}
-
-  \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{x =} \StringTok{"Standardized Difference in Sample Means (t)"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"Density"}
-\NormalTok{  ) }\SpecialCharTok{+}
-
-  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}
-    \AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.72}\NormalTok{, }\FloatTok{0.62}\NormalTok{),}
-    \AttributeTok{legend.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =} \StringTok{"white"}\NormalTok{, }\AttributeTok{color =} \StringTok{"grey80"}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-Warning: `geom_vline()`: Ignoring `mapping` because `xintercept` was provided.
-\end{verbatim}
-
-\begin{verbatim}
-Warning: No shared levels found between `names(values)` of the manual scale and the
-data's linetype values.
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/unnamed-chunk-1-1.pdf}}
+\end{figure}%
 
 \subsection{Step 3: Check assumptions and compute the test
 statistic.\,}\label{step-3-check-assumptions-and-compute-the-test-statistic.-1}
@@ -7083,73 +8224,18 @@ completely spread out with a much wider range than compared to the first
 group. It is harder to make a solid conclusion about the differences
 between two group means when the distributions are completely different.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#| label: fig{-}9.3}
-\CommentTok{\#| fig{-}cap: "Normal distributions with equal vs. unequal variances"}
-\CommentTok{\#| fig{-}width: 8}
-\CommentTok{\#| fig{-}height: 4.6}
-\CommentTok{\#| warning: false}
-\CommentTok{\#| message: false}
-\CommentTok{\#| echo: false}
+\begin{figure}
 
-\FunctionTok{library}\NormalTok{(ggplot2)}
+\centering{
 
-\CommentTok{\# {-}{-}{-}{-} Parameters from the figure {-}{-}{-}{-}}
-\NormalTok{x\_min }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{x\_max }\OtherTok{\textless{}{-}} \DecValTok{125}
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(x\_min, x\_max, }\AttributeTok{length.out =} \DecValTok{2000}\NormalTok{)}
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/fig-9.3-1.pdf}}
 
-\NormalTok{params }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
-  \AttributeTok{scenario =} \FunctionTok{c}\NormalTok{(}\StringTok{"Equal Variances (X: 0{-}125)"}\NormalTok{, }\StringTok{"Equal Variances (X: 0{-}125)"}\NormalTok{,}
-               \StringTok{"Unequal Variances (X: 0{-}125)"}\NormalTok{, }\StringTok{"Unequal Variances (X: 0{-}125)"}\NormalTok{),}
-  \AttributeTok{group    =} \FunctionTok{c}\NormalTok{(}\StringTok{"Group 1"}\NormalTok{, }\StringTok{"Group 2"}\NormalTok{, }\StringTok{"Group 1"}\NormalTok{, }\StringTok{"Group 2"}\NormalTok{),}
-  \AttributeTok{mean     =} \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{),}
-  \AttributeTok{sd       =} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{),}
-  \AttributeTok{color    =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"darkgreen"}\NormalTok{)}
-\NormalTok{)}
+}
 
-\CommentTok{\# Build curve data}
-\NormalTok{curve\_df }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, }\FunctionTok{lapply}\NormalTok{(}\FunctionTok{seq\_len}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(params)), }\ControlFlowTok{function}\NormalTok{(i)\{}
-\NormalTok{  p }\OtherTok{\textless{}{-}}\NormalTok{ params[i, ]}
-  \FunctionTok{data.frame}\NormalTok{(}
-    \AttributeTok{x =}\NormalTok{ x,}
-    \AttributeTok{y =} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{mean, }\AttributeTok{sd =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{sd),}
-    \AttributeTok{scenario =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{scenario,}
-    \AttributeTok{group =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%s (Mean=\%d, SD=\%d)"}\NormalTok{, p}\SpecialCharTok{$}\NormalTok{group, p}\SpecialCharTok{$}\NormalTok{mean, p}\SpecialCharTok{$}\NormalTok{sd),}
-    \AttributeTok{mean =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{mean,}
-    \AttributeTok{color =}\NormalTok{ p}\SpecialCharTok{$}\NormalTok{color}
-\NormalTok{  )}
-\NormalTok{\}))}
+\caption{\label{fig-9.3}Normal distributions with equal vs.~unequal
+variances}
 
-\CommentTok{\# Means for vlines/legend}
-\NormalTok{means\_df }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(curve\_df[, }\FunctionTok{c}\NormalTok{(}\StringTok{"scenario"}\NormalTok{, }\StringTok{"group"}\NormalTok{, }\StringTok{"mean"}\NormalTok{, }\StringTok{"color"}\NormalTok{)])}
-
-\FunctionTok{ggplot}\NormalTok{(curve\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{color =}\NormalTok{ group)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_vline}\NormalTok{(}
-    \AttributeTok{data =}\NormalTok{ means\_df,}
-    \FunctionTok{aes}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean, }\AttributeTok{color =}\NormalTok{ group),}
-    \AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{,}
-    \AttributeTok{linewidth =} \FloatTok{0.8}\NormalTok{,}
-    \AttributeTok{show.legend =} \ConstantTok{FALSE}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{scenario, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(x\_min, x\_max)) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Scores"}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_color\_manual}\NormalTok{(}
-    \AttributeTok{values =} \FunctionTok{setNames}\NormalTok{(means\_df}\SpecialCharTok{$}\NormalTok{color, means\_df}\SpecialCharTok{$}\NormalTok{group)}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}
-    \AttributeTok{legend.position =} \StringTok{"top"}\NormalTok{,}
-    \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),}
-    \AttributeTok{strip.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/unnamed-chunk-2-1.pdf}}
+\end{figure}%
 
 When analyzing data from two groups, it is essential to compute and
 evaluate the size of variance for each group. This helps in
@@ -7209,7 +8295,7 @@ population variance? The optimal solution is to make full use of the
 variance estimates from both samples to obtain a more accurate estimate
 of the population variance.
 
-There is another new value in the denominator, s2p, s p 2 ,
+There is another new value in the denominator, \(s_p^2\) ,
 
 which represents the pooled sample variance. The formula for this looks
 very complicated, but it is just a way of weighting the two sample
@@ -7271,134 +8357,1278 @@ is just more complicated to calculate this version of standard error
 than it has been for other tests. The good news is that statistical
 software programs will do the math for you.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#| label: fig{-}9.4}
-\CommentTok{\#| fig{-}cap: "Two{-}tailed t{-}test with critical values $\textbackslash{}pm2.009$"}
-\CommentTok{\#| fig{-}width: 8}
-\CommentTok{\#| fig{-}height: 4.6}
-\CommentTok{\#| warning: false}
-\CommentTok{\#| message: false}
-\CommentTok{\#| echo: false}
+\begin{figure}
 
-\FunctionTok{library}\NormalTok{(ggplot2)}
+\centering{
 
-\CommentTok{\# {-}{-}{-} Parameters {-}{-}{-}}
-\NormalTok{df }\OtherTok{\textless{}{-}} \DecValTok{49}
-\NormalTok{tcrit }\OtherTok{\textless{}{-}} \FloatTok{2.009}
-\NormalTok{t\_stat }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FloatTok{1.53}
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/fig-9.4-1.pdf}}
 
-\CommentTok{\# Curve data}
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\AttributeTok{length.out =} \DecValTok{2000}\NormalTok{)}
-\NormalTok{curve\_df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
-  \AttributeTok{x =}\NormalTok{ x,}
-  \AttributeTok{y =} \FunctionTok{dt}\NormalTok{(x, df)}
-\NormalTok{)}
+}
 
-\CommentTok{\# Tail shading data}
-\NormalTok{left\_tail  }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(curve\_df, x }\SpecialCharTok{\textless{}=} \SpecialCharTok{{-}}\NormalTok{tcrit)}
-\NormalTok{right\_tail }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(curve\_df, x }\SpecialCharTok{\textgreater{}=}\NormalTok{  tcrit)}
+\caption{\label{fig-9.4}Two-tailed t-test with critical values}
 
-\FunctionTok{ggplot}\NormalTok{(curve\_df, }\FunctionTok{aes}\NormalTok{(x, y)) }\SpecialCharTok{+}
-
-  \CommentTok{\# t distribution curve}
-  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"t{-}distribution"}\NormalTok{), }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
-
-  \CommentTok{\# rejection regions}
-  \FunctionTok{geom\_area}\NormalTok{(}\AttributeTok{data =}\NormalTok{ left\_tail,}
-            \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Rejection Region"}\NormalTok{),}
-            \AttributeTok{alpha =} \FloatTok{0.3}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_area}\NormalTok{(}\AttributeTok{data =}\NormalTok{ right\_tail,}
-            \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Rejection Region"}\NormalTok{),}
-            \AttributeTok{alpha =} \FloatTok{0.3}\NormalTok{) }\SpecialCharTok{+}
-
-  \CommentTok{\# critical value lines}
-  \FunctionTok{geom\_vline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{linetype =} \StringTok{"Critical values: ±2.009"}\NormalTok{),}
-             \AttributeTok{xintercept =} \SpecialCharTok{{-}}\NormalTok{tcrit,}
-             \AttributeTok{color =} \StringTok{"black"}\NormalTok{,}
-             \AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_vline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{linetype =} \StringTok{"Critical values: ±2.009"}\NormalTok{),}
-             \AttributeTok{xintercept =}\NormalTok{ tcrit,}
-             \AttributeTok{color =} \StringTok{"black"}\NormalTok{,}
-             \AttributeTok{linewidth =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
-
-  \CommentTok{\# test statistic line}
-  \FunctionTok{geom\_vline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \StringTok{"Test Statistic"}\NormalTok{),}
-             \AttributeTok{xintercept =}\NormalTok{ t\_stat,}
-             \AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
-
-  \CommentTok{\# label for test statistic}
-  \FunctionTok{annotate}\NormalTok{(}\StringTok{"label"}\NormalTok{,}
-           \AttributeTok{x =}\NormalTok{ t\_stat,}
-           \AttributeTok{y =} \FloatTok{0.02}\NormalTok{,}
-           \AttributeTok{label =} \StringTok{"{-}1.53"}\NormalTok{,}
-           \AttributeTok{size =} \DecValTok{3}\NormalTok{,}
-           \AttributeTok{label.size =} \FloatTok{0.25}\NormalTok{,}
-           \AttributeTok{fill =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
-
-  \FunctionTok{scale\_color\_manual}\NormalTok{(}
-    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}
-      \StringTok{"t{-}distribution"} \OtherTok{=} \StringTok{"blue"}\NormalTok{,}
-      \StringTok{"Test Statistic"} \OtherTok{=} \StringTok{"darkgreen"}
-\NormalTok{    ),}
-    \AttributeTok{name =} \ConstantTok{NULL}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{scale\_fill\_manual}\NormalTok{(}
-    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Rejection Region"} \OtherTok{=} \StringTok{"red"}\NormalTok{),}
-    \AttributeTok{name =} \ConstantTok{NULL}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{scale\_linetype\_manual}\NormalTok{(}
-    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Critical values: ±2.009"} \OtherTok{=} \StringTok{"dashed"}\NormalTok{),}
-    \AttributeTok{name =} \ConstantTok{NULL}
-\NormalTok{  ) }\SpecialCharTok{+}
-
-  \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{x =} \StringTok{"t{-}value"}\NormalTok{,}
-    \AttributeTok{y =} \StringTok{"Density"}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{expand =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{expand =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{+}
-
-  \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{)) }\SpecialCharTok{+}
-
-  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}
-    \AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.78}\NormalTok{, }\FloatTok{0.80}\NormalTok{),}
-    \AttributeTok{legend.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =} \StringTok{"white"}\NormalTok{, }\AttributeTok{color =} \StringTok{"grey80"}\NormalTok{),}
-    \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{()}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-Warning: `geom_vline()`: Ignoring `mapping` because `xintercept` was provided.
-`geom_vline()`: Ignoring `mapping` because `xintercept` was provided.
-`geom_vline()`: Ignoring `mapping` because `xintercept` was provided.
-\end{verbatim}
-
-\begin{verbatim}
-Warning in annotate("label", x = t_stat, y = 0.02, label = "-1.53", size = 3, :
-Ignoring unknown parameters: `label.size`
-\end{verbatim}
-
-\begin{verbatim}
-Warning: No shared levels found between `names(values)` of the manual scale and the
-data's linetype values.
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+\end{figure}%
 
 The last step in testing a hypothesis is more straightforward: compare
 the value of the \(t\) statistic you just calculated to the critical
-value you identified in (\textbf{step-two?}). If the \(t\) statistic is
-larger, meaning farther out from the center of the distribution in
-either direction, then a significant difference exists between the
-groups.
+value you identified in step-two. If the \(t\) statistic is larger,
+meaning farther out from the center of the distribution in either
+direction, then a significant difference exists between the groups.
 
 In this example, the observed \(t\) value is \(= -1.53\) which is
 greater than the lower critical \(t\) value of \(-2.009\). Therefore, we
 fail to reject the null hypothesis. The actual \(p\) value for
 \(t = -1.53\) in a two-tail test is \(0.131\).
+
+\subsection{Step 4b: Draw a conclusion and report your
+conclusion.\,\,}\label{step-4b-draw-a-conclusion-and-report-your-conclusion.}
+
+Since we failed to reject the null hypothesis, which states that there
+is no difference in population means of the two groups, we conclude that
+the ELA classroom averages taught by two different teachers are not
+significantly different. The observed mean difference between two groups
+is simply by chance due to sampling. Note that we do not calculate the
+effect size to assess practical significance, as no statistically
+significant difference was found.
+
+How might we report the result in APA style? An independent-samples t
+test was conducted to compare ELA classroom averages between students
+taught by two different teachers. The results indicated that there was
+no statistically significant difference in classroom averages between
+the two groups, \(t(68) = 1.53, p = .131\), suggesting that the mean ELA
+classroom scores for students in these two classrooms are comparable.
+
+\section{\texorpdfstring{Effect Size for the Independent-Samples \(t\)
+Test}{Effect Size for the Independent-Samples t Test}}\label{effect-size-for-the-independent-samples-t-test}
+
+If you find a significant difference, you should calculate the effect
+size. We most commonly report effect size for this method using
+estimated Cohen's d.~If you remember back to chapter 8, Cohen's d
+quantifies the magnitude of the difference between two means relative to
+the variability in the data. Similarly, we can use Cohen's d as a
+standardized measure of practical significance, helping to interpret the
+importance of the result. However, the formula for Cohen's d that you
+use for an independent-sample t test is slightly different from what we
+have already learned:
+
+\[
+d=\frac{M_1-M_2}{\sqrt{s_p^2}}
+\]
+
+The numerator is just the difference in sample means, and the
+denominator is the pooled sample standard deviation; you can find the
+formula earlier in the chapter.
+
+Eta-squared (\(\eta^2\)) is another measure of effect size used to
+quantify the proportion of variance in a dependent variable that is
+associated with one or more independent variables in an analysis. It
+provides an estimate of how much of the variability in the dependent
+variable is explained by the grouping variable. Eta-squared can be
+calculated using the following formula:
+
+\[
+\eta^2=\frac{t^2}{t^2+df}
+\]
+
+Where:
+
+\begin{itemize}
+\item
+  \(t^2\) is the square of the t test statistic.
+\item
+  \(df\) is the degrees of freedom for the test.
+\end{itemize}
+
+Either way, you only report effect size if you find a significant result
+when conducting your hypothesis test.
+
+\section{\texorpdfstring{Overview of the Related-Samples \(t\)
+Test}{Overview of the Related-Samples t Test}}\label{overview-of-the-related-samples-t-test}
+
+We have finally arrived at the last type of t test, and to make things
+extra interesting, it goes by several different names depending on how
+you are using it.
+
+\textbf{Related-samples \(t\) test} is typically used as a general term
+for a \(t\) test that involves comparisons of related or dependent
+groups. Additionally, it is used when you have the same participants
+measured on two dependent variables that use the same or comparable
+scales, such as math vs reading tests. For example, a researcher may
+examine whether there is a significant difference between students'
+performance on standardized tests in two subjects.
+
+Two specific types of the related-samples \(t\) test are often used in
+research, each corresponding to a particular research design:
+
+\begin{itemize}
+\item
+  \textbf{Repeated-measures \(t\) test} is used when we measure one
+  group of participants twice on the same or comparative measure at
+  different points in time. In educational research, this test is often
+  applied in pre/post design, where the goal of the analysis is to
+  assess change in scores before and after an intervention, or at the
+  start and end of an academic year. For example, a study might measure
+  students' reading comprehension before and after a literacy
+  intervention to evaluate its effectiveness.
+\item
+  \textbf{Paired-samples \(t\) test} is used when individuals or cases
+  are matched in pairs based on key characteristics before comparing
+  their scores. Unlike repeated-measures design, the paired individuals
+  are not the same person measured twice; rather they are two different
+  people who are statistically equivalent as pairs except for the
+  dependent variables. For example, you could statistically match
+  students who experience an intervention with a control group of
+  students who are very similar on key variables. Other times family
+  members (siblings, married couples) are paired, if it is reasonable to
+  assume they are similar in important ways. This type of t test is less
+  common as it often requires more advanced statistical methods or poses
+  logistical challenges in finding well-matched pairs.
+\end{itemize}
+
+The related-samples t test is actually a special case of the one-sample
+t test. In a related-samples test, you collect data in pairs, and the
+difference between each pair is calculated. Then, we compute statistics
+based on these differences. Your beginning assumption, or null
+hypothesis, is that there will be no difference between the pairs. You
+could create a new variable in your dataset that was equivalent to the
+difference between pairs and use a one-sample t test to compare that
+difference variable to the expected value of 0.
+
+Let's assume we are not creating new variables, and we will show you how
+to directly conduct a related-samples t test. However, keep in mind that
+you would get the same results either way.
+
+We know it can be hard to understand why a related-samples t test is not
+the same as an independent-samples t test, since we are interested in
+the differences between two sets of scores in both cases. It really
+matters statistically that the same, or similar, people are in both
+groups in a related-samples study. The short description is that when
+you have different people in your two groups, it is hard to know for
+sure if the differences are really due to your grouping factor (e.g.,
+free/reduced lunch status, treatment/control for an intervention), or if
+you by chance ended up with people who were very different from each
+other for reasons that had nothing to do with your grouping factor.
+
+With a related-samples t test, we don't need to worry about any of that.
+We know there are not random differences between the people in our two
+groups because the same people are in both groups. From a statistical
+perspective, this changes two things: we calculate degrees of freedom
+differently, and our hypotheses and test statistics are based on the
+difference between scores. Let's use an example to look at each step of
+the related-samples t test more closely.
+
+Imagine that you developed a new student learning intervention and
+piloted it with a sample of nine randomly selected students. You have
+data on their scores before and after the intervention, and now you want
+to determine if student scores significantly changed. Your dataset would
+look like this:
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule\noalign{}
+Pre & Post & Difference \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+10 & 14 & 4 \\
+10 & 9 & -1 \\
+11 & 16 & 5 \\
+13 & 14 & 1 \\
+14 & 17 & 3 \\
+15 & 18 & 3 \\
+16 & 18 & 2 \\
+16 & 17 & 1 \\
+17 & 20 & 3 \\
+\end{longtable}
+
+If this was an independent-samples t test, you would be thinking about
+the distribution of \emph{pre} scores and the distribution of post
+scores. However, in a related-samples test, the focus shifts to the
+distribution of \emph{difference} scores (i.e., post -- pre), which in
+this example ranges from -1 to 5 and has a sample mean of 2.33 with a SD
+of 1.80. For this example, the research question we will address is
+whether scores changed significantly between pre and post, which may
+suggest an effect of the intervention.
+
+\subsection{Step 1: Determine the null and alternative
+hypotheses.}\label{step-1-determine-the-null-and-alternative-hypotheses.-2}
+
+Recall that with an independent-samples t test, there are two separate
+sample means to consider, so the null hypothesis for a two-tailed test
+is:
+
+\[
+H_0: \mu_1 − \mu_2 = 0
+\]
+
+With a related-samples t test, our null hypothesis for a two-tailed test
+is:
+
+\[
+H_0: \mu_D = 0
+\]
+
+The alternative hypothesis for a two-tailed, non-directional test is:
+
+\[
+H_A: \mu_D \ne 0
+\]
+
+The null hypothesis states that the difference between two dependent
+variables is zero and the alternative is that the difference between
+dependent variables is not zero. Keep in mind you can also conduct a
+one-tailed, directional test by making the alternative hypothesis that
+\(\mu_D < 0\) or \(\mu_D > 0\)
+
+\subsection{Step 2: Set the criteria for a
+decision.}\label{step-2-set-the-criteria-for-a-decision.-3}
+
+The next step in testing the null hypothesis is to set the criteria for
+a decision: how much of a difference is significant enough that we can
+conclude it is not a result of chance alone? As usual, we can decide
+that \(\alpha = .05\). The degrees of freedom for a related-samples t
+test are simply calculated by taking n -- 1, where n refers to the
+number of pairs. Since each participant contributes one pair of scores
+(before and after), the number of pairs is equal to the number of
+participants in the study (with no missing values on both tests). You
+can use a t table just as before, looking for the intersection between
+your alpha level and your degrees of freedom to find the critical value.
+In our example, because n = 9, df = 9 - 1 = 8. If you flip to the
+Critical Values of t Distribution Table and look at df = 8 and
+\(\alpha = .05\) (two-tailed), you see the critical value for this test
+is \(\pm2.306\).
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/fig-9.5-1.pdf}}
+
+}
+
+\caption{\label{fig-9.5}Sampling distribution with two-tailed rejection
+regions}
+
+\end{figure}%
+
+\subsection{Step 3: Check assumptions and compute the test
+statistic.\,}\label{step-3-check-assumptions-and-compute-the-test-statistic.-2}
+
+The third step has a few parts. First, we verify that our data meet the
+assumptions required for this method of analysis, and then we calculate
+the test statistic. The assumptions for a related-samples t test are:
+
+\begin{itemize}
+\item
+  Normality: The distribution of the difference scores is approximately
+  normal. As with other t tests, this assumption is less critical when
+  the sample size is greater than 30 due to the central limit theorem.
+\item
+  Random sampling: You are using a random sample of independent
+  observations.
+\item
+  Independence: The scores are independent of one another. Although the
+  two groups in a related-samples t test are obviously dependent on each
+  other -- since they consist of paired scores from the same individuals
+  or matched pairs -- the scores within each group must still be
+  independent of one another. This means that each participant's score
+  should not be influenced by another participant's score within the
+  same group. In other words, the assumption of independence applies to
+  the individual observations within each group, not between groups.
+\end{itemize}
+
+Notice that we don't have the equal variances assumption as we did with
+the independent-samples t test. We have that assumption with
+independent-samples t tests because we are concerned that major
+differences in group distributions mean the groups are very different,
+but as we said before, since we are using the same people this time, we
+are not as worried about that.
+
+\subsection{Step 4a: Find the p
+value.}\label{step-4a-find-the-p-value.-1}
+
+Next, we calculate the test statistic. You will notice a lot of Ds in
+the following formula because we are \emph{focusing on difference
+scores}, not two separate sample means. Instead of having two
+distributions of sample means, we have one \emph{distribution of sample
+differences}.
+
+\[
+t = \frac{\bar{D} - \mu_D}{\frac{S_D}{\sqrt{n}}}
+\]
+
+Let's unpack each part of the formula separately to make things easier
+to digest. The numerator is looking for the difference between the
+sample mean difference and the expected difference in the population
+under the assumption that the null hypothesis is true. However, recall
+that our null hypothesis is that there is no difference in the
+population, so \(\mu_D\) is zero. For our purposes, therefore, the
+numerator is just the sample mean difference. Where does that come from?
+It is calculated as the average of the individual difference scores
+(post -- pre) across all pairs in the sample, which is 2.33 in our
+example.
+
+Now we look at the denominator of the test statistic formula. This
+should look familiar by now because we see a standard deviation divided
+by the square root of the sample size (i.e., standard error). The first
+value is \(S_D\), which is something we have not seen before. That
+represents the standard deviation of the difference distribution, which
+in this case is 1.80. Conveniently, our sample size is 9, so the square
+root of n is 3. Using this, we calculate the standard error of the
+sampling distribution of difference scores is 0.6. Therefore, we can
+calculate the test statistic as follows:
+
+\[
+t = \frac{2.33 - 0}{\frac{1.80}{3}} = \frac{2.33}{0.6} = 3.883
+\]
+
+The next step in testing our hypothesis is to compare our observed test
+statistic with the critical value. Our test statistic is definitely
+farther out into the tails of the distribution than 2.306, so we can
+reject the null hypothesis.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/fig-9.6-1.pdf}}
+
+}
+
+\caption{\label{fig-9.6}Sampling distribution with rejection regions and
+calculated t-value.}
+
+\end{figure}%
+
+The actual \(p\) value associated with the observed t statistic of 3.88
+with \(df = 8\) for a two-tailed test is 0.0047, which is smaller than
+0.05.
+
+\subsection{Step 4b: Draw a conclusion and report your
+conclusion.\,\,}\label{step-4b-draw-a-conclusion-and-report-your-conclusion.-1}
+
+The small \(p\) value (\(p = 0.0047\)) indicates that, under the
+assumption that the null hypothesis is true, the probability of
+observing a difference as extreme as, or more extreme than, the one we
+found in the sample is 0.47\%. Because this is highly unlikely, we
+reject the null hypothesis and conclude that there is a statistically
+significant difference in scores between pre and post. Because the
+observed difference is statistically significant, we now want to know
+how the difference is practically meaningful by calculating the effect
+size.
+
+\section{\texorpdfstring{Effect Size for Related-Samples \(t\)
+Tests}{Effect Size for Related-Samples t Tests}}\label{effect-size-for-related-samples-t-tests}
+
+Once we have found a statistically significant difference, it is useful
+to examine the practical significance as well. The formula for Cohen's
+\(d\) for this type of t test is as follows:
+
+\[
+d = \frac{M_d}{S_D}
+\]
+
+That is, we take the mean difference and divide it by the standard
+deviation of the difference. The effect size for the example is
+calculated as:
+
+\[
+d = \frac{M_d}{S_D} = \frac{2.33}{1.8} = 1.29
+\]
+
+This means that, on average, scores increased by 1.29 standard deviation
+units from pre and post, which represents a large effect size. Based on
+this statistical result, and assuming no other confounding factors, we
+may conclude that the intervention had a meaningful impact on scores!
+
+Here is how you would report this example using APA style: A
+repeated-measures t test was conducted to evaluate the effect of the
+intervention on scores using a random sample of nine students. Results
+indicated that, on average, students' scores changed by 2.33 points
+between pre- and post-tests. The difference was statistically
+significant, \(t(8) = 3.88, \, p < .01\). Cohen's \(d = 1.29\), which is
+a large effect size, indicating substantial improvement in scores
+following the intervention.
+
+There is one extra wrinkle to consider: \emph{what if the expected
+difference in the population is not zero?} For example, K-12 students
+take standardized tests in math and reading multiple times each year,
+and their scores are generally expected to improve over time. Testing
+companies use population data to provide expected growth benchmarks for
+each grade level.
+
+Suppose third graders are expected to see a 13-point increase in math
+scores from the beginning to the end of the school year. If you wanted
+to determine whether students in your school were experiencing growth
+that was different from the expected population growth, your null and
+alternative hypotheses would be as follows:
+
+\[
+H_0 : \mu_D = 13
+\]
+
+\[
+H_A : \mu_D \ne 13
+\]
+
+\section{Comparing Two Groups with Ordinal Data: Nonparametric
+Tests}\label{comparing-two-groups-with-ordinal-data-nonparametric-tests}
+
+In hypothesis testing, parametric and nonparametric tests differ
+primarily in their assumptions about the data. In general, parametric
+tests, such as t tests, are distinguished by the assumption of normality
+on the data with a continuous dependent variable. Parametric tests
+typically use the raw data directly in their calculations and require
+certain conditions, such as homogeneity of variance and interval or
+ratio-level measurement of the dependent variable.
+
+In contrast, nonparametric tests are distinguished by the absence of any
+distributional requirement for the data and are less restrictive in
+terms of the scales of measurement. These tests are more flexible and
+can be used with ordinal data or when assumptions for parametric tests
+are violated. Instead of analyzing raw values, nonparametric methods
+often involve rank-based transformations of the data before analysis,
+making them less sensitive to outliers and skewed distributions.
+
+A difference between the two approaches is that parametric tests allow
+for inferences about population parameters, such as means and standard
+deviations. However, nonparametric tests do not estimate specific
+population parameters; they instead assess whether two or more groups
+share the same distribution. The primary advantage of nonparametric
+tests is their robustness and fewer assumptions, making them useful
+alternatives to \(t\) tests when data are not normally distributed, have
+small sample sizes, or contain outliers.
+
+\section{Choosing between Parametric and Nonparametric
+Tests}\label{choosing-between-parametric-and-nonparametric-tests}
+
+In general, we prefer to use the test that is the most efficient
+compared to others and produces the largest statistical power among all
+alternatives. For example, consider the two independent samples t test.
+If the scores are independent and homoscedastic, and follow a normal
+distribution, this test is optimal in that there is no other test with
+greater statistical power for a given alternative. On the other hand,
+failure to satisfy the normality assumption means that the t test may
+not be optimal. In particular, the power of nonparametric competitors
+often exceeds that of the t test when the population distribution is
+symmetric but is flatter (or heavy-tailed), when the distribution is
+highly skewed, or if the distribution is multimodal and heavy-tailed.
+
+If data assumptions of parametric tests are not adequately satisfied,
+the actual α of a test (i.e., the probability of having a Type I error)
+may differ substantially from the user-specified α level (e.g., 0.05),
+although we never know exactly how much the probability differs.
+Especially when sample size exceeds 30, there is evidence that many
+parametric tests, especially those comparing means, maintain control
+over Type I error rates even when the dependent variable is not normally
+distributed. If the distribution is skewed and/or multimodal and
+heavy-tailed, nonparametric tests frequently do a better job of
+controlling for Type I error rates.
+
+In educational research, nonparametric tests are particularly useful
+when the outcome variable includes responses on a Likert-type rating
+scale, because the distribution is often skewed. You may come across
+research that uses parametric tests, such as a two-independent samples t
+test, to compare responses on a single Likert scale item between two
+groups. However, this practice is not generally recommended.
+Additionally, as we have discussed, outliers can contribute a great deal
+of error variance in parametric tests, so a nonparametric alternative
+potentially is more powerful.
+
+The following table shows parametric tests you are already familiar with
+and nonparametric alternatives. We will describe the Mann-Whitney U test
+and the Wilcoxon signed rank T test in more detail.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+\textbf{Parametric} & \textbf{Nonparametric} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+One-sample \emph{t} test & Sign test \\
+Independent-samples \emph{t} test & Mann--Whitney \emph{U} test \\
+Related-samples \emph{t} test & Wilcoxon signed rank \emph{T} test \\
+One-way between-subjects ANOVA & Kruskal--Wallis \emph{H} test \\
+One-way repeated measures ANOVA & Friedman test \\
+\end{longtable}
+
+\section{\texorpdfstring{Two Independent-Sample Mann-Whitney \(U\)
+Test}{Two Independent-Sample Mann-Whitney U Test}}\label{two-independent-sample-mann-whitney-u-test}
+
+\textbf{The Mann-Whitney \(U\) test} is a statistical procedure used to
+determine whether the dispersion of ranks is equal across two
+independent groups. It is used as a nonparametric alternative to the two
+independent-samples t test. The test has three assumptions:
+
+\begin{itemize}
+\item
+  Both samples are randomly drawn from their respective populations.
+\item
+  In addition to independence within each sample, there is mutual
+  independence between the two samples (no one belongs to both groups).
+\item
+  The measurement scale is at least ordinal (no categorical variables).
+\end{itemize}
+
+Let's walk through an example. Suppose that we give nine children a math
+achievement test and record their scores. They then receive daily
+practice on arithmetic problems. At the end of each practice session,
+their papers are marked by a teacher's aide, who praises them for the
+number they got right and states that they might do even better in the
+next few days. We treat eight other children the same except for the
+statements made by the teacher's aide. For these children, they point
+out the problems they missed and tell them that they should be able to
+do better than that. At the end of two weeks, we retest all children on
+a parallel form of the math achievement test and calculate their ``gain
+scores'' over the two-week period:
+
+\begin{longtable}[]{@{}llllllllll@{}}
+\toprule\noalign{}
+Criticism (X) & -3 & -2 & 0 & 0 & 2 & 5 & 7 & 9 & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Praise (Y) & 0 & 2 & 3 & 4 & 10 & 12 & 14 & 19 & 21 \\
+\end{longtable}
+
+\[
+H_0 \text{: The two groups have identical distributions.} 
+\] \[
+H_A: \text{The two groups do not have identical distributions.} 
+\]
+
+These data are measured on a continuous scale, so theoretically we could
+use a two independent-samples t test, but first we should look at the
+descriptive statistics to see if our data meet the assumptions of that
+method. You can look at descriptive statistics for each group, but we
+think the most helpful way to consider the data is by viewing histograms
+for each group:
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/fig-9.7-1.pdf}}
+
+}
+
+\caption{\label{fig-9.7}}
+
+\end{figure}%
+
+Given the very small sample sizes (8 and 9 cases for Criticism and
+Praise, respectively) and two distributions not looking normal, we
+should not use the independent-samples \(t\) test. Since this is a very
+small dataset, let's calculate the test statistic by hand to illustrate
+the logic behind the test. In practice, statistical software can perform
+this analysis.
+
+\textbf{Step 1:} Label the two groups \(X\) and \(Y\). The smaller group
+should be labeled \(X\); if sample sizes are equal then it doesn't
+matter which group is labeled \(X\).
+
+\(X\) = Criticism condition
+
+\(Y\) = Praise condition
+
+\textbf{Step 2:} Combine all the scores into one distribution of \(n_X\)
++ \(n_Y\) cases. Arrange them in order of the dependent variable from
+lowest to highest and assign ranks.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule\noalign{}
+\textbf{Condition} & \textbf{Gain Scores} & \textbf{Assigned Rank} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+X & -3 & 1 \\
+X & -2 & 2 \\
+X & 0 & 4 \\
+X & 0 & 4 \\
+Y & 0 & 4 \\
+X & 2 & 6.5 \\
+Y & 2 & 6.5 \\
+Y & 3 & 8 \\
+Y & 4 & 9 \\
+X & 5 & 10 \\
+X & 7 & 11 \\
+X & 9 & 12 \\
+Y & 10 & 13 \\
+Y & 12 & 14 \\
+Y & 14 & 15 \\
+Y & 19 & 16 \\
+Y & 21 & 17 \\
+\end{longtable}
+
+When assigning ranks in a dataset, ties occur when two or more scores
+are identical. In such cases, instead of giving each tied score a unique
+rank, we calculate the average rank they would have occupied.
+
+For example, in the table above, three students had gain scores of 0.
+These scores would have been ranked 3, 4, and 5 if assigned
+individually. Instead, we sum these ranks (3 + 4 + 5 = 12) and divide by
+3, giving each student a rank of 4. The next score is then assigned the
+rank that follows the tied ranks, which in this case is 6.5 (the average
+of the next two ranks, 6 and 7).
+
+\textbf{Step 3}: Divide the cases back into their original groups.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2679}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2143}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2679}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Criticism (X)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Assigned Rank}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Praise (Y)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Assigned Rank}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+-3 & 1 & 0 & 4 \\
+-2 & 2 & 2 & 6.5 \\
+0 & 4 & 3 & 8 \\
+0 & 4 & 4 & 9 \\
+2 & 6.5 & 10 & 13 \\
+5 & 10 & 12 & 14 \\
+7 & 11 & 14 & 15 \\
+9 & 12 & 19 & 16 \\
+& & 21 & 17 \\
+\end{longtable}
+
+\textbf{Step 4}: Sum up the ranks for each group.
+
+\[
+\text{Sum of ranks for Group X: } 
+\sum R_X = 1 +2+4+4+6.5+10+11+12=50.5
+\]
+
+\[
+\text{Sum of ranks for Group Y: }
+\sum R_Y=4+6.5+8+9+13+14+15+16+17=102.5
+\]
+
+\textbf{Step 5}: Use the summed ranks to calculate the test statistic
+(i.e., Mann-Whitney \(U\) Statistic).
+
+\[
+U_x = n_x n_y + \frac{n_x(n_x + 1)}{2} - \sum R_x
+= 8 \times 9 + \frac{8(9)}{2} - 50.5
+= 57.5
+\]
+
+\[
+U_y = n_x n_y + \frac{n_y(n_y + 1)}{2} - \sum R_y
+= 8 \times 9 + \frac{9(10)}{2} - 102.5
+= 14.5
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(n_X\) and \(n_Y\) are the sample sizes of groups X and Y,
+  respectively.
+\item
+  \(R_X\) and \(R_Y\) are the rank sums for each group.
+\item
+  U is the smaller of \(U_X\) and \(U_Y\).
+\end{itemize}
+
+\textbf{Step 6}: Evaluate the test statistic using the Critical Values
+for the Mann-Whitney \(U\) Test table in the appendix. We use the value
+of \(U = 14.5\) as the test statistic because it is the smaller of the
+two U values calculated.
+
+Next, we determine whether we are conducting a one-tailed or two-tailed
+test. In this case, our test is non-directional (two-tailed), so we
+divide our alpha level of 0.05 equally between the two tails, resulting
+in 0.025 in each tail.
+
+We locate the critical value by finding the number of cases in each
+group along the left side and top of the table. For group sizes of 8 and
+9, the critical value is 15. Since our test statistic (\(U = 14.5\)) is
+less than or equal to the critical value (15), we reject the null
+hypothesis that the two distributions are the same.
+
+Note that, unlike many parametric tests where we compare the test
+statistic to see if it exceeds the critical value, in the Mann-Whitney
+\(U\) test, we reject the null hypothesis when the test statistic is
+less than or equal to the critical value.
+
+With this result, we conclude that the distributions of the two groups
+are statistically different, indicating that the scores between the
+Criticism and Praise groups differ significantly, \(U = 14.5\),
+\(p = 0.043\).
+
+\section{Wilcoxon's Matched-Pairs Signed-Ranks
+Test}\label{wilcoxons-matched-pairs-signed-ranks-test}
+
+While the Mann-Whitney \(U\) Test is used to compare two independent
+groups, \textbf{Wilcoxon's Matched-Pairs Signed-Ranks Test} is a
+nonparametric alternative to the related-samples (or repeated-measures)
+t test.
+
+Let's walk through another example to help you learn more about this
+method. Suppose we are studying the effect of a new instructional
+strategy on math performance, specifically on the speed and accuracy of
+solving arithmetic problems. We form 10 pairs of students, matched
+according to their pre-test score earned on similar math problems, and
+then randomly assign members of each pair to either the new
+instructional strategy or the traditional teaching method (control
+group). After completing a structured learning session, the students
+take a post-test assessing their arithmetic skills.
+
+Their post-test scores were recorded in the table below as Traditional
+(control) and New Strategy (treatment). Although different students are
+assigned to the two groups, the pairing process creates dependence
+between their scores, as students were first matched by pre-test ability
+before assignment.
+
+As we are interested in any difference (positive or negative) due to the
+instructional strategy, we use a two-tailed test. The null and
+alternative hypotheses for this investigation are:
+
+\(H_0\): There is no difference in student performance between two
+instructional groups.
+
+\(H_A\): There is a difference in student performance between two
+instructional groups.
+
+Rather than create new tables for each of the steps required to
+calculate the test statistic by hand, we will add a row to the table
+below showing which columns belong to which step in the process.
+
+\begin{itemize}
+\item
+  \textbf{Step 1}. Recode the paired scores in two columns.
+\item
+  \textbf{Step 2}. Obtain the difference between members of each pair
+  (X-Y).
+\item
+  \textbf{Step 3}. Disregard the sign of the difference obtained and
+  then assign ranks to the absolute magnitude of the difference. This
+  means that a difference of -8 would be a higher rank than a difference
+  of 5. If any difference is zero, disregard it in subsequent
+  calculations. For tied ranks, assign the mid rank as we did in the
+  prior test.
+\item
+  \textbf{Step 4}. Reassign the appropriate sign to the rank. This is a
+  weird step but don't take it literally, e.g., -2 does not mean the
+  rank of -2 (negative 2nd). It simply provides two types of information
+  about the score at once: the rank of the score and the direction of
+  the difference.
+\item
+  \textbf{Step 5}. Compute the summed rank for both positive and
+  negative differences. The smaller absolute value summation becomes our
+  test statistic (6.5).
+\end{itemize}
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule\noalign{}
+Steps & 1 & 2 & 3 & 4 & 5 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Pair
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Traditional (X)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+New (Y)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Difference (X-Y)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Absolute Difference
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Rank of Absolute Difference
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Signed rank of X-Y
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Positive Difference
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Negative Difference
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 24 & 28 & -4 & 4 & 2 & -2 & & -2 \\
+2 & 39 & 29 & 10 & 10 & 6.5 & 6.5 & 6.5 & \\
+3 & 29 & 34 & -5 & 5 & 3.5 & -3.5 & & -3.5 \\
+4 & 28 & 21 & 7 & 7 & 5 & 5 & 5 & \\
+5 & 25 & 28 & -3 & 3 & 1 & -1 & & -1 \\
+6 & 32 & 15 & 17 & 17 & 10 & 10 & 10 & \\
+7 & 31 & 17 & 14 & 14 & 8 & 8 & 8 & \\
+8 & 33 & 28 & 5 & 5 & 3.5 & 3.5 & 3.5 & \\
+9 & 31 & 16 & 15 & 15 & 9 & 9 & 9 & \\
+10 & 22 & 12 & 10 & 10 & 6.5 & 6.5 & 6.5 & \\
+\textbf{SUM} & & & & & \textbf{55} & & \textbf{48.5} & \textbf{-6.5} \\
+\end{longtable}
+
+We then use the Critical Values for the Wilcoxon Matched-Pairs
+Signed-Ranks Test table in the appendix. Since \(n = 10\) and we are
+conducting a two-sided test with an alpha level of .05, the critical
+value is 8. Our test statistic is 6.5, and similar to the Mann-Whitney U
+test, we reject the null hypothesis if the test statistic is less than
+or equal to the critical value. In this case, since 6.5 ≤ 8, we reject
+the null hypothesis.
+
+Alternatively, statistical software can be used to obtain the associated
+p value for the test statistic. In this case, the computed \(p\) value =
+0.037, which is less than 0.05, further supporting the rejection of the
+null hypothesis. Therefore, we conclude that there is a statistically
+significant difference in scores between the two instructional
+strategies. This suggests that the new instructional strategy has an
+effect. However, it is important to note that the test itself only
+determines whether a difference exists; it does not indicate the
+direction of the effect (i.e., whether the new strategy increased or
+decreased scores).
+
+\section{Conclusion}\label{conclusion-7}
+
+In chapter 9, we expanded our understanding of hypothesis testing by
+exploring various methods for comparing two groups. Central topics
+included the distinctions among the three types of \(t\)
+tests---one-sample, independent-samples, and related-samples---and the
+assumptions underpinning these methods, such as normality, independence,
+and equal variances. Additionally, the chapter emphasized the importance
+of effect size measures, such as Cohen's \(d\) and eta-squared, to
+evaluate the practical significance of findings beyond mere statistical
+significance.
+
+The chapter also introduced nonparametric alternatives for scenarios
+where data do not meet parametric test assumptions. The Mann-Whitney
+\(U\) test, a substitute for the independent-samples t test, evaluates
+whether two independent groups have equal distributions, making it ideal
+for ordinal data or when assumptions of normality and equal variance are
+violated. Similarly, Wilcoxon's Matched-Pairs Signed-Ranks Test, an
+alternative to the related-samples \(t\) test, is used for paired data
+to test whether the median differences deviate significantly from zero.
+These methods are particularly useful for addressing skewed or ordinal
+data and ensuring robust conclusions when parametric assumptions are not
+satisfied.
+
+By incorporating both parametric and nonparametric techniques, this
+chapter equips researchers with a versatile toolkit for hypothesis
+testing, enabling rigorous analyses of group differences under varied
+data conditions. These statistical foundations pave the way for more
+advanced methodologies in subsequent chapters, reinforcing the
+importance of selecting appropriate tests based on data characteristics
+and research questions.
+
+\subsection{Key Takeaways for Educational Researchers from Chapter
+9}\label{key-takeaways-for-educational-researchers-from-chapter-9}
+
+\begin{itemize}
+\item
+  Choosing the right t test matters. The one-sample t test compares a
+  group's mean to a known population mean (e.g., comparing students'
+  reading scores to the national average). The independent-samples t
+  test compares means from two separate groups (e.g., evaluating whether
+  students in a new math curriculum perform better than those in a
+  traditional program). The related-samples t test (paired t test)
+  compares the same group at two time points or under different
+  conditions (e.g., pre- and post-intervention reading scores).
+\item
+  Checking assumptions before running a t test is crucial. Normality,
+  independence, and equal variances should be checked before running
+  parametric tests using histograms, Q-Q plots, and Levene's test. For
+  example, if two third-grade classrooms have vastly different test
+  score variances, an adjusted t test or a nonparametric alternative
+  should be used.
+\item
+  Interpreting statistical vs.~practical significance is important. A
+  statistically significant result (p \textless{} 0.05) does not always
+  mean the difference is meaningful. Effect sizes like Cohen's d help
+  determine whether the difference is practically important (e.g., does
+  a statistically significant 2-point improvement on a 100-point test
+  really matter in practice?).
+\item
+  Nonparametric tests are useful for skewed or ordinal data. When
+  working with a single Likert-scale item on a scale or survey (e.g.,
+  student engagement ratings: Strongly Agree to Strongly Disagree),
+  normality assumptions may not hold. The Mann-Whitney U test (for
+  independent groups) and the Wilcoxon Matched-Pairs Signed-Ranks Test
+  (for paired data) may be preferred in such cases. If assumptions for
+  an independent t test are violated, the Mann-Whitney U test compares
+  whether two groups have different distributions rather than just mean
+  differences (e.g., Comparing test scores between students who received
+  praise vs.~criticism in a classroom setting). When data are dependent
+  (e.g., before vs.~after an intervention) but not normally distributed,
+  the Wilcoxon Matched-Pairs Signed-Ranks Test is an alternative to the
+  related-samples t test (e.g., tracking students' math problem-solving
+  speed before and after using a new instructional strategy).
+\item
+  Statistical software helps, but understanding the underlying logic is
+  key. Software like IBM SPSS, R, and Python can quickly compute test
+  statistics and p values, but researchers should understand the
+  underlying logic of hypothesis testing. For example, before running an
+  independent t test to compare student GPAs in two different school
+  districts, a researcher should check for normality and equal variances
+  before interpreting results. Also, it is important to interpret
+  statistical results within the context of the study.
+\end{itemize}
+
+\section{Key Definitions from Chapter
+9}\label{key-definitions-from-chapter-9}
+
+\textbf{Distribution of sample differences} refers to the theoretical
+distribution that arises when calculating the differences between sample
+means (in independent-samples t tests) or paired scores (in
+related-samples t tests) repeatedly under the same sampling conditions.
+
+\textbf{Equal variance} refers to the assumption that the variance (the
+measure of variability or spread) in different groups being compared is
+approximately the same.
+
+\textbf{Eta-squared (\(\eta^2\))} is a measure of effect size used to
+quantify the proportion of variance in a dependent variable that is
+associated with one or more independent variables in an analysis.
+
+An \textbf{independent-samples \(t\) test} is a statistical method used
+to compare the means of two independent groups to determine whether
+there is a statistically significant difference between them.
+
+\textbf{Levene's Test} is a statistical procedure used to assess whether
+the variances of a dependent variable are equal across different groups.
+It is commonly applied before conducting analyses that assume equal
+variances, such as t-tests or ANOVA, to determine if this assumption
+holds.
+
+The \textbf{Mann-Whitney \(U\) test} is a statistical procedure used to
+determine whether the dispersion of ranks is equal across two
+independent groups. It is used as a nonparametric alternative to the
+two-independent-sample t test.
+
+\textbf{Paired-samples \(t\) test} is used to pair individuals on
+similar key variables.
+
+\textbf{Related-samples \(t\) test} typically means you have the same
+participants measured on two dependent variables that use the same
+scale, such as math vs reading tests, or under a control condition vs
+under a treatment condition.
+
+\textbf{Repeated-measures \(t\) test} is used to test one group of
+participants twice on the same measure at different points in time.
+
+\textbf{Wilcoxon's Matched-Pairs Signed-Ranks Test} is a nonparametric
+alternative to the related-samples (or repeated-measures) t test.
+
+\section{Check Your Understanding}\label{check-your-understanding-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is the main difference between an independent-samples t
+  test and a related-samples t test?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Independent-samples \(t\) tests compare two separate groups, while
+    related-samples t tests compare two sets of scores from the same
+    group or matched individuals.
+  \item
+    Independent-samples \(t\) tests compare means to a population value,
+    while related-samples t tests compare variances.
+  \item
+    Independent-samples \(t\) tests require categorical data, while
+    related-samples t tests require continuous data.
+  \item
+    There is no difference; they are used interchangeably.
+  \end{enumerate}
+\item
+  \textbf{Which assumption is unique to independent-samples t tests but
+  not required for related-samples t tests?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Normality
+  \item
+    Random sampling
+  \item
+    Equal variances
+  \item
+    Independence of scores within groups
+  \end{enumerate}
+\item
+  \textbf{When would you use a one-sample t test instead of an
+  independent- or related-samples t test?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    When you have two independent groups to compare.
+  \item
+    When you want to compare a single group to a known population mean.
+  \item
+    When you compare pre- and post-test scores from the same group.
+  \item
+    When you have categorical data.
+  \end{enumerate}
+\item
+  \textbf{You are conducting a study to compare the effectiveness of two
+  teaching methods on student performance. You have a small sample size
+  of just 16 students (8 students taught by different teachers in
+  different classrooms -- there is no reason to suggest they are
+  related) and the scores in your dataset are not normally distributed.
+  Which test should you use to compare these scores?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Mann-Whitney \(U\) test
+  \item
+    Wilcoxon Matched-Pairs Signed-Ranks Test
+  \item
+    Independent-samples \(t\) test
+  \item
+    One-sample \(t\) test
+  \end{enumerate}
+\item
+  \textbf{Which effect size measure is commonly reported for
+  independent-samples t tests?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    \(r^2\)
+  \item
+    Phi coefficient
+  \item
+    Cohen's \(d\)
+  \item
+    Omega
+  \end{enumerate}
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Analyzing Differences Between Two Groups in
+R}\label{analyzing-differences-between-two-groups-in-r}
+\addcontentsline{toc}{chapter}{Analyzing Differences Between Two Groups
+in R}
+
+\markboth{Analyzing Differences Between Two Groups in R}{Analyzing
+Differences Between Two Groups in R}
+
+In this section, we demonstrate how to compare \textbf{two independent
+groups} (students who are more motivated vs.\,not more motivated in
+math) on \textbf{math achievement} (PV1MATH) from the PISA 2022 U.S.
+dataset using R. We illustrate both parametric (independent-samples t
+test) and nonparametric (Mann-Whitney U) methods, aligning with the
+chapter's discussion of assumptions and alternatives.
+
+\section*{1 Data Exploration}\label{data-exploration-1}
+\addcontentsline{toc}{section}{1 Data Exploration}
+
+\markright{1 Data Exploration}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data}\SpecialCharTok{$}\NormalTok{MATHMOT }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHMOT, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Not more motivated"}\NormalTok{, }\StringTok{"More motivated"}\NormalTok{)) }
+\FunctionTok{table}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHMOT)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Not more motivated     More motivated 
+              3885                125 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualize math score distribution by motivation }
+\FunctionTok{library}\NormalTok{(ggplot2) }
+\FunctionTok{library}\NormalTok{(dplyr) }
+\FunctionTok{ggplot}\NormalTok{(data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(MATHMOT)), }\CommentTok{\# Filter out missing values in MATHMOT  }
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ PV1MATH, }\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(MATHMOT))) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribution of Math Scores by Math Motivation"}\NormalTok{, }
+       \AttributeTok{x =} \StringTok{"Math Scores (PV1MATH)"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Math Motivation"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter9_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+\textbf{Interpretation}: Among the participants, 125 students reported
+being more motivated in math, while 3,885 students did not. The density
+plot above compares the distribution of math scores between two groups
+of students based on their self-reported math motivation. The score
+distribution of more motivated students (in cyan) appears slightly
+shifted to the right, suggesting higher overall performance in math.
+This visual pattern hints at a potential performance difference related
+to student motivation toward math, which will be formally tested in the
+next steps using statistical methods.
+
+\section*{2 Two Independent-Sample t
+Test}\label{two-independent-sample-t-test}
+\addcontentsline{toc}{section}{2 Two Independent-Sample t Test}
+
+\markright{2 Two Independent-Sample t Test}
+
+\subsection*{2.1 Define Hypothesis}\label{define-hypothesis-2}
+\addcontentsline{toc}{subsection}{2.1 Define Hypothesis}
+
+\begin{itemize}
+\item
+  \(H_0\): The mean math scores are equal between the two groups
+  (\(\mu_0=\mu_1\)).
+\item
+  \(H_a\): The mean math scores are different between the two groups
+  (\(\mu_0\ne \mu_1\)₁).
+\end{itemize}
+
+\subsection*{2.2 Conduct the Test}\label{conduct-the-test-2}
+\addcontentsline{toc}{subsection}{2.2 Conduct the Test}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(car) }
+ 
+\CommentTok{\# Test for equal variances }
+\NormalTok{leveneTest\_result }\OtherTok{\textless{}{-}} \FunctionTok{leveneTest}\NormalTok{(PV1MATH }\SpecialCharTok{\textasciitilde{}} \FunctionTok{factor}\NormalTok{(MATHMOT), }\AttributeTok{data =}\NormalTok{ data) }
+\NormalTok{leveneTest\_result }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value  Pr(>F)  
+group    1  5.3625 0.02062 *
+      4008                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Perform independent{-}samples t{-}test }
+\NormalTok{t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(PV1MATH }\SpecialCharTok{\textasciitilde{}}\NormalTok{ MATHMOT, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{var.equal =} \ConstantTok{FALSE}\NormalTok{) }
+\NormalTok{t\_test\_result }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+    Welch Two Sample t-test
+
+data:  PV1MATH by MATHMOT
+t = -1.2416, df = 130.44, p-value = 0.2166
+alternative hypothesis: true difference in means between group Not more motivated and group More motivated is not equal to 0
+95 percent confidence interval:
+ -31.111221   7.118331
+sample estimates:
+mean in group Not more motivated     mean in group More motivated 
+                        466.6617                         478.6582 
+\end{verbatim}
+
+\textbf{Interpretation}:
+
+Levene's Test for Equality of Variances yielded a statistically
+significant result (\(F = 5.36, p = .021\)), indicating that the
+assumption of equal variances is violated. Therefore, we proceeded with
+Welch's \(t\)-test (by setting var.equal = FALSE in the t.test()
+function), which adjusts for unequal variances.
+
+The Welch's \(t\)-test revealed no statistically significant difference
+in average math scores between students who reported being more
+motivated and those who did not, \(t(130.44) = -1.24\), \(p = .217\).
+The mean math score for students who were not more motivated was 466.66,
+compared to 478.66 for students who reported being more motivated.
+Although more motivated students scored slightly higher on average, the
+difference is not statistically meaningful, and could plausibly be due
+to random variation.
+
+\subsection*{\texorpdfstring{2.3 Effect Size (Cohen's
+\(d\))}{2.3 Effect Size (Cohen's d)}}\label{effect-size-cohens-d}
+\addcontentsline{toc}{subsection}{2.3 Effect Size (Cohen's \(d\))}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lsr) }\CommentTok{\# Load the lsr package for effect size calculation }
+\CommentTok{\# Cohen\textquotesingle{}s d for an independent{-}samples t{-}test }
+\NormalTok{d\_value }\OtherTok{\textless{}{-}} \FunctionTok{cohensD}\NormalTok{(PV1MATH }\SpecialCharTok{\textasciitilde{}}\NormalTok{ MATHMOT, }\AttributeTok{data =}\NormalTok{ data) }
+\NormalTok{d\_value }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.1254531
+\end{verbatim}
+
+\textbf{Interpretation}: The effect size (Cohen's \(d\)) was 0.13, which
+is considered small by conventional benchmarks. This suggests that the
+difference in math scores between more motivated and less motivated
+students is minimal in practical terms.
+
+\section*{3 Two Independent-Sample Mann-Whitney U
+Test}\label{two-independent-sample-mann-whitney-u-test-1}
+\addcontentsline{toc}{section}{3 Two Independent-Sample Mann-Whitney U
+Test}
+
+\markright{3 Two Independent-Sample Mann-Whitney U Test}
+
+If the normality assumption is violated or the data are ordinal or
+highly skewed, the Mann-Whitney \(U\) test is appropriate. In R, this
+test is implemented using the wilcox.test() function. Note this is not
+the same as the Wilcoxon's Matched-Pairs Signed-Ranks Test, which is
+used for paired or related samples.
+
+In our case, the data do not strongly violate normality and are measured
+on a continuous scale, so using a \(t\)-test is justified. However, we
+demonstrate the Mann-Whitney \(U\) test here for educational purposes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Perform Mann{-}Whitney U test }
+\NormalTok{mw\_result }\OtherTok{\textless{}{-}} \FunctionTok{wilcox.test}\NormalTok{(PV1MATH }\SpecialCharTok{\textasciitilde{}}\NormalTok{ MATHMOT, }\AttributeTok{data =}\NormalTok{ data) }
+\NormalTok{mw\_result }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+    Wilcoxon rank sum test with continuity correction
+
+data:  PV1MATH by MATHMOT
+W = 222444, p-value = 0.1099
+alternative hypothesis: true location shift is not equal to 0
+\end{verbatim}
+
+\textbf{Interpretation}: The Mann-Whitney \(U\) test yielded
+\(W = 222,444\), with a \(p\)-value of 0.110. This result suggests that
+there is no statistically significant difference in the distribution of
+math scores between students who are more motivated and those who are
+not. In other words, based on the ranked data, math motivation does not
+appear to meaningfully shift the overall distribution of scores,
+aligning with the findings from the Welch's t-test.
 
 \bookmarksetup{startatroot}
 
