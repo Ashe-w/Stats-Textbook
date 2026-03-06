@@ -340,6 +340,16 @@ window.Quarto = {
   </ul></li>
   <li><a href="#two-independent-sample-mann-whitney-u-test-1" id="toc-two-independent-sample-mann-whitney-u-test-1" class="nav-link" data-scroll-target="#two-independent-sample-mann-whitney-u-test-1">3 Two Independent-Sample Mann-Whitney U Test</a></li>
   </ul></li>
+  <li><a href="#analyzing-differences-between-two-groups-in-spss" id="toc-analyzing-differences-between-two-groups-in-spss" class="nav-link" data-scroll-target="#analyzing-differences-between-two-groups-in-spss">Analyzing Differences Between Two Groups in SPSS</a>
+  <ul class="collapse">
+  <li><a href="#data-exploration-1" id="toc-data-exploration-1" class="nav-link" data-scroll-target="#data-exploration-1">1 Data Exploration</a></li>
+  <li><a href="#two-independent-sample-t-test-1" id="toc-two-independent-sample-t-test-1" class="nav-link" data-scroll-target="#two-independent-sample-t-test-1">2 Two Independent-Sample t Test</a>
+  <ul class="collapse">
+  <li><a href="#define-hypothesis-1" id="toc-define-hypothesis-1" class="nav-link" data-scroll-target="#define-hypothesis-1">2.1 Define Hypothesis</a></li>
+  <li><a href="#conduct-the-test-1" id="toc-conduct-the-test-1" class="nav-link" data-scroll-target="#conduct-the-test-1">2.2 Conduct the Test</a></li>
+  </ul></li>
+  <li><a href="#two-independent-sample-mann-whitney-u-test-2" id="toc-two-independent-sample-mann-whitney-u-test-2" class="nav-link" data-scroll-target="#two-independent-sample-mann-whitney-u-test-2">3 Two Independent-Sample Mann-Whitney U Test</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -860,7 +870,7 @@ H_A: \text{The two groups do not have identical distributions.}
 <p>These data are measured on a continuous scale, so theoretically we could use a two independent-samples t test, but first we should look at the descriptive statistics to see if our data meet the assumptions of that method. You can look at descriptive statistics for each group, but we think the most helpful way to consider the data is by viewing histograms for each group:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-9.7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="720">
+<div id="fig-9.7" class="quarto-float quarto-figure quarto-figure-center anchored" width="720" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-9.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="chapter9_files/figure-html/fig-9.7-1.png" id="fig-9.7" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" width="720">
@@ -1450,6 +1460,112 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
 <p><strong>Interpretation</strong>: The Mann-Whitney <span class="math inline">\(U\)</span> test yielded <span class="math inline">\(W = 222,444\)</span>, with a <span class="math inline">\(p\)</span>-value of 0.110. This result suggests that there is no statistically significant difference in the distribution of math scores between students who are more motivated and those who are not. In other words, based on the ranked data, math motivation does not appear to meaningfully shift the overall distribution of scores, aligning with the findings from the Welch’s t-test.</p>
+</section>
+</section>
+<section id="analyzing-differences-between-two-groups-in-spss" class="level1 unnumbered">
+<h1 class="unnumbered">Analyzing Differences Between Two Groups in SPSS</h1>
+<p>In this section, we demonstrate how to compare two independent groups (students who are more motivated vs. not more motivated in math) on math achievement (PV1MATH) from the PISA 2022 U.S. dataset using SPSS. We illustrate both parametric (independent-samples t test) and nonparametric (Mann-Whitney <span class="math inline">\(U\)</span>) methods, aligning with the chapter’s discussion of assumptions and alternatives.</p>
+<section id="data-exploration-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="data-exploration-1">1 Data Exploration</h2>
+<p>We first examine the grouping variable to understand how many students fall into each math motivation group. Follow these steps to check the frequency of MATHMOT, the variable indicating students’ motivation to do well in mathematics:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Descriptive Statistics &gt; Frequencies.</p></li>
+<li><p>Move MATHMOT into the Variable(s) box.</p></li>
+<li><p>Click OK.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter9/fig9s-1.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 9.s.1</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The results show that, among the 4,010 participants, 125 students reported being more motivated in math, while 3,885 students did not. There are 542 cases with missing values on this variable.</p>
+<p>Then we follow the steps below to visualize the distribution of math scores (PV1MATH) between the two groups of students based on their self-reported math motivation:</p>
+<ol type="1">
+<li><p>Click Graphs &gt; Boxplot.</p></li>
+<li><p>In the dialog box, choose Simple and select Summaries for groups of cases, then click Define.</p></li>
+<li><p>Move PV1MATH into the Variable field (this is the math score to be plotted).</p></li>
+<li><p>Move MATHMOT into the Category Axis field (this defines the two motivation groups).</p></li>
+<li><p>Click OK and you will get the following plot.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter9/fig9s-2.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 9.s.2</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation</strong>:</p>
+<p>The boxplot displays the distribution of math scores (PV1MATH) for students who are more motivated versus not more motivated to do well in mathematics. Visually, the more motivated group shows a slightly higher median math score, and the overall distribution appears slightly shifted upward compared to the less motivated group. Both groups exhibit a fairly wide range, and there are several outliers in the “Not more motivated” group. These visual differences suggest a possible group effect, which will be formally tested using statistical methods in the next steps.</p>
+</section>
+<section id="two-independent-sample-t-test-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="two-independent-sample-t-test-1">2 Two Independent-Sample t Test</h2>
+<section id="define-hypothesis-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="define-hypothesis-1">2.1 Define Hypothesis</h3>
+<p><span class="math inline">\(H_0\)</span>: The mean math scores are equal between the two groups (<span class="math inline">\(\mu_0 = \mu_1\)</span>).</p>
+<p><span class="math inline">\(H_a\)</span>: The mean math scores are different between the two groups (<span class="math inline">\(\mu_0 \ne \mu_1\)</span>).</p>
+</section>
+<section id="conduct-the-test-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="conduct-the-test-1">2.2 Conduct the Test</h3>
+<p>Before conducting the independent-samples t-test, we first verify how the grouping variable is coded. This ensures we know which value corresponds to each group, which is essential for correctly setting up and interpreting the test. To do this, go to the Variable View in SPSS and locate the variable MATHMOT. In the Values column for that row, click the cell to view the assigned labels. You will see that 0 represents “Not more motivated…”, and 1 represents “More motivated…”. This coding information will be used when defining the groups in the upcoming independent-samples t-test.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter9/fig9s-3.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 9.s.3</figcaption>
+</figure>
+</div>
+<p>SPSS provides a convenient one-step procedure for comparing two group means. It simultaneously performs Levene’s Test for Equality of Variances and the independent-samples <span class="math inline">\(t\)</span>-test, reporting results both under the assumption of equal variances (Student’s t-test) and without it (i.e., Welch’s t-test). This allows us to determine which result to interpret based on the outcome of Levene’s Test. SPSS can also output the effect size (e.g., Cohen’s d) as part of the same analysis. Follow these steps to conduct the analysis:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Compare Means &gt; Independent-Samples T Test.</p></li>
+<li><p>Move PV1MATH into the Test Variable(s) field.</p></li>
+<li><p>Move MATHMOT into the Grouping Variable field.</p></li>
+<li><p>Click Define Groups, enter 0 for Group 1 and 1 for Group 2.</p>
+<p>(These values correspond to students who are not more motivated and students who are more motivated, respectively. Recall that SPSS uses this information to distinguish between the two groups, with 0 representing “Not more motivated” and 1 representing “More motivated.” SPSS calculates the t-statistic as the mean of Group 1 minus the mean of Group 2, that is, the mean of the “Not more motivated” group minus the mean of the “More motivated” group. You may reverse the group coding if preferred, but be sure to adjust the interpretation accordingly to reflect the correct reference group.)</p></li>
+<li><p>Click Options to adjust the confidence interval level (e.g., 95%).</p></li>
+<li><p>Click Estimate effect sizes</p></li>
+<li><p>Click Continue, then click OK to run the test.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter9/fig9s-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Fig 9.s.4</figcaption>
+</figure>
+</div>
+<p><strong>Results:</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter9/fig9s-5.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 9.s.5</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>Levene’s Test for Equality of Variances yielded a statistically significant result (<span class="math inline">\(F = 5.865\)</span>, <span class="math inline">\(p = .015\)</span>), indicating that the assumption of equal variances is violated. Therefore, we proceeded with Welch’s <span class="math inline">\(t\)</span>-test (interpreting the second line of the SPSS output labeled “Equal variances not assumed”), which adjusts for unequal variances.</p>
+<p>The Welch’s <span class="math inline">\(t\)</span>-test revealed no statistically significant difference in average math scores between students who reported being more motivated and those who did not, <span class="math inline">\(t(130.44) = -1.24\)</span>, <span class="math inline">\(p = .217\)</span>. The mean math score for students who were not more motivated was 466.66, compared to 478.66 for students who reported being more motivated (These two values are in the Table titled “Group Statistics”). Although more motivated students scored slightly higher on average, the difference is not statistically meaningful and could plausibly be due to random variation.</p>
+<p>From the table labeled “Independent Samples Effect Sizes,” the effect size (Cohen’s <span class="math inline">\(d\)</span>) was -0.125, which is considered small by conventional benchmarks. This suggests that the difference in math scores between more motivated and less motivated students is minimal in practical terms.</p>
+</section>
+</section>
+<section id="two-independent-sample-mann-whitney-u-test-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="two-independent-sample-mann-whitney-u-test-2">3 Two Independent-Sample Mann-Whitney U Test</h2>
+<p>If the normality assumption is violated or the data are ordinal or highly skewed, the Mann-Whitney <span class="math inline">\(U\)</span> test is appropriate. Note this is not the same as the Wilcoxon’s Matched-Pairs Signed-Ranks Test, which is used for paired or related samples.</p>
+<p>In our case, the data does not strongly violate normality and are measured on a continuous scale, so using a t-test is justified. However, we demonstrate the Mann-Whitney U test here for educational purposes. Follow these steps to conduct the analysis:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Nonparametric Tests &gt; Legacy Dialogs &gt; 2 Independent Samples.</p></li>
+<li><p>Move PV1MATH into the Test Variable List box.</p></li>
+<li><p>Move MATHMOT into the Grouping Variable box.</p></li>
+<li><p>Click Define Groups, and enter 0 and 1 to match the group coding used earlier.</p>
+<p>(Here, 0 represents “Not more motivated” and 1 represents “More motivated.”)</p></li>
+<li><p>Ensure that Mann-Whitney U is selected under Test Type.</p></li>
+<li><p>Click OK to run the analysis.</p></li>
+</ol>
+<p><strong>Results:</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter9/fig9s-6.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 9.s.6</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The Mann-Whitney <span class="math inline">\(U\)</span> test yielded <span class="math inline">\(W = 222,444\)</span>, with a <span class="math inline">\(p\)</span>-value of 0.110. This result suggests that there is no statistically significant difference in the distribution of math scores between students who are more motivated and those who are not. In other words, based on the ranked data, math motivation does not appear to meaningfully shift the overall distribution of scores, aligning with the findings from the Welch’s <span class="math inline">\(t\)</span>-test.</p>
 
 
 </section>

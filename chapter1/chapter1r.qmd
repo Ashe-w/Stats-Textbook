@@ -1,0 +1,268 @@
+# R for Educational Research - A Gentle Introduction {.unnumbered}
+
+To prepare for implementing the statistical analyses covered in this book, this section introduces the R programming language: a powerful, open-source environment widely used in educational, psychological, and social science research. Whether you have used SPSS, Excel, or another statistical tool before, this introduction will help you get comfortable with the basics of R so you can confidently follow the R demonstrations in later chapters. 
+
+## 1	What is R? {.unnumbered}
+
+R is a free, open-source programming language designed for data analysis, statistics, and visualization. It was created by statisticians and has grown into one of the most widely used tools in academic research, government agencies, and data-driven industries. 
+
+### 1.1	Key characteristics of R {.unnumbered}
+
+- **Open-source**: entirely free to download, modify, and use; 
+
+- **Extensible**: thousands of user-contributed packages for specialized methods; 
+
+- **Reproducible**: analyses can be shared, re-run, and verified; 
+
+- **Powerful**: capable of handling everything from simple summaries to advanced statistical modeling, machine learning, text mining, and survey analysis; 
+
+- **Widely adopted**: used by educational researchers, psychometricians, data scientists, and analysts worldwide. 
+
+### 1.2	Why We Choose R in This Book {.unnumbered}
+
+Most advanced or modern techniques introduced in later chapters (e.g., multilevel modeling, structural equation modeling, complex survey analysis, propensity models) are best implemented (or only available) in R. Using R empowers you to: 
+
+- go beyond limited menu options; 
+
+- automate repeated analyses; 
+
+- produce publication-ready graphics; 
+
+- work with large, complex datasets (e.g., PISA). 
+
+Even if R is new to you, the fundamentals are straightforward and will greatly expand your analytical toolkit. 
+
+## 2	Getting Started with R {.unnumbered}
+
+### 2.1	Installing R and RStudio {.unnumbered}
+
+R consists of the **core language**, while **RStudio** is a user-friendly interface that makes coding, visualizing, and managing files much easier. 
+
+1. Install R Download from [this link](https://cran.r-project.org/)
+
+2. Install RStudio Desktop Download from [this link](https://posit.co/download/rstudio-desktop/) 
+
+### 2.2	Understanding the RStudio Interface {.unnumbered}
+
+RStudio organizes your workspace into four main panes: 
+
+- **Script Editor** (top-left): Where you write and save your code, like a text editor where you write instructions for R to follow. 
+
+- **Console** (bottom-left): Where you can type commands and see immediate results, like a calculator where you can input a calculation and see the answer right away. 
+
+- **Environment/History Pane** (top-right): This section keeps track of everything you’ve created or used in your current R session, such as variables or datasets, like a workspace that shows you everything you have on your desk right now. 
+
+- **Plots/Files/Packages/Help Pane** (bottom-right): This area has multiple tabs. You can see your graphs (plots), manage your files, install and view tools (packages) that help you with your analysis, and get help when you need it. 
+
+![Fig 1.r.1](chapter1/fig1r-1.png){fig-align="center" width=60%}
+
+## 3	Basic Operations in R {.unnumbered}
+
+### 3.1	R as a Calculator {.unnumbered}
+
+You can use R like a calculator to run simple calculations. 
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+2 + 3 
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+3 * 5 
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+8 / 2 
+```
+### 3.2	Assigning Variables {.unnumbered}
+
+Variables are like named storage boxes where you can keep data. You can assign a value to a variable using the assignment arrow (<-). 
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+x <- 5 # Assigning the value 5 to the variable x, check environment pane 
+x 
+```
+Once you have assigned a value, you can use the variable in other operations. 
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+y <- x + 3 
+y 
+```
+### 3.3	Basic Vector Operations {.unnumbered}
+
+Vectors are like lists that can hold multiple values. You can create a vector to store several numbers at once with the c() function, which concatenates multiple values into a vector. 
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+#creates a vector named numbers that contains the values 1, 2, 3, 4, and 5 
+numbers <- c(1, 3, 5, 7, 9)  
+sum(numbers) #total of all elements in the vector
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+mean(numbers) #average of all elements in the vector 
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+new_nums <- numbers - mean(numbers) #what new_nums is? 
+```
+You can access specific elements in the vector using square brackets []. 
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+numbers[2] #the 2nd element in the vector 
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+numbers[1:3] #the first three elements in the vector 
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+numbers[-4] #all elements except the 4th one 
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+new_nums2 <- numbers[-c(3,5)] #what new_nums2 is? 
+```
+You can also use **conditions** to select only the elements that meet certain criteria. Suppose you want all the numbers in numbers that are greater than 5: 
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+numbers > 5    # R checks each element, is it greater than 5? 
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+numbers[numbers > 5]  # elements greater than 5 
+```
+## 4    Importing Data Into R {.unnumbered}
+
+### 4.1	Set the Working Directory {.unnumbered}
+
+Before loading any data file, it is important to tell R where your files are located. The simplest way is to set your **working directory** to the folder that contains your dataset. 
+
+- You can set the working directory using Sessions > Set Working Directory > Choose Directory in RStudio. 
+
+- shortcut: Ctrl + Shift + H 
+
+Or in code: 
+```{DEMO}
+setwd("C:/Users/YourName/Documents/YourFolder") 
+```
+
+You can check your current working directory: 
+
+```{DEMO}
+getwd() 
+```
+
+Once the working directory is correctly set and the data file is inside that folder, the following import commands will work without needing full file paths. 
+
+### 4.2	Load Packages {.unnumbered}
+
+Educational researchers often work with data stored in **Excel spreadsheets** (.xlsx) or **SPSS files** (.sav). R can read these formats (and many others) easily, but only after we load the appropriate packages. 
+
+**What are Packages?** 
+
+- **Packages** in R are like add-ons or extensions. They contain additional functions that make it easier to work with specific tasks, such as reading Excel or SPSS data files. 
+
+- To use these packages, you need to install them (which downloads them onto your computer, and only needs to be done once) and then load them into your R session (each time you want to use the package). 
+
+**How to Install and Load Packages?** 
+
+- To install a package, use the install.packages() function. 
+
+- To load a package into your session, use the library() function. 
+
+For example: 
+
+- To read Excel files → we use the readxl package 
+
+- To read SPSS (.sav) files → we use the haven package 
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+# Example 1: Import an Excel (.xlsx) File 
+# Install the package once 
+# install.packages("readxl") 
+ 
+# Load the package (must be done in every session) 
+library(readxl) 
+ 
+# Read Excel file into R 
+data_excel <- read_excel("chapter1/mydata.xlsx") 
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+# Example 2: Import an SPSS (.sav) File 
+# Install the package once 
+# install.packages("haven") 
+ 
+# Load the package 
+library(haven) 
+ 
+# Read SPSS (.sav) file 
+data_spss <- read_sav("chapter1/mydata.sav") 
+```
+Once imported, you can inspect your dataset: 
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+head(data_spss) #view the first 6 rows of the data 
+```
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+dim(data_spss) #check how many rows and columns are in your dataset 
+## [1] 10 10 
+```
+
+## 5	Summary {.unnumbered}
+
+You should now feel comfortable navigating the RStudio environment, running basic commands, assigning variables, and using vectors. You also know how to set your working directory, install/load packages, and import data files into R. With these fundamentals in place, you are ready to explore statistical analysis using R in the following chapters! 
+
+**Further Reading**
+
+- **Base R Cheatsheet**: A handy reference guide for basic R commands and functions. IQSS Data Science Services. (n.d.). *Base R cheat sheet*. Harvard University. https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf 
+
+- **Learning R Textbook**: A comprehensive textbook for learning R programming from scratch. Cotton, R. (2013). *Learning R: A step-by-step guide to data analysis and visualization*. https://duhi23.github.io/Analisis-de-datos/Cotton.pdf 

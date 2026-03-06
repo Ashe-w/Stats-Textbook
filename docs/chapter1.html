@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -222,8 +257,38 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#r-for-educational-research---a-gentle-introduction" id="toc-r-for-educational-research---a-gentle-introduction" class="nav-link active" data-scroll-target="#r-for-educational-research---a-gentle-introduction">R for Educational Research - A Gentle Introduction</a>
+  <ul class="collapse">
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r">1 What is R?</a>
+  <ul class="collapse">
+  <li><a href="#key-characteristics-of-r" id="toc-key-characteristics-of-r" class="nav-link" data-scroll-target="#key-characteristics-of-r">1.1 Key characteristics of R</a></li>
+  <li><a href="#why-we-choose-r-in-this-book" id="toc-why-we-choose-r-in-this-book" class="nav-link" data-scroll-target="#why-we-choose-r-in-this-book">1.2 Why We Choose R in This Book</a></li>
+  </ul></li>
+  <li><a href="#getting-started-with-r" id="toc-getting-started-with-r" class="nav-link" data-scroll-target="#getting-started-with-r">2 Getting Started with R</a>
+  <ul class="collapse">
+  <li><a href="#installing-r-and-rstudio" id="toc-installing-r-and-rstudio" class="nav-link" data-scroll-target="#installing-r-and-rstudio">2.1 Installing R and RStudio</a></li>
+  <li><a href="#understanding-the-rstudio-interface" id="toc-understanding-the-rstudio-interface" class="nav-link" data-scroll-target="#understanding-the-rstudio-interface">2.2 Understanding the RStudio Interface</a></li>
+  </ul></li>
+  <li><a href="#basic-operations-in-r" id="toc-basic-operations-in-r" class="nav-link" data-scroll-target="#basic-operations-in-r">3 Basic Operations in R</a>
+  <ul class="collapse">
+  <li><a href="#r-as-a-calculator" id="toc-r-as-a-calculator" class="nav-link" data-scroll-target="#r-as-a-calculator">3.1 R as a Calculator</a></li>
+  <li><a href="#assigning-variables" id="toc-assigning-variables" class="nav-link" data-scroll-target="#assigning-variables">3.2 Assigning Variables</a></li>
+  <li><a href="#basic-vector-operations" id="toc-basic-vector-operations" class="nav-link" data-scroll-target="#basic-vector-operations">3.3 Basic Vector Operations</a></li>
+  </ul></li>
+  <li><a href="#importing-data-into-r" id="toc-importing-data-into-r" class="nav-link" data-scroll-target="#importing-data-into-r">4 Importing Data Into R</a>
+  <ul class="collapse">
+  <li><a href="#set-the-working-directory" id="toc-set-the-working-directory" class="nav-link" data-scroll-target="#set-the-working-directory">4.1 Set the Working Directory</a></li>
+  <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages">4.2 Load Packages</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">5 Summary</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -247,9 +312,260 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is Chapter 1.</p>
+<section id="r-for-educational-research---a-gentle-introduction" class="level1 unnumbered">
+<h1 class="unnumbered">R for Educational Research - A Gentle Introduction</h1>
+<p>To prepare for implementing the statistical analyses covered in this book, this section introduces the R programming language: a powerful, open-source environment widely used in educational, psychological, and social science research. Whether you have used SPSS, Excel, or another statistical tool before, this introduction will help you get comfortable with the basics of R so you can confidently follow the R demonstrations in later chapters.</p>
+<section id="what-is-r" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="what-is-r">1 What is R?</h2>
+<p>R is a free, open-source programming language designed for data analysis, statistics, and visualization. It was created by statisticians and has grown into one of the most widely used tools in academic research, government agencies, and data-driven industries.</p>
+<section id="key-characteristics-of-r" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="key-characteristics-of-r">1.1 Key characteristics of R</h3>
+<ul>
+<li><p><strong>Open-source</strong>: entirely free to download, modify, and use;</p></li>
+<li><p><strong>Extensible</strong>: thousands of user-contributed packages for specialized methods;</p></li>
+<li><p><strong>Reproducible</strong>: analyses can be shared, re-run, and verified;</p></li>
+<li><p><strong>Powerful</strong>: capable of handling everything from simple summaries to advanced statistical modeling, machine learning, text mining, and survey analysis;</p></li>
+<li><p><strong>Widely adopted</strong>: used by educational researchers, psychometricians, data scientists, and analysts worldwide.</p></li>
+</ul>
+</section>
+<section id="why-we-choose-r-in-this-book" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="why-we-choose-r-in-this-book">1.2 Why We Choose R in This Book</h3>
+<p>Most advanced or modern techniques introduced in later chapters (e.g., multilevel modeling, structural equation modeling, complex survey analysis, propensity models) are best implemented (or only available) in R. Using R empowers you to:</p>
+<ul>
+<li><p>go beyond limited menu options;</p></li>
+<li><p>automate repeated analyses;</p></li>
+<li><p>produce publication-ready graphics;</p></li>
+<li><p>work with large, complex datasets (e.g., PISA).</p></li>
+</ul>
+<p>Even if R is new to you, the fundamentals are straightforward and will greatly expand your analytical toolkit.</p>
+</section>
+</section>
+<section id="getting-started-with-r" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="getting-started-with-r">2 Getting Started with R</h2>
+<section id="installing-r-and-rstudio" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="installing-r-and-rstudio">2.1 Installing R and RStudio</h3>
+<p>R consists of the <strong>core language</strong>, while <strong>RStudio</strong> is a user-friendly interface that makes coding, visualizing, and managing files much easier.</p>
+<ol type="1">
+<li><p>Install R Download from <a href="https://cran.r-project.org/">this link</a></p></li>
+<li><p>Install RStudio Desktop Download from <a href="https://posit.co/download/rstudio-desktop/">this link</a></p></li>
+</ol>
+</section>
+<section id="understanding-the-rstudio-interface" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="understanding-the-rstudio-interface">2.2 Understanding the RStudio Interface</h3>
+<p>RStudio organizes your workspace into four main panes:</p>
+<ul>
+<li><p><strong>Script Editor</strong> (top-left): Where you write and save your code, like a text editor where you write instructions for R to follow.</p></li>
+<li><p><strong>Console</strong> (bottom-left): Where you can type commands and see immediate results, like a calculator where you can input a calculation and see the answer right away.</p></li>
+<li><p><strong>Environment/History Pane</strong> (top-right): This section keeps track of everything you’ve created or used in your current R session, such as variables or datasets, like a workspace that shows you everything you have on your desk right now.</p></li>
+<li><p><strong>Plots/Files/Packages/Help Pane</strong> (bottom-right): This area has multiple tabs. You can see your graphs (plots), manage your files, install and view tools (packages) that help you with your analysis, and get help when you need it.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter1/fig1r-1.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 1.r.1</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="basic-operations-in-r" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="basic-operations-in-r">3 Basic Operations in R</h2>
+<section id="r-as-a-calculator" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="r-as-a-calculator">3.1 R as a Calculator</h3>
+<p>You can use R like a calculator to run simple calculations.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> <span class="dv">5</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">/</span> <span class="dv">2</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+</section>
+<section id="assigning-variables" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="assigning-variables">3.2 Assigning Variables</h3>
+<p>Variables are like named storage boxes where you can keep data. You can assign a value to a variable using the assignment arrow (&lt;-).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># Assigning the value 5 to the variable x, check environment pane </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>Once you have assigned a value, you can use the variable in other operations.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">3</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+</section>
+<section id="basic-vector-operations" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="basic-vector-operations">3.3 Basic Vector Operations</h3>
+<p>Vectors are like lists that can hold multiple values. You can create a vector to store several numbers at once with the c() function, which concatenates multiple values into a vector.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a vector named numbers that contains the values 1, 2, 3, 4, and 5 </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)  </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numbers) <span class="co">#total of all elements in the vector</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(numbers) <span class="co">#average of all elements in the vector </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>new_nums <span class="ot">&lt;-</span> numbers <span class="sc">-</span> <span class="fu">mean</span>(numbers) <span class="co">#what new_nums is? </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>You can access specific elements in the vector using square brackets [].</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">2</span>] <span class="co">#the 2nd element in the vector </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="co">#the first three elements in the vector </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="sc">-</span><span class="dv">4</span>] <span class="co">#all elements except the 4th one </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 5 9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>new_nums2 <span class="ot">&lt;-</span> numbers[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>)] <span class="co">#what new_nums2 is? </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>You can also use <strong>conditions</strong> to select only the elements that meet certain criteria. Suppose you want all the numbers in numbers that are greater than 5:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="sc">&gt;</span> <span class="dv">5</span>    <span class="co"># R checks each element, is it greater than 5? </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>numbers[numbers <span class="sc">&gt;</span> <span class="dv">5</span>]  <span class="co"># elements greater than 5 </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7 9</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="importing-data-into-r" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="importing-data-into-r">4 Importing Data Into R</h2>
+<section id="set-the-working-directory" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="set-the-working-directory">4.1 Set the Working Directory</h3>
+<p>Before loading any data file, it is important to tell R where your files are located. The simplest way is to set your <strong>working directory</strong> to the folder that contains your dataset.</p>
+<ul>
+<li><p>You can set the working directory using Sessions &gt; Set Working Directory &gt; Choose Directory in RStudio.</p></li>
+<li><p>shortcut: Ctrl + Shift + H</p></li>
+</ul>
+<p>Or in code:</p>
+<div class="cell">
+<pre class="demo cell-code"><code>setwd("C:/Users/YourName/Documents/YourFolder") </code></pre>
+</div>
+<p>You can check your current working directory:</p>
+<div class="cell">
+<pre class="demo cell-code"><code>getwd() </code></pre>
+</div>
+<p>Once the working directory is correctly set and the data file is inside that folder, the following import commands will work without needing full file paths.</p>
+</section>
+<section id="load-packages" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="load-packages">4.2 Load Packages</h3>
+<p>Educational researchers often work with data stored in <strong>Excel spreadsheets</strong> (.xlsx) or <strong>SPSS files</strong> (.sav). R can read these formats (and many others) easily, but only after we load the appropriate packages.</p>
+<p><strong>What are Packages?</strong></p>
+<ul>
+<li><p><strong>Packages</strong> in R are like add-ons or extensions. They contain additional functions that make it easier to work with specific tasks, such as reading Excel or SPSS data files.</p></li>
+<li><p>To use these packages, you need to install them (which downloads them onto your computer, and only needs to be done once) and then load them into your R session (each time you want to use the package).</p></li>
+</ul>
+<p><strong>How to Install and Load Packages?</strong></p>
+<ul>
+<li><p>To install a package, use the install.packages() function.</p></li>
+<li><p>To load a package into your session, use the library() function.</p></li>
+</ul>
+<p>For example:</p>
+<ul>
+<li><p>To read Excel files → we use the readxl package</p></li>
+<li><p>To read SPSS (.sav) files → we use the haven package</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Import an Excel (.xlsx) File </span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the package once </span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("readxl") </span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package (must be done in every session) </span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Read Excel file into R </span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>data_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"chapter1/mydata.xlsx"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Import an SPSS (.sav) File </span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the package once </span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("haven") </span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package </span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Read SPSS (.sav) file </span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>data_spss <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter1/mydata.sav"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Once imported, you can inspect your dataset:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_spss) <span class="co">#view the first 6 rows of the data </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 20
+  CNTSTUID CNTSCHID ST004D01T  ST250Q01JA MATHEASE      MATHMOT MATHPERS PV1MATH
+     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl+lbl&gt;  &lt;dbl+lbl&gt;  &lt;dbl+lbl&gt;     &lt;dbl+l&gt; &lt;dbl+lb&gt;   &lt;dbl&gt;
+1 84000041 84000001 1 [Female] 2 [No]     0 [No percep… 1 [Mor…  0.192      573.
+2 84000231 84000001 2 [Male]   1 [Yes]    0 [No percep… 0 [Not…  0.305      440.
+3 84000240 84000001 2 [Male]   1 [Yes]    0 [No percep… 0 [Not…  0.304      642.
+4 84000265 84000001 1 [Female] 1 [Yes]    0 [No percep… 0 [Not…  0.255      491.
+5 84000682 84000001 1 [Female] 1 [Yes]    0 [No percep… 0 [Not… -0.0185     425.
+6 84000936 84000001 1 [Female] 1 [Yes]    0 [No percep… 0 [Not… -1.09       454.
+# ℹ 12 more variables: PV1MPRE &lt;dbl&gt;, PV1MCCR &lt;dbl&gt;, PV1MCQN &lt;dbl&gt;,
+#   PV1MCSS &lt;dbl&gt;, PV1MCUD &lt;dbl&gt;, PV1MPEM &lt;dbl&gt;, PV1MPFS &lt;dbl&gt;, PV1MPIN &lt;dbl&gt;,
+#   SC013Q01TA &lt;dbl+lbl&gt;, SC180Q01JA &lt;dbl+lbl&gt;, SCHLTYPE &lt;dbl+lbl&gt;,
+#   SC014Q01TA &lt;dbl+lbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_spss) <span class="co">#check how many rows and columns are in your dataset </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4552   20</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10 10 </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="summary" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="summary">5 Summary</h2>
+<p>You should now feel comfortable navigating the RStudio environment, running basic commands, assigning variables, and using vectors. You also know how to set your working directory, install/load packages, and import data files into R. With these fundamentals in place, you are ready to explore statistical analysis using R in the following chapters!</p>
+<p><strong>Further Reading</strong></p>
+<ul>
+<li><p><strong>Base R Cheatsheet</strong>: A handy reference guide for basic R commands and functions. IQSS Data Science Services. (n.d.). <em>Base R cheat sheet</em>. Harvard University. https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf</p></li>
+<li><p><strong>Learning R Textbook</strong>: A comprehensive textbook for learning R programming from scratch. Cotton, R. (2013). <em>Learning R: A step-by-step guide to data analysis and visualization</em>. https://duhi23.github.io/Analisis-de-datos/Cotton.pdf</p></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

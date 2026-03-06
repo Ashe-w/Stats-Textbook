@@ -320,6 +320,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#using-rs-built-in-functions" id="toc-using-rs-built-in-functions" class="nav-link" data-scroll-target="#using-rs-built-in-functions">2 Using R’s Built-in Functions</a></li>
   </ul></li>
+  <li><a href="#hypothesis-testing-in-spss" id="toc-hypothesis-testing-in-spss" class="nav-link" data-scroll-target="#hypothesis-testing-in-spss">Hypothesis Testing in SPSS</a></li>
   </ul>
 </nav>
     </div>
@@ -680,9 +681,16 @@ mean of x
 </div>
 </div>
 <p>The output confirms our manual calculations, with a <span class="math inline">\(z\)</span> statistic of -25.72 and a <span class="math inline">\(p\)</span> value close to 0, leading to the same conclusion: we reject the null hypothesis.</p>
-
-
 </section>
+</section>
+<section id="hypothesis-testing-in-spss" class="level1 unnumbered">
+<h1 class="unnumbered">Hypothesis Testing in SPSS</h1>
+<p>In this section, we introduce the logic of hypothesis testing and present the one-sample z-test. However, <strong>due to limitations in SPSS</strong>, we <strong>do not provide a worked SPSS example</strong> for this test in this chapter.</p>
+<p><strong><em>Limitation of SPSS</em></strong>: While SPSS is widely used for applied statistical analysis, it is not designed for analyses that require direct implementation of statistical formulas, such as the one-sample z-test with a known population standard deviation. SPSS is optimized for menu-driven procedures using built-in tests, rather than for custom calculations that rely on user-defined parameters.</p>
+<p>Although it is technically possible to compute a z-value manually in SPSS using the Compute Variable function, this process is inefficient and often <strong>more cumbersome than performing the calculation by hand</strong>. Because SPSS treats all variable computations as column-based operations, entering a constant formula results in a new variable where every case is assigned the same value. This output can be unintuitive and provides no native support for reporting the associated p-value or confidence interval, making it harder to interpret and communicate the result in standard hypothesis testing terms.</p>
+<p>In contrast, programming-based tools such as R are far more flexible and better suited for tasks like this. If you are interested in seeing how the one-sample z-test can be implemented in R, <strong>please refer to the section of this textbook that includes R code</strong>. In the corresponding chapter, a one-sample z-test is demonstrated by comparing U.S. students’ math scores (PV1MATH) to the OECD benchmark of 500, assuming a known population standard deviation of 100. The analysis is completed in just a few lines of code. While R requires some basic scripting skills, it is especially valuable for statistical procedures that are not natively supported in point-and-click software like SPSS.</p>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -5,3 +5,4 @@ title: "Chapter 6"
 
 {{< include chapter6/chapter6text.qmd >}}
 {{< include chapter6/chapter6r.qmd >}}
+{{< include chapter6/chapter6spss.qmd >}}

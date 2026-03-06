@@ -1,0 +1,78 @@
+# One-Sample t Test and Goodness-of-Fit Analysis {.unnumbered}
+
+## 1    Understanding the Key Variables - Plausible Values (PVs) {.unnumbered}
+
+Plausible values (PVs) are multiple imputed estimates of a student's ability used in large-scale assessments, such as PISA and NAEP, to account for measurement error and improve population-level inferences. These values are not individual test scores but random draws from a posterior distribution, reflecting the uncertainty in estimating a student's true ability. 
+
+In proper statistical analyses, all plausible values should be used with appropriate weighting to ensure more accurate estimates. Using only a single plausible value may lead to incorrect conclusions. However, for the purpose of this demonstration, we will use a single plausible value (PV1) to illustrate how to conduct statistical analyses. In this chapter, we focus on performing a one-sample t-test in SPSS. For correct usage, refer to the last chapter, where the proper approach using multiple PVs and weights is demonstrated. 
+
+## 2    Conducting a One-Sample t-Test: Mean Comparison, Effect Size, and Confidence Interval {.unnumbered}
+
+In this example, we compare the mean of Plausible Value 1 for Math  (PV1MATH) among U.S. students to a benchmark value of 441, which represents the approximate mean of participants from all participating countries. 
+
+Since SPSS allows us to generate multiple results simultaneously, this section will demonstrate how to: 
+
+- Conduct a one-sample t-test 
+
+- Estimate the effect size 
+
+- Compute the confidence interval for the mean 
+
+Follow these steps to conduct the analysis: 
+
+Click Analyze > Compare Means > One-Sample T Test.  
+
+1. Select the variable Plausible Value 1 (PV1MATH).  
+
+2. In the Test Value field, enter 441 (the population mean for comparison). (These steps set up the one-sample t-test.)  
+
+3. Check the box for Effect Size to ensure that SPSS calculates the related statistics.  
+
+4. Click Options, set the Confidence Interval Percentage (e.g., 95%).  
+
+5. Click OK to run the test. 
+
+The key steps are illustrated in the image below. 
+
+![Fig 8.s.1](chapter8/fig8s-1.png){fig-align="center" width=60%}
+
+The results are presented below: 
+
+![Fig 8.s.2](chapter8/fig8s-2.png){fig-align="center" width=60%}
+
+The analysis was conducted on 4,552 students, with a mean score of 461.87 on Plausible Value 1 in Mathematics. The standard deviation was 95.13, and the standard error of the mean was 1.41. 
+
+The one-sample t-test compared the observed mean to 441, the expected population mean. The results show a t-value of 14.804 with 4,551 degrees of freedom. The $p$-value is < .001, indicating a statistically significant difference. The mean difference is 20.87, with a 95% confidence interval ranging from 18.11 to 23.64, which does not include zero, confirming a significant difference. We can also use the formula to manually calculated the confidence interval. 
+
+To assess the magnitude of this difference, Cohen’s d was computed as 0.219, suggesting a small effect size. 
+
+
+## 3    Conducting a Chi-Square Goodness-of-Fit Test {.unnumbered}
+
+In this example, we examine whether the distribution of students' perception of mathematics as easier than other subjects (a categorical variable with two categories) aligns with an expected distribution using a Chi-Square Goodness-of-Fit Test in SPSS. 
+
+We assume that if students' perception of mathematics is equally distributed, approximately 50% of students would perceive math as easier than other subjects, while 50% would not. However, if the observed data significantly deviates from this expectation, it suggests that students’ perceptions are not equally split. 
+
+Since SPSS allows us to generate multiple results simultaneously, this section will demonstrate how to: a. Compare observed frequencies to expected frequencies b. Perform a Chi-Square Goodness-of-Fit Test 
+
+Steps to Conduct the Chi-Square Goodness-of-Fit Test in SPSS 
+
+1. Click Analyze > Nonparametric Tests > Legacy Dialogs > Chi-Square. 
+
+2. Move “MATHEASE” to the Test Variable List field. (Perception of Mathematics as Easier than Other Subjects) 
+
+3. Click Expected Values, then choose "All categories equal" to test for an equal distribution (50/50), or select "Values" to enter expected proportions . 
+
+4. Click OK to run the test. 
+
+The key steps are illustrated in the image below: 
+
+![Fig 8.s.3](chapter8/fig8s-3.png){fig-align="center" width=40%}
+
+The results are presented below: 
+
+![Fig 8.s.4](chapter8/fig8s-4.png){fig-align="center" width=40%}
+
+SPSS provides a table displaying the observed and expected frequencies along with the chi-square test statistic and p-value. 
+
+The Chi-Square test statistic ($\chi^2 = 2245.127$, $p < .001$) indicates a statistically significant difference between the observed and expected distributions. Since the $p$-value is below 0.05, we reject the null hypothesis, confirming that students' perceptions of mathematics as easier are not evenly distributed. Specifically, fewer students perceive math as easier than expected under a balanced 50/50 assumption. 

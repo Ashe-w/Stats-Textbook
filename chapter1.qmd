@@ -1,5 +1,8 @@
+---
+title: "Chapter 1"
+---
 
-
-# Chapter 1
-
-This is Chapter 1.
+{{< include chapter1/chapter1text.qmd >}}
+{{< include chapter1/chapter1r.qmd >}}
+{{< include chapter1/chapter1spss.qmd >}}
+ 
