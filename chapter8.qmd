@@ -5,13 +5,13 @@ title: "Chapter 8"
 {{< include chapter8/chapter8r.qmd >}}
 {{< include chapter8/chapter8spss.qmd >}}
 
-## Conclusion
+# Conclusion {.unnumbered}
 
 Hypothesis testing bridges theoretical research questions and practical data analysis, offering a structured framework for making evidence-based decisions. By understanding statistical significance, effect sizes, and confidence intervals, researchers can draw meaningful conclusions while accounting for uncertainty and variability. For educational researchers, it is particularly important to assess both statistical and practical significance when interpreting empirical results. 
 
 While p values indicate whether a result is statistically significant, they do not reveal the magnitude or practical relevance of the effect. Measures of effect size, such as Cohen’s d, provide valuable context by quantifying the size of an effect, helping researchers determine its importance in real-world settings. For example, a small p value paired with a negligible effect size may lack practical significance, limiting its applicability. Therefore, when statistically significant findings are observed, it is essential to consider their implications within the research context, ensuring that the results are both statistically sound and practically meaningful. This dual evaluation enhances the relevance and impact of research findings in education and beyond. 
 
-### Key Takeaways for Educational Researchers from Chapter 8  
+## Key Takeaways for Educational Researchers from Chapter 8  {.unnumbered}
 - Two statistical methods, one-sample t tests and Chi-square goodness-of-fit tests, are for comparing the observed statistic to a benchmark. Use a one-sample t test when comparing a sample mean to a known population mean with unknown standard deviation. Use a chi-square goodness-of-fit test when comparing observed proportions or frequencies in a single categorical variable to known or expected distributions. 
 
 - Statistical significance (e.g., p values) indicates whether an observed effect is unlikely due to chance, while effect sizes (e.g., Cohen’s d) quantify the magnitude and practical relevance of the effect. By reporting both, education researchers can ensure their findings have actionable value, informing policy, curriculum design, or classroom interventions. 
@@ -20,7 +20,7 @@ While p values indicate whether a result is statistically significant, they do n
 
 - Larger sample sizes increase statistical power but may detect trivial differences as significant. Carefully designing studies to balance power with meaningfulness enables education researchers to use resources effectively and avoid misinterpreting results as practically relevant when they are not. 
 
-## Key Definitions for Chapter 8 
+## Key Definitions for Chapter 8 {.unnumbered} 
 
 The **chi-square distribution** is a probability distribution that arises when a sum of the squares of k independent standard normal random variables is calculated. If $Z_1^2, \, Z_2^2, \, ..., \, Z_k^2$ are independent
 standard normal random variables, the sum: $\chi^2 = Z_1^2, \, Z_2^2, \, ..., \, Z_k^2$ follows a chi-square distribution with k degrees of freedom (df). 
@@ -38,7 +38,7 @@ The **chi-square goodness-of-fit test** is a nonparametric method used to determ
 
 **Type III error** occurs when researchers correctly calculate statistical results but misinterpret or apply them to the wrong question or hypothesis. 
 
-## Check Your Understanding  
+## Check Your Understanding  {.unnumbered}
 
 1. **When should a one-sample *t* test be used instead of a *z* test?**
 

@@ -2,6 +2,175 @@
 title: "Chapter 10"
 ---
 
-# Chapter 10
+{{< include chapter10/chapter10text.qmd >}}
+{{< include chapter10/chapter10r.qmd >}}
+{{< include chapter10/chapter10spss.qmd >}}
 
-This is Chapter 10.
+# Conclusion {.unnumbered}
+
+The analysis of variance techniques and associated statistical methods covered in Chapter 10 underscore the importance of understanding and addressing variability in research designs. Central to these discussions is the One-Way ANOVA, which compares the means of three or more groups, highlighting differences between-group variance and within-group error variance. This distinction is essential for isolating the effects of independent variables and ensuring reliable conclusions, especially when evaluating multiple groups simultaneously without inflating the risk of a Type I error. 
+
+ 
+
+Expanding on these foundations, methods like two-way factorial ANOVA demonstrate the adaptability of variance analysis across various research contexts. Two-way factorial ANOVA allows researchers to examine the interaction effects between two independent variables, providing deeper insights into how multiple factors influence an outcome simultaneously.  
+
+ 
+
+Together, the tools and principles detailed in this chapter emphasize the critical role of statistical rigor in identifying meaningful patterns and effects, reinforcing key concepts like statistical power and the importance of controlling for error through thoughtful experimental design and post hoc testing strategies like Bonferroni corrections. These techniques provide a comprehensive framework for conducting reliable, interpretable, and impactful research.  
+
+ 
+
+## Key Takeaways for Educational Researchers from Chapter 10 {.unnumbered}
+
+- ANOVA prevents multiple testing errors. One-way ANOVA is a crucial tool for comparing three or more groups while controlling for Type I errors, which would increase if multiple t tests were conducted. This is particularly relevant, for example, when analyzing student performance across different instructional methods, grade levels, or educational interventions. 
+
+- Between-group vs. within-group variance matters. ANOVA works by comparing variance between groups (due to instructional differences, policy interventions, or student demographics) with variance within groups (individual differences within the same group). If between-group variance is significantly higher, it suggests that at least one of the groups are statistically different. 
+
+- Factorial ANOVA identifies interaction effects. A two-way factorial ANOVA helps researchers examine how multiple independent variables interact to influence an educational outcome. This is particularly useful in evaluating whether interventions work differently for different groups (e.g., high- vs. low-achieving students). 
+
+- Checking assumptions is crucial for valid results. Before conducting any type of ANOVA, researchers must check normality, homogeneity of variances, and independence of observations. If these assumptions are violated, adjustments (e.g., using nonparametric alternatives like the Kruskal-Wallis Test) or transformations may be necessary to ensure valid interpretations. 
+
+- Post hoc tests determine specific group differences. ANOVA tells us that at least one group differs, but post hoc tests (e.g., Tukey’s HSD, Bonferroni) identify which groups differ significantly. For example, in an education study comparing teaching methods, post hoc analysis helps determine whether technology-aided learning is significantly better than visualization or repetition-based methods. 
+
+- Effect Size is as important as statistical significance. Eta-squared (η²) and omega-squared (ω²) quantify how much variance in the outcome variable is explained by the group membership. Even if a finding is statistically significant, a small effect size may indicate limited practical impact, guiding educators and policymakers in prioritizing interventions that have meaningful effects on student outcomes. 
+
+
+ 
+
+## Key Definitions from Chapter 10 {.unnumbered}
+
+ 
+
+The **Bonferroni post hoc test** is the most conservative. It simply divides your starting alpha level by the number of tests you are running and then conducts t tests between each pair.  
+
+ 
+
+**Error variance** in ANOVA refers to the variation in the dependent variable that cannot be explained by the independent variable(s). It represents the variability within groups or conditions, which arises from random differences among individual observations rather than systematic differences between groups. 
+
+ 
+
+**Experimentwise alpha** (or familywise alpha) refers to the overall probability of making at least one Type I error (false positive) across all hypothesis tests in an experiment. This is particularly relevant in situations where multiple comparisons are made, as the risk of incorrectly rejecting a null hypothesis increases with the number of tests. 
+
+ 
+
+A **factorial ANOVA** is a statistical test used to analyze the effects of two or more categorical independent variables (factors) on a continuous dependent variable, including their interaction effects. It extends the one-way ANOVA by examining multiple factors simultaneously, allowing for a more comprehensive analysis. 
+
+ 
+
+**Fisher’s Least Significant Difference test (LSD)** is a simple post hoc pairwise comparison procedure used to determine whether the means of two groups differ significantly. 
+
+ 
+
+The **Kruskal-Wallis Test** is a nonparametric statistical method used to determine whether there are significant differences between three or more independent groups based on a ranked dependent variable. 
+
+ 
+
+**Multiple comparison procedures** make comparisons while controlling for the increased risk of Type I error that occurs due to multiple testing 
+
+ 
+
+**One-way Analysis of Variance (ANOVA)** is a statistical method used to compare the means of three or more groups to determine if there are statistically significant differences among them. 
+
+ 
+
+**Tukey’s Honestly Significant Difference (Tukey’s or HSD)** test is a post hoc analysis method used to determine which specific group means are significantly different from each other. It controls the familywise error rate (the probability of making one or more Type I errors) while comparing all possible pairs of group means. 
+
+## Check Your Understanding {.unnumbered}
+
+1. **What is the primary purpose of a One-Way ANOVA?** 
+
+        a. To compare the means of two groups 
+
+        b. To compare the means of three or more groups 
+
+        c. To analyze relationships between continuous variables 
+
+        d. To assess correlations between independent and dependent variables 
+
+ 
+
+2. **Which of the following increases the risk of a Type I error when comparing multiple groups?**
+
+        a. Failing to apply a correction for multiple comparisons (e.g., Bonferroni correction) 
+
+        b. Running multiple t tests on the same data set 
+
+        c. Including covariates in the analysis 
+
+        d. Increasing sample size 
+
+ 
+
+3. **Which test is the most conservative post hoc method for controlling Type I error?** 
+
+        a. Tukey’s HSD 
+
+        b. Fisher’s LSD 
+
+        c. Bonferroni test 
+
+        d. Kruskal-Wallis Test 
+
+ 
+
+4. **The Kruskal-Wallis Test is best suited for which type of data?**
+
+        a. Ordinal data or non-normal distributions 
+
+        b. Normally distributed interval data 
+
+        c. Binary data 
+
+        d. Continuous data 
+
+ 
+
+5. **What does homogeneity of variance mean in ANOVA?** 
+
+        a. All groups have the same sample size 
+
+        b. The dependent variable is normally distributed 
+
+        c. The variances of the dependent variable are similar across groups 
+
+        d. There is no interaction effect between variables 
+
+ 
+
+**What distinguishes a factorial ANOVA from a one-way ANOVA?** 
+
+        a. It compares means between more than two groups. 
+
+        b. It examines the effects of two or more independent variables and their interactions on a dependent variable. 
+
+        c. It includes covariates to control for variability in the dependent variable. 
+
+        d. It is used for nonparametric data. 
+
+ 
+
+7. **Which of the following is an example of a factorial ANOVA design?** 
+
+        a. Comparing the mean scores of students across three different teaching methods. 
+
+        b. Assessing the correlation between test scores and student motivation. 
+
+        c. Testing for differences in a single group’s test scores across three different time points. 
+
+        d. Analyzing the effects of teaching method (lecture vs. inquiry-based) and student age group (young vs. adult) on test scores. 
+
+ 
+
+8. **What is the effect size measure commonly used in ANOVA to estimate the proportion of variance explained by the independent variable?**
+
+        a. Pearson’s r 
+
+        b. Eta Squared  
+
+        c. Cronbach’s Alpha 
+
+        d. Chi-Squared 
+
+ 
+
+

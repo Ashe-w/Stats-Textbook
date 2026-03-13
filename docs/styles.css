@@ -260,3 +260,8 @@ pre.spss code {
   padding: 0.35rem 0.6rem;
   text-align: center;
 }
+
+.mean-row td {
+  border-top: 2px solid black;
+  font-weight: 500;
+}

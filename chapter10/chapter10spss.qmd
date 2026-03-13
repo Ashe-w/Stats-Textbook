@@ -1,0 +1,183 @@
+# Analyzing Differences Among More Than Two Groups in SPSS {.unnumbered}
+
+ 
+
+In this section, we illustrate how to perform one-way and two-way ANOVAs and their nonparametric alternative using the PISA 2022 U.S. dataset. We will first examine if math performance (PV1MATH) differs significantly across three types of school organizations (SC014Q01TA, including Religious, Non-profit, Government). We will then explore whether there is an interaction between school type and gender (ST004D01T) on students’ math performance. 
+
+ 
+
+## 1.   Data Cleaning  {.unnumbered}
+
+Before conducting any analysis, we first remove cases with missing values on any variables that will be used. In this example, the variables are PV1MATH, SC014Q01TA, and ST004D01T. Steps: 
+
+1. Click Data > Select Cases… 
+
+2. Choose If condition is satisfied 
+
+3. Click If… and enter the condition to check that all three variables are non-missing: 
+    
+    *NOT MISSING(PV1MATH) AND NOT MISSING(SC014Q01TA) AND NOT MISSING(ST004D01T)*
+    
+
+    Then click Continue. 
+
+4. Select Filter out unselected cases and click OK. 
+
+    (*Optional*): Instead of filtering, you can choose Copy selected cases to a new dataset to create a cleaned file. 
+
+ 
+
+## 2.   One-Way ANOVA - Comparing Math Scores by School Type {.unnumbered}
+
+### 2.1	Define Hypotheses {.unnumbered}
+
+- $H_0$: Mean math scores are equal across all school types ($\mu_{Religious}=\mu_{Non−profit}=\mu_{Government}$)
+
+- $H_a$: At least one school type mean differs from the others. 
+
+## 2.2	 Perform One-Way ANOVA with All Outputs Together {.unnumbered}
+
+SPSS allows us to obtain assumption checks, ANOVA, and post hoc tests in a single procedure. We will request: 
+
+- Levene’s Test for homogeneity of variances 
+
+- One-way ANOVA 
+
+- Bonferroni-adjusted pairwise t tests 
+
+- Tukey’s HSD test 
+
+SPSS Steps: 
+
+1. Click Analyze > Compare Means > One-Way ANOVA 
+
+2. Move PV1MATH into Dependent List 
+
+3. Move SC014Q01TAinto Factor 
+
+4. Click Options → Select Descriptive and Homogeneity of variance test → Continue 
+
+5. Click Post Hoc → Select Bonferroni and Tukey → Continue 
+
+6. Click OK 
+
+SPSS will generate all outputs together. 
+
+### 2.3  Check assumptions {.unnumbered}
+
+By following the steps above, we checked the assumption of equal variances using Levene’s Test. The normality assumption can be examined visually using Q-Q plots or histograms (see Chapter 4 for details). 
+
+Results: 
+
+![Fig 10.11](chapter10/fig10-11.png){fig-align="center" width=60%}
+
+**Interpretation**:
+The p-values from all four versions of Levene’s Test (mean, median, trimmed mean, adjusted df) are less than .05, indicating that the assumption of equal variances is violated. However, given the large sample size and approximately equal group sizes, the one-way ANOVA is considered robust to this violation. We will proceed with the ANOVA test.
+
+### 2.4  One-Way ANOVA Test {.unnumbered}
+
+Results: 
+
+![Fig 10.12](chapter10/fig10-12.png){fig-align="center" width=60%}
+
+Interpretation: The one-way ANOVA showed a statistically significant difference in mean math scores (PV1MATH) among the three school types ($F(2,4283) = 42.42, p<.001$). This means that at least one school type has a mean math score that differs significantly from the others. 
+
+### 2.5  Post-hoc Tests {.unnumbered}
+
+#### 2.5.1	Bonferroni-Adjusted Pairwise t Tests {.unnumbered}
+
+Bonferroni-adjusted t tests divide α by the number of comparisons for a conservative test. 
+
+Results: 
+
+![Fig 10.13](chapter10/fig10-13.png){fig-align="center" width=60%}
+
+**Interpretation**: 
+
+The Bonferroni-adjusted pairwise t-tests indicate that students in non-profit schools have significantly different mean math scores compared to both government ($p  < .001$) and religious schools ($p < .001$), while government and religious schools do not significantly differ from each other ($p = 1$). 
+
+#### 2.5.2	Tukey’s HSD Test {.unnumbered}
+
+Tukey’s HSD compares all pairs and controls familywise error rate. 
+
+Results:
+
+![Fig 10.14](chapter10/fig10-14.png){fig-align="center" width=60%}
+
+![Fig 10.15](chapter10/fig10-15.png){fig-align="center" width=40%}
+
+Interpretation: Tukey’s HSD confirms the Bonferroni results, showing that (1) math score in non-profit schools is significantly lower than in government schools (mean difference = -65.88, $p < .001$) and in religious schools (mean difference = -64.06, $p < .001$); (2) no significant difference in mean math scores between religious and government schools (mean difference = -1.81, $p = .98$). 
+
+Tukey’s HSD homogeneous subsets further reinforce this finding, showing that the “Another not-for-profit” group forms its own subset with a significantly lower mean, whereas the “Church/Religious” and “Government” schools form a higher subset and do not differ significantly from each other. 
+
+### 2.6   Effect Size {.unnumbered}
+
+Results: 
+
+![Fig 10.16](chapter10/fig10-16.png){fig-align="center" width=60%}
+
+**Interpretation**: 
+
+Both the $\eta^2$ and $\omega^2$ values are 0.02, meaning that about 2% of the variance in math scores is explained by school type. According to common benchmarks, this represents a small effect size. This suggests that other factors, beyond school type, account for most of the differences in performance. 
+
+## 3. Two-Way ANOVA - Comparing Math Scores by School Type and Gender {.unnumbered}
+
+We add gender as a second independent variable to explore potential interaction effects. 
+
+$H_a$(School Type): Mean math scores differ by school type. 
+
+$H_a$(Gender): Mean math scores differ by gender. 
+
+$H_a$(School Type × Gender): Differences in math scores by gender depend on school type. 
+
+Assume the homogeneity of variances and normality holds for the two-way ANOVA, we can proceed with the analysis. 
+
+SPSS Steps: 
+
+1. Click Analyze > General Linear Model > Univariate… 
+
+2. Move PV1MATH into Dependent Variable 
+
+3. Move SC014Q01TA and ST004D01Tinto Fixed Factor(s) 
+
+4. Click Options → Select Descriptive statistics, Estimates of effect size, and Homogeneity tests → Continue 
+
+5. Click Plots → Put ST004D01Ton the Horizontal Axis and SC014Q01TA as Separate Lines (or reverse) → Add → Continue 
+
+6. Click OK 
+
+![Fig 10.17](chapter10/fig10-17.png){fig-align="center" width=60%}
+
+![Fig 10.18](chapter10/fig10-18.png){fig-align="center" width=60%}
+
+Interpretation: The two-way ANOVA results show a significant main effect of school type ($F(2, 4280) = 42.91, p < .001$), indicating that mean math scores differ significantly among the three school types (Government, Non-profit, Religious). In contrast, the main effect of gender is not significant ($F(1, 4280) = 0.58, p = .446$), suggesting that male and female students do not have statistically different average math scores.
+
+## 4. Nonparametric Alternative: Kruskal-Wallis Test {.unnumbered}
+
+If ANOVA assumptions (normality, homogeneity) are severely violated, use the Kruskal-Wallis Test as an alternative. 
+
+SPSS Steps: 
+
+1. Analyze > Nonparametric Tests > Legacy Dialogs > K Independent Samples 
+
+2. Move PV1MATH into Test Variable List 
+
+3. Move SC014Q01TA (School Type) into Grouping Variable 
+
+4. Click Define Range, enter min and max codes (e.g., 1 and 3) → Continue 
+
+5. Under Test Type, check Kruskal-Wallis H 
+
+6. Click Options → Check Descriptive → Continue 
+
+7. Click OK 
+
+Results: 
+
+![Fig 10.19](chapter10/fig10-19.png){fig-align="center" width=20%}
+
+![Fig 10.20](chapter10/fig10-20.png){fig-align="center" width=60%}
+
+**Interpretation**: 
+
+The Kruskal-Wallis test consistently shows a significant difference in math scores (PV1MATH) among at least one pair of the school types ($\chi^2 = 85.46, p < 0.05$). Looking at the mean ranks, non-profit schools have the lowest math scores (mean rank ≈ 1312). Government and religious schools have higher and similar mean ranks (≈ 2181 and 2146). The Kruskal-Wallis test does not specify which pairs of school types differ. To determine this, post hoc tests such as Dunn-Bonferroni are required. SPSS’s standard Kruskal-Wallis procedure does not provide these post hoc comparisons, so you would need to use R, Python, or other software to perform them. 

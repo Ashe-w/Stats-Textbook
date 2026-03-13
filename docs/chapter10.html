@@ -71,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -227,7 +256,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#chapter-10" id="toc-chapter-10" class="nav-link active" data-scroll-target="#chapter-10"><span class="header-section-number">11</span> Chapter 10</a></li>
+  <li><a href="#analyzing-differences-among-more-than-two-groups" id="toc-analyzing-differences-among-more-than-two-groups" class="nav-link active" data-scroll-target="#analyzing-differences-among-more-than-two-groups">Analyzing Differences Among More Than Two Groups</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#anova-example" id="toc-anova-example" class="nav-link" data-scroll-target="#anova-example"><span class="header-section-number">10.1</span> ANOVA Example</a>
+  <ul class="collapse">
+  <li><a href="#step-1-determine-the-null-and-alternative-hypotheses." id="toc-step-1-determine-the-null-and-alternative-hypotheses." class="nav-link" data-scroll-target="#step-1-determine-the-null-and-alternative-hypotheses.">Step 1: Determine the null and alternative hypotheses. </a></li>
+  <li><a href="#step-2-set-the-criteria-for-a-decision." id="toc-step-2-set-the-criteria-for-a-decision." class="nav-link" data-scroll-target="#step-2-set-the-criteria-for-a-decision.">Step 2: Set the criteria for a decision. </a></li>
+  <li><a href="#step-3-check-assumptions-and-compute-the-test-statistic." id="toc-step-3-check-assumptions-and-compute-the-test-statistic." class="nav-link" data-scroll-target="#step-3-check-assumptions-and-compute-the-test-statistic.">Step 3: Check assumptions and compute the test statistic.  </a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#analyzing-differences-among-more-than-two-groups-in-spss" id="toc-analyzing-differences-among-more-than-two-groups-in-spss" class="nav-link" data-scroll-target="#analyzing-differences-among-more-than-two-groups-in-spss">Analyzing Differences Among More Than Two Groups in SPSS</a>
+  <ul class="collapse">
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">1. Data Cleaning</a></li>
+  <li><a href="#one-way-anova---comparing-math-scores-by-school-type" id="toc-one-way-anova---comparing-math-scores-by-school-type" class="nav-link" data-scroll-target="#one-way-anova---comparing-math-scores-by-school-type">2. One-Way ANOVA - Comparing Math Scores by School Type</a>
+  <ul class="collapse">
+  <li><a href="#define-hypotheses" id="toc-define-hypotheses" class="nav-link" data-scroll-target="#define-hypotheses">2.1 Define Hypotheses</a></li>
+  </ul></li>
+  <li><a href="#perform-one-way-anova-with-all-outputs-together" id="toc-perform-one-way-anova-with-all-outputs-together" class="nav-link" data-scroll-target="#perform-one-way-anova-with-all-outputs-together">2.2 Perform One-Way ANOVA with All Outputs Together</a>
+  <ul class="collapse">
+  <li><a href="#check-assumptions" id="toc-check-assumptions" class="nav-link" data-scroll-target="#check-assumptions">2.3 Check assumptions</a></li>
+  <li><a href="#one-way-anova-test" id="toc-one-way-anova-test" class="nav-link" data-scroll-target="#one-way-anova-test">2.4 One-Way ANOVA Test</a></li>
+  <li><a href="#post-hoc-tests" id="toc-post-hoc-tests" class="nav-link" data-scroll-target="#post-hoc-tests">2.5 Post-hoc Tests</a></li>
+  <li><a href="#effect-size" id="toc-effect-size" class="nav-link" data-scroll-target="#effect-size">2.6 Effect Size</a></li>
+  </ul></li>
+  <li><a href="#two-way-anova---comparing-math-scores-by-school-type-and-gender" id="toc-two-way-anova---comparing-math-scores-by-school-type-and-gender" class="nav-link" data-scroll-target="#two-way-anova---comparing-math-scores-by-school-type-and-gender">3. Two-Way ANOVA - Comparing Math Scores by School Type and Gender</a></li>
+  <li><a href="#nonparametric-alternative-kruskal-wallis-test" id="toc-nonparametric-alternative-kruskal-wallis-test" class="nav-link" data-scroll-target="#nonparametric-alternative-kruskal-wallis-test">4. Nonparametric Alternative: Kruskal-Wallis Test</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways-for-educational-researchers-from-chapter-10" id="toc-key-takeaways-for-educational-researchers-from-chapter-10" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-10">Key Takeaways for Educational Researchers from Chapter 10</a></li>
+  <li><a href="#key-definitions-from-chapter-10" id="toc-key-definitions-from-chapter-10" class="nav-link" data-scroll-target="#key-definitions-from-chapter-10">Key Definitions from Chapter 10</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding">Check Your Understanding</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -253,11 +314,768 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="chapter-10" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Chapter 10</h1>
-<p>This is Chapter 10.</p>
+<section id="analyzing-differences-among-more-than-two-groups" class="level1 unnumbered">
+<h1 class="unnumbered">Analyzing Differences Among More Than Two Groups</h1>
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ul>
+<li><p>Differentiate between One-Way ANOVA and Factorial ANOVA by identifying appropriate scenarios for each test based on the number of independent variables and their levels.</p></li>
+<li><p>Describe the underlying assumptions of One-Way ANOVA and Factorial ANOVA, including normality, homogeneity of variances, and independence.</p></li>
+<li><p>Interpret results from One-Way ANOVA and Factorial ANOVA to determine group differences, examine interaction effects, and assess the impact of covariates on dependent variables, ensuring accurate statistical conclusions.</p></li>
+<li><p>Use nonparametric tests like the Kruskal-Wallis Test for data that violates parametric assumptions.</p></li>
+</ul>
+<p><strong>One-way Analysis of Variance (ANOVA)</strong> is a statistical method used to compare the means of three or more groups to determine if there are statistically significant differences among them. Before we jump in, let’s briefly revisit the independent-samples t test, because a one-way ANOVA is really just an extension of the t test. You could also say that an independent-samples t test is a special case of ANOVA comparing only two groups. In a t test, we compare means between two groups. In a one-way ANOVA, we compare means among three or more groups. Maybe you don’t just want to compare high school students to college students, but instead you want to compare students from several different age groups. Sure, you could use t tests to look for differences between two groups at a time, but that is not a good idea. First of all, it is not efficient because comparing 5 groups would mean running 10 t tests. But even more importantly, you would increase the risk of making a Type I error, and we can avoid that risk by using an ANOVA.  </p>
+<p> </p>
+<p>How does running multiple t tests increase the odds of a Type I error? <strong>Experimentwise alpha</strong> (or <strong>familywise alpha</strong>) refers to the overall probability of making at least one Type I error (false positive) across all hypothesis tests in an experiment. This is particularly relevant in situations where multiple comparisons are made, as the risk of incorrectly rejecting a null hypothesis increases with the number of tests. In other words, when we use an alpha level of .05, we are saying there is a 5% probability that an observed significant difference was due to chance alone. If we run 10 tests on the same data, and there is a 5% chance of a Type I error each time, those odds really add up. Using a single ANOVA to compare means across multiple groups at once is better than conducting multiple t tests because we are controlling for any compounding of the Type I error rate.  </p>
+<p> </p>
+<p>How does an ANOVA work? There is a clue in the name – analysis of variance. With ANOVA, we are comparing the variance in a dependent variable that is due to differences between groups to the variance due to differences within each group. There will always be some differences within groups because people are different in ways unrelated to the groups they are in. The key with an ANOVA is to find out how much of the total difference (or variance) in the dependent variable is due to people being in different groups, as opposed to people just being different from each other. We will go through an example to explain, but <a href="https://www.youtube.com/watch?v=ITf4vHhyGpc">this video</a> provides a good visualization of the concepts.  </p>
+</section>
+<section id="anova-example" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="anova-example"><span class="header-section-number">10.1</span> ANOVA Example</h2>
+<p>Let’s now go through the steps of hypothesis testing for a One-Way ANOVA using a hypothetical example to illustrate the process.</p>
+<p>A researcher conducted a study for language acquisition to examine how different study techniques impact students’ performance to recall new vocabulary words. A total of <em>40 college students</em> were randomly assigned to one of <em>four learning strategies</em>:</p>
+<ul>
+<li><p><em>Repetition Group</em> – Students repeatedly read through a list of 25 vocabulary words.</p></li>
+<li><p><em>Visualization Group</em> – Students created a mental image related to each vocabulary word to aid recall.</p></li>
+<li><p><em>Technology-Aided Learning Group</em> – Students used an interactive flashcard app that provided spaced repetition and automated quizzes to reinforce learning.</p></li>
+<li><p><em>Control Group</em> – Students were instructed to read through the list without applying any specific memorization strategy.</p></li>
+</ul>
+<p>After studying for <em>15 minutes</em>, students completed a <em>recall test</em>, writing down as many words as they could remember.</p>
+<p>Imagine that these were the results: </p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Repetition</th>
+<th style="text-align: center;">Visualization</th>
+<th style="text-align: center;">Technology-Aided Learning</th>
+<th style="text-align: center;">Control</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=11.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=16.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=18.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=8.9\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In each group, the numbers are clustered very close together, and there are clear differences between groups. It is easy to glance at this table and decide that the differences are due to group membership. Now, imagine these were the results:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Repetition</th>
+<th style="text-align: center;">Visualization</th>
+<th style="text-align: center;">Technology-Aided Learning</th>
+<th style="text-align: center;">Control</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=12.1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=17.9\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=12.5\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>There are still some differences between groups, but the differences within groups are so great that it is hard to tell what is going on. Is the gap between the Visualization group and the Control group due to the learning condition, or did that group just randomly have a few more individuals who are unusually good at remembering words? In this case, the within group variation is so high that it obscures any between group variation.  </p>
+<p>Figure 10.1 provides a visual that may help. Imagine we have three groups, X1, X2, and X3. Each group has its own distribution of scores on the dependent variable, with its own mean and variance/standard deviation. If individual differences within the groups are large, then it is hard to make a conclusion about between-group differences by comparing means, because the group distributions may overlap.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption>Three group distributions with dashed mean lines.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Since there is quite a bit of overlap across the three distributions (large spread), mean differences may not be statistically significant. So, how do we know if there are significant group differences?  </p>
+<p> </p>
+<p>We are going to keep this very general to start and then go through the calculations with the actual data from the recall study. An ANOVA is really a ratio of two types of variances. The variance between groups is in the numerator, and the variance within groups (otherwise known as the error variance) is in the denominator. As more and more of the total variance is associated with the groups, the ratio gets larger. This ratio is called the F statistic and can be calculated by the following formula:</p>
+<p><span class="math display">\[
+F = \frac{MS_{BG}}{MS_E}
+  = \frac{variance \, between \, groups}
+         {variance \, within \, groups}
+\]</span></p>
+<p>Unlike a t test which uses a t statistic and follows the t distribution, an ANOVA uses the F statistic and follows the F distribution. A t test compares means, which can be positive or negative. However, variance is either positive or zero, so the F distribution looks quite different from the t distribution. And actually, there are multiple F distributions. Just like the t distribution changes with the degrees of freedom (higher degrees of freedom means the distribution becomes closer and closer to normal), the F distribution also changes based on degrees of freedom. This time, however, we have two separate degrees of freedom. Some examples are shown in Figure 10.2.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>F distributions with different degrees of freedom</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The degrees of freedom for the numerator (between groups) are the number of groups (k) minus 1. The degrees of freedom for the denominator (within groups, or error variance) are the total sample size (N) minus the number of groups (k). Just like with a t test, we use the degrees of freedom to help identify the critical value and then decide if the F statistic obtained by our data exceeds that value.  </p>
+<p> </p>
+<p>Turn to the Critical Values of F Distribution Table in the Appendix and you will find the critical values for the F distribution. Note that you must find the degrees of freedom for the numerator across the top and degrees of freedom for the denominator down the left side. You will see that even when your sample size is very large, which results in high degrees of freedom in the denominator, critical values are still above 1.0. This means that to get a significant F statistic, the variance between groups needs to be greater than the variance within groups.  </p>
+<p> </p>
+<p>Let’s get back to the different sources of variance in the dependent variable. In Figure 10.3, we have individual data points for three groups of four individuals each. There are horizontal lines representing each of the group means, as well as the grand mean for the entire data set. We are going to focus on one case (person one in group three, circled below) to explain the different types of variance.   </p>
+<p> </p>
+<p>The first thing we see is the distance between individual X31’s score on the dependent variable and the overall average. This is the distance X31 contributes to the total variation. Imagine squaring that distance and adding it up with the squared distances between the overall mean and every other individual data point, and you have the Sum of Squares (Total).  </p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-3.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.3</figcaption>
+</figure>
+</div>
+<p>Next, we can see the distance between individual <span class="math inline">\(X_31\)</span>’s score on the dependent variable and the mean for Group 3. This is the distance <span class="math inline">\(X_31\)</span> contributes to the <em>variation within groups</em>, or the <em>error variance</em>. <strong>Error variance</strong> in ANOVA refers to the variation in the dependent variable that cannot be explained by the independent variable(s). It represents the variability within groups or conditions, which arises from random differences among individual observations rather than systematic differences between groups. We square that distance for each observation in each group and add them up to get the Sum of Squares (Error).  </p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-4.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.4</figcaption>
+</figure>
+</div>
+<p>Finally, we have the distance between the mean of Group 3 and the overall mean. This is the distance that all members of Group 3 contribute to the <em>between-group variance</em>. We have three groups, so we have three group differences from the overall mean. To find the treatment effect, we first multiply each group mean difference by the number of observations in the group (in this case, each group mean by four) and then sum the three group mean differences to get the Sum of Squares (Treatment).  </p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-5.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.5</figcaption>
+</figure>
+</div>
+<p>Okay, now we are going to dive into the actual numbers. But before you get overwhelmed by all the <span class="math inline">\(SS\)</span>’s and <span class="math inline">\(MS\)</span>’s, remember that a mean square (<span class="math inline">\(MS\)</span>) is just a variance.</p>
+<p>Let’s work through the example with different learning strategies. The results for each instructional group are as follows:  </p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Repetition</th>
+<th style="text-align: center;">Visualization</th>
+<th style="text-align: center;">Technology-Aided Learning</th>
+<th style="text-align: center;">Control</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=11.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=16.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=18.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{X}=8.9\)</span></td>
+</tr>
+</tbody>
+</table>
+<section id="step-1-determine-the-null-and-alternative-hypotheses." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-1-determine-the-null-and-alternative-hypotheses.">Step 1: Determine the null and alternative hypotheses. </h3>
+<p>The first step is to state our hypotheses. The hypotheses for a one-way ANOVA are as follows: </p>
+<p>For k groups,</p>
+<p><span class="math display">\[
+H_0: \mu_1=\mu_2= … =\mu_k \text{(all group means are equal)}
+\]</span></p>
+<p><span class="math display">\[
+H_a : not\,all\,the\,μ_i\,are\,equal \text{(at least one group means differ from the others)}
+\]</span></p>
+<p>It is important to note that the alternative hypothesis does NOT imply that all group means are different. Rather, rejecting the null hypothesis indicates that at least one group mean is significantly different from the rest. This could mean that all means are different or that only one differs from the others. In our example, <span class="math inline">\(k = 4\)</span> and thus,</p>
+<p><span class="math display">\[
+H_0: \mu_1=\mu_2= \mu_3 =\mu_4
+\]</span></p>
+<p>Or <span class="math display">\[
+H_0: \mu_{Repetition} = \mu_{Visual} = \mu_{TechAid} = \mu_{Control}
+\]</span></p>
+<p><span class="math display">\[
+H_a: not\,all\,the\,μ_i\,are\,equal \text{(at least one group means differ from the others)}
+\]</span></p>
+</section>
+<section id="step-2-set-the-criteria-for-a-decision." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-2-set-the-criteria-for-a-decision.">Step 2: Set the criteria for a decision. </h3>
+<p>Let’s set <span class="math inline">\(α = 0.05\)</span> as our criteria for decision as usual. Remember, ANOVA uses the F distribution, which is defined by two separate degrees of freedom for the sampling distribution of the test statistic, <span class="math inline">\(F = \frac{MS_{BG}}{MS_E}\)</span>. The degrees of freedom for between-group variation are <span class="math inline">\(df_{BG}  = k - 1\)</span>. The degrees of freedom for within-group (error) variation are <span class="math inline">\(df_E = N - k\)</span>. In this example, <span class="math inline">\(k = 4\)</span> and <span class="math inline">\(N = 40\)</span>. Thus, the sampling distribution of F follows an F distribution with (<span class="math inline">\(df_{BG}\)</span>, <span class="math inline">\(df_E\)</span>) = (3, 36).</p>
+<p>We reject the null hypothesis if our observed F value is greater than the critical F value, which in this case is 2.87.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>F(3, 36) distribution with rejection region at α = 0.05</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-check-assumptions-and-compute-the-test-statistic." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-3-check-assumptions-and-compute-the-test-statistic.">Step 3: Check assumptions and compute the test statistic.  </h3>
+<p>The next step is to ensure that your data meets the assumptions required for a One-Way ANOVA. What are these assumptions?</p>
+<ul>
+<li><p><em>Independence within groups</em>: The same participants shouldn’t be in multiple groups.</p></li>
+<li><p><em>Normality</em>: The dependent variable should be approximately normally distributed within each group.</p></li>
+<li><p><em>Homogeneity of Variances</em>: The variance of the dependent variable should be similar across all groups.</p></li>
+<li><p>The dependent variable (the variable of interest) needs to be a <em>continuous scale</em> (i.e., the data needs to be at either an interval or ratio measurement).</p></li>
+</ul>
+<p>As we learned, it is important to explore data using both descriptive statistics and visual inspections with figures and graphs. Let’s review the descriptive statistics.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Group</th>
+<th style="text-align: right;"><span class="math inline">\(\bar{X}\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(SD\)</span></th>
+<th style="text-align: right;">Skewness</th>
+<th style="text-align: right;">Kurtosis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Repetition</td>
+<td style="text-align: right;">11.4</td>
+<td style="text-align: right;">1.84</td>
+<td style="text-align: right;">-0.61</td>
+<td style="text-align: right;">-0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Visualization</td>
+<td style="text-align: right;">16.4</td>
+<td style="text-align: right;">1.51</td>
+<td style="text-align: right;">-0.37</td>
+<td style="text-align: right;">-1.59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Technology-Aided Learning</td>
+<td style="text-align: right;">18.2</td>
+<td style="text-align: right;">1.75</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">-1.23</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Control</td>
+<td style="text-align: right;">8.9</td>
+<td style="text-align: right;">2.69</td>
+<td style="text-align: right;">-0.77</td>
+<td style="text-align: right;">-0.08</td>
+</tr>
+</tbody>
+</table>
+<p>Although we need to be cautious about interpreting descriptive statistics due to a small sample size in each group, we observed:</p>
+<ul>
+<li><p>Skewness values range from -0.77 to 0.24, which is within the normality threshold (-1 to 1).</p></li>
+<li><p>Kurtosis values range from -1.59 to -0.02, indicating mild to moderate deviations from normality.</p></li>
+<li><p>The Control group shows the largest deviation in skewness (-0.77) and a relatively higher standard deviation (2.69), suggesting possible non-normality.</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Histograms and Q-Q plots for each instructional group.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Again, acknowledging small sample size per group, our visual inspection with graphs (Histograms and Q-Q plots) indicates that:</p>
+<ul>
+<li><p><em>Repetition</em>: Slight left skew, mild deviation in Q-Q plot.</p></li>
+<li><p><em>Visualization</em>: Close to normal, minor deviations.</p></li>
+<li><p><em>Technology-Aided Learning</em>: Slight right skew, generally normal.</p></li>
+<li><p><em>Control</em>: Noticeable skewness and deviation in Q-Q plot.</p></li>
+</ul>
+<p>Overall, while some distributions—particularly for Control—exhibit mild deviations from normality, none display severe non-normality. Additionally, it is important to note that ANOVA is robust to mild violations of the normality assumption, allowing us to proceed with the analysis.</p>
+<p>Now, what about the homogeneity of variances? Recall that we used Levene’s test to assess the equality of variances. We can use the same statistical test for equality of variances for more than two groups. Before then, let’s start with exploring the descriptive statistics, one more time, by comparing the size of standard deviations across groups. The Control group has a slightly higher standard deviation than the others, which suggests possible violation of the homogeneity of variance assumption. To formally determine this, let’s run Levene’s test.</p>
+<p>Remember that Levene’s test is to assess whether the variances across groups (in this case four learning strategies) are equal.</p>
+<p><span class="math inline">\(H_0\)</span>: The variances across all groups are equal (i.e., homogeneity of variance assumption holds).</p>
+<p><span class="math inline">\(H_A\)</span>: At least one group has a different variance (homogeneity of variance is violated).</p>
+<p>Levene’s test can be run with statistical software such as SPSS. For the learning strategies data, the p value for Levene’s test is 0.648, which is greater than 0.05. Thus, we fail to reject the null hypothesis, which means that the homogeneity of variance assumption is met. Now, we can proceed with a one-way ANOVA analysis.</p>
+<p>To test our null hypothesis, we need to define and estimate the three sources of variation in ANOVA: Total variation, Error (within-group variation), and Treatment (between-group variation). We are not going to walk you through the manual calculations. Instead, we will first present the ANOVA table below, which is a standard output from statistical software.  </p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 19%">
+<col style="width: 27%">
+<col style="width: 19%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Source</th>
+<th style="text-align: right;">Sum of Squares (<span class="math inline">\(SS\)</span>)</th>
+<th style="text-align: right;">Degrees of Freedom (<span class="math inline">\(df\)</span>)</th>
+<th style="text-align: right;">Mean Squares (<span class="math inline">\(MS\)</span>)</th>
+<th style="text-align: right;"><span class="math inline">\(F\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Between Groups</td>
+<td style="text-align: right;">558.67</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">186.22</td>
+<td style="text-align: right;">46.78</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Within Groups (error)</td>
+<td style="text-align: right;">143.3</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">3.98</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">701.98</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="analyzing-differences-among-more-than-two-groups-in-spss" class="level1 unnumbered">
+<h1 class="unnumbered">Analyzing Differences Among More Than Two Groups in SPSS</h1>
+<p>In this section, we illustrate how to perform one-way and two-way ANOVAs and their nonparametric alternative using the PISA 2022 U.S. dataset. We will first examine if math performance (PV1MATH) differs significantly across three types of school organizations (SC014Q01TA, including Religious, Non-profit, Government). We will then explore whether there is an interaction between school type and gender (ST004D01T) on students’ math performance.</p>
+<section id="data-cleaning" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="data-cleaning">1. Data Cleaning</h2>
+<p>Before conducting any analysis, we first remove cases with missing values on any variables that will be used. In this example, the variables are PV1MATH, SC014Q01TA, and ST004D01T. Steps:</p>
+<ol type="1">
+<li><p>Click Data &gt; Select Cases…</p></li>
+<li><p>Choose If condition is satisfied</p></li>
+<li><p>Click If… and enter the condition to check that all three variables are non-missing:</p>
+<p><em>NOT MISSING(PV1MATH) AND NOT MISSING(SC014Q01TA) AND NOT MISSING(ST004D01T)</em></p>
+<p>Then click Continue.</p></li>
+<li><p>Select Filter out unselected cases and click OK.</p>
+<p>(<em>Optional</em>): Instead of filtering, you can choose Copy selected cases to a new dataset to create a cleaned file.</p></li>
+</ol>
+</section>
+<section id="one-way-anova---comparing-math-scores-by-school-type" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="one-way-anova---comparing-math-scores-by-school-type">2. One-Way ANOVA - Comparing Math Scores by School Type</h2>
+<section id="define-hypotheses" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="define-hypotheses">2.1 Define Hypotheses</h3>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: Mean math scores are equal across all school types (<span class="math inline">\(\mu_{Religious}=\mu_{Non−profit}=\mu_{Government}\)</span>)</p></li>
+<li><p><span class="math inline">\(H_a\)</span>: At least one school type mean differs from the others.</p></li>
+</ul>
+</section>
+</section>
+<section id="perform-one-way-anova-with-all-outputs-together" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="perform-one-way-anova-with-all-outputs-together">2.2 Perform One-Way ANOVA with All Outputs Together</h2>
+<p>SPSS allows us to obtain assumption checks, ANOVA, and post hoc tests in a single procedure. We will request:</p>
+<ul>
+<li><p>Levene’s Test for homogeneity of variances</p></li>
+<li><p>One-way ANOVA</p></li>
+<li><p>Bonferroni-adjusted pairwise t tests</p></li>
+<li><p>Tukey’s HSD test</p></li>
+</ul>
+<p>SPSS Steps:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Compare Means &gt; One-Way ANOVA</p></li>
+<li><p>Move PV1MATH into Dependent List</p></li>
+<li><p>Move SC014Q01TAinto Factor</p></li>
+<li><p>Click Options → Select Descriptive and Homogeneity of variance test → Continue</p></li>
+<li><p>Click Post Hoc → Select Bonferroni and Tukey → Continue</p></li>
+<li><p>Click OK</p></li>
+</ol>
+<p>SPSS will generate all outputs together.</p>
+<section id="check-assumptions" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="check-assumptions">2.3 Check assumptions</h3>
+<p>By following the steps above, we checked the assumption of equal variances using Levene’s Test. The normality assumption can be examined visually using Q-Q plots or histograms (see Chapter 4 for details).</p>
+<p>Results:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-11.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.11</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation</strong>: The p-values from all four versions of Levene’s Test (mean, median, trimmed mean, adjusted df) are less than .05, indicating that the assumption of equal variances is violated. However, given the large sample size and approximately equal group sizes, the one-way ANOVA is considered robust to this violation. We will proceed with the ANOVA test.</p>
+</section>
+<section id="one-way-anova-test" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="one-way-anova-test">2.4 One-Way ANOVA Test</h3>
+<p>Results:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-12.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.12</figcaption>
+</figure>
+</div>
+<p>Interpretation: The one-way ANOVA showed a statistically significant difference in mean math scores (PV1MATH) among the three school types (<span class="math inline">\(F(2,4283) = 42.42, p&lt;.001\)</span>). This means that at least one school type has a mean math score that differs significantly from the others.</p>
+</section>
+<section id="post-hoc-tests" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="post-hoc-tests">2.5 Post-hoc Tests</h3>
+<section id="bonferroni-adjusted-pairwise-t-tests" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="bonferroni-adjusted-pairwise-t-tests">2.5.1 Bonferroni-Adjusted Pairwise t Tests</h4>
+<p>Bonferroni-adjusted t tests divide α by the number of comparisons for a conservative test.</p>
+<p>Results:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-13.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.13</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation</strong>:</p>
+<p>The Bonferroni-adjusted pairwise t-tests indicate that students in non-profit schools have significantly different mean math scores compared to both government (<span class="math inline">\(p  &lt; .001\)</span>) and religious schools (<span class="math inline">\(p &lt; .001\)</span>), while government and religious schools do not significantly differ from each other (<span class="math inline">\(p = 1\)</span>).</p>
+</section>
+<section id="tukeys-hsd-test" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="tukeys-hsd-test">2.5.2 Tukey’s HSD Test</h4>
+<p>Tukey’s HSD compares all pairs and controls familywise error rate.</p>
+<p>Results:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-14.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.14</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-15.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Fig 10.15</figcaption>
+</figure>
+</div>
+<p>Interpretation: Tukey’s HSD confirms the Bonferroni results, showing that (1) math score in non-profit schools is significantly lower than in government schools (mean difference = -65.88, <span class="math inline">\(p &lt; .001\)</span>) and in religious schools (mean difference = -64.06, <span class="math inline">\(p &lt; .001\)</span>); (2) no significant difference in mean math scores between religious and government schools (mean difference = -1.81, <span class="math inline">\(p = .98\)</span>).</p>
+<p>Tukey’s HSD homogeneous subsets further reinforce this finding, showing that the “Another not-for-profit” group forms its own subset with a significantly lower mean, whereas the “Church/Religious” and “Government” schools form a higher subset and do not differ significantly from each other.</p>
+</section>
+</section>
+<section id="effect-size" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="effect-size">2.6 Effect Size</h3>
+<p>Results:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-16.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.16</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation</strong>:</p>
+<p>Both the <span class="math inline">\(\eta^2\)</span> and <span class="math inline">\(\omega^2\)</span> values are 0.02, meaning that about 2% of the variance in math scores is explained by school type. According to common benchmarks, this represents a small effect size. This suggests that other factors, beyond school type, account for most of the differences in performance.</p>
+</section>
+</section>
+<section id="two-way-anova---comparing-math-scores-by-school-type-and-gender" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="two-way-anova---comparing-math-scores-by-school-type-and-gender">3. Two-Way ANOVA - Comparing Math Scores by School Type and Gender</h2>
+<p>We add gender as a second independent variable to explore potential interaction effects.</p>
+<p><span class="math inline">\(H_a\)</span>(School Type): Mean math scores differ by school type.</p>
+<p><span class="math inline">\(H_a\)</span>(Gender): Mean math scores differ by gender.</p>
+<p><span class="math inline">\(H_a\)</span>(School Type × Gender): Differences in math scores by gender depend on school type.</p>
+<p>Assume the homogeneity of variances and normality holds for the two-way ANOVA, we can proceed with the analysis.</p>
+<p>SPSS Steps:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; General Linear Model &gt; Univariate…</p></li>
+<li><p>Move PV1MATH into Dependent Variable</p></li>
+<li><p>Move SC014Q01TA and ST004D01Tinto Fixed Factor(s)</p></li>
+<li><p>Click Options → Select Descriptive statistics, Estimates of effect size, and Homogeneity tests → Continue</p></li>
+<li><p>Click Plots → Put ST004D01Ton the Horizontal Axis and SC014Q01TA as Separate Lines (or reverse) → Add → Continue</p></li>
+<li><p>Click OK</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-17.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.17</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-18.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.18</figcaption>
+</figure>
+</div>
+<p>Interpretation: The two-way ANOVA results show a significant main effect of school type (<span class="math inline">\(F(2, 4280) = 42.91, p &lt; .001\)</span>), indicating that mean math scores differ significantly among the three school types (Government, Non-profit, Religious). In contrast, the main effect of gender is not significant (<span class="math inline">\(F(1, 4280) = 0.58, p = .446\)</span>), suggesting that male and female students do not have statistically different average math scores.</p>
+</section>
+<section id="nonparametric-alternative-kruskal-wallis-test" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="nonparametric-alternative-kruskal-wallis-test">4. Nonparametric Alternative: Kruskal-Wallis Test</h2>
+<p>If ANOVA assumptions (normality, homogeneity) are severely violated, use the Kruskal-Wallis Test as an alternative.</p>
+<p>SPSS Steps:</p>
+<ol type="1">
+<li><p>Analyze &gt; Nonparametric Tests &gt; Legacy Dialogs &gt; K Independent Samples</p></li>
+<li><p>Move PV1MATH into Test Variable List</p></li>
+<li><p>Move SC014Q01TA (School Type) into Grouping Variable</p></li>
+<li><p>Click Define Range, enter min and max codes (e.g., 1 and 3) → Continue</p></li>
+<li><p>Under Test Type, check Kruskal-Wallis H</p></li>
+<li><p>Click Options → Check Descriptive → Continue</p></li>
+<li><p>Click OK</p></li>
+</ol>
+<p>Results:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-19.png" class="img-fluid figure-img" style="width:20.0%"></p>
+<figcaption>Fig 10.19</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10/fig10-20.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 10.20</figcaption>
+</figure>
+</div>
+<p><strong>Interpretation</strong>:</p>
+<p>The Kruskal-Wallis test consistently shows a significant difference in math scores (PV1MATH) among at least one pair of the school types (<span class="math inline">\(\chi^2 = 85.46, p &lt; 0.05\)</span>). Looking at the mean ranks, non-profit schools have the lowest math scores (mean rank ≈ 1312). Government and religious schools have higher and similar mean ranks (≈ 2181 and 2146). The Kruskal-Wallis test does not specify which pairs of school types differ. To determine this, post hoc tests such as Dunn-Bonferroni are required. SPSS’s standard Kruskal-Wallis procedure does not provide these post hoc comparisons, so you would need to use R, Python, or other software to perform them.</p>
+</section>
+</section>
+<section id="conclusion" class="level1 unnumbered">
+<h1 class="unnumbered">Conclusion</h1>
+<p>The analysis of variance techniques and associated statistical methods covered in Chapter 10 underscore the importance of understanding and addressing variability in research designs. Central to these discussions is the One-Way ANOVA, which compares the means of three or more groups, highlighting differences between-group variance and within-group error variance. This distinction is essential for isolating the effects of independent variables and ensuring reliable conclusions, especially when evaluating multiple groups simultaneously without inflating the risk of a Type I error.</p>
+<p>Expanding on these foundations, methods like two-way factorial ANOVA demonstrate the adaptability of variance analysis across various research contexts. Two-way factorial ANOVA allows researchers to examine the interaction effects between two independent variables, providing deeper insights into how multiple factors influence an outcome simultaneously.</p>
+<p>Together, the tools and principles detailed in this chapter emphasize the critical role of statistical rigor in identifying meaningful patterns and effects, reinforcing key concepts like statistical power and the importance of controlling for error through thoughtful experimental design and post hoc testing strategies like Bonferroni corrections. These techniques provide a comprehensive framework for conducting reliable, interpretable, and impactful research.</p>
+<section id="key-takeaways-for-educational-researchers-from-chapter-10" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-10">Key Takeaways for Educational Researchers from Chapter 10</h2>
+<ul>
+<li><p>ANOVA prevents multiple testing errors. One-way ANOVA is a crucial tool for comparing three or more groups while controlling for Type I errors, which would increase if multiple t tests were conducted. This is particularly relevant, for example, when analyzing student performance across different instructional methods, grade levels, or educational interventions.</p></li>
+<li><p>Between-group vs.&nbsp;within-group variance matters. ANOVA works by comparing variance between groups (due to instructional differences, policy interventions, or student demographics) with variance within groups (individual differences within the same group). If between-group variance is significantly higher, it suggests that at least one of the groups are statistically different.</p></li>
+<li><p>Factorial ANOVA identifies interaction effects. A two-way factorial ANOVA helps researchers examine how multiple independent variables interact to influence an educational outcome. This is particularly useful in evaluating whether interventions work differently for different groups (e.g., high- vs.&nbsp;low-achieving students).</p></li>
+<li><p>Checking assumptions is crucial for valid results. Before conducting any type of ANOVA, researchers must check normality, homogeneity of variances, and independence of observations. If these assumptions are violated, adjustments (e.g., using nonparametric alternatives like the Kruskal-Wallis Test) or transformations may be necessary to ensure valid interpretations.</p></li>
+<li><p>Post hoc tests determine specific group differences. ANOVA tells us that at least one group differs, but post hoc tests (e.g., Tukey’s HSD, Bonferroni) identify which groups differ significantly. For example, in an education study comparing teaching methods, post hoc analysis helps determine whether technology-aided learning is significantly better than visualization or repetition-based methods.</p></li>
+<li><p>Effect Size is as important as statistical significance. Eta-squared (η²) and omega-squared (ω²) quantify how much variance in the outcome variable is explained by the group membership. Even if a finding is statistically significant, a small effect size may indicate limited practical impact, guiding educators and policymakers in prioritizing interventions that have meaningful effects on student outcomes.</p></li>
+</ul>
+</section>
+<section id="key-definitions-from-chapter-10" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-definitions-from-chapter-10">Key Definitions from Chapter 10</h2>
+<p>The <strong>Bonferroni post hoc test</strong> is the most conservative. It simply divides your starting alpha level by the number of tests you are running and then conducts t tests between each pair.</p>
+<p><strong>Error variance</strong> in ANOVA refers to the variation in the dependent variable that cannot be explained by the independent variable(s). It represents the variability within groups or conditions, which arises from random differences among individual observations rather than systematic differences between groups.</p>
+<p><strong>Experimentwise alpha</strong> (or familywise alpha) refers to the overall probability of making at least one Type I error (false positive) across all hypothesis tests in an experiment. This is particularly relevant in situations where multiple comparisons are made, as the risk of incorrectly rejecting a null hypothesis increases with the number of tests.</p>
+<p>A <strong>factorial ANOVA</strong> is a statistical test used to analyze the effects of two or more categorical independent variables (factors) on a continuous dependent variable, including their interaction effects. It extends the one-way ANOVA by examining multiple factors simultaneously, allowing for a more comprehensive analysis.</p>
+<p><strong>Fisher’s Least Significant Difference test (LSD)</strong> is a simple post hoc pairwise comparison procedure used to determine whether the means of two groups differ significantly.</p>
+<p>The <strong>Kruskal-Wallis Test</strong> is a nonparametric statistical method used to determine whether there are significant differences between three or more independent groups based on a ranked dependent variable.</p>
+<p><strong>Multiple comparison procedures</strong> make comparisons while controlling for the increased risk of Type I error that occurs due to multiple testing</p>
+<p><strong>One-way Analysis of Variance (ANOVA)</strong> is a statistical method used to compare the means of three or more groups to determine if there are statistically significant differences among them.</p>
+<p><strong>Tukey’s Honestly Significant Difference (Tukey’s or HSD)</strong> test is a post hoc analysis method used to determine which specific group means are significantly different from each other. It controls the familywise error rate (the probability of making one or more Type I errors) while comparing all possible pairs of group means.</p>
+</section>
+<section id="check-your-understanding" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
+<ol type="1">
+<li><p><strong>What is the primary purpose of a One-Way ANOVA?</strong></p>
+<pre><code> a. To compare the means of two groups 
+
+ b. To compare the means of three or more groups 
+
+ c. To analyze relationships between continuous variables 
+
+ d. To assess correlations between independent and dependent variables </code></pre></li>
+<li><p><strong>Which of the following increases the risk of a Type I error when comparing multiple groups?</strong></p>
+<pre><code> a. Failing to apply a correction for multiple comparisons (e.g., Bonferroni correction) 
+
+ b. Running multiple t tests on the same data set 
+
+ c. Including covariates in the analysis 
+
+ d. Increasing sample size </code></pre></li>
+<li><p><strong>Which test is the most conservative post hoc method for controlling Type I error?</strong></p>
+<pre><code> a. Tukey’s HSD 
+
+ b. Fisher’s LSD 
+
+ c. Bonferroni test 
+
+ d. Kruskal-Wallis Test </code></pre></li>
+<li><p><strong>The Kruskal-Wallis Test is best suited for which type of data?</strong></p>
+<pre><code> a. Ordinal data or non-normal distributions 
+
+ b. Normally distributed interval data 
+
+ c. Binary data 
+
+ d. Continuous data </code></pre></li>
+<li><p><strong>What does homogeneity of variance mean in ANOVA?</strong></p>
+<pre><code> a. All groups have the same sample size 
+
+ b. The dependent variable is normally distributed 
+
+ c. The variances of the dependent variable are similar across groups 
+
+ d. There is no interaction effect between variables </code></pre></li>
+</ol>
+<p><strong>What distinguishes a factorial ANOVA from a one-way ANOVA?</strong></p>
+<pre><code>    a. It compares means between more than two groups. 
+
+    b. It examines the effects of two or more independent variables and their interactions on a dependent variable. 
+
+    c. It includes covariates to control for variability in the dependent variable. 
+
+    d. It is used for nonparametric data. </code></pre>
+<ol start="7" type="1">
+<li><p><strong>Which of the following is an example of a factorial ANOVA design?</strong></p>
+<pre><code> a. Comparing the mean scores of students across three different teaching methods. 
+
+ b. Assessing the correlation between test scores and student motivation. 
+
+ c. Testing for differences in a single group’s test scores across three different time points. 
+
+ d. Analyzing the effects of teaching method (lecture vs. inquiry-based) and student age group (young vs. adult) on test scores. </code></pre></li>
+<li><p><strong>What is the effect size measure commonly used in ANOVA to estimate the proportion of variance explained by the independent variable?</strong></p>
+<pre><code> a. Pearson’s r 
+
+ b. Eta Squared  
+
+ c. Cronbach’s Alpha 
+
+ d. Chi-Squared </code></pre></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

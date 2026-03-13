@@ -6,3 +6,137 @@ title: "Chapter 6"
 {{< include chapter6/chapter6text.qmd >}}
 {{< include chapter6/chapter6r.qmd >}}
 {{< include chapter6/chapter6spss.qmd >}}
+
+# Conclusion  {.unnumbered}
+
+We spent a lot of time in the theoretical statistics world in this chapter. Let’s go back to the real world for a quick summary before moving to hypothesis testing in chapter 7.  
+
+- If your sample is both random and a good representation of the population, we can safely assume that the sample mean is a useful estimate of the population mean, especially when your sample size is at least 30. 
+
+- We know that your sample may be different from the population simply due to sampling error, but we can estimate the size of that error by calculating the standard error of the mean.  
+
+- Standard error of the mean ($s_M$ or sometimes referred to *SEM*) is related to our sample standard deviation, but it’s not the same thing. We divide our sample standard deviation (*SD*) by the square root of the sample size to calculate standard error. Thus, standard error, which is the standard deviation of the theoretical sampling distribution, will always be smaller than our actual sample standard deviation.  
+
+- The standard error is measured in the same units as your original dependent variable. For example, if you took a sample of 100 students and found that their average SAT Math score was 600 with a standard deviation of 50, the standard error would be 5, calculated as 50 divided by the square root of 100. 
+
+  - Relating to standard deviation, this means that individual scores in the sample deviate from the sample mean by an average of 50 points. However, when considering the sample mean as an estimate of the population mean, the standard error tells us how much the sample mean is likely to differ from the true population mean. 
+
+  - According to the *68/95/99.7 rule*, we can be 95% confident that the true population mean lies within two standard errors of our sample mean. In this example, that means we are 95% confident that the true population mean SAT Math score is within 10 points (2 × 5) of 600 (590 to 610). 
+
+
+## Key Takeaways for Educational Researchers from Chapter 6 {.unnumbered}
+
+ 
+
+- Representativeness and random sampling matter. To ensure that your sample mean is a valid estimate of the population mean, your sample should be both random and representative of the population. This is particularly important in educational research, where studying diverse groups (e.g., students from different schools, districts, or demographics) helps ensure meaningful and generalizable results. 
+
+- The standard error of mean ($s_M$ or *SEM*) quantifies how much a sample mean is likely to differ from the true population mean. For instance, when comparing average test scores or teacher evaluations across schools, SEM helps determine the reliability of your estimates. Calculating SEM allows researchers to account for variability and acknowledge potential sampling error in their conclusions. 
+
+- Larger sample sizes reduce standard error, leading to more precise estimates of population parameters. Education researchers should prioritize collecting sufficient and representative participants for research, especially when dealing with diverse populations, to minimize the influence of outliers and improve the reliability of their findings (e.g., assessing standardized test performance across districts). 
+
+- When the central limit theorem is applicable with a sufficiently large sample size (i.e., n > 30), the 68/95/99.7 rule can be applied to the sampling distribution of means. This rule states that approximately 95% of sample means will fall within two standard errors of the true population mean. Education researchers can use this principle to evaluate how closely their sample mean approximates the population mean, gaining insights into the reliability of their sample statistic for making inferences about the population mean. 
+
+
+## Key Definitions from Chapter 6  {.unnumbered}
+
+ 
+The **central limit theorem (CLT)** states that when a sufficiently large random sample is drawn from any population (regardless of the population's distribution), the sampling distribution of the sample mean will approximate a normal distribution, provided the sample size is large enough. 
+
+ 
+
+**Convenience sampling** utilizes a sample taken from a group of people who are easy to contact. 
+
+ 
+
+**Purposive sampling** utilizes a sample chosen based on the purpose of the study and the researcher’s judgment. 
+
+ 
+
+**Random sampling** is a sampling technique where every member of the population has an equal chance of being selected. 
+
+ 
+
+**Sample** refers to a small portion of the full population being studied. 
+
+ 
+
+A **sampling distribution** is the probability distribution of a statistic (such as the mean, proportion, or standard deviation) calculated from all possible samples of a given size taken from a population. 
+
+ 
+
+**Snowball sampling** utilizes a technique where existing study subjects recruit future subjects from among their acquaintances. 
+
+ 
+
+**The standard error of mean ($s_M$ or *SEM*)** quantifies how much a sample mean is likely to differ from the true population mean. 
+
+ 
+
+
+
+
+## Check Your Understanding {.unnumbered}
+
+ 
+
+1. **What is a sampling distribution?**
+
+    a. A distribution of a population's characteristics 
+
+    b. A distribution of a statistic (like a mean or proportion) calculated from all possible samples of a specific size 
+
+    c. A list of all individual data points in a population 
+
+    d. A random collection of data from a single sample 
+
+ 
+
+2. **According to the central limit theorem, what happens to the sampling distribution of the sample mean as the sample size increases?** 
+
+    a. It becomes more skewed 
+
+    b. It approximates a normal distribution, regardless of the population distribution 
+
+    c. It moves closer to the smallest value in the sample 
+
+    d. It diverges from the population mean 
+
+ 
+
+3. **Which sampling technique ensures that every member of the population has an equal chance of being selected?**
+
+    a. Convenience sampling 
+
+    b. Purposive sampling 
+
+    c. Random sampling 
+
+    d. Snowball sampling 
+
+ 
+
+4. **What is the standard error of the mean (SEM), and how is it calculated?** 
+
+    a. It is the variability of individual data points and is equal to the population standard deviation. 
+
+    b. It is the standard deviation of the sampling distribution of sample means, calculated by dividing the sample standard deviation by the square root of the sample size. 
+
+    c. It measures the deviation of a single data point from the sample mean, using the formula SD/n. 
+
+    d. It is a fixed value representing the population variance. 
+
+ 
+
+5. **What happens to the sampling distribution of the sample mean if the population distribution is normal?**
+
+    a. The sampling distribution will always be skewed, regardless of sample size. 
+
+    b. The sampling distribution will only be normal if the sample size is large. 
+
+    c. The sampling distribution will match the population distribution for any sample size. 
+
+    d. The sampling distribution will be normal, regardless of sample size. 
+
+ 
+
+ 

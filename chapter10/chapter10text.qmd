@@ -1,0 +1,513 @@
+# Analyzing Differences Among More Than Two Groups {.unnumbered}
+
+ 
+
+## Learning Objectives {.unnumbered}
+
+ 
+
+By the end of this chapter, you will be able to: 
+
+ 
+
+- Differentiate between One-Way ANOVA and Factorial ANOVA by identifying appropriate scenarios for each test based on the number of independent variables and their levels. 
+
+- Describe the underlying assumptions of One-Way ANOVA and Factorial ANOVA, including normality, homogeneity of variances, and independence. 
+
+- Interpret results from One-Way ANOVA and Factorial ANOVA to determine group differences, examine interaction effects, and assess the impact of covariates on dependent variables, ensuring accurate statistical conclusions. 
+
+- Use nonparametric tests like the Kruskal-Wallis Test for data that violates parametric assumptions. 
+
+ 
+
+**One-way Analysis of Variance (ANOVA)** is a statistical method used to compare the means of three or more groups to determine if there are statistically significant differences among them. Before we jump in, let’s briefly revisit the independent-samples t test, because a one-way ANOVA is really just an extension of the t test. You could also say that an independent-samples t test is a special case of ANOVA comparing only two groups. In a t test, we compare means between two groups. In a one-way ANOVA, we compare means among three or more groups. Maybe you don’t just want to compare high school students to college students, but instead you want to compare students from several different age groups. Sure, you could use t tests to look for differences between two groups at a time, but that is not a good idea. First of all, it is not efficient because comparing 5 groups would mean running 10 t tests. But even more importantly, you would increase the risk of making a Type I error, and we can avoid that risk by using an ANOVA.   
+
+  
+
+How does running multiple t tests increase the odds of a Type I error? **Experimentwise alpha** (or **familywise alpha**) refers to the overall probability of making at least one Type I error (false positive) across all hypothesis tests in an experiment. This is particularly relevant in situations where multiple comparisons are made, as the risk of incorrectly rejecting a null hypothesis increases with the number of tests. In other words, when we use an alpha level of .05, we are saying there is a 5% probability that an observed significant difference was due to chance alone. If we run 10 tests on the same data, and there is a 5% chance of a Type I error each time, those odds really add up. Using a single ANOVA to compare means across multiple groups at once is better than conducting multiple t tests because we are controlling for any compounding of the Type I error rate.   
+
+  
+
+How does an ANOVA work? There is a clue in the name – analysis of variance. With ANOVA, we are comparing the variance in a dependent variable that is due to differences between groups to the variance due to differences within each group. There will always be some differences within groups because people are different in ways unrelated to the groups they are in. The key with an ANOVA is to find out how much of the total difference (or variance) in the dependent variable is due to people being in different groups, as opposed to people just being different from each other. We will go through an example to explain, but [this video](https://www.youtube.com/watch?v=ITf4vHhyGpc) provides a good visualization of the concepts.   
+
+## ANOVA Example
+
+Let's now go through the steps of hypothesis testing for a One-Way ANOVA using a hypothetical example to illustrate the process. 
+
+ 
+
+A researcher conducted a study for language acquisition to examine how different study techniques impact students’ performance to recall new vocabulary words. A total of *40 college students* were randomly assigned to one of *four learning strategies*:  
+
+- *Repetition Group* – Students repeatedly read through a list of 25 vocabulary words. 
+
+- *Visualization Group* – Students created a mental image related to each vocabulary word to aid recall. 
+
+- *Technology-Aided Learning Group* – Students used an interactive flashcard app that provided spaced repetition and automated quizzes to reinforce learning. 
+
+- *Control Group* – Students were instructed to read through the list without applying any specific memorization strategy. 
+
+ 
+
+After studying for *15 minutes*, students completed a *recall test*, writing down as many words as they could remember. 
+
+
+
+Imagine that these were the results:  
+
+| Repetition | Visualization | Technology-Aided Learning | Control |
+|:----------:|:-------------:|:-------------------------:|:------:|
+| 13 | 17 | 17 | 10 |
+| 12 | 15 | 18 | 12 |
+| 12 | 15 | 16 | 9 |
+| 11 | 17 | 16 | 12 |
+| 9  | 18 | 20 | 4 |
+| 11 | 18 | 21 | 11 |
+| 11 | 14 | 18 | 9 |
+| 14 | 15 | 20 | 8 |
+| 13 | 17 | 19 | 9 |
+| 8  | 18 | 17 | 5 |
+| $\bar{X}=11.4$ | $\bar{X}=16.4$ | $\bar{X}=18.2$ | $\bar{X}=8.9$ |{.mean-row}
+
+
+In each group, the numbers are clustered very close together, and there are clear differences between groups. It is easy to glance at this table and decide that the differences are due to group membership. Now, imagine these were the results:  
+
+| Repetition | Visualization | Technology-Aided Learning | Control |
+|:----------:|:-------------:|:-------------------------:|:------:|
+| 14 | 11 | 19 | 13 |
+| 9  | 16 | 22 | 13 |
+| 16 | 13 | 13 | 10 |
+| 8  | 17 | 19 | 13 |
+| 14 | 13 | 19 | 13 |
+| 19 | 21 | 20 | 10 |
+| 9  | 14 | 14 | 18 |
+| 10 | 15 | 14 | 13 |
+| 12 | 18 | 20 | 8 |
+| 10 | 12 | 19 | 14 |
+| $\bar{X}=12.1$ | $\bar{X}=15$ | $\bar{X}=17.9$ | $\bar{X}=12.5$ | {.mean-row}
+
+There are still some differences between groups, but the differences within groups are so great that it is hard to tell what is going on. Is the gap between the Visualization group and the Control group due to the learning condition, or did that group just randomly have a few more individuals who are unusually good at remembering words? In this case, the within group variation is so high that it obscures any between group variation.   
+
+ 
+
+Figure 10.1 provides a visual that may help. Imagine we have three groups, X1, X2, and X3. Each group has its own distribution of scores on the dependent variable, with its own mean and variance/standard deviation. If individual differences within the groups are large, then it is hard to make a conclusion about between-group differences by comparing means, because the group distributions may overlap. 
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 5
+#| fig-cap: "Three group distributions with dashed mean lines."
+#| fig-align: center
+
+library(ggplot2)
+
+# x-range
+x <- seq(-5, 25, length.out = 1000)
+
+# approximate group parameters from the figure
+mu1 <- 5
+mu2 <- 8
+mu3 <- 15
+sd1 <- 3
+sd2 <- 3
+sd3 <- 3
+
+# density data
+df <- rbind(
+  data.frame(x = x, y = dnorm(x, mean = mu1, sd = sd1), group = "Group X[1]"),
+  data.frame(x = x, y = dnorm(x, mean = mu2, sd = sd2), group = "Group X[2]"),
+  data.frame(x = x, y = dnorm(x, mean = mu3, sd = sd3), group = "Group X[3]")
+)
+
+# plot
+ggplot(df, aes(x = x, y = y, color = group)) +
+  geom_line(linewidth = 1) +
+  geom_vline(xintercept = mu1, color = "blue", linetype = "dashed", linewidth = 0.9) +
+  geom_vline(xintercept = mu2, color = "forestgreen", linetype = "dashed", linewidth = 0.9) +
+  geom_vline(xintercept = mu3, color = "tomato", linetype = "dashed", linewidth = 0.9) +
+  scale_color_manual(
+    values = c("Group X[1]" = "blue", "Group X[2]" = "forestgreen", "Group X[3]" = "tomato"),
+    labels = c(expression("Group " * X[1]),
+               expression("Group " * X[2]),
+               expression("Group " * X[3]))
+  ) +
+  labs(x = "Value", y = NULL, color = NULL) +
+  coord_cartesian(xlim = c(-5, 25), expand = FALSE) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    legend.position = c(0.88, 0.88),
+    legend.background = element_rect(fill = "white", color = "lightgray"),
+    legend.key = element_rect(fill = "white", color = NA)
+  )
+```
+
+ 
+
+Since there is quite a bit of overlap across the three distributions (large spread), mean differences may not be statistically significant. So, how do we know if there are significant group differences?   
+
+  
+
+We are going to keep this very general to start and then go through the calculations with the actual data from the recall study. An ANOVA is really a ratio of two types of variances. The variance between groups is in the numerator, and the variance within groups (otherwise known as the error variance) is in the denominator. As more and more of the total variance is associated with the groups, the ratio gets larger. This ratio is called the F statistic and can be calculated by the following formula:  
+
+$$
+F = \frac{MS_{BG}}{MS_E}
+  = \frac{variance \, between \, groups}
+         {variance \, within \, groups}
+$$
+
+Unlike a t test which uses a t statistic and follows the t distribution, an ANOVA uses the F statistic and follows the F distribution. A t test compares means, which can be positive or negative. However, variance is either positive or zero, so the F distribution looks quite different from the t distribution. And actually, there are multiple F distributions. Just like the t distribution changes with the degrees of freedom (higher degrees of freedom means the distribution becomes closer and closer to normal), the F distribution also changes based on degrees of freedom. This time, however, we have two separate degrees of freedom. Some examples are shown in Figure 10.2. 
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 7
+#| fig-height: 5
+#| fig-cap: "F distributions with different degrees of freedom"
+#| fig-align: center
+
+library(ggplot2)
+
+# x range
+x <- seq(0.001, 5, length.out = 1000)
+
+# create density data
+df_data <- rbind(
+  data.frame(x = x, y = df(x, 1, 1), group = "F(1,1)"),
+  data.frame(x = x, y = df(x, 10, 20), group = "F(10,20)"),
+  data.frame(x = x, y = df(x, 5, 4), group = "F(5,4)")
+)
+
+# plot
+ggplot(df_data, aes(x = x, y = y, color = group)) +
+  geom_line(linewidth = 1) +
+  scale_color_manual(values = c("blue", "forestgreen", "red")) +
+  labs(
+    x = "Value",
+    y = "Density",
+    color = NULL
+  ) +
+  coord_cartesian(xlim = c(0,5), ylim = c(0,1)) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = c(0.87, 0.87),
+    legend.background = element_rect(fill = "white", color = "lightgray")
+  )
+```
+The degrees of freedom for the numerator (between groups) are the number of groups (k) minus 1. The degrees of freedom for the denominator (within groups, or error variance) are the total sample size (N) minus the number of groups (k). Just like with a t test, we use the degrees of freedom to help identify the critical value and then decide if the F statistic obtained by our data exceeds that value.   
+
+  
+
+Turn to the Critical Values of F Distribution Table in the Appendix and you will find the critical values for the F distribution. Note that you must find the degrees of freedom for the numerator across the top and degrees of freedom for the denominator down the left side. You will see that even when your sample size is very large, which results in high degrees of freedom in the denominator, critical values are still above 1.0. This means that to get a significant F statistic, the variance between groups needs to be greater than the variance within groups.   
+
+ 
+
+Let’s get back to the different sources of variance in the dependent variable. In Figure 10.3, we have individual data points for three groups of four individuals each. There are horizontal lines representing each of the group means, as well as the grand mean for the entire data set. We are going to focus on one case (person one in group three, circled below) to explain the different types of variance.    
+
+  
+
+The first thing we see is the distance between individual X31’s score on the dependent variable and the overall average. This is the distance X31 contributes to the total variation. Imagine squaring that distance and adding it up with the squared distances between the overall mean and every other individual data point, and you have the Sum of Squares (Total).   
+
+![Fig 10.3](chapter10/fig10-3.png){fig-align="center" width=60%}
+
+Next, we can see the distance between individual $X_31$’s score on the dependent variable and the mean for Group 3. This is the distance $X_31$ contributes to the *variation within groups*, or the *error variance*. **Error variance** in ANOVA refers to the variation in the dependent variable that cannot be explained by the independent variable(s). It represents the variability within groups or conditions, which arises from random differences among individual observations rather than systematic differences between groups. We square that distance for each observation in each group and add them up to get the Sum of Squares (Error).   
+
+![Fig 10.4](chapter10/fig10-4.png){fig-align="center" width=60%}
+
+Finally, we have the distance between the mean of Group 3 and the overall mean. This is the distance that all members of Group 3 contribute to the *between-group variance*. We have three groups, so we have three group differences from the overall mean. To find the treatment effect, we first multiply each group mean difference by the number of observations in the group (in this case, each group mean by four) and then sum the three group mean differences to get the Sum of Squares (Treatment).   
+
+![Fig 10.5](chapter10/fig10-5.png){fig-align="center" width=60%}
+
+Okay, now we are going to dive into the actual numbers. But before you get overwhelmed by all the $SS$’s and $MS$’s, remember that a mean square ($MS$) is just a variance.  
+
+Let’s work through the example with different learning strategies. The results for each instructional group are as follows:   
+
+| Repetition | Visualization | Technology-Aided Learning | Control |
+|:----------:|:-------------:|:-------------------------:|:------:|
+| 13 | 17 | 17 | 10 |
+| 12 | 15 | 18 | 12 |
+| 12 | 15 | 16 | 9 |
+| 11 | 17 | 16 | 12 |
+| 9  | 18 | 20 | 4 |
+| 11 | 18 | 21 | 11 |
+| 11 | 14 | 18 | 9 |
+| 14 | 15 | 20 | 8 |
+| 13 | 17 | 19 | 9 |
+| 8  | 18 | 17 | 5 |
+| $\bar{X}=11.4$ | $\bar{X}=16.4$ | $\bar{X}=18.2$ | $\bar{X}=8.9$ | {.mean-row}
+
+
+### Step 1: Determine the null and alternative hypotheses.  {.unnumbered}
+
+ 
+
+The first step is to state our hypotheses. The hypotheses for a one-way ANOVA are as follows:  
+
+For k groups,  
+
+$$
+H_0: \mu_1=\mu_2= … =\mu_k \text{(all group means are equal)}
+$$
+ 
+
+$$
+H_a : not\,all\,the\,μ_i\,are\,equal \text{(at least one group means differ from the others)}
+$$
+
+ 
+
+It is important to note that the alternative hypothesis does NOT imply that all group means are different. Rather, rejecting the null hypothesis indicates that at least one group mean is significantly different from the rest. This could mean that all means are different or that only one differs from the others. In our example, $k = 4$ and thus,  
+
+ 
+$$
+H_0: \mu_1=\mu_2= \mu_3 =\mu_4
+$$
+   
+
+Or 
+$$
+H_0: \mu_{Repetition} = \mu_{Visual} = \mu_{TechAid} = \mu_{Control}
+$$
+
+ 
+$$
+H_a: not\,all\,the\,μ_i\,are\,equal \text{(at least one group means differ from the others)}
+$$
+
+### Step 2: Set the criteria for a decision.  {.unnumbered}
+
+ 
+
+Let’s set $α = 0.05$ as our criteria for decision as usual. Remember, ANOVA uses the F distribution, which is defined by two separate degrees of freedom for the sampling distribution of the test statistic, 
+$F = \frac{MS_{BG}}{MS_E}$. The degrees of freedom for between-group variation are $df_{BG}  = k - 1$. The degrees of freedom for within-group (error) variation are $df_E = N - k$. In this example, $k = 4$ and $N = 40$. Thus, the sampling distribution of F follows an F distribution with ($df_{BG}$, $df_E$) = (3, 36).  
+
+
+We reject the null hypothesis if our observed F value is greater than the critical F value, which in this case is 2.87.    
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 5
+#| fig-cap: "F(3, 36) distribution with rejection region at α = 0.05"
+
+library(ggplot2)
+
+df1 <- 3
+df2 <- 36
+alpha <- 0.05
+f_crit <- qf(1 - alpha, df1, df2)
+
+x <- seq(0.001, 5, length.out = 1200)
+
+curve_df <- data.frame(
+  x = x,
+  y = df(x, df1, df2),
+  type = "F(3, 36) Distribution"
+)
+
+shade_df <- data.frame(
+  x = x[x >= f_crit],
+  y = df(x[x >= f_crit], df1, df2),
+  type = "Rejection Region (\u03b1 = 0.05)"
+)
+
+vline_df <- data.frame(
+  xintercept = f_crit,
+  type = "Critical Value = 2.87"
+)
+
+ggplot() +
+  geom_line(
+    data = curve_df,
+    aes(x = x, y = y, color = type),
+    linewidth = 1
+  ) +
+  geom_area(
+    data = shade_df,
+    aes(x = x, y = y, fill = type),
+    alpha = 0.45
+  ) +
+  geom_vline(
+    data = vline_df,
+    aes(xintercept = xintercept, color = type),
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  annotate(
+    "label",
+    x = 2.55, y = 0.23,
+    label = "2.87",
+    size = 5,
+    label.size = 0.8,
+    fill = "white"
+  ) +
+  annotate(
+    "segment",
+    x = 2.70, y = 0.20,
+    xend = f_crit, yend = df(f_crit, df1, df2),
+    linewidth = 0.7,
+    color = "black"
+  ) +
+  scale_color_manual(
+    values = c(
+      "F(3, 36) Distribution" = "blue",
+      "Critical Value = 2.87" = "red"
+    )
+  ) +
+  scale_fill_manual(
+    values = c(
+      "Rejection Region (\u03b1 = 0.05)" = "red"
+    )
+  ) +
+  scale_x_continuous(limits = c(0, 5), expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "F-value", y = NULL, color = NULL, fill = NULL) +
+  theme_minimal(base_size = 13) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    legend.position = c(0.80, 0.84),
+    legend.background = element_rect(fill = "white", color = "lightgray")
+  )
+```
+
+### Step 3: Check assumptions and compute the test statistic.  {.unnumbered} 
+
+ 
+
+The next step is to ensure that your data meets the assumptions required for a One-Way ANOVA. What are these assumptions? 
+
+- *Independence within groups*: The same participants shouldn’t be in multiple groups.  
+
+- *Normality*: The dependent variable should be approximately normally distributed within each group. 
+
+- *Homogeneity of Variances*: The variance of the dependent variable should be similar across all groups. 
+
+- The dependent variable (the variable of interest) needs to be a *continuous scale* (i.e., the data needs to be at either an interval or ratio measurement).  
+
+
+As we learned, it is important to explore data using both descriptive statistics and visual inspections with figures and graphs. Let’s review the descriptive statistics.  
+
+| Group | $\bar{X}$ | $SD$ | Skewness | Kurtosis |
+|:---------------------------|----------:|-----:|---------:|---------:|
+| Repetition                 | 11.4 | 1.84 | -0.61 | -0.02 |
+| Visualization              | 16.4 | 1.51 | -0.37 | -1.59 |
+| Technology-Aided Learning  | 18.2 | 1.75 | 0.24  | -1.23 |
+| Control                    | 8.9  | 2.69 | -0.77 | -0.08 |
+
+
+Although we need to be cautious about interpreting descriptive statistics due to a small sample size in each group, we observed:  
+
+- Skewness values range from -0.77 to 0.24, which is within the normality threshold (-1 to 1). 
+
+- Kurtosis values range from -1.59 to -0.02, indicating mild to moderate deviations from normality. 
+
+- The Control group shows the largest deviation in skewness (-0.77) and a relatively higher standard deviation (2.69), suggesting possible non-normality. 
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 12
+#| fig-cap: "Histograms and Q-Q plots for each instructional group."
+
+library(ggplot2)
+library(patchwork)
+
+# Data from your tables
+repetition <- c(13,12,12,11,9,11,11,14,13,8)
+visualization <- c(17,15,15,17,18,18,14,15,17,18)
+tech <- c(17,18,16,16,20,21,18,20,19,17)
+control <- c(10,12,9,12,4,11,9,8,9,5)
+
+make_plots <- function(data, name){
+
+  df <- data.frame(value = data)
+
+  hist_plot <- ggplot(df, aes(x = value)) +
+    geom_histogram(aes(y = after_stat(count)),
+                   bins = 6,
+                   fill = "royalblue",
+                   alpha = 0.7,
+                   color = "black") +
+    geom_density(aes(y = after_stat(count)),
+                 color = "blue",
+                 linewidth = 1) +
+    labs(title = paste("Histogram of", name),
+         x = NULL,
+         y = "Count") +
+    theme_minimal()
+
+  qq_plot <- ggplot(df, aes(sample = value)) +
+    stat_qq(color = "blue", size = 2) +
+    stat_qq_line(color = "red") +
+    labs(title = paste("Q-Q Plot of", name),
+         x = "Theoretical quantiles",
+         y = "Ordered values") +
+    theme_minimal()
+
+  hist_plot | qq_plot
+}
+
+p1 <- make_plots(repetition, "Repetition")
+p2 <- make_plots(visualization, "Visualization")
+p3 <- make_plots(tech, "Technology-Aided Learning")
+p4 <- make_plots(control, "Control")
+
+p1 / p2 / p3 / p4
+```
+
+Again, acknowledging small sample size per group, our visual inspection with graphs (Histograms and Q-Q plots) indicates that:  
+
+- *Repetition*: Slight left skew, mild deviation in Q-Q plot. 
+
+- *Visualization*: Close to normal, minor deviations. 
+
+- *Technology-Aided Learning*: Slight right skew, generally normal. 
+
+- *Control*: Noticeable skewness and deviation in Q-Q plot. 
+
+ 
+
+Overall, while some distributions—particularly for Control—exhibit mild deviations from normality, none display severe non-normality. Additionally, it is important to note that ANOVA is robust to mild violations of the normality assumption, allowing us to proceed with the analysis. 
+ 
+
+Now, what about the homogeneity of variances? Recall that we used Levene’s test to assess the equality of variances. We can use the same statistical test for equality of variances for more than two groups. Before then, let’s start with exploring the descriptive statistics, one more time, by comparing the size of standard deviations across groups. The Control group has a slightly higher standard deviation than the others, which suggests possible violation of the homogeneity of variance assumption. To formally determine this, let’s run Levene’s test.  
+
+ 
+
+Remember that Levene’s test is to assess whether the variances across groups (in this case four learning strategies) are equal.   
+
+ 
+
+$H_0$: The variances across all groups are equal (i.e., homogeneity of variance assumption holds).  
+
+$H_A$: At least one group has a different variance (homogeneity of variance is violated). 
+
+ 
+
+Levene’s test can be run with statistical software such as SPSS. For the learning strategies data, the p value for Levene’s test is 0.648, which is greater than 0.05. Thus, we fail to reject the null hypothesis, which means that the homogeneity of variance assumption is met. Now, we can proceed with a one-way ANOVA analysis.  
+
+ 
+
+To test our null hypothesis, we need to define and estimate the three sources of variation in ANOVA: Total variation, Error (within-group variation), and Treatment (between-group variation). We are not going to walk you through the manual calculations. Instead, we will first present the ANOVA table below, which is a standard output from statistical software.   
+
+| Source | Sum of Squares ($SS$) | Degrees of Freedom ($df$) | Mean Squares ($MS$) | $F$ |
+|:----------------------|----------------:|-----------------------:|----------------:|----:|
+| Between Groups        | 558.67 | 3  | 186.22 | 46.78 |
+| Within Groups (error) | 143.3  | 36 | 3.98   |      |
+| Total                 | 701.98 | 39 |        |      |
+
+
+ 
