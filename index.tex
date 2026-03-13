@@ -712,19 +712,13 @@ Once imported, you can inspect your dataset:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{dim}\NormalTok{(data\_spss) }\CommentTok{\#check how many rows and columns are in your dataset }
+\FunctionTok{dim}\NormalTok{(data\_spss) }\CommentTok{\#check how many rows and columns are in your dataset}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 [1] 4552   20
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DocumentationTok{\#\# [1] 10 10 }
-\end{Highlighting}
-\end{Shaded}
 
 \section*{5 Summary}\label{summary}
 \addcontentsline{toc}{section}{5 Summary}
@@ -7375,7 +7369,15 @@ graders in the state because the inferences we will draw are only about
 this one class. We can't see the entire population distribution, but the
 histogram for the scores looks almost perfectly normal.
 
-(fig 4 here)
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter8_files/figure-pdf/unnamed-chunk-4-1.pdf}}
+
+}
+
+\caption{Histogram of ElaSS}
+
+\end{figure}%
 
 If the distribution was way off, we could still proceed but be very
 cautious about our interpretation of the results. Since our sample size
@@ -7424,7 +7426,15 @@ the rejection region. Is our t statistic of -1.938 in the rejection
 region? Yes -- it is farther away from the center than our critical
 value. This means our p value is less than 0.05.
 
-(fig 8.5 here)
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter8_files/figure-pdf/unnamed-chunk-5-1.pdf}}
+
+}
+
+\caption{Sampling Distribution of the Sample Mean (n=35)}
+
+\end{figure}%
 
 \subsubsection*{b: Draw a conclusion and report your
 conclusion.}\label{b-draw-a-conclusion-and-report-your-conclusion.}
@@ -7445,7 +7455,8 @@ The American Psychological Association, 7th edition (APA, 2019) has
 decided that there is a correct way to report the results of a t test.
 In this case, you would report the results of our test like this: Scores
 for students in this third-grade class (M = 425.26) were significantly
-lower than scores of third graders statewide, t(34) = -1.938, p = 0.03.
+lower than scores of third graders statewide,
+\(t(34) = -1.938, p = 0.03\).
 
 The most important part of the reporting is the section that starts with
 the observed t statistic. You put the degrees of freedom in parentheses
@@ -7755,7 +7766,15 @@ playing around in the applet to see how increasing the confidence level
 and/or the sample size will typically result in a greater percentage of
 possible sample intervals containing the true population mean.
 
-(fig 8.6 here)
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter8/fig8-6.png}
+
+}
+
+\caption{Fig 8.6: Applet demo}
+
+\end{figure}%
 
 \subsection{Calculating Confidence
 Intervals}\label{calculating-confidence-intervals}
@@ -8061,7 +8080,7 @@ follows a chi-square distribution with ￼ degrees of freedom (df).
 
 \begin{figure}[H]
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter8_files/figure-pdf/unnamed-chunk-4-1.pdf}}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter8_files/figure-pdf/unnamed-chunk-6-1.pdf}}
 
 }
 
@@ -8079,7 +8098,7 @@ are using α = 0.05, we can flip to the Critical Values of Chi-Square
 
 \begin{figure}[H]
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter8_files/figure-pdf/unnamed-chunk-5-1.pdf}}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter8_files/figure-pdf/unnamed-chunk-7-1.pdf}}
 
 }
 
@@ -8174,7 +8193,7 @@ enough to be considered significant. The exact p value associated with
 
 \begin{figure}[H]
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter8_files/figure-pdf/unnamed-chunk-6-1.pdf}}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{chapter8_files/figure-pdf/unnamed-chunk-8-1.pdf}}
 
 }
 
@@ -8191,199 +8210,9 @@ state-level STEM enrichment program provides equitable access based on
 gender, with expected proportions for male and female participants. All
 assumptions for the analysis were met. The results indicated no
 statistically significant difference in the proportions of males and
-females selected for the program (\textbf{\emph{Equation broken here}}).
+females selected for the program (\(\chi^2(1) = 3.72, \, p=0.054\)).
 These findings suggest that the enrichment program provides equitable
 access by gender.
-
-\section{Conclusion}\label{conclusion-6}
-
-Hypothesis testing bridges theoretical research questions and practical
-data analysis, offering a structured framework for making evidence-based
-decisions. By understanding statistical significance, effect sizes, and
-confidence intervals, researchers can draw meaningful conclusions while
-accounting for uncertainty and variability. For educational researchers,
-it is particularly important to assess both statistical and practical
-significance when interpreting empirical results.
-
-While p values indicate whether a result is statistically significant,
-they do not reveal the magnitude or practical relevance of the effect.
-Measures of effect size, such as Cohen's d, provide valuable context by
-quantifying the size of an effect, helping researchers determine its
-importance in real-world settings. For example, a small p value paired
-with a negligible effect size may lack practical significance, limiting
-its applicability. Therefore, when statistically significant findings
-are observed, it is essential to consider their implications within the
-research context, ensuring that the results are both statistically sound
-and practically meaningful. This dual evaluation enhances the relevance
-and impact of research findings in education and beyond.
-
-\subsection{Key Takeaways for Educational Researchers from Chapter
-8}\label{key-takeaways-for-educational-researchers-from-chapter-8}
-
-\begin{itemize}
-\item
-  Two statistical methods, one-sample t tests and Chi-square
-  goodness-of-fit tests, are for comparing the observed statistic to a
-  benchmark. Use a one-sample t test when comparing a sample mean to a
-  known population mean with unknown standard deviation. Use a
-  chi-square goodness-of-fit test when comparing observed proportions or
-  frequencies in a single categorical variable to known or expected
-  distributions.
-\item
-  Statistical significance (e.g., p values) indicates whether an
-  observed effect is unlikely due to chance, while effect sizes (e.g.,
-  Cohen's d) quantify the magnitude and practical relevance of the
-  effect. By reporting both, education researchers can ensure their
-  findings have actionable value, informing policy, curriculum design,
-  or classroom interventions.
-\item
-  The correct interpretation of a 95\% confidence interval (CI) for a
-  population mean is as follows: ``We are 95\% confident that the
-  interval contains the true population mean.'' If we were to take many
-  random samples of fixed sample size (e.g., n = 50) from the population
-  and compute a confidence interval for each sample, approximately 95\%
-  of those intervals would contain the true population mean. Confidence
-  intervals help researchers communicate the degree of certainty in
-  their findings, ensuring that conclusions account for variability and
-  are not overly dependent on a single estimate. They are particularly
-  beneficial when researchers want to evaluate the reliability of a
-  point estimate or compare results across studies.
-\item
-  Larger sample sizes increase statistical power but may detect trivial
-  differences as significant. Carefully designing studies to balance
-  power with meaningfulness enables education researchers to use
-  resources effectively and avoid misinterpreting results as practically
-  relevant when they are not.
-\end{itemize}
-
-\section{Key Definitions for Chapter
-8}\label{key-definitions-for-chapter-8}
-
-The \textbf{chi-square distribution} is a probability distribution that
-arises when a sum of the squares of k independent standard normal random
-variables is calculated. If (\textbf{\emph{Equation broken here}})
-
-follows a chi-square distribution with k degrees of freedom (df).
-
-The \textbf{chi-square goodness-of-fit test} is a nonparametric method
-used to determine whether observed data frequencies match expected
-frequencies for a single categorical variable. This test is useful when
-comparing observed proportions to known or hypothesized distributions,
-such as evaluating gender equality in a workforce. By calculating the
-chi-square statistic and comparing it to a critical value, researchers
-can assess whether deviations from expected frequencies are due to
-random chance or are statistically significant.
-
-\textbf{Cohen's} \textbf{\emph{d}} quantifies the magnitude of the
-difference between two means relative to the variability in the data and
-provides a standardized measure of practical significance, helping to
-interpret the importance of the result by allowing us to express the
-effect size in terms of standard deviation units.
-
-\textbf{Confidence intervals (CIs)} provide an additional layer of
-transparency by offering a range of values likely to contain the true
-population parameter. The chapter highlighted the interplay between CIs
-and hypothesis testing, explaining that if a null value (e.g., a
-population mean) falls within the CI, the null hypothesis cannot be
-rejected.
-
-\textbf{Effect size} is a numeric measure that indicates the strength or
-meaningfulness of the relationship or difference between variables in a
-study.
-
-\textbf{Nonparametric statistical tests} are methods used in statistics
-that do not require the data to follow a specific distribution, such as
-the normal distribution.
-
-\textbf{Type III error} occurs when researchers correctly calculate
-statistical results but misinterpret or apply them to the wrong question
-or hypothesis.
-
-\section{Check Your Understanding}\label{check-your-understanding-6}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \textbf{When should a one-sample \emph{t} test be used instead of a
-  \emph{z} test?}
-
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    When the population mean is known\\
-  \item
-    When the population standard deviation is unknown\\
-  \item
-    When the sample size is less than 30\\
-  \item
-    When comparing two sample means
-  \end{enumerate}
-\item
-  \textbf{What is the formula for the degrees of freedom (\emph{df} ) in
-  a one-sample \emph{t} test?}
-
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    \emph{df} = \emph{n} + 1\\
-  \item
-    \emph{df} = \emph{n} × 2\\
-  \item
-    \emph{df} = \emph{n} − 1\\
-  \item
-    \emph{df} = \emph{n} / 2
-  \end{enumerate}
-\item
-  \textbf{Which of the following is \emph{not} an assumption of the
-  one-sample \emph{t} test?}
-
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    Random sampling\\
-  \item
-    Independence of observations\\
-  \item
-    Population variance of 0\\
-  \item
-    Dataset is approximately normally distributed
-  \end{enumerate}
-\item
-  \textbf{What is the purpose of calculating effect size, such as
-  Cohen's \emph{d}?}
-
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    To determine statistical significance\\
-  \item
-    To quantify the magnitude of a difference\\
-  \item
-    To check if assumptions are met\\
-  \item
-    To calculate degrees of freedom
-  \end{enumerate}
-\item
-  \textbf{What is the risk of using a one-tailed test when the actual
-  effect is in the opposite direction?}
-
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    Type I error\\
-  \item
-    Type II error\\
-  \item
-    Type III error\\
-  \item
-    Increased power
-  \end{enumerate}
-\end{enumerate}
 
 \bookmarksetup{startatroot}
 
@@ -8780,6 +8609,197 @@ reject the null hypothesis, confirming that students' perceptions of
 mathematics as easier are not evenly distributed. Specifically, fewer
 students perceive math as easier than expected under a balanced 50/50
 assumption.
+
+\section{Conclusion}\label{conclusion-6}
+
+Hypothesis testing bridges theoretical research questions and practical
+data analysis, offering a structured framework for making evidence-based
+decisions. By understanding statistical significance, effect sizes, and
+confidence intervals, researchers can draw meaningful conclusions while
+accounting for uncertainty and variability. For educational researchers,
+it is particularly important to assess both statistical and practical
+significance when interpreting empirical results.
+
+While p values indicate whether a result is statistically significant,
+they do not reveal the magnitude or practical relevance of the effect.
+Measures of effect size, such as Cohen's d, provide valuable context by
+quantifying the size of an effect, helping researchers determine its
+importance in real-world settings. For example, a small p value paired
+with a negligible effect size may lack practical significance, limiting
+its applicability. Therefore, when statistically significant findings
+are observed, it is essential to consider their implications within the
+research context, ensuring that the results are both statistically sound
+and practically meaningful. This dual evaluation enhances the relevance
+and impact of research findings in education and beyond.
+
+\subsection{Key Takeaways for Educational Researchers from Chapter
+8}\label{key-takeaways-for-educational-researchers-from-chapter-8}
+
+\begin{itemize}
+\item
+  Two statistical methods, one-sample t tests and Chi-square
+  goodness-of-fit tests, are for comparing the observed statistic to a
+  benchmark. Use a one-sample t test when comparing a sample mean to a
+  known population mean with unknown standard deviation. Use a
+  chi-square goodness-of-fit test when comparing observed proportions or
+  frequencies in a single categorical variable to known or expected
+  distributions.
+\item
+  Statistical significance (e.g., p values) indicates whether an
+  observed effect is unlikely due to chance, while effect sizes (e.g.,
+  Cohen's d) quantify the magnitude and practical relevance of the
+  effect. By reporting both, education researchers can ensure their
+  findings have actionable value, informing policy, curriculum design,
+  or classroom interventions.
+\item
+  The correct interpretation of a 95\% confidence interval (CI) for a
+  population mean is as follows: ``We are 95\% confident that the
+  interval contains the true population mean.'' If we were to take many
+  random samples of fixed sample size (e.g., n = 50) from the population
+  and compute a confidence interval for each sample, approximately 95\%
+  of those intervals would contain the true population mean. Confidence
+  intervals help researchers communicate the degree of certainty in
+  their findings, ensuring that conclusions account for variability and
+  are not overly dependent on a single estimate. They are particularly
+  beneficial when researchers want to evaluate the reliability of a
+  point estimate or compare results across studies.
+\item
+  Larger sample sizes increase statistical power but may detect trivial
+  differences as significant. Carefully designing studies to balance
+  power with meaningfulness enables education researchers to use
+  resources effectively and avoid misinterpreting results as practically
+  relevant when they are not.
+\end{itemize}
+
+\section{Key Definitions for Chapter
+8}\label{key-definitions-for-chapter-8}
+
+The \textbf{chi-square distribution} is a probability distribution that
+arises when a sum of the squares of k independent standard normal random
+variables is calculated. If \(Z_1^2, \, Z_2^2, \, ..., \, Z_k^2\) are
+independent standard normal random variables, the sum:
+\(\chi^2 = Z_1^2, \, Z_2^2, \, ..., \, Z_k^2\) follows a chi-square
+distribution with k degrees of freedom (df).
+
+The \textbf{chi-square goodness-of-fit test} is a nonparametric method
+used to determine whether observed data frequencies match expected
+frequencies for a single categorical variable. This test is useful when
+comparing observed proportions to known or hypothesized distributions,
+such as evaluating gender equality in a workforce. By calculating the
+chi-square statistic and comparing it to a critical value, researchers
+can assess whether deviations from expected frequencies are due to
+random chance or are statistically significant.
+
+\textbf{Cohen's} \textbf{\emph{d}} quantifies the magnitude of the
+difference between two means relative to the variability in the data and
+provides a standardized measure of practical significance, helping to
+interpret the importance of the result by allowing us to express the
+effect size in terms of standard deviation units.
+
+\textbf{Confidence intervals (CIs)} provide an additional layer of
+transparency by offering a range of values likely to contain the true
+population parameter. The chapter highlighted the interplay between CIs
+and hypothesis testing, explaining that if a null value (e.g., a
+population mean) falls within the CI, the null hypothesis cannot be
+rejected.
+
+\textbf{Effect size} is a numeric measure that indicates the strength or
+meaningfulness of the relationship or difference between variables in a
+study.
+
+\textbf{Nonparametric statistical tests} are methods used in statistics
+that do not require the data to follow a specific distribution, such as
+the normal distribution.
+
+\textbf{Type III error} occurs when researchers correctly calculate
+statistical results but misinterpret or apply them to the wrong question
+or hypothesis.
+
+\section{Check Your Understanding}\label{check-your-understanding-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{When should a one-sample \emph{t} test be used instead of a
+  \emph{z} test?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    When the population mean is known\\
+  \item
+    When the population standard deviation is unknown\\
+  \item
+    When the sample size is less than 30\\
+  \item
+    When comparing two sample means
+  \end{enumerate}
+\item
+  \textbf{What is the formula for the degrees of freedom (\emph{df} ) in
+  a one-sample \emph{t} test?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    \emph{df} = \emph{n} + 1\\
+  \item
+    \emph{df} = \emph{n} × 2\\
+  \item
+    \emph{df} = \emph{n} − 1\\
+  \item
+    \emph{df} = \emph{n} / 2
+  \end{enumerate}
+\item
+  \textbf{Which of the following is \emph{not} an assumption of the
+  one-sample \emph{t} test?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Random sampling\\
+  \item
+    Independence of observations\\
+  \item
+    Population variance of 0\\
+  \item
+    Dataset is approximately normally distributed
+  \end{enumerate}
+\item
+  \textbf{What is the purpose of calculating effect size, such as
+  Cohen's \emph{d}?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    To determine statistical significance\\
+  \item
+    To quantify the magnitude of a difference\\
+  \item
+    To check if assumptions are met\\
+  \item
+    To calculate degrees of freedom
+  \end{enumerate}
+\item
+  \textbf{What is the risk of using a one-tailed test when the actual
+  effect is in the opposite direction?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Type I error\\
+  \item
+    Type II error\\
+  \item
+    Type III error\\
+  \item
+    Increased power
+  \end{enumerate}
+\end{enumerate}
 
 \bookmarksetup{startatroot}
 

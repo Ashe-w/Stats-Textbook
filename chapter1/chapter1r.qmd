@@ -253,8 +253,7 @@ head(data_spss) #view the first 6 rows of the data
 #| echo: true
 #| message: true
 #| warning: true
-dim(data_spss) #check how many rows and columns are in your dataset 
-## [1] 10 10 
+dim(data_spss) #check how many rows and columns are in your dataset
 ```
 
 ## 5	Summary {.unnumbered}

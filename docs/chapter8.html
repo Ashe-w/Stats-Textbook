@@ -310,12 +310,6 @@ window.Quarto = {
   <li><a href="#using-a-confidence-interval-to-evaluate-a-null-hypothesis-1" id="toc-using-a-confidence-interval-to-evaluate-a-null-hypothesis-1" class="nav-link" data-scroll-target="#using-a-confidence-interval-to-evaluate-a-null-hypothesis-1"><span class="header-section-number">8.6.4</span> Using a Confidence Interval to Evaluate a Null Hypothesis</a></li>
   </ul></li>
   <li><a href="#chi-square-goodness-of-fit-test" id="toc-chi-square-goodness-of-fit-test" class="nav-link" data-scroll-target="#chi-square-goodness-of-fit-test"><span class="header-section-number">8.7</span> Chi-Square Goodness-of-Fit Test</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">8.8</span> Conclusion</a>
-  <ul class="collapse">
-  <li><a href="#key-takeaways-for-educational-researchers-from-chapter-8" id="toc-key-takeaways-for-educational-researchers-from-chapter-8" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-8"><span class="header-section-number">8.8.1</span> Key Takeaways for Educational Researchers from Chapter 8</a></li>
-  </ul></li>
-  <li><a href="#key-definitions-for-chapter-8" id="toc-key-definitions-for-chapter-8" class="nav-link" data-scroll-target="#key-definitions-for-chapter-8"><span class="header-section-number">8.9</span> Key Definitions for Chapter 8</a></li>
-  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">8.10</span> Check Your Understanding</a></li>
   </ul></li>
   <li><a href="#chapter-8-one-sample-t-test-and-goodness-of-fit-analysis-in-r" id="toc-chapter-8-one-sample-t-test-and-goodness-of-fit-analysis-in-r" class="nav-link" data-scroll-target="#chapter-8-one-sample-t-test-and-goodness-of-fit-analysis-in-r">Chapter 8: One-Sample t Test and Goodness-of-Fit Analysis in R</a>
   <ul class="collapse">
@@ -336,6 +330,12 @@ window.Quarto = {
   <li><a href="#understanding-the-key-variables---plausible-values-pvs" id="toc-understanding-the-key-variables---plausible-values-pvs" class="nav-link" data-scroll-target="#understanding-the-key-variables---plausible-values-pvs">1 Understanding the Key Variables - Plausible Values (PVs)</a></li>
   <li><a href="#conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval" id="toc-conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval" class="nav-link" data-scroll-target="#conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval">2 Conducting a One-Sample t-Test: Mean Comparison, Effect Size, and Confidence Interval</a></li>
   <li><a href="#conducting-a-chi-square-goodness-of-fit-test" id="toc-conducting-a-chi-square-goodness-of-fit-test" class="nav-link" data-scroll-target="#conducting-a-chi-square-goodness-of-fit-test">3 Conducting a Chi-Square Goodness-of-Fit Test</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">8.8</span> Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways-for-educational-researchers-from-chapter-8" id="toc-key-takeaways-for-educational-researchers-from-chapter-8" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-8"><span class="header-section-number">8.8.1</span> Key Takeaways for Educational Researchers from Chapter 8</a></li>
+  </ul></li>
+  <li><a href="#key-definitions-for-chapter-8" id="toc-key-definitions-for-chapter-8" class="nav-link" data-scroll-target="#key-definitions-for-chapter-8"><span class="header-section-number">8.9</span> Key Definitions for Chapter 8</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">8.10</span> Check Your Understanding</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -440,7 +440,16 @@ H_1: \mu &lt; 440
 <li><p>Normality: The population score distribution is approximately normal.</p></li>
 </ol>
 <p>It is okay that we didn’t choose a random sample representing all third graders in the state because the inferences we will draw are only about this one class. We can’t see the entire population distribution, but the histogram for the scores looks almost perfectly normal.</p>
-<p>(fig 4 here)</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter8_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Histogram of ElaSS</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p>If the distribution was way off, we could still proceed but be very cautious about our interpretation of the results. Since our sample size is greater than 30, we would be okay even without such a normal distribution due to the central limit theorem. So, we are all set to calculate our test statistic.</p>
 <p>For the one-sample t test, we use the formula:</p>
 <p><span class="math display">\[
@@ -460,7 +469,16 @@ t
 <section id="a-find-the-p-value." class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="a-find-the-p-value.">a: Find the p value.</h4>
 <p>We must now determine whether our t statistic is significant, which would mean that it is very unlikely we obtained this value due to chance alone. In step 2, we said that the critical value for this test was -1.69. Picture a t distribution and draw a vertical line about 1.7 standard deviations below the mean. Anything to the left of that is in the rejection region. Is our t statistic of -1.938 in the rejection region? Yes – it is farther away from the center than our critical value. This means our p value is less than 0.05.</p>
-<p>(fig 8.5 here)</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter8_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Sampling Distribution of the Sample Mean (n=35)</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="b-draw-a-conclusion-and-report-your-conclusion." class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="b-draw-a-conclusion-and-report-your-conclusion.">b: Draw a conclusion and report your conclusion.</h4>
@@ -470,7 +488,7 @@ t
 </section>
 <section id="reporting-results-in-apa-format" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="reporting-results-in-apa-format"><span class="header-section-number">8.2</span> Reporting Results in APA Format</h2>
-<p>The American Psychological Association, 7th edition (APA, 2019) has decided that there is a correct way to report the results of a t test. In this case, you would report the results of our test like this: Scores for students in this third-grade class (M = 425.26) were significantly lower than scores of third graders statewide, t(34) = -1.938, p = 0.03.</p>
+<p>The American Psychological Association, 7th edition (APA, 2019) has decided that there is a correct way to report the results of a t test. In this case, you would report the results of our test like this: Scores for students in this third-grade class (M = 425.26) were significantly lower than scores of third graders statewide, <span class="math inline">\(t(34) = -1.938, p = 0.03\)</span>.</p>
 <p>The most important part of the reporting is the section that starts with the observed t statistic. You put the degrees of freedom in parentheses immediately following the t; all statistics (e.g., M, t, p) are in italics, and you report the p value after the exact t statistic. Remember, that even if the statistical software says p = 0.000, you should never report that. Instead, you should report p &lt; 0.001. You can also just report that p &lt; 0.05 (your alpha level) if you do not have access to statistical software.</p>
 </section>
 <section id="cautions-with-one-sided-tests" class="level2" data-number="8.3">
@@ -553,7 +571,12 @@ t = \frac{\bar{X}-\mu}{\dfrac{s}{\sqrt{n}}}
 <p>Now that you have the general idea about the purpose of confidence intervals, we are going to get a little pedantic and refer you to the words of <a href="https://digitalcommons.unl.edu/cgi/viewcontent.cgi?referer=&amp;httpsredir=1&amp;article=1009&amp;context=imseteach">Dr.&nbsp;Paul Savory (2008)</a>. Say you want to know the mean of some variable in the population. You take a sample, find the mean, and then create a 95% confidence interval around it. It is incorrect to say, “There is a 95% probability that μ falls within this interval.” This is incorrect because it implies that μ is random and could take on different values. In fact, μ is a constant – we just don’t know what it is – and it either falls within our interval or it doesn’t. The correct interpretation is, “We are confident that if μ were known, this interval would contain it.” This may seem like a trivial difference, but it makes an important point that the probability or confidence level we report is referring to the interval, not the population parameter itself.</p>
 <p>We highly recommend visiting the book’s website to test out the <a href="no link right now :/">confidence intervals applet</a> for a helpful visualization of the concept. The way the applet works is that you select the confidence level and sample size, and then it will randomly pull one or 25 samples from the population distribution. If you request 25 samples, you will see them all lined up. Each sample will have a mean and corresponding confidence interval around it.</p>
 <p>We used a 90% confidence interval with a sample size of 10 in the following example and asked the applet to take 25 samples, see figure 8.6. Almost all resulting samples had a confidence interval that contained the true population mean, but two did not. Note that 23/25 is 92% and not 90%, but when we try again, sometimes we get 24/25 or 22/25. Even our 90% confidence interval is just an estimate. The applet provides a great visualization of the difference between the original population distribution and the sampling distribution. You recommend playing around in the applet to see how increasing the confidence level and/or the sample size will typically result in a greater percentage of possible sample intervals containing the true population mean.</p>
-<p>(fig 8.6 here)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter8/fig8-6.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 8.6: Applet demo</figcaption>
+</figure>
+</div>
 </section>
 <section id="calculating-confidence-intervals" class="level3" data-number="8.6.2">
 <h3 data-number="8.6.2" class="anchored" data-anchor-id="calculating-confidence-intervals"><span class="header-section-number">8.6.2</span> Calculating Confidence Intervals</h3>
@@ -690,7 +713,7 @@ CI(\mu) = \bar{X} \pm t_{\text{critical}} \times \frac{s}{\sqrt{n}}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter8_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="chapter8_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Fig 8.7: Chi-Square Distributions with Different Degrees of Freedom</figcaption>
 </figure>
 </div>
@@ -701,7 +724,7 @@ CI(\mu) = \bar{X} \pm t_{\text{critical}} \times \frac{s}{\sqrt{n}}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter8_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="720"></p>
+<p><img src="chapter8_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="720"></p>
 <figcaption>Figure 8.8: Chi-square distribution with df = 1</figcaption>
 </figure>
 </div>
@@ -735,95 +758,15 @@ CI(\mu) = \bar{X} \pm t_{\text{critical}} \times \frac{s}{\sqrt{n}}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter8_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="720"></p>
+<p><img src="chapter8_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="720"></p>
 <figcaption>Figure 8.9: Chi-square distribution (df = 1) with critical value and observed test statistic</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Here, we present an example of a chi-square goodness-of-fit result written in APA style.</p>
-<p>A chi-square goodness-of-fit test was conducted to determine whether the state-level STEM enrichment program provides equitable access based on gender, with expected proportions for male and female participants. All assumptions for the analysis were met. The results indicated no statistically significant difference in the proportions of males and females selected for the program (<strong><em>Equation broken here</em></strong>). These findings suggest that the enrichment program provides equitable access by gender.</p>
+<p>A chi-square goodness-of-fit test was conducted to determine whether the state-level STEM enrichment program provides equitable access based on gender, with expected proportions for male and female participants. All assumptions for the analysis were met. The results indicated no statistically significant difference in the proportions of males and females selected for the program (<span class="math inline">\(\chi^2(1) = 3.72, \, p=0.054\)</span>). These findings suggest that the enrichment program provides equitable access by gender.</p>
 </section>
-</section>
-<section id="conclusion" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">8.8</span> Conclusion</h2>
-<p>Hypothesis testing bridges theoretical research questions and practical data analysis, offering a structured framework for making evidence-based decisions. By understanding statistical significance, effect sizes, and confidence intervals, researchers can draw meaningful conclusions while accounting for uncertainty and variability. For educational researchers, it is particularly important to assess both statistical and practical significance when interpreting empirical results.</p>
-<p>While p values indicate whether a result is statistically significant, they do not reveal the magnitude or practical relevance of the effect. Measures of effect size, such as Cohen’s d, provide valuable context by quantifying the size of an effect, helping researchers determine its importance in real-world settings. For example, a small p value paired with a negligible effect size may lack practical significance, limiting its applicability. Therefore, when statistically significant findings are observed, it is essential to consider their implications within the research context, ensuring that the results are both statistically sound and practically meaningful. This dual evaluation enhances the relevance and impact of research findings in education and beyond.</p>
-<section id="key-takeaways-for-educational-researchers-from-chapter-8" class="level3" data-number="8.8.1">
-<h3 data-number="8.8.1" class="anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-8"><span class="header-section-number">8.8.1</span> Key Takeaways for Educational Researchers from Chapter 8</h3>
-<ul>
-<li><p>Two statistical methods, one-sample t tests and Chi-square goodness-of-fit tests, are for comparing the observed statistic to a benchmark. Use a one-sample t test when comparing a sample mean to a known population mean with unknown standard deviation. Use a chi-square goodness-of-fit test when comparing observed proportions or frequencies in a single categorical variable to known or expected distributions.</p></li>
-<li><p>Statistical significance (e.g., p values) indicates whether an observed effect is unlikely due to chance, while effect sizes (e.g., Cohen’s d) quantify the magnitude and practical relevance of the effect. By reporting both, education researchers can ensure their findings have actionable value, informing policy, curriculum design, or classroom interventions.</p></li>
-<li><p>The correct interpretation of a 95% confidence interval (CI) for a population mean is as follows: “We are 95% confident that the interval contains the true population mean.” If we were to take many random samples of fixed sample size (e.g., n = 50) from the population and compute a confidence interval for each sample, approximately 95% of those intervals would contain the true population mean. Confidence intervals help researchers communicate the degree of certainty in their findings, ensuring that conclusions account for variability and are not overly dependent on a single estimate. They are particularly beneficial when researchers want to evaluate the reliability of a point estimate or compare results across studies.</p></li>
-<li><p>Larger sample sizes increase statistical power but may detect trivial differences as significant. Carefully designing studies to balance power with meaningfulness enables education researchers to use resources effectively and avoid misinterpreting results as practically relevant when they are not.</p></li>
-</ul>
-</section>
-</section>
-<section id="key-definitions-for-chapter-8" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="key-definitions-for-chapter-8"><span class="header-section-number">8.9</span> Key Definitions for Chapter 8</h2>
-<p>The <strong>chi-square distribution</strong> is a probability distribution that arises when a sum of the squares of k independent standard normal random variables is calculated. If (<strong><em>Equation broken here</em></strong>)</p>
-<p>follows a chi-square distribution with k degrees of freedom (df).</p>
-<p>The <strong>chi-square goodness-of-fit test</strong> is a nonparametric method used to determine whether observed data frequencies match expected frequencies for a single categorical variable. This test is useful when comparing observed proportions to known or hypothesized distributions, such as evaluating gender equality in a workforce. By calculating the chi-square statistic and comparing it to a critical value, researchers can assess whether deviations from expected frequencies are due to random chance or are statistically significant.</p>
-<p><strong>Cohen’s</strong> <strong><em>d</em></strong> quantifies the magnitude of the difference between two means relative to the variability in the data and provides a standardized measure of practical significance, helping to interpret the importance of the result by allowing us to express the effect size in terms of standard deviation units.</p>
-<p><strong>Confidence intervals (CIs)</strong> provide an additional layer of transparency by offering a range of values likely to contain the true population parameter. The chapter highlighted the interplay between CIs and hypothesis testing, explaining that if a null value (e.g., a population mean) falls within the CI, the null hypothesis cannot be rejected.</p>
-<p><strong>Effect size</strong> is a numeric measure that indicates the strength or meaningfulness of the relationship or difference between variables in a study.</p>
-<p><strong>Nonparametric statistical tests</strong> are methods used in statistics that do not require the data to follow a specific distribution, such as the normal distribution.</p>
-<p><strong>Type III error</strong> occurs when researchers correctly calculate statistical results but misinterpret or apply them to the wrong question or hypothesis.</p>
-</section>
-<section id="check-your-understanding" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">8.10</span> Check Your Understanding</h2>
-<ol type="1">
-<li><p><strong>When should a one-sample <em>t</em> test be used instead of a <em>z</em> test?</strong></p>
-<ol type="a">
-<li>When the population mean is known<br>
-</li>
-<li>When the population standard deviation is unknown<br>
-</li>
-<li>When the sample size is less than 30<br>
-</li>
-<li>When comparing two sample means</li>
-</ol></li>
-<li><p><strong>What is the formula for the degrees of freedom (<em>df</em> ) in a one-sample <em>t</em> test?</strong></p>
-<ol type="a">
-<li><em>df</em> = <em>n</em> + 1<br>
-</li>
-<li><em>df</em> = <em>n</em> × 2<br>
-</li>
-<li><em>df</em> = <em>n</em> − 1<br>
-</li>
-<li><em>df</em> = <em>n</em> / 2</li>
-</ol></li>
-<li><p><strong>Which of the following is <em>not</em> an assumption of the one-sample <em>t</em> test?</strong></p>
-<ol type="a">
-<li>Random sampling<br>
-</li>
-<li>Independence of observations<br>
-</li>
-<li>Population variance of 0<br>
-</li>
-<li>Dataset is approximately normally distributed</li>
-</ol></li>
-<li><p><strong>What is the purpose of calculating effect size, such as Cohen’s <em>d</em>?</strong></p>
-<ol type="a">
-<li>To determine statistical significance<br>
-</li>
-<li>To quantify the magnitude of a difference<br>
-</li>
-<li>To check if assumptions are met<br>
-</li>
-<li>To calculate degrees of freedom</li>
-</ol></li>
-<li><p><strong>What is the risk of using a one-tailed test when the actual effect is in the opposite direction?</strong></p>
-<ol type="a">
-<li>Type I error<br>
-</li>
-<li>Type II error<br>
-</li>
-<li>Type III error<br>
-</li>
-<li>Increased power</li>
-</ol></li>
-</ol>
 </section>
 </section>
 <section id="chapter-8-one-sample-t-test-and-goodness-of-fit-analysis-in-r" class="level1 unnumbered">
@@ -1016,6 +959,85 @@ X-squared = 2245.1, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 <p>SPSS provides a table displaying the observed and expected frequencies along with the chi-square test statistic and p-value.</p>
 <p>The Chi-Square test statistic (<span class="math inline">\(\chi^2 = 2245.127\)</span>, <span class="math inline">\(p &lt; .001\)</span>) indicates a statistically significant difference between the observed and expected distributions. Since the <span class="math inline">\(p\)</span>-value is below 0.05, we reject the null hypothesis, confirming that students’ perceptions of mathematics as easier are not evenly distributed. Specifically, fewer students perceive math as easier than expected under a balanced 50/50 assumption.</p>
+</section>
+<section id="conclusion" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">8.8</span> Conclusion</h2>
+<p>Hypothesis testing bridges theoretical research questions and practical data analysis, offering a structured framework for making evidence-based decisions. By understanding statistical significance, effect sizes, and confidence intervals, researchers can draw meaningful conclusions while accounting for uncertainty and variability. For educational researchers, it is particularly important to assess both statistical and practical significance when interpreting empirical results.</p>
+<p>While p values indicate whether a result is statistically significant, they do not reveal the magnitude or practical relevance of the effect. Measures of effect size, such as Cohen’s d, provide valuable context by quantifying the size of an effect, helping researchers determine its importance in real-world settings. For example, a small p value paired with a negligible effect size may lack practical significance, limiting its applicability. Therefore, when statistically significant findings are observed, it is essential to consider their implications within the research context, ensuring that the results are both statistically sound and practically meaningful. This dual evaluation enhances the relevance and impact of research findings in education and beyond.</p>
+<section id="key-takeaways-for-educational-researchers-from-chapter-8" class="level3" data-number="8.8.1">
+<h3 data-number="8.8.1" class="anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-8"><span class="header-section-number">8.8.1</span> Key Takeaways for Educational Researchers from Chapter 8</h3>
+<ul>
+<li><p>Two statistical methods, one-sample t tests and Chi-square goodness-of-fit tests, are for comparing the observed statistic to a benchmark. Use a one-sample t test when comparing a sample mean to a known population mean with unknown standard deviation. Use a chi-square goodness-of-fit test when comparing observed proportions or frequencies in a single categorical variable to known or expected distributions.</p></li>
+<li><p>Statistical significance (e.g., p values) indicates whether an observed effect is unlikely due to chance, while effect sizes (e.g., Cohen’s d) quantify the magnitude and practical relevance of the effect. By reporting both, education researchers can ensure their findings have actionable value, informing policy, curriculum design, or classroom interventions.</p></li>
+<li><p>The correct interpretation of a 95% confidence interval (CI) for a population mean is as follows: “We are 95% confident that the interval contains the true population mean.” If we were to take many random samples of fixed sample size (e.g., n = 50) from the population and compute a confidence interval for each sample, approximately 95% of those intervals would contain the true population mean. Confidence intervals help researchers communicate the degree of certainty in their findings, ensuring that conclusions account for variability and are not overly dependent on a single estimate. They are particularly beneficial when researchers want to evaluate the reliability of a point estimate or compare results across studies.</p></li>
+<li><p>Larger sample sizes increase statistical power but may detect trivial differences as significant. Carefully designing studies to balance power with meaningfulness enables education researchers to use resources effectively and avoid misinterpreting results as practically relevant when they are not.</p></li>
+</ul>
+</section>
+</section>
+<section id="key-definitions-for-chapter-8" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="key-definitions-for-chapter-8"><span class="header-section-number">8.9</span> Key Definitions for Chapter 8</h2>
+<p>The <strong>chi-square distribution</strong> is a probability distribution that arises when a sum of the squares of k independent standard normal random variables is calculated. If <span class="math inline">\(Z_1^2, \, Z_2^2, \, ..., \, Z_k^2\)</span> are independent standard normal random variables, the sum: <span class="math inline">\(\chi^2 = Z_1^2, \, Z_2^2, \, ..., \, Z_k^2\)</span> follows a chi-square distribution with k degrees of freedom (df).</p>
+<p>The <strong>chi-square goodness-of-fit test</strong> is a nonparametric method used to determine whether observed data frequencies match expected frequencies for a single categorical variable. This test is useful when comparing observed proportions to known or hypothesized distributions, such as evaluating gender equality in a workforce. By calculating the chi-square statistic and comparing it to a critical value, researchers can assess whether deviations from expected frequencies are due to random chance or are statistically significant.</p>
+<p><strong>Cohen’s</strong> <strong><em>d</em></strong> quantifies the magnitude of the difference between two means relative to the variability in the data and provides a standardized measure of practical significance, helping to interpret the importance of the result by allowing us to express the effect size in terms of standard deviation units.</p>
+<p><strong>Confidence intervals (CIs)</strong> provide an additional layer of transparency by offering a range of values likely to contain the true population parameter. The chapter highlighted the interplay between CIs and hypothesis testing, explaining that if a null value (e.g., a population mean) falls within the CI, the null hypothesis cannot be rejected.</p>
+<p><strong>Effect size</strong> is a numeric measure that indicates the strength or meaningfulness of the relationship or difference between variables in a study.</p>
+<p><strong>Nonparametric statistical tests</strong> are methods used in statistics that do not require the data to follow a specific distribution, such as the normal distribution.</p>
+<p><strong>Type III error</strong> occurs when researchers correctly calculate statistical results but misinterpret or apply them to the wrong question or hypothesis.</p>
+</section>
+<section id="check-your-understanding" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">8.10</span> Check Your Understanding</h2>
+<ol type="1">
+<li><p><strong>When should a one-sample <em>t</em> test be used instead of a <em>z</em> test?</strong></p>
+<ol type="a">
+<li>When the population mean is known<br>
+</li>
+<li>When the population standard deviation is unknown<br>
+</li>
+<li>When the sample size is less than 30<br>
+</li>
+<li>When comparing two sample means</li>
+</ol></li>
+<li><p><strong>What is the formula for the degrees of freedom (<em>df</em> ) in a one-sample <em>t</em> test?</strong></p>
+<ol type="a">
+<li><em>df</em> = <em>n</em> + 1<br>
+</li>
+<li><em>df</em> = <em>n</em> × 2<br>
+</li>
+<li><em>df</em> = <em>n</em> − 1<br>
+</li>
+<li><em>df</em> = <em>n</em> / 2</li>
+</ol></li>
+<li><p><strong>Which of the following is <em>not</em> an assumption of the one-sample <em>t</em> test?</strong></p>
+<ol type="a">
+<li>Random sampling<br>
+</li>
+<li>Independence of observations<br>
+</li>
+<li>Population variance of 0<br>
+</li>
+<li>Dataset is approximately normally distributed</li>
+</ol></li>
+<li><p><strong>What is the purpose of calculating effect size, such as Cohen’s <em>d</em>?</strong></p>
+<ol type="a">
+<li>To determine statistical significance<br>
+</li>
+<li>To quantify the magnitude of a difference<br>
+</li>
+<li>To check if assumptions are met<br>
+</li>
+<li>To calculate degrees of freedom</li>
+</ol></li>
+<li><p><strong>What is the risk of using a one-tailed test when the actual effect is in the opposite direction?</strong></p>
+<ol type="a">
+<li>Type I error<br>
+</li>
+<li>Type II error<br>
+</li>
+<li>Type III error<br>
+</li>
+<li>Increased power</li>
+</ol></li>
+</ol>
 
 
 </section>
