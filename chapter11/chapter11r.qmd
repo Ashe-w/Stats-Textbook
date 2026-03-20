@@ -6,7 +6,6 @@ In this section, we demonstrate how to implement several methods from this Chapt
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 # packages used below 
 library(haven) 
 library(dplyr) 
@@ -28,7 +27,6 @@ Here, we examine the relationship between students’ Reasoning scores (PV1MPRE)
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 # scatter + smooth line and linear fit 
 ggplot(data, aes(PV1MPRE, PV1MCCR)) + 
   geom_point(alpha = .3) + 
@@ -48,10 +46,9 @@ However, given the large sample size and the relatively small departure, **the l
 Residual plots from a simple linear regression model help confirm homoscedasticity. 
 
 ```{r}
-##| echo: true
+#| echo: true
 #| message: false
 #| warning: false
-#| include: false
 m <- lm(PV1MCCR ~ PV1MPRE, data = data) # fit a linear regression model 
 plot(m, which = 1)  #which = 1 indicates the 1st diagnostic plot: Residuals vs Fitted 
 ```
@@ -66,7 +63,6 @@ Q–Q plots check the approximate normality of each variable.
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 qqnorm(data$PV1MPRE, main = "Q-Q Plot: Math - Reasoning"); qqline(data$PV1MPRE) 
 ```
 
@@ -74,7 +70,6 @@ qqnorm(data$PV1MPRE, main = "Q-Q Plot: Math - Reasoning"); qqline(data$PV1MPRE)
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 qqnorm(data$PV1MCCR, main = "Q-Q Plot: Math - Change & Relationships"); 
 qqline(data$PV1MCCR) 
 ```
@@ -87,7 +82,6 @@ Although the chapter mentions checking **bivariate normality** (the joint normal
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 pear <- cor.test(data$PV1MPRE, data$PV1MCCR,  
                  use = "pairwise.complete.obs") # pairwise deletion of missing 
 pear$estimate      # correlation coefficient r 
@@ -97,7 +91,6 @@ pear$estimate      # correlation coefficient r
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 pear$p.value # p-value 
 ```
 
@@ -105,7 +98,6 @@ pear$p.value # p-value
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 pear$estimate^2  # r-squared  
 ```
 - **Strength and Direction of Association**: The Pearson correlation coefficient is $r=.852$, indicating a very strong positive linear relationship between Math Reasoning and Math Change & Relationships scores. In practical terms, students who score higher in reasoning also tend to score higher in change & relationships. 
@@ -122,7 +114,6 @@ When variables are ordinal, Spearman’s $r_s$ is preferred. Here, we convert th
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 q_dat <- data %>% 
   mutate( # create quartile variables 
     pre_q  = ntile(PV1MPRE, 4), # quartiles of Reasoning 
@@ -135,7 +126,6 @@ head(q_dat[, c("PV1MPRE", "pre_q", "PV1MCCR", "mccr_q")]) # view new variables
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 spear <- cor.test(q_dat$pre_q, q_dat$mccr_q, method = "spearman",  
                   exact = FALSE, #large sample approximation, preferred for n > 1000 
                   use = "pairwise.complete.obs") 
@@ -146,7 +136,6 @@ spear$estimate
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 spear$p.value 
 ```
 
@@ -162,7 +151,6 @@ Point-biserial correlation measures the relationship between a continuous variab
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 pb <- cor.test(as.numeric(data$MATHEASE), #ensure dichotomous variable is numeric 
                data$PV1MATH, 
                use = "pairwise.complete.obs") 
@@ -173,7 +161,6 @@ pb$estimate
 #| echo: true
 #| message: false
 #| warning: false
-#| include: false
 pb$p.value 
 ```
 

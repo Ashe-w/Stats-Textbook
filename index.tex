@@ -14252,6 +14252,20 @@ continuous variables, then illustrate alternatives when data are
 with a \textbf{chi-square test} for independence between two categorical
 variables.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# packages used below }
+\FunctionTok{library}\NormalTok{(haven) }
+\FunctionTok{library}\NormalTok{(dplyr) }
+\FunctionTok{library}\NormalTok{(ggplot2) }
+\FunctionTok{library}\NormalTok{(psych)      }\CommentTok{\# descriptive stats, point{-}biserial (optional) }
+\FunctionTok{library}\NormalTok{(GGally)     }\CommentTok{\# quick scatterplots/diagnostics }
+\FunctionTok{library}\NormalTok{(lsr)        }\CommentTok{\# Cramer\textquotesingle{}s V }
+ 
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read\_sav}\NormalTok{(}\StringTok{"chapter6/chapter6data.sav"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
 \section*{1 Pearson's Correlation}\label{pearsons-correlation}
 \addcontentsline{toc}{section}{1 Pearson's Correlation}
 
@@ -14268,6 +14282,20 @@ Assumptions}\label{visual-check-of-assumptions}
 \subsubsection*{1.1.1 Linearity:
 Scatterplot}\label{linearity-scatterplot}
 \addcontentsline{toc}{subsubsection}{1.1.1 Linearity: Scatterplot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# scatter + smooth line and linear fit }
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(PV1MPRE, PV1MCCR)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{linewidth =}\NormalTok{ .}\DecValTok{8}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# regression line (solid) }
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{linetype =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}  \CommentTok{\# loess trend (dashed) to spot nonlinearity }
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Math Reasoning (PV1MPRE)"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Change \& Relationships (PV1MCCR)"}\NormalTok{, }
+       \AttributeTok{title =} \StringTok{"Scatterplot with Linear Fit (solid) and LOESS (dashed)"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter11_files/figure-pdf/unnamed-chunk-17-1.pdf}}
 
 In this scatter plot, The solid line represents the fitted linear
 regression line (to be introduced in Chapter 12), while the dashed line
@@ -14296,10 +14324,6 @@ homoscedasticity.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DocumentationTok{\#\#| echo: true}
-\CommentTok{\#| message: false}
-\CommentTok{\#| warning: false}
-\CommentTok{\#| include: false}
 \NormalTok{m }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(PV1MCCR }\SpecialCharTok{\textasciitilde{}}\NormalTok{ PV1MPRE, }\AttributeTok{data =}\NormalTok{ data) }\CommentTok{\# fit a linear regression model }
 \FunctionTok{plot}\NormalTok{(m, }\AttributeTok{which =} \DecValTok{1}\NormalTok{)  }\CommentTok{\#which = 1 indicates the 1st diagnostic plot: Residuals vs Fitted }
 \end{Highlighting}
@@ -14321,6 +14345,23 @@ variance of the residuals is approximately constant, meaning the
 
 Q--Q plots check the approximate normality of each variable.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MPRE, }\AttributeTok{main =} \StringTok{"Q{-}Q Plot: Math {-} Reasoning"}\NormalTok{); }\FunctionTok{qqline}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MPRE) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter11_files/figure-pdf/unnamed-chunk-19-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MCCR, }\AttributeTok{main =} \StringTok{"Q{-}Q Plot: Math {-} Change \& Relationships"}\NormalTok{); }
+\FunctionTok{qqline}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MCCR) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter11_files/figure-pdf/unnamed-chunk-20-1.pdf}}
+
 In both plots, the points largely follow the 45-degree reference line,
 with only slight deviations at the extreme tails. This indicates that
 both variables are approximately normally distributed.
@@ -14337,6 +14378,40 @@ between these two math sub-area scores.
 
 \subsection*{1.2 Computing Pearson's r}\label{computing-pearsons-r}
 \addcontentsline{toc}{subsection}{1.2 Computing Pearson's r}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pear }\OtherTok{\textless{}{-}} \FunctionTok{cor.test}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{PV1MPRE, data}\SpecialCharTok{$}\NormalTok{PV1MCCR,  }
+                 \AttributeTok{use =} \StringTok{"pairwise.complete.obs"}\NormalTok{) }\CommentTok{\# pairwise deletion of missing }
+\NormalTok{pear}\SpecialCharTok{$}\NormalTok{estimate      }\CommentTok{\# correlation coefficient r }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     cor 
+0.852135 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pear}\SpecialCharTok{$}\NormalTok{p.value }\CommentTok{\# p{-}value }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pear}\SpecialCharTok{$}\NormalTok{estimate}\SpecialCharTok{\^{}}\DecValTok{2}  \CommentTok{\# r{-}squared  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      cor 
+0.7261341 
+\end{verbatim}
 
 \begin{itemize}
 \item
@@ -14366,6 +14441,53 @@ When variables are ordinal, Spearman's \(r_s\) is preferred. Here, we
 convert the two math subscores into quartiles (1--4) and compute
 Spearman's correlation.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_dat }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{( }\CommentTok{\# create quartile variables }
+    \AttributeTok{pre\_q  =} \FunctionTok{ntile}\NormalTok{(PV1MPRE, }\DecValTok{4}\NormalTok{), }\CommentTok{\# quartiles of Reasoning }
+    \AttributeTok{mccr\_q =} \FunctionTok{ntile}\NormalTok{(PV1MCCR, }\DecValTok{4}\NormalTok{)  }\CommentTok{\# quartiles of Change \& Relationships }
+\NormalTok{  ) }
+\FunctionTok{head}\NormalTok{(q\_dat[, }\FunctionTok{c}\NormalTok{(}\StringTok{"PV1MPRE"}\NormalTok{, }\StringTok{"pre\_q"}\NormalTok{, }\StringTok{"PV1MCCR"}\NormalTok{, }\StringTok{"mccr\_q"}\NormalTok{)]) }\CommentTok{\# view new variables }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 6 x 4
+  PV1MPRE pre_q PV1MCCR mccr_q
+    <dbl> <int>   <dbl>  <int>
+1    558.     4    530.      3
+2    477.     3    398.      2
+3    636.     4    622.      4
+4    467.     3    483.      3
+5    448.     2    553.      4
+6    420.     2    453.      2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spear }\OtherTok{\textless{}{-}} \FunctionTok{cor.test}\NormalTok{(q\_dat}\SpecialCharTok{$}\NormalTok{pre\_q, q\_dat}\SpecialCharTok{$}\NormalTok{mccr\_q, }\AttributeTok{method =} \StringTok{"spearman"}\NormalTok{,  }
+                  \AttributeTok{exact =} \ConstantTok{FALSE}\NormalTok{, }\CommentTok{\#large sample approximation, preferred for n \textgreater{} 1000 }
+                  \AttributeTok{use =} \StringTok{"pairwise.complete.obs"}\NormalTok{) }
+\NormalTok{spear}\SpecialCharTok{$}\NormalTok{estimate }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      rho 
+0.7987698 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spear}\SpecialCharTok{$}\NormalTok{p.value }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0
+\end{verbatim}
+
 The Spearman's Rank-Order correlation (\(r_s = .799, \, p < .001\))
 indicates a strong positive monotonic relationship between Math
 Reasoning and Change \& Relationships after converting the scores into
@@ -14391,6 +14513,30 @@ Point-biserial correlation measures the relationship between a
 continuous variable and a dichotomous variable. Here we examine whether
 \emph{students who perceive mathematics as easier than other subjects}
 (MATHEASE: 0 = No, 1 = Yes) have higher overall math scores (PV1MATH).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pb }\OtherTok{\textless{}{-}} \FunctionTok{cor.test}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHEASE), }\CommentTok{\#ensure dichotomous variable is numeric }
+\NormalTok{               data}\SpecialCharTok{$}\NormalTok{PV1MATH, }
+               \AttributeTok{use =} \StringTok{"pairwise.complete.obs"}\NormalTok{) }
+\NormalTok{pb}\SpecialCharTok{$}\NormalTok{estimate }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     cor 
+0.108101 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pb}\SpecialCharTok{$}\NormalTok{p.value }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 7.224194e-12
+\end{verbatim}
 
 The point-biserial correlation between perception of mathematics as
 easier than other subjects and overall math score is \(r_{pb} = .108\),
@@ -14592,6 +14738,25 @@ the PISA dataset:
   subjects (binary (0=No/1-Yes), outcome for logistic regression)
 \end{itemize}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load required package }
+\FunctionTok{library}\NormalTok{(haven)       }\CommentTok{\# For reading SPSS files }
+\FunctionTok{library}\NormalTok{(tidyverse) }
+\FunctionTok{library}\NormalTok{(car)         }\CommentTok{\# For VIF and diagnostics }
+\FunctionTok{library}\NormalTok{(broom)       }\CommentTok{\# For tidy model summaries }
+\FunctionTok{library}\NormalTok{(psych)       }\CommentTok{\# For describe }
+\FunctionTok{library}\NormalTok{(performance) }\CommentTok{\# For diagnostics }
+\FunctionTok{library}\NormalTok{(ResourceSelection) }\CommentTok{\# For logistic regression goodness{-}of{-}fit }
+ 
+\CommentTok{\# Load the dataset }
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read\_sav}\NormalTok{(}\StringTok{"chapter12/chapter12data.sav"}\NormalTok{) }
+ 
+\CommentTok{\# Clean/select variables }
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{|\textgreater{}} \FunctionTok{select}\NormalTok{(PV1MATH, MATHPERS, GROSAGR, MATHEASE) }
+\end{Highlighting}
+\end{Shaded}
+
 \section*{1 Simple Linear Regression}\label{simple-linear-regression}
 \addcontentsline{toc}{section}{1 Simple Linear Regression}
 
@@ -14603,6 +14768,35 @@ the PISA dataset:
 \subsection*{1.1 Fit Simple Linear
 Regression}\label{fit-simple-linear-regression}
 \addcontentsline{toc}{subsection}{1.1 Fit Simple Linear Regression}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simple\_lm }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(PV1MATH }\SpecialCharTok{\textasciitilde{}}\NormalTok{ MATHPERS, }\AttributeTok{data =}\NormalTok{ data) }
+\FunctionTok{summary}\NormalTok{(simple\_lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = PV1MATH ~ MATHPERS, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-310.37  -68.50   -3.61   65.64  344.16 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   463.62       1.55  299.18   <2e-16 ***
+MATHPERS       16.13       1.52   10.61   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 94.06 on 3948 degrees of freedom
+  (602 observations deleted due to missingness)
+Multiple R-squared:  0.02773,   Adjusted R-squared:  0.02749 
+F-statistic: 112.6 on 1 and 3948 DF,  p-value: < 2.2e-16
+\end{verbatim}
 
 \textbf{Interpretation}:
 
@@ -14619,6 +14813,23 @@ math achievement test.
 
 \subsection*{1.2 Assumptions Checking}\label{assumptions-checking}
 \addcontentsline{toc}{subsection}{1.2 Assumptions Checking}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Linearity, Homoscedasticity, Normality, Outliers }
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)) }
+\FunctionTok{plot}\NormalTok{(simple\_lm) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter12_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }
+\CommentTok{\# Additional: Independence is typically assumed in survey data }
+\end{Highlighting}
+\end{Shaded}
 
 \textbf{Interpretation}:
 
@@ -14655,6 +14866,36 @@ growth mindset (GROSAGR) jointly predict math achievement (PV1MATH)?
 Regression}\label{fit-multiple-linear-regression}
 \addcontentsline{toc}{subsection}{2.1 Fit Multiple Linear Regression}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_lm }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(PV1MATH }\SpecialCharTok{\textasciitilde{}}\NormalTok{ MATHPERS }\SpecialCharTok{+}\NormalTok{ GROSAGR, }\AttributeTok{data =}\NormalTok{ data) }
+\FunctionTok{summary}\NormalTok{(multi\_lm) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = PV1MATH ~ MATHPERS + GROSAGR, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-278.82  -65.05   -2.72   63.29  329.67 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  459.327      1.563 293.820   <2e-16 ***
+MATHPERS      13.740      1.506   9.121   <2e-16 ***
+GROSAGR       23.645      1.831  12.917   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 92.17 on 3929 degrees of freedom
+  (620 observations deleted due to missingness)
+Multiple R-squared:  0.06738,   Adjusted R-squared:  0.0669 
+F-statistic: 141.9 on 2 and 3929 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
 \textbf{Interpretation}:
 
 (Check section Reporting Results of a Multiple Regression Analysis for
@@ -14679,6 +14920,32 @@ better prediction of students' math achievement.
 Checking}\label{multicollinearity-assumptions-checking}
 \addcontentsline{toc}{subsection}{2.2 Multicollinearity \& Assumptions
 Checking}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vif}\NormalTok{(multi\_lm) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+MATHPERS  GROSAGR 
+1.015794 1.015794 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)) }
+\FunctionTok{plot}\NormalTok{(multi\_lm) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapter12_files/figure-pdf/unnamed-chunk-7-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
 
 \textbf{Interpretation}:
 
@@ -14705,11 +14972,53 @@ whether a student perceives mathematics as easier than other subjects
 Variable}\label{prepare-outcome-variable}
 \addcontentsline{toc}{subsection}{3.1 Prepare Outcome Variable}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data}\SpecialCharTok{$}\NormalTok{MATHEASE }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{MATHEASE, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"No"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{)) }
+\NormalTok{data}\SpecialCharTok{$}\NormalTok{MATHEASE }\SpecialCharTok{|\textgreater{}} \FunctionTok{table}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+  No  Yes 
+3497  501 
+\end{verbatim}
+
 Among the student sample, 3497 perceived mathematics as easier than
 other subjects, while 501 did not.
 
 \subsection*{3.2 Fit Logistic Regression}\label{fit-logistic-regression}
 \addcontentsline{toc}{subsection}{3.2 Fit Logistic Regression}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{logit\_model }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(MATHEASE }\SpecialCharTok{\textasciitilde{}}\NormalTok{ PV1MATH, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{family =} \StringTok{"binomial"}\NormalTok{) }
+\FunctionTok{summary}\NormalTok{(logit\_model)  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+glm(formula = MATHEASE ~ PV1MATH, family = "binomial", data = data)
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -3.5726468  0.2505450 -14.260  < 2e-16 ***
+PV1MATH      0.0034039  0.0005017   6.785 1.16e-11 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 3017.5  on 3997  degrees of freedom
+Residual deviance: 2971.0  on 3996  degrees of freedom
+  (554 observations deleted due to missingness)
+AIC: 2975
+
+Number of Fisher Scoring iterations: 4
+\end{verbatim}
 
 Interpretation:
 
