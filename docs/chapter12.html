@@ -318,6 +318,17 @@ window.Quarto = {
   <li><a href="#fit-logistic-regression" id="toc-fit-logistic-regression" class="nav-link" data-scroll-target="#fit-logistic-regression">3.2 Fit Logistic Regression</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#predicting-the-outcomes-in-spss" id="toc-predicting-the-outcomes-in-spss" class="nav-link" data-scroll-target="#predicting-the-outcomes-in-spss">Predicting the outcomes in SPSS</a>
+  <ul class="collapse">
+  <li><a href="#simple-linear-regression-1" id="toc-simple-linear-regression-1" class="nav-link" data-scroll-target="#simple-linear-regression-1">1 Simple Linear Regression</a></li>
+  <li><a href="#fit-simple-linear-regression-1" id="toc-fit-simple-linear-regression-1" class="nav-link" data-scroll-target="#fit-simple-linear-regression-1"><span class="header-section-number">12.3</span> 1.1 Fit Simple Linear Regression</a></li>
+  <li><a href="#assumptions-checking-1" id="toc-assumptions-checking-1" class="nav-link" data-scroll-target="#assumptions-checking-1">1.2 Assumptions Checking</a></li>
+  <li><a href="#multiple-linear-regression-1" id="toc-multiple-linear-regression-1" class="nav-link" data-scroll-target="#multiple-linear-regression-1">2 Multiple Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#fit-multiple-linear-regression-1" id="toc-fit-multiple-linear-regression-1" class="nav-link" data-scroll-target="#fit-multiple-linear-regression-1">2.1 Fit Multiple Linear Regression</a></li>
+  <li><a href="#multicollinearity-assumptions-checking-1" id="toc-multicollinearity-assumptions-checking-1" class="nav-link" data-scroll-target="#multicollinearity-assumptions-checking-1">2.2 Multicollinearity &amp; Assumptions Checking</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -578,6 +589,33 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 <p>Interpretation:</p>
 <p>A logistic regression was conducted to examine whether students’ math scores predict the likelihood that they perceive mathematics as easier than other subjects. The results show a significant positive effect of math score (<span class="math inline">\(b=0.0034, SE=0.0005,z=6.79,p&lt;.01\)</span>). This means that for each point increase in the math score, the odds of perceiving math as easier increase by 0.34% (odds ratio: <span class="math inline">\(e^{0.0034} = 1.0034\)</span>). In other words, higher math achievement is associated with a slightly higher probability of perceiving math as easier than other subjects.</p>
+</section>
+</section>
+</section>
+<section id="predicting-the-outcomes-in-spss" class="level1 unnumbered">
+<h1 class="unnumbered">Predicting the outcomes in SPSS</h1>
+<p>In this section, we will demonstrate how to conduct and interpret simple linear regression, multiple linear regression, and logistic regression using educational data. The examples use the following variables from the PISA dataset:</p>
+<ul>
+<li><p><strong>PV1MATH</strong>: Math achievement score (continuous, outcome variable for linear regression)</p></li>
+<li><p><strong>MATHPERS</strong>: Effort and Persistence in Mathematics (continuous, predictor for simple and multiple regression)</p></li>
+<li><p><strong>GROSAGR</strong>: Growth Mindset (continuous, additional predictor for multiple regression)</p></li>
+<li><p><strong>MATHEASE</strong>: Perception of Mathematics as easier than other subjects (binary (0=No/1-Yes), outcome for logistic regression)</p></li>
+</ul>
+<section id="simple-linear-regression-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="simple-linear-regression-1">1 Simple Linear Regression</h2>
+<p><strong>Research Question</strong>: Does effort and persistence in mathematics (MATHPERS) predict math achievement (PV1MATH)?</p>
+</section>
+<section id="fit-simple-linear-regression-1" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="fit-simple-linear-regression-1"><span class="header-section-number">12.3</span> 1.1 Fit Simple Linear Regression</h2>
+<p>To fit a simple linear regression model in SPSS, follow these steps:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Regression &gt; Linear…</p></li>
+<li><p>Move PV1MATH to the Dependent box.</p></li>
+<li><p>Move MATHPERS to the Independent(s) box.</p></li>
+<li><p>Click Statistics… and check Estimates, Confidence intervals, Model fit, R squared change, and Descriptives.</p></li>
+<li><p>Click Continue, then OK.</p></li>
+</ol>
+<p>Then you will get the following results:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chapter12/fig12-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
@@ -590,24 +628,55 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <figcaption>Fig 12.9</figcaption>
 </figure>
 </div>
+<p><strong>Interpretation</strong>: The regression analysis found a significant positive relationship: for each one point increase in effort and persistence, math achievement scores increased by approximately 16.13 points (<span class="math inline">\(b=16.13, \,SE=1.52,\, t=10.61,\, p&lt;.05,\, 95\% \, CI [13.15, 19.11]\)</span>).The model explained about 2.8% of the variance in math achievement ( <span class="math inline">\(R^2 = .028\)</span>). The residual standard error was 94.06, indicating that, on average, students’ actual math scores deviated from the predicted scores by about 94 points. Although the effect size is modest, the result suggests that students who put in more effort and persist in mathematics tend to score higher on the PISA math achievement test.</p>
+</section>
+<section id="assumptions-checking-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="assumptions-checking-1">1.2 Assumptions Checking</h2>
+<p>To check the regression assumptions in SPSS:</p>
+<ol type="1">
+<li><p>Go back to the Linear Regression dialog we used in</p></li>
+<li><p>Click Plots…</p>
+<p>Move *ZRESID (standardized residuals) to the Y box.</p>
+<p>Move *ZPRED (standardized predicted values) to the X box.</p>
+<p>Check Histogram and Normal probability plot.</p>
+<p>Click Continue.</p></li>
+<li><p>Click OK to generate the diagnostic plots.</p></li>
+</ol>
+<p>SPSS will produce the following plots:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter12/fig12-10.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="chapter12/fig12-10.png" class="img-fluid figure-img" style="width:60.0%"></p>
 <figcaption>Fig 12.10</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter12/fig12-11.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="chapter12/fig12-11.png" class="img-fluid figure-img" style="width:40.0%"></p>
 <figcaption>Fig 12.11</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="chapter12/fig12-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Fig 12.12</figcaption>
-</figure>
-</div>
+<p><img src="chapter12/fig12-12.png" class="img-fluid quarto-figure quarto-figure-center" style="width:80.0%" alt="Fig 12.12"> <strong>Interpretation</strong>:</p>
+<p>The above figures separately suggest:</p>
+<p>The <em>Histogram of Standardized Residuals</em> shows an approximately bell-shaped distribution centered at 0, supporting normality.</p>
+<p>In the <em>Normal P-P Plot</em>, points follow the diagonal closely, confirming residuals are roughly <strong>normal</strong>. We can also see Standardized residuals all fall within <span class="math inline">\(\pm3\)</span>, suggesting no highly influential <strong>outliers</strong>.</p>
+<p>In the <em>Scatterplot of Standardized Residuals vs.&nbsp;Predicted Values</em>, residuals are randomly scattered without a clear funnel pattern, suggesting <strong>linearity</strong> and <strong>homoscedasticity</strong>.</p>
+<p>Overall, the model meets the assumptions of linearity, homoscedasticity, and normality of residuals, with no problematic outliers. The regression results can be interpreted with confidence.</p>
+</section>
+<section id="multiple-linear-regression-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="multiple-linear-regression-1">2 Multiple Linear Regression</h2>
+<p>For the multiple linear regression, we will include both effort and persistence and growth mindset as predictors of math achievement.</p>
+<p><strong>Research Question</strong>: Do effort and persistence (MATHPERS) and growth mindset (GROSAGR) jointly predict math achievement (PV1MATH)?</p>
+<section id="fit-multiple-linear-regression-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fit-multiple-linear-regression-1">2.1 Fit Multiple Linear Regression</h3>
+<p>To fit a multiple linear regression model in SPSS, follow the steps below:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Regression &gt; Linear…</p></li>
+<li><p>Move PV1MATH to Dependent.</p></li>
+<li><p>Move MATHPERS and GROSAGR to Independent(s).</p></li>
+<li><p>Click Statistics… and check Estimates, Confidence intervals, Model fit, R squared change, Descriptives.</p></li>
+<li><p>Click Continue and OK.</p></li>
+</ol>
+<p>Then you will get the following results:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chapter12/fig12-13.png" class="img-fluid figure-img" style="width:80.0%"></p>
@@ -620,15 +689,35 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <figcaption>Fig 12.14</figcaption>
 </figure>
 </div>
+<p><strong>Interpretation</strong>:</p>
+<p>(Check section Reporting Results of a Multiple Regression Analysis for APA-style sample write-up)</p>
+<p>The multiple linear regression show that both predictors have significant positive effects on math achievement: for each one point increase in effort and persistence, math scores increased by about 13.74 points ($b=13.74, ,SE=1.51, ,p&lt;.01 <span class="math inline">\(), and for each one standard deviation increase in growth mindset, scores increased by about 23.65 points (\)</span>b=23.65,, SE=1.83,, p&lt;.01<span class="math inline">\(). The model explained approximately 6.7% of the variance in math achievement scores (\)</span>R^2=.067$), with a residual standard error of 92.17.</p>
+<p>Compared to the previous simple regression model that included only effort and persistence, adding growth mindset as a second predictor increased the proportion of explained variance from 2.8% to 6.7%. This suggests that considering both effort and growth mindset provides a better prediction of students’ math achievement.</p>
+</section>
+<section id="multicollinearity-assumptions-checking-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="multicollinearity-assumptions-checking-1">2.2 Multicollinearity &amp; Assumptions Checking</h3>
+<p>To check the regression assumptions in SPSS:</p>
+<ol type="1">
+<li><p>Go back to the Linear Regression dialog used in 2.1.</p></li>
+<li><p>Click Statistics… and make sure Collinearity diagnostics is checked.</p></li>
+<li><p>Click Plots…</p>
+<p>Move *ZRESID (standardized residuals) to the Y box.</p>
+<p>Move *ZPRED (standardized predicted values) to the X box.</p>
+<p>Check Histogram and Normal probability plot.</p>
+<p>Click Continue.</p></li>
+<li><p>Check Partial plots to see the linear relationship for each predictor controlling for the other.</p></li>
+<li><p>Click OK to generate the diagnostic plots and the collinearity diagnostics table.</p></li>
+</ol>
+<p>SPSS will produce the following plots:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter12/fig12-15.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="chapter12/fig12-15.png" class="img-fluid figure-img" style="width:60.0%"></p>
 <figcaption>Fig 12.15</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter12/fig12-16.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="chapter12/fig12-16.png" class="img-fluid figure-img" style="width:40.0%"></p>
 <figcaption>Fig 12.16</figcaption>
 </figure>
 </div>
@@ -650,12 +739,32 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <figcaption>Fig 12.19</figcaption>
 </figure>
 </div>
+<p><strong>Interpretation</strong>:</p>
+<p>The above figures separately suggest:</p>
+<p>The <em>Histogram of Standardized Residuals</em> shows an approximately bell-shaped distribution centered at 0, supporting the <strong>normality</strong> assumption.</p>
+<p>The <em>Normal P-P Plot</em> shows points closely following the diagonal line, confirming that residuals are roughly <strong>normal</strong>.</p>
+<p>In the <em>Scatterplot of Standardized Residuals vs.&nbsp;Predicted Values</em>, the residuals are randomly scattered without a clear funnel pattern, suggesting that the assumptions of <strong>linearity</strong> and <strong>homoscedasticity</strong> are basically satisfied.</p>
+<p>The <em>partial regression plots</em> indicate that each predictor has an approximately <strong>linear</strong> relationship with the outcome after controlling for the other predictor. Standardized residuals all fall within <span class="math inline">\(\pm3\)</span>, suggesting no highly influential <strong>outliers</strong>.</p>
+<p>In addition, the <em>Collinearity Diagnostics table</em> shows VIF values near 1, below common threshold of 5, indicating no concern for <strong>multicollinearity</strong>.</p>
+<p>Overall, the multiple regression model meets the assumptions of linearity, homoscedasticity, and normality of residuals, with no problematic outliers or multicollinearity concerns. The regression results can be interpreted with confidence.</p>
+<p>3 Logistic Regression</p>
+<p><strong>Research Question</strong>: Does math achievement (PV1MATH) predict whether a student perceives mathematics as easier than other subjects (MATHEASE)?</p>
+<p>To fit a logistic regression model in SPSS, follow the steps below:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Regression &gt; Binary Logistic…</p></li>
+<li><p>Move MATHEASE to Dependent.</p></li>
+<li><p>Move PV1MATH to Covariates.</p></li>
+<li><p>Click Options… to select CI for exp(B) and Hosmer-Lemeshow goodness-of-fit.</p></li>
+<li><p>Click Continue and OK.</p></li>
+</ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chapter12/fig12-20.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption>Fig 12.20</figcaption>
 </figure>
 </div>
+<p><strong>Interpretation</strong>:</p>
+<p>A logistic regression was conducted to examine whether students’ math scores predict the likelihood that they perceive mathematics as easier than other subjects. The results show a significant positive effect of math score (<span class="math inline">\(b=0.003, \, SE=0.001, \, Wald \, \eta^2²=46.036, \,p&lt;.01\)</span>). This means that for each point increase in the math score, the odds of perceiving math as easier increase by 0.3% (odds ratio: <span class="math inline">\(e^{0.003} = 1.003\)</span>). In other words, higher math achievement is associated with a slightly higher probability of perceiving math as easier than other subjects.</p>
 
 
 </section>

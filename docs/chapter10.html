@@ -317,22 +317,35 @@ window.Quarto = {
   <li><a href="#other-types-of-factorial-anova" id="toc-other-types-of-factorial-anova" class="nav-link" data-scroll-target="#other-types-of-factorial-anova"><span class="header-section-number">10.8</span> Other Types of Factorial ANOVA</a></li>
   <li><a href="#kruskal-wallis-test-for-nonparametric-analysis" id="toc-kruskal-wallis-test-for-nonparametric-analysis" class="nav-link" data-scroll-target="#kruskal-wallis-test-for-nonparametric-analysis"><span class="header-section-number">10.9</span> Kruskal-Wallis Test for Nonparametric Analysis</a></li>
   </ul></li>
+  <li><a href="#analyzing-differences-among-more-than-two-groups-in-r" id="toc-analyzing-differences-among-more-than-two-groups-in-r" class="nav-link" data-scroll-target="#analyzing-differences-among-more-than-two-groups-in-r">Analyzing Differences Among More Than Two Groups in R</a>
+  <ul class="collapse">
+  <li><a href="#one-way-anova" id="toc-one-way-anova" class="nav-link" data-scroll-target="#one-way-anova">1 One-Way ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#define-hypotheses" id="toc-define-hypotheses" class="nav-link" data-scroll-target="#define-hypotheses">1.1 Define Hypotheses</a></li>
+  <li><a href="#check-assumptions" id="toc-check-assumptions" class="nav-link" data-scroll-target="#check-assumptions">1.2 Check Assumptions</a></li>
+  <li><a href="#one-way-anova-test" id="toc-one-way-anova-test" class="nav-link" data-scroll-target="#one-way-anova-test">1.3 One-Way ANOVA Test</a></li>
+  <li><a href="#post-hoc-tests" id="toc-post-hoc-tests" class="nav-link" data-scroll-target="#post-hoc-tests">1.4 Post-hoc Tests</a></li>
+  <li><a href="#effect-size-1" id="toc-effect-size-1" class="nav-link" data-scroll-target="#effect-size-1">1.5 Effect Size</a></li>
+  </ul></li>
+  <li><a href="#two-way-factorial-anova" id="toc-two-way-factorial-anova" class="nav-link" data-scroll-target="#two-way-factorial-anova">2 Two-Way Factorial ANOVA</a></li>
+  <li><a href="#nonparametric-alternative-kruskal-wallis-test" id="toc-nonparametric-alternative-kruskal-wallis-test" class="nav-link" data-scroll-target="#nonparametric-alternative-kruskal-wallis-test">3 Nonparametric Alternative: Kruskal-Wallis Test</a></li>
+  </ul></li>
   <li><a href="#analyzing-differences-among-more-than-two-groups-in-spss" id="toc-analyzing-differences-among-more-than-two-groups-in-spss" class="nav-link" data-scroll-target="#analyzing-differences-among-more-than-two-groups-in-spss">Analyzing Differences Among More Than Two Groups in SPSS</a>
   <ul class="collapse">
   <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">1. Data Cleaning</a></li>
   <li><a href="#one-way-anova---comparing-math-scores-by-school-type" id="toc-one-way-anova---comparing-math-scores-by-school-type" class="nav-link" data-scroll-target="#one-way-anova---comparing-math-scores-by-school-type">2. One-Way ANOVA - Comparing Math Scores by School Type</a>
   <ul class="collapse">
-  <li><a href="#define-hypotheses" id="toc-define-hypotheses" class="nav-link" data-scroll-target="#define-hypotheses">2.1 Define Hypotheses</a></li>
+  <li><a href="#define-hypotheses-1" id="toc-define-hypotheses-1" class="nav-link" data-scroll-target="#define-hypotheses-1">2.1 Define Hypotheses</a></li>
   </ul></li>
   <li><a href="#perform-one-way-anova-with-all-outputs-together" id="toc-perform-one-way-anova-with-all-outputs-together" class="nav-link" data-scroll-target="#perform-one-way-anova-with-all-outputs-together">2.2 Perform One-Way ANOVA with All Outputs Together</a>
   <ul class="collapse">
-  <li><a href="#check-assumptions" id="toc-check-assumptions" class="nav-link" data-scroll-target="#check-assumptions">2.3 Check assumptions</a></li>
-  <li><a href="#one-way-anova-test" id="toc-one-way-anova-test" class="nav-link" data-scroll-target="#one-way-anova-test">2.4 One-Way ANOVA Test</a></li>
-  <li><a href="#post-hoc-tests" id="toc-post-hoc-tests" class="nav-link" data-scroll-target="#post-hoc-tests">2.5 Post-hoc Tests</a></li>
-  <li><a href="#effect-size-1" id="toc-effect-size-1" class="nav-link" data-scroll-target="#effect-size-1">2.6 Effect Size</a></li>
+  <li><a href="#check-assumptions-1" id="toc-check-assumptions-1" class="nav-link" data-scroll-target="#check-assumptions-1">2.3 Check assumptions</a></li>
+  <li><a href="#one-way-anova-test-1" id="toc-one-way-anova-test-1" class="nav-link" data-scroll-target="#one-way-anova-test-1">2.4 One-Way ANOVA Test</a></li>
+  <li><a href="#post-hoc-tests-1" id="toc-post-hoc-tests-1" class="nav-link" data-scroll-target="#post-hoc-tests-1">2.5 Post-hoc Tests</a></li>
+  <li><a href="#effect-size-2" id="toc-effect-size-2" class="nav-link" data-scroll-target="#effect-size-2">2.6 Effect Size</a></li>
   </ul></li>
   <li><a href="#two-way-anova---comparing-math-scores-by-school-type-and-gender" id="toc-two-way-anova---comparing-math-scores-by-school-type-and-gender" class="nav-link" data-scroll-target="#two-way-anova---comparing-math-scores-by-school-type-and-gender">3. Two-Way ANOVA - Comparing Math Scores by School Type and Gender</a></li>
-  <li><a href="#nonparametric-alternative-kruskal-wallis-test" id="toc-nonparametric-alternative-kruskal-wallis-test" class="nav-link" data-scroll-target="#nonparametric-alternative-kruskal-wallis-test">4. Nonparametric Alternative: Kruskal-Wallis Test</a></li>
+  <li><a href="#nonparametric-alternative-kruskal-wallis-test-1" id="toc-nonparametric-alternative-kruskal-wallis-test-1" class="nav-link" data-scroll-target="#nonparametric-alternative-kruskal-wallis-test-1">4. Nonparametric Alternative: Kruskal-Wallis Test</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
   <ul class="collapse">
@@ -1651,6 +1664,234 @@ F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \f
 <p>The test outputs a chi-squared statistic that indicates whether differences among the groups are significant. However, it does not specify which groups differ from each other. Post hoc tests, such as Dunn’s test with a Bonferroni correction, are often employed to identify pairwise differences when a significant result is obtained. The Kruskal-Wallis Test thus serves as a valuable tool for educational researchers seeking to analyze complex, real-world data where traditional parametric assumptions are not tenable, allowing for more inclusive and flexible statistical analyses.</p>
 </section>
 </section>
+<section id="analyzing-differences-among-more-than-two-groups-in-r" class="level1 unnumbered">
+<h1 class="unnumbered">Analyzing Differences Among More Than Two Groups in R</h1>
+<p>In this section, we illustrate how to perform <strong>one-way and two-way ANOVAs</strong> and their nonparametric alternative using the PISA 2022 U.S. dataset. We will first examine if math performance (PV1MATH) differs significantly across three types of school organizations (Religious, Non-profit, Government). We will then explore whether there is an interaction between school type and gender on students’ math performance.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required package </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)        <span class="co"># for Levene's Test </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae) <span class="co"># for post-hoc tests </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effectsize) </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FSA)  </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter10/chapter10data.sav"</span>) </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode school type and gender for concise labeling </span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">SchoolType =</span> <span class="fu">case_when</span>( </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    SC014Q01TA <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Religious"</span>, </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    SC014Q01TA <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Non-profit"</span>, </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    SC014Q01TA <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Government"</span>), </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">Gender =</span> <span class="fu">case_when</span>( </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      ST004D01T <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Female"</span>, </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      ST004D01T <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Male"</span> </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      ), </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">SchoolType =</span> <span class="fu">factor</span>(SchoolType), </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">Gender =</span> <span class="fu">factor</span>(Gender) </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove cases with missing values </span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PV1MATH), <span class="sc">!</span><span class="fu">is.na</span>(SchoolType),  </span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(ST004D01T) <span class="co">#Gender </span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>         ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="one-way-anova" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="one-way-anova">1 One-Way ANOVA</h2>
+<p><strong>Comparing Math Scores by School Type</strong></p>
+<section id="define-hypotheses" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="define-hypotheses">1.1 Define Hypotheses</h3>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: Mean math scores are equal across all school types (<span class="math inline">\(\mu_{Religious} = \mu_{Non−profit} = \mu_{Government}\)</span>).</p></li>
+<li><p><span class="math inline">\(H_a\)</span>: At least one school type mean differs from the others.</p></li>
+</ul>
+</section>
+<section id="check-assumptions" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="check-assumptions">1.2 Check Assumptions</h3>
+<p>Before running ANOVA, let’s check for homogeneity of variances with Levene’s Test. The normality assumption can be checked visually with Q-Q plots or histograms, refer to Chapter 4 for details.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(PV1MATH <span class="sc">~</span> SchoolType, <span class="at">data =</span> data) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+        Df F value Pr(&gt;F)  
+group    2  3.4018 0.0334 *
+      4283                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><strong>Interpretation</strong>:</p>
+<p><span class="math inline">\(p=0.033&lt;0.05\)</span>, suggesting variances are not equal across the groups. That is, the homogeneity of variances assumption is violated.</p>
+<p>However, given our large sample size (n &gt; 4,000), the test is sensitive and ANOVA is robust to this slight violation. We will proceed with the ANOVA test.</p>
+</section>
+<section id="one-way-anova-test" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="one-way-anova-test">1.3 One-Way ANOVA Test</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(PV1MATH <span class="sc">~</span> SchoolType, <span class="at">data =</span> data) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Df   Sum Sq Mean Sq F value Pr(&gt;F)    
+SchoolType     2   751637  375818   42.42 &lt;2e-16 ***
+Residuals   4283 37943209    8859                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><strong>Interpretation</strong>: The one-way ANOVA showed a statistically significant difference in mean math scores (PV1MATH) among the three school types (<span class="math inline">\(F(2,4283)=42.42, \,p&lt;.001\)</span>). This means that at least one school type has a mean math score that differs significantly from the others.</p>
+</section>
+<section id="post-hoc-tests" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="post-hoc-tests">1.4 Post-hoc Tests</h3>
+<section id="bonferroni-adjusted-pairwise-t-tests" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="bonferroni-adjusted-pairwise-t-tests">1.4.1 Bonferroni-Adjusted Pairwise t Tests</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>( </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>PV1MATH, data<span class="sc">$</span>SchoolType, <span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pairwise comparisons using t tests with pooled SD 
+
+data:  data$PV1MATH and data$SchoolType 
+
+           Government Non-profit
+Non-profit &lt;2e-16     -         
+Religious  1          2e-07     
+
+P value adjustment method: bonferroni </code></pre>
+</div>
+</div>
+<p>Interpretation: The Bonferroni-adjusted pairwise t-tests indicate that students in non-profit schools have significantly different mean math scores compared to both government (<span class="math inline">\(p  &lt; 2e-16\)</span>) and religious schools (<span class="math inline">\(p  &lt; 2e-07\)</span>), while government and religious schools do not significantly differ from each other (<span class="math inline">\(p = 1\)</span>).</p>
+</section>
+<section id="tukeys-hsd-test" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="tukeys-hsd-test">1.4.2 Tukey’s HSD Test</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anova_result) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = PV1MATH ~ SchoolType, data = data)
+
+$SchoolType
+                            diff       lwr       upr     p adj
+Non-profit-Government -65.875937 -82.64460 -49.10727 0.0000000
+Religious-Government   -1.813041 -24.48836  20.86227 0.9808137
+Religious-Non-profit   64.062896  36.29495  91.83084 0.0000002</code></pre>
+</div>
+</div>
+<p><strong>Interpretation</strong>: Tukey’s HSD confirms the Bonferroni results, showing that (1) math score in non-profit schools is significantly lower than in government schools (mean difference = -65.88, <span class="math inline">\(p &lt; .001\)</span>) and in religious schools (mean difference = -64.06, <span class="math inline">\(p &lt; .001\)</span>); (2) no significant difference in mean math scores between religious and government schools (mean difference = -1.81, <span class="math inline">\(p = .98\)</span>).</p>
+</section>
+</section>
+<section id="effect-size-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="effect-size-1">1.5 Effect Size</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_squared</span>(anova_result) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Effect Size for ANOVA
+
+Parameter  | Eta2 |       95% CI
+--------------------------------
+SchoolType | 0.02 | [0.01, 1.00]
+
+- One-sided CIs: upper bound fixed at [1.00].</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">omega_squared</span>(anova_result) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Effect Size for ANOVA
+
+Parameter  | Omega2 |       95% CI
+----------------------------------
+SchoolType |   0.02 | [0.01, 1.00]
+
+- One-sided CIs: upper bound fixed at [1.00].</code></pre>
+</div>
+</div>
+<p><strong>Interpretation</strong>:</p>
+<p>Both the <span class="math inline">\(eta^2\)</span> and <span class="math inline">\(omega^2\)</span> values are 0.02, meaning that about 2% of the variance in math scores is explained by school type. According to common benchmarks, this represents a small effect size. This suggests that other factors, beyond school type, account for most of the differences in performance.</p>
+</section>
+</section>
+<section id="two-way-factorial-anova" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="two-way-factorial-anova">2 Two-Way Factorial ANOVA</h2>
+<p><strong>Comparing Math Scores by School Type and Gender</strong></p>
+<p>We add gender as a second independent variable to explore potential interaction effects.</p>
+<ul>
+<li><p><span class="math inline">\(H_a\)</span>(School Type): Mean math scores differ by school type.</p></li>
+<li><p><span class="math inline">\(H_a\)</span>(Gender): Mean math scores differ by gender.</p></li>
+<li><p><span class="math inline">\(H_a\)</span>(School Type × Gender): Differences in math scores by gender depend on school type.</p></li>
+</ul>
+<p>Assume the homogeneity of variances and normality holds for the two-way ANOVA, we can proceed with the analysis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-Way ANOVA Test </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>twoway_anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(PV1MATH <span class="sc">~</span> SchoolType <span class="sc">*</span> Gender, <span class="at">data =</span> data) </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(twoway_anova_result) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    Df   Sum Sq Mean Sq F value   Pr(&gt;F)    
+SchoolType           2   751637  375818  42.545  &lt; 2e-16 ***
+Gender               1   104711  104711  11.854 0.000581 ***
+SchoolType:Gender    2    31079   15540   1.759 0.172313    
+Residuals         4280 37807419    8834                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an interaction line plot </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Gender, <span class="at">y =</span> PV1MATH, <span class="at">group =</span> SchoolType, <span class="at">color =</span> SchoolType)) <span class="sc">+</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>( </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Interaction between School Type and Gender on Math Scores"</span>, </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>, </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Math Score"</span> </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter10_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The two-way ANOVA results show significant main effects of both school type (<span class="math inline">\(F(2,4280)=42.55, \,p&lt;.01\)</span>) and gender ( (<span class="math inline">\(F(1,4280)=11.85, \,p=.01\)</span>)). This means that students’ average math scores differ significantly across the three school types (Government, Non-profit, Religious) and gender groups (female, male). The interaction between school type and gender is not significant (<span class="math inline">\(F(2,4280)=1.76, \,p=.17\)</span>). This suggests that the gender difference in math scores does not vary enough across school types to reach statistical significance.</p>
+<p>The line chart visualizes the means and suggests that gender gaps may appear to differ by school type (e.g., females perform slightly better than males in non-profit schools, while males outperform females in the other two types). However, because the interaction effect is not significant, we do not have sufficient statistical evidence to conclude that the gender gap is truly different across school types. In other words, the observed patterns in the chart may simply be due to random variation.</p>
+</section>
+<section id="nonparametric-alternative-kruskal-wallis-test" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="nonparametric-alternative-kruskal-wallis-test">3 Nonparametric Alternative: Kruskal-Wallis Test</h2>
+<p>If ANOVA assumptions (normality, homogeneity) are severely violated, use the Kruskal-Wallis Test as an alternative.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(PV1MATH <span class="sc">~</span> SchoolType, <span class="at">data =</span> data) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  PV1MATH by SchoolType
+Kruskal-Wallis chi-squared = 85.457, df = 2, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Post Hoc for Kruskal-Wallis </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dunnTest</span>(PV1MATH <span class="sc">~</span> SchoolType, <span class="at">data =</span> data, <span class="at">method =</span> <span class="st">"bonferroni"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Comparison          Z      P.unadj        P.adj
+1 Government - Non-profit  9.2442732 2.368448e-20 7.105344e-20
+2  Government - Religious  0.2789166 7.803089e-01 1.000000e+00
+3  Non-profit - Religious -5.3547216 8.568824e-08 2.570647e-07</code></pre>
+</div>
+</div>
+<p><strong>Interpretation</strong>:</p>
+<p>The Kruskal-Wallis test consistently shows a significant difference in math scores (PV1MATH) among at least one pair of the school types (<span class="math inline">\(\eta^2 = 85.46, \, p &lt; 0.05\)</span>).</p>
+<p>The Dunn’s post-hoc test indicates that non-profit schools have significantly lower math scores than both government (<span class="math inline">\(Z = -9.24, \,p&lt; 0.05\)</span>) and religious schools (<span class="math inline">\(z = -5.35, \,p&lt; 0.05\)</span>), consistent with the ANOVA results.</p>
+</section>
+</section>
 <section id="analyzing-differences-among-more-than-two-groups-in-spss" class="level1 unnumbered">
 <h1 class="unnumbered">Analyzing Differences Among More Than Two Groups in SPSS</h1>
 <p>In this section, we illustrate how to perform one-way and two-way ANOVAs and their nonparametric alternative using the PISA 2022 U.S. dataset. We will first examine if math performance (PV1MATH) differs significantly across three types of school organizations (SC014Q01TA, including Religious, Non-profit, Government). We will then explore whether there is an interaction between school type and gender (ST004D01T) on students’ math performance.</p>
@@ -1669,8 +1910,8 @@ F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \f
 </section>
 <section id="one-way-anova---comparing-math-scores-by-school-type" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="one-way-anova---comparing-math-scores-by-school-type">2. One-Way ANOVA - Comparing Math Scores by School Type</h2>
-<section id="define-hypotheses" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="define-hypotheses">2.1 Define Hypotheses</h3>
+<section id="define-hypotheses-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="define-hypotheses-1">2.1 Define Hypotheses</h3>
 <ul>
 <li><p><span class="math inline">\(H_0\)</span>: Mean math scores are equal across all school types (<span class="math inline">\(\mu_{Religious}=\mu_{Non−profit}=\mu_{Government}\)</span>)</p></li>
 <li><p><span class="math inline">\(H_a\)</span>: At least one school type mean differs from the others.</p></li>
@@ -1696,8 +1937,8 @@ F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \f
 <li><p>Click OK</p></li>
 </ol>
 <p>SPSS will generate all outputs together.</p>
-<section id="check-assumptions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="check-assumptions">2.3 Check assumptions</h3>
+<section id="check-assumptions-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="check-assumptions-1">2.3 Check assumptions</h3>
 <p>By following the steps above, we checked the assumption of equal variances using Levene’s Test. The normality assumption can be examined visually using Q-Q plots or histograms (see Chapter 4 for details).</p>
 <p>Results:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -1708,8 +1949,8 @@ F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \f
 </div>
 <p><strong>Interpretation</strong>: The p-values from all four versions of Levene’s Test (mean, median, trimmed mean, adjusted df) are less than .05, indicating that the assumption of equal variances is violated. However, given the large sample size and approximately equal group sizes, the one-way ANOVA is considered robust to this violation. We will proceed with the ANOVA test.</p>
 </section>
-<section id="one-way-anova-test" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="one-way-anova-test">2.4 One-Way ANOVA Test</h3>
+<section id="one-way-anova-test-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="one-way-anova-test-1">2.4 One-Way ANOVA Test</h3>
 <p>Results:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1719,10 +1960,10 @@ F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \f
 </div>
 <p>Interpretation: The one-way ANOVA showed a statistically significant difference in mean math scores (PV1MATH) among the three school types (<span class="math inline">\(F(2,4283) = 42.42, p&lt;.001\)</span>). This means that at least one school type has a mean math score that differs significantly from the others.</p>
 </section>
-<section id="post-hoc-tests" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="post-hoc-tests">2.5 Post-hoc Tests</h3>
-<section id="bonferroni-adjusted-pairwise-t-tests" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="bonferroni-adjusted-pairwise-t-tests">2.5.1 Bonferroni-Adjusted Pairwise t Tests</h4>
+<section id="post-hoc-tests-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="post-hoc-tests-1">2.5 Post-hoc Tests</h3>
+<section id="bonferroni-adjusted-pairwise-t-tests-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="bonferroni-adjusted-pairwise-t-tests-1">2.5.1 Bonferroni-Adjusted Pairwise t Tests</h4>
 <p>Bonferroni-adjusted t tests divide α by the number of comparisons for a conservative test.</p>
 <p>Results:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -1734,8 +1975,8 @@ F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \f
 <p><strong>Interpretation</strong>:</p>
 <p>The Bonferroni-adjusted pairwise t-tests indicate that students in non-profit schools have significantly different mean math scores compared to both government (<span class="math inline">\(p  &lt; .001\)</span>) and religious schools (<span class="math inline">\(p &lt; .001\)</span>), while government and religious schools do not significantly differ from each other (<span class="math inline">\(p = 1\)</span>).</p>
 </section>
-<section id="tukeys-hsd-test" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="tukeys-hsd-test">2.5.2 Tukey’s HSD Test</h4>
+<section id="tukeys-hsd-test-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="tukeys-hsd-test-1">2.5.2 Tukey’s HSD Test</h4>
 <p>Tukey’s HSD compares all pairs and controls familywise error rate.</p>
 <p>Results:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -1754,8 +1995,8 @@ F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \f
 <p>Tukey’s HSD homogeneous subsets further reinforce this finding, showing that the “Another not-for-profit” group forms its own subset with a significantly lower mean, whereas the “Church/Religious” and “Government” schools form a higher subset and do not differ significantly from each other.</p>
 </section>
 </section>
-<section id="effect-size-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="effect-size-1">2.6 Effect Size</h3>
+<section id="effect-size-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="effect-size-2">2.6 Effect Size</h3>
 <p>Results:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1797,8 +2038,8 @@ F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \f
 </div>
 <p>Interpretation: The two-way ANOVA results show a significant main effect of school type (<span class="math inline">\(F(2, 4280) = 42.91, p &lt; .001\)</span>), indicating that mean math scores differ significantly among the three school types (Government, Non-profit, Religious). In contrast, the main effect of gender is not significant (<span class="math inline">\(F(1, 4280) = 0.58, p = .446\)</span>), suggesting that male and female students do not have statistically different average math scores.</p>
 </section>
-<section id="nonparametric-alternative-kruskal-wallis-test" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="nonparametric-alternative-kruskal-wallis-test">4. Nonparametric Alternative: Kruskal-Wallis Test</h2>
+<section id="nonparametric-alternative-kruskal-wallis-test-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="nonparametric-alternative-kruskal-wallis-test-1">4. Nonparametric Alternative: Kruskal-Wallis Test</h2>
 <p>If ANOVA assumptions (normality, homogeneity) are severely violated, use the Kruskal-Wallis Test as an alternative.</p>
 <p>SPSS Steps:</p>
 <ol type="1">

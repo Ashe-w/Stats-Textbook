@@ -1,0 +1,193 @@
+# Analyzing Differences Among More Than Two Groups in R {.unnumbered}
+
+
+In this section, we illustrate how to perform **one-way and two-way ANOVAs** and their nonparametric alternative using the PISA 2022 U.S. dataset. We will first examine if math performance (PV1MATH) differs significantly across three types of school organizations (Religious, Non-profit, Government). We will then explore whether there is an interaction between school type and gender on students’ math performance. 
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Load required package 
+library(haven) 
+library(dplyr) 
+library(car)        # for Levene's Test 
+library(agricolae) # for post-hoc tests 
+library(effectsize) 
+library(FSA)  
+library(ggplot2) 
+ 
+# Load the dataset 
+data <- read_sav("chapter10/chapter10data.sav") 
+ 
+# Recode school type and gender for concise labeling 
+data <- data |> 
+  mutate( 
+    SchoolType = case_when( 
+    SC014Q01TA == 1 ~ "Religious", 
+    SC014Q01TA == 2 ~ "Non-profit", 
+    SC014Q01TA == 4 ~ "Government"), 
+    Gender = case_when( 
+      ST004D01T == 1 ~ "Female", 
+      ST004D01T == 2 ~ "Male" 
+      ), 
+    SchoolType = factor(SchoolType), 
+    Gender = factor(Gender) 
+    ) 
+ 
+# Remove cases with missing values 
+data <- data |> 
+  filter(!is.na(PV1MATH), !is.na(SchoolType),  
+         !is.na(ST004D01T) #Gender 
+         ) 
+```
+
+## 1	One-Way ANOVA {.unnumbered}
+
+**Comparing Math Scores by School Type** 
+
+### 1.1	Define Hypotheses {.unnumbered}
+
+- $H_0$: Mean math scores are equal across all school types ($\mu_{Religious} = \mu_{Non−profit} = \mu_{Government}$).
+
+- $H_a$: At least one school type mean differs from the others. 
+
+### 1.2	Check Assumptions {.unnumbered}
+
+Before running ANOVA, let’s check for homogeneity of variances with Levene’s Test. The normality assumption can be checked visually with Q-Q plots or histograms, refer to Chapter 4 for details. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+leveneTest(PV1MATH ~ SchoolType, data = data) 
+```
+
+**Interpretation**:
+
+$p=0.033<0.05$, suggesting variances are not equal across the groups. That is, the homogeneity of variances assumption is violated. 
+
+However, given our large sample size (n > 4,000), the test is sensitive and ANOVA is robust to this slight violation. We will proceed with the ANOVA test. 
+
+### 1.3	One-Way ANOVA Test {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+anova_result <- aov(PV1MATH ~ SchoolType, data = data) 
+summary(anova_result) 
+```
+**Interpretation**: The one-way ANOVA showed a statistically significant difference in mean math scores (PV1MATH) among the three school types ($F(2,4283)=42.42, \,p<.001$). This means that at least one school type has a mean math score that differs significantly from the others. 
+
+### 1.4	Post-hoc Tests {.unnumbered}
+
+#### 1.4.1	Bonferroni-Adjusted Pairwise t Tests {.unnumbered}
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+pairwise.t.test( 
+  data$PV1MATH, data$SchoolType, p.adjust.method = "bonferroni" 
+) 
+```
+Interpretation: The Bonferroni-adjusted pairwise t-tests indicate that students in non-profit schools have significantly different mean math scores compared to both government ($p  < 2e-16$) and religious schools ($p  < 2e-07$), while government and religious schools do not significantly differ from each other ($p = 1$). 
+
+#### 1.4.2	Tukey’s HSD Test {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+TukeyHSD(anova_result) 
+```
+
+**Interpretation**:
+Tukey’s HSD confirms the Bonferroni results, showing that (1) math score in non-profit schools is significantly lower than in government schools (mean difference = -65.88, $p < .001$) and in religious schools (mean difference = -64.06, $p < .001$); (2) no significant difference in mean math scores between religious and government schools (mean difference = -1.81, $p = .98$). 
+
+### 1.5	Effect Size {.unnumbered}
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+eta_squared(anova_result) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+omega_squared(anova_result) 
+```
+
+**Interpretation**: 
+
+Both the $eta^2$ and $omega^2$ values are 0.02, meaning that about 2% of the variance in math scores is explained by school type. According to common benchmarks, this represents a small effect size. This suggests that other factors, beyond school type, account for most of the differences in performance. 
+
+
+
+## 2	Two-Way Factorial ANOVA {.unnumbered}
+
+**Comparing Math Scores by School Type and Gender** 
+
+We add gender as a second independent variable to explore potential interaction effects. 
+
+- $H_a$(School Type): Mean math scores differ by school type. 
+
+- $H_a$(Gender): Mean math scores differ by gender. 
+
+- $H_a$(School Type × Gender): Differences in math scores by gender depend on school type. 
+
+Assume the homogeneity of variances and normality holds for the two-way ANOVA, we can proceed with the analysis. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Two-Way ANOVA Test 
+twoway_anova_result <- aov(PV1MATH ~ SchoolType * Gender, data = data) 
+summary(twoway_anova_result) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# Create an interaction line plot 
+ggplot(data, aes(x = Gender, y = PV1MATH, group = SchoolType, color = SchoolType)) + 
+  stat_summary(fun = mean, geom = "line", size = 1.2) + 
+  stat_summary(fun = mean, geom = "point", size = 3) + 
+  stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.1) + 
+  labs( 
+    title = "Interaction between School Type and Gender on Math Scores", 
+    x = "Gender", 
+    y = "Mean Math Score" 
+  ) + 
+  theme_minimal() 
+```
+
+The two-way ANOVA results show significant main effects of both school type ($F(2,4280)=42.55, \,p<.01$) and gender (
+($F(1,4280)=11.85, \,p=.01$)). This means that students’ average math scores differ significantly across the three school types (Government, Non-profit, Religious) and gender groups (female, male). The interaction between school type and gender is not significant ($F(2,4280)=1.76, \,p=.17$). This suggests that the gender difference in math scores does not vary enough across school types to reach statistical significance. 
+
+The line chart visualizes the means and suggests that gender gaps may appear to differ by school type (e.g., females perform slightly better than males in non-profit schools, while males outperform females in the other two types). However, because the interaction effect is not significant, we do not have sufficient statistical evidence to conclude that the gender gap is truly different across school types. In other words, the observed patterns in the chart may simply be due to random variation. 
+
+## 3	Nonparametric Alternative: Kruskal-Wallis Test {.unnumbered}
+
+If ANOVA assumptions (normality, homogeneity) are severely violated, use the Kruskal-Wallis Test as an alternative. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+kruskal.test(PV1MATH ~ SchoolType, data = data) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#Post Hoc for Kruskal-Wallis 
+dunnTest(PV1MATH ~ SchoolType, data = data, method = "bonferroni") 
+```
+
+**Interpretation**: 
+
+The Kruskal-Wallis test consistently shows a significant difference in math scores (PV1MATH) among at least one pair of the school types ($\eta^2 = 85.46, \, p < 0.05$). 
+
+The Dunn’s post-hoc test indicates that non-profit schools have significantly lower math scores than both government ($Z = -9.24, \,p< 0.05$) and religious schools ($z = -5.35, \,p< 0.05$), consistent with the ANOVA results. 

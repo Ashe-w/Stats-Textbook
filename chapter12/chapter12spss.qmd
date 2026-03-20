@@ -1,21 +1,145 @@
+# Predicting the outcomes in SPSS {.unnumbered}
+
+In this section, we will demonstrate how to conduct and interpret simple linear regression, multiple linear regression, and logistic regression using educational data. The examples use the following variables from the PISA dataset: 
+
+- **PV1MATH**: Math achievement score (continuous, outcome variable for linear regression) 
+
+- **MATHPERS**: Effort and Persistence in Mathematics (continuous, predictor for simple and multiple regression) 
+
+- **GROSAGR**: Growth Mindset (continuous, additional predictor for multiple regression) 
+
+- **MATHEASE**: Perception of Mathematics as easier than other subjects (binary (0=No/1-Yes), outcome for logistic regression) 
+
+ 
+
+## 1	Simple Linear Regression {.unnumbered}
+
+**Research Question**: Does effort and persistence in mathematics (MATHPERS) predict math achievement (PV1MATH)? 
+
+## 1.1	Fit Simple Linear Regression 
+
+To fit a simple linear regression model in SPSS, follow these steps: 
+
+1. Click Analyze > Regression > Linear… 
+
+2. Move PV1MATH to the Dependent box. 
+
+3. Move MATHPERS to the Independent(s) box. 
+
+4. Click Statistics… and check Estimates, Confidence intervals, Model fit, R squared change, and Descriptives. 
+
+5. Click Continue, then OK. 
+
+Then you will get the following results: 
 
 ![Fig 12.8](chapter12/fig12-8.png){fig-align="center" width=80%}
 
 ![Fig 12.9](chapter12/fig12-9.png){fig-align="center" width=80%}
 
-![Fig 12.10](chapter12/fig12-10.png){fig-align="center" width=80%}
+**Interpretation**: The regression analysis found a significant positive relationship: for each one point increase in effort and persistence, math achievement scores increased by approximately 16.13 points ($b=16.13, \,SE=1.52,\, t=10.61,\, p<.05,\, 95\% \, CI [13.15, 19.11]$).The model explained about 2.8% of the variance in math achievement (
+$R^2 = .028$). The residual standard error was 94.06, indicating that, on average, students’ actual math scores deviated from the predicted scores by about 94 points. Although the effect size is modest, the result suggests that students who put in more effort and persist in mathematics tend to score higher on the PISA math achievement test. 
 
-![Fig 12.11](chapter12/fig12-11.png){fig-align="center" width=80%}
+## 1.2	Assumptions Checking {.unnumbered}
+
+To check the regression assumptions in SPSS: 
+
+1. Go back to the Linear Regression dialog we used in  
+
+2. Click Plots… 
+
+    Move *ZRESID (standardized residuals) to the Y box. 
+
+    Move *ZPRED (standardized predicted values) to the X box. 
+
+    Check Histogram and Normal probability plot. 
+
+    Click Continue. 
+
+3. Click OK to generate the diagnostic plots. 
+
+SPSS will produce the following plots: 
+
+![Fig 12.10](chapter12/fig12-10.png){fig-align="center" width=60%}
+
+![Fig 12.11](chapter12/fig12-11.png){fig-align="center" width=40%}
 
 ![Fig 12.12](chapter12/fig12-12.png){fig-align="center" width=80%}
+**Interpretation**: 
+
+The above figures separately suggest: 
+
+The *Histogram of Standardized Residuals* shows an approximately bell-shaped distribution centered at 0, supporting normality. 
+
+In the *Normal P-P Plot*, points follow the diagonal closely, confirming residuals are roughly **normal**. We can also see Standardized residuals all fall within $\pm3$, suggesting no highly influential **outliers**. 
+
+In the *Scatterplot of Standardized Residuals vs. Predicted Values*, residuals are randomly scattered without a clear funnel pattern, suggesting **linearity** and **homoscedasticity**. 
+
+Overall, the model meets the assumptions of linearity, homoscedasticity, and normality of residuals, with no problematic outliers. The regression results can be interpreted with confidence. 
+
+
+## 2	Multiple Linear Regression {.unnumbered}
+
+For the multiple linear regression, we will include both effort and persistence and growth mindset as predictors of math achievement. 
+
+**Research Question**: Do effort and persistence (MATHPERS) and growth mindset (GROSAGR) jointly predict math achievement (PV1MATH)? 
+
+### 2.1	Fit Multiple Linear Regression {.unnumbered}
+
+To fit a multiple linear regression model in SPSS, follow the steps below: 
+
+1. Click Analyze > Regression > Linear… 
+
+2. Move PV1MATH to Dependent. 
+
+3. Move MATHPERS and GROSAGR to Independent(s). 
+
+4. Click Statistics… and check Estimates, Confidence intervals, Model fit, R squared change, Descriptives. 
+
+5. Click Continue and OK. 
+
+Then you will get the following results: 
+
 
 ![Fig 12.13](chapter12/fig12-13.png){fig-align="center" width=80%}
 
 ![Fig 12.14](chapter12/fig12-14.png){fig-align="center" width=80%}
 
-![Fig 12.15](chapter12/fig12-15.png){fig-align="center" width=80%}
+**Interpretation**: 
 
-![Fig 12.16](chapter12/fig12-16.png){fig-align="center" width=80%}
+(Check section Reporting Results of a Multiple Regression Analysis for APA-style sample write-up) 
+
+The multiple linear regression show that both predictors have significant positive effects on math achievement: for each one point increase in effort and persistence, math scores increased by about 13.74 points ($b=13.74, \,SE=1.51, \,p<.01 $), and for each one standard deviation increase in growth mindset, scores increased by about 23.65 points ($b=23.65,\, SE=1.83,\, p<.01$). The model explained approximately 6.7% of the variance in math achievement scores ($R^2=.067$), with a residual standard error of 92.17. 
+
+Compared to the previous simple regression model that included only effort and persistence, adding growth mindset as a second predictor increased the proportion of explained variance from 2.8% to 6.7%. This suggests that considering both effort and growth mindset provides a better prediction of students’ math achievement. 
+
+
+### 2.2	Multicollinearity & Assumptions Checking {.unnumbered}
+
+To check the regression assumptions in SPSS: 
+
+1. Go back to the Linear Regression dialog used in 2.1. 
+
+2. Click Statistics… and make sure Collinearity diagnostics is checked. 
+
+3. Click Plots… 
+
+    Move *ZRESID (standardized residuals) to the Y box. 
+
+    Move *ZPRED (standardized predicted values) to the X box. 
+
+    Check Histogram and Normal probability plot. 
+
+    Click Continue. 
+
+4. Check Partial plots to see the linear relationship for each predictor controlling for the other. 
+
+5. Click OK to generate the diagnostic plots and the collinearity diagnostics table. 
+
+SPSS will produce the following plots: 
+
+![Fig 12.15](chapter12/fig12-15.png){fig-align="center" width=60%}
+
+![Fig 12.16](chapter12/fig12-16.png){fig-align="center" width=40%}
 
 ![Fig 12.17](chapter12/fig12-17.png){fig-align="center" width=80%}
 
@@ -23,4 +147,42 @@
 
 ![Fig 12.19](chapter12/fig12-19.png){fig-align="center" width=80%}
 
+**Interpretation**: 
+
+The above figures separately suggest: 
+
+The *Histogram of Standardized Residuals* shows an approximately bell-shaped distribution centered at 0, supporting the **normality** assumption.  
+
+The *Normal P-P Plot* shows points closely following the diagonal line, confirming that residuals are roughly **normal**.  
+
+In the *Scatterplot of Standardized Residuals vs. Predicted Values*, the residuals are randomly scattered without a clear funnel pattern, suggesting that the assumptions of **linearity** and **homoscedasticity** are basically satisfied.  
+
+The *partial regression plots* indicate that each predictor has an approximately **linear** relationship with the outcome after controlling for the other predictor. Standardized residuals all fall within $\pm3$, suggesting no highly influential **outliers**. 
+
+In addition, the *Collinearity Diagnostics table* shows VIF values near 1, below common threshold of 5, indicating no concern for **multicollinearity**. 
+
+Overall, the multiple regression model meets the assumptions of linearity, homoscedasticity, and normality of residuals, with no problematic outliers or multicollinearity concerns. The regression results can be interpreted with confidence. 
+
+ 3	Logistic Regression 
+
+**Research Question**: Does math achievement (PV1MATH) predict whether a student perceives mathematics as easier than other subjects (MATHEASE)? 
+
+To fit a logistic regression model in SPSS, follow the steps below: 
+
+1. Click Analyze > Regression > Binary Logistic… 
+
+2. Move MATHEASE to Dependent. 
+
+3. Move PV1MATH to Covariates. 
+
+4. Click Options… to select CI for exp(B) and Hosmer-Lemeshow goodness-of-fit. 
+
+5. Click Continue and OK. 
+
 ![Fig 12.20](chapter12/fig12-20.png){fig-align="center" width=80%}
+
+**Interpretation**: 
+
+A logistic regression was conducted to examine whether students’ math scores predict the likelihood that they perceive mathematics as easier than other subjects. The results show a significant positive effect of math score ($b=0.003, \, SE=0.001, \, Wald \, \eta^2²=46.036, \,p<.01$). This means that for each point increase in the math score, the odds of perceiving math as easier increase by 0.3% (odds ratio: $e^{0.003} = 1.003$). In other words, higher math achievement is associated with a slightly higher probability of perceiving math as easier than other subjects. 
+
+ 
