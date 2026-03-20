@@ -1,7 +1,7 @@
 ---
 title: "Chapter 10"
 ---
-
+        
 {{< include chapter10/chapter10text.qmd >}}
 {{< include chapter10/chapter10r.qmd >}}
 {{< include chapter10/chapter10spss.qmd >}}
@@ -75,6 +75,8 @@ The **Kruskal-Wallis Test** is a nonparametric statistical method used to determ
 
 **Tukey’s Honestly Significant Difference (Tukey’s or HSD)** test is a post hoc analysis method used to determine which specific group means are significantly different from each other. It controls the familywise error rate (the probability of making one or more Type I errors) while comparing all possible pairs of group means. 
 
+
+
 ## Check Your Understanding {.unnumbered}
 
 1. **What is the primary purpose of a One-Way ANOVA?** 
@@ -85,7 +87,7 @@ The **Kruskal-Wallis Test** is a nonparametric statistical method used to determ
 
         c. To analyze relationships between continuous variables 
 
-        d. To assess correlations between independent and dependent variables 
+        d. To assess correlations between independent and dependent variables   
 
  
 

@@ -71,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -222,8 +251,40 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#predicting-an-outcome" id="toc-predicting-an-outcome" class="nav-link active" data-scroll-target="#predicting-an-outcome">Predicting an Outcome</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">12.1</span> Introduction</a></li>
+  <li><a href="#fundamentals-of-linear-regression" id="toc-fundamentals-of-linear-regression" class="nav-link" data-scroll-target="#fundamentals-of-linear-regression"><span class="header-section-number">12.2</span> Fundamentals of Linear Regression  </a>
+  <ul class="collapse">
+  <li><a href="#what-makes-the-regression-line-the-best-fitting-line" id="toc-what-makes-the-regression-line-the-best-fitting-line" class="nav-link" data-scroll-target="#what-makes-the-regression-line-the-best-fitting-line"><span class="header-section-number">12.2.1</span> What Makes the Regression Line the Best-Fitting Line?  </a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#predicting-an-outcome-in-r" id="toc-predicting-an-outcome-in-r" class="nav-link" data-scroll-target="#predicting-an-outcome-in-r">Predicting an Outcome in R</a>
+  <ul class="collapse">
+  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression">1 Simple Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#fit-simple-linear-regression" id="toc-fit-simple-linear-regression" class="nav-link" data-scroll-target="#fit-simple-linear-regression">1.1 Fit Simple Linear Regression</a></li>
+  <li><a href="#assumptions-checking" id="toc-assumptions-checking" class="nav-link" data-scroll-target="#assumptions-checking">1.2 Assumptions Checking</a></li>
+  </ul></li>
+  <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link" data-scroll-target="#multiple-linear-regression">2 Multiple Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#fit-multiple-linear-regression" id="toc-fit-multiple-linear-regression" class="nav-link" data-scroll-target="#fit-multiple-linear-regression">2.1 Fit Multiple Linear Regression</a></li>
+  <li><a href="#multicollinearity-assumptions-checking" id="toc-multicollinearity-assumptions-checking" class="nav-link" data-scroll-target="#multicollinearity-assumptions-checking">2.2 Multicollinearity &amp; Assumptions Checking</a></li>
+  </ul></li>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">3 Logistic Regression</a>
+  <ul class="collapse">
+  <li><a href="#prepare-outcome-variable" id="toc-prepare-outcome-variable" class="nav-link" data-scroll-target="#prepare-outcome-variable">3.1 Prepare Outcome Variable</a></li>
+  <li><a href="#fit-logistic-regression" id="toc-fit-logistic-regression" class="nav-link" data-scroll-target="#fit-logistic-regression">3.2 Fit Logistic Regression</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -247,8 +308,186 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="predicting-an-outcome" class="level1 unnumbered">
+<h1 class="unnumbered">Predicting an Outcome</h1>
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ul>
+<li><p>Explain the concepts of predictor and criterion variables, derive the equation of a regression line using the method of least squares, and interpret the slope and intercept within the context of data analysis.</p></li>
+<li><p>Identify and assess the key assumptions for multiple regression, including linearity, homoscedasticity, independence of errors, multicollinearity, and model specification, ensuring valid and reliable results in regression analyses.</p></li>
+<li><p>Compute and interpret diagnostic measures such as Variance Inflation Factors (VIF), tolerance, and the coefficient of determination (<span class="math inline">\(R^2\)</span>), and assess model fit to draw meaningful conclusions from regression analyses.</p></li>
+</ul>
+<p> </p>
+</section>
+<section id="introduction" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">12.1</span> Introduction</h2>
+<p>In the last chapter, we reviewed the procedures to compute a correlation coefficient that indicates the extent to which two variables (<span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>) are related to each other. The value of r indicates the direction and strength of the relationship. Two variables change in opposite directions when r is negative, and two variables change in the same direction when r is positive. The closer r is to +1 or -1, the stronger the correlation and the more closely the two variables are related.  </p>
+<p>The strength of a correlation reflects how closely a set of data points fits a line of best fit on a scatterplot. This line is also called a regression line. We will now learn how to use the value of r to compute the equation of a regression line. We will then use this equation to predict values of one variable given known values of a second variable in a population, before incorporating additional variables into our predictions.</p>
+<p> </p>
+</section>
+<section id="fundamentals-of-linear-regression" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="fundamentals-of-linear-regression"><span class="header-section-number">12.2</span> Fundamentals of Linear Regression  </h2>
+<p>Linear regression is a statistical method used to determine the equation of a regression line for a set of data points and to assess how well this equation can predict values of one variable based on known values of another variable. In linear regression, we identify two types of variables:</p>
+<ul>
+<li><p><strong>Predictor variable</strong>, or known variable (X), is the variable with values that are known and can be used to predict values of another variable. We also call this variable an independent variable (IV).  </p></li>
+<li><p><strong>Criterion variable</strong>, or to-be-predicted variable (Y), is the variable with unknown values that can be predicted or estimated, given known values of the predictor variable. We sometimes call this variable a dependent variable (DV) or an outcome variable.    </p></li>
+</ul>
+<p>As always, it is important to consider the data assumptions that must be met before performing any analysis. We will provide more details on some of these assumptions later, but the conditions that indicate data are a good fit for regression analysis include:  </p>
+<ul>
+<li><p><em>Linearity of the X-Y relationship</em>: The relationship between the predictor and criterion variable should be linear.</p></li>
+<li><p><em>No range restriction</em>: The range of data should not be artificially limited, as it can affect the correlation and regression results.</p></li>
+<li><p><em>Homoscedasticity</em>: The variance of the residuals (errors) should be consistent across all values of the predictor variable.</p></li>
+<li><p><em>No significant outliers</em>: Outliers can disproportionately influence the regression line and distort results.</p></li>
+<li><p><em>Sufficient sample size</em>: The sample should be large enough to ensure that estimates of the correlation coefficient (<span class="math inline">\(r\)</span>) and regression coefficients (<span class="math inline">\(b\)</span>) are stable and reliable.</p></li>
+</ul>
+<p>Linear regression allows us to find the equation of a line that best describes a set of data points, and test whether predictions made from this equation are statistically significant. Before we work through an example to answer these questions, let us first explain what the regression line is. Specially, we want you to know what it means to say that a straight line has the best fit to the data.</p>
+<section id="what-makes-the-regression-line-the-best-fitting-line" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="what-makes-the-regression-line-the-best-fitting-line"><span class="header-section-number">12.2.1</span> What Makes the Regression Line the Best-Fitting Line?  </h3>
+<p>Once we have determined that there is a linear pattern in a set of data points using a scatterplot, we want to find a regression line, or a straight line that has the best fit. The criterion used to determine the regression line is sum of squares (<span class="math inline">\(SS\)</span>), or the sum of the squared distances of data points from a straight line. The line, associated with the smallest total value for SS, is the best-fitting straight line, called the regression line. Remember, we don’t square the distances just to be complicated, it’s so all the values are positive, even if the actual value is below the expected value. Otherwise, one point that was very far above the line would cancel out a point that was equally far below. Instead, we want them to both count as being quite far away from the line, so we square the distance. </p>
+<p>Suppose that we measure two variables, one predictor or independent variable plotted on the X-axis, and one criterion or dependent variable plotted on the Y-axis. Figure 12.1 shows a scatterplot with five data points (A, B, C, D, and E) along with the line of best fit. The arrow from each data point to the line represents the distance from each data point to the best-fitting line. As you see, all data points deviate from the line to some extent. Data point D (below the line) has the largest deviation from the line and A (above the line) has the smallest. To quantify these deviations, we square each distance to ensure all values are positive. The sum of squares (SS) in this example is the total of these squared deviations across all five data points. The regression line is defined as the one that minimizes this sum, providing the best possible fit to the data.</p>
+</section>
+</section>
+</section>
+<section id="predicting-an-outcome-in-r" class="level1 unnumbered">
+<h1 class="unnumbered">Predicting an Outcome in R</h1>
+<p>In this section, we will demonstrate how to conduct and interpret simple linear regression, multiple linear regression, and logistic regression using educational data. The examples use the following variables from the PISA dataset:</p>
+<ul>
+<li><p><strong>PV1MATH</strong>: Math achievement score (continuous, outcome variable for linear regression)</p></li>
+<li><p><strong>MATHPERS</strong>: Effort and Persistence in Mathematics (continuous, predictor for simple and multiple regression)</p></li>
+<li><p><strong>GROSAGR</strong>: Growth Mindset (continuous, additional predictor for multiple regression)</p></li>
+<li><p><strong>MATHEASE</strong>: Perception of Mathematics as easier than other subjects (binary (0=No/1-Yes), outcome for logistic regression)</p></li>
+</ul>
+<section id="simple-linear-regression" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="simple-linear-regression">1 Simple Linear Regression</h2>
+<p><strong>Research Question</strong>: Does effort and persistence in mathematics (MATHPERS) predict math achievement (PV1MATH)?</p>
+<section id="fit-simple-linear-regression" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fit-simple-linear-regression">1.1 Fit Simple Linear Regression</h3>
+<p><strong>Interpretation</strong>:</p>
+<p>The regression analysis found a significant positive relationship: for each one point increase in effort and persistence, math achievement scores increased by approximately 16.13 points (<span class="math inline">\(b=16.13,SE=1.52,t=10.61,p&lt;.01\)</span>).The model explained about 2.8% of the variance in math achievement (<span class="math inline">\(R^2 = .028\)</span>). The residual standard error was 94.06, indicating that, on average, students’ actual math scores deviated from the predicted scores by about 94 points. Although the effect size is modest, the result suggests that students who put in more effort and persist in mathematics tend to score higher on the PISA math achievement test.</p>
+</section>
+<section id="assumptions-checking" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="assumptions-checking">1.2 Assumptions Checking</h3>
+<p><strong>Interpretation</strong>:</p>
+<ul>
+<li><p><strong>Linearity &amp; Homoscedasticity</strong>: The Residuals vs Fitted (upper left) and Scale-Location (lower left) plots show that residuals are roughly evenly spread around zero across fitted values, without clear patterns or fanning, suggesting linearity and constant variance (homoscedasticity).</p></li>
+<li><p><strong>Normality</strong>: The Q-Q plot of residuals displays points closely following the diagonal line, indicating that residuals are approximately normally distributed.</p></li>
+<li><p><strong>Influential Points</strong>: The Residuals vs Leverage plot shows that most points have low leverage, with no point deviating significantly from the rest, suggesting no influential outliers.</p></li>
+</ul>
+</section>
+</section>
+<section id="multiple-linear-regression" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="multiple-linear-regression">2 Multiple Linear Regression</h2>
+<p>For the multiple linear regression, we will include both effort and persistence and growth mindset as predictors of math achievement.</p>
+<p><strong>Research Question</strong>: Do effort and persistence (MATHPERS) and growth mindset (GROSAGR) jointly predict math achievement (PV1MATH)?</p>
+<section id="fit-multiple-linear-regression" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fit-multiple-linear-regression">2.1 Fit Multiple Linear Regression</h3>
+<p><strong>Interpretation</strong>:</p>
+<p>(Check section Reporting Results of a Multiple Regression Analysis for APA-style sample write-up)</p>
+<p>The multiple linear regression show that both predictors have significant positive effects on math achievement: for each one point increase in effort and persistence, math scores increased by about 13.74 points (<span class="math inline">\(b=13.74,SE=1.51,p&lt;.01\)</span>), and for each one standard deviation increase in growth mindset, scores increased by about 23.65 points ($b=23.65,SE=1.83,p&lt;.01 <span class="math inline">\(). The model explained approximately 6.7% of the variance in math achievement scores (\)</span>R^2=.067$), with a residual standard error of 92.17.</p>
+<p>Compared to the previous simple regression model that included only effort and persistence, adding growth mindset as a second predictor increased the proportion of explained variance from 2.8% to 6.7%. This suggests that considering both effort and growth mindset provides a better prediction of students’ math achievement.</p>
+</section>
+<section id="multicollinearity-assumptions-checking" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="multicollinearity-assumptions-checking">2.2 Multicollinearity &amp; Assumptions Checking</h3>
+<p><strong>Interpretation</strong>:</p>
+<p>VIFs for both predictors are approximately 1.02, which is well below the common threshold of 5. This indicates that multicollinearity is not a concern in this model, and the two predictors are not highly correlated with each other.</p>
+<p>The diagnostic plots (as those for the simple linear regression) indicate that the assumptions of linearity, homoscedasticity, normality of residuals, and the absence of influential outliers are generally met for this multiple linear regression model.</p>
+</section>
+</section>
+<section id="logistic-regression" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="logistic-regression">3 Logistic Regression</h2>
+<p><strong>Research Question</strong>: Does math achievement (PV1MATH) predict whether a student perceives mathematics as easier than other subjects (MATHEASE)?</p>
+<section id="prepare-outcome-variable" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="prepare-outcome-variable">3.1 Prepare Outcome Variable</h3>
+<p>Among the student sample, 3497 perceived mathematics as easier than other subjects, while 501 did not.</p>
+</section>
+<section id="fit-logistic-regression" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fit-logistic-regression">3.2 Fit Logistic Regression</h3>
+<p>Interpretation:</p>
+<p>A logistic regression was conducted to examine whether students’ math scores predict the likelihood that they perceive mathematics as easier than other subjects. The results show a significant positive effect of math score (<span class="math inline">\(b=0.0034, SE=0.0005,z=6.79,p&lt;.01\)</span>). This means that for each point increase in the math score, the odds of perceiving math as easier increase by 0.34% (odds ratio: <span class="math inline">\(e^{0.0034} = 1.0034\)</span>). In other words, higher math achievement is associated with a slightly higher probability of perceiving math as easier than other subjects.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-8.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.8</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-9.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.9</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-10.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.10</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-11.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.11</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.12</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-13.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.13</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-14.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.14</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-15.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.15</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-16.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.16</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-17.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.17</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-18.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.18</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-19.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.19</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12/fig12-20.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 12.20</figcaption>
+</figure>
+</div>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -264,7 +299,23 @@ window.Quarto = {
   <li><a href="#step-1-determine-the-null-and-alternative-hypotheses." id="toc-step-1-determine-the-null-and-alternative-hypotheses." class="nav-link" data-scroll-target="#step-1-determine-the-null-and-alternative-hypotheses.">Step 1: Determine the null and alternative hypotheses. </a></li>
   <li><a href="#step-2-set-the-criteria-for-a-decision." id="toc-step-2-set-the-criteria-for-a-decision." class="nav-link" data-scroll-target="#step-2-set-the-criteria-for-a-decision.">Step 2: Set the criteria for a decision. </a></li>
   <li><a href="#step-3-check-assumptions-and-compute-the-test-statistic." id="toc-step-3-check-assumptions-and-compute-the-test-statistic." class="nav-link" data-scroll-target="#step-3-check-assumptions-and-compute-the-test-statistic.">Step 3: Check assumptions and compute the test statistic.  </a></li>
+  <li><a href="#step-4a-find-the-p-value." id="toc-step-4a-find-the-p-value." class="nav-link" data-scroll-target="#step-4a-find-the-p-value.">Step 4a: Find the p value.</a></li>
+  <li><a href="#step-4b-draw-a-conclusion-and-report-your-conclusion." id="toc-step-4b-draw-a-conclusion-and-report-your-conclusion." class="nav-link" data-scroll-target="#step-4b-draw-a-conclusion-and-report-your-conclusion.">Step 4b: Draw a conclusion and report your conclusion.    </a></li>
   </ul></li>
+  <li><a href="#post-hoc-test" id="toc-post-hoc-test" class="nav-link" data-scroll-target="#post-hoc-test"><span class="header-section-number">10.2</span> Post Hoc Test</a></li>
+  <li><a href="#effect-size" id="toc-effect-size" class="nav-link" data-scroll-target="#effect-size"><span class="header-section-number">10.3</span> Effect Size</a></li>
+  <li><a href="#factorial-anova" id="toc-factorial-anova" class="nav-link" data-scroll-target="#factorial-anova"><span class="header-section-number">10.4</span> Factorial ANOVA </a></li>
+  <li><a href="#describing-variability-main-effects-and-interactions" id="toc-describing-variability-main-effects-and-interactions" class="nav-link" data-scroll-target="#describing-variability-main-effects-and-interactions"><span class="header-section-number">10.5</span> Describing Variability: Main Effects and Interactions </a></li>
+  <li><a href="#hypothesis-testing-in-a-two-way-anova" id="toc-hypothesis-testing-in-a-two-way-anova" class="nav-link" data-scroll-target="#hypothesis-testing-in-a-two-way-anova"><span class="header-section-number">10.6</span> Hypothesis Testing in a Two-Way ANOVA </a>
+  <ul class="collapse">
+  <li><a href="#step-1-determine-the-null-and-alternative-hypotheses" id="toc-step-1-determine-the-null-and-alternative-hypotheses" class="nav-link" data-scroll-target="#step-1-determine-the-null-and-alternative-hypotheses">Step 1: Determine the null and alternative hypotheses</a></li>
+  <li><a href="#step-2-set-the-criteria-for-a-decision.-1" id="toc-step-2-set-the-criteria-for-a-decision.-1" class="nav-link" data-scroll-target="#step-2-set-the-criteria-for-a-decision.-1">Step 2: Set the criteria for a decision. </a></li>
+  <li><a href="#step-3-check-assumptions-and-compute-the-test-statistic.-1" id="toc-step-3-check-assumptions-and-compute-the-test-statistic.-1" class="nav-link" data-scroll-target="#step-3-check-assumptions-and-compute-the-test-statistic.-1">Step 3: Check assumptions and compute the test statistic.  </a></li>
+  <li><a href="#step-4-find-a-p-value-draw-a-conclusion-and-report-your-conclusion." id="toc-step-4-find-a-p-value-draw-a-conclusion-and-report-your-conclusion." class="nav-link" data-scroll-target="#step-4-find-a-p-value-draw-a-conclusion-and-report-your-conclusion.">Step 4: Find a p value, draw a conclusion, and report your conclusion.</a></li>
+  </ul></li>
+  <li><a href="#post-hoc-tests-and-effect-size" id="toc-post-hoc-tests-and-effect-size" class="nav-link" data-scroll-target="#post-hoc-tests-and-effect-size"><span class="header-section-number">10.7</span> Post Hoc Tests and Effect Size </a></li>
+  <li><a href="#other-types-of-factorial-anova" id="toc-other-types-of-factorial-anova" class="nav-link" data-scroll-target="#other-types-of-factorial-anova"><span class="header-section-number">10.8</span> Other Types of Factorial ANOVA</a></li>
+  <li><a href="#kruskal-wallis-test-for-nonparametric-analysis" id="toc-kruskal-wallis-test-for-nonparametric-analysis" class="nav-link" data-scroll-target="#kruskal-wallis-test-for-nonparametric-analysis"><span class="header-section-number">10.9</span> Kruskal-Wallis Test for Nonparametric Analysis</a></li>
   </ul></li>
   <li><a href="#analyzing-differences-among-more-than-two-groups-in-spss" id="toc-analyzing-differences-among-more-than-two-groups-in-spss" class="nav-link" data-scroll-target="#analyzing-differences-among-more-than-two-groups-in-spss">Analyzing Differences Among More Than Two Groups in SPSS</a>
   <ul class="collapse">
@@ -278,7 +329,7 @@ window.Quarto = {
   <li><a href="#check-assumptions" id="toc-check-assumptions" class="nav-link" data-scroll-target="#check-assumptions">2.3 Check assumptions</a></li>
   <li><a href="#one-way-anova-test" id="toc-one-way-anova-test" class="nav-link" data-scroll-target="#one-way-anova-test">2.4 One-Way ANOVA Test</a></li>
   <li><a href="#post-hoc-tests" id="toc-post-hoc-tests" class="nav-link" data-scroll-target="#post-hoc-tests">2.5 Post-hoc Tests</a></li>
-  <li><a href="#effect-size" id="toc-effect-size" class="nav-link" data-scroll-target="#effect-size">2.6 Effect Size</a></li>
+  <li><a href="#effect-size-1" id="toc-effect-size-1" class="nav-link" data-scroll-target="#effect-size-1">2.6 Effect Size</a></li>
   </ul></li>
   <li><a href="#two-way-anova---comparing-math-scores-by-school-type-and-gender" id="toc-two-way-anova---comparing-math-scores-by-school-type-and-gender" class="nav-link" data-scroll-target="#two-way-anova---comparing-math-scores-by-school-type-and-gender">3. Two-Way ANOVA - Comparing Math Scores by School Type and Gender</a></li>
   <li><a href="#nonparametric-alternative-kruskal-wallis-test" id="toc-nonparametric-alternative-kruskal-wallis-test" class="nav-link" data-scroll-target="#nonparametric-alternative-kruskal-wallis-test">4. Nonparametric Alternative: Kruskal-Wallis Test</a></li>
@@ -796,7 +847,808 @@ H_a: not\,all\,the\,μ_i\,are\,equal \text{(at least one group means differ from
 </tr>
 </tbody>
 </table>
+<p>Where are all those values coming from? Start with the first line. Between groups sum of squares comes from the third type of variation we showed you earlier in the chapter – the difference between group means <span class="math inline">\((\bar{X_j})\)</span> and the overall mean <span class="math inline">\((\bar{X})\)</span>. The difference for each group was multiplied by the sample size of the group, <span class="math inline">\(n_j\)</span>, and then all sum up across groups.</p>
+<p><span class="math display">\[
+SS_{BG} = \sum n_j \left( \bar{X}_j - \bar{X} \right)^2
+= 10(11.4 - 13.73)^2 + \cdots + 10(8.9 - 13.73)^2
+= 558.675
+\]</span></p>
+<p>Then we have df for the numerator, or df between groups, which is k -1 or 3. Remember, MS = variance, so the Mean Square value is simply the Sum of Squares for Between-Groups <span class="math inline">\((SS_{BG})\)</span> divided by the degrees of freedom <span class="math inline">\((df_{BG})\)</span> because when we calculate variance we divide <span class="math inline">\(SS\)</span> by <span class="math inline">\(df\)</span>. With this, we now have the numerator for our <span class="math inline">\(F\)</span> statistic.  </p>
+<p><span class="math display">\[
+MS_{BG} = \frac{\sum n_j \left( \bar{X}_j - \bar{X} \right)^2}{k - 1}
+= \frac{558.675}{3}
+= 186.225
+\]</span></p>
+<p>Next, we have the line for Within Group differences, or error variance. The Sum of Squares for within-group variance <span class="math inline">\((SS_E)\)</span> comes from the second type of variation we showed you – the difference between each individual person’s score <span class="math inline">\((X_{ij})\)</span> and their own group’s mean score <span class="math inline">\((\bar{X_j})\)</span></p>
+<p><span class="math display">\[
+SS_E = \sum (X_{ij} - \bar{X}_j)^2 = 143.3
+\]</span></p>
+<p>Then we have <span class="math inline">\(df\)</span> for the denominator, or <span class="math inline">\(df\)</span> within groups, which is <span class="math inline">\(N - k\)</span> or <span class="math inline">\(36\)</span>. The Mean Square value on this line is <span class="math inline">\(SS_E\)</span> divided by <span class="math inline">\(df_E\)</span>.</p>
+<p><span class="math display">\[
+MS_E = \frac{\sum (X_{ij} - \bar{X}_j)^2}{N - k}
+= \frac{143.3}{36}
+= 3.981
+\]</span></p>
+<p>So now you have the numerator for our F statistic.</p>
+<p><span class="math display">\[
+F = \frac{186.225}{3.981} = 46.78
+\]</span></p>
 </section>
+<section id="step-4a-find-the-p-value." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-4a-find-the-p-value.">Step 4a: Find the p value.</h3>
+<p>Based on the decision criteria we set in step 2, a critical value at <span class="math inline">\(\alpha = 0.05\)</span> is <span class="math inline">\(2.87\)</span>. Our obtained <span class="math inline">\(F\)</span> statistic <span class="math inline">\((F = 46.78)\)</span> is much larger than this critical value, meaning the associated <span class="math inline">\(p\)</span> value is smaller than <span class="math inline">\(0.05\)</span>. Therefore, we reject the null hypothesis and conclude that at least one group mean is significantly different than the others. The actual <span class="math inline">\(p\)</span> value is <span class="math inline">\(1.67×10^{−12}\)</span>, in such small <span class="math inline">\(p\)</span> value, we report it as <span class="math inline">\(p &lt; .001\)</span>.</p>
+</section>
+<section id="step-4b-draw-a-conclusion-and-report-your-conclusion." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-4b-draw-a-conclusion-and-report-your-conclusion.">Step 4b: Draw a conclusion and report your conclusion.    </h3>
+<p>As we reject the null hypothesis, we conclude that the average recall performance of college students significantly differs for at least one of the learning strategies used.</p>
+<p>APA-style sample: A one-way ANOVA was conducted to examine the effect of learning strategies on college students’ recall performance. The results indicated a statistically significant difference among at least one of the learning strategies, <span class="math inline">\(F(3,36) = 46.78\)</span>, <span class="math inline">\(p &lt; .001\)</span>.</p>
+<p>Before we move on, think about why the homogeneity of variances assumption exists. We are summing up all the differences between individual data points and their respective group means, then dividing that result by the degrees of freedom within groups to get an overall error variance. If some groups have individuals that are widely spread apart from each other, while other groups have a much smaller spread, the average variance will not be a good estimate for the error of any of the groups.  </p>
+<p> </p>
+<p>A key limitation of ANOVA arises when group sizes are extremely imbalanced, as groups with larger sample sizes will contribute more to variance estimates. This issue becomes more problematic when group sizes are both imbalanced and have unequal variances, leading to inaccurate F statistics and an increased risk of Type I or Type II errors. In that scenario, we would suggest taking a random sample from one or more groups with large sample sizes to create similar-sized groups. Of course, if your overall sample size decreases, you lose statistical power, but at least you can improve the reliability of analysis by minimizing bias in variance estimation.</p>
+<p> </p>
+<p>This brings us to the concept of power. In earlier chapters, we mentioned statistical power multiple times. Statistical power is the probability of correctly rejecting the null hypothesis when it is false. In other words, it is the likelihood that a study will detect an effect or difference if one truly exists. Look back at the formula for the F statistic. What would make the outcome larger and, therefore, make it more likely to reject the null hypothesis?  </p>
+<ol type="1">
+<li><p>Make the numerator larger </p></li>
+<li><p>Make the denominator smaller </p></li>
+</ol>
+<p> </p>
+<p>The first is pretty straightforward. If there are greater differences between groups, then the numerator increases. For the second option, we need to look at how we calculate the denominator, which is <span class="math inline">\(MS_E\)</span>. We took the <span class="math inline">\(SS_E\)</span> and divided it by <span class="math inline">\(df_E\)</span>. We now have another fraction, and this time the denominator is <span class="math inline">\(N – k\)</span>, which is the formula for within-group degrees of freedom. What happens as this increases?  </p>
+<ul>
+<li><p>When you have a larger number in the denominator of a fraction, the result is going to become smaller. </p></li>
+<li><p>Since <span class="math inline">\(MS_E\)</span> is the denominator of the fraction for the F statistic calculation, a smaller <span class="math inline">\(MS_E\)</span> leads to a larger <span class="math inline">\(F\)</span> statistic, making it more likely to detect significant differences between groups.  </p></li>
+</ul>
+<p> </p>
+<p>The conclusion is that, pretty much as always, a larger sample size gives you more power. Nothing new here, but it helps to see how that actually works out mathematically.  </p>
+</section>
+</section>
+<section id="post-hoc-test" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="post-hoc-test"><span class="header-section-number">10.2</span> Post Hoc Test</h2>
+<p>Think back to the null hypothesis for a one-way ANOVA. If we reject the null hypothesis, all we know is that at least one group mean is significantly different from at least one other group mean. In order to learn which means are different, we need to conduct post hoc tests.</p>
+<p>The first step is to look at a means plot for a visual representation of the data, providing an indication of which means may be different. Figure 10.8 shows us that Visualization and Technology-Aided Learning are probably not significantly different from each other, but the other means (Repetition and Control) seem to differ from the first two. We can’t tell if they also differ from each other.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Mean Recall Scores with Error Bars.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Before we run the post hoc tests that will tell us which groups are significantly different from each other, we want to revisit the concept of familywise error (or experimentwise error). So far, we have run one analysis on this single dataset and we used an alpha level of <span class="math inline">\(0.05\)</span>, indicating that we are willing to accept a 5% chance that we will reject a null hypothesis that is actually true (false positive). If we only perform one test, then the Type I error rate is equal to our alpha level, but if we conduct more tests on the same data, our chance of getting a false positive increases. Consider all the comparisons we could theoretically make for this recall data:</p>
+<ul>
+<li><p>Repetition vs Visualization</p></li>
+<li><p>Repetition vs Technology-Aided Learning</p></li>
+<li><p>Repetition vs Control</p></li>
+<li><p>Visualization vs Technology-Aided Learning</p></li>
+<li><p>Visualization vs Control</p></li>
+<li><p>Technology-Aided Learning vs Control</p></li>
+</ul>
+<p>That is a lot of tests! With 4 groups, we could make up to 6 comparisons. The formula for calculating the error rate for an entire set of comparisons is <span class="math inline">\(1 − (1−α)^c\)</span>, in which C = the number of comparisons. For four groups and 6 comparisons, our experimentwise error rate is actually 0.26, which is much higher than our theoretical alpha level of 0.05.</p>
+<p>There are many different ways to manage this problem. We will highlight three of the most frequently used post hoc tests and provide brief descriptions for several others. Multiple comparison procedures make comparisons while controlling for the increased risk of Type I error that occurs due to multiple testing. The multiple comparison procedures use the same general form of the t statistic. What distinguishes one multiple comparison procedure from another is the kind of contrasts that can be tested (pairwise vs complex), how they control the familywise error rate, and whether they are part of a post hoc or planned analysis.</p>
+<p>The <strong>Bonferroni post hoc test</strong> is the most conservative. It simply divides your starting alpha level by the number of tests you are running and then conducts t tests between each pair. We have an alpha of .05 and 6 comparisons in our example, so our effective significance would be .0083. This means that under the Bonferroni correction, a comparison would need a p value less than 0.0083 to be statistically significant. This is more conservative and reduces the chance of Type I error at the cost of statistical power. This is a pretty tough test, and if you have even more groups, you could end up with a significant ANOVA but no significant pair-wise comparisons. If that happens, then you know for sure that your post hoc test was too conservative.</p>
+<p><strong>Fisher’s Least Significant Difference test (LSD)</strong> is a simple post hoc pairwise comparison procedure used to determine whether the means of two groups differ significantly. This test figures out the smallest significant difference between two means as if a test had been run on those two groups, and then any difference larger than that is also considered a significant result. This test has greater power to detect a significant difference between groups, but the tradeoff is that the method does not control for familywise error rate (the probability of making one or more Type I errors), meaning the likelihood of making a type I error increases with multiple comparisons.</p>
+<p><strong>Tukey’s Honestly Significant Difference (Tukey’s or HSD)</strong> test is a post hoc analysis method used to determine which specific group means are significantly different, while controlling the familywise error rate. Tukey’s test is similar to a t test but it has larger critical values (using the Studentized range statistic), so it is more difficult to reject the null.</p>
+<div class="comparison-table">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 60%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sidak</td>
+<td>Pairwise multiple comparison test based on a <em>t</em> statistic. Adjusts the significance level for multiple comparisons and provides tighter bounds than Bonferroni.</td>
+</tr>
+<tr class="even">
+<td>Scheffé</td>
+<td>Performs simultaneous joint pairwise comparisons for all possible combinations of means. Uses the F distribution and can examine all linear combinations of group means, not just pairwise comparisons.</td>
+</tr>
+<tr class="odd">
+<td>S-N-K</td>
+<td>Student–Newman–Keuls test makes pairwise comparisons using the Studentized range distribution. Compares pairs of means within homogeneous subsets, testing extreme differences first.</td>
+</tr>
+<tr class="even">
+<td>Tukey’s b</td>
+<td>Uses the Studentized range distribution to make pairwise comparisons. The critical value is the average of the corresponding values for Tukey’s HSD and Student–Newman–Keuls tests.</td>
+</tr>
+<tr class="odd">
+<td>Duncan</td>
+<td>Uses a stepwise approach similar to Student–Newman–Keuls but controls the error rate for the entire set of comparisons rather than individual tests. Uses the Studentized range statistic.</td>
+</tr>
+<tr class="even">
+<td>Waller–Duncan</td>
+<td>Multiple comparison test based on a <em>t</em> statistic with a Bayesian approach.</td>
+</tr>
+<tr class="odd">
+<td>Dunnett</td>
+<td>Pairwise <em>t</em>-test comparing a set of treatments against a single control mean. Can perform two-sided or one-sided tests to check if means are greater or smaller than the control.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="effect-size" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="effect-size"><span class="header-section-number">10.3</span> Effect Size</h2>
+<p>The last thing we will discuss about one-way ANOVAs is how to measure effect size. The concept is the same as with other types of analyses. Even if there is a statistically significant difference, we want to know if it is practically meaningful. For ANOVAs, effect size is measured in terms of the proportion of variance explained. We have focused on pairwise comparisons, but we are going back to the overall model and estimating to what extent group membership explains changes in the dependent variable for effect size.</p>
+<p>To assess the size of the effect in an ANOVA, we can estimate Eta Squared (<span class="math inline">\(\eta^2\)</span>), which provides the proportion of variance explained by the treatment.</p>
+<p><span class="math display">\[
+\eta^2 = \frac{SS_{BG}}{SS_{total}} = \frac{558.675}{701.98} = 0.796
+\]</span></p>
+<p>his tells us that 79.6% of the variation in the number of words recalled is a function of the learning condition. According to Cohen (1988), this represents a large effect size, suggesting that the instructional method has a strong influence on recall performance. Unfortunately, <span class="math inline">\(\eta^2\)</span> is a biased estimator, meaning that it tends to overestimate the true effect size. A less biased estimator for explained variance is Omega Squared (<span class="math inline">\(\omega^2\)</span>), where:</p>
+<p><span class="math display">\[
+\omega^2 = \frac{SS_{BG} - [(k - 1)MS_E]}{SS_{total} + MS_E}
+= \frac{558.68 - (3 \times 3.98)}{701.98 + 3.98}
+= \frac{546.74}{705.96}
+= 0.774
+\]</span></p>
+<p>As you can see, the value for <span class="math inline">\(\omega^2\)</span> is lower, estimating that <span class="math inline">\(77.4%\)</span> of the variation in the number of words recalled is due to the learning condition. Whenever you need to report effect size, we recommend using <span class="math inline">\(\omega^2\)</span> because it is less biased.</p>
+</section>
+<section id="factorial-anova" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="factorial-anova"><span class="header-section-number">10.4</span> Factorial ANOVA </h2>
+<p> </p>
+<p>The first type of ANOVA we learned was <em>one-way</em>, meaning there was only one factor. We divided people into groups by condition. Now, we are adding another factor into the mix. A factorial ANOVA is a statistical test used to analyze the effects of two or more categorical independent variables (factors) on a continuous dependent variable, including their interaction effects. It extends the one-way ANOVA by examining multiple factors simultaneously, allowing for a more comprehensive analysis. A classic example for using a factorial ANOVA is testing outcomes based on an intervention (treatment) and looking at whether the intervention is equally effective across different subsets of the sample.</p>
+<p> </p>
+<p>For example, say you have a new way to coach students on reading and you want to find out if students who experience this treatment earn higher scores on a reading assessment than a control group. There are probably going to be students whose reading ability is high enough to start out that they are not going to show much of an increase – they don’t really need the intervention. However, students who started out a little behind on reading could make significant progress based on the intervention.  </p>
+<div class="striped-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Intervention conduction</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reading Ability</td>
+<td>Treatment</td>
+<td>Control</td>
+</tr>
+<tr class="even">
+<td>High</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Low</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you did not use a factorial ANOVA and just ran a <span class="math inline">\(t\)</span> test comparing reading scores for treatment and control students, you might not see a significant result. But if you divide students into ability groups, you might find that the treatment was very helpful for students in a lower-ability group. This is called an interaction effect, and it is typically what we are especially interested in when we use factorial ANOVA to analyze our data. </p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter10_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Interaction Effect: Reading Ability &amp; Intervention.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>While rare in educational research, you can have more than two factors but for the simplistic nature of this book we are going to stick with only two. This can be referred to as a two-way ANOVA, or as an X by Y ANOVA, with X and Y representing the different number of groups for each factor. In our example, we had a treatment and control group, and then if we had students grouped in two reading levels, that would result in a 2x2 ANOVA. There are three basic designs for a two-way ANOVA: </p>
+<p> </p>
+<ul>
+<li><strong>2-Between, or Between-Subjects Design</strong>: a two-way ANOVA where different participants are observed in each cell or group. This means that no individual belongs to more than one cell. For the example above, students would be in only one of the four groups: treatment/low ability, treatment/high ability, control/low ability, or control/high ability.  </li>
+</ul>
+<p> </p>
+<ul>
+<li><strong>1-Between 1-Within, or Mixed Design</strong>: a two-way ANOVA where different participants are observed at each level of the between-subjects factor and are repeatedly observed across the levels of the within-subjects factor. If you have a 2x2 mixed ANOVA, each person will be in two cells. To apply this approach to the example above, imagine that it wasn’t an experiment. Instead, a teacher just used this new method for all students. The between-subjects factor would still be the two ability groups, but then students at each ability level would be tested multiple times during the year.  </li>
+</ul>
+<p> </p>
+<ul>
+<li><strong>2-Within, or Within-Subjects Design</strong>: a two-way ANOVA where the same participants are observed at each level of two factors. In this case each person is in all the cells; the composition of the cells is the same across the entire grid. If we wanted to apply this design to the example above, we would have to abandon the idea of grouping students by ability. Instead, imagine that we want to find out if the coaching intervention works better for reading and math. The teacher could test the same group of students on reading and math at the start of the year, then again after a period of time; the idea would be to see if students improved at an equal rate in both subjects. Our example is getting a little weird, so here is a more typical scenario for a 2-Within Factorial ANOVA: One group of students watches two types of instructional videos on different topics. Students are then asked to recall what they learned from the video right after watching and again one week later. The research question would ask which video was more effective for longer-term recall.    </li>
+</ul>
+<p>Each factor is usually identified with a letter in a two-way ANOVA, such as A and B, although it doesn’t have to be. It is also common to identify the levels of each factor numerically and use the numbers to identify the ANOVA model. For example, if you measure how quickly (in seconds) subjects respond to a stimulus that varies in size (small, medium, large) and color (dark, bright), we might designate Factor A as size and Factor B as color. Using the levels of each factor, you can describe this as a 3x2 ANOVA or 3x2 factorial design. </p>
+<p> </p>
+<p>We often arrange the data from an ANOVA test in a table, and when we do, there is a special notation to indicate each entry. We are going to use another version of the vocabulary recall study as our example.</p>
+<p>Imagine that a researcher is investigating the impact of noise level (Loud vs.&nbsp;Quiet) and learning strategies (Repetition, Visualization, Technology-Aided Learning, Control) on vocabulary recall performance. This study aims to determine whether different instructional methods are more effective for certain types of learners.</p>
+<p>The research addresses the following questions:</p>
+<ul>
+<li><p>Do students who study in loud and quiet environments differ in their vocabulary recall performance?</p></li>
+<li><p>Does vocabulary recall vary based on learning strategy (Repetition, Visualization, Technology-Aided Learning, Control)?</p></li>
+<li><p>Does the effectiveness of learning strategies depend on the noise level of one’s study environment?</p>
+<ul>
+<li>For example, do students who study in a loud environment benefit more from visualization strategies than those who study in a quiet environment?</li>
+</ul></li>
+</ul>
+<p>To explore these questions, the researcher collected data from 80 college students, with 10 participants assigned to each condition. It is an entirely between-subjects design, in that participants were separated into two groups by noise level while studying (loud vs.&nbsp;quiet) as well as the four learning conditions.  </p>
+<ul>
+<li><p>Levels of Factor A – symbolized as “a”  If there are two levels (e.g., loud vs.&nbsp;quiet), <span class="math inline">\(a = 2\)</span>.   </p></li>
+<li><p>Levels of Factor B – symbolized as “b”   If there are four levels (Repetition, Visualization, Technology-Aided Learning, Control), <span class="math inline">\(b = 4\)</span>.  </p></li>
+</ul>
+<p> </p>
+<p>The combination of one level from each factor is called a cell. The number of cells represents the number of groups in a study.  </p>
+<ul>
+<li>Total number of cells = ab </li>
+</ul>
+<p>In the vocabulary recall example, there are 8 cells.  </p>
+<p>When we indicate the mean of the specific cell, we use subscripts. As a general form, we use to represent the mean of the cell that is the ith category of Factor A and jth category of Factor B. For example, the mean of Loud environment group for the Repetition condition is represented as <span class="math inline">\(\bar{X}_{11}\)</span>. This represents the mean of the first category of noise level while studying and the first category of learning strategy condition.</p>
+</section>
+<section id="describing-variability-main-effects-and-interactions" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="describing-variability-main-effects-and-interactions"><span class="header-section-number">10.5</span> Describing Variability: Main Effects and Interactions </h2>
+<p>As we continue learning about ANOVAs, remember that this test is all about the different sources of variance. With a two-way between-subjects ANOVA, we have four sources of variation to consider.</p>
+<ol type="1">
+<li><p>We still have <em>within-group variation</em>, or error. This is the variation within groups due to measurement error or just people being different from each other even though they’re in the same group. As before, you find the sum of squared differences between each individual score in a cell and the mean score for that individual’s cell. This is still referred to as <span class="math inline">\(SS_E\)</span>.</p></li>
+<li><p>Our between-groups variation is now split into two factors. First, we have variation due to Factor A, which is known as the <em>Main Effect of Factor A</em>. In the vocabulary recall example, this would be variation in the number of words recalled due to the noise level factor. You compute this just like you would find the between-groups effect in a one-way ANOVA: sum the squared differences between the mean of a specific level of Factor A (including all levels of Factor B) and the grand mean. Instead of calling this <span class="math inline">\(SS_{BG}\)</span>, we call it <span class="math inline">\(SS_A\)</span>.</p></li>
+<li><p>Second, we have variation due to Factor B, or the <em>Main Effect of Factor B</em>. In the vocabulary recall example, this is the effect of Learning Strategy Conditions. Note that the main effects don’t take the other factor into consideration. When you are looking for the main effect of Learning Strategy Conditions, you are combining the noise level groups as if there was only one factor. Summing up the squared differences between the mean of a specific level of Factor B and the grand mean gives you <span class="math inline">\(SS_B\)</span>.</p></li>
+<li><p>Finally, we could have variation due to an Interaction Effect between the two factors, which means the effect of one factor depends on the level of another factor. In our example, you could see a different pattern of mean differences among conditions for the loud group compared to the quiet group. If there is no interaction effect, the pattern in mean differences by learning strategy condition is the same for both noise level groups.  </p></li>
+</ol>
+<p> </p>
+<p>Finding the variation due to the interaction effect takes a couple steps. First, we find <span class="math inline">\(SS_{cells}\)</span> by summing the squared differences between each cell mean and the grand mean. This is the variability attributed to the combination of levels for Factors A and B. However, this is not the interaction effect, because it also includes main effects that we need to subtract out. Think about it – if we are comparing one cell mean to the grand mean, any difference could be due to the main effect of one or both factors.  </p>
+<p>What we really need is <span class="math inline">\(SS_{AB}\)</span>, which is the variation solely due to the interaction between Factor A and Factor B, which is what we get after subtracting out the variation due to each main effect, which we already identified.  </p>
+<p><span class="math display">\[
+SS_{\text{cells}} = SS_A + SS_B + SS_{AB}
+\]</span></p>
+<p>Or, slightly rearranged:   <span class="math display">\[
+SS_{AB} = SS_{\text{cells}} - (SS_A + SS_B)
+\]</span></p>
+</section>
+<section id="hypothesis-testing-in-a-two-way-anova" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="hypothesis-testing-in-a-two-way-anova"><span class="header-section-number">10.6</span> Hypothesis Testing in a Two-Way ANOVA </h2>
+<p>Let’s explore our example that investigates the impact of noise level while studying (loud vs.&nbsp;quiet) and learning strategies (Repetition, Visualization, Technology-Aided Learning, Control) on vocabulary recall performance.</p>
+<p>Our research questions are:</p>
+<ul>
+<li><p>Do students who study in loud and quiet environments differ in their vocabulary recall performance?</p></li>
+<li><p>Does vocabulary recall vary based on learning strategy (Repetition, Visualization, Technology-Aided Learning, Control)?</p></li>
+<li><p>Does the effectiveness of learning strategies depend on the noise level of one’s study environment?</p></li>
+</ul>
+<p>The collected data are presented in the table below.</p>
+<div class="striped-table">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 36%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Noise Level</th>
+<th>Repetition</th>
+<th>Visualization</th>
+<th>Technology-Aided Learning</th>
+<th>Control</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quiet</td>
+<td>16</td>
+<td>11</td>
+<td>15</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Quiet</td>
+<td>14</td>
+<td>9</td>
+<td>16</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td>Quiet</td>
+<td>13</td>
+<td>8</td>
+<td>13</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>Quiet</td>
+<td>13</td>
+<td>12</td>
+<td>13</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td>Quiet</td>
+<td>9</td>
+<td>14</td>
+<td>19</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Quiet</td>
+<td>11</td>
+<td>13</td>
+<td>21</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>Quiet</td>
+<td>12</td>
+<td>8</td>
+<td>16</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>Quiet</td>
+<td>17</td>
+<td>10</td>
+<td>20</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>Quiet</td>
+<td>15</td>
+<td>11</td>
+<td>18</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>Quiet</td>
+<td>8</td>
+<td>13</td>
+<td>15</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td><strong>Mean</strong></td>
+<td><strong>12.8</strong></td>
+<td><strong>10.9</strong></td>
+<td><strong>16.6</strong></td>
+<td><strong>8.5</strong></td>
+</tr>
+<tr class="even">
+<td>Loud</td>
+<td>9</td>
+<td>16</td>
+<td>22</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>Loud</td>
+<td>7</td>
+<td>16</td>
+<td>17</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Loud</td>
+<td>9</td>
+<td>18</td>
+<td>18</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>Loud</td>
+<td>12</td>
+<td>12</td>
+<td>13</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>Loud</td>
+<td>7</td>
+<td>12</td>
+<td>16</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>Loud</td>
+<td>7</td>
+<td>16</td>
+<td>18</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>Loud</td>
+<td>12</td>
+<td>14</td>
+<td>14</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>Loud</td>
+<td>10</td>
+<td>18</td>
+<td>19</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Loud</td>
+<td>6</td>
+<td>15</td>
+<td>16</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>Loud</td>
+<td>9</td>
+<td>13</td>
+<td>17</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td><strong>Mean</strong></td>
+<td><strong>8.8</strong></td>
+<td><strong>15.0</strong></td>
+<td><strong>17.0</strong></td>
+<td><strong>8.6</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="step-1-determine-the-null-and-alternative-hypotheses" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-1-determine-the-null-and-alternative-hypotheses">Step 1: Determine the null and alternative hypotheses</h3>
+<p>There are eight possible outcomes that you could obtain when you compute a two-way betweensubjects ANOVA:</p>
+<ol type="1">
+<li><p>All three hypothesis tests are not significant</p></li>
+<li><p>Significant main effect of Factor A only</p></li>
+<li><p>Significant main effect of Factor B only</p></li>
+<li><p>Significant main effect of Factor A and Factor B</p></li>
+<li><p>Significant AxB interaction only</p></li>
+<li><p>Significant main effect of Factor A and an AxB interaction</p></li>
+<li><p>Significant main effect of Factor B and an AxB interaction</p></li>
+<li><p>All three hypothesis tests are significant</p></li>
+</ol>
+<p>This means that defining the null and alternative hypotheses is somewhat complicated with factorial designs.</p>
+<section id="hypothesis-for-main-effects" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hypothesis-for-main-effects">Hypothesis for Main Effects</h4>
+<p>Factor A</p>
+<p><span class="math display">\[
+H_0: \mu_1 = \mu_2 = … = \mu_A \text{(there is no main effect of Factor A)}
+\]</span></p>
+<p><span class="math display">\[
+H_A: \text{at least one mean of the levels in Factor A is different from other means.}
+\]</span></p>
+<p>In our example, <span class="math inline">\(H_A\)</span> would be, “Average number of words recalled differs by noise level group.”</p>
+<p>Factor B</p>
+<p><span class="math display">\[
+H_0: \mu_1 = \mu_2 = … = \mu_B \text{(there is no main effect of Factor B)}
+\]</span></p>
+<p><span class="math display">\[
+H_A: \text{at least one mean of the levels in Factor B is different from other means.}
+\]</span></p>
+<p>In our example, HA would be, “Average number of words recalled differs by learning strategy.” Interaction between Factor A and B: It is a bit hard to write an equation as we do for the main effects, but it is okay to say:</p>
+<p><span class="math inline">\(H_0\)</span>: there is no interaction effect between Factor A and B <span class="math inline">\(H_A\)</span>: there is an interaction effect between Factor A and B</p>
+<p>In the recall example, <span class="math inline">\(H_A\)</span> would be, “There is an interaction effect between noise level and learning strategy conditions.”</p>
+</section>
+</section>
+<section id="step-2-set-the-criteria-for-a-decision.-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-2-set-the-criteria-for-a-decision.-1">Step 2: Set the criteria for a decision. </h3>
+<p>To determine whether the noise level while studying and learning strategy significantly affect vocabulary recall, we will use a significance level (α) of 0.05, as usual. This means that we are allowing a 5% chance of incorrectly rejecting the null hypothesis. Since we use two-tailed tests for both main effects (A, B) and the interaction effect, we are considering both directions of possible effects—whether one group performs significantly higher or lower than another.</p>
+<p>Because there are three key effects to evaluate:</p>
+<ul>
+<li><p>the main effect of noise level while studying,</p></li>
+<li><p>the main effect of learning strategy, and</p></li>
+<li><p>the interaction effect between these two variables.</p></li>
+</ul>
+<p>Each effect has an associated <span class="math inline">\(F\)</span> statistic, which we will compare to a critical F value from the F distribution table to determine statistical significance. To determine the critical F statistics, we first need to know the degrees of freedom for each effect.</p>
+<p>We will explain later in this chapter how to get these degrees of freedom, but for now we will provide them to move forward. For noise level while studying (which has 2 levels: loud and quiet), the degrees of freedom are (<span class="math inline">\(df_{BG}\)</span>, <span class="math inline">\(df_E\)</span>) $ = (1, 72)<span class="math inline">\(. For the learning strategy factor (which has four levels: Repetition, Visualization, Technology-Aided Learning, and Control), the degrees of freedom are (\)</span>df_{BG}$, <span class="math inline">\(df_E\)</span>) <span class="math inline">\(= (3, 72)\)</span>. The interaction between noise level and learning strategy also has (<span class="math inline">\(df_{BG}\)</span>, <span class="math inline">\(df_E\)</span>) <span class="math inline">\(= (3, 72)\)</span>.</p>
+<p>As we have done before, once we obtain the F statistic for each effect from the ANOVA calculations, we will compare it to the corresponding F critical value for the given degrees of freedom and significance level. If the calculated F value exceeds the F critical value, we will reject the null hypothesis, indicating that the effect is statistically significant. On the other hand, if the F value is less than the F critical value, we will fail to reject the null hypothesis, meaning there is not enough evidence to conclude that the effect is significant.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 42%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Degrees of Freedom <span class="math inline">\((d f_{BG}, d f_E)\)</span></th>
+<th>Critical F value (two-tailed)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Factor A</td>
+<td>(1, 72)</td>
+<td>3.97</td>
+</tr>
+<tr class="even">
+<td>Factor B</td>
+<td>(3, 72)</td>
+<td>2.73</td>
+</tr>
+<tr class="odd">
+<td>Interaction (A &amp; B)</td>
+<td>(3, 72)</td>
+<td>2.73</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-3-check-assumptions-and-compute-the-test-statistic.-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-3-check-assumptions-and-compute-the-test-statistic.-1">Step 3: Check assumptions and compute the test statistic.  </h3>
+<section id="assumptions-for-a-two-way-between-subjects-anova" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="assumptions-for-a-two-way-between-subjects-anova">Assumptions for a Two-Way Between-Subjects ANOVA </h4>
+<p>Because we are talking about a between-subjects ANOVA (no factor is within-subjects), we are back to the same assumptions we started with: </p>
+<ul>
+<li><p>Normality – we assume the dependent variable is normally distributed in the population or populations being sampled.</p></li>
+<li><p>Random Sampling – we assume that the data measured were obtained from a sample that was selected using a random sampling procedure. </p></li>
+<li><p>Independence – we assume that the probabilities of each measured outcome in a study are independent or equal.  </p></li>
+<li><p>Homogeneity of Variance – we assume that the variance in each group is equal to each other. </p></li>
+</ul>
+<p>We will not go through the detailed steps for testing assumptions, but it is important to use both visual representations of the data and descriptive statistics to assess whether the assumptions of normality and homogeneity of variances are met. Additionally, statistical tests such as the Shapiro-Wilk test for normality and Levene’s test for homogeneity of variances can provide further support for interpreting the data.</p>
+<p>In our example, Levene’s test resulted in <span class="math inline">\(p = 0.772\)</span>, meaning we fail to reject the null hypothesis of equal variances. Therefore, we conclude that the variances are approximately equal across all groups, satisfying the assumption of homogeneity of variance.</p>
+</section>
+<section id="interpreting-two-way-anova-results" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="interpreting-two-way-anova-results">Interpreting Two-Way ANOVA Results </h4>
+<p>Remember that we have more than one hypothesis to test with a two-way ANOVA. We start by looking at the main effects of the two factors. The table below shows the means for each cell, and the means for each factor. </p>
+<p><strong>Learning Strategy</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 23%">
+<col style="width: 11%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Noise Level</th>
+<th>Repetition</th>
+<th>Visualization</th>
+<th>Technology-Aided</th>
+<th>Control</th>
+<th>Factor A</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quiet</td>
+<td><span class="math inline">\(\bar{X}_{11} = 12.8\)</span></td>
+<td><span class="math inline">\(\bar{X}_{12} = 10.9\)</span></td>
+<td><span class="math inline">\(\bar{X}_{13} = 16.6\)</span></td>
+<td><span class="math inline">\(\bar{X}_{14} = 8.5\)</span></td>
+<td><span class="math inline">\(\bar{X}_1 = 12.2\)</span></td>
+</tr>
+<tr class="even">
+<td>Loud</td>
+<td><span class="math inline">\(\bar{X}_{21} = 8.8\)</span></td>
+<td><span class="math inline">\(\bar{X}_{22} = 15\)</span></td>
+<td><span class="math inline">\(\bar{X}_{23} = 17\)</span></td>
+<td><span class="math inline">\(\bar{X}_{24} = 8.6\)</span></td>
+<td><span class="math inline">\(\bar{X}_2 = 12.35\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Factor B</strong></td>
+<td><span class="math inline">\(\bar{X}_1 = 10.8\)</span></td>
+<td><span class="math inline">\(\bar{X}_2 = 12.95\)</span></td>
+<td><span class="math inline">\(\bar{X}_3 = 16.8\)</span></td>
+<td><span class="math inline">\(\bar{X}_4 = 8.55\)</span></td>
+<td><span class="math inline">\(\bar{X} = 12.275\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Our main effect tests ignore all the individual cell means because we are essentially running two separate one-way ANOVAs, one for each factor. The test statistic for the main effect of Factor A is:</p>
+<p><span class="math display">\[
+F_A = \frac{\text{variance of group means for Factor A}}{\text{variance attributed to error}} = \frac{MS_A}{MS_E}
+\]</span></p>
+<p>Replace the As with Bs and you have the test statistic for the main effect of Factor B:</p>
+<p><span class="math display">\[
+F_B = \frac{\text{variance of group means for Factor B}}{\text{variance attributed to error}} = \frac{MS_B}{MS_E}
+\]</span></p>
+<p>Next, we test the interaction effect, which determines whether group means at each level of one factor significantly change across the levels of a second factor. Remember from earlier in the chapter that we need to find the variance for the AB interaction, which is the variation due to differences among cells after subtracting out the variation due to each main effect. So, the test statistic for the interaction effect is:</p>
+<p><span class="math display">\[
+F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \frac{MS_{AB}}{MS_E}
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 58%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source of Variation</th>
+<th>SS</th>
+<th>df</th>
+<th>MS</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Factor A (Noise Level)</td>
+<td><span class="math inline">\(SS_A\)</span></td>
+<td><span class="math inline">\(a - 1\)</span></td>
+<td><span class="math inline">\(\frac{SS_A}{df_A}\)</span></td>
+<td><span class="math inline">\(F_A = \frac{MS_A}{MS_E}\)</span></td>
+</tr>
+<tr class="even">
+<td>Factor B (Instructional Strategy)</td>
+<td><span class="math inline">\(SS_B\)</span></td>
+<td><span class="math inline">\(b - 1\)</span></td>
+<td><span class="math inline">\(\frac{SS_B}{df_B}\)</span></td>
+<td><span class="math inline">\(F_B = \frac{MS_B}{MS_E}\)</span></td>
+</tr>
+<tr class="odd">
+<td>A × B (Noise Level × Strategy)</td>
+<td><span class="math inline">\(SS_{AB}\)</span></td>
+<td><span class="math inline">\((a - 1)(b - 1)\)</span></td>
+<td><span class="math inline">\(\frac{SS_{AB}}{df_{AB}}\)</span></td>
+<td><span class="math inline">\(F_{AB} = \frac{MS_{AB}}{MS_E}\)</span></td>
+</tr>
+<tr class="even">
+<td>Error (within groups)</td>
+<td><span class="math inline">\(SS_E\)</span></td>
+<td><span class="math inline">\(ab(n - 1)\)</span></td>
+<td><span class="math inline">\(\frac{SS_E}{df_E}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td><span class="math inline">\(SS_{\text{total}}\)</span></td>
+<td><span class="math inline">\(abn - 1\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>a = the number of categories in Factor A; b = the number of categories in Factor B; n=the number of observations in each cell.</p>
+</section>
+</section>
+<section id="step-4-find-a-p-value-draw-a-conclusion-and-report-your-conclusion." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-4-find-a-p-value-draw-a-conclusion-and-report-your-conclusion.">Step 4: Find a p value, draw a conclusion, and report your conclusion.</h3>
+<p>Since we use statistical software to obtain all F statistics in practice, we will not show all the hands calculations of the sum of squares formula. However, we present the F table for the vocabulary recall study that summarizes all calculations so we can check our results</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>SS</th>
+<th>df</th>
+<th>MS</th>
+<th>F</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Factor A (Noise Level)</td>
+<td>0.45</td>
+<td>1</td>
+<td>0.45</td>
+<td>0.06</td>
+<td>0.81</td>
+</tr>
+<tr class="even">
+<td>Factor B (Learning Strategy)</td>
+<td>739.65</td>
+<td>3</td>
+<td>246.55</td>
+<td>31.51</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="odd">
+<td>A × B (Noise Level × Strategy)</td>
+<td>164.45</td>
+<td>3</td>
+<td>54.82</td>
+<td>7.01</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="even">
+<td>Error (within groups)</td>
+<td>563.4</td>
+<td>72</td>
+<td>7.83</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>1467.95</td>
+<td>79</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The first thing we should check in a factorial ANOVA is the <em>interaction effect</em>. The <span class="math inline">\(F\)</span> statistic of <span class="math inline">\(7.01\)</span> was obtained by taking the <span class="math inline">\(MS_{AB}\)</span> of 54.82 divided by <span class="math inline">\(MS_E\)</span>, which is 7.83. When the interaction is significant, that may change the interpretation of the separate main effects of each independent variable. The F statistic in our example is larger than the critical F value of 2.73, allowing us to reject the null hypothesis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 12</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Noise Level Line Graph."</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Data approximated from the figure</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Condition =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Repetition"</span>, <span class="st">"Visualization"</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Technology-Aided Learning"</span>, <span class="st">"Control"</span>), <span class="dv">2</span>),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Mean =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">11</span>, <span class="dv">16</span>, <span class="dv">8</span>,   <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">9</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Lower =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">15</span>, <span class="dv">6</span>,   <span class="dv">7</span>, <span class="dv">13</span>, <span class="fl">15.5</span>, <span class="dv">7</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Upper =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">13</span>, <span class="fl">17.5</span>, <span class="dv">10</span>,  <span class="dv">11</span>, <span class="dv">17</span>, <span class="fl">18.5</span>, <span class="dv">11</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Quiet"</span>, <span class="st">"Loud"</span>), <span class="at">each =</span> <span class="dv">4</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Condition <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Condition,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Repetition"</span>, <span class="st">"Visualization"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"Technology-Aided Learning"</span>, <span class="st">"Control"</span>))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Condition, <span class="at">y =</span> Mean, <span class="at">group =</span> Group, <span class="at">color =</span> Group, <span class="at">linetype =</span> Group)) <span class="sc">+</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Lower, <span class="at">ymax =</span> Upper),</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">size =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>)) <span class="sc">+</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"solid"</span>, <span class="st">"dashed"</span>)) <span class="sc">+</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">""</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Recall Condition"</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Recall Score"</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Noise Level"</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="st">"Noise Level"</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">19</span>)) <span class="sc">+</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">20</span>, <span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter10_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next, we look at the main effects of Factor A (Noise Level) and Factor B (Learning Strategy), using the MS values for each to calculate the F statistic. In this case, we can reject the null hypothesis for Factor B, but not Factor A, and thus, we found a significant main effect of learning strategy, but not for noise level.</p>
+<p>However, the way you interpret these results depends on the type of interaction. In this case, there was a significant interaction effect between Noise Level and Learning Strategy on the number of words recalled, F (3, 72) = 7.01, p &lt; .05. Therefore, we already know that the effect of strategy conditions on the number of words recalled depends on the noise level, meaning that some strategies work better for students who studied in louder environments, while others work better for students who studied in quieter environments. Also, we know that there is no general advantage for either noise level across learning strategies because we did not find a significant main effect of Factor A. In other words, we cannot say one type of student overperforms the other consistently across all conductions. At the same time, the significant main effect of Factor B indicates that at least one of the strategies resulted in significantly higher or lower performance than others.</p>
+<p>Now, let’s revisit the research questions and examine how our statistical results address each one.</p>
+<ul>
+<li><p><em>Do students who study in loud and quiet environments differ in their vocabulary recall performance?</em></p>
+<p>The main effect of noise level was NOT statistically significant <span class="math inline">\(F(1, 72) = 0.06, \, p = .81\)</span>. This suggests that learns who studied in loud and quiet learning environments did not differ significantly in their vocabulary recall performance.</p></li>
+<li><p><em>Does vocabulary recall vary based on learning strategy (Repetition, Visualization, Technology-Aided Learning, Control)?</em> The main effect of learning strategy was statistically significant, <span class="math inline">\(F(3, 72) = 31,52, \, p &lt; .05\)</span>. This indicates that some learning strategies were more effective than others in enhancing vocabulary recall performance. However, a two-way ANOVA test does not tell which strategies are better or worse than others. A post hoc test would be helpful to determine which learning strategies lead to significantly higher or lower performance.</p></li>
+<li><p><em>Does the effectiveness of learning strategies depend on the noise level of one’s study environment?</em></p>
+<p>The interaction effect between noise level and learning strategy was statistically significant, <span class="math inline">\(F(3, 72) = 7.01, \, p &lt; .05\)</span>. This suggests that the effectiveness of different learning strategies varied depending on whether the learner studied in loud or quiet learning environments.</p>
+<p>In summary, some strategies may have benefited students who study in loud learning environments more than those who study in quiet environments, and vice versa. The significant interaction effect means that a one-size-fits-all approach to vocabulary learning may not be optimal, and learning strategies should be tailored to individual needs when it comes to noise level while studying.</p></li>
+</ul>
+<p> </p>
+<p>There are three key points to understand for a two-way ANOVA: </p>
+<ul>
+<li><p>One group can have significantly higher scores on a dependent variable than the other group across all levels of the second factor, and that doesn’t mean there is an interaction effect. In other words, the two lines can be quite far apart, but parallel. The indication of an interaction effect is whether two lines intersect.  </p></li>
+<li><p>You can have a main effect that is not significant at all, and yet it is very important because of its role in creating an interaction effect.  </p></li>
+<li><p>If you do have a significant interaction effect, focus on that. Depending on what the means plots look like, you may not end up reporting the main effects.  </p></li>
+</ul>
+<p> </p>
+</section>
+</section>
+<section id="post-hoc-tests-and-effect-size" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="post-hoc-tests-and-effect-size"><span class="header-section-number">10.7</span> Post Hoc Tests and Effect Size </h2>
+<p>Post hoc tests are a little different for a factorial ANOVA. In fact, it is common to stop without doing any post hoc tests after finding a significant interaction. If you decide that the main effects are both statistically significant and meaningful, either there is no interaction effect or the main effects are still interpretable even with an interaction effect, you can move forward with post hoc tests on the main effects just like with one-way ANOVAs.  </p>
+<p>Instead of running additional tests, just describe the patterns with descriptive statistics. For example, we could describe our vocabulary recall results by saying that both noise level groups were similarly low under the “Control” condition, and both groups had higher scores under the “Technology-Aid” conditions, though the Quiet group outperformed the Loud group under the “Repetition” condition, while the Loud group performed better under the “Visualization” condition than the Quiet group. Do you notice how long that took to describe? Perhaps, the best thing you can do when you find an interaction effect is to display a graph – look back to figure 10.10.</p>
+<p>The effect size calculations for <span class="math inline">\(\eta^2\)</span> and <span class="math inline">\(\omega^2\)</span> are the same as before. However, there is a third effect size to check because of the interaction term. Here is how you would calculate <span class="math inline">\(\eta^2\)</span> and <span class="math inline">\(\omega^2\)</span> for the interaction in our example: </p>
+<p><span class="math display">\[
+\eta^2_{AB} = \frac{SS_{AB}}{SS_{total}} = \frac{164.45}{1467.95} = 0.11
+\]</span></p>
+<p><span class="math display">\[
+\hat{\omega}^2 = \frac{SS_{AB} - \left[df_{AB} \cdot MS_E\right]}{SS_{total} + MS_E}
+= \frac{164.45 - (3 \times 7.83)}{1467.95 + 7.83}
+= \frac{140.96}{1475.78} = 0.096
+\]</span></p>
+<p>Whether you use <span class="math inline">\(\eta^2\)</span> or <span class="math inline">\(\omega^2\)</span>, the effect size of the interaction is small. In this case, the main effect, especially for learning strategy conditions, is much larger than the interaction effect, even though the latter is statistically significant.  </p>
+<p><em>APA style sample write-up</em>: A two-way analysis of variance (ANOVA) was conducted to examine the effects of noise level while studying (loud vs.&nbsp;quiet) and learning strategy (Repetition, Visualization, Technology-Aided Learning, Control) on vocabulary recall performance. The assumptions of normality and homogeneity of variance were assessed prior to analysis. Levene’s test for equality of variances was non-significant, p = .772, indicating that the assumption of homogeneity of variance was met. The results of the two-way ANOVA revealed that a significant interaction effect was found between noise level and learning strategy, <span class="math inline">\(F(3,72) = 7.01, \, p &lt; .05\)</span>, <span class="math inline">\(\omega^2 = .097\)</span> was relatively small compared to the main effect of learning strategy, F(3,72) = 31.52, p &lt; .05. These findings suggest that different learning strategies influence vocabulary recall performance, and their effectiveness depends on the noise level of the student’s learning environment. However, the interaction effect was smaller than the main effect of strategy, implying that certain strategies were generally more effective regardless of noise level, but some strategies were particularly beneficial for specific learning environment noise levels. Given these results, instructional methods should be tailored to accommodate individual learning environments rather than applying a uniform approach to vocabulary learning.</p>
+</section>
+<section id="other-types-of-factorial-anova" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="other-types-of-factorial-anova"><span class="header-section-number">10.8</span> Other Types of Factorial ANOVA</h2>
+<p>While we have mostly talked about two-way between-subjects ANOVAs, there are other types of factorial ANOVAs you could consider. If you add a third factor in the analysis, the only difference is that you have more effects (main effect A, main effect B, main effect C, interaction AxB, interaction AxC, interaction BxC, and interaction AxBxC). The computation gets more complex, but that’s why we use software to run the analysis. The important thing to remember is what the variance components indicate.</p>
+</section>
+<section id="kruskal-wallis-test-for-nonparametric-analysis" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="kruskal-wallis-test-for-nonparametric-analysis"><span class="header-section-number">10.9</span> Kruskal-Wallis Test for Nonparametric Analysis</h2>
+<p>The <strong>Kruskal-Wallis Test</strong> is a nonparametric statistical method used to determine whether there are significant differences between three or more independent groups based on a ranked dependent variable. In educational research, this test is particularly useful when the assumptions of parametric tests, such as ANOVA, cannot be met. For example, if the data are not normally distributed, contain outliers, or are measured on an ordinal scale, the Kruskal-Wallis Test provides a robust alternative. By ranking the data across all groups and comparing the sum of ranks, it evaluates whether the differences observed among groups are statistically significant.</p>
+<p>In educational settings, the Kruskal-Wallis Test can be applied to explore differences in student outcomes across instructional methods, grade levels, or demographic groups. For instance, a researcher might use the test to examine whether students from different teaching strategies (e.g., lecture-based, inquiry-based, and flipped classrooms) exhibit varying levels of engagement, as measured by a survey on a Likert scale. Since the test does not rely on assumptions about the underlying distribution of the data, it is particularly suited for analyzing ordinal data like survey responses, where the distance between scale points may not be equal.</p>
+<p>The test outputs a chi-squared statistic that indicates whether differences among the groups are significant. However, it does not specify which groups differ from each other. Post hoc tests, such as Dunn’s test with a Bonferroni correction, are often employed to identify pairwise differences when a significant result is obtained. The Kruskal-Wallis Test thus serves as a valuable tool for educational researchers seeking to analyze complex, real-world data where traditional parametric assumptions are not tenable, allowing for more inclusive and flexible statistical analyses.</p>
 </section>
 </section>
 <section id="analyzing-differences-among-more-than-two-groups-in-spss" class="level1 unnumbered">
@@ -902,8 +1754,8 @@ H_a: not\,all\,the\,μ_i\,are\,equal \text{(at least one group means differ from
 <p>Tukey’s HSD homogeneous subsets further reinforce this finding, showing that the “Another not-for-profit” group forms its own subset with a significantly lower mean, whereas the “Church/Religious” and “Government” schools form a higher subset and do not differ significantly from each other.</p>
 </section>
 </section>
-<section id="effect-size" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="effect-size">2.6 Effect Size</h3>
+<section id="effect-size-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="effect-size-1">2.6 Effect Size</h3>
 <p>Results:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1013,7 +1865,7 @@ H_a: not\,all\,the\,μ_i\,are\,equal \text{(at least one group means differ from
 
  c. To analyze relationships between continuous variables 
 
- d. To assess correlations between independent and dependent variables </code></pre></li>
+ d. To assess correlations between independent and dependent variables   </code></pre></li>
 <li><p><strong>Which of the following increases the risk of a Type I error when comparing multiple groups?</strong></p>
 <pre><code> a. Failing to apply a correction for multiple comparisons (e.g., Bonferroni correction) 
 

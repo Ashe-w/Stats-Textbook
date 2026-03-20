@@ -71,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -222,8 +251,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#analyzing-change-and-adjusting-for-covariates-in-spss" id="toc-analyzing-change-and-adjusting-for-covariates-in-spss" class="nav-link active" data-scroll-target="#analyzing-change-and-adjusting-for-covariates-in-spss">Analyzing Change and Adjusting for Covariates in SPSS</a>
+  <ul class="collapse">
+  <li><a href="#repeated-measures-anova" id="toc-repeated-measures-anova" class="nav-link" data-scroll-target="#repeated-measures-anova">1 Repeated-Measures ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#running-the-repeated-measures-anova" id="toc-running-the-repeated-measures-anova" class="nav-link" data-scroll-target="#running-the-repeated-measures-anova">1.1 Running the repeated-measures ANOVA</a></li>
+  <li><a href="#post-hoc-comparisons" id="toc-post-hoc-comparisons" class="nav-link" data-scroll-target="#post-hoc-comparisons">1.2 Post Hoc Comparisons</a></li>
+  </ul></li>
+  <li><a href="#ancova" id="toc-ancova" class="nav-link" data-scroll-target="#ancova">2 ANCOVA</a></li>
+  <li><a href="#running-ancova" id="toc-running-ancova" class="nav-link" data-scroll-target="#running-ancova">2.1 Running ANCOVA</a>
+  <ul class="collapse">
+  <li><a href="#checking-assumptions" id="toc-checking-assumptions" class="nav-link" data-scroll-target="#checking-assumptions">2.2 Checking assumptions</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -247,8 +294,256 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="analyzing-change-and-adjusting-for-covariates-in-spss" class="level1 unnumbered">
+<h1 class="unnumbered">Analyzing Change and Adjusting for Covariates in SPSS</h1>
+<p>In this section, we demonstrate how to implement two of the central methods from this Chapter in R: Repeated-Measures ANOVA and Analysis of Covariance (ANCOVA). Both approaches help educational researchers make more nuanced conclusions: the first by analyzing within-subject change across multiple measures, the second by adjusting for covariates to clarify between-group differences.</p>
+<section id="repeated-measures-anova" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="repeated-measures-anova">1 Repeated-Measures ANOVA</h2>
+<p>We will examine U.S. students’ math performance across three content areas from PISA: - PV1MPRE: Reasoning - PV1MCQN: Quantity - PV1MCSS: Space &amp; Shape</p>
+<p>These serve as within-subject factors (each student is measured in all three domains). For a between-subjects factor, we will include MATHMOT - Motivation to Do Well in Mathematics, a binary categorical variable. A value of 1 indicates that the student reported being more motivated to do well in mathematics than in other subjects, and 0 indicates they are not.</p>
+<section id="running-the-repeated-measures-anova" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="running-the-repeated-measures-anova">1.1 Running the repeated-measures ANOVA</h3>
+<p>Step-by-step procedure in SPSS</p>
+<ol type="1">
+<li><p>Click Analyze → General Linear Model → Repeated Measures</p></li>
+<li><p>In the Repeated Measures Define Factor(s) dialog:</p>
+<p>In the box labeled Within-Subject Factor Name, type: ContentArea</p>
+<p>For Number of Levels, enter: 3</p>
+<p>Click Add, then click Define</p></li>
+<li><p>Assign the three variables to the ContentArea levels:</p>
+<p>In the next dialog (Repeated Measures: Define), move the following into the “Within-Subjects Variables” slots:</p>
+<pre><code> PV1MATH_Q → Level 1 
+
+ PV1MATH_S → Level 2 
+
+ PV1MATH_C → Level 3 </code></pre></li>
+<li><p>Add the between-subjects variable:</p>
+<p>Move MATHMOT into the Between-Subjects Factor(s) box.</p></li>
+<li><p>Click the “EM Means…” button (Estimated Marginal Means):</p>
+<p>Move ContentArea into the Display Means For box</p>
+<p>Check the option Compare main effects</p>
+<p>Select Bonferroni for pairwise adjustment</p>
+<p>Click Continue</p></li>
+<li><p>Click on “Plots…”</p>
+<p>Drag ContentArea to the Horizontal Axis box.</p>
+<p>Drag MATHMOT to Separate Lines (if you want interaction plot).</p>
+<p>Click Add</p>
+<p>Select Line Chart as Chart Type</p>
+<p>Under Error Bars, select Confidence Interval</p>
+<p>Click Continue</p></li>
+<li><p><em>(Optional but recommended)</em> Click on Options:</p>
+<p>Check: Descriptive statistics/ Estimates of effect size/ Homogeneity tests</p>
+<p>Click Continue</p></li>
+</ol>
+<p>Click OK to run the analysis.</p>
+<p><strong><em>Note:</em></strong> The procedure may appear long and complicated, but Steps 1–4 are sufficient to run a basic repeated measures ANOVA and obtain the main and interaction effects. Step 5 is necessary if you wish to view estimated marginal means and conduct pairwise comparisons (e.g., Bonferroni adjustment). Step 6 generates line plots to help visualize interactions or group trends. Step 7 provides additional outputs such as descriptive statistics, effect size estimates, and assumption checks (e.g., Levene’s test).</p>
+<section id="assumption-checking" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="assumption-checking">1.1.1 Assumption checking</h4>
+<p>Before interpreting the results of a repeated-measures ANOVA, it is important to check key statistical assumptions. These assumptions not only ensure the validity of the test results and help control the Type I error rate, but they also determine which version of the results we should report. For example, if the assumption of sphericity is violated, we must use adjusted degrees of freedom rather than reporting the default F-test.</p>
+<p><strong><em>Mauchly’s Test of Sphericity</em></strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig13-9.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 13.9</figcaption>
+</figure>
+</div>
+<p>The test was significant, <span class="math inline">\(\chi^2(2) = 69.384, \, p &lt; .001\)</span>, indicating a violation of the sphericity assumption. The variances of the differences between content areas are not perfectly equal. However, with such a large sample ( <span class="math inline">\(N &gt; 4000\)</span>), Mauchly’s test is extremely sensitive — even tiny deviations from sphericity can become statistically significant.</p>
+<p>As the chapter explained, we apply corrections. As the <span class="math inline">\(\epsilon\)</span> is above 0.75, the Huynh-Feldt correction is appropriate and will be used in the main analysis.</p>
+<p><strong><em>Box’s Test of Equality of Covariance Matrices</em></strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig12-10.png" class="img-fluid figure-img" style="width:20.0%"></p>
+<figcaption>Fig 13.10</figcaption>
+</figure>
+</div>
+<p>Box’s <span class="math inline">\(M = 8.050\)</span>, <span class="math inline">\(p = .240\)</span>, suggesting that the assumption of equal covariance matrices across groups is not violated.</p>
+</section>
+<section id="between-subjects-factor-mathmot" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="between-subjects-factor-mathmot">1.1.2 Between-Subjects Factor: MATHMOT</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig13-11.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 13.11</figcaption>
+</figure>
+</div>
+<ul>
+<li>Students with higher motivation in mathematics (MATHMOT) had significantly different scores across the math content areas overall, <span class="math inline">\(F(1, 4008) = 4.16\)</span>, <span class="math inline">\(p = .041\)</span>.</li>
+</ul>
+<p>The partial <span class="math inline">\(\eta^2\)</span> is .001, indicating that although the effect is statistically significant, the effect size is extremely small (about 0.1% of the variance explained). This reveals that large samples can make very small effects look statistically significant.</p>
+</section>
+<section id="within-subjects-factor-contentarea" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="within-subjects-factor-contentarea">1.1.3 Within-Subjects Factor: ContentArea</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig13-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 13.12</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>There is a significant effect of Content Area on math scores, <span class="math inline">\(F(1.968, 7886.516) = 7.884\)</span>, <span class="math inline">\(p  &lt; .001\)</span>, indicating that students’ performance varies across the three content areas.</p></li>
+<li><p>The partial <span class="math inline">\(\eta^2\)</span> is .002, suggesting that about only 0.2% of the variance in scores can be attributed to differences between content areas.</p></li>
+</ul>
+</section>
+<section id="interaction-mathmot-contentarea" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="interaction-mathmot-contentarea">1.1.4 Interaction: MATHMOT × ContentArea</h4>
+<p>The interaction between MATHMOT and Content Area is not significant, <span class="math inline">\(F(1.968, 7886.516) = 1.749\)</span>, <span class="math inline">\(p = .175\)</span>. This means that although motivated students scored differently overall, their relative performance patterns across the three content areas were not significantly different from less motivated peers. In other words, motivation shifts the overall level but not the shape of the profile.</p>
+</section>
+</section>
+<section id="post-hoc-comparisons" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="post-hoc-comparisons">1.2 Post Hoc Comparisons</h3>
+<section id="visualize-the-means" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="visualize-the-means">1.2.1 Visualize the Means</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig13-13.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 13.13</figcaption>
+</figure>
+</div>
+<p>This plot shows the average math scores across the three content areas: Reasoning (1), Quantity (2), and Space &amp; Shape (3). Students scored highest in Reasoning, slightly lower in Quantity, and lowest in Space &amp; Shape. While these trends are observable, they should be interpreted cautiously - formal statistical tests are necessary to confirm whether these differences are statistically significant. In this case, the main effect of content area was significant, further confirming the differences suggested by the plot.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig12-14.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 13.14</figcaption>
+</figure>
+</div>
+<p>This plot shows the estimated marginal means for each content area, split by students’ motivation to do well in math. Students who reported being more motivated tended to score higher across all three content areas.</p>
+<p>The overall performance pattern (Reasoning &gt; Quantity &gt; Space &amp; Shape) appears similar for both groups, suggesting that the relative differences across content areas are not strongly influenced by motivation. This visual pattern aligns with the non-significant interaction observed in the formal tests, offering further support for that finding.</p>
+</section>
+<section id="pairwise-comparisons" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="pairwise-comparisons">1.2.2 Pairwise Comparisons</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig13-15.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 13.15</figcaption>
+</figure>
+</div>
+<p>Bonferroni-adjusted pairwise comparisons showed that students scored significantly higher in Reasoning than in Space &amp; Shape (<span class="math inline">\(p &lt; .001\)</span>) and significantly higher in Quantity than in Space &amp; Shape (<span class="math inline">\(p = .010\)</span>). However, the difference between Reasoning and Quantity was not statistically significant (<span class="math inline">\(p = .930\)</span>). These comparisons suggest that the lowest performance was in the Space &amp; Shape subscale, while performance in Reasoning and Quantity was relatively similar.</p>
+<p>Note that these comparisons are based on estimated marginal means, which adjust for the between-subjects factor (math motivation) and use a pooled error term, making them slightly more conservative than raw paired t-tests.</p>
+</section>
+</section>
+</section>
+<section id="ancova" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ancova">2 ANCOVA</h2>
+<p>Now we turn to ANCOVA, where the focus is where the focus is comparing the three types of schools on math performance, while controlling for growth mindset:</p>
+<pre><code>**DV**: PV1MATH (overall math achievement) 
+
+**IV**: SC014Q01TA (School type: 1 - religious, 2 - non-profit, 4 - government) 
+
+**Covariate**: GROSAGR (Growth Mindset) </code></pre>
+</section>
+<section id="running-ancova" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="running-ancova">2.1 Running ANCOVA</h2>
+<p>Step-by-step procedure in SPSS</p>
+<ol type="1">
+<li><p>Click Analyze → General Linear Model → Univariate</p></li>
+<li><p>In the Univariate dialog:</p>
+<p>Move PV1MATH to the Dependent Variable box.</p>
+<p>Move SC014Q01TA (school type) to the Fixed Factor(s) box.</p>
+<p>Move GROSAGR (growth mindset) to the Covariate(s) box.</p></li>
+<li><p>Click the “Post Hoc…” button (optional but recommended):</p>
+<p>Select SC014Q01TA</p>
+<p>Choose Bonferroni or Tukey for pairwise comparisons</p>
+<p>Click Continue</p></li>
+<li><p>(Optional) Click the “EM Means…” button (Estimated Marginal Means):</p>
+<p>Move SC014Q01TA into the Display Means For box</p>
+<p>Check the option Compare main effects</p>
+<p>Select Bonferroni for pairwise adjustment</p>
+<p>Click Continue</p></li>
+<li><p>(Optional) Click on “Plots…”:</p>
+<p>Drag SC014Q01TA to the Horizontal Axis box</p>
+<p>Click Add</p>
+<p>Select Line Chart as Chart Type</p>
+<p>Under Error Bars, select Confidence Interval</p>
+<p>Click Continue</p></li>
+<li><p>(Optional) Click on “Options…”:</p>
+<p>Check: Descriptive statistics/ Estimates of effect size/ Homogeneity tests</p>
+<p>Click Continue</p></li>
+</ol>
+<p>Click OK to run the analysis.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig13-16.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 13.16</figcaption>
+</figure>
+</div>
+<section id="school-type-effect" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="school-type-effect">2.1.1 School Type Effect</h4>
+<p>After controlling for growth mindset, there are still significant differences in math scores between school types, <span class="math inline">\(F(2,3816)=38.45\)</span>, <span class="math inline">\(p&lt;.001\)</span>. This means that even if students had the same level of growth mindset, school type is still associated with different mean math achievement.</p>
+</section>
+<section id="growth-mindset-effect-covariate" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="growth-mindset-effect-covariate">2.1.2 Growth Mindset Effect (Covariate)</h4>
+<p>Growth mindset has a significant effect on math achievement, <span class="math inline">\(F(1,3816)=188.65\)</span>, <span class="math inline">\(p&lt;.001\)</span>.</p>
+</section>
+<section id="pairwise-comparisons-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="pairwise-comparisons-1">2.1.3 Pairwise Comparisons</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig13-17.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 13.17</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig12-18.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 13.18</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>From the post-hoc comparison, after controlling for growth mindset (i.e., adjusted means):</p>
+<ul>
+<li><p>Religious schools (<span class="math inline">\(M = 472.971\)</span>) scored significantly higher than Non-profit schools (<span class="math inline">\(M = 404.772\)</span>), <span class="math inline">\(p &lt; .001\)</span>.</p></li>
+<li><p>Government schools (<span class="math inline">\(M = 469.151\)</span>) also scored significantly higher than Non-profit schools, <span class="math inline">\(p &lt; .001\)</span>.</p></li>
+<li><p>There was no significant difference between Religious and Government schools (mean difference <span class="math inline">\(= 3.82\)</span>, <span class="math inline">\(p = .93\)</span>).</p></li>
+</ul></li>
+</ul>
+<p>Check the One-Way ANOVA results from Chapter 10 to see how these comparisons differ before controlling for growth mindset.</p>
+</section>
+<section id="checking-assumptions" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="checking-assumptions">2.2 Checking assumptions</h3>
+<section id="independence-of-covariate-and-iv" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="independence-of-covariate-and-iv">2.2.1 Independence of covariate and IV</h4>
+<p>Recall that one key assumption of ANCOVA is that the covariate (growth mindset) is associated with the dependent variable (math achievement) but not the independent variable (school type). We have shown that growth had a significant effect on math achievement. Now we check whether growth mindset differs by school type.A table with numbers and letters</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig13-19.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 13.19</figcaption>
+</figure>
+</div>
+<p>The ANOVA showed that growth mindset scores did not significantly differ across school types, <span class="math inline">\(F(2,3817)=1.597\)</span>, <span class="math inline">\(p=.203\)</span>. This indicates that the covariate (growth mindset) is independent of the independent variable (school type), upholding the assumption for ANCOVA.</p>
+</section>
+<section id="homogeneity-of-regression-slopes" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="homogeneity-of-regression-slopes">2.2.2 Homogeneity of regression slopes</h4>
+<p>Another assumption of ANCOVA is no interaction between the effect of the covariate and group membership. We test this by adding an interaction term between school type and growth mindset.</p>
+<p><strong><em>Additional Step in SPSS</em></strong></p>
+<p>All steps are the same as in the standard ANCOVA procedure described above. The only change is in the Model… dialog:</p>
+<ul>
+<li><p>After Step 2 (defining the DV, IV, and covariate), click Model…</p></li>
+<li><p>Change the setting from Full factorial to Custom</p></li>
+<li><p>Add the main effects:</p>
+<ul>
+<li><p>Select SC014Q01TA → Click Main effects → Click Add</p></li>
+<li><p>Select GROSAGR → Click Main effects → Click Add</p></li>
+</ul></li>
+<li><p>Add the interaction term:</p>
+<ul>
+<li><p>Ctrl+Click to select both SC014Q01TA and GROSAGR</p></li>
+<li><p>Click Interaction → Click Add</p></li>
+</ul></li>
+</ul>
+<p>Click Continue and proceed to run the model as usual</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter13/fig13-20.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 13.20</figcaption>
+</figure>
+</div>
+<p>The interaction between school type and growth mindset was not significant, <span class="math inline">\(F(2 ,3814)=1.668\)</span>, <span class="math inline">\(p=.189\)</span>, indicating that the effect of growth mindset on math achievement is consistent across school types. This upholds the homogeneity of regression slopes assumption for ANCOVA.</p>
 
 
+</section>
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

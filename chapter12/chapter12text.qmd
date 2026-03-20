@@ -1,0 +1,55 @@
+# Predicting an Outcome {.unnumbered}
+
+## Learning Objectives {.unnumbered}
+
+By the end of this chapter, you will be able to: 
+
+- Explain the concepts of predictor and criterion variables, derive the equation of a regression line using the method of least squares, and interpret the slope and intercept within the context of data analysis. 
+
+- Identify and assess the key assumptions for multiple regression, including linearity, homoscedasticity, independence of errors, multicollinearity, and model specification, ensuring valid and reliable results in regression analyses. 
+
+- Compute and interpret diagnostic measures such as Variance Inflation Factors (VIF), tolerance, and the coefficient of determination ($R^2$), and assess model fit to draw meaningful conclusions from regression analyses. 
+
+  
+
+## Introduction 
+
+In the last chapter, we reviewed the procedures to compute a correlation coefficient that indicates the extent to which two variables ($X$ and $Y$) are related to each other. The value of r indicates the direction and strength of the relationship. Two variables change in opposite directions when r is negative, and two variables change in the same direction when r is positive. The closer r is to +1 or -1, the stronger the correlation and the more closely the two variables are related.   
+
+The strength of a correlation reflects how closely a set of data points fits a line of best fit on a scatterplot. This line is also called a regression line. We will now learn how to use the value of r to compute the equation of a regression line. We will then use this equation to predict values of one variable given known values of a second variable in a population, before incorporating additional variables into our predictions. 
+
+  
+
+## Fundamentals of Linear Regression   
+
+Linear regression is a statistical method used to determine the equation of a regression line for a set of data points and to assess how well this equation can predict values of one variable based on known values of another variable. In linear regression, we identify two types of variables: 
+
+- **Predictor variable**, or known variable (X), is the variable with values that are known and can be used to predict values of another variable. We also call this variable an independent variable (IV).   
+
+- **Criterion variable**, or to-be-predicted variable (Y), is the variable with unknown values that can be predicted or estimated, given known values of the predictor variable. We sometimes call this variable a dependent variable (DV) or an outcome variable.   
+  
+
+As always, it is important to consider the data assumptions that must be met before performing any analysis. We will provide more details on some of these assumptions later, but the conditions that indicate data are a good fit for regression analysis include:   
+
+- *Linearity of the X-Y relationship*: The relationship between the predictor and criterion variable should be linear. 
+
+- *No range restriction*: The range of data should not be artificially limited, as it can affect the correlation and regression results. 
+
+- *Homoscedasticity*: The variance of the residuals (errors) should be consistent across all values of the predictor variable. 
+
+- *No significant outliers*: Outliers can disproportionately influence the regression line and distort results. 
+
+- *Sufficient sample size*: The sample should be large enough to ensure that estimates of the correlation coefficient ($r$) and regression coefficients ($b$) are stable and reliable. 
+
+
+Linear regression allows us to find the equation of a line that best describes a set of data points, and test whether predictions made from this equation are statistically significant. Before we work through an example to answer these questions, let us first explain what the regression line is. Specially, we want you to know what it means to say that a straight line has the best fit to the data.  
+
+
+### What Makes the Regression Line the Best-Fitting Line?   
+
+Once we have determined that there is a linear pattern in a set of data points using a scatterplot, we want to find a regression line, or a straight line that has the best fit. The criterion used to determine the regression line is sum of squares ($SS$), or the sum of the squared distances of data points from a straight line. The line, associated with the smallest total value for SS, is the best-fitting straight line, called the regression line. Remember, we don’t square the distances just to be complicated, it’s so all the values are positive, even if the actual value is below the expected value. Otherwise, one point that was very far above the line would cancel out a point that was equally far below. Instead, we want them to both count as being quite far away from the line, so we square the distance.  
+
+
+Suppose that we measure two variables, one predictor or independent variable plotted on the X-axis, and one criterion or dependent variable plotted on the Y-axis. Figure 12.1 shows a scatterplot with five data points (A, B, C, D, and E) along with the line of best fit. The arrow from each data point to the line represents the distance from each data point to the best-fitting line. As you see, all data points deviate from the line to some extent. Data point D (below the line) has the largest deviation from the line and A (above the line) has the smallest. To quantify these deviations, we square each distance to ensure all values are positive. The sum of squares (SS) in this example is the total of these squared deviations across all five data points. The regression line is defined as the one that minimizes this sum, providing the best possible fit to the data.  
+
+ 

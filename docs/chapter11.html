@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -71,6 +106,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -222,8 +286,43 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#examining-relationships-between-two-variables" id="toc-examining-relationships-between-two-variables" class="nav-link active" data-scroll-target="#examining-relationships-between-two-variables">Examining Relationships Between Two Variables</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#overview-of-correlational-analysis" id="toc-overview-of-correlational-analysis" class="nav-link" data-scroll-target="#overview-of-correlational-analysis"><span class="header-section-number">11.1</span> Overview of Correlational Analysis</a></li>
+  <li><a href="#how-overlap-affects-correlation" id="toc-how-overlap-affects-correlation" class="nav-link" data-scroll-target="#how-overlap-affects-correlation"><span class="header-section-number">11.2</span> How Overlap Affects Correlation</a></li>
+  <li><a href="#data-assumptions-for-testing-correlational-analysis" id="toc-data-assumptions-for-testing-correlational-analysis" class="nav-link" data-scroll-target="#data-assumptions-for-testing-correlational-analysis"><span class="header-section-number">11.3</span> Data Assumptions for Testing Correlational Analysis</a></li>
+  <li><a href="#factors-affecting-the-magnitude-of-correlations" id="toc-factors-affecting-the-magnitude-of-correlations" class="nav-link" data-scroll-target="#factors-affecting-the-magnitude-of-correlations"><span class="header-section-number">11.4</span> Factors Affecting the Magnitude of Correlations</a></li>
+  <li><a href="#statistical-significance-of-correlations" id="toc-statistical-significance-of-correlations" class="nav-link" data-scroll-target="#statistical-significance-of-correlations"><span class="header-section-number">11.5</span> Statistical Significance of Correlations</a>
+  <ul class="collapse">
+  <li><a href="#step-1-determine-the-null-and-alternative-hypotheses." id="toc-step-1-determine-the-null-and-alternative-hypotheses." class="nav-link" data-scroll-target="#step-1-determine-the-null-and-alternative-hypotheses.">Step 1: Determine the null and alternative hypotheses. </a></li>
+  <li><a href="#step-2-set-the-criteria-for-a-decision." id="toc-step-2-set-the-criteria-for-a-decision." class="nav-link" data-scroll-target="#step-2-set-the-criteria-for-a-decision.">Step 2: Set the criteria for a decision. </a></li>
+  <li><a href="#step-3-check-assumptions-and-compute-the-test-statistic." id="toc-step-3-check-assumptions-and-compute-the-test-statistic." class="nav-link" data-scroll-target="#step-3-check-assumptions-and-compute-the-test-statistic.">Step 3: Check assumptions and compute the test statistic.  </a></li>
+  <li><a href="#step-4-find-the-p-value-draw-a-conclusion-and-report-your-conclusion." id="toc-step-4-find-the-p-value-draw-a-conclusion-and-report-your-conclusion." class="nav-link" data-scroll-target="#step-4-find-the-p-value-draw-a-conclusion-and-report-your-conclusion.">Step 4: Find the <span class="math inline">\(p\)</span> value, draw a conclusion, and report your conclusion.</a></li>
+  </ul></li>
+  <li><a href="#practical-significance-of-correlations" id="toc-practical-significance-of-correlations" class="nav-link" data-scroll-target="#practical-significance-of-correlations"><span class="header-section-number">11.6</span> Practical Significance of Correlations</a></li>
+  <li><a href="#alternatives-to-pearsons-r" id="toc-alternatives-to-pearsons-r" class="nav-link" data-scroll-target="#alternatives-to-pearsons-r"><span class="header-section-number">11.7</span> Alternatives to Pearson’s r</a></li>
+  <li><a href="#final-remarks-on-correlation" id="toc-final-remarks-on-correlation" class="nav-link" data-scroll-target="#final-remarks-on-correlation"><span class="header-section-number">11.8</span> Final Remarks on Correlation</a></li>
+  <li><a href="#chi-square-test-for-independence" id="toc-chi-square-test-for-independence" class="nav-link" data-scroll-target="#chi-square-test-for-independence"><span class="header-section-number">11.9</span> Chi-Square Test for Independence</a></li>
+  </ul></li>
+  <li><a href="#examining-relationships-between-two-variables-in-r" id="toc-examining-relationships-between-two-variables-in-r" class="nav-link" data-scroll-target="#examining-relationships-between-two-variables-in-r">Examining Relationships Between Two Variables in R</a>
+  <ul class="collapse">
+  <li><a href="#pearsons-correlation" id="toc-pearsons-correlation" class="nav-link" data-scroll-target="#pearsons-correlation">1 Pearson’s Correlation</a>
+  <ul class="collapse">
+  <li><a href="#visual-check-of-assumptions" id="toc-visual-check-of-assumptions" class="nav-link" data-scroll-target="#visual-check-of-assumptions">1.1 Visual Check of Assumptions</a></li>
+  <li><a href="#computing-pearsons-r" id="toc-computing-pearsons-r" class="nav-link" data-scroll-target="#computing-pearsons-r">1.2 Computing Pearson’s r</a></li>
+  </ul></li>
+  <li><a href="#spearmans-correlation" id="toc-spearmans-correlation" class="nav-link" data-scroll-target="#spearmans-correlation">2 Spearman’s Correlation</a></li>
+  <li><a href="#point-biserial-correlation" id="toc-point-biserial-correlation" class="nav-link" data-scroll-target="#point-biserial-correlation">3 Point-Biserial Correlation</a></li>
+  <li><a href="#chi-square-test-for-independence-1" id="toc-chi-square-test-for-independence-1" class="nav-link" data-scroll-target="#chi-square-test-for-independence-1">4 Chi-Square Test for Independence</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -247,8 +346,610 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="examining-relationships-between-two-variables" class="level1 unnumbered">
+<h1 class="unnumbered">Examining Relationships Between Two Variables</h1>
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ul>
+<li><p>Explain the concept of Pearson’s correlation coefficient (r), including its direction and strength.</p></li>
+<li><p>Describe and identify the assumptions for correlation analyses.</p></li>
+<li><p>Identify scenarios where alternatives to Pearson’s r, such as Spearman’s rho or point-biserial correlation, are more appropriate.</p></li>
+<li><p>Understand when to use a chi-square test for independence and apply it to analyze the relationship between two categorical variables.</p></li>
+<li><p>Conduct a chi-square test for independence and interpret the results to determine whether there is a significant association between the variables.</p></li>
+</ul>
+<p>The <span class="math inline">\(t\)</span> test and ANOVA are statistical methods used to compare means, with a foundational understanding of t tests serving as a prerequisite for learning ANOVA. Similarly, this chapter introduces correlation, a key concept that underpins regression analysis. Rather than examining differences between two or more groups on a single dependent variable, we will focus on determining whether two continuous variables are related within a single group of subjects. While several metrics can describe relationships between numeric datasets, this chapter primarily emphasizes measuring the strength and direction of a linear relationship between two continuous variables.</p>
+<p>A fundamental concept to understand is that correlation cannot be calculated between just two individual numbers (e.g., one person’s height and weight). Instead, correlation requires two sets of numerical data (e.g., the heights and weights of 50 individuals) to identify patterns. Correlation is fundamentally about detecting these patterns in how two variables are related. While you are already familiar with variance, this chapter introduces covariance—the extent to which two variables change, or vary, together.</p>
+</section>
+<section id="overview-of-correlational-analysis" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="overview-of-correlational-analysis"><span class="header-section-number">11.1</span> Overview of Correlational Analysis</h2>
+<p>Imagine a math teacher wants to explore whether students who are more motivated to learn mathematics tend to perform better on their math tests. To investigate this, the teacher collects data from 100 students, measuring:</p>
+<ul>
+<li><p>Motivation to learn math (X-axis) – Students rate their motivation on a scale from 1 to 20.</p></li>
+<li><p>Math scores (Y-axis) – Final math test scores, ranging from 0 to 100.</p></li>
+</ul>
+<p>A useful starting point when examining potential correlations between two continuous variables is to construct a scatterplot. The scatterplot provides a visual representation of the relationship between the variables, helping to identify patterns or trends. Figure 11.1 provides an example of a scatterplot illustrating the relationship between student motivation to learn mathematics and math scores, based on a random sample of 100 students.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Motivation vs Math Scores Scatterplot</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We will use this example to explore the fundamental principles of correlation, including the necessary data assumptions and the limitations of correlation analysis. To begin, we will define what correlation measures.</p>
+<p>When discussing correlation, we typically refer to Pearson’s correlation coefficient (<span class="math inline">\(r\)</span>), which quantifies the linear relationship between two continuous variables. Much like how other sample statistics serve as estimates of population parameters, <span class="math inline">\(r\)</span> is an estimate of the population correlation coefficient (<span class="math inline">\(p\)</span>). While statistical software is typically used to compute correlations, understanding the underlying mathematical principles is essential. The following equation provides insight into how correlations are calculated, even if you do not compute them by hand in practice:</p>
+<p><span class="math display">\[
+r = \frac{\mathrm{Cov}_{XY}}{\sqrt{S_X^2 \, S_Y^2}}
+\quad \text{or in other words,} \quad
+r = \frac{\text{covariance of } X \text{ and } Y}{\sqrt{\text{variance of } X \text{ and } Y \text{ separately}}}
+\]</span></p>
+<p>Don’t get tripped up by the symbols but think about what the equation means. Variance is essentially how much the values of a given variable differ across a sample. If we think about our scatterplot in figure 11.1, the top half of the equation above reflects the extent to which math scores (Y) and motivation (X) vary together (when one goes up, the other goes up). The denominator reflects how much variance there is in each separate variable – do math scores vary quite a bit across all students or only a little? What about motivation?</p>
+<p>Imagine two circles, each representing the variance of a variable—one for X (e.g., motivation) and the other for Y (e.g., math scores). Together, these circles contain the total variance in the data. The overlapping area between the circles represents the covariance, which measures how much variance the two variables share.</p>
+</section>
+<section id="how-overlap-affects-correlation" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="how-overlap-affects-correlation"><span class="header-section-number">11.2</span> How Overlap Affects Correlation</h2>
+<ul>
+<li><p><em>More overlap</em> → The shared variance (numerator of the correlation formula) gets closer to the total variance (denominator), making the correlation coefficient (<span class="math inline">\(r\)</span>) approach ±1.</p></li>
+<li><p><em>Less overlap</em> → The shared variance decreases, and the correlation moves closer to 0.</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 12</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Figure 11.2 Variance Unique to X and Y "</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>make_venn_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(title_text, overlap_label, <span class="at">add_arrow =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Left circle</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_circle</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x0 =</span> <span class="fl">4.2</span>, <span class="at">y0 =</span> <span class="dv">5</span>, <span class="at">r =</span> <span class="fl">2.7</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"#e78ac3"</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>, <span class="at">color =</span> <span class="cn">NA</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Right circle</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_circle</span>(</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x0 =</span> <span class="fl">6.8</span>, <span class="at">y0 =</span> <span class="dv">5</span>, <span class="at">r =</span> <span class="fl">2.7</span>),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"#6fa8ef"</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>, <span class="at">color =</span> <span class="cn">NA</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(title_text) <span class="sc">+</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Labels</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">2.7</span>, <span class="at">y =</span> <span class="fl">5.0</span>, <span class="at">label =</span> <span class="st">"Unique to X"</span>, <span class="at">size =</span> <span class="fl">3.2</span>) <span class="sc">+</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">8.3</span>, <span class="at">y =</span> <span class="fl">5.0</span>, <span class="at">label =</span> <span class="st">"Unique to Y"</span>, <span class="at">size =</span> <span class="fl">3.2</span>) <span class="sc">+</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">5.5</span>, <span class="at">y =</span> <span class="fl">5.0</span>, <span class="at">label =</span> overlap_label, <span class="at">size =</span> <span class="fl">3.2</span>) <span class="sc">+</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">3.5</span>, <span class="at">y =</span> <span class="fl">1.4</span>, <span class="at">label =</span> <span class="st">"Variable X"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">7.5</span>, <span class="at">y =</span> <span class="fl">1.4</span>, <span class="at">label =</span> <span class="st">"Variable Y"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">10.5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">8.5</span>)) <span class="sc">+</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (add_arrow) {</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">annotate</span>(</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">"text"</span>,</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="fl">2.2</span>, <span class="at">y =</span> <span class="fl">6.7</span>,</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> <span class="st">"Minimal Overlap</span><span class="sc">\n</span><span class="st">(Very Weak Correlation)"</span>,</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">3.3</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>      <span class="fu">annotate</span>(</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        <span class="st">"segment"</span>,</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="fl">3.2</span>, <span class="at">y =</span> <span class="fl">6.1</span>, <span class="at">xend =</span> <span class="fl">4.6</span>, <span class="at">yend =</span> <span class="dv">5</span>,</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.18</span>, <span class="st">"inches"</span>))</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  p</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">make_venn_plot</span>(</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Venn Diagram Representing High Correlation"</span>,</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Large Overlap</span><span class="sc">\n</span><span class="st">(High Correlation)"</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">make_venn_plot</span>(</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Venn Diagram Representing Very Weak Correlation"</span>,</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">""</span>,</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>  <span class="at">add_arrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As the two circles start to overlap more and more, this illustrates the numerator of the correlation formula increasing to match the denominator—bringing the correlation closer to ±1. Conversely, when the circles barely overlap, the shared variance is small, and the correlation remains low.</p>
+<p>Pearson’s r tells us both the direction of the correlation (as values of X increase, do values of Y increase or decrease?) and the strength of the correlation (if we drew a best-fitting line through the scatterplot, do most points fall very close to the line or are they spread out all over?). As an example, the correlation between math scores and motivation in our dataset is <span class="math inline">\(r = 0.497\)</span> (<span class="math inline">\(p &lt; .001\)</span>), which is a moderate, positive correlation. This suggests that as students’ motivation to learn mathematics increases, their math scores also tend to increase.</p>
+<p>Pearson’s r ranges from -1 to +1, with these extreme values representing perfect correlations between two variables. A perfect positive or negative correlation means that knowing the value of one variable allows for the exact prediction of the other. For example, the number of hours spent awake and the number of hours spent asleep in a day are perfectly negatively correlated. In educational research, it is extremely rare to observe a perfect correlation, as most relationships between variables involve some degree of variability and external influences. Figures 11.3 and 11.4 show examples of perfect positive and negative correlations, respectively.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 12</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Figure 11.3. Perfect Negative Correlation"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create perfectly negatively correlated data</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rev</span>(x)  <span class="co"># perfectly decreasing</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"X Variable"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Y Variable"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">10.5</span>),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">10.5</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Add box around plot (like original)</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 12</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Figure 11.4. Perfect Negative Correlation"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create perfectly positively correlated data</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x  </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"X Variable"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Y Variable"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">10.5</span>),</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">10.5</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Add box around plot (like original)</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Figure 11.5. Correlation Examples</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The <span class="math inline">\(|r|\)</span> values in the left column are the absolute value of the correlations. Therefore, r = -0.1 and r =0.1 are equal in terms of the strength of the relationship. Both would be considered a weak relationship. The interpretation of correlation strength (e.g., weak, moderate, strong) in the far-left column follows conventional guidelines. However, the meaning of a correlation’s magnitude should always be considered in the context of your research.</p>
+<p>For example, in fields like education and human behavior, extremely high correlations are rare because multiple factors influence outcomes. A correlation that might be considered moderate in one field could be highly meaningful in another. Therefore, rather than relying solely on standardized thresholds, researchers should interpret correlations based on theoretical expectations, practical significance, and the nature of the variables being studied.</p>
+</section>
+<section id="data-assumptions-for-testing-correlational-analysis" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="data-assumptions-for-testing-correlational-analysis"><span class="header-section-number">11.3</span> Data Assumptions for Testing Correlational Analysis</h2>
+<p>We will use our previous example to illustrate the key data assumptions underlying correlation analysis. Figure 11.6 displays the scatterplot once again, depicting the relationship between student motivation and math achievement scores. This time, we have included a best-fitting line to help visualize the overall trend in the data.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Figure 11.6. Scatterplot with best-fitting line</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Like other parametric methods, correlation comes with a few key assumptions that need to be met for the results to be reliable. These include linearity, homoscedasticity, and bivariate normality. Let’s take those one at a time.</p>
+<p>Linearity is one of the most important assumptions in correlation analysis and the easiest to check with a scatterplot. For correlation—and later, for linear regression, which we will explore in the next chapter—we must determine whether a straight line is the best way to describe the relationship between the two variables, rather than a curved pattern. In figure 11.7, although the data points do not all fall precisely on the line, a linear relationship is evident. Even without the best-fitting line drawn, one could reasonably estimate its approximate placement within the data.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Figure 11.7. Scatterplot with Linear Relationship</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Homoscedasticity</em> is a new addition to your statistics vocabulary. <strong>Scedasticity</strong> is the extent to which data points are spread out above and below the line. Homoscedasticity means that the spread of points above and below the line is the same along the entire line. We think this might be easiest to understand with an example that violates this assumption.</p>
+<p>Imagine you plotted the relationship between family income (X-axis) and how much money a family spent on their spring break vacation (Y-axis). At the lower end of the income scale, spending variation is likely minimal, as financial constraints limit discretionary spending. As a result, the data points would be tightly clustered around the best-fitting line. However, at the higher end of the income scale, spending variation increases—some wealthier families may take extravagant vacations, while others may choose to spend little or nothing. This pattern results in <strong>heteroscedasticity</strong>, where the spread of data points is not uniform across values of the independent variable. A heteroscedastic scatterplot often resembles a cone, with the wider end appearing in the upper right portion of the plot in this example.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 12</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Figure 11.8. Heteroscedasticity Example"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate heteroscedastic data</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">20</span>, <span class="dv">150</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># increasing variance with x</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fl">0.2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.08</span> <span class="sc">*</span> x)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"blue3"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Family Income (in $1000s)"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Spring Break Spending (in $1000s)"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">160</span>),</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">50</span>),</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Heteroscedasticity in Family Income vs. Vacation Spending"</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is important because when we calculate the value of <span class="math inline">\(r\)</span>, we are assuming that it holds true for all values of each variable. If we don’t meet the homoscedasticity assumption, the true correlation is actually lower or higher depending on where we are along the line.</p>
+<p><em>Normality</em> is an assumption you are already familiar with, but it gets a little more complicated with correlation. Start by checking whether each variable is normally distributed. Then we must look at a new concept called <strong>bivariate normality</strong>. Bivariate normality is an extension of the normal distribution to two dimensions where two variables are jointly distributed in a way that their relationship forms a bivariate normal distribution. Figure 11.9 shows yet another version of the scatterplot with the addition of a sideways normal curve representing the frequency of math scores when motivation is 10.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Figure 11.9. Heteroscedasticity Example with Sideways Normal Curve</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We hope this addition will help you understand a bivariate normal distribution. First, choose one value of X (motivation) – for this example we chose 10. Then look at all values of Y associated with X = 10. When assessing the distribution of Y values at a given X value, it can be helpful to think of looking at the scatterplot from the side. Ideally, the Y values should be normally distributed around a central point for each level of X. In other words, most of the math scores when motivation is approximately 10 should be clustered together in the middle of that distribution. The values that are not close to the middle should be evenly distributed above and below the line.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Figure 11.10. Heteroscedasticity Example with Multiple Normal Curves</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>For X = 10, our example looks good in terms of bivariate normality. That is not the case for all points, but there is no major violation of this assumption in our data.</p>
+<p>Another issue to be mindful of with normality is that data can sometimes be uniformly distributed, meaning all values are nearly identical or evenly spread across a range. For example, imagine collecting data on the number of school days per week and the number of hours students spend in school each day. Since most schools follow a five-day schedule with roughly the same daily hours, every data point would be nearly identical. This would result in a scatterplot where all points cluster in the same location, making it impossible to establish a meaningful correlation—even though school days and daily hours are logically related. This highlights how a dataset can appear connected in theory but produce a correlation coefficient of 0 due to lack of variability in the data.</p>
+</section>
+<section id="factors-affecting-the-magnitude-of-correlations" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="factors-affecting-the-magnitude-of-correlations"><span class="header-section-number">11.4</span> Factors Affecting the Magnitude of Correlations</h2>
+<p>While checking data assumptions is essential, there are a few additional considerations before conducting a correlational analysis. Even if data meet the assumptions, other factors can still impact the accuracy and interpretability of correlation coefficients. For example, you need to <em>check for outliers</em>. You will also need to make sure you don’t have a problem with <em>range restriction</em> and your <em>sample size needs to be large enough</em> to ensure that <em>r</em> is a stable estimate of the population parameter <em>ρ</em>. <strong>Range restriction</strong> occurs when the variability of a variable (or variables) in a dataset is artificially limited or constrained, such that the range of values is smaller than it would be in the population. This restriction can significantly impact your results, potentially leading to biased estimates and incorrect conclusions. Now, let’s examine how each of these conditions can impact the correlation estimate one by one.</p>
+<p><em>Outliers</em> can change both the direction and the strength of a correlation. We have included an example below. This example adds an outlier of (X, Y) = (8, 16) to the perfect positive correlation we looked at earlier in the chapter. The pink line indicates the new line of best fit caused by the inclusion of this single outlier. In this example, with the outlier, the correlation estimate decreases, as the outlier disrupts the perfect linear pattern of the original data. With the shift of the regression line, the best-fit model is now a less accurate representation of the data points.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Figure 11.11. Regression with and without Outliers</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>What about the next two graphs?</p>
+<p>Figure 11.12 contains an outlier, (X, Y) = (15, 15) as the value is a noticeably larger than the rest of the data points. However, this outlier does not affect the size or direction of the correlation because it aligned perfectly with the original trend. In this case, the outlier follows the same pattern as the rest of the data but represents an extreme value on both variables. Since it maintains the existing relationship, it does not distort the regression line or the correlation estimate.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Figure 11.12. Regression with Outliers on Regression Line</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Figure 11.13 contains two outliers but these two are extreme in opposite directions on Y variables. The two outliers at (X, Y) = (9, 17) and (9, 2) do not pull the regression line in any particular direction because they are balanced around the trend. This means the correlation estimate stays about the same, as these points do not change the overall relationship between the two variables. However, these outliers do increase the spread of the data, making the overall variation (variance) larger. Think of it like measuring students’ heights in a classroom—if most students are around the same height but two students are much taller and much shorter, the average height might not change, but the range of heights becomes wider. In statistics, more variance can mean less precise estimates, meaning the correlation might still be accurate, but the confidence in that estimate is lower. This is especially important in smaller datasets, where extreme values can have a bigger impact on the results.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Figure 11.13. Regression with Two Outliers</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The prior graphs illustrate different types of outliers and their effects on correlation and regression lines. In the first case, a single influential outlier can noticeably shift the pink regression line, altering the best-fit model and reducing the strength of the correlation. In contrast, the second and third graphs feature outliers that are not influencing the regression line, keeping the best-fit line close to its original form. However, the outliers may influence the interpretation, variance, or their estimation precisions. These examples emphasize the importance of visually inspecting data before interpreting correlation results.</p>
+<p>A scatterplot provides immediate insight into whether an outlier is truly problematic or simply a natural variation in the data. Without visual inspection, researchers might overlook influential outliers that distort results. With graphical analysis, we can make more informed decisions about how to handle outliers and ensure that correlation estimates are accurate and meaningful.</p>
+<p><em>Range restriction</em> is a trickier concept to understand. When interpreting a correlation, it is important to not make assumptions outside of the observed range. This becomes a problem if your data only represent a smaller range of a variable compared to the whole population. For example, there is probably a strong, positive correlation between height and reading ability if we are only studying children ages 4 to 8. However, that does not mean we can conclude anything about a relationship between height and reading ability among adults. The 8-year-old students are simply taller, on average, than 4-year-old students due to normal growth rates among children.</p>
+<p>However, this concept has real implications for the kind of analyses you conduct. Imagine if all college students took the Law School Admission Test (LSAT), and we looked for a correlation between final college GPA and LSAT scores. There would not be a perfect correlation, but you can imagine there would be some kind of positive association between the two variables: generally, as GPAs increase, LSAT scores also increase.</p>
+<p>We are now going to restrict the range. Instead of looking at GPAs and LSAT scores for all college students, let’s only look at the group of students who were admitted to a highly prestigious and selective law school. Of course, a top school is going to require very high GPAs and very high LSAT scores. But for any given admitted student, a slight weakness in one area might be balanced out if another metric is very strong. This could result in students whose LSAT scores are not the highest still being admitted if they have a strong GPA, and vice versa. But if you plot those values out, do you know what you will see? A negative correlation between GPA and LSAT scores. When we restrict the sample to only the highest end of the range for both variables, the correlation doesn’t just get weaker, it changes direction.</p>
+<p>Here are some other examples of how range restriction can impact correlation in education research:</p>
+<ul>
+<li><p>The relationship between college entrance scores and GPA among Honors College students may appear weak because only high-achieving students are admitted, limiting the variability in both scores.</p></li>
+<li><p>The relationship between teacher experience and student achievement may appear weaker in a study conducted within a district that only hires teachers with at least five years of experience. Because the sample excludes novice teachers, the variability in teaching experience is restricted, potentially underestimating the true correlation.</p></li>
+</ul>
+<p>The last factor to consider is sample size. There are no hard and fast rule for sample size with a correlation analysis. However, you cannot be confident that your sample is a good estimate of the population with a small sample. This is closely connected to how we test correlations for significance.</p>
+</section>
+<section id="statistical-significance-of-correlations" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="statistical-significance-of-correlations"><span class="header-section-number">11.5</span> Statistical Significance of Correlations</h2>
+<section id="step-1-determine-the-null-and-alternative-hypotheses." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-1-determine-the-null-and-alternative-hypotheses.">Step 1: Determine the null and alternative hypotheses. </h3>
+<p>You can find the correlation between any two sets of continuous variables, but the result may not be statistically or practically significant. We can conduct hypotheses tests with correlational analysis just like with t tests. Let’s go through the steps, just as we did for t tests and ANOVAs, using the math test and motivation example.</p>
+<p>The null hypothesis is that there is no correlation in the population, and the alternative hypothesis is that there is some correlation.</p>
+<p><span class="math display">\[
+H_0: ρ = 0
+\]</span></p>
+<p><span class="math display">\[
+H_A: ρ \ne 0
+\]</span></p>
+<p>In our example, the null and alternative hypotheses are:</p>
+<p><span class="math inline">\(H_0: ρ = 0\)</span> there is NO correlation between math scores and students’ motivation to learn math</p>
+<p><span class="math inline">\(H_A: ρ \ne 0\)</span>(there IS a correlation between math scores and students’ motivation to learn math)</p>
+</section>
+<section id="step-2-set-the-criteria-for-a-decision." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-2-set-the-criteria-for-a-decision.">Step 2: Set the criteria for a decision. </h3>
+<p>To set the criteria for a decision, let’s choose our alpha level at <span class="math inline">\(\alpha = 0.05\)</span> for this two-tailed test, and find the critical values. We need to know degrees of freedom, which for tests involving Pearson’s r is calculated by N – 2, where N is the number of cases used for calculating the correlation. In our example <span class="math inline">\(df = 100 - 2 = 98\)</span>.</p>
+</section>
+<section id="step-3-check-assumptions-and-compute-the-test-statistic." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-3-check-assumptions-and-compute-the-test-statistic.">Step 3: Check assumptions and compute the test statistic.  </h3>
+<p>We reviewed the scatterplot and observed no violation of assumptions to move forward with our statistical test. The test statistic is simply the value of r that we obtained from sample data. We show the formula of Pearson’s r, but we will not show how to calculate it here because you will use statistical software in practice. From our analysis, Pearson’s correlation between math score and motivation rating score is <span class="math inline">\(r =.497\)</span> with <span class="math inline">\(df = 98\)</span>.</p>
+</section>
+<section id="step-4-find-the-p-value-draw-a-conclusion-and-report-your-conclusion." class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-4-find-the-p-value-draw-a-conclusion-and-report-your-conclusion.">Step 4: Find the <span class="math inline">\(p\)</span> value, draw a conclusion, and report your conclusion.</h3>
+<p>Then we turn to the Critical Values for Pearson Correlation table at the back of the book, find the column representing <span class="math inline">\(\alpha = 0.05\)</span> for a two-tailed test, and look down to the line corresponding with the correct degrees of freedom. If the observed <span class="math inline">\(r\)</span> statistic (.497) is higher than what you find in the table, then it is considered statistically significant at <span class="math inline">\(p &lt; 0.05\)</span>. As you can see, there is a straightforward relationship between the strength of the correlation (positive or negative) and sample size, in terms of what is considered significant. For a smaller sample size, the correlation needs to be stronger to be significant. Since the table does not include the critical <span class="math inline">\(r\)</span> value for <span class="math inline">\(df = 98\)</span>, we refer to the closest available values:</p>
+<ul>
+<li><p><span class="math inline">\(df = 90\)</span> → critical <span class="math inline">\(r = .205\)</span></p></li>
+<li><p><span class="math inline">\(df = 100\)</span> → critical <span class="math inline">\(r = .195\)</span></p></li>
+</ul>
+<p>Thus, the critical r value for df = 98 falls somewhere between .195 and .205. Since our observed correlation (𝑟 = 0.497) is greater than both values, we can conclude our p value is smaller than 0.05, meaning that there is a statistically significant correlation between math test scores and motivation ratings.</p>
+<p><em>APA sample write-up</em>: A Pearson correlation analysis was conducted to examine the relationship between motivation to learn mathematics and mathematics test scores. The results revealed a statistically significant positive moderate correlation between motivation and math scores, <span class="math inline">\(r(98) = 0.497\)</span>, <span class="math inline">\(p &lt; .05\)</span>. This suggests that as motivation increases, math scores tend to increase as well.</p>
+</section>
+</section>
+<section id="practical-significance-of-correlations" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="practical-significance-of-correlations"><span class="header-section-number">11.6</span> Practical Significance of Correlations</h2>
+<p>That brings us to practical significance, otherwise known as effect size. For Pearson’s r, instead of using Cohen’s d to measure effect size, we use something called the coefficient of determination, which is mathematically the same as a concept we already touched on with eta-squared, proportion of variance. The coefficient of determination indicates the proportion of the variance in the dependent variable that is explained by the independent variable. The calculation is very simple:</p>
+<p><span class="math display">\[
+coefficient \, of \, determination = r^2
+\]</span></p>
+<p>While <span class="math inline">\(r\)</span> (the correlation coefficient) can be positive or negative, <span class="math inline">\(r^2\)</span> is always positive. Going back to our original example before removing outliers, we can calculate the coefficient of determination:</p>
+<p><span class="math display">\[
+r^2= (0.497)^22 = 0.247
+\]</span></p>
+<p>You interpret this value by saying that 25% of the variance in math scores can be explained (not caused!) by changes in motivation to learn. You will find that <span class="math inline">\(r^2\)</span> is important when we are evaluating the practical significance of regression equations, which we will learn later in the book.</p>
+</section>
+<section id="alternatives-to-pearsons-r" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="alternatives-to-pearsons-r"><span class="header-section-number">11.7</span> Alternatives to Pearson’s r</h2>
+<p>While we will not go into great detail, there are alternatives to Pearson’s r that may be helpful to your future research.</p>
+<p><strong>Spearman’s Rank-Order Correlation (<span class="math inline">\(r_s\)</span>)</strong></p>
+<p>Spearman rank-order correlation coefficient (<span class="math inline">\(r_s\)</span>), also known as Spearman’s rho, measures the relationship between two ranked (ordinal) variables. This method is appropriate when the data are measured on an ordinal scale, such as responses on a Likert-type scale (e.g., Strongly Agree to Strongly Disagree). Like Pearson’s correlation, ​<span class="math inline">\(r_s\)</span> ranges from -1 to +1, where values closer to -1 or +1 indicate stronger monotonic relationships.</p>
+<p><strong>Point-Biserial Correlation (<span class="math inline">\(r_{pb}\)</span>)</strong></p>
+<p>Point-Biserial Correlation (<span class="math inline">\(r_{pb}\)</span>) is used to measure the relationship between a continuous variable (e.g., motivation to learn math, achievement scores) and a dichotomous variable (e.g., Pass/Fail, Enrolled/Not Enrolled, Full-Time/Part-Time). In education research, point-biserial correlation is particularly useful for examining whether higher achievement scores predict course completion or whether students with greater motivation are more likely to enroll in advanced courses.</p>
+</section>
+<section id="final-remarks-on-correlation" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="final-remarks-on-correlation"><span class="header-section-number">11.8</span> Final Remarks on Correlation</h2>
+<p>We are sure you have heard the phrase “correlation does not equal causation.” Now it is time to remind yourself of that. Statistical software packages can calculate the correlation between any two sets of numeric variables, but they cannot tell you if one variable caused the other - no matter how high the correlation coefficient. Instead, they simply tell you if there is a relationship between two variables. However, when interpreting correlation, it is important to consider other factors that might influence the relationship. Sometimes, a third variable may be driving the observed association between two variables, making it appear as though they are directly related when they are not.</p>
+<p>This brings us the concept of a confounding variable, or third variable - an extraneous variable that was not accounted for but influences both variables of interest, leading to a “confounded” result.</p>
+<p>Consider the following example: A researcher investigates whether there is a correlation between ice cream consumption and drowning incidents. The data reveal a positive correlation—when ice cream consumption increases, so do drowning cases. Does this mean that ice cream consumption causes drownings? Should policymakers consider banning ice cream to improve public safety? Of course not. The underlying confounding variable in this case is temperature—warmer weather leads to both increased ice cream consumption and more people swimming, which in turn raises the risk of drowning. This example illustrates why identifying potential confounding variables is critical when interpreting correlation results.</p>
+<p>When discussing correlation, it is essential to describe how changes in one variable are associated with changes in another, rather than implying causation. Avoid phrases such as ‘the effect of Variable X on Variable Y’ or statements suggesting that one variable affects or influences another. Instead, use precise language, stating that variables are correlated or associated with each other. This distinction is critical, as correlation alone does not establish a cause-and-effect relationship.</p>
+<p>Finally, while correlation provides information about the direction and strength of a relationship, it does not determine the exact slope of the best-fitting line. In other words, we can conclude that math scores and motivation are correlated, but we cannot infer how much math scores typically increase for every one-point increase in motivation. The correlation coefficient (r) only tells us the direction of the relationship (positive or negative) and how tightly the individual values cluster around the line—it does not quantify the rate of change between the two variables.</p>
+<p>It is important to note that the slope of the best-fitting line is independent of the strength of the correlation. A steep line can still correspond to a weak correlation, while a nearly flat line can reflect a strong correlation. Correlation simply describes the direction and degree of association between two variables—it does not allow for precise predictions. If you want to determine the slope and use one variable to predict another, stay tuned for the upcoming discussion on regression analysis.</p>
+</section>
+<section id="chi-square-test-for-independence" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="chi-square-test-for-independence"><span class="header-section-number">11.9</span> Chi-Square Test for Independence</h2>
+<p>A <strong>chi-square test for independence</strong> is a statistical test used to determine whether there is a significant association between two categorical variables.</p>
+<p>When learning about independent-samples <span class="math inline">\(t\)</span> tests or correlations, a common misconception is that you can analyze just two numbers rather than two sets of numbers. However, comparing two means without additional context is not statistically meaningful. To determine whether differences between means are significant, you need to account for the spread of the data (variance) and the number of observations (N). The same principle applies to correlation—you cannot determine whether two values are correlated in isolation. Instead, you need two sets of numbers to estimate variance and covariance, which are essential for assessing the strength and direction of a relationship.</p>
+<p>In contrast, chi-square tests allow you to analyze relationships <em>without requiring individual raw data points</em>. In a chi-square test for independence, you compare observed values to expected values, where the expected values are calculated from the sample data itself rather than being predetermined.</p>
+<p>Because the chi-square test for independence examines the relationship between two categorical variables, it can be used as an alternative to a correlation or the independent-samples t test. When using it, you should clearly define a dependent variable and an independent variable to inform your conclusions from the analysis. For example, say you want to check the effectiveness of a persuasive video on whether college athletes should be paid. Your independent variable shows if individuals watched the video or not, and your dependent variable is a dichotomous variable indicating agreement or disagreement with a statement in favor of paying college athletes.</p>
+<p>If you had an entire dataset with individual responses, you could use statistical software packages to run a chi-square. However, what if all you had was the following summary table?</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Support paying college athletes: Yes</th>
+<th>Support paying college athletes: No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Watched video: Yes</td>
+<td>18</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>Watched video: No</td>
+<td>12</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>There are a few important assumptions for this test, just like other chi-square tests:</p>
+<ul>
+<li><p><em>Random sampling</em>: Each independent variable is drawn from a random sample.</p></li>
+<li><p><em>Independence of observations</em>: The outcome for one individual does not influence the outcome for another.</p></li>
+<li><p><em>Mutually exclusive categories</em>: Each observation belongs to one, and only one, category within the contingency table.</p></li>
+</ul>
+<p>Since all assumptions are met, we went ahead and entered the information into a statistical software package and found that <span class="math inline">\(\chi^2 (1) = 5.692, \, p = 0.017\)</span>. There is an association between watching the video and support for paying college athletes. The Phi coefficient, which represents practical significance, was 0.36, indicating a medium effect size.</p>
+<p>Let’s take a minute to understand how we would calculate the outcome by hand. First, we must calculate the expected frequencies for each cell. To do this:</p>
+<ul>
+<li><p>Calculate the total for each of the rows and columns by simply adding them together.</p></li>
+<li><p>For each cell, compute the following:</p></li>
+</ul>
+<p><span class="math display">\[
+f_e = \frac{row \, total\, \times \,column \, total}{N}
+\]</span></p>
+<p><span class="math inline">\(N\)</span> equals the total number of participants. The following table shows you how to calculate these values for our example.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 31%">
+<col style="width: 31%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Support: Yes</th>
+<th>Support: No</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Watched video: Yes</td>
+<td><span class="math inline">\(\frac{21 \times 30}{44} = 14.3\)</span></td>
+<td><span class="math inline">\(\frac{21 \times 14}{44} = 6.7\)</span></td>
+<td><span class="math inline">\(18 + 3 = 21\)</span></td>
+</tr>
+<tr class="even">
+<td>Watched video: No</td>
+<td><span class="math inline">\(\frac{23 \times 30}{44} = 15.7\)</span></td>
+<td><span class="math inline">\(\frac{23 \times 14}{44} = 7.3\)</span></td>
+<td><span class="math inline">\(12 + 11 = 23\)</span></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td><span class="math inline">\(18 + 12 = 30\)</span></td>
+<td><span class="math inline">\(3 + 11 = 14\)</span></td>
+<td><span class="math inline">\(18 + 12 + 11 + 3 = 44\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The degrees of freedom are calculated by multiplying the degrees of freedom for each categorical value: <span class="math inline">\(df = (r−1)\times(c−1)\)</span>, where <span class="math inline">\(r\)</span> = number of rows (categories of one variable) and <span class="math inline">\(c\)</span> = number of columns (categories of the other variable). Each of the variables in our example has 1 degree of freedom <span class="math inline">\((2 - 1) = 1\)</span> and <span class="math inline">\((2 - 1) = 1\)</span>. We then multiple them together for 1 total degree of freedom.</p>
+<p>Next, we need to calculate the test statistic. The test statistic is calculated by:</p>
+<p><span class="math display">\[
+\chi^2 = \sum \frac{(f_o - f_e)^2}{f_e}
+\]</span></p>
+<p><span class="math display">\[
+\chi^2 =
+\frac{(18 - 14.3)^2}{14.3}
++ \frac{(3 - 6.7)^2}{6.7}
++ \frac{(12 - 15.7)^2}{15.7}
++ \frac{(11 - 7.3)^2}{7.3}
+\]</span></p>
+<p><span class="math display">\[
+\chi^2 = 0.96 + 2.04 + 0.87 + 1.88
+\]</span></p>
+<p><span class="math display">\[
+\chi^2 = 5.75
+\]</span></p>
+<p>Our hand-calculated value is very close to the value calculated by statistical software. Comparing the obtained value to the Critical Values of Chi-Square table at the end of the book tells us that the p value falls somewhere between .05 and .01 since 5.75 falls between 3.84 and 6.64. Figure 11.14 shows that a χ2 value of 5.75 exceeds the critical value and falls in the rejection region.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Figure 11.14. Chi Squared Distribution with Rejection Region</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>There are two key limitations to consider when utilizing chi-square tests. First, large sample sizes can make trivial associations statistically significant. Small differences between observed (O) and expected (<span class="math inline">\(E\)</span>) frequencies are magnified because the test statistic aggregates these differences across all cells. Second, Cochran (1954) explicitly stated that a minimum expected frequency of 5 is a reasonable threshold for the validity of the chi-square approximation in most practical cases because this helps ensure the validity of the test’s results, particularly the accuracy of the p values. If expected cell frequencies are consistently below 5, alternative methods like Fisher’s Exact Test should be used.</p>
+</section>
+</section>
+<section id="examining-relationships-between-two-variables-in-r" class="level1 unnumbered">
+<h1 class="unnumbered">Examining Relationships Between Two Variables in R</h1>
+<p>In this section, we demonstrate how to implement several methods from this Chapter in R. We start with <strong>Pearson’s correlation</strong> for two continuous variables, then illustrate alternatives when data are <strong>ordinal</strong> or involve a <strong>dichotomous variable</strong>, and finish with a <strong>chi-square test</strong> for independence between two categorical variables.</p>
+<section id="pearsons-correlation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="pearsons-correlation">1 Pearson’s Correlation</h2>
+<p>Here, we examine the relationship between students’ Reasoning scores (PV1MPRE) and Change &amp; Relationships scores (PV1MCCR), two mathematics sub-area scores from PISA reflecting different cognitive domains.</p>
+<section id="visual-check-of-assumptions" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="visual-check-of-assumptions">1.1 Visual Check of Assumptions</h3>
+<section id="linearity-scatterplot" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="linearity-scatterplot">1.1.1 Linearity: Scatterplot</h4>
+<p>In this scatter plot, The solid line represents the fitted linear regression line (to be introduced in Chapter 12), while the dashed line represents the LOESS curve, which flexibly captures any nonlinear patterns.</p>
+<p>Overall, the relationship between the two math scores appears strongly linear: the points are well distributed around the straight line, and the LOESS curve closely follows the linear fit across most of the score range. At the lower end of the score distribution (roughly 100–300), the LOESS curve lies slightly above the linear fit, suggesting a mild upward deviation from strict linearity in that range.</p>
+<p>However, given the large sample size and the relatively small departure, <strong>the linearity assumption is considered reasonably satisfied</strong>, and Pearson’s correlation remains appropriate for quantifying the association.</p>
+</section>
+<section id="homoscedasticity-residuals-vs-fitted-plot" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="homoscedasticity-residuals-vs-fitted-plot">1.1.2 Homoscedasticity: Residuals vs Fitted plot</h4>
+<p>Residual plots from a simple linear regression model help confirm homoscedasticity.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">##| echo: true</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1MCCR <span class="sc">~</span> PV1MPRE, <span class="at">data =</span> data) <span class="co"># fit a linear regression model </span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">1</span>)  <span class="co">#which = 1 indicates the 1st diagnostic plot: Residuals vs Fitted </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter11_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The residuals appear to be fairly evenly scattered around zero across the entire range of fitted values, without forming a clear funnel shape or systematic curve. A few points are marked with observation numbers (e.g., 80, 3381, 3345), which are likely mild outliers. However, they are not extreme enough to indicate severe heteroscedasticity (i.e., unequal variance of residuals). Overall, this indicates that the variance of the residuals is approximately constant, meaning the <strong>homoscedasticity assumption is reasonably satisfied</strong>.</p>
+</section>
+<section id="normality-qq-plots" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="normality-qq-plots">1.1.3 Normality: Q–Q plots</h4>
+<p>Q–Q plots check the approximate normality of each variable.</p>
+<p>In both plots, the points largely follow the 45-degree reference line, with only slight deviations at the extreme tails. This indicates that both variables are approximately normally distributed.</p>
+<p>Although the chapter mentions checking <strong>bivariate normality</strong> (the joint normal distribution of the two variables), examining the <strong>marginal normality</strong> of each variable is often a practical and informative first step. If both variables are roughly normally distributed individually and the scatterplot of their relationship appears linear (as we already checked), this generally <strong>supports the assumption of bivariate normality</strong> . Together, these results justify the use of Pearson correlation to examine the linear relationship between these two math sub-area scores.</p>
+</section>
+</section>
+<section id="computing-pearsons-r" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="computing-pearsons-r">1.2 Computing Pearson’s r</h3>
+<ul>
+<li><p><strong>Strength and Direction of Association</strong>: The Pearson correlation coefficient is <span class="math inline">\(r=.852\)</span>, indicating a very strong positive linear relationship between Math Reasoning and Math Change &amp; Relationships scores. In practical terms, students who score higher in reasoning also tend to score higher in change &amp; relationships.</p></li>
+<li><p><strong>Statistical Significance</strong>: <span class="math inline">\(p&lt;.001\)</span>, meaning the observed correlation is highly statistically significant. We can reject the null hypothesis of no linear association between the two sub-scores.</p></li>
+<li><p><strong>Variance Explained</strong>: The squared correlation is <span class="math inline">\(r^2=.726\)</span>, which means that about 72.6% of the variance in Change &amp; Relationships scores can be explained by Math Reasoning scores (and vice versa). This indicates a very large effect size and strong shared variability between the two sub-areas.</p></li>
+</ul>
+</section>
+</section>
+<section id="spearmans-correlation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="spearmans-correlation">2 Spearman’s Correlation</h2>
+<p>When variables are ordinal, Spearman’s <span class="math inline">\(r_s\)</span> is preferred. Here, we convert the two math subscores into quartiles (1–4) and compute Spearman’s correlation.</p>
+<p>The Spearman’s Rank-Order correlation (<span class="math inline">\(r_s = .799, \, p &lt; .001\)</span>) indicates a strong positive monotonic relationship between Math Reasoning and Change &amp; Relationships after converting the scores into quartiles. This means that as students’ quartile ranking on reasoning increases, their quartile ranking on change &amp; relationships tends to increase as well.</p>
+<p>Compared with the Pearson correlation (<span class="math inline">\(r=.852\)</span>), the Spearman’s <span class="math inline">\(r_s\)</span> is slightly lower. This is expected because transforming continuous scores into quartiles removes some of the fine-grained variability in the data, retaining only the relative rank order. As a result, Spearman’s <span class="math inline">\(r_s\)</span> captures the ordinal association but ignores within-quartile differences, leading to a slightly attenuated correlation coefficient.</p>
+</section>
+<section id="point-biserial-correlation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="point-biserial-correlation">3 Point-Biserial Correlation</h2>
+<p>Point-biserial correlation measures the relationship between a continuous variable and a dichotomous variable. Here we examine whether <em>students who perceive mathematics as easier than other subjects</em> (MATHEASE: 0 = No, 1 = Yes) have higher overall math scores (PV1MATH).</p>
+<p>The point-biserial correlation between perception of mathematics as easier than other subjects and overall math score is <span class="math inline">\(r_{pb} = .108\)</span>, with <span class="math inline">\(p&lt;.001\)</span>. This result indicates a significantly positive but small association between perceiving mathematics as easier and actual math performance: students who report finding mathematics easier tend to score slightly higher on average.</p>
+</section>
+<section id="chi-square-test-for-independence-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="chi-square-test-for-independence-1">4 Chi-Square Test for Independence</h2>
+<p>When both variables are categorical, we use a chi-square test to evaluate independence. Here, we examine the relationship between Gender (ST004D01T, where 1 = Female and 2 = Male) and Math Motivation (MATHMOT, where 0 = Not more motivated to do well in mathematics than other subjects and 1 = More motivated to do well in mathematics than other subjects).</p>
+<p>The contingency table shows the frequency of students’ motivation to do well in mathematics broken down by gender. The Chi-squared test yielded <span class="math inline">\(\chi^2(1)=23.12, \, p&lt;.001\)</span>, so we reject the null hypothesis of independence. This means there is a statistically significant association between gender and motivation to do well in mathematics.</p>
+<p>From the contingency table, male students have a higher proportion of reporting being more motivated to do well in mathematics compared to female students. This finding suggests that motivation to do well in mathematics may vary by gender, which could have implications for educational interventions or further research.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

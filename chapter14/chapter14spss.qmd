@@ -1,0 +1,95 @@
+# Advanced Quantitative Methods in SPSS {.unnumbered}
+
+In this section, we provide an overview of how to implement several advanced quantitative methods introduced in this chapter using SPSS. The methods covered in Chapter 14 of the textbook, such as multilevel modeling (MLM), factor analysis and structural equation modeling (FA/SEM), meta-analysis, and causal inference approaches (including propensity score models, instrumental variables, difference-in-differences, and regression discontinuity), represent powerful tools for addressing complex research questions in educational studies. 
+
+
+Some of these methods are fully supported in SPSS Statistics and can be implemented through standard menu-driven procedures; examples include multilevel modeling and meta-analysis, which are introduced in this document. Other methods require additional software or customized workflows and are therefore not covered here. For those approaches, readers are referred to the R tutorials provided in the textbook. 
+
+
+For the method mentioned in this section, we focus on its analytic purpose and provide a general overview of how it can be implemented. Each example highlights the basic implementation in SPSS, helping readers connect the statistical ideas discussed in the chapter with their practical application. 
+
+ 
+
+## 1	Multilevel Modeling {.unnumbered}
+
+Multilevel modeling is used when data have a hierarchical or nested structure, such as students nested within classrooms or schools. These models explicitly account for dependence among observations and allow researchers to separate within-group and between-group sources of variation. 
+
+**Example: A Random Intercept Model**
+
+The following example illustrates how to fit a basic two-level random-intercept model predicting students’ math achievement based on their effort and persistence in math, allowing the intercept to vary across schools. 
+
+In this example, math is the dependent variable (student math achievement), effort is a student-level predictor (fixed effect), and school_id identifies schools and defines the grouping structure (students nested within schools). 
+
+To fit the same random-intercept multilevel model using SPSS menus, follow these steps: 
+
+1. Click Analyze > Mixed Models > Linear… 
+
+2. In the Subjects dialog:  Move school_id into the Subjects box, then click Continue. 
+
+3. In the Main dialog:  
+
+    Move math into the Dependent Variable box. 
+
+    Move effort into the Covariate(s) box. 
+
+4. Click Fixed:  
+
+    Add effort to the Model. 
+
+    Ensure the Intercept is included, then click Continue. 
+
+5. Click Random:  
+
+    Tick Include intercept. 
+
+    Add school_id to the Combinations box, then click Continue. 
+
+6. Click Estimation: Select Restricted Maximum Likelihood (REML), then click Continue. 
+
+7. Click Statistics:  
+
+    Tick Parameter estimates for fixed effects, Tests for covariance parameters, and Covariances of random effects 
+
+    Click Continue. 
+
+8. Click OK to run the model. 
+
+ 
+
+## 2	Meta-Analysis {.unnumbered}
+
+**Example: Random-Effects Meta-Analysis**  
+
+The example below illustrates a basic workflow for conducting a random-effects meta-analysis in SPSS. Suppose that, for each study to be included in the meta-analysis, information is available on the treatment and control group means, standard deviations, and sample sizes, but effect sizes have not yet been computed. 
+
+To fit a random-effects meta-analysis model using raw continuous outcome data in SPSS, follow these steps: 
+
+1. Select Analyze > Meta Analysis > Continuous Outcomes > Raw Data 
+
+2. Move the variables of the treatment group (sample size, mean, and SD) into the ‘Treatment Group’ box 
+
+3. Move the variables of the control group (sample size, mean, and SD) into the ‘Control Group’ box 
+
+4. Move the identifying variable into the ‘Study ID’ box. This variable typically corresponds to a study ID, author name, or study title.  
+
+5. Under Effect Size, select Hedges’ g (other effect size measures may be selected as appropriate for the research context). 
+
+6. Under Model, select Random-effects.  
+
+7. Select the effect size type as ‘Hedges’ g’ in the ‘Effect Size’ box (you can also select other effect size based on the need ) 
+
+8. Click Print: Select Test of homogeneity and Heterogeneity measures, then click Continue. 
+
+9. Click Plot: 
+
+    Select Forest plot. 
+
+    Select all available Display Columns, then click Continue. 
+
+10. Click ‘OK’  
+
+ 
+
+## Summary of Advanced Methods in R {.unnumbered}
+
+This chapter introduced SPSS implementations of two advanced quantitative methods commonly used in educational research. Researchers may not master these methods at once; instead, proficiency develops through repeated use as new research questions arise and analytic needs evolve. The goal of this section is not to provide an exhaustive reference, but to illustrate core analytical approaches, clarify when each method is appropriate, and demonstrate how they can be implemented using SPSS procedures. With these examples as a foundation, readers are equipped to apply the methods introduced in Chapter 14 within SPSS and to recognize when additional tools or software environments may be required for more specialized analyses. 

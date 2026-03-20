@@ -1,0 +1,210 @@
+# Examining Relationships Between Two Variables in R {.unnumbered}
+
+In this section, we demonstrate how to implement several methods from this Chapter in R. We start with **Pearson’s correlation** for two continuous variables, then illustrate alternatives when data are **ordinal** or involve a **dichotomous variable**, and finish with a **chi-square test** for independence between two categorical variables. 
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+# packages used below 
+library(haven) 
+library(dplyr) 
+library(ggplot2) 
+library(psych)      # descriptive stats, point-biserial (optional) 
+library(GGally)     # quick scatterplots/diagnostics 
+library(lsr)        # Cramer's V 
+ 
+data <- read_sav("chapter6/chapter6data.sav") 
+```
+## 1    Pearson’s Correlation {.unnumbered}
+
+Here, we examine the relationship between students’ Reasoning scores (PV1MPRE) and Change & Relationships scores (PV1MCCR), two mathematics sub-area scores from PISA reflecting different cognitive domains. 
+
+### 1.1 Visual Check of Assumptions {.unnumbered}
+
+#### 1.1.1  Linearity: Scatterplot {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+# scatter + smooth line and linear fit 
+ggplot(data, aes(PV1MPRE, PV1MCCR)) + 
+  geom_point(alpha = .3) + 
+  geom_smooth(method = "lm", se = FALSE, linewidth = .8) + # regression line (solid) 
+  geom_smooth(se = FALSE, linetype = 2) +  # loess trend (dashed) to spot nonlinearity 
+  labs(x = "Math Reasoning (PV1MPRE)", y = "Change & Relationships (PV1MCCR)", 
+       title = "Scatterplot with Linear Fit (solid) and LOESS (dashed)") 
+```
+In this scatter plot, The solid line represents the fitted linear regression line (to be introduced in Chapter 12), while the dashed line represents the LOESS curve, which flexibly captures any nonlinear patterns. 
+
+Overall, the relationship between the two math scores appears strongly linear: the points are well distributed around the straight line, and the LOESS curve closely follows the linear fit across most of the score range. At the lower end of the score distribution (roughly 100–300), the LOESS curve lies slightly above the linear fit, suggesting a mild upward deviation from strict linearity in that range. 
+
+However, given the large sample size and the relatively small departure, **the linearity assumption is considered reasonably satisfied**, and Pearson’s correlation remains appropriate for quantifying the association. 
+
+#### 1.1.2	Homoscedasticity: Residuals vs Fitted plot {.unnumbered}
+
+Residual plots from a simple linear regression model help confirm homoscedasticity. 
+
+```{r}
+##| echo: true
+#| message: false
+#| warning: false
+#| include: false
+m <- lm(PV1MCCR ~ PV1MPRE, data = data) # fit a linear regression model 
+plot(m, which = 1)  #which = 1 indicates the 1st diagnostic plot: Residuals vs Fitted 
+```
+
+The residuals appear to be fairly evenly scattered around zero across the entire range of fitted values, without forming a clear funnel shape or systematic curve. A few points are marked with observation numbers (e.g., 80, 3381, 3345), which are likely mild outliers. However, they are not extreme enough to indicate severe heteroscedasticity (i.e., unequal variance of residuals). Overall, this indicates that the variance of the residuals is approximately constant, meaning the **homoscedasticity assumption is reasonably satisfied**.
+
+#### 1.1.3	Normality: Q–Q plots {.unnumbered}
+
+Q–Q plots check the approximate normality of each variable. 
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+qqnorm(data$PV1MPRE, main = "Q-Q Plot: Math - Reasoning"); qqline(data$PV1MPRE) 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+qqnorm(data$PV1MCCR, main = "Q-Q Plot: Math - Change & Relationships"); 
+qqline(data$PV1MCCR) 
+```
+In both plots, the points largely follow the 45-degree reference line, with only slight deviations at the extreme tails. This indicates that both variables are approximately normally distributed. 
+
+Although the chapter mentions checking **bivariate normality** (the joint normal distribution of the two variables), examining the **marginal normality** of each variable is often a practical and informative first step. If both variables are roughly normally distributed individually and the scatterplot of their relationship appears linear (as we already checked), this generally **supports the assumption of bivariate normality** . Together, these results justify the use of Pearson correlation to examine the linear relationship between these two math sub-area scores. 
+
+### 1.2	Computing Pearson’s r {.unnumbered}
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+pear <- cor.test(data$PV1MPRE, data$PV1MCCR,  
+                 use = "pairwise.complete.obs") # pairwise deletion of missing 
+pear$estimate      # correlation coefficient r 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+pear$p.value # p-value 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+pear$estimate^2  # r-squared  
+```
+- **Strength and Direction of Association**: The Pearson correlation coefficient is $r=.852$, indicating a very strong positive linear relationship between Math Reasoning and Math Change & Relationships scores. In practical terms, students who score higher in reasoning also tend to score higher in change & relationships. 
+
+- **Statistical Significance**: $p<.001$, meaning the observed correlation is highly statistically significant. We can reject the null hypothesis of no linear association between the two sub-scores. 
+
+- **Variance Explained**: The squared correlation is $r^2=.726$, which means that about 72.6% of the variance in Change & Relationships scores can be explained by Math Reasoning scores (and vice versa). This indicates a very large effect size and strong shared variability between the two sub-areas. 
+
+
+## 2    Spearman’s Correlation {.unnumbered}
+
+When variables are ordinal, Spearman’s $r_s$ is preferred. Here, we convert the two math subscores into quartiles (1–4) and compute Spearman’s correlation. 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+q_dat <- data %>% 
+  mutate( # create quartile variables 
+    pre_q  = ntile(PV1MPRE, 4), # quartiles of Reasoning 
+    mccr_q = ntile(PV1MCCR, 4)  # quartiles of Change & Relationships 
+  ) 
+head(q_dat[, c("PV1MPRE", "pre_q", "PV1MCCR", "mccr_q")]) # view new variables 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+spear <- cor.test(q_dat$pre_q, q_dat$mccr_q, method = "spearman",  
+                  exact = FALSE, #large sample approximation, preferred for n > 1000 
+                  use = "pairwise.complete.obs") 
+spear$estimate 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+spear$p.value 
+```
+
+The Spearman’s Rank-Order correlation ($r_s = .799, \, p < .001$) indicates a strong positive monotonic relationship between Math Reasoning and Change & Relationships after converting the scores into quartiles. This means that as students’ quartile ranking on reasoning increases, their quartile ranking on change & relationships tends to increase as well. 
+
+Compared with the Pearson correlation ($r=.852$), the Spearman’s $r_s$ is slightly lower. This is expected because transforming continuous scores into quartiles removes some of the fine-grained variability in the data, retaining only the relative rank order. As a result, Spearman’s $r_s$ captures the ordinal association but ignores within-quartile differences, leading to a slightly attenuated correlation coefficient.
+
+
+## 3    Point-Biserial Correlation {.unnumbered}
+
+Point-biserial correlation measures the relationship between a continuous variable and a dichotomous variable. Here we examine whether *students who perceive mathematics as easier than other subjects* (MATHEASE: 0 = No, 1 = Yes) have higher overall math scores (PV1MATH). 
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+pb <- cor.test(as.numeric(data$MATHEASE), #ensure dichotomous variable is numeric 
+               data$PV1MATH, 
+               use = "pairwise.complete.obs") 
+pb$estimate 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+pb$p.value 
+```
+
+The point-biserial correlation between perception of mathematics as easier than other subjects and overall math score is $r_{pb} = .108$, with $p<.001$. This result indicates a significantly positive but small association between perceiving mathematics as easier and actual math performance: students who report finding mathematics easier tend to score slightly higher on average. 
+
+
+## 4    Chi-Square Test for Independence {.unnumbered}
+
+When both variables are categorical, we use a chi-square test to evaluate independence. Here, we examine the relationship between Gender (ST004D01T, where 1 = Female and 2 = Male) and Math Motivation (MATHMOT, where 0 = Not more motivated to do well in mathematics than other subjects and 1 = More motivated to do well in mathematics than other subjects). 
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+tab <- table(Gender = factor(data$ST004D01T, levels = c(1,2), labels = c("Female","Male")), 
+             Motivation = factor(data$MATHMOT, levels = c(0,1), labels = c("No","Yes"))) 
+tab  # contingency table 
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| include: false
+chisq <- chisq.test(tab, correct = FALSE) # chi-square test without Yates' correction 
+#set correct = TRUE for small samples (any expected cell counts < 5) 
+chisq 
+```
+
+The contingency table shows the frequency of students’ motivation to do well in mathematics broken down by gender. The Chi-squared test yielded $\chi^2(1)=23.12, \, p<.001$, so we reject the null hypothesis of independence. This means there is a statistically significant association between gender and motivation to do well in mathematics. 
+
+From the contingency table, male students have a higher proportion of reporting being more motivated to do well in mathematics compared to female students. This finding suggests that motivation to do well in mathematics may vary by gender, which could have implications for educational interventions or further research. 
+

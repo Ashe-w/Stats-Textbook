@@ -5,3 +5,134 @@ number-sections: true
 {{< include chapter9/chapter9text.qmd >}}
 {{< include chapter9/chapter9r.qmd >}}
 {{< include chapter9/chapter9spss.qmd >}}
+
+# Conclusion  {.unnumbered}
+
+In chapter 9, we expanded our understanding of hypothesis testing by exploring various methods for comparing two groups. Central topics included the distinctions among the three types of $t$ tests—one-sample, independent-samples, and related-samples—and the assumptions underpinning these methods, such as normality, independence, and equal variances. Additionally, the chapter emphasized the importance of effect size measures, such as Cohen's $d$ and eta-squared, to evaluate the practical significance of findings beyond mere statistical significance. 
+
+The chapter also introduced nonparametric alternatives for scenarios where data do not meet parametric test assumptions. The Mann-Whitney $U$ test, a substitute for the independent-samples t test, evaluates whether two independent groups have equal distributions, making it ideal for ordinal data or when assumptions of normality and equal variance are violated. Similarly, Wilcoxon’s Matched-Pairs Signed-Ranks Test, an alternative to the related-samples $t$ test, is used for paired data to test whether the median differences deviate significantly from zero. These methods are particularly useful for addressing skewed or ordinal data and ensuring robust conclusions when parametric assumptions are not satisfied. 
+
+By incorporating both parametric and nonparametric techniques, this chapter equips researchers with a versatile toolkit for hypothesis testing, enabling rigorous analyses of group differences under varied data conditions. These statistical foundations pave the way for more advanced methodologies in subsequent chapters, reinforcing the importance of selecting appropriate tests based on data characteristics and research questions. 
+
+
+
+## Key Takeaways for Educational Researchers from Chapter 9  {.unnumbered}
+ 
+
+- Choosing the right t test matters. The one-sample t test compares a group’s mean to a known population mean (e.g., comparing students' reading scores to the national average). The independent-samples t test compares means from two separate groups (e.g., evaluating whether students in a new math curriculum perform better than those in a traditional program). The related-samples t test (paired t test) compares the same group at two time points or under different conditions (e.g., pre- and post-intervention reading scores). 
+
+- Checking assumptions before running a t test is crucial. Normality, independence, and equal variances should be checked before running parametric tests using histograms, Q-Q plots, and Levene’s test. For example, if two third-grade classrooms have vastly different test score variances, an adjusted t test or a nonparametric alternative should be used. 
+
+- Interpreting statistical vs. practical significance is important. A statistically significant result (p < 0.05) does not always mean the difference is meaningful. Effect sizes like Cohen’s d help determine whether the difference is practically important (e.g., does a statistically significant 2-point improvement on a 100-point test really matter in practice?). 
+
+- Nonparametric tests are useful for skewed or ordinal data. When working with a single Likert-scale item on a scale or survey (e.g., student engagement ratings: Strongly Agree to Strongly Disagree), normality assumptions may not hold. The Mann-Whitney U test (for independent groups) and the Wilcoxon Matched-Pairs Signed-Ranks Test (for paired data) may be preferred in such cases. If assumptions for an independent t test are violated, the Mann-Whitney U test compares whether two groups have different distributions rather than just mean differences (e.g., Comparing test scores between students who received praise vs. criticism in a classroom setting). When data are dependent (e.g., before vs. after an intervention) but not normally distributed, the Wilcoxon Matched-Pairs Signed-Ranks Test is an alternative to the related-samples t test (e.g., tracking students' math problem-solving speed before and after using a new instructional strategy). 
+
+- Statistical software helps, but understanding the underlying logic is key. Software like IBM SPSS, R, and Python can quickly compute test statistics and p values, but researchers should understand the underlying logic of hypothesis testing. For example, before running an independent t test to compare student GPAs in two different school districts, a researcher should check for normality and equal variances before interpreting results.  Also, it is important to interpret statistical results within the context of the study.  
+
+
+
+## Key Definitions from Chapter 9  {.unnumbered}
+
+ 
+
+**Distribution of sample differences** refers to the theoretical distribution that arises when calculating the differences between sample means (in independent-samples t tests) or paired scores (in related-samples t tests) repeatedly under the same sampling conditions. 
+
+ 
+
+**Equal variance** refers to the assumption that the variance (the measure of variability or spread) in different groups being compared is approximately the same.  
+
+ 
+
+**Eta-squared ($\eta^2$)** is a measure of effect size used to quantify the proportion of variance in a dependent variable that is associated with one or more independent variables in an analysis. 
+
+ 
+
+An **independent-samples $t$ test** is a statistical method used to compare the means of two independent groups to determine whether there is a statistically significant difference between them. 
+
+ 
+
+**Levene's Test** is a statistical procedure used to assess whether the variances of a dependent variable are equal across different groups. It is commonly applied before conducting analyses that assume equal variances, such as t-tests or ANOVA, to determine if this assumption holds. 
+
+ 
+
+The **Mann-Whitney $U$ test** is a statistical procedure used to determine whether the dispersion of ranks is equal across two independent groups. It is used as a nonparametric alternative to the two-independent-sample t test. 
+
+ 
+
+**Paired-samples $t$ test** is used to pair individuals on similar key variables. 
+
+ 
+
+**Related-samples $t$ test** typically means you have the same participants measured on two dependent variables that use the same scale, such as math vs reading tests, or under a control condition vs under a treatment condition.   
+
+ 
+
+**Repeated-measures $t$ test** is used to test one group of participants twice on the same measure at different points in time. 
+
+ 
+
+**Wilcoxon’s Matched-Pairs Signed-Ranks Test** is a nonparametric alternative to the related-samples (or repeated-measures) t test.   
+
+ 
+## Check Your Understanding  {.unnumbered}
+
+1. **What is the main difference between an independent-samples t test and a related-samples t test?** 
+
+    a. Independent-samples $t$ tests compare two separate groups, while related-samples t tests compare two sets of scores from the same group or matched individuals. 
+
+    b. Independent-samples $t$ tests compare means to a population value, while related-samples t tests compare variances. 
+
+    c. Independent-samples $t$ tests require categorical data, while related-samples t tests require continuous data. 
+
+    d. There is no difference; they are used interchangeably. 
+
+ 
+
+2. **Which assumption is unique to independent-samples t tests but not required for related-samples t tests?**
+
+    a. Normality 
+
+    b. Random sampling 
+
+    c. Equal variances 
+
+    d. Independence of scores within groups 
+
+ 
+
+3. **When would you use a one-sample t test instead of an independent- or related-samples t test?** 
+
+    a. When you have two independent groups to compare. 
+
+    b. When you want to compare a single group to a known population mean. 
+
+    c. When you compare pre- and post-test scores from the same group. 
+
+    d. When you have categorical data. 
+
+ 
+
+4. **You are conducting a study to compare the effectiveness of two teaching methods on student performance. You have a small sample size of just 16 students (8 students taught by different teachers in different classrooms – there is no reason to suggest they are related) and the scores in your dataset are not normally distributed. Which test should you use to compare these scores?** 
+
+    a. Mann-Whitney $U$ test 
+
+    b. Wilcoxon Matched-Pairs Signed-Ranks Test 
+
+    c. Independent-samples $t$ test 
+
+    d. One-sample $t$ test 
+
+ 
+
+5. **Which effect size measure is commonly reported for independent-samples t tests?** 
+
+    a. $r^2$ 
+
+    b. Phi coefficient 
+
+    c. Cohen’s $d$ 
+
+    d. Omega 
+  
+
+ 

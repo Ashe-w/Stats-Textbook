@@ -1,0 +1,269 @@
+# Analyzing Change and Adjusting for Covariates in SPSS {.unnumbered}
+
+ 
+
+In this section, we demonstrate how to implement two of the central methods from this Chapter in R: Repeated-Measures ANOVA and Analysis of Covariance (ANCOVA). Both approaches help educational researchers make more nuanced conclusions: the first by analyzing within-subject change across multiple measures, the second by adjusting for covariates to clarify between-group differences. 
+
+## 1	Repeated-Measures ANOVA {.unnumbered}
+
+We will examine U.S. students’ math performance across three content areas from PISA: - PV1MPRE: Reasoning - PV1MCQN: Quantity - PV1MCSS: Space & Shape 
+
+These serve as within-subject factors (each student is measured in all three domains). For a between-subjects factor, we will include MATHMOT - Motivation to Do Well in Mathematics, a binary categorical variable. A value of 1 indicates that the student reported being more motivated to do well in mathematics than in other subjects, and 0 indicates they are not. 
+
+### 1.1	Running the repeated-measures ANOVA {.unnumbered}
+
+Step-by-step procedure in SPSS 
+
+1. Click Analyze → General Linear Model → Repeated Measures 
+
+2. In the Repeated Measures Define Factor(s) dialog: 
+
+    In the box labeled Within-Subject Factor Name, type: 
+    ContentArea 
+
+    For Number of Levels, enter: 3 
+
+    Click Add, then click Define 
+
+3. Assign the three variables to the ContentArea levels: 
+
+    In the next dialog (Repeated Measures: Define), move the following into the "Within-Subjects Variables" slots: 
+
+        PV1MATH_Q → Level 1 
+
+        PV1MATH_S → Level 2 
+
+        PV1MATH_C → Level 3 
+
+4. Add the between-subjects variable: 
+
+    Move MATHMOT into the Between-Subjects Factor(s) box. 
+
+5. Click the “EM Means…” button (Estimated Marginal Means): 
+
+    Move ContentArea into the Display Means For box 
+
+    Check the option Compare main effects 
+
+    Select Bonferroni for pairwise adjustment 
+
+    Click Continue 
+
+6. Click on “Plots…”  
+
+    Drag ContentArea to the Horizontal Axis box. 
+
+    Drag MATHMOT to Separate Lines (if you want interaction plot).  
+
+    Click Add 
+
+    Select Line Chart as Chart Type 
+
+    Under Error Bars, select Confidence Interval 
+
+    Click Continue 
+
+7. *(Optional but recommended)* Click on Options: 
+
+    Check: Descriptive statistics/ Estimates of effect size/ Homogeneity tests 
+
+    Click Continue 
+
+Click OK to run the analysis. 
+
+***Note:*** The procedure may appear long and complicated, but Steps 1–4 are sufficient to run a basic repeated measures ANOVA and obtain the main and interaction effects. 
+Step 5 is necessary if you wish to view estimated marginal means and conduct pairwise comparisons (e.g., Bonferroni adjustment). 
+Step 6 generates line plots to help visualize interactions or group trends. 
+Step 7 provides additional outputs such as descriptive statistics, effect size estimates, and assumption checks (e.g., Levene’s test). 
+
+#### 1.1.1  Assumption checking {.unnumbered}
+
+Before interpreting the results of a repeated-measures ANOVA, it is important to check key statistical assumptions. These assumptions not only ensure the validity of the test results and help control the Type I error rate, but they also determine which version of the results we should report. For example, if the assumption of sphericity is violated, we must use adjusted degrees of freedom rather than reporting the default F-test. 
+
+***Mauchly’s Test of Sphericity***: 
+
+
+![Fig 13.9](chapter13/fig13-9.png){fig-align="center" width=80%}
+
+The test was significant, $\chi^2(2) = 69.384, \, p < .001$, indicating a violation of the sphericity assumption. The variances of the differences between content areas are not perfectly equal. However, with such a large sample (
+$N > 4000$), Mauchly’s test is extremely sensitive — even tiny deviations from sphericity can become statistically significant. 
+
+As the chapter explained, we apply corrections. As the $\epsilon$ is above 0.75, the Huynh-Feldt correction is appropriate and will be used in the main analysis. 
+
+***Box’s Test of Equality of Covariance Matrices***:
+
+![Fig 13.10](chapter13/fig12-10.png){fig-align="center" width=20%}
+
+Box’s $M = 8.050$, $p = .240$, suggesting that the assumption of equal covariance matrices across groups is not violated. 
+
+#### 1.1.2  Between-Subjects Factor: MATHMOT {.unnumbered}
+
+![Fig 13.11](chapter13/fig13-11.png){fig-align="center" width=60%}
+
+- Students with higher motivation in mathematics (MATHMOT) had significantly different scores across the math content areas overall, $F(1, 4008) = 4.16$, $p = .041$. 
+
+The partial $\eta^2$ is .001, indicating that although the effect is statistically significant, the effect size is extremely small (about 0.1% of the variance explained). This reveals that large samples can make very small effects look statistically significant. 
+
+#### 1.1.3  Within-Subjects Factor: ContentArea {.unnumbered}
+
+![Fig 13.12](chapter13/fig13-12.png){fig-align="center" width=80%}
+
+- There is a significant effect of Content Area on math scores, $F(1.968, 7886.516) = 7.884$, $p  < .001$, indicating that students’ performance varies across the three content areas. 
+
+- The partial $\eta^2$ is .002, suggesting that about only 0.2% of the variance in scores can be attributed to differences between content areas.  
+
+#### 1.1.4	Interaction: MATHMOT × ContentArea {.unnumbered}
+
+The interaction between MATHMOT and Content Area is not significant, $F(1.968, 7886.516) = 1.749$, $p = .175$. This means that although motivated students scored differently overall, their relative performance patterns across the three content areas were not significantly different from less motivated peers. In other words, motivation shifts the overall level but not the shape of the profile. 
+
+### 1.2	Post Hoc Comparisons {.unnumbered}
+
+#### 1.2.1  Visualize the Means {.unnumbered}
+
+![Fig 13.13](chapter13/fig13-13.png){fig-align="center" width=80%}
+
+This plot shows the average math scores across the three content areas: Reasoning (1), Quantity (2), and Space & Shape (3). Students scored highest in Reasoning, slightly lower in Quantity, and lowest in Space & Shape. While these trends are observable, they should be interpreted cautiously - formal statistical tests are necessary to confirm whether these differences are statistically significant. In this case, the main effect of content area was significant, further confirming the differences suggested by the plot. 
+
+![Fig 13.14](chapter13/fig12-14.png){fig-align="center" width=80%}
+
+This plot shows the estimated marginal means for each content area, split by students’ motivation to do well in math. Students who reported being more motivated tended to score higher across all three content areas. 
+
+The overall performance pattern (Reasoning > Quantity > Space & Shape) appears similar for both groups, suggesting that the relative differences across content areas are not strongly influenced by motivation. This visual pattern aligns with the non-significant interaction observed in the formal tests, offering further support for that finding. 
+
+#### 1.2.2  Pairwise Comparisons  {.unnumbered}
+
+![Fig 13.15](chapter13/fig13-15.png){fig-align="center" width=60%}
+
+Bonferroni-adjusted pairwise comparisons showed that students scored significantly higher in Reasoning than in Space & Shape ($p < .001$) and significantly higher in Quantity than in Space & Shape ($p = .010$). However, the difference between Reasoning and Quantity was not statistically significant ($p = .930$). These comparisons suggest that the lowest performance was in the Space & Shape subscale, while performance in Reasoning and Quantity was relatively similar. 
+
+Note that these comparisons are based on estimated marginal means, which adjust for the between-subjects factor (math motivation) and use a pooled error term, making them slightly more conservative than raw paired t-tests. 
+
+
+## 2    ANCOVA {.unnumbered}
+
+Now we turn to ANCOVA, where the focus is where the focus is comparing the three types of schools on math performance, while controlling for growth mindset: 
+
+    **DV**: PV1MATH (overall math achievement) 
+
+    **IV**: SC014Q01TA (School type: 1 - religious, 2 - non-profit, 4 - government) 
+
+    **Covariate**: GROSAGR (Growth Mindset) 
+
+## 2.1	Running ANCOVA {.unnumbered}
+
+Step-by-step procedure in SPSS 
+
+1. Click Analyze → General Linear Model → Univariate 
+
+2. In the Univariate dialog: 
+
+    Move PV1MATH to the Dependent Variable box. 
+
+    Move SC014Q01TA (school type) to the Fixed Factor(s) box. 
+
+    Move GROSAGR (growth mindset) to the Covariate(s) box. 
+
+3. Click the “Post Hoc…” button (optional but recommended): 
+
+    Select SC014Q01TA 
+
+    Choose Bonferroni or Tukey for pairwise comparisons 
+
+    Click Continue 
+
+4. (Optional) Click the “EM Means…” button (Estimated Marginal Means): 
+
+    Move SC014Q01TA into the Display Means For box 
+
+    Check the option Compare main effects 
+
+    Select Bonferroni for pairwise adjustment 
+
+    Click Continue 
+
+5. (Optional) Click on “Plots…”: 
+
+    Drag SC014Q01TA to the Horizontal Axis box 
+
+    Click Add 
+
+    Select Line Chart as Chart Type 
+
+    Under Error Bars, select Confidence Interval 
+
+    Click Continue 
+
+6. (Optional) Click on “Options…”: 
+
+    Check: Descriptive statistics/ Estimates of effect size/ Homogeneity tests 
+
+    Click Continue 
+
+Click OK to run the analysis. 
+
+![Fig 13.16](chapter13/fig13-16.png){fig-align="center" width=80%}
+
+#### 2.1.1	School Type Effect {.unnumbered}
+
+After controlling for growth mindset, there are still significant differences in math scores between school types, $F(2,3816)=38.45$, $p<.001$. This means that even if students had the same level of growth mindset, school type is still associated with different mean math achievement. 
+
+#### 2.1.2	Growth Mindset Effect (Covariate) {.unnumbered}
+
+Growth mindset has a significant effect on math achievement, $F(1,3816)=188.65$, $p<.001$.
+
+#### 2.1.3   Pairwise Comparisons  {.unnumbered}
+
+![Fig 13.17](chapter13/fig13-17.png){fig-align="center" width=60%}
+
+![Fig 13.18](chapter13/fig12-18.png){fig-align="center" width=80%}
+
+- From the post-hoc comparison, after controlling for growth mindset (i.e., adjusted means): 
+
+    - Religious schools ($M = 472.971$) scored significantly higher than Non-profit schools ($M = 404.772$), $p < .001$. 
+
+    - Government schools ($M = 469.151$) also scored significantly higher than Non-profit schools, $p < .001$. 
+
+    - There was no significant difference between Religious and Government schools (mean difference $= 3.82$, $p = .93$). 
+
+Check the One-Way ANOVA results from Chapter 10 to see how these comparisons differ before controlling for growth mindset. 
+
+### 2.2 Checking assumptions {.unnumbered}
+
+#### 2.2.1  Independence of covariate and IV {.unnumbered}
+
+Recall that one key assumption of ANCOVA is that the covariate (growth mindset) is associated with the dependent variable (math achievement) but not the independent variable (school type). We have shown that growth had a significant effect on math achievement. Now we check whether growth mindset differs by school type.A table with numbers and letters
+
+![Fig 13.19](chapter13/fig13-19.png){fig-align="center" width=60%}
+
+The ANOVA showed that growth mindset scores did not significantly differ across school types, $F(2,3817)=1.597$, $p=.203$. This indicates that the covariate (growth mindset) is independent of the independent variable (school type), upholding the assumption for ANCOVA. 
+
+#### 2.2.2	Homogeneity of regression slopes {.unnumbered}
+
+Another assumption of ANCOVA is no interaction between the effect of the covariate and group membership. We test this by adding an interaction term between school type and growth mindset. 
+
+***Additional Step in SPSS*** 
+
+All steps are the same as in the standard ANCOVA procedure described above. The only change is in the Model… dialog: 
+
+- After Step 2 (defining the DV, IV, and covariate), click Model… 
+
+- Change the setting from Full factorial to Custom 
+
+- Add the main effects: 
+
+    - Select SC014Q01TA → Click Main effects → Click Add 
+
+    - Select GROSAGR → Click Main effects → Click Add 
+
+- Add the interaction term: 
+
+    - Ctrl+Click to select both SC014Q01TA and GROSAGR 
+
+    - Click Interaction → Click Add 
+
+Click Continue and proceed to run the model as usual 
+
+![Fig 13.20](chapter13/fig13-20.png){fig-align="center" width=80%}
+
+The interaction between school type and growth mindset was not significant, 
+$F(2 ,3814)=1.668$, $p=.189$, indicating that the effect of growth mindset on math achievement is consistent across school types. This upholds the homogeneity of regression slopes assumption for ANCOVA. 

@@ -510,4 +510,723 @@ To test our null hypothesis, we need to define and estimate the three sources of
 | Total                 | 701.98 | 39 |        |      |
 
 
+Where are all those values coming from? Start with the first line. Between groups sum of squares comes from the third type of variation we showed you earlier in the chapter – the difference between group means $(\bar{X_j})$ and the overall mean $(\bar{X})$. The difference for each group was multiplied by the sample size of the group, $n_j$, and then all sum up across groups.  
+
+$$
+SS_{BG} = \sum n_j \left( \bar{X}_j - \bar{X} \right)^2 
+= 10(11.4 - 13.73)^2 + \cdots + 10(8.9 - 13.73)^2 
+= 558.675
+$$
+
+Then we have df for the numerator, or df between groups, which is k -1 or 3. Remember, MS = variance, so the Mean Square value is simply the Sum of Squares for Between-Groups $(SS_{BG})$ divided by the degrees of freedom $(df_{BG})$ because when we calculate variance we divide $SS$ by $df$. With this, we now have the numerator for our $F$ statistic.   
+
+$$
+MS_{BG} = \frac{\sum n_j \left( \bar{X}_j - \bar{X} \right)^2}{k - 1}
+= \frac{558.675}{3}
+= 186.225
+$$
+
+Next, we have the line for Within Group differences, or error variance. The Sum of Squares for within-group variance $(SS_E)$ comes from the second type of variation we showed you – the difference between each individual person’s score $(X_{ij})$ and their own group’s mean score $(\bar{X_j})$
+
+$$
+SS_E = \sum (X_{ij} - \bar{X}_j)^2 = 143.3
+$$
+
+Then we have $df$ for the denominator, or $df$ within groups, which is $N - k$ or $36$. The Mean Square
+value on this line is $SS_E$ divided by $df_E$.
+
+$$
+MS_E = \frac{\sum (X_{ij} - \bar{X}_j)^2}{N - k}
+= \frac{143.3}{36}
+= 3.981
+$$
+
+So now you have the numerator for our F statistic.
+
+$$
+F = \frac{186.225}{3.981} = 46.78
+$$
+
+### Step 4a: Find the p value.  {.unnumbered}
+ 
+
+Based on the decision criteria we set in step 2, a critical value at $\alpha = 0.05$ is $2.87$. Our obtained $F$ statistic $(F = 46.78)$ is much larger than this critical value, meaning the associated $p$ value is smaller than $0.05$. Therefore, we reject the null hypothesis and conclude that at least one group mean is significantly different than the others. The actual $p$ value is $1.67×10^{−12}$, in such small $p$ value, we report it as $p < .001$.  
+
+ 
+
+### Step 4b: Draw a conclusion and report your conclusion.     {.unnumbered}
+
+ 
+As we reject the null hypothesis, we conclude that the average recall performance of college students significantly differs for at least one of the learning strategies used.  
+
+ 
+APA-style sample: A one-way ANOVA was conducted to examine the effect of learning strategies on college students' recall performance. The results indicated a statistically significant difference among at least one of the learning strategies, $F(3,36) = 46.78$, $p < .001$. 
+
+ 
+
+Before we move on, think about why the homogeneity of variances assumption exists. We are summing up all the differences between individual data points and their respective group means, then dividing that result by the degrees of freedom within groups to get an overall error variance. If some groups have individuals that are widely spread apart from each other, while other groups have a much smaller spread, the average variance will not be a good estimate for the error of any of the groups.   
+
+  
+
+A key limitation of ANOVA arises when group sizes are extremely imbalanced, as groups with larger sample sizes will contribute more to variance estimates. This issue becomes more problematic when group sizes are both imbalanced and have unequal variances, leading to inaccurate F statistics and an increased risk of Type I or Type II errors. In that scenario, we would suggest taking a random sample from one or more groups with large sample sizes to create similar-sized groups. Of course, if your overall sample size decreases, you lose statistical power, but at least you can improve the reliability of analysis by minimizing bias in variance estimation.  
+
+  
+
+This brings us to the concept of power. In earlier chapters, we mentioned statistical power multiple times. Statistical power is the probability of correctly rejecting the null hypothesis when it is false. In other words, it is the likelihood that a study will detect an effect or difference if one truly exists. Look back at the formula for the F statistic. What would make the outcome larger and, therefore, make it more likely to reject the null hypothesis?   
+
+1. Make the numerator larger  
+
+2. Make the denominator smaller  
+
+  
+
+The first is pretty straightforward. If there are greater differences between groups, then the numerator increases. For the second option, we need to look at how we calculate the denominator, which is $MS_E$. We took the $SS_E$ and divided it by $df_E$. We now have another fraction, and this time the denominator is $N – k$, which is the formula for within-group degrees of freedom. What happens as this increases?   
+
+
+- When you have a larger number in the denominator of a fraction, the result is going to become smaller.  
+
+- Since $MS_E$ is the denominator of the fraction for the F statistic calculation, a smaller $MS_E$ leads to a larger $F$ statistic, making it more likely to detect significant differences between groups.   
+
+  
+
+The conclusion is that, pretty much as always, a larger sample size gives you more power. Nothing new here, but it helps to see how that actually works out mathematically.   
+
+## Post Hoc Test 
+
+Think back to the null hypothesis for a one-way ANOVA. If we reject the null hypothesis, all we know is that at least one group mean is significantly different from at least one other group mean. In order to learn which means are different, we need to conduct post hoc tests. 
+
+ 
+
+The first step is to look at a means plot for a visual representation of the data, providing an indication of which means may be different. Figure 10.8 shows us that Visualization and Technology-Aided Learning are probably not significantly different from each other, but the other means (Repetition and Control) seem to differ from the first two. We can’t tell if they also differ from each other. 
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 12
+#| fig-cap: "Mean Recall Scores with Error Bars."
+
+library(ggplot2)
+
+# Data approximated from the figure
+data <- data.frame(
+  Condition = factor(c("Repetition", "Visualization", 
+                       "Technology-Aided Learning", "Control"),
+                     levels = c("Repetition", "Visualization", 
+                                "Technology-Aided Learning", "Control")),
+  Mean = c(11.4, 16.4, 18.2, 8.9),
+  Lower = c(10.1, 15.4, 17.0, 7.0),
+  Upper = c(12.6, 17.4, 19.5, 10.8)
+)
+
+# Plot
+ggplot(data, aes(x = Condition, y = Mean)) +
+  geom_point(color = "blue", size = 3) +
+  geom_errorbar(aes(ymin = Lower, ymax = Upper),
+                width = 0.15, color = "blue") +
+  labs(
+    title = "Mean Recall Scores with 95% CI",
+    x = "Recall Condition",
+    y = "Mean Recall Score"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    panel.grid.major = element_line(linetype = "dashed"),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(angle = 0, hjust = 0.5)
+  )
+```
+
+Before we run the post hoc tests that will tell us which groups are significantly different from each other, we want to revisit the concept of familywise error (or experimentwise error). So far, we have run one analysis on this single dataset and we used an alpha level of $0.05$, indicating that we are willing to accept a 5% chance that we will reject a null hypothesis that is actually true (false positive). If we only perform one test, then the Type I error rate is equal to our alpha level, but if we conduct more tests on the same data, our chance of getting a false positive increases. Consider all the comparisons we could theoretically make for this recall data:  
+
+- Repetition vs Visualization 
+
+- Repetition vs Technology-Aided Learning 
+
+- Repetition vs Control 
+
+- Visualization vs Technology-Aided Learning 
+
+- Visualization vs Control 
+
+- Technology-Aided Learning vs Control 
+
+
+That is a lot of tests! With 4 groups, we could make up to 6 comparisons. The formula for calculating the error rate for an entire set of comparisons is $1 − (1−α)^c$, in which C = the number of comparisons. For four groups and 6 comparisons, our experimentwise error rate is actually 0.26, which is much higher than our theoretical alpha level of 0.05.  
+
+There are many different ways to manage this problem. We will highlight three of the most frequently used post hoc tests and provide brief descriptions for several others. Multiple comparison procedures make comparisons while controlling for the increased risk of Type I error that occurs due to multiple testing. The multiple comparison procedures use the same general form of the t statistic. What distinguishes one multiple comparison procedure from another is the kind of contrasts that can be tested (pairwise vs complex), how they control the familywise error rate, and whether they are part of a post hoc or planned analysis.  
+
+
+The **Bonferroni post hoc test** is the most conservative. It simply divides your starting alpha level by the number of tests you are running and then conducts t tests between each pair. We have an alpha of .05 and 6 comparisons in our example, so our effective significance would be .0083. This means that under the Bonferroni correction, a comparison would need a p value less than 0.0083 to be statistically significant. This is more conservative and reduces the chance of Type I error at the cost of statistical power. This is a pretty tough test, and if you have even more groups, you could end up with a significant ANOVA but no significant pair-wise comparisons. If that happens, then you know for sure that your post hoc test was too conservative.  
+
+
+**Fisher’s Least Significant Difference test (LSD)** is a simple post hoc pairwise comparison procedure used to determine whether the means of two groups differ significantly. This test figures out the smallest significant difference between two means as if a test had been run on those two groups, and then any difference larger than that is also considered a significant result. This test has greater power to detect a significant difference between groups, but the tradeoff is that the method does not control for familywise error rate (the probability of making one or more Type I errors), meaning the likelihood of making a type I error increases with multiple comparisons. 
+
+ 
+
+**Tukey’s Honestly Significant Difference (Tukey’s or HSD)** test is a post hoc analysis method used to determine which specific group means are significantly different, while controlling the familywise error rate. Tukey’s test is similar to a t test but it has larger critical values (using the Studentized range statistic), so it is more difficult to reject the null. 
+
+
+::: {.comparison-table}
+
+| Test Name        | Description |
+|------------------|------------|
+| Sidak            | Pairwise multiple comparison test based on a *t* statistic. Adjusts the significance level for multiple comparisons and provides tighter bounds than Bonferroni. |
+| Scheffé          | Performs simultaneous joint pairwise comparisons for all possible combinations of means. Uses the F distribution and can examine all linear combinations of group means, not just pairwise comparisons. |
+| S-N-K            | Student–Newman–Keuls test makes pairwise comparisons using the Studentized range distribution. Compares pairs of means within homogeneous subsets, testing extreme differences first. |
+| Tukey’s b        | Uses the Studentized range distribution to make pairwise comparisons. The critical value is the average of the corresponding values for Tukey’s HSD and Student–Newman–Keuls tests. |
+| Duncan           | Uses a stepwise approach similar to Student–Newman–Keuls but controls the error rate for the entire set of comparisons rather than individual tests. Uses the Studentized range statistic. |
+| Waller–Duncan    | Multiple comparison test based on a *t* statistic with a Bayesian approach. |
+| Dunnett          | Pairwise *t*-test comparing a set of treatments against a single control mean. Can perform two-sided or one-sided tests to check if means are greater or smaller than the control. |
+
+:::
+
+
+## Effect Size 
+
+The last thing we will discuss about one-way ANOVAs is how to measure effect size. The concept is the same as with other types of analyses. Even if there is a statistically significant difference, we want to know if it is practically meaningful. For ANOVAs, effect size is measured in terms of the proportion of variance explained. We have focused on pairwise comparisons, but we are going back to the overall model and estimating to what extent group membership explains changes in the dependent variable for effect size.  
+
+ 
+
+To assess the size of the effect in an ANOVA, we can estimate Eta Squared ($\eta^2$), which provides the proportion of variance explained by the treatment.  
+ 
+$$
+\eta^2 = \frac{SS_{BG}}{SS_{total}} = \frac{558.675}{701.98} = 0.796
+$$
+
+his tells us that 79.6% of the variation in the number of words recalled is a function of the learning condition. According to Cohen (1988), this represents a large effect size, suggesting that the instructional method has a strong influence on recall performance. Unfortunately, $\eta^2$ is a biased estimator, meaning that it tends to overestimate the true effect size.  A less biased estimator for explained variance is Omega Squared ($\omega^2$), where: 
+
+$$
+\omega^2 = \frac{SS_{BG} - [(k - 1)MS_E]}{SS_{total} + MS_E}
+= \frac{558.68 - (3 \times 3.98)}{701.98 + 3.98}
+= \frac{546.74}{705.96}
+= 0.774
+$$
+
+As you can see, the value for $\omega^2$ is lower, estimating that $77.4%$ of the variation in the number of words recalled is due to the learning condition. Whenever you need to report effect size, we recommend using $\omega^2$ because it is less biased. 
+
+## Factorial ANOVA  
+
+  
+
+The first type of ANOVA we learned was *one-way*, meaning there was only one factor. We divided people into groups by condition. Now, we are adding another factor into the mix. A factorial ANOVA is a statistical test used to analyze the effects of two or more categorical independent variables (factors) on a continuous dependent variable, including their interaction effects. It extends the one-way ANOVA by examining multiple factors simultaneously, allowing for a more comprehensive analysis. A classic example for using a factorial ANOVA is testing outcomes based on an intervention (treatment) and looking at whether the intervention is equally effective across different subsets of the sample. 
+
+  
+
+For example, say you have a new way to coach students on reading and you want to find out if students who experience this treatment earn higher scores on a reading assessment than a control group. There are probably going to be students whose reading ability is high enough to start out that they are not going to show much of an increase – they don’t really need the intervention. However, students who started out a little behind on reading could make significant progress based on the intervention.   
+
+::: {.striped-table}
+
+|                | Intervention conduction |   |
+|----------------|------------------------|---|
+| Reading Ability | Treatment             | Control |
+| High           |                        |         |
+| Low            |                        |         |
+
+:::
+
+If you did not use a factorial ANOVA and just ran a $t$ test comparing reading scores for treatment and control students, you might not see a significant result. But if you divide students into ability groups, you might find that the treatment was very helpful for students in a lower-ability group. This is called an interaction effect, and it is typically what we are especially interested in when we use factorial ANOVA to analyze our data. 
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 12
+#| fig-cap: "Interaction Effect: Reading Ability & Intervention."
+library(ggplot2)
+
+# Data approximated from the figure
+df <- data.frame(
+  Intervention = factor(rep(c("Treatment", "Control"), 2),
+                        levels = c("Treatment", "Control")),
+  Score = c(10, 9, 8, 4),
+  Group = factor(c("High-Reading Ability", "High-Reading Ability",
+                   "Low-Reading Ability", "Low-Reading Ability"),
+                 levels = c("High-Reading Ability", "Low-Reading Ability"))
+)
+
+ggplot(df, aes(x = Intervention, y = Score, group = Group, color = Group)) +
+  geom_line(size = 0.8) +
+  geom_point(size = 2.5) +
+  annotate(
+    "label",
+    x = 1.05, y = 5.3,
+    label = "Strong Improvement\nfor Low-Reading Group",
+    size = 3
+  ) +
+  annotate(
+    "segment",
+    x = 1.12, y = 5.75,
+    xend = 1, yend = 8,
+    linewidth = 0.6,
+    color = "black"
+  ) +
+  scale_color_manual(values = c("blue", "tomato")) +
+  labs(
+    title = "Interaction Effect: Reading Ability & Intervention",
+    x = "Intervention",
+    y = "Post-Intervention Reading Test Score",
+    color = NULL
+  ) +
+  coord_cartesian(ylim = c(3, 11)) +
+  theme_minimal(base_size = 11) +
+  theme(
+    legend.position = c(0.84, 0.88),
+    panel.grid.minor = element_blank()
+  )
+```
+
+
+While rare in educational research, you can have more than two factors but for the simplistic nature of this book we are going to stick with only two. This can be referred to as a two-way ANOVA, or as an X by Y ANOVA, with X and Y representing the different number of groups for each factor. In our example, we had a treatment and control group, and then if we had students grouped in two reading levels, that would result in a 2x2 ANOVA. There are three basic designs for a two-way ANOVA:  
+
+  
+
+- **2-Between, or Between-Subjects Design**: a two-way ANOVA where different participants are observed in each cell or group. This means that no individual belongs to more than one cell. For the example above, students would be in only one of the four groups: treatment/low ability, treatment/high ability, control/low ability, or control/high ability.   
+
+  
+
+- **1-Between 1-Within, or Mixed Design**: a two-way ANOVA where different participants are observed at each level of the between-subjects factor and are repeatedly observed across the levels of the within-subjects factor. If you have a 2x2 mixed ANOVA, each person will be in two cells. To apply this approach to the example above, imagine that it wasn’t an experiment. Instead, a teacher just used this new method for all students. The between-subjects factor would still be the two ability groups, but then students at each ability level would be tested multiple times during the year.   
+
+  
+
+- **2-Within, or Within-Subjects Design**: a two-way ANOVA where the same participants are observed at each level of two factors. In this case each person is in all the cells; the composition of the cells is the same across the entire grid. If we wanted to apply this design to the example above, we would have to abandon the idea of grouping students by ability. Instead, imagine that we want to find out if the coaching intervention works better for reading and math. The teacher could test the same group of students on reading and math at the start of the year, then again after a period of time; the idea would be to see if students improved at an equal rate in both subjects. Our example is getting a little weird, so here is a more typical scenario for a 2-Within Factorial ANOVA: One group of students watches two types of instructional videos on different topics. Students are then asked to recall what they learned from the video right after watching and again one week later. The research question would ask which video was more effective for longer-term recall.     
+
+
+Each factor is usually identified with a letter in a two-way ANOVA, such as A and B, although it doesn’t have to be. It is also common to identify the levels of each factor numerically and use the numbers to identify the ANOVA model. For example, if you measure how quickly (in seconds) subjects respond to a stimulus that varies in size (small, medium, large) and color (dark, bright), we might designate Factor A as size and Factor B as color. Using the levels of each factor, you can describe this as a 3x2 ANOVA or 3x2 factorial design.  
+
+  
+
+We often arrange the data from an ANOVA test in a table, and when we do, there is a special notation to indicate each entry. We are going to use another version of the vocabulary recall study as our example.  
+
+ 
+
+Imagine that a researcher is investigating the impact of noise level (Loud vs. Quiet) and learning strategies (Repetition, Visualization, Technology-Aided Learning, Control) on vocabulary recall performance. This study aims to determine whether different instructional methods are more effective for certain types of learners. 
+
+ 
+
+The research addresses the following questions: 
+ 
+
+- Do students who study in loud and quiet environments differ in their vocabulary recall performance? 
+
+- Does vocabulary recall vary based on learning strategy (Repetition, Visualization, Technology-Aided Learning, Control)? 
+
+- Does the effectiveness of learning strategies depend on the noise level of one’s study environment?  
+
+  - For example, do students who study in a loud environment benefit more from visualization strategies than those who study in a quiet environment? 
+
+ 
+
+To explore these questions, the researcher collected data from 80 college students, with 10 participants assigned to each condition. It is an entirely between-subjects design, in that participants were separated into two groups by noise level while studying (loud vs. quiet) as well as the four learning conditions.   
+
+- Levels of Factor A – symbolized as “a”  
+  If there are two levels (e.g., loud vs. quiet), $a = 2$.  
+  
+
+- Levels of Factor B – symbolized as “b”   
+  If there are four levels (Repetition, Visualization, Technology-Aided Learning, Control), $b = 4$.   
+
+  
+
+The combination of one level from each factor is called a cell. The number of cells represents the number of groups in a study.   
+
+- Total number of cells = ab  
+
+
+In the vocabulary recall example, there are 8 cells.   
+
+
+When we indicate the mean of the specific cell, we use subscripts. As a general form, we use to represent the mean of the cell that is the ith category of Factor A and jth category of Factor B. For example, the mean of Loud environment group for the Repetition condition is represented as $\bar{X}_{11}$. This represents the mean of the first category of noise level while studying and the first category of learning strategy condition. 
+
+
+## Describing Variability: Main Effects and Interactions  
+
+
+As we continue learning about ANOVAs, remember that this test is all about the different sources of variance. With a two-way between-subjects ANOVA, we have four sources of variation to consider. 
+
+1. We still have *within-group variation*, or error. This is the variation within groups due to measurement error or just people being different from each other even though they’re in the same group. As before, you find the sum of squared differences between each individual score in a cell and the mean score for that individual’s cell. This is still referred to as $SS_E$.  
+
+2. Our between-groups variation is now split into two factors. First, we have variation due to Factor A, which is known as the *Main Effect of Factor A*. In the vocabulary recall example, this would be variation in the number of words recalled due to the noise level factor. You compute this just like you would find the between-groups effect in a one-way ANOVA: sum the squared differences between the mean of a specific level of Factor A (including all levels of Factor B) and the grand mean. Instead of calling this $SS_{BG}$, we call it $SS_A$.
+
+3. Second, we have variation due to Factor B, or the *Main Effect of Factor B*. In the vocabulary recall example, this is the effect of Learning Strategy Conditions. Note that the main effects don’t take the other factor into consideration. When you are looking for the main effect of Learning Strategy Conditions, you are combining the noise level groups as if there was only one factor. Summing up the squared differences between the mean of a specific level of Factor B and the grand mean gives you $SS_B$.
+
+4. Finally, we could have variation due to an Interaction Effect between the two factors, which means the effect of one factor depends on the level of another factor. In our example, you could see a different pattern of mean differences among conditions for the loud group compared to the quiet group. If there is no interaction effect, the pattern in mean differences by learning strategy condition is the same for both noise level groups.   
+
+  
+
+Finding the variation due to the interaction effect takes a couple steps. First, we find $SS_{cells}$ by summing the squared differences between each cell mean and the grand mean. This is the variability attributed to the combination of levels for Factors A and B. However, this is not the interaction effect, because it also includes main effects that we need to subtract out. Think about it – if we are comparing one cell mean to the grand mean, any difference could be due to the main effect of one or both factors.   
+
+What we really need is $SS_{AB}$, which is the variation solely due to the interaction between Factor A and Factor B, which is what we get after subtracting out the variation due to each main effect, which we already identified.  
+
+$$
+SS_{\text{cells}} = SS_A + SS_B + SS_{AB}
+$$
+
+Or, slightly rearranged:   
+$$
+SS_{AB} = SS_{\text{cells}} - (SS_A + SS_B)
+$$
+
+## Hypothesis Testing in a Two-Way ANOVA  
+
+  
+Let’s explore our example that investigates the impact of noise level while studying (loud vs. quiet) and learning strategies (Repetition, Visualization, Technology-Aided Learning, Control) on vocabulary recall performance. 
+
+Our research questions are:  
+
+- Do students who study in loud and quiet environments differ in their vocabulary recall performance? 
+
+- Does vocabulary recall vary based on learning strategy (Repetition, Visualization, Technology-Aided Learning, Control)? 
+
+- Does the effectiveness of learning strategies depend on the noise level of one’s study environment?  
+
+
+The collected data are presented in the table below.  
+
+::: {.striped-table}
+
+| Noise Level | Repetition | Visualization | Technology-Aided Learning | Control |
+|-------------|------------|--------------|----------------------------|---------|
+| Quiet | 16 | 11 | 15 | 10 |
+| Quiet | 14 | 9  | 16 | 13 |
+| Quiet | 13 | 8  | 13 | 8  |
+| Quiet | 13 | 12 | 13 | 13 |
+| Quiet | 9  | 14 | 19 | 1  |
+| Quiet | 11 | 13 | 21 | 11 |
+| Quiet | 12 | 8  | 16 | 9  |
+| Quiet | 17 | 10 | 20 | 8  |
+| Quiet | 15 | 11 | 18 | 9  |
+| Quiet | 8  | 13 | 15 | 3  |
+| **Mean** | **12.8** | **10.9** | **16.6** | **8.5** |
+| Loud  | 9  | 16 | 22 | 8  |
+| Loud  | 7  | 16 | 17 | 15 |
+| Loud  | 9  | 18 | 18 | 9  |
+| Loud  | 12 | 12 | 13 | 6  |
+| Loud  | 7  | 12 | 16 | 12 |
+| Loud  | 7  | 16 | 18 | 6  |
+| Loud  | 12 | 14 | 14 | 10 |
+| Loud  | 10 | 18 | 19 | 4  |
+| Loud  | 6  | 15 | 16 | 6  |
+| Loud  | 9  | 13 | 17 | 10 |
+| **Mean** | **8.8** | **15.0** | **17.0** | **8.6** |
+
+:::
+
+### Step 1: Determine the null and alternative hypotheses {.unnumbered}
+
+There are eight possible outcomes that you could obtain when you compute a two-way betweensubjects ANOVA:
+
+1. All three hypothesis tests are not significant
+
+2. Significant main effect of Factor A only
+
+3. Significant main effect of Factor B only
+
+4. Significant main effect of Factor A and Factor B
+
+5. Significant AxB interaction only
+
+6. Significant main effect of Factor A and an AxB interaction
+
+7. Significant main effect of Factor B and an AxB interaction
+
+8. All three hypothesis tests are significant
+
+This means that defining the null and alternative hypotheses is somewhat complicated with
+factorial designs. 
+
+#### Hypothesis for Main Effects {.unnumbered}
+
+Factor A
+
+$$
+H_0: \mu_1 = \mu_2 = … = \mu_A \text{(there is no main effect of Factor A)}
+$$
+
+$$
+H_A: \text{at least one mean of the levels in Factor A is different from other means.}
+$$
+
+In our example, $H_A$ would be, “Average number of words recalled differs by noise level group.”
+
+Factor B
+
+$$
+H_0: \mu_1 = \mu_2 = … = \mu_B \text{(there is no main effect of Factor B)}
+$$
+
+$$
+H_A: \text{at least one mean of the levels in Factor B is different from other means.}
+$$
+
+In our example, HA would be, “Average number of words recalled differs by learning strategy.”
+Interaction between Factor A and B: It is a bit hard to write an equation as we do for the main
+effects, but it is okay to say:
+
+$H_0$: there is no interaction effect between Factor A and B
+$H_A$: there is an interaction effect between Factor A and B 
+
+In the recall example, $H_A$ would be, “There is an interaction effect between noise level and
+learning strategy conditions.” 
+
+### Step 2: Set the criteria for a decision.  {.unnumbered}
+
+To determine whether the noise level while studying and learning strategy significantly affect vocabulary recall, we will use a significance level (α) of 0.05, as usual. This means that we are allowing a 5% chance of incorrectly rejecting the null hypothesis. Since we use two-tailed tests for both main effects (A, B) and the interaction effect, we are considering both directions of possible effects—whether one group performs significantly higher or lower than another. 
+
+ 
+
+Because there are three key effects to evaluate:  
+
+- the main effect of noise level while studying,  
+
+- the main effect of learning strategy, and  
+
+- the interaction effect between these two variables. 
+
+
+Each effect has an associated $F$ statistic, which we will compare to a critical F value from the F distribution table to determine statistical significance. To determine the critical F statistics, we first need to know the degrees of freedom for each effect.  
+
+We will explain later in this chapter how to get these degrees of freedom, but for now we will provide them to move forward. For noise level while studying (which has 2 levels: loud and quiet), the degrees of freedom are ($df_{BG}$, $df_E$) $ = (1, 72)$. For the learning strategy factor (which has four levels: Repetition, Visualization, Technology-Aided Learning, and Control), the degrees of freedom are ($df_{BG}$, $df_E$)  $= (3, 72)$. The interaction between noise level and learning strategy also has ($df_{BG}$, $df_E$) $= (3, 72)$.  
+
+As we have done before, once we obtain the F statistic for each effect from the ANOVA calculations, we will compare it to the corresponding F critical value for the given degrees of freedom and significance level. If the calculated F value exceeds the F critical value, we will reject the null hypothesis, indicating that the effect is statistically significant. On the other hand, if the F value is less than the F critical value, we will fail to reject the null hypothesis, meaning there is not enough evidence to conclude that the effect is significant. 
+
+| Source                | Degrees of Freedom $(d f_{BG}, d f_E)$ | Critical F value (two-tailed) |
+|-----------------------|----------------------------------------|-------------------------------|
+| Factor A              | (1, 72)                                | 3.97                          |
+| Factor B              | (3, 72)                                | 2.73                          |
+| Interaction (A & B)   | (3, 72)                                | 2.73                          |
+
+### Step 3: Check assumptions and compute the test statistic.   {.unnumbered}
+
+ 
+
+#### Assumptions for a Two-Way Between-Subjects ANOVA  {.unnumbered}
+
+Because we are talking about a between-subjects ANOVA (no factor is within-subjects), we are back to the same assumptions we started with:  
+
+- Normality – we assume the dependent variable is normally distributed in the population or populations being sampled. 
+
+- Random Sampling – we assume that the data measured were obtained from a sample that was selected using a random sampling procedure.  
+
+- Independence – we assume that the probabilities of each measured outcome in a study are independent or equal.   
+
+- Homogeneity of Variance – we assume that the variance in each group is equal to each other.  
+
+
+We will not go through the detailed steps for testing assumptions, but it is important to use both visual representations of the data and descriptive statistics to assess whether the assumptions of normality and homogeneity of variances are met. Additionally, statistical tests such as the Shapiro-Wilk test for normality and Levene’s test for homogeneity of variances can provide further support for interpreting the data. 
+
+
+In our example, Levene’s test resulted in $p = 0.772$, meaning we fail to reject the null hypothesis of equal variances. Therefore, we conclude that the variances are approximately equal across all groups, satisfying the assumption of homogeneity of variance.    
+
+ 
+
+#### Interpreting Two-Way ANOVA Results  {.unnumbered}
+
+
+Remember that we have more than one hypothesis to test with a two-way ANOVA. We start by looking at the main effects of the two factors. The table below shows the means for each cell, and the means for each factor. 
+
+**Learning Strategy**
+
+| Noise Level | Repetition | Visualization | Technology-Aided | Control | Factor A |
+|-------------|------------|--------------|------------------|---------|----------|
+| Quiet | $\bar{X}_{11} = 12.8$ | $\bar{X}_{12} = 10.9$ | $\bar{X}_{13} = 16.6$ | $\bar{X}_{14} = 8.5$ | $\bar{X}_1 = 12.2$ |
+| Loud  | $\bar{X}_{21} = 8.8$  | $\bar{X}_{22} = 15$   | $\bar{X}_{23} = 17$   | $\bar{X}_{24} = 8.6$ | $\bar{X}_2 = 12.35$ |
+| **Factor B** | $\bar{X}_1 = 10.8$ | $\bar{X}_2 = 12.95$ | $\bar{X}_3 = 16.8$ | $\bar{X}_4 = 8.55$ | $\bar{X} = 12.275$ |
+
+Our main effect tests ignore all the individual cell means because we are essentially running two
+separate one-way ANOVAs, one for each factor. The test statistic for the main effect of Factor A
+is: 
+
+$$
+F_A = \frac{\text{variance of group means for Factor A}}{\text{variance attributed to error}} = \frac{MS_A}{MS_E}
+$$
+
+Replace the As with Bs and you have the test statistic for the main effect of Factor B:
+
+$$
+F_B = \frac{\text{variance of group means for Factor B}}{\text{variance attributed to error}} = \frac{MS_B}{MS_E}
+$$
+
+Next, we test the interaction effect, which determines whether group means at each level of one
+factor significantly change across the levels of a second factor. Remember from earlier in the
+chapter that we need to find the variance for the AB interaction, which is the variation due to
+differences among cells after subtracting out the variation due to each main effect. So, the test
+statistic for the interaction effect is: 
+
+$$
+F_{AB} = \frac{\text{variance of } AB}{\text{variance attributed to error}} = \frac{MS_{AB}}{MS_E}
+$$
+
+| Source of Variation | SS | df | MS | F |
+|---------------------|----|----|----|---|
+| Factor A (Noise Level) | $SS_A$ | $a - 1$ | $\frac{SS_A}{df_A}$ | $F_A = \frac{MS_A}{MS_E}$ |
+| Factor B (Instructional Strategy) | $SS_B$ | $b - 1$ | $\frac{SS_B}{df_B}$ | $F_B = \frac{MS_B}{MS_E}$ |
+| A × B (Noise Level × Strategy) | $SS_{AB}$ | $(a - 1)(b - 1)$ | $\frac{SS_{AB}}{df_{AB}}$ | $F_{AB} = \frac{MS_{AB}}{MS_E}$ |
+| Error (within groups) | $SS_E$ | $ab(n - 1)$ | $\frac{SS_E}{df_E}$ | |
+| Total | $SS_{\text{total}}$ | $abn - 1$ | | |
+
+a = the number of categories in Factor A; b = the number of categories in Factor B; n=the
+number of observations in each cell. 
+
+### Step 4: Find a p value, draw a conclusion, and report your conclusion. {.unnumbered}
+
+Since we use statistical software to obtain all F statistics in practice, we will not show all the
+hands calculations of the sum of squares formula. However, we present the F table for the
+vocabulary recall study that summarizes all calculations so we can check our results
+
+| Source | SS | df | MS | F | p |
+|--------|----|----|----|----|----|
+| Factor A (Noise Level) | 0.45 | 1 | 0.45 | 0.06 | 0.81 |
+| Factor B (Learning Strategy) | 739.65 | 3 | 246.55 | 31.51 | < .001 |
+| A × B (Noise Level × Strategy) | 164.45 | 3 | 54.82 | 7.01 | < .001 |
+| Error (within groups) | 563.4 | 72 | 7.83 | | |
+| Total | 1467.95 | 79 | | | |
+
+The first thing we should check in a factorial ANOVA is the *interaction effect*. The $F$ statistic of $7.01$ was obtained by taking the $MS_{AB}$ of 54.82 divided by $MS_E$, which is 7.83. When the interaction is significant, that may change the interpretation of the separate main effects of each independent variable. The F statistic in our example is larger than the critical F value of 2.73, allowing us to reject the null hypothesis. 
+
+```{r}
+
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 12
+#| fig-cap: "Noise Level Line Graph."
+library(ggplot2)
+
+# Data approximated from the figure
+df <- data.frame(
+  Condition = rep(c("Repetition", "Visualization", 
+                    "Technology-Aided Learning", "Control"), 2),
+  Mean = c(12, 11, 16, 8,   9, 15, 17, 9),
+  Lower = c(10, 9, 15, 6,   7, 13, 15.5, 7),
+  Upper = c(14, 13, 17.5, 10,  11, 17, 18.5, 11),
+  Group = rep(c("Quiet", "Loud"), each = 4)
+)
+
+df$Condition <- factor(df$Condition,
+                       levels = c("Repetition", "Visualization",
+                                  "Technology-Aided Learning", "Control"))
+
+ggplot(df, aes(x = Condition, y = Mean, group = Group, color = Group, linetype = Group)) +
+  geom_line(size = 0.9) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = Lower, ymax = Upper),
+                width = 0.15, size = 0.7) +
+  scale_color_manual(values = c("red", "blue")) +
+  scale_linetype_manual(values = c("solid", "dashed")) +
+  labs(
+    title = "",
+    x = "Recall Condition",
+    y = "Mean Recall Score",
+    color = "Noise Level",
+    linetype = "Noise Level"
+  ) +
+  coord_cartesian(ylim = c(0, 19)) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(angle = 20, hjust = 1)
+  )
+```
+
+Next, we look at the main effects of Factor A (Noise Level) and Factor B (Learning Strategy), using the MS values for each to calculate the F statistic. In this case, we can reject the null hypothesis for Factor B, but not Factor A, and thus, we found a significant main effect of learning strategy, but not for noise level. 
+
+ 
+
+However, the way you interpret these results depends on the type of interaction. In this case, there was a significant interaction effect between Noise Level and Learning Strategy on the number of words recalled, F (3, 72) = 7.01, p < .05. Therefore, we already know that the effect of strategy conditions on the number of words recalled depends on the noise level, meaning that some strategies work better for students who studied in louder environments, while others work better for students who studied in quieter environments. Also, we know that there is no general advantage for either noise level across learning strategies because we did not find a significant main effect of Factor A. In other words, we cannot say one type of student overperforms the other consistently across all conductions. At the same time, the significant main effect of Factor B indicates that at least one of the strategies resulted in significantly higher or lower performance than others. 
+
+ 
+
+Now, let’s revisit the research questions and examine how our statistical results address each one. 
+
+ 
+
+- *Do students who study in loud and quiet environments differ in their vocabulary recall performance?* 
+
+  The main effect of noise level was NOT statistically significant $F(1, 72) = 0.06, \, p = .81$. This suggests that learns who studied in loud and quiet learning environments did not differ significantly in their vocabulary recall performance.  
+
+ 
+
+- *Does vocabulary recall vary based on learning strategy (Repetition, Visualization, Technology-Aided Learning, Control)?* 
+  The main effect of learning strategy was statistically significant, $F(3, 72) = 31,52, \, p < .05$. This indicates that some learning strategies were more effective than others in enhancing vocabulary recall performance. However, a two-way ANOVA test does not tell which strategies are better or worse than others. A post hoc test would be helpful to determine which learning strategies lead to significantly higher or lower performance.  
+
+ 
+
+- *Does the effectiveness of learning strategies depend on the noise level of one’s study environment?*
+
+  The interaction effect between noise level and learning strategy was statistically significant, $F(3, 72) = 7.01, \, p < .05$. This suggests that the effectiveness of different learning strategies varied depending on whether the learner studied in loud or quiet learning environments.  
+
+  In summary, some strategies may have benefited students who study in loud learning environments more than those who study in quiet environments, and vice versa. The significant interaction effect means that a one-size-fits-all approach to vocabulary learning may not be optimal, and learning strategies should be tailored to individual needs when it comes to noise level while studying.  
+
+  
+
+There are three key points to understand for a two-way ANOVA:  
+
+- One group can have significantly higher scores on a dependent variable than the other group across all levels of the second factor, and that doesn’t mean there is an interaction effect. In other words, the two lines can be quite far apart, but parallel. The indication of an interaction effect is whether two lines intersect.   
+
+- You can have a main effect that is not significant at all, and yet it is very important because of its role in creating an interaction effect.   
+
+- If you do have a significant interaction effect, focus on that. Depending on what the means plots look like, you may not end up reporting the main effects.   
+
+  
+
+## Post Hoc Tests and Effect Size  
+
+Post hoc tests are a little different for a factorial ANOVA. In fact, it is common to stop without doing any post hoc tests after finding a significant interaction. If you decide that the main effects are both statistically significant and meaningful, either there is no interaction effect or the main effects are still interpretable even with an interaction effect, you can move forward with post hoc tests on the main effects just like with one-way ANOVAs.   
+
+ 
+
+Instead of running additional tests, just describe the patterns with descriptive statistics. For example, we could describe our vocabulary recall results by saying that both noise level groups were similarly low under the “Control” condition, and both groups had higher scores under the “Technology-Aid” conditions, though the Quiet group outperformed the Loud group under the “Repetition” condition, while the Loud group performed better under the “Visualization” condition than the Quiet group. Do you notice how long that took to describe? Perhaps, the best thing you can do when you find an interaction effect is to display a graph – look back to figure 10.10. 
+
+ 
+
+The effect size calculations for $\eta^2$ and $\omega^2$ are the same as before. However, there is a third effect size to check because of the interaction term. Here is how you would calculate $\eta^2$ and $\omega^2$ for the interaction in our example:  
+
+$$
+\eta^2_{AB} = \frac{SS_{AB}}{SS_{total}} = \frac{164.45}{1467.95} = 0.11
+$$
+
+$$
+\hat{\omega}^2 = \frac{SS_{AB} - \left[df_{AB} \cdot MS_E\right]}{SS_{total} + MS_E}
+= \frac{164.45 - (3 \times 7.83)}{1467.95 + 7.83}
+= \frac{140.96}{1475.78} = 0.096
+$$
+
+Whether you use $\eta^2$ or $\omega^2$, the effect size of the interaction is small. In this case, the main effect, especially for learning strategy conditions, is much larger than the interaction effect, even though the latter is statistically significant.   
+
+ 
+
+*APA style sample write-up*: A two-way analysis of variance (ANOVA) was conducted to examine the effects of noise level while studying (loud vs. quiet) and learning strategy (Repetition, Visualization, Technology-Aided Learning, Control) on vocabulary recall performance. The assumptions of normality and homogeneity of variance were assessed prior to analysis. Levene’s test for equality of variances was non-significant, p = .772, indicating that the assumption of homogeneity of variance was met. The results of the two-way ANOVA revealed that a significant interaction effect was found between noise level and learning strategy, $F(3,72) = 7.01, \, p < .05$,  $\omega^2 = .097$ was relatively small compared to the main effect of learning strategy, F(3,72) = 31.52, p < .05. These findings suggest that different learning strategies influence vocabulary recall performance, and their effectiveness depends on the noise level of the student’s learning environment. However, the interaction effect was smaller than the main effect of strategy, implying that certain strategies were generally more effective regardless of noise level, but some strategies were particularly beneficial for specific learning environment noise levels. Given these results, instructional methods should be tailored to accommodate individual learning environments rather than applying a uniform approach to vocabulary learning. 
+
+
+
+## Other Types of Factorial ANOVA 
+
+ 
+
+While we have mostly talked about two-way between-subjects ANOVAs, there are other types of factorial ANOVAs you could consider. If you add a third factor in the analysis, the only difference is that you have more effects (main effect A, main effect B, main effect C, interaction AxB, interaction AxC, interaction BxC, and interaction AxBxC). The computation gets more complex, but that’s why we use software to run the analysis. The important thing to remember is what the variance components indicate.  
+
+ 
+
+## Kruskal-Wallis Test for Nonparametric Analysis 
+
+ 
+
+The **Kruskal-Wallis Test** is a nonparametric statistical method used to determine whether there are significant differences between three or more independent groups based on a ranked dependent variable. In educational research, this test is particularly useful when the assumptions of parametric tests, such as ANOVA, cannot be met. For example, if the data are not normally distributed, contain outliers, or are measured on an ordinal scale, the Kruskal-Wallis Test provides a robust alternative. By ranking the data across all groups and comparing the sum of ranks, it evaluates whether the differences observed among groups are statistically significant. 
+
+ 
+
+In educational settings, the Kruskal-Wallis Test can be applied to explore differences in student outcomes across instructional methods, grade levels, or demographic groups. For instance, a researcher might use the test to examine whether students from different teaching strategies (e.g., lecture-based, inquiry-based, and flipped classrooms) exhibit varying levels of engagement, as measured by a survey on a Likert scale. Since the test does not rely on assumptions about the underlying distribution of the data, it is particularly suited for analyzing ordinal data like survey responses, where the distance between scale points may not be equal. 
+
+ 
+
+The test outputs a chi-squared statistic that indicates whether differences among the groups are significant. However, it does not specify which groups differ from each other. Post hoc tests, such as Dunn’s test with a Bonferroni correction, are often employed to identify pairwise differences when a significant result is obtained. The Kruskal-Wallis Test thus serves as a valuable tool for educational researchers seeking to analyze complex, real-world data where traditional parametric assumptions are not tenable, allowing for more inclusive and flexible statistical analyses. 
+
  

@@ -1,0 +1,26 @@
+
+![Fig 12.8](chapter12/fig12-8.png){fig-align="center" width=80%}
+
+![Fig 12.9](chapter12/fig12-9.png){fig-align="center" width=80%}
+
+![Fig 12.10](chapter12/fig12-10.png){fig-align="center" width=80%}
+
+![Fig 12.11](chapter12/fig12-11.png){fig-align="center" width=80%}
+
+![Fig 12.12](chapter12/fig12-12.png){fig-align="center" width=80%}
+
+![Fig 12.13](chapter12/fig12-13.png){fig-align="center" width=80%}
+
+![Fig 12.14](chapter12/fig12-14.png){fig-align="center" width=80%}
+
+![Fig 12.15](chapter12/fig12-15.png){fig-align="center" width=80%}
+
+![Fig 12.16](chapter12/fig12-16.png){fig-align="center" width=80%}
+
+![Fig 12.17](chapter12/fig12-17.png){fig-align="center" width=80%}
+
+![Fig 12.18](chapter12/fig12-18.png){fig-align="center" width=80%}
+
+![Fig 12.19](chapter12/fig12-19.png){fig-align="center" width=80%}
+
+![Fig 12.20](chapter12/fig12-20.png){fig-align="center" width=80%}
