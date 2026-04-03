@@ -624,7 +624,7 @@ df <- data.frame(
     "Variation due to Covariate",
     "Error Variation"
   ),
-  value = c(33, 34, 33)
+  value = c(50, 30, 20)
 )
 
 ggplot(df, aes(x = "", y = value, fill = category)) +
@@ -673,7 +673,7 @@ df <- data.frame(
     "Variation due to Covariate",
     "Error Variation"
   ),
-  value = c(33, 34, 33)
+  value = c(40, 35, 25)
 )
 
 ggplot(df, aes(x = "", y = value, fill = category)) +
