@@ -1146,9 +1146,544 @@ Since our model includes five predictors, we conduct five separate hypothesis te
 #### Step 2: Set the criteria for a decision and evaluate data.  {.unnumbered}
 
 
-We will use a 0.05 level of significance for the omnibus F test.  
+- We will use a 0.05 level of significance for the omnibus F test.  
 
-The degrees of freedom (df) for the F test in regression are determined as follows: for the regression component, the df equals the number of predictors in the model (p). For the error term, the df is calculated as the sample size (N) minus the number of predictors (p) minus 1, expressed as (n - p - 1). This accounts for one degree of freedom for each independent variable (X) and the dependent variable (Y). Because n = 56, the F ratio follows the F distribution with (5, 50).  
+- The degrees of freedom (df) for the F test in regression are determined as follows: for the regression component, the df equals the number of predictors in the model (p). For the error term, the df is calculated as the sample size (N) minus the number of predictors (p) minus 1, expressed as (n - p - 1). This accounts for one degree of freedom for each independent variable (X) and the dependent variable (Y). Because n = 56, the F ratio follows the F distribution with (5, 50).  
 
-The critical value at $\alpha = 0.05$ is 2.40.  
+- The critical value at $\alpha = 0.05$ is 2.40.  
 
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 5
+#| fig-cap: "Figure 12.5 Sampling distribution of the F-ratio"
+
+library(ggplot2)
+
+# Parameters
+df1 <- 5
+df2 <- 50
+alpha <- 0.05
+
+# Critical value
+f_crit <- qf(1 - alpha, df1, df2)
+
+# Data for curve
+x <- seq(0, 5, length.out = 1000)
+y <- df(x, df1, df2)
+
+data <- data.frame(x = x, y = y)
+
+# Plot
+ggplot(data, aes(x = x, y = y)) +
+  geom_line(color = "blue", linewidth = 1) +
+  
+  # Shade rejection region
+  geom_area(
+    data = subset(data, x >= f_crit),
+    aes(x = x, y = y),
+    fill = "red",
+    alpha = 0.5
+  ) +
+  
+  # Critical value line
+  geom_vline(
+    xintercept = f_crit,
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
+  labs(
+    title = "Sampling Distribution of the F-ratio",
+    x = "F value",
+    y = ""
+  ) +
+  
+  annotate(
+    "text",
+    x = f_crit + 0.2,
+    y = max(y) * 0.8,
+    label = paste0("Critical value = ", round(f_crit, 2))
+  ) +
+  
+  theme_minimal(base_size = 14) +
+  
+  # Remove extra margins between axes and plot
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  
+  theme(
+    panel.grid = element_blank()
+  )
+```
+
+When the omnibus test is significant, we proceed with hypothesis testing for individual independent variables. Using $\alpha = 0.05$ for each test, the test statistic follows a $t$ distribution with degrees of freedom calculated as $df = n – p - 1$. In this case, with $n = 56$ observations and $p = 5$ predictors, the degrees of freedom for each $t$ test is: $df = 56 – 5 – 1 = 50$.  
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 5
+#| fig-cap: "Figure 12.6 Sampling distribution of the t-statistic"
+
+library(ggplot2)
+
+# Parameters
+df <- 50
+alpha <- 0.05
+
+# Critical values (two-tailed)
+t_crit <- qt(1 - alpha/2, df)
+
+# Data
+x <- seq(-4, 4, length.out = 1000)
+y <- dt(x, df)
+
+data <- data.frame(x = x, y = y)
+
+# Plot
+ggplot(data, aes(x = x, y = y)) +
+  geom_line(color = "blue", linewidth = 1) +
+  
+  # Left rejection region
+  geom_area(
+    data = subset(data, x <= -t_crit),
+    aes(x = x, y = y),
+    fill = "red",
+    alpha = 0.5
+  ) +
+  
+  # Right rejection region
+  geom_area(
+    data = subset(data, x >= t_crit),
+    aes(x = x, y = y),
+    fill = "red",
+    alpha = 0.5
+  ) +
+  
+  # Critical value lines
+  geom_vline(
+    xintercept = c(-t_crit, t_crit),
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
+  labs(
+    x = "t value",
+    y = "",
+    title = "Sampling Distribution of the t-statistic"
+  ) +
+  
+  annotate(
+    "text",
+    x = 2.5,
+    y = max(y) * 0.8,
+    label = paste0("Critical values = ±", round(t_crit, 2))
+  ) +
+  
+  theme_minimal(base_size = 14) +
+  
+  # Remove margins between axes and plot
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  
+  theme(
+    panel.grid = element_blank()
+  )
+```
+
+While we will not cover the process of assessing whether the data meet multiple regression assumptions here, it is always essential to visualize the data through graphs and compute descriptive statistics to identify potential violations. Checking assumptions—such as linearity, normality of residuals, homoscedasticity, and multicollinearity—ensures the validity and reliability of the regression results.  
+
+
+#### Step 3: Compute the test statistic. {.unnumbered}
+
+Similar to ANOVA, we use the F test for the omnibus hypothesis. To run the F test, we need MS regression and MS residual values. The table below summarizes how to calculate the degrees of freedom, sum of squares, mean square, and F statistic. Remember that p indicates the number of predictors and n indicates the sample size.  
+
+| Source                | Degrees of Freedom (df) | Sum of Squares (SS)                          | Mean Squares (MS)                                  | F                          |
+|----------------------|------------------------|----------------------------------------------|----------------------------------------------------|----------------------------|
+| **Regression (Model)** | $p$                    | $\sum (\hat{Y}_i - \bar{Y})^2$               | $\dfrac{SS_{\text{regression}}}{df_{\text{model}}}$ | $\dfrac{MS_{\text{model}}}{MS_{\text{error}}}$ |
+| **Error (Residual)**  | $n - p - 1$            | $\sum (Y_i - \hat{Y}_i)^2$                   | $\dfrac{SS_{\text{error}}}{df_{\text{error}}}$      |                            |
+| **Total**             | $n - 1$                | $\sum (Y_i - \bar{Y})^2$                     | $\dfrac{SS_{\text{total}}}{df_{\text{total}}}$      |                            |
+
+Similar to what we have already learned, simply add the $SS_{Regression}$ and $SS_{Error}$ to get $SS_{𝑇𝑜𝑡𝑎𝑙}$. You also do the same thing for your $df_{Regression}$ and $df_{Error}$ to get $df_{𝑇𝑜𝑡𝑎𝑙}$.
+
+$$
+F = \frac{MS_{\text{regression}}}{MS_{\text{residual}}} \sim F_{(df_{\text{regression}}, \, df_{\text{error}})}
+$$
+
+There are 5 degrees of freedom in the numerator ($df_{Regression}$ ), representing the 5 predictors (independent variables), and there are 50 degrees of freedom in the denominator ($df_{Error}$), representing 56 schools – 5 predictors – 1. The following table contains the results of a regression analysis on the data. 
+
+| Source                | Degrees of Freedom | Sum of Squares | Mean Squares | F     |
+|----------------------|--------------------|----------------|--------------|-------|
+| **Regression**       | $5$                | $2500$         | $500$        | $16.67$ |
+| **Error (residual)** | $50$               | $1500$         | $30$         |       |
+| **Total**            | $55$               | $4000$         |              |       |
+
+$$
+F = \frac{MS_{\text{regression}}}{MS_{\text{residual}}}
+= \frac{500}{30}
+= 16.67 \sim F_{(5, 50)}
+$$
+
+
+While the statistical software you use will provide the p value, let’s look at the critical values of F distribution table in the back of the book to determine if we have a significant result. Find where 5 degrees of freedom in the numerator and 50 degrees of freedom in the denominator intersect, which identities a critical value of 2.40. Our F statistic of 16.76 is larger than the critical value of 2.40 at the .05 level. So, we can reject the null as $p < .05$.  
+
+ 
+
+Are we finished? Not so fast. It is common for those first learning multiple regression to mistakenly assume that finding a significant result when testing for the omnibus hypothesis means that all $\beta$ coefficients are significantly different from 0. However, this test only tells us that at least one $\beta$ coefficient is significantly different from 0.  
+ 
+
+Since we have a significant result, the next step is to run t tests on individual coefficients. If the omnibus test is not statistically significant, it does not make sense to look at the individual predictors. It was significant in this case, so we move to the next set of hypothesis tests. Recall that the null hypothesis for any given individual predictor can be represented as:  
+
+$$
+H_0: B_p = 0  
+$$
+ 
+
+The alternative hypothesis can be represented as: 
+
+$$
+H_A: B_p \ne 0  
+$$
+ 
+
+Let’s suppose we obtained the results summarized below with the multiple regression analysis.   
+
+| Predictor                          | Unstandardized Coefficient (b) | SE  | t statistic | p      |
+|------------------------------------|--------------------------------|-----|-------------|--------|
+| Student-Teacher Ratio              | -1.5                           | 0.3 | -5.0        | < .001 |
+| Parental Education Level           | 2.0                            | 0.5 | 4.0         | < .001 |
+| School Funding                     | 0.2                            | 0.4 | 0.5         | 0.619  |
+| Free/Reduced Lunch Percentage      | -1.2                           | 0.3 | -4.0        | < .001 |
+| Attendance Rate                    | 0.6                            | 0.2 | 3.0         | 0.004  |
+
+The unstandardized coefficient column presents the slope for each predictor, indicating the expected change in the dependent variable for a one-unit increase in the predictor, holding other variables constant. The far-right column of the table provides the statistical significance of each coefficient, helping determine whether a predictor has a meaningful impact on the model. 
+
+Before diving further into the table, it is important to discuss partial correlations, which help assess the unique contribution of each predictor while controlling for other variables in the model. 
+
+ 
+
+### Partial Correlations  
+
+Multiple regression involves accounting for the relationships among multiple variables, a process known as partialling. **Partialling** means separating the effects of one predictor from the others. The statistical measures that accomplish this are partial correlations, which help determine the independent contribution of each predictor to the dependent variable. 
+  
+
+Suppose we have a three-variable problem with $Y$, $X_1$, and $X_2$. $Y$ is the dependent variable, and $X_1$, and $X_2$ are independent variables. Both independent variables correlate with the dependent variable, but as is often the case with educational data, they also correlate with each other. We can’t add the two coefficients of determination together to find the $R^2$ of the regression model, because we must account for the variation that’s shared, or overlapping.   
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 6
+#| fig-cap: "Figure 12.7 Three-variable overlap diagram"
+
+library(ggplot2)
+
+# Create circle data manually
+circle <- function(center = c(0,0), r = 1, n = 200){
+  t <- seq(0, 2*pi, length.out = n)
+  data.frame(
+    x = center[1] + r*cos(t),
+    y = center[2] + r*sin(t)
+  )
+}
+
+# Define circles
+c1 <- circle(c(-1, 0.5), 1.8)   # Y (left)
+c2 <- circle(c(1, 0.5), 1.8)    # X1 (right)
+c3 <- circle(c(0, -1), 1.8)     # X2 (bottom)
+
+# Plot
+ggplot() +
+  geom_polygon(data = c1, aes(x, y), fill = "blue", alpha = 0.4) +
+  geom_polygon(data = c2, aes(x, y), fill = "red", alpha = 0.4) +
+  geom_polygon(data = c3, aes(x, y), fill = "yellow", alpha = 0.4) +
+  
+  # Labels inside regions
+  annotate("text", x = -1.8, y = 1.2, label = "A", size = 6) +
+  annotate("text", x = 0, y = 1.3, label = "B", size = 6) +
+  annotate("text", x = 0, y = 0, label = "C", size = 6) +
+  annotate("text", x = -0.8, y = -0.8, label = "D", size = 6) +
+  
+  # Circle labels
+  annotate("text", x = -3, y = 0.5, label = "Y", size = 5) +
+  annotate("text", x = 3, y = 0.5, label = "X₁", size = 5) +
+  annotate("text", x = 0, y = -3, label = "X₂", size = 5) +
+  
+  coord_fixed() +
+  theme_void()
+```
+
+In figure 12.7, the circles represent the variability of data in the three variables. Because they are all related, the circles overlap.  
+
+- Area A+B+C+D represents all the variability in the dependent variable to be explained (shaded in purple).   
+
+- Area B+C+D represents R2 for the model as a whole because they represent the variability in the dependent variable that is shared with the two predictors combined.   
+
+- Area A now represents the residual variance. If R2 is small, the unexplained variance in the dependent variable will be relatively large.   
+
+- Area B+C represents the total shared variability between Y and X1. But notice that Area C is also shared with X2.   
+
+- Area B by itself represents the unique relationship between Y and X1. This is the partial correlation that’s represented in the regression results – the extent to which X1 can predict Y with X2 held constant.  
+
+  
+
+To compute partial correlations, you first calculate the residuals—the errors that remain after predicting the dependent variable using each independent variable. Then, you correlate these residuals with each other to determine the unique contribution of each predictor while controlling for the others. 
+
+ 
+
+An important takeaway is that partial correlations are not fixed values; they depend on the specific set of variables included in the model. As the relationships among independent variables change, the partial correlations will also adjust, reflecting the shifting influence of each predictor.  
+
+As those correlations change, so will the magnitude (and sometimes even the direction) of any given predictor variable on the dependent variable. Just picture the X2 circle up there – if it shifted down so that Area B grew and Area C got smaller, the regression coefficient for X1 would be larger.   
+
+  
+
+Most of the time, partial correlations are smaller than the simple bivariate correlation between the independent variable and dependent variable, but not always. Sometimes one of your other predictors could actually suppress the relationship between the two variables, so the partial correlation is larger.  
+
+  
+
+Now let’s look at our regression results again, this time with the partial correlation statistics included.   
+
+| Predictor                         | Unstandardized b | SE  | Standardized β | Partial Correlation | Bivariate Correlation | t    | p      |
+|----------------------------------|------------------|-----|----------------|---------------------|-----------------------|------|--------|
+| Student-Teacher Ratio            | -1.5             | 0.3 | -0.3           | -0.58               | -0.65                 | -5.0 | < .001 |
+| Parental Education Level         | 2.0              | 0.5 | 0.1            | 0.49                | 0.55                  | 4.0  | < .001 |
+| School Funding                   | 0.2              | 0.4 | 2.0            | 0.03                | 0.15                  | 0.5  | 0.619  |
+| Free/Reduced Lunch Percentage    | -1.2             | 0.3 | -0.5           | -0.49               | -0.55                 | -4.0 | < .001 |
+| Attendance Rate                  | 0.6              | 0.2 | 0.1            | 0.39                | 0.45                  | 3.0  | 0.004  |
+
+The bivariate correlation between standardized test scores and student-teacher ratio was -0.65, but the partial correlation is only –0.58. Removing the effects of the other predictors has “purified” the relationship. We can also see that while the original correlation between school funding and standardized test scores was 0.15, the partial correlation is even smaller, only 0.03. The correlation table just considers two variables at a time. With regression, each independent variable has a coefficient that is estimated after holding all the others constant (controlling for the other predictors).     
+
+ 
+
+Now we’ll look in more detail at the coefficients table, focusing on the independent variable of student-teacher ratio.  
+
+- The unstandardized coefficient for reading tells us that, with the effect of the other predictors held constant (partialled out), each one-point increase in the student-teacher ratio is associated with a 1.5-point decrease in standardized test score.  
+
+- This prediction is based on a sample, and we always have sampling errors. The value of 0.3 indicates the standard error of the associated regression coefficient estimate and is used for the statistical test.  
+
+- To aid in interpretating your results, it is common to report the standardized coefficients, which are interpreted like z scores, and can be obtained by converting the raw data to their z score counterparts (measured in standard deviations above and below the mean) before running the regression.  
+
+  - The standardized coefficients tell us which independent variables are the most powerful predictors of the dependent variable.  
+
+  - To convert from unstandardized coefficients to standardized, we use the expression: 
+
+    $$
+    \beta_{xp} = b_{xp}\frac{SD_Y}{SD_{xp}}
+    $$
+
+    where $\beta_{xp}$ represents the standardized slope associated with predictor p, $b_{xp}$ is the unstandardized slope for predictor $p$, $SD_Y$ is the standard deviation of the dependent variable, and $SD_{xp}$ is the standard deviation of predictor $p$. Standardized slopes are typically included in computer output and reported as part of your results. Our result for the Student-Teacher ratio independent variable shows that with the effects of other predictors held constant, for each one standard deviation increase in Student-Teacher ratios, we expect standardized test scores to decrease 0.3 standard deviations. It can get a little confusing because people use either $B$ or $b$ to refer to regression coefficients, but if you see both $\beta$ and $b$, the former means standardized, and the latter is unstandardized.  
+
+- We’re finally ready to test the null hypothesis about this individual predictor using $\alpha = 0.05$. The table reports that the t statistic for student-teacher ratio is -5.0 and the p value shown in the table is $p < 0.001$. This tells us that the student-teacher ratio is a significant predictor of standardized test scores.  
+
+
+After controlling for other predictors, the results show that the $\beta$ coefficient for 4 predictors is significantly different from 0. However, we find that school funding is not, which is actually good news for the district because they spent years developing an equitable funding model to support student success.  
+
+
+### Assessing Model Fit  
+ 
+Similar to what we learned earlier in the chapter, the basic measure of model-data fit is the squared multiple correlation, $R^2$. The statistic can be calculated using: 
+
+$$
+R^2 = \frac{SS_{Regression}}{SS_{Total}}
+$$
+
+For our example, the coefficient of determination ($R^2$) is calculated as follows: 
+$R^22 = \frac{SS_{Regression}}{SS_{Total}} = \frac{2,500}{4,000} = 0.625 = 62.5%$. This means that $62.5%$ of the variation in students' standardized test scores is explained by the set of five predictors. However, it is important to note that this dataset was created for illustrative purposes. In real-world educational research, it is unlikely that such a high percentage of variance in standardized test scores would be explained by just five predictors, as many other factors influence student performance. 
+
+
+A larger $R^2$ indicates a stronger model, meaning the independent variables collectively explain more of the variance in the dependent variable. However, as we have learned, $R^2$ is biased because it tends to increase as more predictors are added, even if they do not meaningfully contribute to the model. 
+
+
+To address this issue, a less biased version, Adjusted $R^2$, is reported. Adjusted R² accounts for the number of predictors and sample size, providing a more reliable measure of model fit. It is calculated using the following formula: 
+
+$$
+R^2_{Adjusted} = 1 - \left( \frac{(1-R^2)(n-1)}{n-p-1} \right) 
+= 1 - \left( \frac{(1- .625)(56-1)}{(56-5-1)} \right) = .5875
+$$
+
+As you can see from the formula, adjusted $R^2$ depends on the sample size and number of predictors in the model. If the sample size is large enough, the values of $R^2$ and adjusted $R^2$ should be very similar. If the sample size is small and you have a large number of predictors, the discrepancy between $R^2$ and adjusted $R^2$ will be larger. In general, we recommend using adjusted $R^2$ when reporting your results, but encourage you to check to see what is typical for studies in your field.   
+
+ 
+When reviewing regression results, it is important to assess whether multicollinearity may be influencing the model estimates. To do this, we examine two key diagnostics: *Variance Inflation Factor (VIF)* and *Tolerance (the reciprocal of VIF)*. These metrics help determine the extent to which predictor variables are correlated with each other. 
+
+ 
+
+High VIF values or low Tolerance levels indicate potential multicollinearity, which can distort coefficient estimates and reduce the stability of the model. Evaluating these diagnostics ensures that the model specification is appropriate and helps identify whether adjustments, such as removing or combining variables, are necessary. 
+
+ 
+#### Variance Inflation Factors (VIF)  {.unnumbered}
+
+The **Variance Inflation Factor (VIF)** quantifies how much the variance of a regression coefficient is inflated due to multicollinearity among predictor variables. We can use multiple regression to calculate the degree of multicollinearity among independent variables, by making each independent variable a dependent variable predicted by all the others. We end up with $R^2$ values for each of those regression models, indicating, just like with any other regression model, the percentage of the variance in one independent variable that is explained by the other independent variables. The VIF calculation utilizes these $R^2$ values to diagnose the extent of multicollinearity, using the following formula: 
+
+$$
+VIF_p = \frac{1}{1 - R^2_p}
+$$
+
+The subscript p indicates the independent variable, and you calculate a VIF for each independent variable. When $R^2$ equals zero, there is no multicollinearity, because the set of independent variables could not explain any of the variability in the remaining independent variable. In that case the fraction would be 1/1, so the lowest possible VIF is 1. But if you look at the equation, as $R^2$ gets bigger, the denominator gets smaller, and VIF increases.   
+
+There are no hard rules about acceptable VIF values. However, Kutner et al. (2013) state “[a] maximum VIF value in excess of 10 is frequently taken as an indication that multicollinearity may be unduly influencing the least squares estimates” (p. 409). In models with VIF < 5, it further reduces the inflation of standard errors and therefore reduces the likelihood of Type II errors. 
+
+
+#### Tolerance  {.unnumbered}
+
+**Tolerance** is a statistical measure that indicates how much a particular predictor variable contributes to the overall variance in the dependent variable while accounting for the effects of other predictors. It is closely related to multicollinearity and serves as the reciprocal of the VIF. 
+
+- $\text{Tolerance} = (1 – R^2_p)$  
+
+- $\text{Tolerance} = 1/VIF$  
+
+
+The table below shows the relationship of VIF and Tolerance to $r_p$ and $R^2_p$. There is no new information here, as tolerance and VIF are based on the same calculations. They are just expressed in different forms, and you may see reference to one or the other, so it helps to be aware of how they are related. If you only had two predictors in your model, then $r_p$ would be the same as the bivariate correlation between them. While sets of independent variables may correlate differently, that column can give you a sense of likely multicollinearity problems based on your preliminary review of the correlation table.   
+
+| VIF  | $r_p$  | $R^2_p$ | Tolerance |
+|------|------|------|-----------|
+| 1    | 0.00 | 0.00 | 1.00      |
+| 1.05 | 0.22 | 0.05 | 0.95      |
+| 1.10 | 0.30 | 0.09 | 0.91      |
+| 1.20 | 0.41 | 0.17 | 0.83      |
+| 1.30 | 0.48 | 0.23 | 0.77      |
+| 1.40 | 0.53 | 0.28 | 0.71      |
+| 1.50 | 0.58 | 0.34 | 0.67      |
+| 2.00 | 0.71 | 0.50 | 0.50      |
+| 5.00 | 0.89 | 0.79 | 0.20      |
+| 10.00| 0.95 | 0.90 | 0.10      |
+| $\infty$    | 1.00 | 1.00 | 0.00      |
+
+A Tolerance value below 0.1 indicates a serious multicollinearity problem, suggesting that a predictor shares a substantial amount of variance with other independent variables. It is important to remember that VIF and Tolerance are measures of the extent to which regression coefficients may be affected by multicollinearity. Higher VIF values and lower Tolerance values signal greater risk, potentially distorting coefficient estimates and reducing the reliability of the model.  
+
+
+Including more control variables or predictors in non-experimental or quasi-experimental designs is usually a good thing, as long as you are not adding so many predictors that you’re over-fitting the model. In theory, multicollinearity is not a problem if VIFs are lower than published rules of thumb (i.e., VIF < 10), or, more conservatively, VIF < 5. However, these rules of thumb do not protect against substantive changes in regression coefficient magnitude, so you can’t only rely on VIF and Tolerance values.   
+ 
+
+While addressing multicollinearity, it is important to balance reducing redundancy with maintaining theoretically important predictors. Simply removing variables based on VIF values alone can introduce omitted variable bias, potentially distorting the findings. Instead, these values should be considered alongside theoretical justification and empirical patterns in the data to ensure both statistical validity and substantive relevance. 
+
+ 
+
+### Reporting Results of a Multiple Regression Analysis  
+
+There is no standard format to write up results, but we recommend including the following information. 
+ 
+- Preliminary descriptive results  
+
+  - The number of cases used in your analysis  
+
+  - Correlations among dependent and independent variables, indicating if any variables have very low correlations  
+
+  - Whether or not the data meet the assumptions for multiple regression  
+
+    -  Indicate whether or not there is a potential problem with multicollinearity  
+
+    - Indicate if any outliers exist  
+
+- Regression results  
+
+  - Model fit (R2 and adjusted R2)  
+
+  - Coefficient estimates and standard errors  
+
+  - t statistic, df, and significance level of each predictor  
+
+
+*APA style sample write up*: A multiple regression analysis was conducted to examine the relationship between student-teacher ratio, parental education level, school funding per student, free/reduced lunch percentage, and student attendance rate with standardized test scores. The regression model included five predictors and was based on data from 56 schools. 
+
+
+The overall model was statistically significant, $F(5, 50) = 16.67, \, p < .05$, indicating that at least one of the predictor variables significantly contributes to explaining the variance in standardized test scores. The model accounted for 62.5% of the variance in test scores, as indicated $R^2$. The adjusted $R^2$, which corrects for potential bias due to the number of predictors, was ​.588. 
+ 
+
+The results indicate that four of the five predictors significantly contribute to explaining standardized test scores. Specifically, student-teacher ratio, parental education level, free/reduced lunch percentage, and attendance rate were all statistically significant predictors ($p < .05$), while school funding per student was not significant ($p = .619$). 
+
+- The student-teacher ratio had a significant negative association with standardized test scores ($b = −1.5, \, SE = 0.3, \, p < .01$), meaning that for every one-unit increase in student-teacher ratio, test scores decreased by 1.5 points, holding all other variables constant. The standardized coefficient ($\beta = −0.3$) indicates that one standard deviation increase in student-teacher ratio corresponds to a 0.3 standard deviation decrease in test scores. 
+
+- Average parental education level was positively associated with test scores ($b = 2.0, \, SE = 0.5, \, p < .01$), indicating that an increase in parents' education level corresponded to an increase in test scores by 2 points per year of additional education. 
+
+- Free/reduced lunch percentage was negatively associated with test scores ($b = −1.2, \, SE = 0.3, \, p < .01$), suggesting that as the percentage of students on free/reduced lunch increases, test scores decrease. 
+
+- Attendance rate was positively associated with test scores ($b = 0.6, \, SE = 0.2, \, p < .01$), indicating that students in schools with higher attendance rates tend to perform better. 
+
+- School funding per student was not a significant predictor of test scores ($b = 0.2, \, SE = 0.4, \, p = .619$), indicating that after accounting for the other variables, funding alone did not explain additional variance in test scores. This finding aligns with the district’s efforts to implement an equitable funding model, suggesting that other factors may have a more direct impact on student performance. 
+
+
+## Logistic Regression: Predicting Categorical Outcomes 
+
+Up to this point, we have focused on linear regression, which predicts a continuous dependent variable (Y) using one or more independent variables (X). However, many research questions involve categorical outcomes rather than continuous ones. For example, instead of predicting a student’s final exam score, we might want to determine whether a student passes or fails. In such cases, logistic regression is the appropriate statistical technique, as it models the probability of an outcome occurring based on predictor variables.  
+
+
+**Logistic regression** is a type of regression analysis used when the dependent variable is categorical, meaning it consists of two or more categories. Unlike linear regression, which assumes a continuous outcome, logistic regression models the probability that a given outcome occurs. The most common form is *binary logistic regression*, which predicts an outcome with two categories, such as pass/fail, admitted/not admitted, or employed/unemployed. When there are more than two categories, we can use *multinomial logistic regression* (for unordered categories) or *ordinal logistic regression* (for ordered categories). 
+
+
+In linear regression, we model the relationship between X and Y using the equation: Y = bX + a, where b is the slope and a is the intercept. However, this equation is inappropriate for categorical outcomes because it can yield values outside the range of 0 to 1, which are not valid probabilities. Instead, logistic regression models the log odds of an event occurring using the logistic function: 
+
+$$
+log(\frac{p}{1-p}) = bX + a 
+$$
+
+where: 
+
+- $p$ is the probability of the event occurring, 
+
+- $\frac{p}{1-p}$ represents the odds of the event occurring, 
+
+- $log(\frac{p}{1-p})$ is the logit (log odds), 
+
+- $b$ is the regression coefficient, which represents the change in log odds of the outcome for a one-unit change in X, and 
+
+- $a$ is the intercept 
+
+To obtain the probability of the event occurring, we use the inverse logistic function:  
+
+$$
+p = \frac{e^{(bX + a)}}{1 + e^{(bX + a)}}
+$$
+
+This transformation ensures that predicted probabilities remain within the valid range of 0 to 1. 
+
+
+### Interpreting Logistic Regression Coefficients 
+
+Because logistic regression models log odds rather than raw probabilities, interpreting coefficients requires some additional steps. 
+
+- A positive coefficient ($b > 0$) means that as X increases, the probability of the event occurring increases. 
+
+- A negative coefficient ($b < 0$) means that as X increases, the probability of the event occurring decreases. 
+
+- The odds ratio (OR) is the exponentiated coefficient $e^b$. An OR greater than 1 suggests that an increase in X increases the odds of the event occurring, while an OR less than 1 suggests a decrease in the odds. 
+
+
+Let’s walk through a quick example. Suppose we want to predict whether a student is admitted to college. As discussed earlier, dummy coding is used to include categorical variables in regression models by converting them into a series of binary (0 or 1) variables. Each dummy variable represents one of the categories of the original categorical variable, allowing the regression model to quantify the effects of the categorical predictor. This time let’s use dummy coding for our outcome variable where 1 = *admitted* and 0 = *not admitted* based on one's SAT score (X). The logistic regression equation might look like this: 
+
+$$
+\log\left(\frac{p}{1 - p}\right) = 0.005(\text{SAT}) - 3.5
+$$
+
+This equation tells us that for each one-point increase in SAT score, the log odds of admission increase by 0.005. To convert this into an odds ratio: 
+
+$$
+e^{0.0005} \sim 1.005
+$$
+
+This means that for every one-point increase in SAT score, the odds of admission increase by approximately 0.5%. 
+ 
+
+### Assumptions of Logistic Regression 
+
+While logistic regression does not assume normality or homoscedasticity like linear regression, it does require: 
+
+- *Binary or categorical dependent variable*: The outcome must be categorical. 
+
+- *Independent observations*: Each observation must be independent of others. 
+
+- *No perfect multicollinearity*: Predictors should not be too highly correlated. 
+
+- *Linearity in the logit*: The independent variables should have a linear relationship with the log odds of the outcome. 
+
+ 
+
+For educational researchers, logistic regression is particularly useful in analyzing outcomes related to student success, such as graduation likelihood, college acceptance, and course completion rates. By modeling the probability of categorical outcomes, educational researchers can identify key predictors of student achievement and inform policy decisions. For instance, understanding how standardized test scores, socioeconomic status, or attendance patterns impact student retention can help educators develop targeted interventions. Logistic regression provides a powerful method to translate complex educational data into actionable insights, ultimately contributing to more informed decision-making in educational settings. 

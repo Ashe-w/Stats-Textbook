@@ -92,7 +92,7 @@ As the chapter explained, we apply corrections. As the $\epsilon$ is above 0.75,
 
 ***Box’s Test of Equality of Covariance Matrices***:
 
-![Fig 13.10](chapter13/fig12-10.png){fig-align="center" width=20%}
+![Fig 13.10](chapter13/fig13-10.png){fig-align="center" width=20%}
 
 Box’s $M = 8.050$, $p = .240$, suggesting that the assumption of equal covariance matrices across groups is not violated. 
 
@@ -124,7 +124,7 @@ The interaction between MATHMOT and Content Area is not significant, $F(1.968, 7
 
 This plot shows the average math scores across the three content areas: Reasoning (1), Quantity (2), and Space & Shape (3). Students scored highest in Reasoning, slightly lower in Quantity, and lowest in Space & Shape. While these trends are observable, they should be interpreted cautiously - formal statistical tests are necessary to confirm whether these differences are statistically significant. In this case, the main effect of content area was significant, further confirming the differences suggested by the plot. 
 
-![Fig 13.14](chapter13/fig12-14.png){fig-align="center" width=80%}
+![Fig 13.14](chapter13/fig13-14.png){fig-align="center" width=80%}
 
 This plot shows the estimated marginal means for each content area, split by students’ motivation to do well in math. Students who reported being more motivated tended to score higher across all three content areas. 
 
@@ -215,7 +215,7 @@ Growth mindset has a significant effect on math achievement, $F(1,3816)=188.65$,
 
 ![Fig 13.17](chapter13/fig13-17.png){fig-align="center" width=60%}
 
-![Fig 13.18](chapter13/fig12-18.png){fig-align="center" width=80%}
+![Fig 13.18](chapter13/fig13-18.png){fig-align="center" width=80%}
 
 - From the post-hoc comparison, after controlling for growth mindset (i.e., adjusted means): 
 
