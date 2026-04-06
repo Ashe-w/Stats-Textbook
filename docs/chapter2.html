@@ -106,6 +106,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+
+<script>
+
+  window.hypothesisConfig = function () {
+
+    return {
+
+      openSidebar: false,
+
+      showHighlights: true
+
+    };
+
+  };
+
+</script>
+
+<script src="https://hypothes.is/embed.js" async=""></script>
+
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -271,6 +290,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./answerkey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Answer Key</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Summary</span></a>
   </div>
@@ -311,6 +336,12 @@ window.Quarto = {
   <li><a href="#importing-data-into-spss" id="toc-importing-data-into-spss" class="nav-link" data-scroll-target="#importing-data-into-spss">1 Importing Data into SPSS</a></li>
   <li><a href="#computing-mean-median-mode-and-skewness" id="toc-computing-mean-median-mode-and-skewness" class="nav-link" data-scroll-target="#computing-mean-median-mode-and-skewness">2 Computing Mean, Median, Mode, and Skewness</a></li>
   <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">3 Histogram</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways-for-educational-researchers-from-chapter-2" id="toc-key-takeaways-for-educational-researchers-from-chapter-2" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-2">Key Takeaways for Educational Researchers from Chapter 2</a></li>
+  <li><a href="#key-definitions-from-chapter-2" id="toc-key-definitions-from-chapter-2" class="nav-link" data-scroll-target="#key-definitions-from-chapter-2">Key Definitions from Chapter 2</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding">Check Your Understanding</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -531,7 +562,36 @@ window.Quarto = {
 <section id="skewness-and-measures-of-central-tendency" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="skewness-and-measures-of-central-tendency"><span class="header-section-number">2.3</span> Skewness and Measures of Central Tendency</h2>
 <p>We will learn a lot more in the next few chapters about distribution and the normal curve. For now, just know that if you plot all the numeric data points from a dataset and drew a curved line to connect them, it would look like one of the examples below. The curve in the middle is <em>normal</em>, which has many important properties. For now, we care about the extent to which the curve is skewed, or pulled to one side or the other. A <strong>negatively skewed</strong> curve will be pulled to the left, meaning the longer tail of the curve is on the left side. A <strong>positively skewed</strong> curve will be pulled to the right, meaning the longer tail of the curve is on the right side. The dataset above (10, 10, 11, 13, 14, 15, 16, 50) would be positively skewed because the outlier of 50 would pull the curve to the right.</p>
-<p>(fig 2.1) (fig 2.2) (fig 2.3)</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption>Figure 2.1 Negatively skewed distribution with mean, median, and mode</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption>Figure 2.2 Normal distribution with mean median mode aligne.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption>Figure 2.3 Positively skewed distribution with mean, median, and mode.</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p>Note that when a variable is perfectly normally distributed, the mean, median, and mode are the same number. When the distribution is skewed to the left (i.e., negatively skewed), the mean shifts to the left the most, the median shifts to the left the second most, and the mode is the least affected by the presence of skew in the data. Therefore, when the data are negatively skewed, mean &lt; median &lt; mode.</p>
 <p>When the variable is skewed to the right (i.e., positively skewed), the mean is shifted to the right the most, the median is shifted to the right the second most, and the mode is the least affected. Therefore, when the data are positively skewed, mean &gt; median &gt; mode. Again, this is what happened with our second dataset example (10, 10, 11, 13, 14, 15, 16, 50).</p>
 <p>If you go to the end of the curve, to where it is pulled out the most, you will see that the order goes mean, median, and mode as you “walk up the curve” for negatively and positively skewed curves.  </p>
@@ -548,7 +608,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="720"></p>
+<p><img src="chapter2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="720"></p>
 <figcaption>Figure 2.4: Example of a Bimodal Distribution</figcaption>
 </figure>
 </div>
@@ -558,7 +618,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="720"></p>
+<p><img src="chapter2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="720"></p>
 <figcaption>Figure 2.5: Example of a Multimodal Distribution</figcaption>
 </figure>
 </div>
@@ -569,7 +629,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="chapter2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="720"></p>
+<p><img src="chapter2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="720"></p>
 <figcaption>Figure 2.6: Example of Nonmodal or Uniform Distribution</figcaption>
 </figure>
 </div>
@@ -647,7 +707,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="chapter2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="chapter2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -724,6 +784,68 @@ window.Quarto = {
 <li><p>a positive skewness value indicates a right-skewed distribution (longer tail on the right), which is consistent with the histogram above.</p></li>
 <li><p>when the data are right-skewed (here it is slightly right-skewed), the mean is greater than the median, and the mode is less than the median. These are consistent with what we observed in the calculations above.</p></li>
 </ul>
+</section>
+</section>
+<section id="conclusion" class="level1 unnumbered">
+<h1 class="unnumbered">Conclusion</h1>
+<p>This chapter has provided a comprehensive overview of measures of central tendency, emphasizing the significance of the mean, median, and mode in summarizing data. Understanding these measures is essential for accurately interpreting datasets and making informed decisions in educational research and statistical analysis. The chapter highlighted the impact of skewness on central tendency and the importance of selecting the most appropriate measure based on data distribution. By mastering these concepts, readers can develop a strong foundation in statistical reasoning, enabling them to analyze and communicate data effectively. Moving forward, the next chapter will explore variability, providing further insight into how data spreads around these central measures.</p>
+<section id="key-takeaways-for-educational-researchers-from-chapter-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-2">Key Takeaways for Educational Researchers from Chapter 2</h2>
+<ul>
+<li><p>The mean, median, and mode are the three main measures of central tendency used to summarize a dataset. Mode represents the most frequently occurring value in a dataset; useful for nominal data and not affected by outliers. Median is the middle value in a dataset when ordered and less influenced by outliers than the mean. Mean is the arithmetic average computed all data in the variable, but sensitive to outliers.</p></li>
+<li><p>Adding, removing or altering value in the dataset will directly impact the mean, but not necessarily the median or mode.</p></li>
+<li><p>Choosing an appropriate measure of central tendency depends on the shape of score distribution. As a general rule, use the mean for symmetric data, the median for skewed data, and the mode for nominal or categorical data.</p></li>
+<li><p>Understand the context of data and analyze the interested variables in the data set to decide which measure of central tendency best summarize the variables of interest.</p></li>
+</ul>
+</section>
+<section id="key-definitions-from-chapter-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-definitions-from-chapter-2">Key Definitions from Chapter 2</h2>
+<p><strong>Bimodal distributions</strong> are a distribution of scores where two scores occur most frequently.</p>
+<p><strong>Central tendency</strong> refers to the statistical measure that identifies the single value or point that best represents a dataset’s center, or typical, value.</p>
+<p><strong>Mean</strong> is the arithmetic average of a dataset. The sum of a set of scores in a distribution, divided by the total number of scores.</p>
+<p><strong>Median</strong> is the center point in a set of numbers listed in numerical order.</p>
+<p><strong>Mode</strong> is simply the most frequently occurring number in a dataset.</p>
+<p><strong>Multimodal distributions</strong> have more than two modes.</p>
+<p><strong>Negatively skewed</strong> data have a mean that is less than the median. When graphed, the left tail is longer than the right tail.</p>
+<p><strong>Nonmodal, or uniform, distributions</strong> have no mode because every value is the same.</p>
+<p>An <strong>outlier</strong> is a score that is much higher than the next highest score, or much lower than the next lowest score in your dataset.</p>
+<p><strong>Positively skewed</strong> data have a mean that is greater than the median. When graphed, the right tail is longer than the left tail.</p>
+<p><strong>Skewness</strong> means the extent to which a curve is pulled to one side or another.</p>
+<p><strong>Unimodal distributions</strong> have a single mode, or single score that occurs most often.</p>
+</section>
+<section id="check-your-understanding" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
+<ol type="1">
+<li><p><strong>A researcher is investigating if any relationship exists between the hours a student sleeps at night and their math performance across a school district with more than 1,000 students. However, they can only survey 50 students. What notation below would be used to indicate the number of students surveyed?</strong></p>
+<ol type="a">
+<li><p>N = 50</p></li>
+<li><p>n = 50</p></li>
+</ol></li>
+<li><p><strong>The ______ is the value or values in a dataset that appear most frequently.</strong></p>
+<ol type="a">
+<li><p>Mean</p></li>
+<li><p>Median</p></li>
+<li><p>Mode</p></li>
+</ol></li>
+<li><p><strong>An educational researcher records the following sample of scores: 1, 2, 4, 4, 4, 5, 5, 7, 8, 10. Calculate the sample mean, median, and mode.</strong></p>
+<ol type="a">
+<li><p>Mean __________</p></li>
+<li><p>Median ________</p></li>
+<li><p>Mode ________</p></li>
+</ol></li>
+<li><p><strong>An educational researcher obtains the following sample scores: 1, 3, 3, 4, 6, 100. Using what method of central tendency to describe these sample scores might be problematic?</strong></p>
+<ol type="a">
+<li><p>Mean</p></li>
+<li><p>Median</p></li>
+<li><p>Mode</p></li>
+</ol></li>
+<li><p><strong>What direction of skewness is created by the following data? 1, 1, 2, 2, 10</strong></p>
+<ol type="a">
+<li><p>Positive skewness</p></li>
+<li><p>Negative skewness</p></li>
+<li><p>No skewness</p></li>
+</ol></li>
+</ol>
 
 
 </section>

@@ -1,0 +1,1090 @@
+# Answer Key  
+
+Correct answers for each chapter are bolded.  
+
+ 
+
+## Chapter 1 
+
+ 
+
+1. **Which scale of measurement has an absolute zero point?** 
+
+    a. Nominal 
+
+    b. Ordinal 
+
+    c. Interval 
+
+    **d. Ratio** 
+
+  
+2. **What type of variable can take on an infinite number of possible values within a given range?** 
+
+    a. Discrete variable 
+
+    **b. Continuous variable** 
+
+    c. Nominal variable 
+
+    d. Ordinal variable 
+
+  
+
+3. **Which research method combines both quantitative and qualitative approaches in a single study?** 
+
+    a. Quantitative research 
+
+    b. Qualitative research 
+
+    **c. Mixed-methods research** 
+
+    d. Observational research 
+
+  
+
+4. **In research, random assignment primarily enhances which type of validity?**
+
+    a. External validity 
+
+    **b. Internal validity** 
+
+    c. Construct validity 
+
+    d. Content validity 
+
+  
+
+5. **Which of the following is an example of a nominal scale?** 
+
+    a.Temperature in Celsius 
+
+    b. Class ranking (e.g., 1st, 2nd, 3rd) 
+
+    **c. College major (e.g., Psychology, Biology, History)** 
+
+    d. Height in centimeters 
+
+
+
+ 
+
+## Chapter 2 
+
+1. **A researcher is investigating if any relationship exists between the hours a student sleeps at night and their math performance across a school district with more than 1,000 students. However, they can only survey 50 students. What notation below would be used to indicate the number of students surveyed?**
+
+    a. N = 50 
+
+    **b. n = 50, a lowercase n is used to represent a sample size while a capital N represents the entire population of interest.  Since only 50 students (sample) were surveyed out of the 1,000 students (population) attending the school district, a lowercase n should be used.**
+
+ 
+
+2. **The ______ is the value or values in a dataset that appear most frequently.**
+
+    a. Mean 
+
+    b. Median 
+
+    **c. Mode** 
+
+ 
+
+3. **An educational researcher records the following sample of scores: 1, 2, 4, 4, 4, 5, 5, 7, 8, 10. Calculate the sample mean, median, and mode.** 
+
+    **a. Mean = 5**
+
+    **b. Median = 4.5**
+
+    **c. Mode = 4**  
+
+ 
+
+4. **An educational researcher obtains the following sample scores: 1, 3, 3, 4, 6, 100. Using what method of central tendency to describe these sample scores might be problematic?**   
+
+    **a. Mean. The outlier of 100 is clearly pulling the mean upwards to 19.5 – far above the median and mode.**
+
+    b. Median 
+
+    c. Mode    
+
+ 
+
+5. **What direction of skewness is created by the following data? 1, 1, 2, 2, 10** 
+
+    **a. Positive skewness Positive skewness, the mean is greater than the median – the tail of the curve would be pulled to the right.**
+
+    b. Negative skewness 
+
+    c. No skewness 
+
+ 
+ 
+
+## Chapter 3 
+
+1. **What is the range of the following dataset? (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)** 
+
+    a. 10 
+
+    **b. 9, 10 (largest value) – 1 (smallest value) = 9** 
+
+    c. 1 
+
+    d. 0 
+
+ 
+
+2. **The ______ is the square root of the variance?** 
+
+    a. Interquartile Range  
+
+    b. Range 
+
+    **c. Standard Deviation** 
+
+    d. Mean 
+
+ 
+
+3. **What is the population variance of the following dataset? (1, 2, 3, 4, 5)** 
+
+    a. 1 
+
+    **b. 2, mean = 3, subtract each value from the mean, square the results, sum the squares, and divide by 5.** 
+
+    c. 2.5 
+
+    d. 3 
+
+ 
+
+4. **What is the population standard deviation of the following dataset? (1, 2, 3, 4, 5)** 
+
+    **a. 1.41, $\sqrt{2}$ = 1.41** 
+
+    b. 1.73 
+
+    c. 4.00 
+
+    d. 9.00 
+
+ 
+
+5. **What percentage of values fall within 1 SD of the mean if data are normally distributed?** 
+        
+    a. 50% 
+
+    **b. 68%, the empirical rule states that 68% of values fall within 68% of the mean.** 
+
+    c. 95% 
+
+    d. 99.7% 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Chapter 4 
+
+Check Your Understanding  
+
+ 
+
+What is the primary purpose of using a histogram in educational research? 
+
+To compare categories of data. 
+
+To display the relationship between two variables. 
+
+To summarize the frequency of continuous data grouped into intervals. 
+
+To show proportions of a whole. 
+
+ 
+
+Which visualization method is best suited for identifying relationships or correlations between two variables? 
+
+Pie chart 
+
+Box plot 
+
+Scatterplot 
+
+Stem-and-leaf plot 
+
+ 
+
+In a box-and-whisker plot, the interquartile range (IQR) is represented by: 
+
+The lines extending from the box to the smallest and largest values. 
+
+The box itself, showing the range between the 25th and 75th percentiles. 
+
+The line in the center of the box representing the median. 
+
+The individual dots outside the whiskers. 
+
+ 
+
+What is a key advantage of tables in presenting data? 
+
+They simplify relationships between variables visually. 
+
+They display trends and patterns intuitively. 
+
+They highlight outliers in large datasets. 
+
+They summarize data with precise values for comparison. 
+
+ 
+
+What is the key difference between a bar chart and a histogram? 
+
+Bar charts use touching bars to represent continuous data, while histograms use separated bars for discrete data. 
+
+Bar charts use separated bars for discrete data, while histograms use touching bars for continuous data. 
+
+Bar charts are only used for percentages, while histograms are used for counts. 
+
+There is no difference; the terms are interchangeable. 
+
+ 
+
+Chapter 5 
+
+A distribution with high kurtosis has lighter tails than a normal distribution. 
+
+True 
+
+False, high kurtosis indicates heavier tails than a normal distribution, meaning there is a higher likelihood of extreme values (outliers). 
+
+ 
+
+Which of the following values for skewness and kurtosis indicates that a distribution is approximately normal? 
+
+Skewness = 0.5, Kurtosis = 2.5 
+
+Skewness = 0.25, Kurtosis = 0.5, for a distribution to be considered approximately normal, the values for skewness and kurtosis should fall between – 1 and 1.  
+
+Skewness = 1.0, Kurtosis = 3.5 
+
+Skewness = -2.0, Kurtosis = 4.0 
+
+ 
+
+What is the probability of a data point falling within 1 standard deviation of the mean in a normal distribution? 
+
+68%, The empirical rule (or 68-95-99.7 rule) describes how data is distributed in a normal distribution.  
+
+95% 
+
+99.7% 
+
+50% 
+
+ 
+
+A standardized test has a mean score of 500 and a standard deviation of 100. What is the probability that a randomly selected student scores higher than 650? Use the z score formula and the standard normal distribution table to find the answer. 
+
+0.1056 (10.56%) 
+
+0.1587 (15.87%) 
+
+0.0668 (6.68%), calculate the z score: (650 – 500) / 100 = 1.5. Cumulative probability for z = 1.5 is .9332. Subtract the cumulative probability from 1: 1 - .9332 = .0668.  
+
+0.0228 (2.28%) 
+
+ 
+
+What is the purpose of converting raw data to z scores? 
+
+To reduce the range of the data. 
+
+To standardize data for comparison across distributions, This allows for meaningful comparisons between datasets that may have different scales, units, or ranges. 
+
+To eliminate outliers. 
+
+To calculate the mean and median more accurately. 
+
+Chapter 6 
+
+ 
+
+What is a sampling distribution? 
+
+A distribution of a population's characteristics 
+
+A distribution of a statistic (like a mean or proportion) calculated from all possible samples of a specific size, a sampling distribution represents the variability of a statistic, such as the mean, across all possible random samples of the same size from a population. 
+
+A list of all individual data points in a population 
+
+A random collection of data from a single sample 
+
+ 
+
+According to the central limit theorem, what happens to the sampling distribution of the sample mean as the sample size increases? 
+
+It becomes more skewed 
+
+It approximates a normal distribution, regardless of the population distribution, the Central Limit Theorem states that as the sample size grows larger (usually n ≥ 30), the sampling distribution of the sample mean will approach a normal distribution, even if the population distribution is not normal.  
+
+It moves closer to the smallest value in the sample 
+
+It diverges from the population mean 
+
+ 
+
+Which sampling technique ensures that every member of the population has an equal chance of being selected? 
+
+Convenience sampling 
+
+Purposive sampling 
+
+Random sampling, random sampling ensures fairness by giving each member of the population an equal probability of being chosen, reducing bias and improving representativeness. 
+
+Snowball sampling 
+
+ 
+
+What is the standard error of the mean (SEM), and how is it calculated? 
+
+It is the variability of individual data points and is equal to the population standard deviation. 
+
+It is the standard deviation of the sampling distribution of sample means, calculated by dividing the sample standard deviation by the square root of the sample size, SEM quantifies how much the sample mean is likely to vary from the true population mean. It decreases as the sample size increases, which makes the estimate more precise.  
+
+It measures the deviation of a single data point from the sample mean, using the formula SD/n. 
+
+It is a fixed value representing the population variance. 
+
+ 
+
+What happens to the sampling distribution of the sample mean if the population distribution is normal? 
+
+The sampling distribution will always be skewed, regardless of sample size. 
+
+The sampling distribution will only be normal if the sample size is large. 
+
+The sampling distribution will match the population distribution for any sample size. 
+
+The sampling distribution will be normal, regardless of sample size. If the population distribution is already normal, the sampling distribution of the sample mean will also be normal, even for small sample sizes. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Chapter 7 
+
+What is the purpose of setting an alpha level (α) in hypothesis testing? 
+
+To determine the sample size required for the study 
+
+To set the threshold probability for rejecting the null hypothesis 
+
+To calculate the confidence interval for the population mean 
+
+To ensure the sample data are normally distributed 
+
+ 
+
+A researcher hypothesizes that students from a particular school will outperform the state average on a given test. What type of test should be conducted? 
+
+Directional test (two-tailed/two-sided) 
+
+Nondirectional test (one-tailed/one-sided)  
+
+ 
+
+A critical value defines the cutoff point that separates the rejection region from the non-rejection region in a hypothesis test. 
+
+True 
+
+False 
+
+ 
+
+What does a p value indicate in hypothesis testing? 
+
+The probability that the null hypothesis is true 
+
+The likelihood of obtaining the observed result, or something more extreme, if the null hypothesis is true 
+
+The size of the effect in the population 
+
+The risk of committing a Type II error 
+
+ 
+
+What is the primary purpose of hypothesis testing in research? 
+
+To organize data into meaningful groups 
+
+To differentiate real patterns from random chance in data 
+
+To calculate the average of a sample population 
+
+To ensure data is normally distributed 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Chapter 8 
+
+ 
+
+When should a one-sample t test be used instead of a z test? 
+
+When the population mean is known  
+
+When the population standard deviation is unknown  
+
+When the same size is less than 30 
+
+When comparing two sample means  
+
+ 
+
+What is the formula for the degrees of freedom (df) in a one-sample t test? 
+
+df = n + 1 
+
+df = n x 2 
+
+df = n –1 
+
+df = 
+n2
+n
+2
+ 
+ 
+
+ 
+
+Which of the following is not an assumption of the one-sample t test? 
+
+Random sampling 
+
+Independence of observations 
+
+Population variance of 0 
+
+Dataset is approximately normally distributed 
+
+ 
+
+What is the purpose of calculating effect size, such as Cohen’s d? 
+
+To determine statistical significance 
+
+To quantify the magnitude of a difference 
+
+To check if assumptions are met 
+
+To calculate degrees of freedom 
+
+ 
+
+What is the risk of using a one-tailed test when the actual effect is in the opposite direction? 
+
+Type I error 
+
+Type II error 
+
+Type III error 
+
+Increased power 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Chapter 9 
+
+What is the main difference between an independent-samples t test and a related-samples t test? 
+
+Independent-samples t tests compare two separate groups, while related-samples t tests compare two sets of scores from the same group or matched individuals. 
+
+Independent-samples t tests compare means to a population value, while related-samples t tests compare variances. 
+
+Independent-samples t tests require categorical data, while related-samples t tests require continuous data. 
+
+There is no difference; they are used interchangeably. 
+
+ 
+
+Which assumption is unique to independent-samples t tests but not required for related-samples t tests? 
+
+Normality 
+
+Random sampling 
+
+Equal variances 
+
+Independence of scores within groups 
+
+ 
+
+When would you use a one-sample t test instead of an independent- or related-samples t test? 
+
+When you have two independent groups to compare. 
+
+When you want to compare a single group to a known population mean. 
+
+When you compare pre- and post-test scores from the same group. 
+
+When you have categorical data. 
+
+ 
+
+You are conducting a study to compare the effectiveness of two teaching methods on student performance. You have a small sample size of just 16 students (8 students taught by different teachers in different classrooms – there is no reason to suggest they are related) and the scores in your dataset are not normally distributed. Which test should you use to compare these scores? 
+
+Mann-Whitney U test 
+
+Wilcoxon Matched-Pairs Signed-Ranks Test 
+
+Independent-samples t test 
+
+One-sample t test 
+
+ 
+
+Which effect size measure is commonly reported for independent-samples t tests? 
+
+r2 
+
+Phi coefficient 
+
+Cohen’s d 
+
+Omega 
+
+ 
+
+Chapter 10 
+
+ 
+
+What is the primary purpose of a One-Way ANOVA? 
+
+To compare the means of two groups 
+
+To compare the means of three or more groups 
+
+To analyze relationships between continuous variables 
+
+To assess correlations between independent and dependent variables 
+
+ 
+
+Which of the following increases the risk of a Type I error when comparing multiple groups? 
+
+Failing to apply a correction for multiple comparisons (e.g., Bonferroni correction) 
+
+Running multiple t tests on the same data set 
+
+Including covariates in the analysis 
+
+Increasing sample size 
+
+ 
+
+Which test is the most conservative post hoc method for controlling Type I error? 
+
+Tukey’s HSD 
+
+Fisher’s LSD 
+
+Bonferroni test 
+
+Kruskal-Wallis Test 
+
+ 
+
+The Kruskal-Wallis Test is best suited for which type of data? 
+
+Ordinal data or non-normal distributions 
+
+Normally distributed interval data 
+
+Binary data 
+
+Continuous data 
+
+ 
+
+What does homogeneity of variance mean in ANOVA? 
+
+All groups have the same sample size 
+
+The dependent variable is normally distributed 
+
+The variances of the dependent variable are similar across groups 
+
+There is no interaction effect between variables 
+
+ 
+
+What distinguishes a factorial ANOVA from a one-way ANOVA? 
+
+It compares means between more than two groups. 
+
+It examines the effects of two or more independent variables and their interactions on a dependent variable. 
+
+It includes covariates to control for variability in the dependent variable. 
+
+It is used for nonparametric data. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Which of the following is an example of a factorial ANOVA design? 
+
+Comparing the mean scores of students across three different teaching methods. 
+
+Assessing the correlation between test scores and student motivation. 
+
+Testing for differences in a single group’s test scores across three different time points. 
+
+Analyzing the effects of teaching method (lecture vs. inquiry-based) and student age group (young vs. adult) on test scores. 
+
+ 
+
+What is the effect size measure commonly used in ANOVA to estimate the proportion of variance explained by the independent variable? 
+
+Pearson’s r 
+
+Eta Squared  
+
+Cronbach’s Alpha 
+
+Chi-Squared 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Chapter 11 
+
+ 
+
+What is the main purpose of Pearson's correlation coefficient (r) in correlational analysis 
+
+To compare means across groups 
+
+To measure the extent of causation between two variables 
+
+To measure the direction and strength of a relationship between two variables 
+
+To test for the significance of regression equations 
+
+ 
+
+Which of the following is NOT an assumption of correlational analysis? 
+
+Linearity 
+
+Homoscedasticity 
+
+Causality 
+
+Normality 
+
+ 
+
+What does a Pearson’s r value of 0 indicate? 
+
+A strong positive correlation 
+
+No correlation 
+
+A strong negative correlation 
+
+A perfect correlation 
+
+ 
+
+Which statistical method is used when investigating a relationship between a continuous variable and a dichotomous variable? 
+
+Pearson’s r 
+
+Spearman’s rho 
+
+Point-biserial correlation 
+
+ANOVA 
+
+ 
+
+What does the assumption of homoscedasticity in correlational analysis require? 
+
+The data must form a straight line. 
+
+The variables must be normally distributed. 
+
+The sample size must be large enough. 
+
+The spread of data points must be consistent above and below the line across the entire range. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Chapter 12 
+
+ 
+
+What does the slope (b) in a simple linear regression equation represent? 
+
+The predicted value of Y when X=0 
+
+The change in X relative to Y 
+
+The change in Y for a one-unit change in X 
+
+The coefficient of determination 
+
+ 
+
+What does [Equation]represent in simple linear regression analysis? 
+
+The correlation between independent variables 
+
+The proportion of variance in Y explained by X 
+
+The slope of the regression line 
+
+The standard error of the residuals 
+
+ 
+
+What does tolerance measure in regression analysis? 
+
+The extent of multicollinearity among independent variables 
+
+The proportion of variance in the dependent variable explained by predictors 
+
+The normality of residuals 
+
+The degree of model fit 
+
+ 
+
+What happens if a model includes highly correlated independent variables? 
+
+The dependent variable becomes unreliable 
+
+The coefficients of the independent variables become unstable 
+
+The model fit ([Equation]) will always decrease 
+
+The assumption of linearity is violated 
+
+ 
+
+What does homoscedasticity mean in regression analysis? 
+
+The residuals have a consistent spread across all predicted values 
+
+The independent variables are not correlated 
+
+The predictors have no relationship with the error term 
+
+The regression coefficients are stable across models 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Chapter 13 
+
+ 
+
+What is the key advantage of using a repeated-measures ANOVA? 
+
+It eliminates the need for a dependent variable. 
+
+It reduces error variance by accounting for individual differences. 
+
+It allows for the inclusion of multiple dependent variables. 
+
+It does not require any statistical assumptions. 
+
+ 
+
+What does the term "sphericity" refer to in the context of repeated-measures ANOVA? 
+
+Equal variances within each group. 
+
+Equal sample sizes across groups. 
+
+Equal variances of differences between all combinations of related groups. 
+
+Equal means across all groups. 
+
+ 
+
+What is the recommended post hoc procedure for a repeated-measures ANOVA to control for Type I error? 
+
+Tukey’s HSD 
+
+Bonferroni correction 
+
+Fisher’s LSD 
+
+Scheffé test 
+
+ 
+
+What does a significant result in a repeated-measures ANOVA indicate? 
+
+All group means are equal. 
+
+The dependent variable is unrelated to the conditions tested. 
+
+The assumptions of sphericity have been violated. 
+
+There is a difference in at least one pair of group means. 
+
+ 
+
+What does "partial eta squared" (
+η2p
+𝜂
+p
+2
+ 
+) represent in repeated-measures ANOVA? 
+
+The total variation in the dependent variable. 
+
+The proportion of total variance explained by between-groups effects after accounting for between-persons variance. 
+
+The difference between the group means. 
+
+The degree of correlation between independent and dependent variables. 
+
+ 
+
+What is the role of a covariate in ANCOVA? 
+
+To control for variability in the dependent variable that is unrelated to the independent variable(s) 
+
+To act as an additional independent variable 
+
+To replace the independent variable in the model 
+
+To reduce between-group variance 
+
+ 
+
+ 
+
+Chapter 14 
+
+ 
+
+Which of the following is NOT a purpose of meta-analysis? 
+
+Identifying the central tendency or common effect across studies 
+
+Exploring variability in effect sizes 
+
+Developing new experimental theories 
+
+Explaining why variation in effect sizes occurs 
+
+ 
+
+A propensity model is typically used to: 
+
+Measure the direct effect of a treatment variable 
+
+Estimate the likelihood of receiving a treatment based on observed characteristics 
+
+Compare independent variables across different models 
+
+Simplify complex data into manageable clusters 
+
+ 
+
+What is a key requirement for using Multilevel Modeling (MLM) effectively? 
+
+A minimum sample size of 50 participants 
+
+Randomized controlled trials only 
+
+Large datasets with at least 20-30 groups of 20-30 individuals per group 
+
+A focus on theoretical over empirical studies 
+
+ 
+
+Which of the following is a key benefit of Structural Equation Modeling (SEM) over traditional regression analysis? 
+
+It requires fewer participants to yield accurate results 
+
+It eliminates the need for latent variables 
+
+It allows the inclusion of multiple dependent variables and mediating variables 
+
+It reduces data complexity by eliminating endogenous predictors 
+
+ 
+
+What is the minimum number of studies generally required to conduct a meta-analysis that explores variation? 
+
+Two studies 
+
+Three studies 
+
+Four studies 
+
+Twenty studies 

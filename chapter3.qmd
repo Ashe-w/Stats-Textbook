@@ -64,38 +64,62 @@ An **outlier** is a score that is much higher than the next highest score, or mu
  
 ## Check Your Understanding   {.unnumbered}
 
-1. **A researcher is investigating if any relationship exists between the hours a student sleeps at night and their math performance across a school district with more than 1,000 students. However, they can only survey 50 students. What notation below would be used to indicate the number of students surveyed?**
+1. **What is the range of the following dataset? (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)** 
 
-    a. N = 50 
-    b. n = 50 
+    a. 10 
 
- 
+    b. 9 
 
-2. **The ______ is the value or values in a dataset that appear most frequently.**
+    c. 1 
 
-    a. Mean 
-    b. Median 
-    c. Mode 
+    d. 0 
 
  
 
-3. **An educational researcher records the following sample of scores: 1, 2, 4, 4, 4, 5, 5, 7, 8, 10. Calculate the sample mean, median, and mode.** 
+2. **The ______ is the square root of the variance?** 
 
-    a. Mean __________ 
-    b. Median ________ 
-    c. Mode ________ 
+    a. Interquartile Range  
+
+    b. Range 
+
+    c. Standard Deviation 
+
+    d. Mean 
+
+ 
+
+3. **What is the population variance of the following dataset? (1, 2, 3, 4, 5)** 
+
+    a. 1 
+
+    b. 2 
+
+    c. 2.5 
+
+    d. 3 
 
  
 
-4. **An educational researcher obtains the following sample scores: 1, 3, 3, 4, 6, 100. Using what method of central tendency to describe these sample scores might be problematic?**
+4. **What is the population standard deviation of the following dataset? (1, 2, 3, 4, 5)** 
 
-    a. Mean 
-    b. Median 
-    c. Mode  
+    a. 1.41 
+
+    b. 1.73 
+
+    c. 4.00 
+
+    d. 9.00 
 
  
-5. **What direction of skewness is created by the following data? 1, 1, 2, 2, 10**
 
-    a. Positive skewness 
-    b. Negative skewness 
-    c. No skewness 
+5. **What percentage of values fall within 1 SD of the mean if data are normally distributed?** 
+        
+    a. 50% 
+
+    b. 68%
+
+    c. 95% 
+
+    d. 99.7% 
+
+ 

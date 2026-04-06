@@ -5,3 +5,149 @@ title: "Chapter 11"
 {{< include chapter11/chapter11text.qmd >}}
 {{< include chapter11/chapter11r.qmd >}}
 {{< include chapter11/chapter11spss.qmd >}}
+
+
+
+# Conclusion  {.unnumbered}
+
+This chapter highlights the critical role of statistical tools in understanding relationships between variables, with particular emphasis on correlational analyses and their limitations. Pearson's correlation coefficient ($r$) is foundational for assessing the direction and strength of associations, ranging from -1 to +1. Scatterplots and key assumptions such as linearity, homoscedasticity, and bivariate normality ensure meaningful and valid interpretations. Practical significance is illustrated through the coefficient of determination ($r^2$), which quantifies the variance in the dependent variable explained by the independent variable. 
+
+
+Furthermore, the chapter introduces the chi-square test for independence, which serves as a robust method for analyzing associations between two categorical variables. Unlike correlation or independent-samples t tests, the chi-square test allows researchers to examine associations using summary statistics without requiring the underlying dataset.  
+
+
+The discussion on limitations underscores the importance of recognizing outliers, range restriction, and sample size, which can significantly influence the results of correlational or chi-square analyses. Together, these tools provide complementary approaches to exploring relationships, reinforcing the distinction between correlation and causation, and preparing researchers for advanced techniques such as regression. 
+
+
+
+
+## Key Takeaways for Educational Researchers from Chapter 11  {.unnumbered}
+
+- Correlation measures association, not causation. Pearson’s correlation coefficient (r) quantifies the strength and direction of a linear relationship between two continuous variables, but it does not imply that one variable causes the other. Researchers must avoid causal language and instead focus on interpreting the relationship as an association.  
+
+
+- Checking assumptions is crucial. Reliable correlation analyses require meeting key assumptions such as *linearity, homoscedasticity, and bivariate normality*. A scatterplot is an essential tool for visually inspecting these assumptions before running statistical tests. 
+
+
+- Outliers, range restriction, and sample size impact correlation. Extreme values can distort correlation estimates, while a limited range of data (e.g., only studying high-achieving students) may weaken or even reverse a correlation. A *larger, more representative sample* would provide a more accurate estimate of the relationship. 
+
+
+- Chi-square tests for independence analyze categorical relationships – Unlike correlation, a Chi-square test for independence is used to examine whether two categorical variables are significantly associated. It can be an alternative to correlation when dealing with dichotomous or multi-category variables. This method allows researchers to assess whether an observed association is statistically significant, helping policymakers and educators determine whether interventions like different types of intervention programs are effective. 
+
+
+- Statistical significance does not always imply practical significance – Even a small correlation can be statistically significant in large datasets, but effect size measures like $r^2$, the coefficient of determination, help determine how meaningful the relationship is in real-world educational settings. 
+
+
+ 
+
+## Key Definitions from Chapter 11  {.unnumbered}
+
+**Bivariate normality** is an extension of the normal distribution to two dimensions where two variables are jointly distributed in a way that their relationship forms a bivariate normal distribution. 
+
+A **chi-square test for independence** is a statistical test used to determine whether there is a significant association between two categorical variables. 
+
+ 
+
+The **coefficient of determination ($r^2$)** indicates the proportion of the variance in the dependent variable that is explained by the independent variable.  
+
+ 
+
+A **confounding variable**, or third variable, is an extraneous variable that was not controlled for and is the reason a particular “confounded” result is observed. 
+
+ 
+
+**Covariance** describes the extent to which two variables change (or vary) together. 
+
+ 
+
+**Heteroscedasticity** means that the spread of data points is not uniform across values of the independent variable. A heteroscedastic scatterplot often resembles a cone. 
+
+ 
+
+**Homoscedasticity** means that the spread of points above and below a line of best fit is the same along the entire line. 
+
+ 
+
+**Linearity** is the assumption that a straight line is the best way to describe a dataset instead of some type of curve.  
+
+ 
+
+**Pearson’s correlation coefficient ($r$)** is an estimate of the population correlation $\rho$. It tells us the direction and the strength of the correlation. 
+
+ 
+
+**Point-biserial correlation coefficient ($r_{pb}$)** is used to measure the relationship between a continuous variable (e.g., motivation to learn math, achievement scores) and a dichotomous variable (e.g., Pass/Fail, Enrolled/Not Enrolled, Full-Time/Part-Time). 
+
+ 
+
+**Range restriction** occurs when the variability of a variable (or variables) in a dataset is artificially limited or constrained, such that the range of values is smaller than it would be in the population. This restriction can significantly impact your results, potentially leading to biased estimates and incorrect conclusions. 
+
+ 
+
+**Scedasticity** is the extent to which data points are spread out above and below the line. 
+
+ 
+
+**Spearman rank-order correlation coefficient ($r_s$)**, also known as Spearman’s rho, measures the relationship between *two ranked (ordinal) variables* 
+
+ 
+
+## Check Your Understanding  {.unnumbered}
+
+1. **What is the main purpose of Pearson's correlation coefficient ($r$) in correlational analysis?** 
+
+    a. To compare means across groups 
+
+    b. To measure the extent of causation between two variables 
+
+    c. To measure the direction and strength of a relationship between two variables 
+
+    d. To test for the significance of regression equations 
+
+    
+
+2. **Which of the following is NOT an assumption of correlational analysis?** 
+
+    a. Linearity 
+
+    b. Homoscedasticity 
+
+    c. Causality 
+
+    d. Normality 
+
+ 
+
+3. **What does a Pearson’s $r$ value of 0 indicate?** 
+
+    a. A strong positive correlation 
+
+    b. No correlation 
+
+    c. A strong negative correlation 
+
+    d. A perfect correlation 
+
+ 
+
+4. **Which statistical method is used when investigating a relationship between a continuous variable and a dichotomous variable?** 
+
+    a. Pearson’s $r$ 
+
+    b. Spearman’s rho 
+
+    c. Point-biserial correlation 
+
+    d. ANOVA 
+
+ 
+
+5. **What does the assumption of homoscedasticity in correlational analysis require?** 
+
+    a. The data must form a straight line. 
+
+    b. The variables must be normally distributed. 
+
+    c. The sample size must be large enough. 
+
+    d. The spread of data points must be consistent above and below the line across the entire range. 

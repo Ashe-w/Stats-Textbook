@@ -23,6 +23,7 @@ book:
     - chapter12.qmd
     - chapter13.qmd
     - chapter14.qmd
+    - answerkey.qmd
     - summary.qmd
     - references.qmd
 
@@ -34,6 +35,8 @@ format:
     toc: true
     toc-depth: 3
     number-sections: true
+    include-in-header: 
+      - assets/hypothesis.html
     code-copy: true
     theme: 
       - cosmo

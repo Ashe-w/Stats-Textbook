@@ -580,7 +580,7 @@ df <- data.frame(
 ggplot(df, aes(x = "", y = value, fill = category)) +
   
   # Main bar with thin border
-  geom_bar(stat = "identity", width = 1, color = "black", linewidth = 0.4) +
+  geom_bar(stat = "identity", width = 1, color = "white", linewidth = 0.4) +
   
   coord_flip() +
   
@@ -620,23 +620,23 @@ library(ggplot2)
 # Data (adjust proportions if needed)
 df <- data.frame(
   category = c(
-    "Between groups variation",
+    "Error Variation",
     "Variation due to Covariate",
-    "Error Variation"
+    "Between groups variation"
   ),
-  value = c(50, 30, 20)
+  value = c(20, 30, 50)
 )
 
 ggplot(df, aes(x = "", y = value, fill = category)) +
   
-  geom_bar(stat = "identity", width = 1, color = "black", linewidth = 0.4) +
+  geom_bar(stat = "identity", width = 1, color = "white", linewidth = 0.4) +
   
   coord_flip() +
   
   scale_fill_manual(values = c(
-    "Between groups variation" = "#6b4f2a",   # brown
+    "Error Variation" = "#4e6a85",   
     "Variation due to Covariate" = "#6e6c6c", # light gray
-    "Error Variation" = "#4e6a85"             # blue
+    "Between groups variation" = "#6b4f2a"           
   )) +
   
   theme_void() +
@@ -649,7 +649,7 @@ ggplot(df, aes(x = "", y = value, fill = category)) +
     aes(label = category),
     position = position_stack(vjust = 0.5),
     color = "white",
-    size = 4
+    size = 3
   )
 ```
 
@@ -669,11 +669,11 @@ library(ggplot2)
 # Data
 df <- data.frame(
   category = c(
-    "Between groups variation",
+    "Error Variation",
     "Variation due to Covariate",
-    "Error Variation"
+    "Between groups variation"
   ),
-  value = c(40, 35, 25)
+  value = c(25, 35, 40)
 )
 
 ggplot(df, aes(x = "", y = value, fill = category)) +
@@ -683,9 +683,9 @@ ggplot(df, aes(x = "", y = value, fill = category)) +
   coord_flip() +
   
   scale_fill_manual(values = c(
-    "Between groups variation" = "#6b4f2a",   # brown
-    "Variation due to Covariate" = "#6e6c6c", # darker gray (matches image)
-    "Error Variation" = "#4f6f8f"             # muted blue
+    "Error Variation" = "#4e6a85",    
+    "Variation due to Covariate" = "#6e6c6c", 
+    "Between groups variation" = "#6b4f2a"
   )) +
   
   theme_void() +
@@ -698,7 +698,7 @@ ggplot(df, aes(x = "", y = value, fill = category)) +
     aes(label = category),
     position = position_stack(vjust = 0.5),
     color = "white",
-    size = 4
+    size = 3
   )
 ```
 

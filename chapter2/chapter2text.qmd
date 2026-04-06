@@ -132,9 +132,288 @@ In this case, the mode and median stay the same, but the mean changes to 17.4. W
 ## Skewness and Measures of Central Tendency 
 We will learn a lot more in the next few chapters about distribution and the normal curve. For now, just know that if you plot all the numeric data points from a dataset and drew a curved line to connect them, it would look like one of the examples below. The curve in the middle is *normal*, which has many important properties. For now, we care about the extent to which the curve is skewed, or pulled to one side or the other. A **negatively skewed** curve will be pulled to the left, meaning the longer tail of the curve is on the left side. A **positively skewed** curve will be pulled to the right, meaning the longer tail of the curve is on the right side. The dataset above (10, 10, 11, 13, 14, 15, 16, 50) would be positively skewed because the outlier of 50 would pull the curve to the right. 
 
-(fig 2.1)
-(fig 2.2)
-(fig 2.3)
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 5.4
+#| fig-cap: "Figure 2.1 Negatively skewed distribution with mean, median, and mode"
+
+library(ggplot2)
+
+# Generate negatively skewed data (mirror of gamma)
+set.seed(1)
+raw <- rgamma(1000, shape = 1.8, scale = 0.75)
+data <- data.frame(value = 8 - raw)  # flip to create left skew
+
+# Match displayed summary values
+mean_val <- 6.63
+median_val <- 6.98
+mode_val <- 7.27
+
+ggplot(data, aes(x = value)) +
+  geom_histogram(
+    aes(y = after_stat(density)),
+    bins = 18,
+    fill = "lightblue",
+    alpha = 0.55,
+    color = NA
+  ) +
+  geom_density(
+    color = "black",
+    linewidth = 0.9,
+    adjust = 1.15
+  ) +
+  geom_vline(
+    xintercept = mean_val,
+    linetype = "dashed",
+    color = "red",
+    linewidth = 0.8,
+    alpha = 0.8
+  ) +
+  geom_vline(
+    xintercept = median_val,
+    linetype = "dashed",
+    color = "darkgreen",
+    linewidth = 0.8,
+    alpha = 0.8
+  ) +
+  geom_vline(
+    xintercept = mode_val,
+    linetype = "dashed",
+    color = "purple",
+    linewidth = 0.8,
+    alpha = 0.8
+  ) +
+  annotate(
+    "segment", x = 0.2, xend = 0.6, y = 0.68, yend = 0.68,
+    linetype = "dashed", color = "red", linewidth = 0.8
+  ) +
+  annotate(
+    "segment", x = 0.2, xend = 0.6, y = 0.64, yend = 0.64,
+    linetype = "dashed", color = "darkgreen", linewidth = 0.8
+  ) +
+  annotate(
+    "segment", x = 0.2, xend = 0.6, y = 0.60, yend = 0.60,
+    linetype = "dashed", color = "purple", linewidth = 0.8
+  ) +
+  annotate(
+    "text", x = 0.65, y = 0.68, label = "Mean: 6.63",
+    hjust = 0, vjust = 0.5, size = 3.2
+  ) +
+  annotate(
+    "text", x = 0.65, y = 0.64, label = "Median: 6.98",
+    hjust = 0, vjust = 0.5, size = 3.2
+  ) +
+  annotate(
+    "text", x = 0.65, y = 0.60, label = "Mode: 7.27",
+    hjust = 0, vjust = 0.5, size = 3.2
+  ) +
+  scale_x_continuous(
+    limits = c(0, 8),
+    breaks = seq(0, 8, by = 1)
+  ) +
+  scale_y_continuous(
+    limits = c(0, 0.7),
+    breaks = seq(0, 0.7, by = 0.1)
+  ) +
+  labs(
+    x = "Value",
+    y = "Frequency"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.background = element_rect(fill = "#EBEBEB", color = NA),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.grid.major = element_line(color = "#D0D0D0", linewidth = 0.5),
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(color = "black", linewidth = 0.6),
+    axis.ticks = element_line(color = "black", linewidth = 0.5),
+    axis.ticks.length = unit(0.15, "cm"),
+    axis.text = element_text(color = "black"),
+    axis.title = element_text(color = "black")
+  )
+```
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 5.4
+#| fig-cap: "Figure 2.2 Normal distribution with mean median mode aligne."
+
+library(ggplot2)
+
+# Generate normal data
+set.seed(1)
+data <- data.frame(value = rnorm(1000, mean = 0, sd = 1))
+
+ggplot(data, aes(x = value)) +
+  geom_histogram(
+    aes(y = after_stat(density)),
+    bins = 30,
+    fill = "lightblue",
+    alpha = 0.6,
+    color = NA
+  ) +
+  geom_density(
+    color = "black",
+    linewidth = 0.9,
+    adjust = 1.15
+  ) +
+  geom_vline(
+    aes(xintercept = 0, linetype = "Mean/Median/Mode: 0.00"),
+    color = "red",
+    linewidth = 1
+  ) +
+  scale_color_manual(values = c("Normal Distribution" = "black")) +
+  scale_linetype_manual(values = c("Mean/Median/Mode: 0.00" = "dashed")) +
+  scale_x_continuous(
+    limits = c(-4.5, 4.5),
+    breaks = seq(-4, 4, 2)
+  ) +
+  scale_y_continuous(
+    limits = c(0, 0.5),
+    breaks = seq(0, 0.5, 0.1)
+  ) +
+  labs(
+    title = "Normal Distribution",
+    x = "Value",
+    y = "Frequency",
+    color = NULL,
+    linetype = NULL
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.background = element_rect(fill = "#EBEBEB", color = NA),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.grid.major = element_line(color = "#D0D0D0", linewidth = 0.5),
+    panel.grid.minor = element_blank(),
+
+    # Visible axes
+    axis.line = element_line(color = "black", linewidth = 0.6),
+    axis.ticks = element_line(color = "black", linewidth = 0.5),
+    axis.ticks.length = unit(0.15, "cm"),
+
+    axis.text = element_text(color = "black"),
+    axis.title = element_text(color = "black"),
+
+    # Legend styling (top right box)
+    legend.position = c(0.82, 0.9),
+    legend.background = element_rect(fill = "white", color = "gray70"),
+    legend.key = element_blank(),
+
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 5.4
+#| fig-cap: "Figure 2.3 Positively skewed distribution with mean, median, and mode."
+
+library(ggplot2)
+
+# Approximate positively skewed data
+set.seed(1)
+data <- data.frame(
+  value = rgamma(1000, shape = 1.8, scale = 0.75)
+)
+
+mean_val <- 1.37
+median_val <- 1.02
+mode_val <- 0.73
+
+ggplot(data, aes(x = value)) +
+  geom_histogram(
+    aes(y = after_stat(density)),
+    bins = 18,
+    fill = "lightblue",
+    alpha = 0.55,
+    color = NA
+  ) +
+  geom_density(
+    color = "black",
+    linewidth = 0.9,
+    adjust = 1.15
+  ) +
+  geom_vline(
+    xintercept = mean_val,
+    linetype = "dashed",
+    color = "red",
+    linewidth = 0.8,
+    alpha = 0.8
+  ) +
+  geom_vline(
+    xintercept = median_val,
+    linetype = "dashed",
+    color = "darkgreen",
+    linewidth = 0.8,
+    alpha = 0.8
+  ) +
+  geom_vline(
+    xintercept = mode_val,
+    linetype = "dashed",
+    color = "purple",
+    linewidth = 0.8,
+    alpha = 0.8
+  ) +
+  annotate(
+    "segment", x = 6.55, xend = 6.95, y = 0.675, yend = 0.675,
+    linetype = "dashed", color = "red", linewidth = 0.8
+  ) +
+  annotate(
+    "segment", x = 6.55, xend = 6.95, y = 0.635, yend = 0.635,
+    linetype = "dashed", color = "darkgreen", linewidth = 0.8
+  ) +
+  annotate(
+    "segment", x = 6.55, xend = 6.95, y = 0.595, yend = 0.595,
+    linetype = "dashed", color = "purple", linewidth = 0.8
+  ) +
+  annotate(
+    "text", x = 7.02, y = 0.675, label = "Mean: 1.37",
+    hjust = 0, vjust = 0.5, size = 3.2
+  ) +
+  annotate(
+    "text", x = 7.02, y = 0.635, label = "Median: 1.02",
+    hjust = 0, vjust = 0.5, size = 3.2
+  ) +
+  annotate(
+    "text", x = 7.02, y = 0.595, label = "Mode: 0.73",
+    hjust = 0, vjust = 0.5, size = 3.2
+  ) +
+  scale_x_continuous(
+    limits = c(0, 8),
+    breaks = seq(0, 8, by = 1)
+  ) +
+  scale_y_continuous(
+    limits = c(0, 0.7),
+    breaks = seq(0, 0.7, by = 0.1)
+  ) +
+  labs(
+    x = "Value",
+    y = "Frequency"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.background = element_rect(fill = "#EBEBEB", color = NA),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.grid.major = element_line(color = "#D0D0D0", linewidth = 0.5),
+    panel.grid.minor = element_blank(),
+    axis.line = element_line(color = "black", linewidth = 0.6),
+    axis.ticks = element_line(color = "black", linewidth = 0.5),
+    axis.ticks.length = unit(0.15, "cm"),
+    axis.text = element_text(color = "black"),
+    axis.title = element_text(color = "black")
+  )
+```
 
 Note that when a variable is perfectly normally distributed, the mean, median, and mode are the same number. When the distribution is skewed to the left (i.e., negatively skewed), the mean shifts to the left the most, the median shifts to the left the second most, and the mode is the least affected by the presence of skew in the data. Therefore, when the data are negatively skewed, mean < median < mode.  
 

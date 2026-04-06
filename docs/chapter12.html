@@ -106,6 +106,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+
+<script>
+
+  window.hypothesisConfig = function () {
+
+    return {
+
+      openSidebar: false,
+
+      showHighlights: true
+
+    };
+
+  };
+
+</script>
+
+<script src="https://hypothes.is/embed.js" async=""></script>
+
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -271,6 +290,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./answerkey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Answer Key</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Summary</span></a>
   </div>
@@ -318,6 +343,14 @@ window.Quarto = {
   <li><a href="#part-1-getting-started" id="toc-part-1-getting-started" class="nav-link" data-scroll-target="#part-1-getting-started"><span class="header-section-number">12.5.1</span> Part 1: Getting Started </a></li>
   <li><a href="#part-2-assumptions-of-multiple-regression-and-data-diagnostics" id="toc-part-2-assumptions-of-multiple-regression-and-data-diagnostics" class="nav-link" data-scroll-target="#part-2-assumptions-of-multiple-regression-and-data-diagnostics"><span class="header-section-number">12.5.2</span> Part 2: Assumptions of Multiple Regression and Data Diagnostics</a></li>
   <li><a href="#part-3-basics-of-multiple-regression-hypothesis-testing-and-interpretation" id="toc-part-3-basics-of-multiple-regression-hypothesis-testing-and-interpretation" class="nav-link" data-scroll-target="#part-3-basics-of-multiple-regression-hypothesis-testing-and-interpretation"><span class="header-section-number">12.5.3</span> Part 3: Basics of Multiple Regression: Hypothesis Testing and Interpretation</a></li>
+  <li><a href="#partial-correlations" id="toc-partial-correlations" class="nav-link" data-scroll-target="#partial-correlations"><span class="header-section-number">12.5.4</span> Partial Correlations </a></li>
+  <li><a href="#assessing-model-fit" id="toc-assessing-model-fit" class="nav-link" data-scroll-target="#assessing-model-fit"><span class="header-section-number">12.5.5</span> Assessing Model Fit </a></li>
+  <li><a href="#reporting-results-of-a-multiple-regression-analysis" id="toc-reporting-results-of-a-multiple-regression-analysis" class="nav-link" data-scroll-target="#reporting-results-of-a-multiple-regression-analysis"><span class="header-section-number">12.5.6</span> Reporting Results of a Multiple Regression Analysis </a></li>
+  </ul></li>
+  <li><a href="#logistic-regression-predicting-categorical-outcomes" id="toc-logistic-regression-predicting-categorical-outcomes" class="nav-link" data-scroll-target="#logistic-regression-predicting-categorical-outcomes"><span class="header-section-number">12.6</span> Logistic Regression: Predicting Categorical Outcomes</a>
+  <ul class="collapse">
+  <li><a href="#interpreting-logistic-regression-coefficients" id="toc-interpreting-logistic-regression-coefficients" class="nav-link" data-scroll-target="#interpreting-logistic-regression-coefficients"><span class="header-section-number">12.6.1</span> Interpreting Logistic Regression Coefficients</a></li>
+  <li><a href="#assumptions-of-logistic-regression" id="toc-assumptions-of-logistic-regression" class="nav-link" data-scroll-target="#assumptions-of-logistic-regression"><span class="header-section-number">12.6.2</span> Assumptions of Logistic Regression</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#predicting-an-outcome-in-r" id="toc-predicting-an-outcome-in-r" class="nav-link" data-scroll-target="#predicting-an-outcome-in-r">Predicting an Outcome in R</a>
@@ -341,13 +374,19 @@ window.Quarto = {
   <li><a href="#predicting-the-outcomes-in-spss" id="toc-predicting-the-outcomes-in-spss" class="nav-link" data-scroll-target="#predicting-the-outcomes-in-spss">Predicting the outcomes in SPSS</a>
   <ul class="collapse">
   <li><a href="#simple-linear-regression-1" id="toc-simple-linear-regression-1" class="nav-link" data-scroll-target="#simple-linear-regression-1">1 Simple Linear Regression</a></li>
-  <li><a href="#fit-simple-linear-regression-1" id="toc-fit-simple-linear-regression-1" class="nav-link" data-scroll-target="#fit-simple-linear-regression-1"><span class="header-section-number">12.6</span> 1.1 Fit Simple Linear Regression</a></li>
+  <li><a href="#fit-simple-linear-regression-1" id="toc-fit-simple-linear-regression-1" class="nav-link" data-scroll-target="#fit-simple-linear-regression-1"><span class="header-section-number">12.7</span> 1.1 Fit Simple Linear Regression</a></li>
   <li><a href="#assumptions-checking-1" id="toc-assumptions-checking-1" class="nav-link" data-scroll-target="#assumptions-checking-1">1.2 Assumptions Checking</a></li>
   <li><a href="#multiple-linear-regression-1" id="toc-multiple-linear-regression-1" class="nav-link" data-scroll-target="#multiple-linear-regression-1">2 Multiple Linear Regression</a>
   <ul class="collapse">
   <li><a href="#fit-multiple-linear-regression-1" id="toc-fit-multiple-linear-regression-1" class="nav-link" data-scroll-target="#fit-multiple-linear-regression-1">2.1 Fit Multiple Linear Regression</a></li>
   <li><a href="#multicollinearity-assumptions-checking-1" id="toc-multicollinearity-assumptions-checking-1" class="nav-link" data-scroll-target="#multicollinearity-assumptions-checking-1">2.2 Multicollinearity &amp; Assumptions Checking</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways-for-educational-researchers-from-chapter-12" id="toc-key-takeaways-for-educational-researchers-from-chapter-12" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-12">Key Takeaways for Educational Researchers from Chapter 12</a></li>
+  <li><a href="#key-definitions-for-chapter-12" id="toc-key-definitions-for-chapter-12" class="nav-link" data-scroll-target="#key-definitions-for-chapter-12">Key Definitions for Chapter 12</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding">Check Your Understanding</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1042,10 +1081,521 @@ H_A: \text{at least one } \beta_i \neq 0
 </section>
 <section id="step-2-set-the-criteria-for-a-decision-and-evaluate-data.-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="step-2-set-the-criteria-for-a-decision-and-evaluate-data.-1">Step 2: Set the criteria for a decision and evaluate data.</h4>
-<p>We will use a 0.05 level of significance for the omnibus F test.</p>
-<p>The degrees of freedom (df) for the F test in regression are determined as follows: for the regression component, the df equals the number of predictors in the model (p). For the error term, the df is calculated as the sample size (N) minus the number of predictors (p) minus 1, expressed as (n - p - 1). This accounts for one degree of freedom for each independent variable (X) and the dependent variable (Y). Because n = 56, the F ratio follows the F distribution with (5, 50).</p>
-<p>The critical value at <span class="math inline">\(\alpha = 0.05\)</span> is 2.40.</p>
+<ul>
+<li><p>We will use a 0.05 level of significance for the omnibus F test.</p></li>
+<li><p>The degrees of freedom (df) for the F test in regression are determined as follows: for the regression component, the df equals the number of predictors in the model (p). For the error term, the df is calculated as the sample size (N) minus the number of predictors (p) minus 1, expressed as (n - p - 1). This accounts for one degree of freedom for each independent variable (X) and the dependent variable (Y). Because n = 56, the F ratio follows the F distribution with (5, 50).</p></li>
+<li><p>The critical value at <span class="math inline">\(\alpha = 0.05\)</span> is 2.40.</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption>Figure 12.5 Sampling distribution of the F-ratio</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>When the omnibus test is significant, we proceed with hypothesis testing for individual independent variables. Using <span class="math inline">\(\alpha = 0.05\)</span> for each test, the test statistic follows a <span class="math inline">\(t\)</span> distribution with degrees of freedom calculated as <span class="math inline">\(df = n – p - 1\)</span>. In this case, with <span class="math inline">\(n = 56\)</span> observations and <span class="math inline">\(p = 5\)</span> predictors, the degrees of freedom for each <span class="math inline">\(t\)</span> test is: <span class="math inline">\(df = 56 – 5 – 1 = 50\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption>Figure 12.6 Sampling distribution of the t-statistic</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>While we will not cover the process of assessing whether the data meet multiple regression assumptions here, it is always essential to visualize the data through graphs and compute descriptive statistics to identify potential violations. Checking assumptions—such as linearity, normality of residuals, homoscedasticity, and multicollinearity—ensures the validity and reliability of the regression results.</p>
 </section>
+<section id="step-3-compute-the-test-statistic.-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="step-3-compute-the-test-statistic.-1">Step 3: Compute the test statistic.</h4>
+<p>Similar to ANOVA, we use the F test for the omnibus hypothesis. To run the F test, we need MS regression and MS residual values. The table below summarizes how to calculate the degrees of freedom, sum of squares, mean square, and F statistic. Remember that p indicates the number of predictors and n indicates the sample size.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 26%">
+<col style="width: 30%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Degrees of Freedom (df)</th>
+<th>Sum of Squares (SS)</th>
+<th>Mean Squares (MS)</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Regression (Model)</strong></td>
+<td><span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(\sum (\hat{Y}_i - \bar{Y})^2\)</span></td>
+<td><span class="math inline">\(\dfrac{SS_{\text{regression}}}{df_{\text{model}}}\)</span></td>
+<td><span class="math inline">\(\dfrac{MS_{\text{model}}}{MS_{\text{error}}}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Error (Residual)</strong></td>
+<td><span class="math inline">\(n - p - 1\)</span></td>
+<td><span class="math inline">\(\sum (Y_i - \hat{Y}_i)^2\)</span></td>
+<td><span class="math inline">\(\dfrac{SS_{\text{error}}}{df_{\text{error}}}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><span class="math inline">\(n - 1\)</span></td>
+<td><span class="math inline">\(\sum (Y_i - \bar{Y})^2\)</span></td>
+<td><span class="math inline">\(\dfrac{SS_{\text{total}}}{df_{\text{total}}}\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Similar to what we have already learned, simply add the <span class="math inline">\(SS_{Regression}\)</span> and <span class="math inline">\(SS_{Error}\)</span> to get <span class="math inline">\(SS_{𝑇𝑜𝑡𝑎𝑙}\)</span>. You also do the same thing for your <span class="math inline">\(df_{Regression}\)</span> and <span class="math inline">\(df_{Error}\)</span> to get <span class="math inline">\(df_{𝑇𝑜𝑡𝑎𝑙}\)</span>.</p>
+<p><span class="math display">\[
+F = \frac{MS_{\text{regression}}}{MS_{\text{residual}}} \sim F_{(df_{\text{regression}}, \, df_{\text{error}})}
+\]</span></p>
+<p>There are 5 degrees of freedom in the numerator (<span class="math inline">\(df_{Regression}\)</span> ), representing the 5 predictors (independent variables), and there are 50 degrees of freedom in the denominator (<span class="math inline">\(df_{Error}\)</span>), representing 56 schools – 5 predictors – 1. The following table contains the results of a regression analysis on the data.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 25%">
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Degrees of Freedom</th>
+<th>Sum of Squares</th>
+<th>Mean Squares</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Regression</strong></td>
+<td><span class="math inline">\(5\)</span></td>
+<td><span class="math inline">\(2500\)</span></td>
+<td><span class="math inline">\(500\)</span></td>
+<td><span class="math inline">\(16.67\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Error (residual)</strong></td>
+<td><span class="math inline">\(50\)</span></td>
+<td><span class="math inline">\(1500\)</span></td>
+<td><span class="math inline">\(30\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><span class="math inline">\(55\)</span></td>
+<td><span class="math inline">\(4000\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+F = \frac{MS_{\text{regression}}}{MS_{\text{residual}}}
+= \frac{500}{30}
+= 16.67 \sim F_{(5, 50)}
+\]</span></p>
+<p>While the statistical software you use will provide the p value, let’s look at the critical values of F distribution table in the back of the book to determine if we have a significant result. Find where 5 degrees of freedom in the numerator and 50 degrees of freedom in the denominator intersect, which identities a critical value of 2.40. Our F statistic of 16.76 is larger than the critical value of 2.40 at the .05 level. So, we can reject the null as <span class="math inline">\(p &lt; .05\)</span>.</p>
+<p>Are we finished? Not so fast. It is common for those first learning multiple regression to mistakenly assume that finding a significant result when testing for the omnibus hypothesis means that all <span class="math inline">\(\beta\)</span> coefficients are significantly different from 0. However, this test only tells us that at least one <span class="math inline">\(\beta\)</span> coefficient is significantly different from 0.</p>
+<p>Since we have a significant result, the next step is to run t tests on individual coefficients. If the omnibus test is not statistically significant, it does not make sense to look at the individual predictors. It was significant in this case, so we move to the next set of hypothesis tests. Recall that the null hypothesis for any given individual predictor can be represented as:</p>
+<p><span class="math display">\[
+H_0: B_p = 0 
+\]</span></p>
+<p>The alternative hypothesis can be represented as:</p>
+<p><span class="math display">\[
+H_A: B_p \ne 0 
+\]</span></p>
+<p>Let’s suppose we obtained the results summarized below with the multiple regression analysis.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 34%">
+<col style="width: 5%">
+<col style="width: 13%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Unstandardized Coefficient (b)</th>
+<th>SE</th>
+<th>t statistic</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Student-Teacher Ratio</td>
+<td>-1.5</td>
+<td>0.3</td>
+<td>-5.0</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="even">
+<td>Parental Education Level</td>
+<td>2.0</td>
+<td>0.5</td>
+<td>4.0</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="odd">
+<td>School Funding</td>
+<td>0.2</td>
+<td>0.4</td>
+<td>0.5</td>
+<td>0.619</td>
+</tr>
+<tr class="even">
+<td>Free/Reduced Lunch Percentage</td>
+<td>-1.2</td>
+<td>0.3</td>
+<td>-4.0</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="odd">
+<td>Attendance Rate</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>3.0</td>
+<td>0.004</td>
+</tr>
+</tbody>
+</table>
+<p>The unstandardized coefficient column presents the slope for each predictor, indicating the expected change in the dependent variable for a one-unit increase in the predictor, holding other variables constant. The far-right column of the table provides the statistical significance of each coefficient, helping determine whether a predictor has a meaningful impact on the model.</p>
+<p>Before diving further into the table, it is important to discuss partial correlations, which help assess the unique contribution of each predictor while controlling for other variables in the model.</p>
+</section>
+</section>
+<section id="partial-correlations" class="level3" data-number="12.5.4">
+<h3 data-number="12.5.4" class="anchored" data-anchor-id="partial-correlations"><span class="header-section-number">12.5.4</span> Partial Correlations </h3>
+<p>Multiple regression involves accounting for the relationships among multiple variables, a process known as partialling. <strong>Partialling</strong> means separating the effects of one predictor from the others. The statistical measures that accomplish this are partial correlations, which help determine the independent contribution of each predictor to the dependent variable.  </p>
+<p>Suppose we have a three-variable problem with <span class="math inline">\(Y\)</span>, <span class="math inline">\(X_1\)</span>, and <span class="math inline">\(X_2\)</span>. <span class="math inline">\(Y\)</span> is the dependent variable, and <span class="math inline">\(X_1\)</span>, and <span class="math inline">\(X_2\)</span> are independent variables. Both independent variables correlate with the dependent variable, but as is often the case with educational data, they also correlate with each other. We can’t add the two coefficients of determination together to find the <span class="math inline">\(R^2\)</span> of the regression model, because we must account for the variation that’s shared, or overlapping.  </p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter12_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption>Figure 12.7 Three-variable overlap diagram</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In figure 12.7, the circles represent the variability of data in the three variables. Because they are all related, the circles overlap. </p>
+<ul>
+<li><p>Area A+B+C+D represents all the variability in the dependent variable to be explained (shaded in purple).  </p></li>
+<li><p>Area B+C+D represents R2 for the model as a whole because they represent the variability in the dependent variable that is shared with the two predictors combined.  </p></li>
+<li><p>Area A now represents the residual variance. If R2 is small, the unexplained variance in the dependent variable will be relatively large.  </p></li>
+<li><p>Area B+C represents the total shared variability between Y and X1. But notice that Area C is also shared with X2.  </p></li>
+<li><p>Area B by itself represents the unique relationship between Y and X1. This is the partial correlation that’s represented in the regression results – the extent to which X1 can predict Y with X2 held constant. </p></li>
+</ul>
+<p> </p>
+<p>To compute partial correlations, you first calculate the residuals—the errors that remain after predicting the dependent variable using each independent variable. Then, you correlate these residuals with each other to determine the unique contribution of each predictor while controlling for the others.</p>
+<p>An important takeaway is that partial correlations are not fixed values; they depend on the specific set of variables included in the model. As the relationships among independent variables change, the partial correlations will also adjust, reflecting the shifting influence of each predictor.</p>
+<p>As those correlations change, so will the magnitude (and sometimes even the direction) of any given predictor variable on the dependent variable. Just picture the X2 circle up there – if it shifted down so that Area B grew and Area C got smaller, the regression coefficient for X1 would be larger.  </p>
+<p> </p>
+<p>Most of the time, partial correlations are smaller than the simple bivariate correlation between the independent variable and dependent variable, but not always. Sometimes one of your other predictors could actually suppress the relationship between the two variables, so the partial correlation is larger. </p>
+<p> </p>
+<p>Now let’s look at our regression results again, this time with the partial correlation statistics included.  </p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 13%">
+<col style="width: 3%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 4%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Unstandardized b</th>
+<th>SE</th>
+<th>Standardized β</th>
+<th>Partial Correlation</th>
+<th>Bivariate Correlation</th>
+<th>t</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Student-Teacher Ratio</td>
+<td>-1.5</td>
+<td>0.3</td>
+<td>-0.3</td>
+<td>-0.58</td>
+<td>-0.65</td>
+<td>-5.0</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="even">
+<td>Parental Education Level</td>
+<td>2.0</td>
+<td>0.5</td>
+<td>0.1</td>
+<td>0.49</td>
+<td>0.55</td>
+<td>4.0</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="odd">
+<td>School Funding</td>
+<td>0.2</td>
+<td>0.4</td>
+<td>2.0</td>
+<td>0.03</td>
+<td>0.15</td>
+<td>0.5</td>
+<td>0.619</td>
+</tr>
+<tr class="even">
+<td>Free/Reduced Lunch Percentage</td>
+<td>-1.2</td>
+<td>0.3</td>
+<td>-0.5</td>
+<td>-0.49</td>
+<td>-0.55</td>
+<td>-4.0</td>
+<td>&lt; .001</td>
+</tr>
+<tr class="odd">
+<td>Attendance Rate</td>
+<td>0.6</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0.39</td>
+<td>0.45</td>
+<td>3.0</td>
+<td>0.004</td>
+</tr>
+</tbody>
+</table>
+<p>The bivariate correlation between standardized test scores and student-teacher ratio was -0.65, but the partial correlation is only –0.58. Removing the effects of the other predictors has “purified” the relationship. We can also see that while the original correlation between school funding and standardized test scores was 0.15, the partial correlation is even smaller, only 0.03. The correlation table just considers two variables at a time. With regression, each independent variable has a coefficient that is estimated after holding all the others constant (controlling for the other predictors).   </p>
+<p>Now we’ll look in more detail at the coefficients table, focusing on the independent variable of student-teacher ratio.</p>
+<ul>
+<li><p>The unstandardized coefficient for reading tells us that, with the effect of the other predictors held constant (partialled out), each one-point increase in the student-teacher ratio is associated with a 1.5-point decrease in standardized test score.</p></li>
+<li><p>This prediction is based on a sample, and we always have sampling errors. The value of 0.3 indicates the standard error of the associated regression coefficient estimate and is used for the statistical test.</p></li>
+<li><p>To aid in interpretating your results, it is common to report the standardized coefficients, which are interpreted like z scores, and can be obtained by converting the raw data to their z score counterparts (measured in standard deviations above and below the mean) before running the regression.</p>
+<ul>
+<li><p>The standardized coefficients tell us which independent variables are the most powerful predictors of the dependent variable.</p></li>
+<li><p>To convert from unstandardized coefficients to standardized, we use the expression:</p>
+<p><span class="math display">\[
+\beta_{xp} = b_{xp}\frac{SD_Y}{SD_{xp}}
+\]</span></p>
+<p>where <span class="math inline">\(\beta_{xp}\)</span> represents the standardized slope associated with predictor p, <span class="math inline">\(b_{xp}\)</span> is the unstandardized slope for predictor <span class="math inline">\(p\)</span>, <span class="math inline">\(SD_Y\)</span> is the standard deviation of the dependent variable, and <span class="math inline">\(SD_{xp}\)</span> is the standard deviation of predictor <span class="math inline">\(p\)</span>. Standardized slopes are typically included in computer output and reported as part of your results. Our result for the Student-Teacher ratio independent variable shows that with the effects of other predictors held constant, for each one standard deviation increase in Student-Teacher ratios, we expect standardized test scores to decrease 0.3 standard deviations. It can get a little confusing because people use either <span class="math inline">\(B\)</span> or <span class="math inline">\(b\)</span> to refer to regression coefficients, but if you see both <span class="math inline">\(\beta\)</span> and <span class="math inline">\(b\)</span>, the former means standardized, and the latter is unstandardized.</p></li>
+</ul></li>
+<li><p>We’re finally ready to test the null hypothesis about this individual predictor using <span class="math inline">\(\alpha = 0.05\)</span>. The table reports that the t statistic for student-teacher ratio is -5.0 and the p value shown in the table is <span class="math inline">\(p &lt; 0.001\)</span>. This tells us that the student-teacher ratio is a significant predictor of standardized test scores.</p></li>
+</ul>
+<p>After controlling for other predictors, the results show that the <span class="math inline">\(\beta\)</span> coefficient for 4 predictors is significantly different from 0. However, we find that school funding is not, which is actually good news for the district because they spent years developing an equitable funding model to support student success.</p>
+</section>
+<section id="assessing-model-fit" class="level3" data-number="12.5.5">
+<h3 data-number="12.5.5" class="anchored" data-anchor-id="assessing-model-fit"><span class="header-section-number">12.5.5</span> Assessing Model Fit </h3>
+<p>Similar to what we learned earlier in the chapter, the basic measure of model-data fit is the squared multiple correlation, <span class="math inline">\(R^2\)</span>. The statistic can be calculated using:</p>
+<p><span class="math display">\[
+R^2 = \frac{SS_{Regression}}{SS_{Total}}
+\]</span></p>
+<p>For our example, the coefficient of determination (<span class="math inline">\(R^2\)</span>) is calculated as follows: <span class="math inline">\(R^22 = \frac{SS_{Regression}}{SS_{Total}} = \frac{2,500}{4,000} = 0.625 = 62.5%\)</span>. This means that <span class="math inline">\(62.5%\)</span> of the variation in students’ standardized test scores is explained by the set of five predictors. However, it is important to note that this dataset was created for illustrative purposes. In real-world educational research, it is unlikely that such a high percentage of variance in standardized test scores would be explained by just five predictors, as many other factors influence student performance.</p>
+<p>A larger <span class="math inline">\(R^2\)</span> indicates a stronger model, meaning the independent variables collectively explain more of the variance in the dependent variable. However, as we have learned, <span class="math inline">\(R^2\)</span> is biased because it tends to increase as more predictors are added, even if they do not meaningfully contribute to the model.</p>
+<p>To address this issue, a less biased version, Adjusted <span class="math inline">\(R^2\)</span>, is reported. Adjusted R² accounts for the number of predictors and sample size, providing a more reliable measure of model fit. It is calculated using the following formula:</p>
+<p><span class="math display">\[
+R^2_{Adjusted} = 1 - \left( \frac{(1-R^2)(n-1)}{n-p-1} \right)
+= 1 - \left( \frac{(1- .625)(56-1)}{(56-5-1)} \right) = .5875
+\]</span></p>
+<p>As you can see from the formula, adjusted <span class="math inline">\(R^2\)</span> depends on the sample size and number of predictors in the model. If the sample size is large enough, the values of <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> should be very similar. If the sample size is small and you have a large number of predictors, the discrepancy between <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> will be larger. In general, we recommend using adjusted <span class="math inline">\(R^2\)</span> when reporting your results, but encourage you to check to see what is typical for studies in your field.  </p>
+<p>When reviewing regression results, it is important to assess whether multicollinearity may be influencing the model estimates. To do this, we examine two key diagnostics: <em>Variance Inflation Factor (VIF)</em> and <em>Tolerance (the reciprocal of VIF)</em>. These metrics help determine the extent to which predictor variables are correlated with each other.</p>
+<p>High VIF values or low Tolerance levels indicate potential multicollinearity, which can distort coefficient estimates and reduce the stability of the model. Evaluating these diagnostics ensures that the model specification is appropriate and helps identify whether adjustments, such as removing or combining variables, are necessary.</p>
+<section id="variance-inflation-factors-vif" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="variance-inflation-factors-vif">Variance Inflation Factors (VIF) </h4>
+<p>The <strong>Variance Inflation Factor (VIF)</strong> quantifies how much the variance of a regression coefficient is inflated due to multicollinearity among predictor variables. We can use multiple regression to calculate the degree of multicollinearity among independent variables, by making each independent variable a dependent variable predicted by all the others. We end up with <span class="math inline">\(R^2\)</span> values for each of those regression models, indicating, just like with any other regression model, the percentage of the variance in one independent variable that is explained by the other independent variables. The VIF calculation utilizes these <span class="math inline">\(R^2\)</span> values to diagnose the extent of multicollinearity, using the following formula:</p>
+<p><span class="math display">\[
+VIF_p = \frac{1}{1 - R^2_p}
+\]</span></p>
+<p>The subscript p indicates the independent variable, and you calculate a VIF for each independent variable. When <span class="math inline">\(R^2\)</span> equals zero, there is no multicollinearity, because the set of independent variables could not explain any of the variability in the remaining independent variable. In that case the fraction would be 1/1, so the lowest possible VIF is 1. But if you look at the equation, as <span class="math inline">\(R^2\)</span> gets bigger, the denominator gets smaller, and VIF increases.  </p>
+<p>There are no hard rules about acceptable VIF values. However, Kutner et al.&nbsp;(2013) state “[a] maximum VIF value in excess of 10 is frequently taken as an indication that multicollinearity may be unduly influencing the least squares estimates” (p.&nbsp;409). In models with VIF &lt; 5, it further reduces the inflation of standard errors and therefore reduces the likelihood of Type II errors.</p>
+</section>
+<section id="tolerance" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="tolerance">Tolerance </h4>
+<p><strong>Tolerance</strong> is a statistical measure that indicates how much a particular predictor variable contributes to the overall variance in the dependent variable while accounting for the effects of other predictors. It is closely related to multicollinearity and serves as the reciprocal of the VIF.</p>
+<ul>
+<li><p><span class="math inline">\(\text{Tolerance} = (1 – R^2_p)\)</span> </p></li>
+<li><p><span class="math inline">\(\text{Tolerance} = 1/VIF\)</span> </p></li>
+</ul>
+<p>The table below shows the relationship of VIF and Tolerance to <span class="math inline">\(r_p\)</span> and <span class="math inline">\(R^2_p\)</span>. There is no new information here, as tolerance and VIF are based on the same calculations. They are just expressed in different forms, and you may see reference to one or the other, so it helps to be aware of how they are related. If you only had two predictors in your model, then <span class="math inline">\(r_p\)</span> would be the same as the bivariate correlation between them. While sets of independent variables may correlate differently, that column can give you a sense of likely multicollinearity problems based on your preliminary review of the correlation table.  </p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>VIF</th>
+<th><span class="math inline">\(r_p\)</span></th>
+<th><span class="math inline">\(R^2_p\)</span></th>
+<th>Tolerance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>1.00</td>
+</tr>
+<tr class="even">
+<td>1.05</td>
+<td>0.22</td>
+<td>0.05</td>
+<td>0.95</td>
+</tr>
+<tr class="odd">
+<td>1.10</td>
+<td>0.30</td>
+<td>0.09</td>
+<td>0.91</td>
+</tr>
+<tr class="even">
+<td>1.20</td>
+<td>0.41</td>
+<td>0.17</td>
+<td>0.83</td>
+</tr>
+<tr class="odd">
+<td>1.30</td>
+<td>0.48</td>
+<td>0.23</td>
+<td>0.77</td>
+</tr>
+<tr class="even">
+<td>1.40</td>
+<td>0.53</td>
+<td>0.28</td>
+<td>0.71</td>
+</tr>
+<tr class="odd">
+<td>1.50</td>
+<td>0.58</td>
+<td>0.34</td>
+<td>0.67</td>
+</tr>
+<tr class="even">
+<td>2.00</td>
+<td>0.71</td>
+<td>0.50</td>
+<td>0.50</td>
+</tr>
+<tr class="odd">
+<td>5.00</td>
+<td>0.89</td>
+<td>0.79</td>
+<td>0.20</td>
+</tr>
+<tr class="even">
+<td>10.00</td>
+<td>0.95</td>
+<td>0.90</td>
+<td>0.10</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\infty\)</span></td>
+<td>1.00</td>
+<td>1.00</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+<p>A Tolerance value below 0.1 indicates a serious multicollinearity problem, suggesting that a predictor shares a substantial amount of variance with other independent variables. It is important to remember that VIF and Tolerance are measures of the extent to which regression coefficients may be affected by multicollinearity. Higher VIF values and lower Tolerance values signal greater risk, potentially distorting coefficient estimates and reducing the reliability of the model. </p>
+<p>Including more control variables or predictors in non-experimental or quasi-experimental designs is usually a good thing, as long as you are not adding so many predictors that you’re over-fitting the model. In theory, multicollinearity is not a problem if VIFs are lower than published rules of thumb (i.e., VIF &lt; 10), or, more conservatively, VIF &lt; 5. However, these rules of thumb do not protect against substantive changes in regression coefficient magnitude, so you can’t only rely on VIF and Tolerance values.  </p>
+<p>While addressing multicollinearity, it is important to balance reducing redundancy with maintaining theoretically important predictors. Simply removing variables based on VIF values alone can introduce omitted variable bias, potentially distorting the findings. Instead, these values should be considered alongside theoretical justification and empirical patterns in the data to ensure both statistical validity and substantive relevance.</p>
+</section>
+</section>
+<section id="reporting-results-of-a-multiple-regression-analysis" class="level3" data-number="12.5.6">
+<h3 data-number="12.5.6" class="anchored" data-anchor-id="reporting-results-of-a-multiple-regression-analysis"><span class="header-section-number">12.5.6</span> Reporting Results of a Multiple Regression Analysis </h3>
+<p>There is no standard format to write up results, but we recommend including the following information.</p>
+<ul>
+<li><p>Preliminary descriptive results </p>
+<ul>
+<li><p>The number of cases used in your analysis </p></li>
+<li><p>Correlations among dependent and independent variables, indicating if any variables have very low correlations </p></li>
+<li><p>Whether or not the data meet the assumptions for multiple regression </p>
+<ul>
+<li><p>Indicate whether or not there is a potential problem with multicollinearity </p></li>
+<li><p>Indicate if any outliers exist </p></li>
+</ul></li>
+</ul></li>
+<li><p>Regression results </p>
+<ul>
+<li><p>Model fit (R2 and adjusted R2) </p></li>
+<li><p>Coefficient estimates and standard errors </p></li>
+<li><p>t statistic, df, and significance level of each predictor </p></li>
+</ul></li>
+</ul>
+<p><em>APA style sample write up</em>: A multiple regression analysis was conducted to examine the relationship between student-teacher ratio, parental education level, school funding per student, free/reduced lunch percentage, and student attendance rate with standardized test scores. The regression model included five predictors and was based on data from 56 schools.</p>
+<p>The overall model was statistically significant, <span class="math inline">\(F(5, 50) = 16.67, \, p &lt; .05\)</span>, indicating that at least one of the predictor variables significantly contributes to explaining the variance in standardized test scores. The model accounted for 62.5% of the variance in test scores, as indicated <span class="math inline">\(R^2\)</span>. The adjusted <span class="math inline">\(R^2\)</span>, which corrects for potential bias due to the number of predictors, was ​.588.</p>
+<p>The results indicate that four of the five predictors significantly contribute to explaining standardized test scores. Specifically, student-teacher ratio, parental education level, free/reduced lunch percentage, and attendance rate were all statistically significant predictors (<span class="math inline">\(p &lt; .05\)</span>), while school funding per student was not significant (<span class="math inline">\(p = .619\)</span>).</p>
+<ul>
+<li><p>The student-teacher ratio had a significant negative association with standardized test scores (<span class="math inline">\(b = −1.5, \, SE = 0.3, \, p &lt; .01\)</span>), meaning that for every one-unit increase in student-teacher ratio, test scores decreased by 1.5 points, holding all other variables constant. The standardized coefficient (<span class="math inline">\(\beta = −0.3\)</span>) indicates that one standard deviation increase in student-teacher ratio corresponds to a 0.3 standard deviation decrease in test scores.</p></li>
+<li><p>Average parental education level was positively associated with test scores (<span class="math inline">\(b = 2.0, \, SE = 0.5, \, p &lt; .01\)</span>), indicating that an increase in parents’ education level corresponded to an increase in test scores by 2 points per year of additional education.</p></li>
+<li><p>Free/reduced lunch percentage was negatively associated with test scores (<span class="math inline">\(b = −1.2, \, SE = 0.3, \, p &lt; .01\)</span>), suggesting that as the percentage of students on free/reduced lunch increases, test scores decrease.</p></li>
+<li><p>Attendance rate was positively associated with test scores (<span class="math inline">\(b = 0.6, \, SE = 0.2, \, p &lt; .01\)</span>), indicating that students in schools with higher attendance rates tend to perform better.</p></li>
+<li><p>School funding per student was not a significant predictor of test scores (<span class="math inline">\(b = 0.2, \, SE = 0.4, \, p = .619\)</span>), indicating that after accounting for the other variables, funding alone did not explain additional variance in test scores. This finding aligns with the district’s efforts to implement an equitable funding model, suggesting that other factors may have a more direct impact on student performance.</p></li>
+</ul>
+</section>
+</section>
+<section id="logistic-regression-predicting-categorical-outcomes" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="logistic-regression-predicting-categorical-outcomes"><span class="header-section-number">12.6</span> Logistic Regression: Predicting Categorical Outcomes</h2>
+<p>Up to this point, we have focused on linear regression, which predicts a continuous dependent variable (Y) using one or more independent variables (X). However, many research questions involve categorical outcomes rather than continuous ones. For example, instead of predicting a student’s final exam score, we might want to determine whether a student passes or fails. In such cases, logistic regression is the appropriate statistical technique, as it models the probability of an outcome occurring based on predictor variables. </p>
+<p><strong>Logistic regression</strong> is a type of regression analysis used when the dependent variable is categorical, meaning it consists of two or more categories. Unlike linear regression, which assumes a continuous outcome, logistic regression models the probability that a given outcome occurs. The most common form is <em>binary logistic regression</em>, which predicts an outcome with two categories, such as pass/fail, admitted/not admitted, or employed/unemployed. When there are more than two categories, we can use <em>multinomial logistic regression</em> (for unordered categories) or <em>ordinal logistic regression</em> (for ordered categories).</p>
+<p>In linear regression, we model the relationship between X and Y using the equation: Y = bX + a, where b is the slope and a is the intercept. However, this equation is inappropriate for categorical outcomes because it can yield values outside the range of 0 to 1, which are not valid probabilities. Instead, logistic regression models the log odds of an event occurring using the logistic function:</p>
+<p><span class="math display">\[
+log(\frac{p}{1-p}) = bX + a
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\(p\)</span> is the probability of the event occurring,</p></li>
+<li><p><span class="math inline">\(\frac{p}{1-p}\)</span> represents the odds of the event occurring,</p></li>
+<li><p><span class="math inline">\(log(\frac{p}{1-p})\)</span> is the logit (log odds),</p></li>
+<li><p><span class="math inline">\(b\)</span> is the regression coefficient, which represents the change in log odds of the outcome for a one-unit change in X, and</p></li>
+<li><p><span class="math inline">\(a\)</span> is the intercept</p></li>
+</ul>
+<p>To obtain the probability of the event occurring, we use the inverse logistic function:</p>
+<p><span class="math display">\[
+p = \frac{e^{(bX + a)}}{1 + e^{(bX + a)}}
+\]</span></p>
+<p>This transformation ensures that predicted probabilities remain within the valid range of 0 to 1.</p>
+<section id="interpreting-logistic-regression-coefficients" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="interpreting-logistic-regression-coefficients"><span class="header-section-number">12.6.1</span> Interpreting Logistic Regression Coefficients</h3>
+<p>Because logistic regression models log odds rather than raw probabilities, interpreting coefficients requires some additional steps.</p>
+<ul>
+<li><p>A positive coefficient (<span class="math inline">\(b &gt; 0\)</span>) means that as X increases, the probability of the event occurring increases.</p></li>
+<li><p>A negative coefficient (<span class="math inline">\(b &lt; 0\)</span>) means that as X increases, the probability of the event occurring decreases.</p></li>
+<li><p>The odds ratio (OR) is the exponentiated coefficient <span class="math inline">\(e^b\)</span>. An OR greater than 1 suggests that an increase in X increases the odds of the event occurring, while an OR less than 1 suggests a decrease in the odds.</p></li>
+</ul>
+<p>Let’s walk through a quick example. Suppose we want to predict whether a student is admitted to college. As discussed earlier, dummy coding is used to include categorical variables in regression models by converting them into a series of binary (0 or 1) variables. Each dummy variable represents one of the categories of the original categorical variable, allowing the regression model to quantify the effects of the categorical predictor. This time let’s use dummy coding for our outcome variable where 1 = <em>admitted</em> and 0 = <em>not admitted</em> based on one’s SAT score (X). The logistic regression equation might look like this:</p>
+<p><span class="math display">\[
+\log\left(\frac{p}{1 - p}\right) = 0.005(\text{SAT}) - 3.5
+\]</span></p>
+<p>This equation tells us that for each one-point increase in SAT score, the log odds of admission increase by 0.005. To convert this into an odds ratio:</p>
+<p><span class="math display">\[
+e^{0.0005} \sim 1.005
+\]</span></p>
+<p>This means that for every one-point increase in SAT score, the odds of admission increase by approximately 0.5%.</p>
+</section>
+<section id="assumptions-of-logistic-regression" class="level3" data-number="12.6.2">
+<h3 data-number="12.6.2" class="anchored" data-anchor-id="assumptions-of-logistic-regression"><span class="header-section-number">12.6.2</span> Assumptions of Logistic Regression</h3>
+<p>While logistic regression does not assume normality or homoscedasticity like linear regression, it does require:</p>
+<ul>
+<li><p><em>Binary or categorical dependent variable</em>: The outcome must be categorical.</p></li>
+<li><p><em>Independent observations</em>: Each observation must be independent of others.</p></li>
+<li><p><em>No perfect multicollinearity</em>: Predictors should not be too highly correlated.</p></li>
+<li><p><em>Linearity in the logit</em>: The independent variables should have a linear relationship with the log odds of the outcome.</p></li>
+</ul>
+<p>For educational researchers, logistic regression is particularly useful in analyzing outcomes related to student success, such as graduation likelihood, college acceptance, and course completion rates. By modeling the probability of categorical outcomes, educational researchers can identify key predictors of student achievement and inform policy decisions. For instance, understanding how standardized test scores, socioeconomic status, or attendance patterns impact student retention can help educators develop targeted interventions. Logistic regression provides a powerful method to translate complex educational data into actionable insights, ultimately contributing to more informed decision-making in educational settings.</p>
 </section>
 </section>
 </section>
@@ -1116,7 +1666,7 @@ F-statistic: 112.6 on 1 and 3948 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="chapter12_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="chapter12_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1185,7 +1735,7 @@ F-statistic: 141.9 on 2 and 3929 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="chapter12_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="chapter12_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1259,8 +1809,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <h2 class="unnumbered anchored" data-anchor-id="simple-linear-regression-1">1 Simple Linear Regression</h2>
 <p><strong>Research Question</strong>: Does effort and persistence in mathematics (MATHPERS) predict math achievement (PV1MATH)?</p>
 </section>
-<section id="fit-simple-linear-regression-1" class="level2" data-number="12.6">
-<h2 data-number="12.6" class="anchored" data-anchor-id="fit-simple-linear-regression-1"><span class="header-section-number">12.6</span> 1.1 Fit Simple Linear Regression</h2>
+<section id="fit-simple-linear-regression-1" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="fit-simple-linear-regression-1"><span class="header-section-number">12.7</span> 1.1 Fit Simple Linear Regression</h2>
 <p>To fit a simple linear regression model in SPSS, follow these steps:</p>
 <ol type="1">
 <li><p>Click Analyze &gt; Regression &gt; Linear…</p></li>
@@ -1419,9 +1969,83 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 <p><strong>Interpretation</strong>:</p>
 <p>A logistic regression was conducted to examine whether students’ math scores predict the likelihood that they perceive mathematics as easier than other subjects. The results show a significant positive effect of math score (<span class="math inline">\(b=0.003, \, SE=0.001, \, Wald \, \eta^2²=46.036, \,p&lt;.01\)</span>). This means that for each point increase in the math score, the odds of perceiving math as easier increase by 0.3% (odds ratio: <span class="math inline">\(e^{0.003} = 1.003\)</span>). In other words, higher math achievement is associated with a slightly higher probability of perceiving math as easier than other subjects.</p>
-
-
 </section>
+</section>
+</section>
+<section id="conclusion" class="level1 unnumbered">
+<h1 class="unnumbered">Conclusion</h1>
+<p>Understanding and applying regression analysis is a critical skill for interpreting relationships between variables and making data-driven predictions. This chapter has provided a comprehensive exploration of both simple and multiple regression techniques, emphasizing their theoretical underpinnings, assumptions, and practical applications. By mastering these concepts, researchers and practitioners can build models that not only identify meaningful relationships but also provide robust predictions. Regression analysis is a powerful tool that, when used responsibly and with a solid theoretical foundation, enables a deeper understanding of complex phenomena. As you continue to practice these techniques, always remember to prioritize sound research design and thoughtful interpretation of results to ensure meaningful and actionable insights.</p>
+<section id="key-takeaways-for-educational-researchers-from-chapter-12" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-12">Key Takeaways for Educational Researchers from Chapter 12</h2>
+<ul>
+<li><p>Ensuring regression assumptions to improve educational data analysis. Before conducting a regression analysis in education research, it is crucial to verify that the assumptions of the model (such as linearity, independence of errors, homoscedasticity, and multicollinearity) are met. For instance, when analyzing student achievement, failing to check these assumptions can lead to incorrect conclusions about the impact of factors like teacher effectiveness or school funding. If errors are correlated (e.g., students within the same classroom share similar unmeasured characteristics), standard errors will be underestimated, leading to misleading significance tests.</p></li>
+<li><p>Addressing multicollinearity to accurately identify key educational predictors.<br>
+When independent variables are highly correlated, it becomes difficult to determine their unique contributions to outcomes. In education research, factors such as socioeconomic status (SES) and parental education are often correlated, making it essential to assess Variance Inflation Factors (VIF) and tolerance to detect multicollinearity. A high VIF may indicate that two or more predictors are measuring similar underlying constructs, requiring researchers to consider alternative modeling strategies.</p></li>
+<li><p>Interpreting omnibus and individual tests to understand educational interventions.<br>
+The F test in regression helps determine whether the overall model explains a significant amount of variance in an outcome like student test scores or graduation rates. However, even if the overall model is significant, it does not mean that every predictor is important. Education researchers must follow up with t tests to identify which specific factors (such as teacher-student ratios, school funding, or instructional methods) are significantly related to student success. This ensures that resources and interventions are directed toward the most impactful variables.</p></li>
+<li><p>Using Adjusted <span class="math inline">\(R^2\)</span> to avoid overfitting in educational models. While a high <span class="math inline">\(R^2\)</span> suggests a strong model, it can be misleading in education research if too many predictors are included, leading to overfitting. For example, if a researcher includes every possible student characteristic in a model predicting standardized test scores, the model may explain a large proportion of variance but may not generalize to other student populations. The adjusted <span class="math inline">\(R^2\)</span> accounts for the number of predictors and sample size, helping researchers avoid inflated model performance and ensure real-world applicability.</p></li>
+<li><p>Distinguishing between standardized and unstandardized coefficients for policy and practice. In education research, unstandardized coefficients (<span class="math inline">\(b\)</span>) provide real-world interpretations, such as “for every additional student per teacher in a classroom, student test scores decrease by 1.5 points.” This is useful for policymakers when making funding or curriculum decisions. On the other hand, standardized coefficients (<span class="math inline">\(\beta\)</span>) allow comparisons across different factors, such as whether attendance rates or teacher qualifications have a stronger influence on student achievement. Using both types of coefficients helps translate statistical findings into actionable policy recommendations.</p></li>
+<li><p>Using regression as a tool to inform, not as a definitive answer. Even when a regression model produces statistically significant results, education researchers must critically evaluate the findings in context. A significant predictor does not necessarily imply causation—just because school funding is correlated with student performance does not mean increasing budgets alone will improve outcomes. Additionally, omitted variables, such as classroom climate or extracurricular involvement, may introduce bias. Researchers should integrate regression results with educational theory, qualitative insights, and policy considerations to develop more holistic recommendations for improving student learning and success.</p></li>
+</ul>
+</section>
+<section id="key-definitions-for-chapter-12" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-definitions-for-chapter-12">Key Definitions for Chapter 12</h2>
+<p><strong>Criterion variable</strong>, or to-be-predicted variable (Y) – the variable with unknown values that can be predicted or estimated, given known values of the predictor variable. We sometimes call this variable a dependent variable (DV), or an outcome variable.  </p>
+<p><strong>Dummy coding</strong> is a method of converting categorical variables into a set of binary variables (0s and 1s) that can be used as predictors in regression and other statistical models.</p>
+<p><strong>Linear regression</strong> is a statistical procedure used to determine an equation of a regression line for a set of data points, and to determine the extent to which the regression equation can be used to predict values of one variable, given known values of a second variable in a population.</p>
+<p><strong>Logistic regression</strong> is a type of regression analysis used when the dependent variable is categorical, meaning it consists of two or more categories.</p>
+<p><strong>Multicollinearity</strong> occurs when there is a strong linear relationship between two or more independent variables in a regression model.</p>
+<p><strong>Multiple regression</strong> uses two or more predictors, or independent variables (IVs), to predict variation in a quantitative outcome, or dependent variable (DV).</p>
+<p>The <strong>omnibus hypothesis test</strong> assesses whether the overall model is statistically significant. Specifically, it tests the null hypothesis that all regression coefficients for the predictors (except the intercept) are equal to zero.</p>
+<p>The <strong>ordinary least squares (OLS) regression line</strong> is a statistical method used to find the best-fitting straight line through a set of data points. This line minimizes the sum of the squared differences (residuals) between the observed data points and the values predicted by the line.</p>
+<p><strong>Overfitting</strong> in the context of multiple regression occurs when the model is too complex and fits the training data too closely, capturing noise or random fluctuations rather than the true underlying relationship between the variables in the population.</p>
+<p><strong>Partialling</strong> means separating the effects of one predictor from the others.</p>
+<p><strong>Predictor variable</strong>, or known variable (X) – the variable with values that are known and can be used to predict values of another variable. We also call this variable an independent variable (IV).  </p>
+<p>The <strong>proportion of variance explained</strong> in regression is a measure of how well the independent variable(s) explain the variability in the dependent variable. This measure is often expressed as the coefficient of determination (<span class="math inline">\(r^2\)</span> or <span class="math inline">\(R^2\)</span>).</p>
+<p><strong>Tolerance</strong> is a statistical measure that indicates how much a particular predictor variable contributes to the overall variance in the dependent variable while accounting for the effects of other predictors. It is closely related to multicollinearity and serves as the reciprocal of the VIF.</p>
+<p>The <strong>Variance Inflation Factor (VIF)</strong> quantifies how much the variance of a regression coefficient is inflated due to multicollinearity among predictor variables.</p>
+</section>
+<section id="check-your-understanding" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
+<ol type="1">
+<li><p><strong>What does the slope (b) in a simple linear regression equation represent?</strong></p>
+<ol type="a">
+<li><p>The predicted value of Y when X = 0</p></li>
+<li><p>The change in X relative to Y</p></li>
+<li><p>The change in Y for a one-unit change in X</p></li>
+<li><p>The coefficient of determination</p></li>
+</ol></li>
+<li><p><strong>What does <span class="math inline">\(R^2\)</span> represent in simple linear regression analysis?</strong></p>
+<ol type="a">
+<li><p>The correlation between independent variables</p></li>
+<li><p>The proportion of variance in Y explained by X</p></li>
+<li><p>The slope of the regression line</p></li>
+<li><p>The standard error of the residuals</p></li>
+</ol></li>
+<li><p><strong>What does tolerance measure in regression analysis?</strong></p>
+<ol type="a">
+<li><p>The extent of multicollinearity among independent variables</p></li>
+<li><p>The proportion of variance in the dependent variable explained by predictors</p></li>
+<li><p>The normality of residuals</p></li>
+<li><p>The degree of model fit</p></li>
+</ol></li>
+<li><p><strong>What happens if a model includes highly correlated independent variables?</strong></p>
+<ol type="a">
+<li><p>The dependent variable becomes unreliable</p></li>
+<li><p>The coefficients of the independent variables become unstable</p></li>
+<li><p>The model fit (<span class="math inline">\(R^2\)</span>) will always decrease</p></li>
+<li><p>The assumption of linearity is violated</p></li>
+</ol></li>
+<li><p><strong>What does homoscedasticity mean in regression analysis?</strong></p>
+<ol type="a">
+<li><p>The residuals have a consistent spread across all predicted values</p></li>
+<li><p>The independent variables are not correlated</p></li>
+<li><p>The predictors have no relationship with the error term</p></li>
+<li><p>The regression coefficients are stable across models</p></li>
+</ol></li>
+</ol>
+
+
 </section>
 </section>
 

@@ -106,6 +106,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+
+<script>
+
+  window.hypothesisConfig = function () {
+
+    return {
+
+      openSidebar: false,
+
+      showHighlights: true
+
+    };
+
+  };
+
+</script>
+
+<script src="https://hypothes.is/embed.js" async=""></script>
+
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -271,6 +290,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./answerkey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Answer Key</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Summary</span></a>
   </div>
@@ -320,6 +345,12 @@ window.Quarto = {
   <li><a href="#spearmans-correlation" id="toc-spearmans-correlation" class="nav-link" data-scroll-target="#spearmans-correlation">2 Spearman’s Correlation</a></li>
   <li><a href="#point-biserial-correlation" id="toc-point-biserial-correlation" class="nav-link" data-scroll-target="#point-biserial-correlation">3 Point-Biserial Correlation</a></li>
   <li><a href="#chi-square-test-for-independence-1" id="toc-chi-square-test-for-independence-1" class="nav-link" data-scroll-target="#chi-square-test-for-independence-1">4 Chi-Square Test for Independence</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways-for-educational-researchers-from-chapter-11" id="toc-key-takeaways-for-educational-researchers-from-chapter-11" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-11">Key Takeaways for Educational Researchers from Chapter 11</a></li>
+  <li><a href="#key-definitions-from-chapter-11" id="toc-key-definitions-from-chapter-11" class="nav-link" data-scroll-target="#key-definitions-from-chapter-11">Key Definitions from Chapter 11</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding">Check Your Understanding</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1063,6 +1094,78 @@ f_e = \frac{row \, total\, \times \,column \, total}{N}
 <p>When both variables are categorical, we use a chi-square test to evaluate independence. Here, we examine the relationship between Gender (ST004D01T, where 1 = Female and 2 = Male) and Math Motivation (MATHMOT, where 0 = Not more motivated to do well in mathematics than other subjects and 1 = More motivated to do well in mathematics than other subjects).</p>
 <p>The contingency table shows the frequency of students’ motivation to do well in mathematics broken down by gender. The Chi-squared test yielded <span class="math inline">\(\chi^2(1)=23.12, \, p&lt;.001\)</span>, so we reject the null hypothesis of independence. This means there is a statistically significant association between gender and motivation to do well in mathematics.</p>
 <p>From the contingency table, male students have a higher proportion of reporting being more motivated to do well in mathematics compared to female students. This finding suggests that motivation to do well in mathematics may vary by gender, which could have implications for educational interventions or further research.</p>
+</section>
+</section>
+<section id="conclusion" class="level1 unnumbered">
+<h1 class="unnumbered">Conclusion</h1>
+<p>This chapter highlights the critical role of statistical tools in understanding relationships between variables, with particular emphasis on correlational analyses and their limitations. Pearson’s correlation coefficient (<span class="math inline">\(r\)</span>) is foundational for assessing the direction and strength of associations, ranging from -1 to +1. Scatterplots and key assumptions such as linearity, homoscedasticity, and bivariate normality ensure meaningful and valid interpretations. Practical significance is illustrated through the coefficient of determination (<span class="math inline">\(r^2\)</span>), which quantifies the variance in the dependent variable explained by the independent variable.</p>
+<p>Furthermore, the chapter introduces the chi-square test for independence, which serves as a robust method for analyzing associations between two categorical variables. Unlike correlation or independent-samples t tests, the chi-square test allows researchers to examine associations using summary statistics without requiring the underlying dataset.</p>
+<p>The discussion on limitations underscores the importance of recognizing outliers, range restriction, and sample size, which can significantly influence the results of correlational or chi-square analyses. Together, these tools provide complementary approaches to exploring relationships, reinforcing the distinction between correlation and causation, and preparing researchers for advanced techniques such as regression.</p>
+<section id="key-takeaways-for-educational-researchers-from-chapter-11" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-takeaways-for-educational-researchers-from-chapter-11">Key Takeaways for Educational Researchers from Chapter 11</h2>
+<ul>
+<li><p>Correlation measures association, not causation. Pearson’s correlation coefficient (r) quantifies the strength and direction of a linear relationship between two continuous variables, but it does not imply that one variable causes the other. Researchers must avoid causal language and instead focus on interpreting the relationship as an association.</p></li>
+<li><p>Checking assumptions is crucial. Reliable correlation analyses require meeting key assumptions such as <em>linearity, homoscedasticity, and bivariate normality</em>. A scatterplot is an essential tool for visually inspecting these assumptions before running statistical tests.</p></li>
+<li><p>Outliers, range restriction, and sample size impact correlation. Extreme values can distort correlation estimates, while a limited range of data (e.g., only studying high-achieving students) may weaken or even reverse a correlation. A <em>larger, more representative sample</em> would provide a more accurate estimate of the relationship.</p></li>
+<li><p>Chi-square tests for independence analyze categorical relationships – Unlike correlation, a Chi-square test for independence is used to examine whether two categorical variables are significantly associated. It can be an alternative to correlation when dealing with dichotomous or multi-category variables. This method allows researchers to assess whether an observed association is statistically significant, helping policymakers and educators determine whether interventions like different types of intervention programs are effective.</p></li>
+<li><p>Statistical significance does not always imply practical significance – Even a small correlation can be statistically significant in large datasets, but effect size measures like <span class="math inline">\(r^2\)</span>, the coefficient of determination, help determine how meaningful the relationship is in real-world educational settings.</p></li>
+</ul>
+</section>
+<section id="key-definitions-from-chapter-11" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-definitions-from-chapter-11">Key Definitions from Chapter 11</h2>
+<p><strong>Bivariate normality</strong> is an extension of the normal distribution to two dimensions where two variables are jointly distributed in a way that their relationship forms a bivariate normal distribution.</p>
+<p>A <strong>chi-square test for independence</strong> is a statistical test used to determine whether there is a significant association between two categorical variables.</p>
+<p>The <strong>coefficient of determination (<span class="math inline">\(r^2\)</span>)</strong> indicates the proportion of the variance in the dependent variable that is explained by the independent variable.</p>
+<p>A <strong>confounding variable</strong>, or third variable, is an extraneous variable that was not controlled for and is the reason a particular “confounded” result is observed.</p>
+<p><strong>Covariance</strong> describes the extent to which two variables change (or vary) together.</p>
+<p><strong>Heteroscedasticity</strong> means that the spread of data points is not uniform across values of the independent variable. A heteroscedastic scatterplot often resembles a cone.</p>
+<p><strong>Homoscedasticity</strong> means that the spread of points above and below a line of best fit is the same along the entire line.</p>
+<p><strong>Linearity</strong> is the assumption that a straight line is the best way to describe a dataset instead of some type of curve.</p>
+<p><strong>Pearson’s correlation coefficient (<span class="math inline">\(r\)</span>)</strong> is an estimate of the population correlation <span class="math inline">\(\rho\)</span>. It tells us the direction and the strength of the correlation.</p>
+<p><strong>Point-biserial correlation coefficient (<span class="math inline">\(r_{pb}\)</span>)</strong> is used to measure the relationship between a continuous variable (e.g., motivation to learn math, achievement scores) and a dichotomous variable (e.g., Pass/Fail, Enrolled/Not Enrolled, Full-Time/Part-Time).</p>
+<p><strong>Range restriction</strong> occurs when the variability of a variable (or variables) in a dataset is artificially limited or constrained, such that the range of values is smaller than it would be in the population. This restriction can significantly impact your results, potentially leading to biased estimates and incorrect conclusions.</p>
+<p><strong>Scedasticity</strong> is the extent to which data points are spread out above and below the line.</p>
+<p><strong>Spearman rank-order correlation coefficient (<span class="math inline">\(r_s\)</span>)</strong>, also known as Spearman’s rho, measures the relationship between <em>two ranked (ordinal) variables</em></p>
+</section>
+<section id="check-your-understanding" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
+<ol type="1">
+<li><p><strong>What is the main purpose of Pearson’s correlation coefficient (<span class="math inline">\(r\)</span>) in correlational analysis?</strong></p>
+<ol type="a">
+<li><p>To compare means across groups</p></li>
+<li><p>To measure the extent of causation between two variables</p></li>
+<li><p>To measure the direction and strength of a relationship between two variables</p></li>
+<li><p>To test for the significance of regression equations</p></li>
+</ol></li>
+<li><p><strong>Which of the following is NOT an assumption of correlational analysis?</strong></p>
+<ol type="a">
+<li><p>Linearity</p></li>
+<li><p>Homoscedasticity</p></li>
+<li><p>Causality</p></li>
+<li><p>Normality</p></li>
+</ol></li>
+<li><p><strong>What does a Pearson’s <span class="math inline">\(r\)</span> value of 0 indicate?</strong></p>
+<ol type="a">
+<li><p>A strong positive correlation</p></li>
+<li><p>No correlation</p></li>
+<li><p>A strong negative correlation</p></li>
+<li><p>A perfect correlation</p></li>
+</ol></li>
+<li><p><strong>Which statistical method is used when investigating a relationship between a continuous variable and a dichotomous variable?</strong></p>
+<ol type="a">
+<li><p>Pearson’s <span class="math inline">\(r\)</span></p></li>
+<li><p>Spearman’s rho</p></li>
+<li><p>Point-biserial correlation</p></li>
+<li><p>ANOVA</p></li>
+</ol></li>
+<li><p><strong>What does the assumption of homoscedasticity in correlational analysis require?</strong></p>
+<ol type="a">
+<li><p>The data must form a straight line.</p></li>
+<li><p>The variables must be normally distributed.</p></li>
+<li><p>The sample size must be large enough.</p></li>
+<li><p>The spread of data points must be consistent above and below the line across the entire range.</p></li>
+</ol></li>
+</ol>
 
 
 </section>
