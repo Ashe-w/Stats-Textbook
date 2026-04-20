@@ -1,0 +1,211 @@
+# Appendix {.unnumbered}
+
+## Standard Normal Cumulative Probability Table {.unnumbered}
+
+::: {.table-scroll}
+```{r}
+#| echo: false
+#| results: asis
+#| message: false
+#| warning: false
+
+library(readr)
+library(knitr)
+library(kableExtra)
+library(dplyr)
+
+z_table <- read_csv("tables/z_table.csv", show_col_types = FALSE)
+
+z_table <- z_table |>
+  mutate(across(-1, ~ sprintf("%.4f", .x)))
+header_rows <- which(z_table[[1]] == "z")
+
+tbl <- kbl(z_table, format = "html", align = "c") |>
+  kable_styling(full_width = FALSE)
+
+for (r in header_rows) {
+  tbl <- row_spec(tbl, r, bold = TRUE)
+}
+
+tbl
+```
+
+:::
+
+[Download full table (CSV)](tables/z_table.csv)
+
+
+
+## Critical Values of $t$ Distribution Table {.unnumbered}
+::: {.table-scroll}
+```{r}
+#| echo: false
+#| results: asis
+#| message: false
+#| warning: false
+t_table <- read_csv("tables/t_two_tail.csv", show_col_types = FALSE)
+
+kbl(
+  t_table,
+  col.names = c("df", ".10", ".05", ".02", ".01"),
+  align = "c",
+  caption = "Critical Values of t Distribution"
+) |>
+  kable_styling(full_width = FALSE)
+```
+:::
+
+*This table is organized by two-tail probability. To find the corresponding one-tail probability, divide the column probability by 2. To convert from one-tail probability to two-tail probability, multiply by 2.*
+
+[Download full table (CSV)](tables/t_critical_values.csv.csv)
+
+##  Critical Values of the Pearson ($r$) Correlation {.unnumbered}
+::: {.table-scroll}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(readr)
+library(knitr)
+library(kableExtra)
+
+r_table <- read_csv("tables/r_crit_val.csv", show_col_types = FALSE)
+
+kbl(
+  r_table,
+  col.names = c("df", ".10", ".05", ".02", ".01"),
+  align = "c",
+  caption = "Critical Values of the Pearson (r) Correlation"
+) |>
+  kable_styling(full_width = FALSE)
+```
+
+:::
+*This table is organized by two-tail probability. To obtain the corresponding one-tail probability, divide the column probability by 2. To convert from one-tail probability to two-tail probability, multiply by 2.*
+
+
+[Download full table (CSV)](tables/r_crit_val.csv)
+
+
+##  Critical Values of the Spearman Rho Correlation {.unnumbered}
+::: {.table-scroll}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+rho_table <- read_csv("tables/spearman_crit.csv", show_col_types = FALSE)
+
+kbl(
+  rho_table,
+  col.names = c("n", ".10", ".05", ".02", ".01"),
+  align = "c",
+  caption = "Critical Values of the Spearman (ρ) Correlation"
+) |>
+  kable_styling(
+    full_width = FALSE,
+    bootstrap_options = "basic"
+  )
+```
+:::
+*This table is organized by two-tail probability. To obtain the corresponding one-tail probability, divide the column probability by 2. To convert from one-tail probability to two-tail probability, multiply by 2.*
+
+
+[Download full table (CSV)](tables/spearman_crit.csv)
+
+## Critical Values of Chi-Square ($\chi^2$) {.unnumbered}
+
+::: {.table-scroll}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+chisq_table <- read_csv("tables/chi_sq.csv", show_col_types = FALSE)
+
+kbl(
+  chisq_table,
+  col.names = c("df", ".05", ".01", ".001"),
+  align = "c",
+  caption = "Critical Values of Chi-Square (χ²)"
+) |>
+  kable_styling(
+    full_width = FALSE,
+    bootstrap_options = "basic"
+  )
+```
+:::
+[Download full table (CSV)](tables/chi_sq.csv)
+
+
+##  Critical Values for the Mann-Whitney U Test {.unnumbered}
+
+::: {.table-scroll}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+mw_table <- read_csv("tables/mann_whitney_u.csv", show_col_types = FALSE)
+
+kbl(
+  mw_table,
+  col.names = c("n₁ / n₂", "2","3","4","5","6","7","8","9","10","11","12","13","14","15"),
+  align = "c",
+  caption = "Critical Values for the Mann–Whitney U Test"
+) |>
+  kable_styling(
+    full_width = FALSE,
+    bootstrap_options = "basic"
+  )
+```
+
+:::
+*Unlike most other tests learned in this book, reject the null hypothesis if the test value is less than or equal to the value given in the table below.*
+
+[Download full table (CSV)](mann_whitney_u.csv)
+
+
+## Critical Values for the Wilcoxon Matched-Pairs Signed-Ranks Test {.unnumbered}
+
+::: {.table-scroll}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
+wilcox_table <- read_csv("tables/wilcoxon.csv", show_col_types = FALSE)
+
+kbl(
+  wilcox_table,
+  col.names = c("n", ".05", ".01", ".001"),
+  align = "c",
+  caption = "Critical Values for the Wilcoxon Matched-Pairs Signed-Ranks Test"
+) |>
+  kable_styling(
+    full_width = FALSE,
+    bootstrap_options = "basic"
+  )
+```
+:::
+*Unlike most tests, reject the null hypothesis if the test statistic is less than or equal to the value in the table.*
+*This table is organized by two-tail probability. To obtain the corresponding one-tail probability, divide the column probability by 2*
+
+[Download full table (CSV)](wilcoxon.csv)
+
+## Summary of Nonparametric Tests {.unnumbered}
+
+::: {.formula-table}
+
+| Test / Method | When to use? | Degrees of Freedom | Test Statistic | How to Evaluate |
+|---------------|-------------|------------------|----------------|-----------------|
+| **Chi-Square Goodness-of-Fit** | Categorical data; comparing one distribution to a known distribution | k − 1 | χ² | If obtained χ² is greater than the critical value (for given df), reject the null. Report Fisher’s Exact Test if available. |
+| **Chi-Square Test for Independence** | Categorical data; testing for association between two variables | (k₁ − 1)(k₂ − 1) | χ² | If obtained χ² is greater than the critical value (for given df), reject the null. Report Fisher’s Exact Test if available. |
+| **Independent Samples Chi-Square Test** | Categorical data; testing for association between two variables using summary data | (k₁ − 1)(k₂ − 1) | χ² | If obtained χ² is greater than the critical value (for given df), reject the null. Report Fisher’s Exact Test if available. |
+| **Wilcoxon Signed Rank Test** | Nonparametric alternative to related-samples t test; converts measured values to ordinal data | n/a | T (smaller absolute rank sum) | Compare to critical value in Wilcoxon table. If T ≤ critical value, reject the null. |
+| **Mann–Whitney U Test** | Nonparametric alternative to two independent samples t test; converts measured values to ordinal data | n/a | Uₓ or Uᵧ (smaller value) | Compare to critical value in Mann–Whitney table. If U ≤ critical value, reject the null. |
+| **Kruskal–Wallis H Test** | Nonparametric alternative to one-way ANOVA; converts measured values to ordinal data | k − 1 | H | If obtained H is greater than the critical value (from chi-square table for given df), reject the null. |
+
+:::

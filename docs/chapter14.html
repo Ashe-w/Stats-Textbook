@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -90,6 +125,35 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="https://hypothes.is/embed.js" async=""></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -230,18 +294,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Answer Key</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summary</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -268,11 +320,24 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#difference-in-differences" id="toc-difference-in-differences" class="nav-link" data-scroll-target="#difference-in-differences"><span class="header-section-number">14.8</span> Difference-in-Differences</a></li>
   <li><a href="#fixed-effects" id="toc-fixed-effects" class="nav-link" data-scroll-target="#fixed-effects"><span class="header-section-number">14.9</span> Fixed Effects</a></li>
   </ul></li>
+  <li><a href="#advanced-quantitative-methods-in-r" id="toc-advanced-quantitative-methods-in-r" class="nav-link" data-scroll-target="#advanced-quantitative-methods-in-r"><span class="header-section-number">15</span> Advanced Quantitative Methods in R</a>
+  <ul class="collapse">
+  <li><a href="#multilevel-modeling-1" id="toc-multilevel-modeling-1" class="nav-link" data-scroll-target="#multilevel-modeling-1"><span class="header-section-number">15.1</span> 1 Multilevel Modeling</a></li>
+  <li><a href="#factor-analysis-and-structural-equation-modeling" id="toc-factor-analysis-and-structural-equation-modeling" class="nav-link" data-scroll-target="#factor-analysis-and-structural-equation-modeling"><span class="header-section-number">15.2</span> 2 Factor Analysis and Structural Equation Modeling</a></li>
+  <li><a href="#meta-analysis-1" id="toc-meta-analysis-1" class="nav-link" data-scroll-target="#meta-analysis-1"><span class="header-section-number">15.3</span> 3 Meta-Analysis</a></li>
+  <li><a href="#causal-analysis-1" id="toc-causal-analysis-1" class="nav-link" data-scroll-target="#causal-analysis-1"><span class="header-section-number">15.4</span> 4 Causal Analysis</a>
+  <ul class="collapse">
+  <li><a href="#propensity-score-methods" id="toc-propensity-score-methods" class="nav-link" data-scroll-target="#propensity-score-methods"><span class="header-section-number">15.4.1</span> 4.1 Propensity Score Methods</a></li>
+  <li><a href="#instrumental-variables-iv" id="toc-instrumental-variables-iv" class="nav-link" data-scroll-target="#instrumental-variables-iv"><span class="header-section-number">15.4.2</span> 4.2 Instrumental Variables (IV)</a></li>
+  <li><a href="#interrupted-time-series-1" id="toc-interrupted-time-series-1" class="nav-link" data-scroll-target="#interrupted-time-series-1"><span class="header-section-number">15.4.3</span> 4.3 Interrupted Time Series</a></li>
+  </ul></li>
+  <li><a href="#summary-of-advanced-methods-in-r" id="toc-summary-of-advanced-methods-in-r" class="nav-link" data-scroll-target="#summary-of-advanced-methods-in-r"><span class="header-section-number">15.5</span> Summary of Advanced Methods in R</a></li>
+  </ul></li>
   <li><a href="#advanced-quantitative-methods-in-spss" id="toc-advanced-quantitative-methods-in-spss" class="nav-link" data-scroll-target="#advanced-quantitative-methods-in-spss">Advanced Quantitative Methods in SPSS</a>
   <ul class="collapse">
-  <li><a href="#multilevel-modeling-1" id="toc-multilevel-modeling-1" class="nav-link" data-scroll-target="#multilevel-modeling-1">1 Multilevel Modeling</a></li>
-  <li><a href="#meta-analysis-1" id="toc-meta-analysis-1" class="nav-link" data-scroll-target="#meta-analysis-1">2 Meta-Analysis</a></li>
-  <li><a href="#summary-of-advanced-methods-in-r" id="toc-summary-of-advanced-methods-in-r" class="nav-link" data-scroll-target="#summary-of-advanced-methods-in-r">Summary of Advanced Methods in R</a></li>
+  <li><a href="#multilevel-modeling-2" id="toc-multilevel-modeling-2" class="nav-link" data-scroll-target="#multilevel-modeling-2">1 Multilevel Modeling</a></li>
+  <li><a href="#meta-analysis-2" id="toc-meta-analysis-2" class="nav-link" data-scroll-target="#meta-analysis-2">2 Meta-Analysis</a></li>
+  <li><a href="#summary-of-advanced-methods-in-r-1" id="toc-summary-of-advanced-methods-in-r-1" class="nav-link" data-scroll-target="#summary-of-advanced-methods-in-r-1">Summary of Advanced Methods in R</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
   <ul class="collapse">
@@ -508,13 +573,179 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 </section>
 </section>
+<section id="advanced-quantitative-methods-in-r" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Advanced Quantitative Methods in R</h1>
+<p>In this section, we provide an overview of how to implement several advanced quantitative methods introduced in this chapter using R. These methods—such as Multilevel Modeling (MLM), Factor Analysis and Structural Equation Modeling (FA/SEM), Meta-Analysis, and Causal Inference approaches (including Propensity Score Models, Instrumental Variables, Difference-in-Differences, and Regression Discontinuity), represent powerful tools for addressing complex research questions in educational studies.</p>
+<p>Rather than exploring each method in depth, our focus here is on introducing the key R packages used to perform these analyses and providing concise example codes to illustrate how they are implemented. Each example highlights the basic syntax, helping readers connect the statistical ideas discussed in the chapter with their practical application in R.</p>
+<section id="multilevel-modeling-1" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="multilevel-modeling-1"><span class="header-section-number">15.1</span> 1 Multilevel Modeling</h2>
+<p><strong>Common R Packages</strong></p>
+<ul>
+<li><p><em>lme4</em>: one of the most widely used package for fitting linear and generalized multilevel models (lmer() for continuous outcomes, glmer() for binary outcomes).</p></li>
+<li><p><em>lmerTest</em>: extends <em>lme4</em> by adding p-values and confidence intervals for fixed effects.</p></li>
+<li><p><em>performance</em> or <em>sjstats</em>: provide diagnostics, intraclass correlation coefficients (ICCs), and goodness-of-fit measures.</p></li>
+</ul>
+<p><strong>Example: A Random Intercept Model</strong></p>
+<p>The following example shows how to fit a basic two-level model predicting students’ math achievement based on their effort and persistence in math, allowing the intercept to vary across schools:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("lme4", "lmerTest", "performance"))</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmerTest)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a random-intercept model: students nested within schools</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># math: student math achievement</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># effort: student-level predictor</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># school_id: grouping variable identifying schools</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fit_mlm <span class="ot">&lt;-</span> <span class="fu">lmer</span>(math <span class="sc">~</span> effort <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> school_id), <span class="at">data =</span> data)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_mlm)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Intraclass correlation coefficient (ICC):  </span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># proportion of total variance attributable to differences between schools</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">icc</span>(fit_mlm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="factor-analysis-and-structural-equation-modeling" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="factor-analysis-and-structural-equation-modeling"><span class="header-section-number">15.2</span> 2 Factor Analysis and Structural Equation Modeling</h2>
+<p><strong>Common R Packages</strong></p>
+<ul>
+<li><p><em>psych</em>: for Exploratory Factor Analysis (EFA), reliability, and dimensionality assessment.</p></li>
+<li><p><em>lavaan</em>: for Confirmatory Factor Analysis (CFA) and Structural Equation Modeling (SEM).</p></li>
+<li><p><em>semPlot</em>: for visualizing CFA or SEM path diagrams.</p></li>
+</ul>
+<p><strong>Example 1: EFA</strong></p>
+<p>Suppose we have 10 survey items (i1–i10) that measure different aspects of student motivation, but we are unsure how many underlying factors exist. EFA helps identify these latent dimensions by examining how strongly each item correlates with potential factors.</p>
+<p>In the example below, the fa.parallel() function can help determine how many factors to retain. We use the fa() function from the psych package to extract three factors and apply an oblique rotation (oblimin), which allows the factors to be correlated.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("psych")</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Parallel analysis: suggests the optimal number of factors to retain</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(data[, <span class="fu">paste0</span>(<span class="st">"i"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)], <span class="at">fa =</span> <span class="st">"fa"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform an Exploratory Factor Analysis with 3 factors</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>efa_result <span class="ot">&lt;-</span> <span class="fu">fa</span>(data[, <span class="fu">paste0</span>(<span class="st">"i"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)], <span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">rotate =</span> <span class="st">"oblimin"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display factor loadings (showing only loadings ≥ .30)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(efa_result<span class="sc">$</span>loadings, <span class="at">cutoff =</span> .<span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Example 2: CFA and SEM</strong></p>
+<p>In the example below, we use the lavaan package to specify and fit a simple model with three latent constructs: Engagement, Motivation, and Achievement. Each measured by three observed indicators. The model also includes directional paths hypothesizing that both Engagement and Motivation predict Achievement, and that Motivation influences Engagement.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("lavaan", "semPlot"))</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(semPlot)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the CFA/SEM model</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">  # Measurement model: how latent constructs are measured by observed variables</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">  # engament is measured by variables i1, i2, i3; motivation by i4, i5, i6; achievement by i7, i8, i9  </span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">  Engagement =~ i1 + i2 + i3  </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">  Motivation =~ i4 + i5 + i6  </span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">  Achievement =~ i7 + i8 + i9</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st"> </span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">  # Structural model: hypothesized relationships among latent constructs</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">  Achievement ~ Engagement + Motivation</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">  Engagement ~ Motivation</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>fit_sem <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data =</span> data, <span class="at">std.lv =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize results with standardized estimates and fit indices</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_sem, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the model structure</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">semPaths</span>(fit_sem, <span class="at">what =</span> <span class="st">"std"</span>, <span class="at">layout =</span> <span class="st">"tree"</span>, <span class="at">edge.label.cex =</span> <span class="fl">0.8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The summary() function provides factor loadings, regression paths, and overall model fit indices such as the Comparative Fit Index (CFI), Tucker–Lewis Index (TLI), and Root Mean Square Error of Approximation (RMSEA). These indicators help evaluate whether the hypothesized model fits the observed data well.</p>
+<p>The semPaths() function from the semPlot package generates a path diagram of the model (similar to Figure 14.2; see example below), allowing you to visualize the relationships among latent and observed variables. In the diagram, rectangles represent observed indicators, circles represent latent factors, and arrows indicate the direction and strength of relationships.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter14/fig14-6.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 14.6</figcaption>
+</figure>
+</div>
+</section>
+<section id="meta-analysis-1" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="meta-analysis-1"><span class="header-section-number">15.3</span> 3 Meta-Analysis</h2>
+<p><strong>Common R Packages</strong></p>
+<ul>
+<li><p><em>metafor</em>: the standard package for computing effect sizes, fitting fixed- and random-effects models, conducting moderator analyses, and producing diagnostic plots.</p></li>
+<li><p><em>meta</em>: user-friendly alternative with high-level functions for common effect size formats.</p></li>
+<li><p><em>robumeta</em>: for robust variance estimation when effect sizes are not independent (e.g., multiple effects per study).</p></li>
+</ul>
+<p><strong>Example: Random-Effects Meta-Analysis Using metafor</strong></p>
+<p>The example below illustrates a simple workflow for a random-effects meta-analysis. Suppose each study reports treatment and control group means, standard deviations, and sample sizes. We first compute standardized mean differences (Hedges’ <span class="math inline">\(g\)</span>) and then fit a random-effects model to estimate the overall effect.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("metafor")</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example dataset with study-level treatment and control stats</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># m1i, sd1i, n1i: mean, SD, and sample size for treatment group</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># m2i, sd2i, n2i: mean, SD, and sample size for control group</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Assume 'studies' is your data frame</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#(1) Compute effect sizes</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>dat_es <span class="ot">&lt;-</span> <span class="fu">escalc</span>(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">measure =</span> <span class="st">"SMD"</span>,             <span class="co"># Standardized Mean Difference (Hedges' g)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">m1i =</span> m_t, <span class="at">sd1i =</span> sd_t, <span class="at">n1i =</span> n_t,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">m2i =</span> m_c, <span class="at">sd2i =</span> sd_c, <span class="at">n2i =</span> n_c,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> studies</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># dat_es now contains two new columns: yi (effect sizes) and vi (variances)</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#(2) Fit a random-effects model</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>fit_re <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> yi, <span class="at">vi =</span> vi, <span class="at">data =</span> dat_es, <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#for fixed-effects model, use method="FE"</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_re)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The output provides the estimated overall effect size, its standard error and confidence interval, Test of significance, and heterogeneity statistics (<span class="math inline">\(Q, \, I^2\)</span>).</p>
+</section>
+<section id="causal-analysis-1" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="causal-analysis-1"><span class="header-section-number">15.4</span> 4 Causal Analysis</h2>
+<p>Multiple causal inference methods are iontroduced this chapter. Here we briefly recap and highlight the R packages used to implement them.</p>
+<section id="propensity-score-methods" class="level3" data-number="15.4.1">
+<h3 data-number="15.4.1" class="anchored" data-anchor-id="propensity-score-methods"><span class="header-section-number">15.4.1</span> 4.1 Propensity Score Methods</h3>
+<p>Used to create comparable treatment and control groups in observational data by balancing covariates.</p>
+<p><strong>Common R Packages</strong></p>
+<ul>
+<li><p><em>MatchIt</em>: propensity score matching (nearest neighbor, caliper, Mahalanobis, etc.).</p></li>
+<li><p><em>cobalt</em>: covariate balance diagnostics and visualizations.</p></li>
+</ul>
+</section>
+<section id="instrumental-variables-iv" class="level3" data-number="15.4.2">
+<h3 data-number="15.4.2" class="anchored" data-anchor-id="instrumental-variables-iv"><span class="header-section-number">15.4.2</span> 4.2 Instrumental Variables (IV)</h3>
+<p>Used when treatment assignment is endogenous (e.g., correlated with unobserved confounders). IV methods rely on external instruments that affect treatment but not the outcome directly.</p>
+<p><strong>Common R Packages</strong></p>
+<ul>
+<li><p><em>AER</em>: <em>ivreg()</em> for two-stage least squares (2SLS) estimation.</p></li>
+<li><p><em>ivpack</em>, <em>fixest</em>: robust standard errors and diagnostics for IV models.</p></li>
+</ul>
+</section>
+<section id="interrupted-time-series-1" class="level3" data-number="15.4.3">
+<h3 data-number="15.4.3" class="anchored" data-anchor-id="interrupted-time-series-1"><span class="header-section-number">15.4.3</span> 4.3 Interrupted Time Series</h3>
+<p>Evaluates whether a policy or intervention changes a trend or level of an outcome over time.</p>
+<p><strong>Common R Packages</strong></p>
+<ul>
+<li><p><em>segmented</em>: fits piecewise regression models to identify changes in slope or level.</p></li>
+<li><p><em>strucchange</em>: tests for structural breaks in time series data.</p></li>
+<li><p><em>CausalImpact</em>: Bayesian interrupted time series analysis with uncertainty intervals.</p></li>
+</ul>
+</section>
+</section>
+<section id="summary-of-advanced-methods-in-r" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="summary-of-advanced-methods-in-r"><span class="header-section-number">15.5</span> Summary of Advanced Methods in R</h2>
+<p>In this chapter, we highlighted R implementation for a range of advanced quantitative methods commonly used in educational research. Researchers rarely master these methods all at once. Instead, building proficiency involves returning to these tools as new research questions arise, experimenting with models, and consulting documentation and examples. The goal of this section is not to provide an exhaustive manual but to help readers recognize key analytical approaches, identify the appropriate R ecosystem for each, and develop confidence in taking the next step toward more advanced analyses. With these foundations and example workflows, readers are now equipped to begin applying the advanced quantitative methods introduced in Chapter 14 and to explore further capabilities in R as their research questions grow in complexity.</p>
+</section>
+</section>
 <section id="advanced-quantitative-methods-in-spss" class="level1 unnumbered">
 <h1 class="unnumbered">Advanced Quantitative Methods in SPSS</h1>
 <p>In this section, we provide an overview of how to implement several advanced quantitative methods introduced in this chapter using SPSS. The methods covered in Chapter 14 of the textbook, such as multilevel modeling (MLM), factor analysis and structural equation modeling (FA/SEM), meta-analysis, and causal inference approaches (including propensity score models, instrumental variables, difference-in-differences, and regression discontinuity), represent powerful tools for addressing complex research questions in educational studies.</p>
 <p>Some of these methods are fully supported in SPSS Statistics and can be implemented through standard menu-driven procedures; examples include multilevel modeling and meta-analysis, which are introduced in this document. Other methods require additional software or customized workflows and are therefore not covered here. For those approaches, readers are referred to the R tutorials provided in the textbook.</p>
 <p>For the method mentioned in this section, we focus on its analytic purpose and provide a general overview of how it can be implemented. Each example highlights the basic implementation in SPSS, helping readers connect the statistical ideas discussed in the chapter with their practical application.</p>
-<section id="multilevel-modeling-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="multilevel-modeling-1">1 Multilevel Modeling</h2>
+<section id="multilevel-modeling-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="multilevel-modeling-2">1 Multilevel Modeling</h2>
 <p>Multilevel modeling is used when data have a hierarchical or nested structure, such as students nested within classrooms or schools. These models explicitly account for dependence among observations and allow researchers to separate within-group and between-group sources of variation.</p>
 <p><strong>Example: A Random Intercept Model</strong></p>
 <p>The following example illustrates how to fit a basic two-level random-intercept model predicting students’ math achievement based on their effort and persistence in math, allowing the intercept to vary across schools.</p>
@@ -539,8 +770,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Click OK to run the model.</p></li>
 </ol>
 </section>
-<section id="meta-analysis-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="meta-analysis-1">2 Meta-Analysis</h2>
+<section id="meta-analysis-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="meta-analysis-2">2 Meta-Analysis</h2>
 <p><strong>Example: Random-Effects Meta-Analysis</strong></p>
 <p>The example below illustrates a basic workflow for conducting a random-effects meta-analysis in SPSS. Suppose that, for each study to be included in the meta-analysis, information is available on the treatment and control group means, standard deviations, and sample sizes, but effect sizes have not yet been computed.</p>
 <p>To fit a random-effects meta-analysis model using raw continuous outcome data in SPSS, follow these steps:</p>
@@ -559,8 +790,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Click ‘OK’ </p></li>
 </ol>
 </section>
-<section id="summary-of-advanced-methods-in-r" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="summary-of-advanced-methods-in-r">Summary of Advanced Methods in R</h2>
+<section id="summary-of-advanced-methods-in-r-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="summary-of-advanced-methods-in-r-1">Summary of Advanced Methods in R</h2>
 <p>This chapter introduced SPSS implementations of two advanced quantitative methods commonly used in educational research. Researchers may not master these methods at once; instead, proficiency develops through repeated use as new research questions arise and analytic needs evolve. The goal of this section is not to provide an exhaustive reference, but to illustrate core analytical approaches, clarify when each method is appropriate, and demonstrate how they can be implemented using SPSS procedures. With these examples as a foundation, readers are equipped to apply the methods introduced in Chapter 14 within SPSS and to recognize when additional tools or software environments may be required for more specialized analyses.</p>
 </section>
 </section>

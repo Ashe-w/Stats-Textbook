@@ -5702,7 +5702,7 @@ has a body temperature between 97.5°F and 98.6°F.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.15\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-8.png}
+{\centering \includegraphics[width=0.1\linewidth,height=\textheight,keepaspectratio]{chapter5/fig5s-8.png}
 
 }
 
@@ -15791,6 +15791,507 @@ educational interventions or further research.
 
 \bookmarksetup{startatroot}
 
+\chapter*{Examining Relationships Between Two Variables in
+SPSS}\label{examining-relationships-between-two-variables-in-spss}
+\addcontentsline{toc}{chapter}{Examining Relationships Between Two
+Variables in SPSS}
+
+\markboth{Examining Relationships Between Two Variables in
+SPSS}{Examining Relationships Between Two Variables in SPSS}
+
+In this section, we demonstrate how to implement several methods from
+this Chapter in SPSS. We start with Pearson's correlation for two
+continuous variables, then illustrate alternatives when data are ordinal
+or involve a dichotomous variable, and finish with a chi-square test for
+independence between two categorical variables.
+
+\section*{1 Pearson's Correlation}\label{pearsons-correlation-1}
+\addcontentsline{toc}{section}{1 Pearson's Correlation}
+
+\markright{1 Pearson's Correlation}
+
+Here, we examine the relationship between students' Reasoning scores
+(PV1MPRE) and Change \& Relationships scores (PV1MCCR), two mathematics
+sub-area scores from PISA reflecting different cognitive domains.
+
+\subsection*{1.1 Visual Check of
+Assumptions}\label{visual-check-of-assumptions-1}
+\addcontentsline{toc}{subsection}{1.1 Visual Check of Assumptions}
+
+\subsubsection*{1.1.1 Linearity:
+Scatterplot}\label{linearity-scatterplot-1}
+\addcontentsline{toc}{subsubsection}{1.1.1 Linearity: Scatterplot}
+
+Follow these steps to create a scatterplot in SPSS:
+
+1.Click Graphs \textgreater{} Chart Builder.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  If prompted, click OK to define the measurement level.
+\item
+  In the Chart Builder window, choose Scatter/Dot from the Gallery.
+\item
+  Drag the Simple Scatter plot into the chart preview area.
+\item
+  Move PV1MPRE to the x-axis.
+\item
+  Move PV1MCCR to the y-axis.
+\item
+  Click OK.
+\end{enumerate}
+
+You will obtain a scatterplot showing the relationship between Math
+Reasoning and Change \& Relationships scores.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-15.png}
+
+}
+
+\caption{Fig 11.15}
+
+\end{figure}%
+
+The points appear to follow a fairly straight-line pattern overall,
+suggesting that the relationship is approximately linear. There are some
+mild deviation at the lower end of the score range. However, given the
+large sample size and the relatively small departure, the linearity
+assumption is considered reasonably satisfied, and Pearson's correlation
+remains appropriate for quantifying the association.
+
+\subsubsection*{1.1.2 Homoscedasticity: Residuals vs Fitted
+plot}\label{homoscedasticity-residuals-vs-fitted-plot-1}
+\addcontentsline{toc}{subsubsection}{1.1.2 Homoscedasticity: Residuals
+vs Fitted plot}
+
+To examine whether the variance of the residuals is approximately
+constant across fitted values, we need first fit a simple linear
+regression model and save the predicted values and residuals.
+
+Follow these steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Regression \textgreater{} Linear.
+\item
+  Move PV1MCCR into the Dependent box.
+\item
+  Move PV1MPRE into the Independent(s) box.
+\item
+  Click Save.
+\item
+  Under Predicted Values, check Unstandardized.
+\item
+  Under Residuals, check Unstandardized.
+\item
+  Click Continue, then click OK.
+\end{enumerate}
+
+SPSS will then add two new variables to the dataset: one for the
+predicted values (PRE\_1) and one for the residuals (RES\_1).
+
+Next, create a scatterplot of residuals against predicted values:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Graphs \textgreater{} Chart Builder.
+\item
+  Choose Scatter/Dot from the Gallery.
+\item
+  Drag Simple Scatter into the chart preview area.
+\item
+  Move the saved predicted-value variable (PRE\_1) to the x-axis.
+\item
+  Move the saved residual variable (RES\_1 to the y-axis.
+\item
+  Click OK.
+\end{enumerate}
+
+SPSS will produce plot as follows:
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-16.png}
+
+}
+
+\caption{Fig 11.16}
+
+\end{figure}%
+
+The residuals appear to be fairly evenly scattered around zero across
+the entire range of fitted values, without forming a clear funnel shape
+or systematic curve. There are a few points in the middle range of the
+fitted values with relatively lower residuals, which may be considered
+mild outliers. However, they are not extreme enough to indicate severe
+heteroscedasticity (i.e., unequal variance of residuals). Overall, this
+indicates that the variance of the residuals is approximately constant,
+meaning the homoscedasticity assumption is reasonably satisfied.
+
+\subsubsection*{1.1.3 Normality: Q--Q plots}\label{normality-qq-plots-1}
+\addcontentsline{toc}{subsubsection}{1.1.3 Normality: Q--Q plots}
+
+To examine whether each variable is approximately normally distributed,
+we can generate Q-Q plots using the Explore procedure in SPSS.
+
+Follow these steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Descriptive Statistics \textgreater{}
+  Explore.
+\item
+  Move PV1MPRE and PV1MCCR into the Dependent List box.
+\item
+  Click Plots.
+\item
+  Check Normality plots with tests.
+\item
+  Click Continue, then click OK.
+\end{enumerate}
+
+SPSS will produce Q-Q plots and normality test results for both
+variables.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-17.png}
+
+}
+
+\caption{Fig 11.17}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-18.png}
+
+}
+
+\caption{Fig 11.18}
+
+\end{figure}%
+
+In both plots, the points largely follow the 45-degree reference line,
+with only slight deviations at the extreme tails. This indicates that
+both variables are approximately normally distributed.
+
+Although the chapter mentions checking bivariate normality (the joint
+normal distribution of the two variables), examining the marginal
+normality of each variable is often a practical and informative first
+step. If both variables are roughly normally distributed individually
+and the scatterplot of their relationship appears linear (as we already
+checked), this generally supports the assumption of bivariate normality.
+Together, these results justify the use of Pearson correlation to
+examine the linear relationship between these two math sub-area scores.
+
+\subsection*{1.2 Computing Pearson's r}\label{computing-pearsons-r-1}
+\addcontentsline{toc}{subsection}{1.2 Computing Pearson's r}
+
+Now we compute Pearson's correlation coefficient between PV1MPRE and
+PV1MCCR.
+
+The SPSS steps are as below:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Correlate \textgreater{} Bivariate.
+\item
+  Move PV1MPRE and PV1MCCR into the Variables box.
+\item
+  Make sure Pearson is selected.
+\item
+  Make sure Two-tailed is selected under Test of Significance.
+\item
+  Click Options\ldots, then under Missing Values, select Pairwise if you
+  want SPSS to use all available data for each pair of variables.
+\item
+  Click OK.
+\end{enumerate}
+
+SPSS will produce a correlation matrix containing the correlation
+coefficient, significance level, and sample size.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-19.png}
+
+}
+
+\caption{Fig 11.19}
+
+\end{figure}%
+
+Strength and Direction of Association: The Pearson correlation
+coefficient is \(r = .852\), indicating a very strong positive linear
+relationship between Math Reasoning and Math Change \& Relationships
+scores. In practical terms, students who score higher in reasoning also
+tend to score higher in change \& relationships.
+
+Statistical Significance: \(p < .001\), meaning the observed correlation
+is highly statistically significant. We can reject the null hypothesis
+of no linear association between the two sub-scores.
+
+Variance Explained: To further interpret the magnitude of this
+relationship, we can square the correlation coefficient to obtain the
+proportion of shared variance. Here, \(r^2 = .726\), which means that
+about 72.6\% of the variance is shared between the two sub-area scores.
+This indicates a very large association between these two mathematics
+domains.
+
+\section*{2 Spearman's Correlation}\label{spearmans-correlation-1}
+\addcontentsline{toc}{section}{2 Spearman's Correlation}
+
+\markright{2 Spearman's Correlation}
+
+When variables are ordinal, Spearman's \(r_s\) is preferred. Here, we
+convert the two math subscores into quartiles (1--4) and compute
+Spearman's correlation.
+
+\subsection*{2.1 Creating Quartile
+Variables}\label{creating-quartile-variables}
+\addcontentsline{toc}{subsection}{2.1 Creating Quartile Variables}
+
+Before conducting Spearman's correlation, we need to convert the two
+continuous variables into ordinal quartile variables.
+
+Follow these steps for PV1MPRE:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Transform \textgreater{} Rank Cases.
+\item
+  Move PV1MPRE into the Variables box.
+\item
+  Under Rank Types, choose Ntiles.
+\item
+  Enter 4 for the number of groups.
+\item
+  Click OK.
+\end{enumerate}
+
+The default name of the created variable is NPV1MPRE. Repeat the same
+steps for PV1MCCR; the corresponding variable will be created with the
+default name NPV1MCCR. These new variables will code each student into
+one of four quartiles, from 1 to 4.
+
+\subsection*{2.2 Computing Spearman's
+Correlation}\label{computing-spearmans-correlation}
+\addcontentsline{toc}{subsection}{2.2 Computing Spearman's Correlation}
+
+Now we compute Spearman's correlation using the two quartile variables.
+Follow these steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Correlate \textgreater{} Bivariate.
+\item
+  Move NPV1MPRE and NPV1MCCR into the Variables box.
+\item
+  Check Spearman. You may uncheck Pearson if you want only the Spearman
+  result.
+\item
+  Make sure Two-tailed is selected.
+\item
+  Click Options\ldots, then under Missing Values, select Pairwise if
+  desired.
+\item
+  Click OK.
+\end{enumerate}
+
+Below are the results from SPSS：
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-20.png}
+
+}
+
+\caption{Fig 11.20}
+
+\end{figure}%
+
+The Spearman's Rank-Order correlation (\(r_s=.799, \, p<.001\))
+indicates a strong positive monotonic relationship between Math
+Reasoning and Change \& Relationships after converting the scores into
+quartiles. This means that as students' quartile ranking on reasoning
+increases, their quartile ranking on change \& relationships tends to
+increase as well.
+
+Compared with the Pearson correlation (\(r = .852\)), the Spearman's
+\(r_s\) is slightly lower. This is expected because transforming
+continuous scores into quartiles removes some of the fine-grained
+variability in the data, retaining only the relative rank order. As a
+result, Spearman's \(r_s\) captures the ordinal association but ignores
+within-quartile differences, leading to a slightly attenuated
+correlation coefficient.
+
+\section*{3 Point-Biserial
+Correlation}\label{point-biserial-correlation-1}
+\addcontentsline{toc}{section}{3 Point-Biserial Correlation}
+
+\markright{3 Point-Biserial Correlation}
+
+Point-biserial correlation measures the relationship between a
+continuous variable and a dichotomous variable. Here we examine whether
+students who perceive mathematics as easier than other subjects
+(MATHEASE: 0 = No, 1 = Yes) have higher overall math scores (PV1MATH).
+
+\subsection*{3.1 Checking the Variable
+Coding}\label{checking-the-variable-coding}
+\addcontentsline{toc}{subsection}{3.1 Checking the Variable Coding}
+
+Before conducting the analysis, it is important to verify how the
+dichotomous variable is coded. To do this, go to the Variable View in
+SPSS and locate MATHEASE. In the Values column, click the cell to view
+the assigned labels. Confirm that the variable is coded as:
+
+0 = No 1 = Yes
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.4\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-21.png}
+
+}
+
+\caption{Fig 11.21}
+
+\end{figure}%
+
+This is important because the interpretation of the correlation depends
+on which category is coded as 1.
+
+\subsection*{3.2 Computing the Point-Biserial
+Correlation}\label{computing-the-point-biserial-correlation}
+\addcontentsline{toc}{subsection}{3.2 Computing the Point-Biserial
+Correlation}
+
+In SPSS, point-biserial correlation is computed using the same Bivariate
+Correlations procedure used for Pearson's correlation, as long as the
+dichotomous variable is coded numerically. The steps are as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Correlate \textgreater{} Bivariate.
+\item
+  Move MATHEASE and PV1MATH into the Variables box.
+\item
+  Make sure Pearson is selected.
+\item
+  Make sure Two-tailed is selected.
+\item
+  Click Options\ldots, then under Missing Values, select Pairwise if
+  desired.
+\item
+  Click OK.
+\end{enumerate}
+
+SPSS will produce a correlation matrix :
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-22.png}
+
+}
+
+\caption{Fig 11.22}
+
+\end{figure}%
+
+The point-biserial correlation between perception of mathematics as
+easier than other subjects and overall math score is \(r_{pb} = .108\),
+with \(p < .001\). This result indicates a significantly positive but
+small association between perceiving mathematics as easier and actual
+math performance: students who report finding mathematics easier tend to
+score slightly higher on average.
+
+\section*{4 Chi-Square Test for
+Independence}\label{chi-square-test-for-independence-2}
+\addcontentsline{toc}{section}{4 Chi-Square Test for Independence}
+
+\markright{4 Chi-Square Test for Independence}
+
+When both variables are categorical, we use a chi-square test to
+evaluate independence. Here, we examine the relationship between Gender
+(ST004D01T, where 1 = Female and 2 = Male) and Math Motivation (MATHMOT,
+where 0 = Not more motivated to do well in mathematics than other
+subjects and 1 = More motivated to do well in mathematics than other
+subjects).
+
+Follow these steps to create the contingency table and run the test:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click Analyze \textgreater{} Descriptive Statistics \textgreater{}
+  Crosstabs.
+\item
+  Move ST004D01T into the TargetList box.
+\item
+  Move MATHMOT into the Column(s) box.
+\item
+  Click Statistics, then check Chi-square.
+\item
+  Click Continue.
+\item
+  Click Cells, then check Observed and Expected. You may also check Row
+  percentages or Column percentages to help with interpretation.
+\item
+  Click Continue, then click OK.
+\end{enumerate}
+
+SPSS will produce a contingency table and the chi-square test results.
+
+Contingency table:
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-23.png}
+
+}
+
+\caption{Fig 11.23}
+
+\end{figure}%
+
+Chi-square test:
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.4\linewidth,height=\textheight,keepaspectratio]{chapter11/fig11-24.png}
+
+}
+
+\caption{Fig 11.24}
+
+\end{figure}%
+
+The contingency table shows the frequency of students' motivation to do
+well in mathematics broken down by gender. The Chi-squared test yielded
+\(\chi^2(1) = 23.12, \, p < .001\), so we reject the null hypothesis of
+independence. This means there is a statistically significant
+association between gender and motivation to do well in mathematics.
+
+From the contingency table, male students have a higher proportion of
+reporting being more motivated to do well in mathematics compared to
+female students. This finding suggests that motivation to do well in
+mathematics may vary by gender, which could have implications for
+educational interventions or further research.
+
+\bookmarksetup{startatroot}
+
 \chapter*{Conclusion}\label{conclusion-10}
 \addcontentsline{toc}{chapter}{Conclusion}
 
@@ -23135,6 +23636,306 @@ are two general principles we hope you take away from this book:
 
 \bookmarksetup{startatroot}
 
+\chapter{Advanced Quantitative Methods in
+R}\label{advanced-quantitative-methods-in-r}
+
+In this section, we provide an overview of how to implement several
+advanced quantitative methods introduced in this chapter using R. These
+methods---such as Multilevel Modeling (MLM), Factor Analysis and
+Structural Equation Modeling (FA/SEM), Meta-Analysis, and Causal
+Inference approaches (including Propensity Score Models, Instrumental
+Variables, Difference-in-Differences, and Regression Discontinuity),
+represent powerful tools for addressing complex research questions in
+educational studies.
+
+Rather than exploring each method in depth, our focus here is on
+introducing the key R packages used to perform these analyses and
+providing concise example codes to illustrate how they are implemented.
+Each example highlights the basic syntax, helping readers connect the
+statistical ideas discussed in the chapter with their practical
+application in R.
+
+\section{1 Multilevel Modeling}\label{multilevel-modeling-1}
+
+\textbf{Common R Packages}
+
+\begin{itemize}
+\item
+  \emph{lme4}: one of the most widely used package for fitting linear
+  and generalized multilevel models (lmer() for continuous outcomes,
+  glmer() for binary outcomes).
+\item
+  \emph{lmerTest}: extends \emph{lme4} by adding p-values and confidence
+  intervals for fixed effects.
+\item
+  \emph{performance} or \emph{sjstats}: provide diagnostics, intraclass
+  correlation coefficients (ICCs), and goodness-of-fit measures.
+\end{itemize}
+
+\textbf{Example: A Random Intercept Model}
+
+The following example shows how to fit a basic two-level model
+predicting students' math achievement based on their effort and
+persistence in math, allowing the intercept to vary across schools:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages(c("lme4", "lmerTest", "performance"))}
+\FunctionTok{library}\NormalTok{(lme4)}
+\FunctionTok{library}\NormalTok{(lmerTest)}
+\FunctionTok{library}\NormalTok{(performance)}
+ 
+\CommentTok{\# Fit a random{-}intercept model: students nested within schools}
+\CommentTok{\# math: student math achievement}
+\CommentTok{\# effort: student{-}level predictor}
+\CommentTok{\# school\_id: grouping variable identifying schools}
+\NormalTok{fit\_mlm }\OtherTok{\textless{}{-}} \FunctionTok{lmer}\NormalTok{(math }\SpecialCharTok{\textasciitilde{}}\NormalTok{ effort }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{|}\NormalTok{ school\_id), }\AttributeTok{data =}\NormalTok{ data)}
+\FunctionTok{summary}\NormalTok{(fit\_mlm)}
+ 
+\CommentTok{\# Intraclass correlation coefficient (ICC):  }
+\CommentTok{\# proportion of total variance attributable to differences between schools}
+\FunctionTok{icc}\NormalTok{(fit\_mlm)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{2 Factor Analysis and Structural Equation
+Modeling}\label{factor-analysis-and-structural-equation-modeling}
+
+\textbf{Common R Packages}
+
+\begin{itemize}
+\item
+  \emph{psych}: for Exploratory Factor Analysis (EFA), reliability, and
+  dimensionality assessment.
+\item
+  \emph{lavaan}: for Confirmatory Factor Analysis (CFA) and Structural
+  Equation Modeling (SEM).
+\item
+  \emph{semPlot}: for visualizing CFA or SEM path diagrams.
+\end{itemize}
+
+\textbf{Example 1: EFA}
+
+Suppose we have 10 survey items (i1--i10) that measure different aspects
+of student motivation, but we are unsure how many underlying factors
+exist. EFA helps identify these latent dimensions by examining how
+strongly each item correlates with potential factors.
+
+In the example below, the fa.parallel() function can help determine how
+many factors to retain. We use the fa() function from the psych package
+to extract three factors and apply an oblique rotation (oblimin), which
+allows the factors to be correlated.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("psych")}
+\FunctionTok{library}\NormalTok{(psych)}
+ 
+\CommentTok{\# Parallel analysis: suggests the optimal number of factors to retain}
+\FunctionTok{fa.parallel}\NormalTok{(data[, }\FunctionTok{paste0}\NormalTok{(}\StringTok{"i"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)], }\AttributeTok{fa =} \StringTok{"fa"}\NormalTok{)}
+ 
+\CommentTok{\# Perform an Exploratory Factor Analysis with 3 factors}
+\NormalTok{efa\_result }\OtherTok{\textless{}{-}} \FunctionTok{fa}\NormalTok{(data[, }\FunctionTok{paste0}\NormalTok{(}\StringTok{"i"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)], }\AttributeTok{nfactors =} \DecValTok{3}\NormalTok{, }\AttributeTok{rotate =} \StringTok{"oblimin"}\NormalTok{)}
+ 
+\CommentTok{\# Display factor loadings (showing only loadings ≥ .30)}
+\FunctionTok{print}\NormalTok{(efa\_result}\SpecialCharTok{$}\NormalTok{loadings, }\AttributeTok{cutoff =}\NormalTok{ .}\DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Example 2: CFA and SEM}
+
+In the example below, we use the lavaan package to specify and fit a
+simple model with three latent constructs: Engagement, Motivation, and
+Achievement. Each measured by three observed indicators. The model also
+includes directional paths hypothesizing that both Engagement and
+Motivation predict Achievement, and that Motivation influences
+Engagement.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages(c("lavaan", "semPlot"))}
+\FunctionTok{library}\NormalTok{(lavaan)}
+\FunctionTok{library}\NormalTok{(semPlot)}
+ 
+\CommentTok{\# Specify the CFA/SEM model}
+\NormalTok{model }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}}
+\StringTok{  \# Measurement model: how latent constructs are measured by observed variables}
+\StringTok{  \# engament is measured by variables i1, i2, i3; motivation by i4, i5, i6; achievement by i7, i8, i9  }
+\StringTok{  Engagement =\textasciitilde{} i1 + i2 + i3  }
+\StringTok{  Motivation =\textasciitilde{} i4 + i5 + i6  }
+\StringTok{  Achievement =\textasciitilde{} i7 + i8 + i9}
+\StringTok{ }
+\StringTok{  \# Structural model: hypothesized relationships among latent constructs}
+\StringTok{  Achievement \textasciitilde{} Engagement + Motivation}
+\StringTok{  Engagement \textasciitilde{} Motivation}
+\StringTok{\textquotesingle{}}
+ 
+\CommentTok{\# Fit the model}
+\NormalTok{fit\_sem }\OtherTok{\textless{}{-}} \FunctionTok{sem}\NormalTok{(model, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{std.lv =} \ConstantTok{TRUE}\NormalTok{)}
+ 
+\CommentTok{\# Summarize results with standardized estimates and fit indices}
+\FunctionTok{summary}\NormalTok{(fit\_sem, }\AttributeTok{fit.measures =} \ConstantTok{TRUE}\NormalTok{)}
+ 
+\CommentTok{\# Visualize the model structure}
+\FunctionTok{semPaths}\NormalTok{(fit\_sem, }\AttributeTok{what =} \StringTok{"std"}\NormalTok{, }\AttributeTok{layout =} \StringTok{"tree"}\NormalTok{, }\AttributeTok{edge.label.cex =} \FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The summary() function provides factor loadings, regression paths, and
+overall model fit indices such as the Comparative Fit Index (CFI),
+Tucker--Lewis Index (TLI), and Root Mean Square Error of Approximation
+(RMSEA). These indicators help evaluate whether the hypothesized model
+fits the observed data well.
+
+The semPaths() function from the semPlot package generates a path
+diagram of the model (similar to Figure 14.2; see example below),
+allowing you to visualize the relationships among latent and observed
+variables. In the diagram, rectangles represent observed indicators,
+circles represent latent factors, and arrows indicate the direction and
+strength of relationships.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{chapter14/fig14-6.png}
+
+}
+
+\caption{Fig 14.6}
+
+\end{figure}%
+
+\section{3 Meta-Analysis}\label{meta-analysis-1}
+
+\textbf{Common R Packages}
+
+\begin{itemize}
+\item
+  \emph{metafor}: the standard package for computing effect sizes,
+  fitting fixed- and random-effects models, conducting moderator
+  analyses, and producing diagnostic plots.
+\item
+  \emph{meta}: user-friendly alternative with high-level functions for
+  common effect size formats.
+\item
+  \emph{robumeta}: for robust variance estimation when effect sizes are
+  not independent (e.g., multiple effects per study).
+\end{itemize}
+
+\textbf{Example: Random-Effects Meta-Analysis Using metafor}
+
+The example below illustrates a simple workflow for a random-effects
+meta-analysis. Suppose each study reports treatment and control group
+means, standard deviations, and sample sizes. We first compute
+standardized mean differences (Hedges' \(g\)) and then fit a
+random-effects model to estimate the overall effect.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("metafor")}
+\FunctionTok{library}\NormalTok{(metafor)}
+ 
+\CommentTok{\# Example dataset with study{-}level treatment and control stats}
+\CommentTok{\# m1i, sd1i, n1i: mean, SD, and sample size for treatment group}
+\CommentTok{\# m2i, sd2i, n2i: mean, SD, and sample size for control group}
+\CommentTok{\# Assume \textquotesingle{}studies\textquotesingle{} is your data frame}
+ 
+\CommentTok{\#(1) Compute effect sizes}
+\NormalTok{dat\_es }\OtherTok{\textless{}{-}} \FunctionTok{escalc}\NormalTok{(}
+  \AttributeTok{measure =} \StringTok{"SMD"}\NormalTok{,             }\CommentTok{\# Standardized Mean Difference (Hedges\textquotesingle{} g)}
+  \AttributeTok{m1i =}\NormalTok{ m\_t, }\AttributeTok{sd1i =}\NormalTok{ sd\_t, }\AttributeTok{n1i =}\NormalTok{ n\_t,}
+  \AttributeTok{m2i =}\NormalTok{ m\_c, }\AttributeTok{sd2i =}\NormalTok{ sd\_c, }\AttributeTok{n2i =}\NormalTok{ n\_c,}
+  \AttributeTok{data =}\NormalTok{ studies}
+\NormalTok{)}
+\CommentTok{\# dat\_es now contains two new columns: yi (effect sizes) and vi (variances)}
+ 
+\CommentTok{\#(2) Fit a random{-}effects model}
+\NormalTok{fit\_re }\OtherTok{\textless{}{-}} \FunctionTok{rma}\NormalTok{(}\AttributeTok{yi =}\NormalTok{ yi, }\AttributeTok{vi =}\NormalTok{ vi, }\AttributeTok{data =}\NormalTok{ dat\_es, }\AttributeTok{method =} \StringTok{"REML"}\NormalTok{)}
+\CommentTok{\#for fixed{-}effects model, use method="FE"}
+\FunctionTok{summary}\NormalTok{(fit\_re)}
+\end{Highlighting}
+\end{Shaded}
+
+The output provides the estimated overall effect size, its standard
+error and confidence interval, Test of significance, and heterogeneity
+statistics (\(Q, \, I^2\)).
+
+\section{4 Causal Analysis}\label{causal-analysis-1}
+
+Multiple causal inference methods are iontroduced this chapter. Here we
+briefly recap and highlight the R packages used to implement them.
+
+\subsection{4.1 Propensity Score
+Methods}\label{propensity-score-methods}
+
+Used to create comparable treatment and control groups in observational
+data by balancing covariates.
+
+\textbf{Common R Packages}
+
+\begin{itemize}
+\item
+  \emph{MatchIt}: propensity score matching (nearest neighbor, caliper,
+  Mahalanobis, etc.).
+\item
+  \emph{cobalt}: covariate balance diagnostics and visualizations.
+\end{itemize}
+
+\subsection{4.2 Instrumental Variables
+(IV)}\label{instrumental-variables-iv}
+
+Used when treatment assignment is endogenous (e.g., correlated with
+unobserved confounders). IV methods rely on external instruments that
+affect treatment but not the outcome directly.
+
+\textbf{Common R Packages}
+
+\begin{itemize}
+\item
+  \emph{AER}: \emph{ivreg()} for two-stage least squares (2SLS)
+  estimation.
+\item
+  \emph{ivpack}, \emph{fixest}: robust standard errors and diagnostics
+  for IV models.
+\end{itemize}
+
+\subsection{4.3 Interrupted Time
+Series}\label{interrupted-time-series-1}
+
+Evaluates whether a policy or intervention changes a trend or level of
+an outcome over time.
+
+\textbf{Common R Packages}
+
+\begin{itemize}
+\item
+  \emph{segmented}: fits piecewise regression models to identify changes
+  in slope or level.
+\item
+  \emph{strucchange}: tests for structural breaks in time series data.
+\item
+  \emph{CausalImpact}: Bayesian interrupted time series analysis with
+  uncertainty intervals.
+\end{itemize}
+
+\section{Summary of Advanced Methods in
+R}\label{summary-of-advanced-methods-in-r}
+
+In this chapter, we highlighted R implementation for a range of advanced
+quantitative methods commonly used in educational research. Researchers
+rarely master these methods all at once. Instead, building proficiency
+involves returning to these tools as new research questions arise,
+experimenting with models, and consulting documentation and examples.
+The goal of this section is not to provide an exhaustive manual but to
+help readers recognize key analytical approaches, identify the
+appropriate R ecosystem for each, and develop confidence in taking the
+next step toward more advanced analyses. With these foundations and
+example workflows, readers are now equipped to begin applying the
+advanced quantitative methods introduced in Chapter 14 and to explore
+further capabilities in R as their research questions grow in
+complexity.
+
+\bookmarksetup{startatroot}
+
 \chapter*{Advanced Quantitative Methods in
 SPSS}\label{advanced-quantitative-methods-in-spss}
 \addcontentsline{toc}{chapter}{Advanced Quantitative Methods in SPSS}
@@ -23165,7 +23966,7 @@ Each example highlights the basic implementation in SPSS, helping
 readers connect the statistical ideas discussed in the chapter with
 their practical application.
 
-\section*{1 Multilevel Modeling}\label{multilevel-modeling-1}
+\section*{1 Multilevel Modeling}\label{multilevel-modeling-2}
 \addcontentsline{toc}{section}{1 Multilevel Modeling}
 
 \markright{1 Multilevel Modeling}
@@ -23231,7 +24032,7 @@ follow these steps:
   Click OK to run the model.
 \end{enumerate}
 
-\section*{2 Meta-Analysis}\label{meta-analysis-1}
+\section*{2 Meta-Analysis}\label{meta-analysis-2}
 \addcontentsline{toc}{section}{2 Meta-Analysis}
 
 \markright{2 Meta-Analysis}
@@ -23283,7 +24084,7 @@ data in SPSS, follow these steps:
 \end{enumerate}
 
 \section*{Summary of Advanced Methods in
-R}\label{summary-of-advanced-methods-in-r}
+R}\label{summary-of-advanced-methods-in-r-1}
 \addcontentsline{toc}{section}{Summary of Advanced Methods in R}
 
 \markright{Summary of Advanced Methods in R}
@@ -23786,714 +24587,1273 @@ Correct answers for each chapter are bolded.
   \end{enumerate}
 \end{enumerate}
 
-Chapter 4
-
-Check Your Understanding
-
-What is the primary purpose of using a histogram in educational
-research?
-
-To compare categories of data.
-
-To display the relationship between two variables.
-
-To summarize the frequency of continuous data grouped into intervals.
-
-To show proportions of a whole.
-
-Which visualization method is best suited for identifying relationships
-or correlations between two variables?
-
-Pie chart
-
-Box plot
-
-Scatterplot
-
-Stem-and-leaf plot
-
-In a box-and-whisker plot, the interquartile range (IQR) is represented
-by:
-
-The lines extending from the box to the smallest and largest values.
-
-The box itself, showing the range between the 25th and 75th percentiles.
-
-The line in the center of the box representing the median.
-
-The individual dots outside the whiskers.
-
-What is a key advantage of tables in presenting data?
-
-They simplify relationships between variables visually.
-
-They display trends and patterns intuitively.
-
-They highlight outliers in large datasets.
-
-They summarize data with precise values for comparison.
-
-What is the key difference between a bar chart and a histogram?
-
-Bar charts use touching bars to represent continuous data, while
-histograms use separated bars for discrete data.
-
-Bar charts use separated bars for discrete data, while histograms use
-touching bars for continuous data.
-
-Bar charts are only used for percentages, while histograms are used for
-counts.
-
-There is no difference; the terms are interchangeable.
-
-Chapter 5
-
-A distribution with high kurtosis has lighter tails than a normal
-distribution.
-
-True
-
-False, high kurtosis indicates heavier tails than a normal distribution,
-meaning there is a higher likelihood of extreme values (outliers).
-
-Which of the following values for skewness and kurtosis indicates that a
-distribution is approximately normal?
-
-Skewness = 0.5, Kurtosis = 2.5
-
-Skewness = 0.25, Kurtosis = 0.5, for a distribution to be considered
-approximately normal, the values for skewness and kurtosis should fall
-between -- 1 and 1.
-
-Skewness = 1.0, Kurtosis = 3.5
-
-Skewness = -2.0, Kurtosis = 4.0
-
-What is the probability of a data point falling within 1 standard
-deviation of the mean in a normal distribution?
-
-68\%, The empirical rule (or 68-95-99.7 rule) describes how data is
-distributed in a normal distribution.
-
-95\%
-
-99.7\%
-
-50\%
-
-A standardized test has a mean score of 500 and a standard deviation of
-100. What is the probability that a randomly selected student scores
-higher than 650? Use the z score formula and the standard normal
-distribution table to find the answer.
-
-0.1056 (10.56\%)
-
-0.1587 (15.87\%)
-
-0.0668 (6.68\%), calculate the z score: (650 -- 500) / 100 = 1.5.
-Cumulative probability for z = 1.5 is .9332. Subtract the cumulative
-probability from 1: 1 - .9332 = .0668.
-
-0.0228 (2.28\%)
-
-What is the purpose of converting raw data to z scores?
-
-To reduce the range of the data.
-
-To standardize data for comparison across distributions, This allows for
-meaningful comparisons between datasets that may have different scales,
-units, or ranges.
-
-To eliminate outliers.
-
-To calculate the mean and median more accurately.
-
-Chapter 6
-
-What is a sampling distribution?
-
-A distribution of a population's characteristics
-
-A distribution of a statistic (like a mean or proportion) calculated
-from all possible samples of a specific size, a sampling distribution
-represents the variability of a statistic, such as the mean, across all
-possible random samples of the same size from a population.
-
-A list of all individual data points in a population
-
-A random collection of data from a single sample
-
-According to the central limit theorem, what happens to the sampling
-distribution of the sample mean as the sample size increases?
-
-It becomes more skewed
-
-It approximates a normal distribution, regardless of the population
-distribution, the Central Limit Theorem states that as the sample size
-grows larger (usually n ≥ 30), the sampling distribution of the sample
-mean will approach a normal distribution, even if the population
-distribution is not normal.
-
-It moves closer to the smallest value in the sample
-
-It diverges from the population mean
-
-Which sampling technique ensures that every member of the population has
-an equal chance of being selected?
-
-Convenience sampling
-
-Purposive sampling
-
-Random sampling, random sampling ensures fairness by giving each member
-of the population an equal probability of being chosen, reducing bias
-and improving representativeness.
-
-Snowball sampling
-
-What is the standard error of the mean (SEM), and how is it calculated?
-
-It is the variability of individual data points and is equal to the
-population standard deviation.
-
-It is the standard deviation of the sampling distribution of sample
-means, calculated by dividing the sample standard deviation by the
-square root of the sample size, SEM quantifies how much the sample mean
-is likely to vary from the true population mean. It decreases as the
-sample size increases, which makes the estimate more precise.
-
-It measures the deviation of a single data point from the sample mean,
-using the formula SD/n.~
-
-It is a fixed value representing the population variance.
-
-What happens to the sampling distribution of the sample mean if the
-population distribution is normal?
-
-The sampling distribution will always be skewed, regardless of sample
-size.
-
-The sampling distribution will only be normal if the sample size is
-large.
-
-The sampling distribution will match the population distribution for any
-sample size.
-
-The sampling distribution will be normal, regardless of sample size. If
-the population distribution is already normal, the sampling distribution
-of the sample mean will also be normal, even for small sample sizes.
-
-Chapter 7
-
-What is the purpose of setting an alpha level (α) in hypothesis testing?
-
-To determine the sample size required for the study
-
-To set the threshold probability for rejecting the null hypothesis
-
-To calculate the confidence interval for the population mean
-
-To ensure the sample data are normally distributed
-
-A researcher hypothesizes that students from a particular school will
-outperform the state average on a given test. What type of test should
-be conducted?
-
-Directional test (two-tailed/two-sided)
-
-Nondirectional test (one-tailed/one-sided)
-
-A critical value defines the cutoff point that separates the rejection
-region from the non-rejection region in a hypothesis test.
-
-True
-
-False
-
-What does a p value indicate in hypothesis testing?
-
-The probability that the null hypothesis is true
-
-The likelihood of obtaining the observed result, or something more
-extreme, if the null hypothesis is true
-
-The size of the effect in the population
-
-The risk of committing a Type II error
-
-What is the primary purpose of hypothesis testing in research?
-
-To organize data into meaningful groups
-
-To differentiate real patterns from random chance in data
-
-To calculate the average of a sample population
-
-To ensure data is normally distributed
-
-Chapter 8
-
-When should a one-sample t test be used instead of a z test?
-
-When the population mean is known
-
-When the population standard deviation is unknown
-
-When the same size is less than 30
-
-When comparing two sample means
-
-What is the formula for the degrees of freedom (df) in a one-sample t
-test?
-
-df = n + 1
-
-df = n x 2
-
-df = n --1
-
-df = n2 n 2
-
-Which of the following is not an assumption of the one-sample t test?
-
-Random sampling
-
-Independence of observations
-
-Population variance of 0
-
-Dataset is approximately normally distributed
-
-What is the purpose of calculating effect size, such as Cohen's d?
-
-To determine statistical significance
-
-To quantify the magnitude of a difference
-
-To check if assumptions are met
-
-To calculate degrees of freedom
-
-What is the risk of using a one-tailed test when the actual effect is in
-the opposite direction?
-
-Type I error
-
-Type II error
-
-Type III error
-
-Increased power
-
-Chapter 9
-
-What is the main difference between an independent-samples t test and a
-related-samples t test?
-
-Independent-samples t tests compare two separate groups, while
-related-samples t tests compare two sets of scores from the same group
-or matched individuals.
-
-Independent-samples t tests compare means to a population value, while
-related-samples t tests compare variances.
-
-Independent-samples t tests require categorical data, while
-related-samples t tests require continuous data.
-
-There is no difference; they are used interchangeably.
-
-Which assumption is unique to independent-samples t tests but not
-required for related-samples t tests?
-
-Normality
-
-Random sampling
-
-Equal variances
-
-Independence of scores within groups
-
-When would you use a one-sample t test instead of an independent- or
-related-samples t test?
-
-When you have two independent groups to compare.
-
-When you want to compare a single group to a known population mean.
-
-When you compare pre- and post-test scores from the same group.
-
-When you have categorical data.
-
-You are conducting a study to compare the effectiveness of two teaching
-methods on student performance. You have a small sample size of just 16
-students (8 students taught by different teachers in different
-classrooms -- there is no reason to suggest they are related) and the
-scores in your dataset are not normally distributed. Which test should
-you use to compare these scores?
-
-Mann-Whitney U test
-
-Wilcoxon Matched-Pairs Signed-Ranks Test
-
-Independent-samples t test
-
-One-sample t test
-
-Which effect size measure is commonly reported for independent-samples t
-tests?
-
-r2
-
-Phi coefficient
-
-Cohen's d
-
-Omega
-
-Chapter 10
-
-What is the primary purpose of a One-Way ANOVA?
-
-To compare the means of two groups
-
-To compare the means of three or more groups
-
-To analyze relationships between continuous variables
-
-To assess correlations between independent and dependent variables
-
-Which of the following increases the risk of a Type I error when
-comparing multiple groups?
-
-Failing to apply a correction for multiple comparisons (e.g., Bonferroni
-correction)
-
-Running multiple t tests on the same data set
-
-Including covariates in the analysis
-
-Increasing sample size
-
-Which test is the most conservative post hoc method for controlling Type
-I error?
-
-Tukey's HSD
-
-Fisher's LSD
-
-Bonferroni test
-
-Kruskal-Wallis Test
-
-The Kruskal-Wallis Test is best suited for which type of data?
-
-Ordinal data or non-normal distributions
-
-Normally distributed interval data
-
-Binary data
-
-Continuous data
-
-What does homogeneity of variance mean in ANOVA?
-
-All groups have the same sample size
-
-The dependent variable is normally distributed
-
-The variances of the dependent variable are similar across groups
-
-There is no interaction effect between variables
-
-What distinguishes a factorial ANOVA from a one-way ANOVA?
-
-It compares means between more than two groups.
-
-It examines the effects of two or more independent variables and their
-interactions on a dependent variable.
-
-It includes covariates to control for variability in the dependent
-variable.
-
-It is used for nonparametric data.
-
-Which of the following is an example of a factorial ANOVA design?
-
-Comparing the mean scores of students across three different teaching
-methods.
-
-Assessing the correlation between test scores and student motivation.
-
-Testing for differences in a single group's test scores across three
-different time points.
-
-Analyzing the effects of teaching method (lecture vs.~inquiry-based) and
-student age group (young vs.~adult) on test scores.
-
-What is the effect size measure commonly used in ANOVA to estimate the
-proportion of variance explained by the independent variable?
-
-Pearson's r
-
-Eta Squared
-
-Cronbach's Alpha
-
-Chi-Squared
-
-Chapter 11
-
-What is the main purpose of Pearson's correlation coefficient (r) in
-correlational analysis
-
-To compare means across groups
-
-To measure the extent of causation between two variables
-
-To measure the direction and strength of a relationship between two
-variables
-
-To test for the significance of regression equations
-
-Which of the following is NOT an assumption of correlational analysis?
-
-Linearity
-
-Homoscedasticity
-
-Causality
-
-Normality
-
-What does a Pearson's r value of 0 indicate?
-
-A strong positive correlation
-
-No correlation
-
-A strong negative correlation
-
-A perfect correlation
-
-Which statistical method is used when investigating a relationship
-between a continuous variable and a dichotomous variable?
-
-Pearson's r
-
-Spearman's rho
-
-Point-biserial correlation
-
-ANOVA
-
-What does the assumption of homoscedasticity in correlational analysis
-require?
-
-The data must form a straight line.
-
-The variables must be normally distributed.
-
-The sample size must be large enough.
-
-The spread of data points must be consistent above and below the line
-across the entire range.
-
-Chapter 12
-
-What does the slope (b) in a simple linear regression equation
-represent?
-
-The predicted value of Y when X=0
-
-The change in X relative to Y
-
-The change in Y for a one-unit change in X
-
-The coefficient of determination
-
-What does {[}Equation{]}represent in simple linear regression analysis?
-
-The correlation between independent variables
-
-The proportion of variance in Y explained by X
-
-The slope of the regression line
-
-The standard error of the residuals
-
-What does tolerance measure in regression analysis?
-
-The extent of multicollinearity among independent variables
-
-The proportion of variance in the dependent variable explained by
-predictors
-
-The normality of residuals
-
-The degree of model fit
-
-What happens if a model includes highly correlated independent
-variables?
-
-The dependent variable becomes unreliable
-
-The coefficients of the independent variables become unstable
-
-The model fit ({[}Equation{]}) will always decrease
-
-The assumption of linearity is violated
-
-What does homoscedasticity mean in regression analysis?
-
-The residuals have a consistent spread across all predicted values
-
-The independent variables are not correlated
-
-The predictors have no relationship with the error term
-
-The regression coefficients are stable across models
-
-Chapter 13
-
-What is the key advantage of using a repeated-measures ANOVA?
-
-It eliminates the need for a dependent variable.
-
-It reduces error variance by accounting for individual differences.
-
-It allows for the inclusion of multiple dependent variables.
-
-It does not require any statistical assumptions.
-
-What does the term ``sphericity'' refer to in the context of
-repeated-measures ANOVA?
-
-Equal variances within each group.
-
-Equal sample sizes across groups.
-
-Equal variances of differences between all combinations of related
-groups.
-
-Equal means across all groups.
-
-What is the recommended post hoc procedure for a repeated-measures ANOVA
-to control for Type I error?
-
-Tukey's HSD
-
-Bonferroni correction
-
-Fisher's LSD
-
-Scheffé test
-
-What does a significant result in a repeated-measures ANOVA indicate?
-
-All group means are equal.
-
-The dependent variable is unrelated to the conditions tested.
-
-The assumptions of sphericity have been violated.
-
-There is a difference in at least one pair of group means.
-
-What does ``partial eta squared'' ( η2p 𝜂 p 2
-
-) represent in repeated-measures ANOVA?
-
-The total variation in the dependent variable.
-
-The proportion of total variance explained by between-groups effects
-after accounting for between-persons variance.
-
-The difference between the group means.
-
-The degree of correlation between independent and dependent variables.
-
-What is the role of a covariate in ANCOVA?
-
-To control for variability in the dependent variable that is unrelated
-to the independent variable(s)
-
-To act as an additional independent variable
-
-To replace the independent variable in the model
-
-To reduce between-group variance
-
-Chapter 14
-
-Which of the following is NOT a purpose of meta-analysis?
-
-Identifying the central tendency or common effect across studies
-
-Exploring variability in effect sizes
-
-Developing new experimental theories
-
-Explaining why variation in effect sizes occurs
-
-A propensity model is typically used to:
-
-Measure the direct effect of a treatment variable
-
-Estimate the likelihood of receiving a treatment based on observed
-characteristics
-
-Compare independent variables across different models
-
-Simplify complex data into manageable clusters
-
-What is a key requirement for using Multilevel Modeling (MLM)
-effectively?
-
-A minimum sample size of 50 participants
-
-Randomized controlled trials only
-
-Large datasets with at least 20-30 groups of 20-30 individuals per group
-
-A focus on theoretical over empirical studies
-
-Which of the following is a key benefit of Structural Equation Modeling
-(SEM) over traditional regression analysis?
-
-It requires fewer participants to yield accurate results
-
-It eliminates the need for latent variables
-
-It allows the inclusion of multiple dependent variables and mediating
-variables
-
-It reduces data complexity by eliminating endogenous predictors
-
-What is the minimum number of studies generally required to conduct a
-meta-analysis that explores variation?
-
-Two studies
-
-Three studies
-
-Four studies
-
-Twenty studies
-
-\bookmarksetup{startatroot}
-
-\chapter*{Summary}\label{summary-2}
-\addcontentsline{toc}{chapter}{Summary}
-
-\markboth{Summary}{Summary}
-
-In summary, this book has no content whatsoever.
-
-\bookmarksetup{startatroot}
-
-\chapter*{References}\label{references}
-\addcontentsline{toc}{chapter}{References}
-
-\markboth{References}{References}
+\section{Chapter 4}\label{chapter-4-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is the primary purpose of using a histogram in
+  educational research?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    To compare categories of data.
+  \item
+    To display the relationship between two variables.
+  \end{enumerate}
+
+  \textbf{c.~To summarize the frequency of continuous data grouped into
+  intervals.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    To show proportions of a whole.
+  \end{enumerate}
+\item
+  \textbf{Which visualization method is best suited for identifying
+  relationships or correlations between two variables?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Pie chart
+  \item
+    Box plot
+  \end{enumerate}
+
+  \textbf{c.~Scatterplot}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Stem-and-leaf plot
+  \end{enumerate}
+\item
+  \textbf{In a box-and-whisker plot, the interquartile range (IQR) is
+  represented by:}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    The lines extending from the box to the smallest and largest values.
+  \end{enumerate}
+
+  \textbf{b. The box itself, showing the range between the 25th and 75th
+  percentiles.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    The line in the center of the box representing the median.
+  \item
+    The individual dots outside the whiskers.
+  \end{enumerate}
+\item
+  \textbf{What is a key advantage of tables in presenting data?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    They simplify relationships between variables visually.
+  \item
+    They display trends and patterns intuitively.
+  \item
+    They highlight outliers in large datasets.
+  \end{enumerate}
+
+  \textbf{d.~They summarize data with precise values for comparison.}
+\item
+  \textbf{What is the key difference between a bar chart and a
+  histogram?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Bar charts use touching bars to represent continuous data, while
+    histograms use separated bars for discrete data.
+  \end{enumerate}
+
+  \textbf{b. Bar charts use separated bars for discrete data, while
+  histograms use touching bars for continuous data.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    Bar charts are only used for percentages, while histograms are used
+    for counts.
+  \item
+    There is no difference; the terms are interchangeable.
+  \end{enumerate}
+\end{enumerate}
+
+\section{Chapter 5}\label{chapter-5-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{A distribution with high kurtosis has lighter tails than a
+  normal distribution.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    True
+  \end{enumerate}
+
+  \textbf{b. False, high kurtosis indicates heavier tails than a normal
+  distribution, meaning there is a higher likelihood of extreme values
+  (outliers).}
+\item
+  \textbf{Which of the following values for skewness and kurtosis
+  indicates that a distribution is approximately normal?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Skewness = 0.5, Kurtosis = 2.5
+  \end{enumerate}
+
+  \textbf{b. Skewness = 0.25, Kurtosis = 0.5, for a distribution to be
+  considered approximately normal, the values for skewness and kurtosis
+  should fall between -- 1 and 1.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    Skewness = 1.0, Kurtosis = 3.5
+  \item
+    Skewness = -2.0, Kurtosis = 4.0
+  \end{enumerate}
+\item
+  \textbf{What is the probability of a data point falling within 1
+  standard deviation of the mean in a normal distribution?}
+
+  \textbf{a. 68\%, The empirical rule (or 68-95-99.7 rule) describes how
+  data is distributed in a normal distribution.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \item
+    95\%
+  \item
+    99.7\%
+  \item
+    50\%
+  \end{enumerate}
+\item
+  \textbf{A standardized test has a mean score of 500 and a standard
+  deviation of 100. What is the probability that a randomly selected
+  student scores higher than 650? Use the z score formula and the
+  standard normal distribution table to find the answer.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    0.1056 (10.56\%)
+  \item
+    0.1587 (15.87\%)
+  \end{enumerate}
+
+  \textbf{c.~0.0668 (6.68\%), calculate the z score: (650 -- 500) / 100
+  = 1.5. Cumulative probability for z = 1.5 is .9332. Subtract the
+  cumulative probability from 1: 1 - .9332 = .0668.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    0.0228 (2.28\%)
+  \end{enumerate}
+\item
+  \textbf{What is the purpose of converting raw data to z scores?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    To reduce the range of the data.
+  \end{enumerate}
+
+  \textbf{b. To standardize data for comparison across distributions,
+  This allows for meaningful comparisons between datasets that may have
+  different scales, units, or ranges.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    To eliminate outliers.
+  \item
+    To calculate the mean and median more accurately.
+  \end{enumerate}
+\end{enumerate}
+
+\section{Chapter 6}\label{chapter-6-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is a sampling distribution?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    A distribution of a population's characteristics
+  \item
+    \textbf{A distribution of a statistic (like a mean or proportion)
+    calculated from all possible samples of a specific size, a sampling
+    distribution represents the variability of a statistic, such as the
+    mean, across all possible random samples of the same size from a
+    population.}
+  \item
+    A list of all individual data points in a population
+  \item
+    A random collection of data from a single sample
+  \end{enumerate}
+\item
+  According to the central limit theorem, what happens to the sampling
+  distribution of the sample mean as the sample size increases?
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  It becomes more skewed
+\item
+  \textbf{It approximates a normal distribution, regardless of the
+  population distribution, the Central Limit Theorem states that as the
+  sample size grows larger (usually n ≥ 30), the sampling distribution
+  of the sample mean will approach a normal distribution, even if the
+  population distribution is not normal.}
+\item
+  It moves closer to the smallest value in the sample
+\item
+  It diverges from the population mean
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  \textbf{Which sampling technique ensures that every member of the
+  population has an equal chance of being selected?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Convenience sampling
+  \item
+    Purposive sampling
+  \end{enumerate}
+
+  \textbf{c.~Random sampling, random sampling ensures fairness by giving
+  each member of the population an equal probability of being chosen,
+  reducing bias and improving representativeness.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Snowball sampling
+  \end{enumerate}
+\item
+  \textbf{What is the standard error of the mean (SEM), and how is it
+  calculated?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    It is the variability of individual data points and is equal to the
+    population standard deviation.
+  \end{enumerate}
+
+  \textbf{b. It is the standard deviation of the sampling distribution
+  of sample means, calculated by dividing the sample standard deviation
+  by the square root of the sample size, SEM quantifies how much the
+  sample mean is likely to vary from the true population mean. It
+  decreases as the sample size increases, which makes the estimate more
+  precise.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    It measures the deviation of a single data point from the sample
+    mean, using the formula SD/n.~
+  \item
+    It is a fixed value representing the population variance.
+  \end{enumerate}
+\item
+  What happens to the sampling distribution of the sample mean if the
+  population distribution is normal?
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    The sampling distribution will always be skewed, regardless of
+    sample size.
+  \item
+    The sampling distribution will only be normal if the sample size is
+    large.
+  \item
+    The sampling distribution will match the population distribution for
+    any sample size.
+  \end{enumerate}
+
+  \textbf{d.~The sampling distribution will be normal, regardless of
+  sample size. If the population distribution is already normal, the
+  sampling distribution of the sample mean will also be normal, even for
+  small sample sizes.}
+\end{enumerate}
+
+\section{Chapter 7}\label{chapter-7-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is the purpose of setting an alpha level (α) in
+  hypothesis testing?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    To determine the sample size required for the study
+  \end{enumerate}
+
+  \textbf{b. To set the threshold probability for rejecting the null
+  hypothesis}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    To calculate the confidence interval for the population mean
+  \item
+    To ensure the sample data are normally distributed
+  \end{enumerate}
+\item
+  \textbf{A researcher hypothesizes that students from a particular
+  school will outperform the state average on a given test. What type of
+  test should be conducted?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Directional test (two-tailed/two-sided)
+  \end{enumerate}
+
+  \textbf{b. Nondirectional test (one-tailed/one-sided)}
+\item
+  \textbf{A critical value defines the cutoff point that separates the
+  rejection region from the non-rejection region in a hypothesis test.}
+
+  \textbf{a. True}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \tightlist
+  \item
+    False
+  \end{enumerate}
+\item
+  \textbf{What does a \(p\) value indicate in hypothesis testing?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    The probability that the null hypothesis is true
+  \end{enumerate}
+
+  \textbf{b. The likelihood of obtaining the observed result, or
+  something more extreme, if the null hypothesis is true}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    The size of the effect in the population
+  \item
+    The risk of committing a Type II error
+  \end{enumerate}
+\item
+  \textbf{What is the primary purpose of hypothesis testing in
+  research?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    To organize data into meaningful groups
+  \end{enumerate}
+
+  \textbf{b. To differentiate real patterns from random chance in data}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    To calculate the average of a sample population
+  \item
+    To ensure data is normally distributed
+  \end{enumerate}
+\end{enumerate}
+
+\section{Chapter 8}\label{chapter-8-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{When should a one-sample t test be used instead of a z test?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    When the population mean is known
+  \end{enumerate}
+
+  \textbf{b. When the population standard deviation is unknown}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    When the same size is less than 30
+  \item
+    When comparing two sample means
+  \end{enumerate}
+\item
+  \textbf{What is the formula for the degrees of freedom (df) in a
+  one-sample t test?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    \$df = n + 1 \$
+  \item
+    \(df = n \times 2\)
+  \end{enumerate}
+
+  \textbf{c.~\$df = n --1 \$}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    \(df = n^2\)
+  \end{enumerate}
+\item
+  \textbf{Which of the following is not an assumption of the one-sample
+  t test?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Random sampling
+  \item
+    Independence of observations
+  \end{enumerate}
+
+  \textbf{c.~Population variance of 0}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Dataset is approximately normally distributed
+  \end{enumerate}
+\item
+  \textbf{What is the purpose of calculating effect size, such as
+  Cohen's d?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    To determine statistical significance
+  \end{enumerate}
+
+  \textbf{b. To quantify the magnitude of a difference}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    To check if assumptions are met
+  \item
+    To calculate degrees of freedom
+  \end{enumerate}
+\item
+  \textbf{What is the risk of using a one-tailed test when the actual
+  effect is in the opposite direction?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Type I error
+  \item
+    Type II error
+  \end{enumerate}
+
+  \textbf{c.~Type III error}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Increased power
+  \end{enumerate}
+\end{enumerate}
+
+\section{Chapter 9}\label{chapter-9-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is the main difference between an independent-samples t
+  test and a related-samples t test?}
+
+  \textbf{a. Independent-samples t tests compare two separate groups,
+  while related-samples t tests compare two sets of scores from the same
+  group or matched individuals.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \item
+    Independent-samples t tests compare means to a population value,
+    while related-samples t tests compare variances.
+  \item
+    Independent-samples t tests require categorical data, while
+    related-samples t tests require continuous data.
+  \item
+    There is no difference; they are used interchangeably.
+  \end{enumerate}
+\item
+  \textbf{Which assumption is unique to independent-samples t tests but
+  not required for related-samples t tests?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Normality
+  \item
+    Random sampling
+  \end{enumerate}
+
+  \textbf{c.~Equal variances}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Independence of scores within groups
+  \end{enumerate}
+\item
+  \textbf{When would you use a one-sample t test instead of an
+  independent- or related-samples t test?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    When you have two independent groups to compare.
+  \end{enumerate}
+
+  \textbf{b. When you want to compare a single group to a known
+  population mean.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    When you compare pre- and post-test scores from the same group.
+  \item
+    When you have categorical data.
+  \end{enumerate}
+\item
+  \textbf{You are conducting a study to compare the effectiveness of two
+  teaching methods on student performance. You have a small sample size
+  of just 16 students (8 students taught by different teachers in
+  different classrooms -- there is no reason to suggest they are
+  related) and the scores in your dataset are not normally distributed.
+  Which test should you use to compare these scores?}
+
+  \textbf{a. Mann-Whitney U test}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \item
+    Wilcoxon Matched-Pairs Signed-Ranks Test
+  \item
+    Independent-samples t test
+  \item
+    One-sample t test
+  \end{enumerate}
+\item
+  \textbf{Which effect size measure is commonly reported for
+  independent-samples t tests?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    \(r^2\)
+  \item
+    Phi coefficient
+  \end{enumerate}
+
+  \textbf{c.~Cohen's \(d\)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Omega
+  \end{enumerate}
+\end{enumerate}
+
+\section{Chapter 10}\label{chapter-10-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is the primary purpose of a One-Way ANOVA?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    To compare the means of two groups
+  \end{enumerate}
+
+  \textbf{b. To compare the means of three or more groups}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    To analyze relationships between continuous variables
+  \item
+    To assess correlations between independent and dependent variables
+  \end{enumerate}
+\item
+  \textbf{Which of the following increases the risk of a Type I error
+  when comparing multiple groups?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Failing to apply a correction for multiple comparisons (e.g.,
+    Bonferroni correction)
+  \end{enumerate}
+
+  \textbf{b. Running multiple t tests on the same data set}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    Including covariates in the analysis
+  \item
+    Increasing sample size
+  \end{enumerate}
+\item
+  \textbf{Which test is the most conservative post hoc method for
+  controlling Type I error?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Tukey's HSD
+  \item
+    Fisher's LSD
+  \end{enumerate}
+
+  \textbf{c.~Bonferroni test}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Kruskal-Wallis Test
+  \end{enumerate}
+\item
+  \textbf{The Kruskal-Wallis Test is best suited for which type of
+  data?}
+
+  \textbf{a. Ordinal data or non-normal distributions}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \item
+    Normally distributed interval data
+  \item
+    Binary data
+  \item
+    Continuous data
+  \end{enumerate}
+\item
+  \textbf{What does homogeneity of variance mean in ANOVA?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    All groups have the same sample size
+  \item
+    The dependent variable is normally distributed
+  \end{enumerate}
+
+  \textbf{c.~The variances of the dependent variable are similar across
+  groups}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    There is no interaction effect between variables
+  \end{enumerate}
+\item
+  \textbf{What distinguishes a factorial ANOVA from a one-way ANOVA?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    It compares means between more than two groups.
+  \end{enumerate}
+
+  \textbf{b. It examines the effects of two or more independent
+  variables and their interactions on a dependent variable.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    It includes covariates to control for variability in the dependent
+    variable.
+  \item
+    It is used for nonparametric data.
+  \end{enumerate}
+\item
+  \textbf{Which of the following is an example of a factorial ANOVA
+  design?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Comparing the mean scores of students across three different
+    teaching methods.
+  \item
+    Assessing the correlation between test scores and student
+    motivation.
+  \item
+    Testing for differences in a single group's test scores across three
+    different time points.
+  \end{enumerate}
+
+  \textbf{d.~Analyzing the effects of teaching method (lecture
+  vs.~inquiry-based) and student age group (young vs.~adult) on test
+  scores.}
+\item
+  \textbf{What is the effect size measure commonly used in ANOVA to
+  estimate the proportion of variance explained by the independent
+  variable?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Pearson's r
+  \end{enumerate}
+
+  \textbf{b. Eta Squared}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    Cronbach's Alpha
+  \item
+    Chi-Squared
+  \end{enumerate}
+\end{enumerate}
+
+\section{Chapter 11}\label{chapter-11-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is the main purpose of Pearson's correlation coefficient
+  (\(r\)) in correlational analysis}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    To compare means across groups
+  \item
+    To measure the extent of causation between two variables
+  \end{enumerate}
+
+  \textbf{c.~To measure the direction and strength of a relationship
+  between two variables}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    To test for the significance of regression equations
+  \end{enumerate}
+\item
+  \textbf{Which of the following is NOT an assumption of correlational
+  analysis?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Linearity
+  \item
+    Homoscedasticity
+  \end{enumerate}
+
+  \textbf{c.~Causality}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Normality
+  \end{enumerate}
+\item
+  \textbf{What does a Pearson's r value of 0 indicate?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    A strong positive correlation
+  \end{enumerate}
+
+  \textbf{b. No correlation}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    A strong negative correlation
+  \item
+    A perfect correlation
+  \end{enumerate}
+\item
+  \textbf{Which statistical method is used when investigating a
+  relationship between a continuous variable and a dichotomous
+  variable?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Pearson's r
+  \item
+    Spearman's rho
+  \end{enumerate}
+
+  \textbf{c.~Point-biserial correlation}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    ANOVA
+  \end{enumerate}
+\item
+  \textbf{What does the assumption of homoscedasticity in correlational
+  analysis require?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    The data must form a straight line.
+  \item
+    The variables must be normally distributed.
+  \item
+    The sample size must be large enough.
+  \end{enumerate}
+
+  \textbf{d.~The spread of data points must be consistent above and
+  below the line across the entire range.}
+\end{enumerate}
+
+\section{Chapter 12}\label{chapter-12-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What does the slope (b) in a simple linear regression equation
+  represent?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    The predicted value of Y when X=0
+  \item
+    The change in X relative to Y
+  \end{enumerate}
+
+  \textbf{c.~The change in Y for a one-unit change in X}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    The coefficient of determination
+  \end{enumerate}
+\item
+  \textbf{What does \(R^2\) represent in simple linear regression
+  analysis?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    The correlation between independent variables
+  \end{enumerate}
+
+  \textbf{b. The proportion of variance in Y explained by X}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    The slope of the regression line
+  \item
+    The standard error of the residuals
+  \end{enumerate}
+\item
+  \textbf{What does tolerance measure in regression analysis?}
+
+  \textbf{a. The extent of multicollinearity among independent
+  variables}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \item
+    The proportion of variance in the dependent variable explained by
+    predictors
+  \item
+    The normality of residuals
+  \item
+    The degree of model fit
+  \end{enumerate}
+\item
+  \textbf{What happens if a model includes highly correlated independent
+  variables?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    The dependent variable becomes unreliable
+  \end{enumerate}
+
+  \textbf{b. The coefficients of the independent variables become
+  unstable}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    The model fit ({[}Equation{]}) will always decrease
+  \item
+    The assumption of linearity is violated
+  \end{enumerate}
+\item
+  \textbf{What does homoscedasticity mean in regression analysis?}
+
+  \textbf{a. The residuals have a consistent spread across all predicted
+  values}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \item
+    The independent variables are not correlated
+  \item
+    The predictors have no relationship with the error term
+  \item
+    The regression coefficients are stable across models
+  \end{enumerate}
+\end{enumerate}
+
+\section{Chapter 13}\label{chapter-13-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{What is the key advantage of using a repeated-measures ANOVA?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    It eliminates the need for a dependent variable.
+  \end{enumerate}
+
+  \textbf{b. It reduces error variance by accounting for individual
+  differences.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    It allows for the inclusion of multiple dependent variables.
+  \item
+    It does not require any statistical assumptions.
+  \end{enumerate}
+\item
+  \textbf{What does the term ``sphericity'' refer to in the context of
+  repeated-measures ANOVA?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Equal variances within each group.
+  \item
+    Equal sample sizes across groups.
+  \end{enumerate}
+
+  \textbf{c.~Equal variances of differences between all combinations of
+  related groups.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Equal means across all groups.
+  \end{enumerate}
+\item
+  \textbf{What is the recommended post hoc procedure for a
+  repeated-measures ANOVA to control for Type I error?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Tukey's HSD
+  \end{enumerate}
+
+  \textbf{b. Bonferroni correction}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    Fisher's LSD
+  \item
+    Scheffé test
+  \end{enumerate}
+\item
+  \textbf{What does a significant result in a repeated-measures ANOVA
+  indicate?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    All group means are equal.
+  \item
+    The dependent variable is unrelated to the conditions tested.
+  \item
+    The assumptions of sphericity have been violated.
+  \end{enumerate}
+
+  \textbf{d.~There is a difference in at least one pair of group means.}
+\item
+  \textbf{What does ``partial eta squared'' (\(η^2_p\)) represent in
+  repeated-measures ANOVA?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    The total variation in the dependent variable.
+  \end{enumerate}
+
+  \textbf{b. The proportion of total variance explained by
+  between-groups effects after accounting for between-persons variance.}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    The difference between the group means.
+  \item
+    The degree of correlation between independent and dependent
+    variables.
+  \end{enumerate}
+\item
+  \textbf{What is the role of a covariate in ANCOVA?}
+
+  \textbf{a. To control for variability in the dependent variable that
+  is unrelated to the independent variable(s)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \item
+    To act as an additional independent variable
+  \item
+    To replace the independent variable in the model
+  \item
+    To reduce between-group variance
+  \end{enumerate}
+\end{enumerate}
+
+\section{Chapter 14}\label{chapter-14-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Which of the following is NOT a purpose of meta-analysis?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Identifying the central tendency or common effect across studies
+  \item
+    Exploring variability in effect sizes
+  \end{enumerate}
+
+  \textbf{c.~Developing new experimental theories}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    Explaining why variation in effect sizes occurs
+  \end{enumerate}
+\item
+  \textbf{A propensity model is typically used to:}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Measure the direct effect of a treatment variable
+  \end{enumerate}
+
+  \textbf{b. Estimate the likelihood of receiving a treatment based on
+  observed characteristics}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    Compare independent variables across different models
+  \item
+    Simplify complex data into manageable clusters
+  \end{enumerate}
+\item
+  \textbf{What is a key requirement for using Multilevel Modeling (MLM)
+  effectively?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    A minimum sample size of 50 participants
+  \item
+    Randomized controlled trials only
+  \end{enumerate}
+
+  \textbf{c.~Large datasets with at least 20-30 groups of 20-30
+  individuals per group}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    A focus on theoretical over empirical studies
+  \end{enumerate}
+\item
+  \textbf{Which of the following is a key benefit of Structural Equation
+  Modeling (SEM) over traditional regression analysis?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    It requires fewer participants to yield accurate results
+  \item
+    It eliminates the need for latent variables
+  \end{enumerate}
+
+  \textbf{c.~It allows the inclusion of multiple dependent variables and
+  mediating variables}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{3}
+  \tightlist
+  \item
+    It reduces data complexity by eliminating endogenous predictors
+  \end{enumerate}
+\item
+  \textbf{What is the minimum number of studies generally required to
+  conduct a meta-analysis that explores variation?}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Two studies
+  \end{enumerate}
+
+  \textbf{b. Three studies}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{2}
+  \item
+    Four studies
+  \item
+    Twenty studies
+  \end{enumerate}
+\end{enumerate}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}

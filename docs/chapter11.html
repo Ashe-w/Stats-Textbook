@@ -294,18 +294,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Answer Key</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summary</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -345,6 +333,25 @@ window.Quarto = {
   <li><a href="#spearmans-correlation" id="toc-spearmans-correlation" class="nav-link" data-scroll-target="#spearmans-correlation">2 Spearman’s Correlation</a></li>
   <li><a href="#point-biserial-correlation" id="toc-point-biserial-correlation" class="nav-link" data-scroll-target="#point-biserial-correlation">3 Point-Biserial Correlation</a></li>
   <li><a href="#chi-square-test-for-independence-1" id="toc-chi-square-test-for-independence-1" class="nav-link" data-scroll-target="#chi-square-test-for-independence-1">4 Chi-Square Test for Independence</a></li>
+  </ul></li>
+  <li><a href="#examining-relationships-between-two-variables-in-spss" id="toc-examining-relationships-between-two-variables-in-spss" class="nav-link" data-scroll-target="#examining-relationships-between-two-variables-in-spss">Examining Relationships Between Two Variables in SPSS</a>
+  <ul class="collapse">
+  <li><a href="#pearsons-correlation-1" id="toc-pearsons-correlation-1" class="nav-link" data-scroll-target="#pearsons-correlation-1">1 Pearson’s Correlation</a>
+  <ul class="collapse">
+  <li><a href="#visual-check-of-assumptions-1" id="toc-visual-check-of-assumptions-1" class="nav-link" data-scroll-target="#visual-check-of-assumptions-1">1.1 Visual Check of Assumptions</a></li>
+  <li><a href="#computing-pearsons-r-1" id="toc-computing-pearsons-r-1" class="nav-link" data-scroll-target="#computing-pearsons-r-1">1.2 Computing Pearson’s r</a></li>
+  </ul></li>
+  <li><a href="#spearmans-correlation-1" id="toc-spearmans-correlation-1" class="nav-link" data-scroll-target="#spearmans-correlation-1">2 Spearman’s Correlation</a>
+  <ul class="collapse">
+  <li><a href="#creating-quartile-variables" id="toc-creating-quartile-variables" class="nav-link" data-scroll-target="#creating-quartile-variables">2.1 Creating Quartile Variables</a></li>
+  <li><a href="#computing-spearmans-correlation" id="toc-computing-spearmans-correlation" class="nav-link" data-scroll-target="#computing-spearmans-correlation">2.2 Computing Spearman’s Correlation</a></li>
+  </ul></li>
+  <li><a href="#point-biserial-correlation-1" id="toc-point-biserial-correlation-1" class="nav-link" data-scroll-target="#point-biserial-correlation-1">3 Point-Biserial Correlation</a>
+  <ul class="collapse">
+  <li><a href="#checking-the-variable-coding" id="toc-checking-the-variable-coding" class="nav-link" data-scroll-target="#checking-the-variable-coding">3.1 Checking the Variable Coding</a></li>
+  <li><a href="#computing-the-point-biserial-correlation" id="toc-computing-the-point-biserial-correlation" class="nav-link" data-scroll-target="#computing-the-point-biserial-correlation">3.2 Computing the Point-Biserial Correlation</a></li>
+  </ul></li>
+  <li><a href="#chi-square-test-for-independence-2" id="toc-chi-square-test-for-independence-2" class="nav-link" data-scroll-target="#chi-square-test-for-independence-2">4 Chi-Square Test for Independence</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
   <ul class="collapse">
@@ -1093,6 +1100,225 @@ f_e = \frac{row \, total\, \times \,column \, total}{N}
 <h2 class="unnumbered anchored" data-anchor-id="chi-square-test-for-independence-1">4 Chi-Square Test for Independence</h2>
 <p>When both variables are categorical, we use a chi-square test to evaluate independence. Here, we examine the relationship between Gender (ST004D01T, where 1 = Female and 2 = Male) and Math Motivation (MATHMOT, where 0 = Not more motivated to do well in mathematics than other subjects and 1 = More motivated to do well in mathematics than other subjects).</p>
 <p>The contingency table shows the frequency of students’ motivation to do well in mathematics broken down by gender. The Chi-squared test yielded <span class="math inline">\(\chi^2(1)=23.12, \, p&lt;.001\)</span>, so we reject the null hypothesis of independence. This means there is a statistically significant association between gender and motivation to do well in mathematics.</p>
+<p>From the contingency table, male students have a higher proportion of reporting being more motivated to do well in mathematics compared to female students. This finding suggests that motivation to do well in mathematics may vary by gender, which could have implications for educational interventions or further research.</p>
+</section>
+</section>
+<section id="examining-relationships-between-two-variables-in-spss" class="level1 unnumbered">
+<h1 class="unnumbered">Examining Relationships Between Two Variables in SPSS</h1>
+<p>In this section, we demonstrate how to implement several methods from this Chapter in SPSS. We start with Pearson’s correlation for two continuous variables, then illustrate alternatives when data are ordinal or involve a dichotomous variable, and finish with a chi-square test for independence between two categorical variables.</p>
+<section id="pearsons-correlation-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="pearsons-correlation-1">1 Pearson’s Correlation</h2>
+<p>Here, we examine the relationship between students’ Reasoning scores (PV1MPRE) and Change &amp; Relationships scores (PV1MCCR), two mathematics sub-area scores from PISA reflecting different cognitive domains.</p>
+<section id="visual-check-of-assumptions-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="visual-check-of-assumptions-1">1.1 Visual Check of Assumptions</h3>
+<section id="linearity-scatterplot-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="linearity-scatterplot-1">1.1.1 Linearity: Scatterplot</h4>
+<p>Follow these steps to create a scatterplot in SPSS:</p>
+<p>1.Click Graphs &gt; Chart Builder.</p>
+<ol start="2" type="1">
+<li><p>If prompted, click OK to define the measurement level.</p></li>
+<li><p>In the Chart Builder window, choose Scatter/Dot from the Gallery.</p></li>
+<li><p>Drag the Simple Scatter plot into the chart preview area.</p></li>
+<li><p>Move PV1MPRE to the x-axis.</p></li>
+<li><p>Move PV1MCCR to the y-axis.</p></li>
+<li><p>Click OK.</p></li>
+</ol>
+<p>You will obtain a scatterplot showing the relationship between Math Reasoning and Change &amp; Relationships scores.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-15.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 11.15</figcaption>
+</figure>
+</div>
+<p>The points appear to follow a fairly straight-line pattern overall, suggesting that the relationship is approximately linear. There are some mild deviation at the lower end of the score range. However, given the large sample size and the relatively small departure, the linearity assumption is considered reasonably satisfied, and Pearson’s correlation remains appropriate for quantifying the association.</p>
+</section>
+<section id="homoscedasticity-residuals-vs-fitted-plot-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="homoscedasticity-residuals-vs-fitted-plot-1">1.1.2 Homoscedasticity: Residuals vs Fitted plot</h4>
+<p>To examine whether the variance of the residuals is approximately constant across fitted values, we need first fit a simple linear regression model and save the predicted values and residuals.</p>
+<p>Follow these steps:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Regression &gt; Linear.</p></li>
+<li><p>Move PV1MCCR into the Dependent box.</p></li>
+<li><p>Move PV1MPRE into the Independent(s) box.</p></li>
+<li><p>Click Save.</p></li>
+<li><p>Under Predicted Values, check Unstandardized.</p></li>
+<li><p>Under Residuals, check Unstandardized.</p></li>
+<li><p>Click Continue, then click OK.</p></li>
+</ol>
+<p>SPSS will then add two new variables to the dataset: one for the predicted values (PRE_1) and one for the residuals (RES_1).</p>
+<p>Next, create a scatterplot of residuals against predicted values:</p>
+<ol type="1">
+<li><p>Click Graphs &gt; Chart Builder.</p></li>
+<li><p>Choose Scatter/Dot from the Gallery.</p></li>
+<li><p>Drag Simple Scatter into the chart preview area.</p></li>
+<li><p>Move the saved predicted-value variable (PRE_1) to the x-axis.</p></li>
+<li><p>Move the saved residual variable (RES_1 to the y-axis.</p></li>
+<li><p>Click OK.</p></li>
+</ol>
+<p>SPSS will produce plot as follows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-16.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 11.16</figcaption>
+</figure>
+</div>
+<p>The residuals appear to be fairly evenly scattered around zero across the entire range of fitted values, without forming a clear funnel shape or systematic curve. There are a few points in the middle range of the fitted values with relatively lower residuals, which may be considered mild outliers. However, they are not extreme enough to indicate severe heteroscedasticity (i.e., unequal variance of residuals). Overall, this indicates that the variance of the residuals is approximately constant, meaning the homoscedasticity assumption is reasonably satisfied.</p>
+</section>
+<section id="normality-qq-plots-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="normality-qq-plots-1">1.1.3 Normality: Q–Q plots</h4>
+<p>To examine whether each variable is approximately normally distributed, we can generate Q-Q plots using the Explore procedure in SPSS.</p>
+<p>Follow these steps:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Descriptive Statistics &gt; Explore.</p></li>
+<li><p>Move PV1MPRE and PV1MCCR into the Dependent List box.</p></li>
+<li><p>Click Plots.</p></li>
+<li><p>Check Normality plots with tests.</p></li>
+<li><p>Click Continue, then click OK.</p></li>
+</ol>
+<p>SPSS will produce Q-Q plots and normality test results for both variables.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-17.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 11.17</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-18.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 11.18</figcaption>
+</figure>
+</div>
+<p>In both plots, the points largely follow the 45-degree reference line, with only slight deviations at the extreme tails. This indicates that both variables are approximately normally distributed.</p>
+<p>Although the chapter mentions checking bivariate normality (the joint normal distribution of the two variables), examining the marginal normality of each variable is often a practical and informative first step. If both variables are roughly normally distributed individually and the scatterplot of their relationship appears linear (as we already checked), this generally supports the assumption of bivariate normality. Together, these results justify the use of Pearson correlation to examine the linear relationship between these two math sub-area scores.</p>
+</section>
+</section>
+<section id="computing-pearsons-r-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="computing-pearsons-r-1">1.2 Computing Pearson’s r</h3>
+<p>Now we compute Pearson’s correlation coefficient between PV1MPRE and PV1MCCR.</p>
+<p>The SPSS steps are as below:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Correlate &gt; Bivariate.</p></li>
+<li><p>Move PV1MPRE and PV1MCCR into the Variables box.</p></li>
+<li><p>Make sure Pearson is selected.</p></li>
+<li><p>Make sure Two-tailed is selected under Test of Significance.</p></li>
+<li><p>Click Options…, then under Missing Values, select Pairwise if you want SPSS to use all available data for each pair of variables.</p></li>
+<li><p>Click OK.</p></li>
+</ol>
+<p>SPSS will produce a correlation matrix containing the correlation coefficient, significance level, and sample size.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-19.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 11.19</figcaption>
+</figure>
+</div>
+<p>Strength and Direction of Association: The Pearson correlation coefficient is <span class="math inline">\(r = .852\)</span>, indicating a very strong positive linear relationship between Math Reasoning and Math Change &amp; Relationships scores. In practical terms, students who score higher in reasoning also tend to score higher in change &amp; relationships.</p>
+<p>Statistical Significance: <span class="math inline">\(p &lt; .001\)</span>, meaning the observed correlation is highly statistically significant. We can reject the null hypothesis of no linear association between the two sub-scores.</p>
+<p>Variance Explained: To further interpret the magnitude of this relationship, we can square the correlation coefficient to obtain the proportion of shared variance. Here, <span class="math inline">\(r^2 = .726\)</span>, which means that about 72.6% of the variance is shared between the two sub-area scores. This indicates a very large association between these two mathematics domains.</p>
+</section>
+</section>
+<section id="spearmans-correlation-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="spearmans-correlation-1">2 Spearman’s Correlation</h2>
+<p>When variables are ordinal, Spearman’s <span class="math inline">\(r_s\)</span> is preferred. Here, we convert the two math subscores into quartiles (1–4) and compute Spearman’s correlation.</p>
+<section id="creating-quartile-variables" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="creating-quartile-variables">2.1 Creating Quartile Variables</h3>
+<p>Before conducting Spearman’s correlation, we need to convert the two continuous variables into ordinal quartile variables.</p>
+<p>Follow these steps for PV1MPRE:</p>
+<ol type="1">
+<li><p>Click Transform &gt; Rank Cases.</p></li>
+<li><p>Move PV1MPRE into the Variables box.</p></li>
+<li><p>Under Rank Types, choose Ntiles.</p></li>
+<li><p>Enter 4 for the number of groups.</p></li>
+<li><p>Click OK.</p></li>
+</ol>
+<p>The default name of the created variable is NPV1MPRE. Repeat the same steps for PV1MCCR; the corresponding variable will be created with the default name NPV1MCCR. These new variables will code each student into one of four quartiles, from 1 to 4.</p>
+</section>
+<section id="computing-spearmans-correlation" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="computing-spearmans-correlation">2.2 Computing Spearman’s Correlation</h3>
+<p>Now we compute Spearman’s correlation using the two quartile variables. Follow these steps:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Correlate &gt; Bivariate.</p></li>
+<li><p>Move NPV1MPRE and NPV1MCCR into the Variables box.</p></li>
+<li><p>Check Spearman. You may uncheck Pearson if you want only the Spearman result.</p></li>
+<li><p>Make sure Two-tailed is selected.</p></li>
+<li><p>Click Options…, then under Missing Values, select Pairwise if desired.</p></li>
+<li><p>Click OK.</p></li>
+</ol>
+<p>Below are the results from SPSS：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-20.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 11.20</figcaption>
+</figure>
+</div>
+<p>The Spearman’s Rank-Order correlation (<span class="math inline">\(r_s=.799, \, p&lt;.001\)</span>) indicates a strong positive monotonic relationship between Math Reasoning and Change &amp; Relationships after converting the scores into quartiles. This means that as students’ quartile ranking on reasoning increases, their quartile ranking on change &amp; relationships tends to increase as well.</p>
+<p>Compared with the Pearson correlation (<span class="math inline">\(r = .852\)</span>), the Spearman’s <span class="math inline">\(r_s\)</span> is slightly lower. This is expected because transforming continuous scores into quartiles removes some of the fine-grained variability in the data, retaining only the relative rank order. As a result, Spearman’s <span class="math inline">\(r_s\)</span> captures the ordinal association but ignores within-quartile differences, leading to a slightly attenuated correlation coefficient.</p>
+</section>
+</section>
+<section id="point-biserial-correlation-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="point-biserial-correlation-1">3 Point-Biserial Correlation</h2>
+<p>Point-biserial correlation measures the relationship between a continuous variable and a dichotomous variable. Here we examine whether students who perceive mathematics as easier than other subjects (MATHEASE: 0 = No, 1 = Yes) have higher overall math scores (PV1MATH).</p>
+<section id="checking-the-variable-coding" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="checking-the-variable-coding">3.1 Checking the Variable Coding</h3>
+<p>Before conducting the analysis, it is important to verify how the dichotomous variable is coded. To do this, go to the Variable View in SPSS and locate MATHEASE. In the Values column, click the cell to view the assigned labels. Confirm that the variable is coded as:</p>
+<p>0 = No 1 = Yes</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-21.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Fig 11.21</figcaption>
+</figure>
+</div>
+<p>This is important because the interpretation of the correlation depends on which category is coded as 1.</p>
+</section>
+<section id="computing-the-point-biserial-correlation" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="computing-the-point-biserial-correlation">3.2 Computing the Point-Biserial Correlation</h3>
+<p>In SPSS, point-biserial correlation is computed using the same Bivariate Correlations procedure used for Pearson’s correlation, as long as the dichotomous variable is coded numerically. The steps are as follows:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Correlate &gt; Bivariate.</p></li>
+<li><p>Move MATHEASE and PV1MATH into the Variables box.</p></li>
+<li><p>Make sure Pearson is selected.</p></li>
+<li><p>Make sure Two-tailed is selected.</p></li>
+<li><p>Click Options…, then under Missing Values, select Pairwise if desired.</p></li>
+<li><p>Click OK.</p></li>
+</ol>
+<p>SPSS will produce a correlation matrix :</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-22.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 11.22</figcaption>
+</figure>
+</div>
+<p>The point-biserial correlation between perception of mathematics as easier than other subjects and overall math score is <span class="math inline">\(r_{pb} = .108\)</span>, with <span class="math inline">\(p &lt; .001\)</span>. This result indicates a significantly positive but small association between perceiving mathematics as easier and actual math performance: students who report finding mathematics easier tend to score slightly higher on average.</p>
+</section>
+</section>
+<section id="chi-square-test-for-independence-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="chi-square-test-for-independence-2">4 Chi-Square Test for Independence</h2>
+<p>When both variables are categorical, we use a chi-square test to evaluate independence. Here, we examine the relationship between Gender (ST004D01T, where 1 = Female and 2 = Male) and Math Motivation (MATHMOT, where 0 = Not more motivated to do well in mathematics than other subjects and 1 = More motivated to do well in mathematics than other subjects).</p>
+<p>Follow these steps to create the contingency table and run the test:</p>
+<ol type="1">
+<li><p>Click Analyze &gt; Descriptive Statistics &gt; Crosstabs.</p></li>
+<li><p>Move ST004D01T into the TargetList box.</p></li>
+<li><p>Move MATHMOT into the Column(s) box.</p></li>
+<li><p>Click Statistics, then check Chi-square.</p></li>
+<li><p>Click Continue.</p></li>
+<li><p>Click Cells, then check Observed and Expected. You may also check Row percentages or Column percentages to help with interpretation.</p></li>
+<li><p>Click Continue, then click OK.</p></li>
+</ol>
+<p>SPSS will produce a contingency table and the chi-square test results.</p>
+<p>Contingency table:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-23.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 11.23</figcaption>
+</figure>
+</div>
+<p>Chi-square test:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter11/fig11-24.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Fig 11.24</figcaption>
+</figure>
+</div>
+<p>The contingency table shows the frequency of students’ motivation to do well in mathematics broken down by gender. The Chi-squared test yielded <span class="math inline">\(\chi^2(1) = 23.12, \, p &lt; .001\)</span>, so we reject the null hypothesis of independence. This means there is a statistically significant association between gender and motivation to do well in mathematics.</p>
 <p>From the contingency table, male students have a higher proportion of reporting being more motivated to do well in mathematics compared to female students. This finding suggests that motivation to do well in mathematics may vary by gender, which could have implications for educational interventions or further research.</p>
 </section>
 </section>

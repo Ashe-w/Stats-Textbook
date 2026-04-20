@@ -117,7 +117,9 @@ ggplot() +
   theme_minimal(base_size = 12) +
   theme(
     legend.position = "top",
-    plot.title = element_text(hjust = 0.5)
+    plot.title = element_text(hjust = 0.5),
+    axis.line.x = element_line(color = "black"),
+    axis.ticks.x = element_line(color = "black"),
   ) +
   # manual scales
   scale_color_manual(values = all_color_values) +
@@ -218,7 +220,9 @@ ggplot(df_plot, aes(x = x, y = y, color = curve, linetype = curve)) +
   theme(
     legend.position = c(0.78, 0.88),
     legend.background = element_rect(fill = "white", color = "grey80"),
-    plot.title = element_text(hjust = 0.5)
+    plot.title = element_text(hjust = 0.5),
+    axis.line.x = element_line(color = "black"),
+    axis.ticks.x = element_line(color = "black")
   ) +
   coord_cartesian(xlim = c(410, 470)) +
   scale_x_continuous(breaks = seq(410, 470, by = 10))
@@ -302,7 +306,9 @@ ggplot(dens, aes(x = x, y = y)) +
   theme(
     plot.title = element_text(hjust = 0.5),
     legend.position = c(0.78, 0.88),
-    legend.background = element_rect(fill = "white", color = "grey80")
+    legend.background = element_rect(fill = "white", color = "grey80"),
+    axis.line.x = element_line(color = "black"),
+    axis.ticks.x = element_line(color = "black")
   ) +
   # manual styling to match your picture
   scale_color_manual(values = c(
@@ -455,7 +461,9 @@ ggplot(data, aes(x, y)) +
     plot.margin = margin(0,0,0,0),
     axis.title.y = element_blank(),
     axis.text.y = element_blank(),
-    axis.ticks.y = element_blank()
+    axis.ticks.y = element_blank(),
+    axis.line.x = element_line(color = "black"),
+    axis.ticks.x = element_line(color = "black")
   )
 ```
 
@@ -786,7 +794,9 @@ ggplot(df, aes(x = x, y = density, color = df_label)) +
     panel.grid.minor = element_line(linewidth = 0.2),
     legend.position = c(0.86, 0.82),  # top-right inside
     legend.background = element_rect(fill = "white", color = "grey70"),
-    legend.key = element_rect(fill = "white", color = NA)
+    legend.key = element_rect(fill = "white", color = NA),
+    axis.line = element_line(color = "black"),
+    axis.ticks = element_line(color = "black"),
   )
 ```
 For the chi-square goodness-of-fit test, the degrees of freedom are equal to k -1, where k = the number of categories or levels within your variable. Our variable is gender, and participants were confined to just two categories (k = 2), so we have just 1 degree of freedom. Since we are using α = 0.05, we can flip to the Critical Values of Chi-Square ($x^2$) in the appendix and find that the critical value is 3.84.  
@@ -893,7 +903,9 @@ ggplot() +
   theme(
     legend.position = c(0.80, 0.82),
     legend.background = element_rect(fill = "white", color = "grey70"),
-    legend.key = element_rect(fill = "white")
+    legend.key = element_rect(fill = "white"),
+    axis.line.x = element_line(color = "black"),
+    axis.ticks.x = element_line(color = "black")
   )
 ```
 One thing you might notice about this table of critical values is that unlike most of the tables we have used, the critical value increases as degrees of freedom increase. The reason for this will make sense when you see the formula for the test statistic. Another important point is that the chi-square test is always one-tailed, even though our alternative hypothesis does not imply any specific direction for the difference. Instead, we test for the total deviation from the expected values. We reject the null hypothesis if our observed chi-square statistic exceeds the critical value.  
@@ -1023,7 +1035,9 @@ ggplot() +
   theme(
     legend.position = c(0.78, 0.82),
     legend.background = element_rect(fill = "white", color = "grey70"),
-    legend.key = element_rect(fill = "white", color = NA)
+    legend.key = element_rect(fill = "white", color = NA),
+    axis.line.x = element_line(color = "black"),
+    axis.ticks.x = element_line(color = "black")
   ) +
   scale_color_manual(values = c(
     "Chi-Square Distribution (df = 1)" = "blue",

@@ -143,7 +143,7 @@ LIST Prob3.
 
 **Results:** 
 
-![Fig 5.s.8](chapter5/fig5s-8.png){fig-align="left" width=15%}
+![Fig 5.s.8](chapter5/fig5s-8.png){fig-align="left" width=10%}
 
 **Interpretation:** 
 

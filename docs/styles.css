@@ -9,6 +9,7 @@
 .formula-table td{
   padding: 1rem 1.25rem;
   vertical-align: middle;
+  border: 1px solid #ccc;
 }
 
 .formula-table thead th{
@@ -284,4 +285,23 @@ pre.spss code {
 
 .comparison-table tr:nth-child(even) {
   background-color: #fafafa;
+}
+.table-scroll {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.table-scroll table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.table-scroll th,
+.table-scroll td {
+  border: 1px solid #ccc;
+  padding: 0.4rem 0.6rem;
+  text-align: center;
 }

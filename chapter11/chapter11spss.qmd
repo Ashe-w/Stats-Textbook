@@ -1,0 +1,255 @@
+# Examining Relationships Between Two Variables in SPSS {.unnumbered}
+
+ 
+
+In this section, we demonstrate how to implement several methods from this Chapter in SPSS. We start with Pearson’s correlation for two continuous variables, then illustrate alternatives when data are ordinal or involve a dichotomous variable, and finish with a chi-square test for independence between two categorical variables. 
+
+## 1	Pearson’s Correlation {.unnumbered}
+
+Here, we examine the relationship between students’ Reasoning scores (PV1MPRE) and Change & Relationships scores (PV1MCCR), two mathematics sub-area scores from PISA reflecting different cognitive domains. 
+
+### 1.1	Visual Check of Assumptions {.unnumbered}
+
+#### 1.1.1	Linearity: Scatterplot {.unnumbered}
+
+Follow these steps to create a scatterplot in SPSS: 
+
+1.Click Graphs > Chart Builder. 
+
+2. If prompted, click OK to define the measurement level. 
+
+3. In the Chart Builder window, choose Scatter/Dot from the Gallery. 
+
+4. Drag the Simple Scatter plot into the chart preview area. 
+
+5. Move PV1MPRE to the x-axis. 
+
+6. Move PV1MCCR to the y-axis. 
+
+7. Click OK. 
+
+You will obtain a scatterplot showing the relationship between Math Reasoning and Change & Relationships scores. 
+
+![Fig 11.15](chapter11/fig11-15.png){fig-align="center" width=60%}
+
+The points appear to follow a fairly straight-line pattern overall, suggesting that the relationship is approximately linear. There are some mild deviation at the lower end of the score range. However, given the large sample size and the relatively small departure, the linearity assumption is considered reasonably satisfied, and Pearson’s correlation remains appropriate for quantifying the association. 
+
+#### 1.1.2	Homoscedasticity: Residuals vs Fitted plot {.unnumbered}
+
+To examine whether the variance of the residuals is approximately constant across fitted values, we need first fit a simple linear regression model and save the predicted values and residuals. 
+
+Follow these steps: 
+
+1. Click Analyze > Regression > Linear. 
+
+2. Move PV1MCCR into the Dependent box. 
+
+3. Move PV1MPRE into the Independent(s) box. 
+
+4. Click Save. 
+
+5. Under Predicted Values, check Unstandardized. 
+
+6. Under Residuals, check Unstandardized. 
+
+7. Click Continue, then click OK. 
+
+SPSS will then add two new variables to the dataset: one for the predicted values (PRE_1) and one for the residuals (RES_1). 
+
+Next, create a scatterplot of residuals against predicted values: 
+
+1. Click Graphs > Chart Builder. 
+
+2. Choose Scatter/Dot from the Gallery. 
+
+3. Drag Simple Scatter into the chart preview area.
+
+4. Move the saved predicted-value variable (PRE_1) to the x-axis. 
+
+5. Move the saved residual variable (RES_1 to the y-axis. 
+
+6. Click OK. 
+
+SPSS will produce plot as follows: 
+
+![Fig 11.16](chapter11/fig11-16.png){fig-align="center" width=60%}
+
+The residuals appear to be fairly evenly scattered around zero across the entire range of fitted values, without forming a clear funnel shape or systematic curve. There are a few points in the middle range of the fitted values with relatively lower residuals, which may be considered mild outliers. However, they are not extreme enough to indicate severe heteroscedasticity (i.e., unequal variance of residuals). Overall, this indicates that the variance of the residuals is approximately constant, meaning the homoscedasticity assumption is reasonably satisfied. 
+
+#### 1.1.3	Normality: Q–Q plots {.unnumbered}
+
+To examine whether each variable is approximately normally distributed, we can generate Q-Q plots using the Explore procedure in SPSS. 
+
+Follow these steps: 
+
+1. Click Analyze > Descriptive Statistics > Explore.
+
+2. Move PV1MPRE and PV1MCCR into the Dependent List box. 
+
+3. Click Plots. 
+
+4. Check Normality plots with tests. 
+
+5. Click Continue, then click OK. 
+
+SPSS will produce Q-Q plots and normality test results for both variables. 
+
+![Fig 11.17](chapter11/fig11-17.png){fig-align="center" width=60%}
+
+     
+![Fig 11.18](chapter11/fig11-18.png){fig-align="center" width=60%}
+ 
+
+In both plots, the points largely follow the 45-degree reference line, with only slight deviations at the extreme tails. This indicates that both variables are approximately normally distributed. 
+
+Although the chapter mentions checking bivariate normality (the joint normal distribution of the two variables), examining the marginal normality of each variable is often a practical and informative first step. If both variables are roughly normally distributed individually and the scatterplot of their relationship appears linear (as we already checked), this generally supports the assumption of bivariate normality. Together, these results justify the use of Pearson correlation to examine the linear relationship between these two math sub-area scores. 
+
+### 1.2	Computing Pearson’s r {.unnumbered}
+
+Now we compute Pearson’s correlation coefficient between PV1MPRE and PV1MCCR. 
+
+The SPSS steps are as below: 
+
+1. Click Analyze > Correlate > Bivariate. 
+
+2. Move PV1MPRE and PV1MCCR into the Variables box. 
+
+3. Make sure Pearson is selected. 
+
+4. Make sure Two-tailed is selected under Test of Significance. 
+
+5. Click Options…, then under Missing Values, select Pairwise if you want SPSS to use all available data for each pair of variables. 
+
+6. Click OK. 
+
+SPSS will produce a correlation matrix containing the correlation coefficient, significance level, and sample size. 
+
+![Fig 11.19](chapter11/fig11-19.png){fig-align="center" width=60%}
+
+Strength and Direction of Association: The Pearson correlation coefficient is $r = .852$, indicating a very strong positive linear relationship between Math Reasoning and Math Change & Relationships scores. In practical terms, students who score higher in reasoning also tend to score higher in change & relationships. 
+
+Statistical Significance: $p < .001$, meaning the observed correlation is highly statistically significant. We can reject the null hypothesis of no linear association between the two sub-scores. 
+
+Variance Explained: To further interpret the magnitude of this relationship, we can square the correlation coefficient to obtain the proportion of shared variance. Here, $r^2 = .726$, which means that about 72.6% of the variance is shared between the two sub-area scores. This indicates a very large association between these two mathematics domains. 
+
+ 
+
+## 2	Spearman’s Correlation {.unnumbered}
+
+When variables are ordinal, Spearman’s $r_s$ is preferred. Here, we convert the two math subscores into quartiles (1–4) and compute Spearman’s correlation. 
+
+### 2.1 Creating Quartile Variables {.unnumbered}
+
+Before conducting Spearman’s correlation, we need to convert the two continuous variables into ordinal quartile variables. 
+
+Follow these steps for PV1MPRE: 
+
+1. Click Transform > Rank Cases. 
+
+2. Move PV1MPRE into the Variables box. 
+
+3. Under Rank Types, choose Ntiles. 
+
+4. Enter 4 for the number of groups. 
+
+5. Click OK. 
+
+The default name of the created variable is NPV1MPRE. Repeat the same steps for PV1MCCR; the corresponding variable will be created with the default name NPV1MCCR. These new variables will code each student into one of four quartiles, from 1 to 4. 
+
+### 2.2 Computing Spearman’s Correlation {.unnumbered}
+
+Now we compute Spearman’s correlation using the two quartile variables. Follow these steps: 
+
+1. Click Analyze > Correlate > Bivariate. 
+
+2. Move NPV1MPRE and NPV1MCCR into the Variables box. 
+
+3. Check Spearman. You may uncheck Pearson if you want only the Spearman result. 
+
+4. Make sure Two-tailed is selected. 
+
+5. Click Options…, then under Missing Values, select Pairwise if desired. 
+
+6. Click OK. 
+
+Below are the results from SPSS： 
+
+![Fig 11.20](chapter11/fig11-20.png){fig-align="center" width=60%}
+
+The Spearman’s Rank-Order correlation ($r_s=.799, \, p<.001$) indicates a strong positive monotonic relationship between Math Reasoning and Change & Relationships after converting the scores into quartiles. This means that as students’ quartile ranking on reasoning increases, their quartile ranking on change & relationships tends to increase as well. 
+
+Compared with the Pearson correlation ($r = .852$), the Spearman’s $r_s$ is slightly lower. This is expected because transforming continuous scores into quartiles removes some of the fine-grained variability in the data, retaining only the relative rank order. As a result, Spearman’s $r_s$ captures the ordinal association but ignores within-quartile differences, leading to a slightly attenuated correlation coefficient. 
+
+## 3	Point-Biserial Correlation {.unnumbered}
+
+Point-biserial correlation measures the relationship between a continuous variable and a dichotomous variable. Here we examine whether students who perceive mathematics as easier than other subjects (MATHEASE: 0 = No, 1 = Yes) have higher overall math scores (PV1MATH). 
+
+### 3.1 Checking the Variable Coding {.unnumbered}
+
+Before conducting the analysis, it is important to verify how the dichotomous variable is coded. To do this, go to the Variable View in SPSS and locate MATHEASE. In the Values column, click the cell to view the assigned labels. Confirm that the variable is coded as: 
+
+0 = No 
+1 = Yes 
+
+![Fig 11.21](chapter11/fig11-21.png){fig-align="center" width=40%}
+
+This is important because the interpretation of the correlation depends on which category is coded as 1. 
+
+### 3.2 Computing the Point-Biserial Correlation {.unnumbered}
+
+In SPSS, point-biserial correlation is computed using the same Bivariate Correlations procedure used for Pearson’s correlation, as long as the dichotomous variable is coded numerically. The steps are as follows: 
+
+1. Click Analyze > Correlate > Bivariate. 
+
+2. Move MATHEASE and PV1MATH into the Variables box. 
+
+3. Make sure Pearson is selected. 
+
+4. Make sure Two-tailed is selected. 
+
+5. Click Options…, then under Missing Values, select Pairwise if desired. 
+
+6. Click OK. 
+
+SPSS will produce a correlation matrix : 
+
+![Fig 11.22](chapter11/fig11-22.png){fig-align="center" width=60%}
+
+The point-biserial correlation between perception of mathematics as easier than other subjects and overall math score is $r_{pb} = .108$, with $p < .001$. This result indicates a significantly positive but small association between perceiving mathematics as easier and actual math performance: students who report finding mathematics easier tend to score slightly higher on average. 
+
+
+
+## 4	Chi-Square Test for Independence {.unnumbered}
+
+When both variables are categorical, we use a chi-square test to evaluate independence. Here, we examine the relationship between Gender (ST004D01T, where 1 = Female and 2 = Male) and Math Motivation (MATHMOT, where 0 = Not more motivated to do well in mathematics than other subjects and 1 = More motivated to do well in mathematics than other subjects). 
+
+Follow these steps to create the contingency table and run the test: 
+
+1. Click Analyze > Descriptive Statistics > Crosstabs. 
+
+2. Move ST004D01T into the TargetList box. 
+
+3. Move MATHMOT into the Column(s) box. 
+
+4. Click Statistics, then check Chi-square. 
+
+5. Click Continue. 
+
+6. Click Cells, then check Observed and Expected. You may also check Row percentages or Column percentages to help with interpretation. 
+
+7. Click Continue, then click OK. 
+
+
+SPSS will produce a contingency table and the chi-square test results. 
+
+Contingency table: 
+
+![Fig 11.23](chapter11/fig11-23.png){fig-align="center" width=60%}
+
+Chi-square test: 
+
+![Fig 11.24](chapter11/fig11-24.png){fig-align="center" width=40%}
+
+The contingency table shows the frequency of students’ motivation to do well in mathematics broken down by gender. The Chi-squared test yielded $\chi^2(1) = 23.12, \, p < .001$, so we reject the null hypothesis of independence. This means there is a statistically significant association between gender and motivation to do well in mathematics. 
+
+From the contingency table, male students have a higher proportion of reporting being more motivated to do well in mathematics compared to female students. This finding suggests that motivation to do well in mathematics may vary by gender, which could have implications for educational interventions or further research. 

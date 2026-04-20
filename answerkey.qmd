@@ -190,901 +190,741 @@ Correct answers for each chapter are bolded.
 
  
 
-Chapter 4 
+## Chapter 4 
 
-Check Your Understanding  
+1. **What is the primary purpose of using a histogram in educational research?** 
 
- 
-
-What is the primary purpose of using a histogram in educational research? 
-
-To compare categories of data. 
-
-To display the relationship between two variables. 
-
-To summarize the frequency of continuous data grouped into intervals. 
-
-To show proportions of a whole. 
-
- 
-
-Which visualization method is best suited for identifying relationships or correlations between two variables? 
+    a. To compare categories of data. 
 
-Pie chart 
+    b. To display the relationship between two variables. 
 
-Box plot 
+    **c. To summarize the frequency of continuous data grouped into intervals.** 
 
-Scatterplot 
+    d. To show proportions of a whole. 
 
-Stem-and-leaf plot 
-
  
 
-In a box-and-whisker plot, the interquartile range (IQR) is represented by: 
+2. **Which visualization method is best suited for identifying relationships or correlations between two variables?** 
 
-The lines extending from the box to the smallest and largest values. 
+    a. Pie chart 
 
-The box itself, showing the range between the 25th and 75th percentiles. 
+    b. Box plot 
 
-The line in the center of the box representing the median. 
+    **c. Scatterplot**
 
-The individual dots outside the whiskers. 
+    d. Stem-and-leaf plot 
 
  
 
-What is a key advantage of tables in presenting data? 
+3. **In a box-and-whisker plot, the interquartile range (IQR) is represented by:** 
 
-They simplify relationships between variables visually. 
+    a. The lines extending from the box to the smallest and largest values. 
 
-They display trends and patterns intuitively. 
+    **b. The box itself, showing the range between the 25th and 75th percentiles.** 
 
-They highlight outliers in large datasets. 
+    c. The line in the center of the box representing the median. 
 
-They summarize data with precise values for comparison. 
+    d. The individual dots outside the whiskers. 
 
  
-
-What is the key difference between a bar chart and a histogram? 
-
-Bar charts use touching bars to represent continuous data, while histograms use separated bars for discrete data. 
-
-Bar charts use separated bars for discrete data, while histograms use touching bars for continuous data. 
 
-Bar charts are only used for percentages, while histograms are used for counts. 
+4. **What is a key advantage of tables in presenting data?** 
 
-There is no difference; the terms are interchangeable. 
+    a. They simplify relationships between variables visually. 
 
- 
-
-Chapter 5 
+    b. They display trends and patterns intuitively. 
 
-A distribution with high kurtosis has lighter tails than a normal distribution. 
+    c. They highlight outliers in large datasets. 
 
-True 
+    **d. They summarize data with precise values for comparison.** 
 
-False, high kurtosis indicates heavier tails than a normal distribution, meaning there is a higher likelihood of extreme values (outliers). 
-
  
 
-Which of the following values for skewness and kurtosis indicates that a distribution is approximately normal? 
+5. **What is the key difference between a bar chart and a histogram?**
 
-Skewness = 0.5, Kurtosis = 2.5 
+    a. Bar charts use touching bars to represent continuous data, while histograms use separated bars for discrete data. 
 
-Skewness = 0.25, Kurtosis = 0.5, for a distribution to be considered approximately normal, the values for skewness and kurtosis should fall between – 1 and 1.  
+    **b. Bar charts use separated bars for discrete data, while histograms use touching bars for continuous data.** 
 
-Skewness = 1.0, Kurtosis = 3.5 
+    c. Bar charts are only used for percentages, while histograms are used for counts. 
 
-Skewness = -2.0, Kurtosis = 4.0 
+    d. There is no difference; the terms are interchangeable. 
 
  
 
-What is the probability of a data point falling within 1 standard deviation of the mean in a normal distribution? 
+## Chapter 5 
 
-68%, The empirical rule (or 68-95-99.7 rule) describes how data is distributed in a normal distribution.  
+1. **A distribution with high kurtosis has lighter tails than a normal distribution.** 
 
-95% 
+    a. True 
 
-99.7% 
+    **b. False, high kurtosis indicates heavier tails than a normal distribution, meaning there is a higher likelihood of extreme values (outliers).** 
 
-50% 
-
  
 
-A standardized test has a mean score of 500 and a standard deviation of 100. What is the probability that a randomly selected student scores higher than 650? Use the z score formula and the standard normal distribution table to find the answer. 
+2. **Which of the following values for skewness and kurtosis indicates that a distribution is approximately normal?** 
 
-0.1056 (10.56%) 
+    a. Skewness = 0.5, Kurtosis = 2.5 
 
-0.1587 (15.87%) 
+    **b. Skewness = 0.25, Kurtosis = 0.5, for a distribution to be considered approximately normal, the values for skewness and kurtosis should fall between – 1 and 1.**  
 
-0.0668 (6.68%), calculate the z score: (650 – 500) / 100 = 1.5. Cumulative probability for z = 1.5 is .9332. Subtract the cumulative probability from 1: 1 - .9332 = .0668.  
+    c. Skewness = 1.0, Kurtosis = 3.5 
 
-0.0228 (2.28%) 
+    d. Skewness = -2.0, Kurtosis = 4.0 
 
  
-
-What is the purpose of converting raw data to z scores? 
 
-To reduce the range of the data. 
+3. **What is the probability of a data point falling within 1 standard deviation of the mean in a normal distribution?** 
 
-To standardize data for comparison across distributions, This allows for meaningful comparisons between datasets that may have different scales, units, or ranges. 
+    **a. 68%, The empirical rule (or 68-95-99.7 rule) describes how data is distributed in a normal distribution.**  
 
-To eliminate outliers. 
+    b. 95% 
 
-To calculate the mean and median more accurately. 
+    c. 99.7% 
 
-Chapter 6 
+    d. 50% 
 
  
 
-What is a sampling distribution? 
+4. **A standardized test has a mean score of 500 and a standard deviation of 100. What is the probability that a randomly selected student scores higher than 650? Use the z score formula and the standard normal distribution table to find the answer.** 
 
-A distribution of a population's characteristics 
+    a. 0.1056 (10.56%) 
 
-A distribution of a statistic (like a mean or proportion) calculated from all possible samples of a specific size, a sampling distribution represents the variability of a statistic, such as the mean, across all possible random samples of the same size from a population. 
+    b. 0.1587 (15.87%) 
 
-A list of all individual data points in a population 
+    **c. 0.0668 (6.68%), calculate the z score: (650 – 500) / 100 = 1.5. Cumulative probability for z = 1.5 is .9332. Subtract the cumulative probability from 1: 1 - .9332 = .0668.**  
 
-A random collection of data from a single sample 
+    d. 0.0228 (2.28%) 
 
  
 
-According to the central limit theorem, what happens to the sampling distribution of the sample mean as the sample size increases? 
+5. **What is the purpose of converting raw data to z scores?** 
 
-It becomes more skewed 
+    a. To reduce the range of the data. 
 
-It approximates a normal distribution, regardless of the population distribution, the Central Limit Theorem states that as the sample size grows larger (usually n ≥ 30), the sampling distribution of the sample mean will approach a normal distribution, even if the population distribution is not normal.  
+    **b. To standardize data for comparison across distributions, This allows for meaningful comparisons between datasets that may have different scales, units, or ranges.** 
 
-It moves closer to the smallest value in the sample 
+    c. To eliminate outliers. 
 
-It diverges from the population mean 
+    d. To calculate the mean and median more accurately. 
 
- 
-
-Which sampling technique ensures that every member of the population has an equal chance of being selected? 
 
-Convenience sampling 
 
-Purposive sampling 
 
-Random sampling, random sampling ensures fairness by giving each member of the population an equal probability of being chosen, reducing bias and improving representativeness. 
+## Chapter 6 
 
-Snowball sampling 
-
  
-
-What is the standard error of the mean (SEM), and how is it calculated? 
+1. **What is a sampling distribution?** 
 
-It is the variability of individual data points and is equal to the population standard deviation. 
+    a. A distribution of a population's characteristics 
 
-It is the standard deviation of the sampling distribution of sample means, calculated by dividing the sample standard deviation by the square root of the sample size, SEM quantifies how much the sample mean is likely to vary from the true population mean. It decreases as the sample size increases, which makes the estimate more precise.  
+    b. **A distribution of a statistic (like a mean or proportion) calculated from all possible samples of a specific size, a sampling distribution represents the variability of a statistic, such as the mean, across all possible random samples of the same size from a population.** 
 
-It measures the deviation of a single data point from the sample mean, using the formula SD/n. 
+    c. A list of all individual data points in a population 
 
-It is a fixed value representing the population variance. 
+    d. A random collection of data from a single sample 
 
  
 
-What happens to the sampling distribution of the sample mean if the population distribution is normal? 
+2. According to the central limit theorem, what happens to the sampling distribution of the sample mean as the sample size increases? 
 
-The sampling distribution will always be skewed, regardless of sample size. 
+a. It becomes more skewed 
 
-The sampling distribution will only be normal if the sample size is large. 
+b. **It approximates a normal distribution, regardless of the population distribution, the Central Limit Theorem states that as the sample size grows larger (usually n ≥ 30), the sampling distribution of the sample mean will approach a normal distribution, even if the population distribution is not normal.**  
 
-The sampling distribution will match the population distribution for any sample size. 
+c. It moves closer to the smallest value in the sample 
 
-The sampling distribution will be normal, regardless of sample size. If the population distribution is already normal, the sampling distribution of the sample mean will also be normal, even for small sample sizes. 
+d. It diverges from the population mean 
 
  
 
- 
+3. **Which sampling technique ensures that every member of the population has an equal chance of being selected?** 
 
- 
+    a. Convenience sampling 
 
- 
+    b. Purposive sampling 
 
- 
+    **c. Random sampling, random sampling ensures fairness by giving each member of the population an equal probability of being chosen, reducing bias and improving representativeness.** 
 
- 
+    d. Snowball sampling 
 
  
 
- 
+4. **What is the standard error of the mean (SEM), and how is it calculated?** 
 
- 
+    a. It is the variability of individual data points and is equal to the population standard deviation. 
 
- 
+    **b. It is the standard deviation of the sampling distribution of sample means, calculated by dividing the sample standard deviation by the square root of the sample size, SEM quantifies how much the sample mean is likely to vary from the true population mean. It decreases as the sample size increases, which makes the estimate more precise.**  
 
- 
+    c. It measures the deviation of a single data point from the sample mean, using the formula SD/n. 
 
- 
+    d. It is a fixed value representing the population variance. 
 
  
 
- 
+5. What happens to the sampling distribution of the sample mean if the population distribution is normal? 
 
- 
+    a. The sampling distribution will always be skewed, regardless of sample size. 
 
- 
+    b. The sampling distribution will only be normal if the sample size is large. 
 
- 
+    c. The sampling distribution will match the population distribution for any sample size. 
 
- 
+    **d. The sampling distribution will be normal, regardless of sample size. If the population distribution is already normal, the sampling distribution of the sample mean will also be normal, even for small sample sizes.**
 
  
 
  
 
- 
+## Chapter 7 
 
-Chapter 7 
 
-What is the purpose of setting an alpha level (α) in hypothesis testing? 
+1. **What is the purpose of setting an alpha level (α) in hypothesis testing?** 
 
-To determine the sample size required for the study 
+    a. To determine the sample size required for the study 
 
-To set the threshold probability for rejecting the null hypothesis 
+    **b. To set the threshold probability for rejecting the null hypothesis** 
 
-To calculate the confidence interval for the population mean 
+    c. To calculate the confidence interval for the population mean 
 
-To ensure the sample data are normally distributed 
+    d. To ensure the sample data are normally distributed 
 
  
 
-A researcher hypothesizes that students from a particular school will outperform the state average on a given test. What type of test should be conducted? 
+2. **A researcher hypothesizes that students from a particular school will outperform the state average on a given test. What type of test should be conducted?** 
 
-Directional test (two-tailed/two-sided) 
+    a. Directional test (two-tailed/two-sided) 
 
-Nondirectional test (one-tailed/one-sided)  
+    **b. Nondirectional test (one-tailed/one-sided)**  
 
  
 
-A critical value defines the cutoff point that separates the rejection region from the non-rejection region in a hypothesis test. 
+3. **A critical value defines the cutoff point that separates the rejection region from the non-rejection region in a hypothesis test.** 
 
-True 
+    **a. True** 
 
-False 
+    b. False 
 
  
 
-What does a p value indicate in hypothesis testing? 
+4. **What does a $p$ value indicate in hypothesis testing?** 
 
-The probability that the null hypothesis is true 
+    a. The probability that the null hypothesis is true 
 
-The likelihood of obtaining the observed result, or something more extreme, if the null hypothesis is true 
+    **b. The likelihood of obtaining the observed result, or something more extreme, if the null hypothesis is true** 
 
-The size of the effect in the population 
+    c. The size of the effect in the population 
 
-The risk of committing a Type II error 
+    d. The risk of committing a Type II error 
 
  
-
-What is the primary purpose of hypothesis testing in research? 
-
-To organize data into meaningful groups 
-
-To differentiate real patterns from random chance in data 
 
-To calculate the average of a sample population 
+5. **What is the primary purpose of hypothesis testing in research?** 
 
-To ensure data is normally distributed 
+    a. To organize data into meaningful groups 
 
- 
-
- 
-
- 
+    **b. To differentiate real patterns from random chance in data** 
 
- 
+    c. To calculate the average of a sample population 
 
- 
+    d. To ensure data is normally distributed 
 
- 
 
  
 
-Chapter 8 
+## Chapter 8 
 
- 
 
-When should a one-sample t test be used instead of a z test? 
+1. **When should a one-sample t test be used instead of a z test?** 
 
-When the population mean is known  
+    a. When the population mean is known  
 
-When the population standard deviation is unknown  
+    **b. When the population standard deviation is unknown**  
 
-When the same size is less than 30 
+    c. When the same size is less than 30 
 
-When comparing two sample means  
+    d. When comparing two sample means  
 
  
-
-What is the formula for the degrees of freedom (df) in a one-sample t test? 
 
-df = n + 1 
+2. **What is the formula for the degrees of freedom (df) in a one-sample t test?** 
 
-df = n x 2 
+    a. $df = n + 1 $
 
-df = n –1 
+    b. $df = n \times 2$ 
 
-df = 
-n2
-n
-2
- 
- 
+    **c. $df = n –1 $**
 
+    d. $df = n^2$
  
-
-Which of the following is not an assumption of the one-sample t test? 
-
-Random sampling 
-
-Independence of observations 
-
-Population variance of 0 
-
-Dataset is approximately normally distributed 
-
  
-
-What is the purpose of calculating effect size, such as Cohen’s d? 
 
-To determine statistical significance 
-
-To quantify the magnitude of a difference 
-
-To check if assumptions are met 
-
-To calculate degrees of freedom 
-
  
-
-What is the risk of using a one-tailed test when the actual effect is in the opposite direction? 
 
-Type I error 
+3. **Which of the following is not an assumption of the one-sample t test?** 
 
-Type II error 
+    a. Random sampling 
 
-Type III error 
+    b. Independence of observations 
 
-Increased power 
+    **c. Population variance of 0** 
 
- 
-
- 
-
- 
+    d. Dataset is approximately normally distributed 
 
  
 
- 
-
-Chapter 9 
+4. **What is the purpose of calculating effect size, such as Cohen’s d?** 
 
-What is the main difference between an independent-samples t test and a related-samples t test? 
+    a. To determine statistical significance 
 
-Independent-samples t tests compare two separate groups, while related-samples t tests compare two sets of scores from the same group or matched individuals. 
+    **b. To quantify the magnitude of a difference** 
 
-Independent-samples t tests compare means to a population value, while related-samples t tests compare variances. 
+    c. To check if assumptions are met 
 
-Independent-samples t tests require categorical data, while related-samples t tests require continuous data. 
+    d. To calculate degrees of freedom 
 
-There is no difference; they are used interchangeably. 
-
  
 
-Which assumption is unique to independent-samples t tests but not required for related-samples t tests? 
+5. **What is the risk of using a one-tailed test when the actual effect is in the opposite direction?** 
 
-Normality 
+    a. Type I error 
 
-Random sampling 
+    b. Type II error 
 
-Equal variances 
+    **c. Type III error** 
 
-Independence of scores within groups 
+    d. Increased power 
 
  
-
-When would you use a one-sample t test instead of an independent- or related-samples t test? 
-
-When you have two independent groups to compare. 
 
-When you want to compare a single group to a known population mean. 
+## Chapter 9 
 
-When you compare pre- and post-test scores from the same group. 
 
-When you have categorical data. 
+1. **What is the main difference between an independent-samples t test and a related-samples t test?** 
 
- 
-
-You are conducting a study to compare the effectiveness of two teaching methods on student performance. You have a small sample size of just 16 students (8 students taught by different teachers in different classrooms – there is no reason to suggest they are related) and the scores in your dataset are not normally distributed. Which test should you use to compare these scores? 
+    **a. Independent-samples t tests compare two separate groups, while related-samples t tests compare two sets of scores from the same group or matched individuals.** 
 
-Mann-Whitney U test 
+    b. Independent-samples t tests compare means to a population value, while related-samples t tests compare variances. 
 
-Wilcoxon Matched-Pairs Signed-Ranks Test 
+    c. Independent-samples t tests require categorical data, while related-samples t tests require continuous data. 
 
-Independent-samples t test 
+    d. There is no difference; they are used interchangeably. 
 
-One-sample t test 
-
  
-
-Which effect size measure is commonly reported for independent-samples t tests? 
 
-r2 
+2. **Which assumption is unique to independent-samples t tests but not required for related-samples t tests?** 
 
-Phi coefficient 
+    a. Normality 
 
-Cohen’s d 
+    b. Random sampling 
 
-Omega 
+    **c. Equal variances** 
 
- 
-
-Chapter 10 
+    d. Independence of scores within groups 
 
  
 
-What is the primary purpose of a One-Way ANOVA? 
+3. **When would you use a one-sample t test instead of an independent- or related-samples t test?**
 
-To compare the means of two groups 
+    a. When you have two independent groups to compare. 
 
-To compare the means of three or more groups 
+    **b. When you want to compare a single group to a known population mean.** 
 
-To analyze relationships between continuous variables 
+    c. When you compare pre- and post-test scores from the same group. 
 
-To assess correlations between independent and dependent variables 
+    d. When you have categorical data. 
 
  
 
-Which of the following increases the risk of a Type I error when comparing multiple groups? 
+4. **You are conducting a study to compare the effectiveness of two teaching methods on student performance. You have a small sample size of just 16 students (8 students taught by different teachers in different classrooms – there is no reason to suggest they are related) and the scores in your dataset are not normally distributed. Which test should you use to compare these scores?**
 
-Failing to apply a correction for multiple comparisons (e.g., Bonferroni correction) 
+    **a. Mann-Whitney U test** 
 
-Running multiple t tests on the same data set 
+    b. Wilcoxon Matched-Pairs Signed-Ranks Test 
 
-Including covariates in the analysis 
+    c. Independent-samples t test 
 
-Increasing sample size 
+    d. One-sample t test 
 
  
 
-Which test is the most conservative post hoc method for controlling Type I error? 
+5. **Which effect size measure is commonly reported for independent-samples t tests?** 
 
-Tukey’s HSD 
+    a. $r^2$
 
-Fisher’s LSD 
+    b. Phi coefficient 
 
-Bonferroni test 
+    **c. Cohen’s $d$** 
 
-Kruskal-Wallis Test 
+    d. Omega 
 
  
-
-The Kruskal-Wallis Test is best suited for which type of data? 
-
-Ordinal data or non-normal distributions 
-
-Normally distributed interval data 
 
-Binary data 
-
-Continuous data 
-
+## Chapter 10 
  
 
-What does homogeneity of variance mean in ANOVA? 
+1. **What is the primary purpose of a One-Way ANOVA?** 
 
-All groups have the same sample size 
+    a. To compare the means of two groups 
 
-The dependent variable is normally distributed 
+    **b. To compare the means of three or more groups** 
 
-The variances of the dependent variable are similar across groups 
+    c. To analyze relationships between continuous variables 
 
-There is no interaction effect between variables 
+    d. To assess correlations between independent and dependent variables 
 
  
-
-What distinguishes a factorial ANOVA from a one-way ANOVA? 
-
-It compares means between more than two groups. 
-
-It examines the effects of two or more independent variables and their interactions on a dependent variable. 
 
-It includes covariates to control for variability in the dependent variable. 
+2. **Which of the following increases the risk of a Type I error when comparing multiple groups?** 
 
-It is used for nonparametric data. 
+    a. Failing to apply a correction for multiple comparisons (e.g., Bonferroni correction) 
 
- 
-
- 
-
- 
+    **b. Running multiple t tests on the same data set** 
 
- 
+    c. Including covariates in the analysis 
 
- 
+    d. Increasing sample size 
 
  
 
-Which of the following is an example of a factorial ANOVA design? 
+3. **Which test is the most conservative post hoc method for controlling Type I error?** 
 
-Comparing the mean scores of students across three different teaching methods. 
+    a. Tukey’s HSD 
 
-Assessing the correlation between test scores and student motivation. 
+    b. Fisher’s LSD 
 
-Testing for differences in a single group’s test scores across three different time points. 
+    **c. Bonferroni test** 
 
-Analyzing the effects of teaching method (lecture vs. inquiry-based) and student age group (young vs. adult) on test scores. 
+    d. Kruskal-Wallis Test 
 
  
 
-What is the effect size measure commonly used in ANOVA to estimate the proportion of variance explained by the independent variable? 
+4. **The Kruskal-Wallis Test is best suited for which type of data?** 
 
-Pearson’s r 
+    **a. Ordinal data or non-normal distributions** 
 
-Eta Squared  
+    b. Normally distributed interval data 
 
-Cronbach’s Alpha 
+    c. Binary data 
 
-Chi-Squared 
+    d. Continuous data 
 
  
 
- 
+5. **What does homogeneity of variance mean in ANOVA?** 
 
- 
+    a. All groups have the same sample size 
 
- 
+    b. The dependent variable is normally distributed 
 
- 
+    **c. The variances of the dependent variable are similar across groups** 
 
- 
+    d. There is no interaction effect between variables 
 
  
 
- 
+6. **What distinguishes a factorial ANOVA from a one-way ANOVA?** 
 
- 
+    a. It compares means between more than two groups. 
 
- 
+    **b. It examines the effects of two or more independent variables and their interactions on a dependent variable.** 
 
- 
+    c. It includes covariates to control for variability in the dependent variable. 
 
- 
+    d. It is used for nonparametric data. 
 
  
 
- 
+7. **Which of the following is an example of a factorial ANOVA design?** 
 
- 
+    a. Comparing the mean scores of students across three different teaching methods. 
 
- 
+    b. Assessing the correlation between test scores and student motivation. 
 
- 
+    c. Testing for differences in a single group’s test scores across three different time points. 
 
- 
+    **d. Analyzing the effects of teaching method (lecture vs. inquiry-based) and student age group (young vs. adult) on test scores.** 
 
  
 
- 
+8. **What is the effect size measure commonly used in ANOVA to estimate the proportion of variance explained by the independent variable?** 
 
- 
+    a. Pearson’s r 
 
- 
+    **b. Eta Squared**  
 
- 
+    c. Cronbach’s Alpha 
 
- 
+    d. Chi-Squared 
 
  
 
- 
 
-Chapter 11 
+## Chapter 11 
 
- 
 
-What is the main purpose of Pearson's correlation coefficient (r) in correlational analysis 
+1. **What is the main purpose of Pearson's correlation coefficient ($r$) in correlational analysis** 
 
-To compare means across groups 
+    a. To compare means across groups 
 
-To measure the extent of causation between two variables 
+    b. To measure the extent of causation between two variables 
 
-To measure the direction and strength of a relationship between two variables 
+    **c. To measure the direction and strength of a relationship between two variables** 
 
-To test for the significance of regression equations 
+    d. To test for the significance of regression equations 
 
  
 
-Which of the following is NOT an assumption of correlational analysis? 
+2. **Which of the following is NOT an assumption of correlational analysis?** 
 
-Linearity 
+    a. Linearity 
 
-Homoscedasticity 
+    b. Homoscedasticity 
 
-Causality 
+    **c. Causality** 
 
-Normality 
+    d. Normality 
 
  
 
-What does a Pearson’s r value of 0 indicate? 
+3. **What does a Pearson’s r value of 0 indicate?** 
 
-A strong positive correlation 
+    a. A strong positive correlation 
 
-No correlation 
+    **b. No correlation** 
 
-A strong negative correlation 
+    c. A strong negative correlation 
 
-A perfect correlation 
+    d. A perfect correlation 
 
  
 
-Which statistical method is used when investigating a relationship between a continuous variable and a dichotomous variable? 
+4. **Which statistical method is used when investigating a relationship between a continuous variable and a dichotomous variable?**
 
-Pearson’s r 
+    a. Pearson’s r 
 
-Spearman’s rho 
+    b. Spearman’s rho 
 
-Point-biserial correlation 
+    **c. Point-biserial correlation** 
 
-ANOVA 
+    d. ANOVA 
 
  
-
-What does the assumption of homoscedasticity in correlational analysis require? 
-
-The data must form a straight line. 
-
-The variables must be normally distributed. 
-
-The sample size must be large enough. 
 
-The spread of data points must be consistent above and below the line across the entire range. 
+5. **What does the assumption of homoscedasticity in correlational analysis require?** 
 
- 
-
- 
+    a. The data must form a straight line. 
 
- 
+    b. The variables must be normally distributed. 
 
- 
+    c. The sample size must be large enough. 
 
- 
+    **d. The spread of data points must be consistent above and below the line across the entire range.** 
 
  
 
  
-
-Chapter 12 
-
  
-
-What does the slope (b) in a simple linear regression equation represent? 
-
-The predicted value of Y when X=0 
 
-The change in X relative to Y 
+## Chapter 12 
 
-The change in Y for a one-unit change in X 
-
-The coefficient of determination 
-
  
 
-What does [Equation]represent in simple linear regression analysis? 
+1. **What does the slope (b) in a simple linear regression equation represent?** 
 
-The correlation between independent variables 
+    a. The predicted value of Y when X=0 
 
-The proportion of variance in Y explained by X 
+    b. The change in X relative to Y 
 
-The slope of the regression line 
+    **c. The change in Y for a one-unit change in X** 
 
-The standard error of the residuals 
+    d. The coefficient of determination 
 
  
 
-What does tolerance measure in regression analysis? 
+2. **What does $R^2$ represent in simple linear regression analysis?** 
 
-The extent of multicollinearity among independent variables 
+    a. The correlation between independent variables 
 
-The proportion of variance in the dependent variable explained by predictors 
+    **b. The proportion of variance in Y explained by X** 
 
-The normality of residuals 
+    c. The slope of the regression line 
 
-The degree of model fit 
+    d. The standard error of the residuals 
 
  
 
-What happens if a model includes highly correlated independent variables? 
+3. **What does tolerance measure in regression analysis?** 
 
-The dependent variable becomes unreliable 
+    **a. The extent of multicollinearity among independent variables** 
 
-The coefficients of the independent variables become unstable 
+    b. The proportion of variance in the dependent variable explained by predictors 
 
-The model fit ([Equation]) will always decrease 
+    c. The normality of residuals 
 
-The assumption of linearity is violated 
+    d. The degree of model fit 
 
  
-
-What does homoscedasticity mean in regression analysis? 
-
-The residuals have a consistent spread across all predicted values 
 
-The independent variables are not correlated 
+4. **What happens if a model includes highly correlated independent variables?** 
 
-The predictors have no relationship with the error term 
+    a. The dependent variable becomes unreliable 
 
-The regression coefficients are stable across models 
+    **b. The coefficients of the independent variables become unstable** 
 
- 
-
- 
-
- 
+    c. The model fit ([Equation]) will always decrease 
 
- 
+    d. The assumption of linearity is violated 
 
  
 
- 
+5. **What does homoscedasticity mean in regression analysis?** 
 
- 
+    **a. The residuals have a consistent spread across all predicted values** 
 
- 
+    b. The independent variables are not correlated 
 
- 
+    c. The predictors have no relationship with the error term 
 
- 
+    d. The regression coefficients are stable across models 
 
- 
 
- 
 
-Chapter 13 
 
+## Chapter 13 
  
 
-What is the key advantage of using a repeated-measures ANOVA? 
+1. **What is the key advantage of using a repeated-measures ANOVA?** 
 
-It eliminates the need for a dependent variable. 
+    a. It eliminates the need for a dependent variable. 
 
-It reduces error variance by accounting for individual differences. 
+    **b. It reduces error variance by accounting for individual differences.** 
 
-It allows for the inclusion of multiple dependent variables. 
+    c. It allows for the inclusion of multiple dependent variables. 
 
-It does not require any statistical assumptions. 
+    d. It does not require any statistical assumptions. 
 
  
 
-What does the term "sphericity" refer to in the context of repeated-measures ANOVA? 
+2. **What does the term "sphericity" refer to in the context of repeated-measures ANOVA?** 
 
-Equal variances within each group. 
+    a. Equal variances within each group. 
 
-Equal sample sizes across groups. 
+    b. Equal sample sizes across groups. 
 
-Equal variances of differences between all combinations of related groups. 
+    **c. Equal variances of differences between all combinations of related groups.** 
 
-Equal means across all groups. 
+    d. Equal means across all groups. 
 
  
 
-What is the recommended post hoc procedure for a repeated-measures ANOVA to control for Type I error? 
+3. **What is the recommended post hoc procedure for a repeated-measures ANOVA to control for Type I error?** 
 
-Tukey’s HSD 
+    a. Tukey’s HSD 
 
-Bonferroni correction 
+    **b. Bonferroni correction** 
 
-Fisher’s LSD 
+    c. Fisher’s LSD 
 
-Scheffé test 
+    d. Scheffé test 
 
  
 
-What does a significant result in a repeated-measures ANOVA indicate? 
+4. **What does a significant result in a repeated-measures ANOVA indicate?** 
 
-All group means are equal. 
+    a. All group means are equal. 
 
-The dependent variable is unrelated to the conditions tested. 
+    b. The dependent variable is unrelated to the conditions tested. 
 
-The assumptions of sphericity have been violated. 
+    c. The assumptions of sphericity have been violated. 
 
-There is a difference in at least one pair of group means. 
+    **d. There is a difference in at least one pair of group means.** 
 
  
 
-What does "partial eta squared" (
-η2p
-𝜂
-p
-2
- 
-) represent in repeated-measures ANOVA? 
+5. **What does "partial eta squared" ($η^2_p$) represent in repeated-measures ANOVA?** 
 
-The total variation in the dependent variable. 
+    a. The total variation in the dependent variable. 
 
-The proportion of total variance explained by between-groups effects after accounting for between-persons variance. 
+    **b. The proportion of total variance explained by between-groups effects after accounting for between-persons variance.** 
 
-The difference between the group means. 
+    c. The difference between the group means. 
 
-The degree of correlation between independent and dependent variables. 
+    d. The degree of correlation between independent and dependent variables. 
 
  
 
-What is the role of a covariate in ANCOVA? 
+6. **What is the role of a covariate in ANCOVA?** 
 
-To control for variability in the dependent variable that is unrelated to the independent variable(s) 
+    **a. To control for variability in the dependent variable that is unrelated to the independent variable(s)** 
 
-To act as an additional independent variable 
+    b. To act as an additional independent variable 
 
-To replace the independent variable in the model 
+    c. To replace the independent variable in the model 
 
-To reduce between-group variance 
+    d. To reduce between-group variance 
 
  
 
  
 
-Chapter 14 
+## Chapter 14 
 
- 
 
-Which of the following is NOT a purpose of meta-analysis? 
+1. **Which of the following is NOT a purpose of meta-analysis?** 
 
-Identifying the central tendency or common effect across studies 
+    a. Identifying the central tendency or common effect across studies 
 
-Exploring variability in effect sizes 
+    b. Exploring variability in effect sizes 
 
-Developing new experimental theories 
+    **c. Developing new experimental theories** 
 
-Explaining why variation in effect sizes occurs 
+    d. Explaining why variation in effect sizes occurs 
 
  
 
-A propensity model is typically used to: 
+2. **A propensity model is typically used to:** 
 
-Measure the direct effect of a treatment variable 
+    a. Measure the direct effect of a treatment variable 
 
-Estimate the likelihood of receiving a treatment based on observed characteristics 
+    **b. Estimate the likelihood of receiving a treatment based on observed characteristics** 
 
-Compare independent variables across different models 
+    c. Compare independent variables across different models 
 
-Simplify complex data into manageable clusters 
+    d. Simplify complex data into manageable clusters 
 
  
 
-What is a key requirement for using Multilevel Modeling (MLM) effectively? 
+3. **What is a key requirement for using Multilevel Modeling (MLM) effectively?** 
 
-A minimum sample size of 50 participants 
+    a. A minimum sample size of 50 participants 
 
-Randomized controlled trials only 
+    b. Randomized controlled trials only 
 
-Large datasets with at least 20-30 groups of 20-30 individuals per group 
+    **c. Large datasets with at least 20-30 groups of 20-30 individuals per group** 
 
-A focus on theoretical over empirical studies 
+    d. A focus on theoretical over empirical studies 
 
  
 
-Which of the following is a key benefit of Structural Equation Modeling (SEM) over traditional regression analysis? 
+4. **Which of the following is a key benefit of Structural Equation Modeling (SEM) over traditional regression analysis?** 
 
-It requires fewer participants to yield accurate results 
+    a. It requires fewer participants to yield accurate results 
 
-It eliminates the need for latent variables 
+    b. It eliminates the need for latent variables 
 
-It allows the inclusion of multiple dependent variables and mediating variables 
+    **c. It allows the inclusion of multiple dependent variables and mediating variables** 
 
-It reduces data complexity by eliminating endogenous predictors 
+    d. It reduces data complexity by eliminating endogenous predictors 
 
  
 
-What is the minimum number of studies generally required to conduct a meta-analysis that explores variation? 
+5. **What is the minimum number of studies generally required to conduct a meta-analysis that explores variation?** 
 
-Two studies 
+    a. Two studies 
 
-Three studies 
+    **b. Three studies** 
 
-Four studies 
+    c. Four studies 
 
-Twenty studies 
+    d. Twenty studies 

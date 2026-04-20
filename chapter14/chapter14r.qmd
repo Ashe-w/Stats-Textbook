@@ -1,0 +1,254 @@
+# Advanced Quantitative Methods in R
+
+
+In this section, we provide an overview of how to implement several advanced quantitative methods introduced in this chapter using R. These methods—such as Multilevel Modeling (MLM), Factor Analysis and Structural Equation Modeling (FA/SEM), Meta-Analysis, and Causal Inference approaches (including Propensity Score Models, Instrumental Variables, Difference-in-Differences, and Regression Discontinuity), represent powerful tools for addressing complex research questions in educational studies.
+
+
+Rather than exploring each method in depth, our focus here is on introducing the key R packages used to perform these analyses and providing concise example codes to illustrate how they are implemented. Each example highlights the basic syntax, helping readers connect the statistical ideas discussed in the chapter with their practical application in R.
+
+
+## 1    Multilevel Modeling
+
+
+**Common R Packages**
+
+
+- *lme4*: one of the most widely used package for fitting linear and generalized multilevel models (lmer() for continuous outcomes, glmer() for binary outcomes).
+
+
+- *lmerTest*: extends *lme4* by adding p-values and confidence intervals for fixed effects.
+
+
+- *performance* or *sjstats*: provide diagnostics, intraclass correlation coefficients (ICCs), and goodness-of-fit measures.
+
+
+
+
+**Example: A Random Intercept Model**
+
+
+The following example shows how to fit a basic two-level model predicting students’ math achievement based on their effort and persistence in math, allowing the intercept to vary across schools:
+
+
+```{r}
+#| eval: false
+# install.packages(c("lme4", "lmerTest", "performance"))
+library(lme4)
+library(lmerTest)
+library(performance)
+ 
+# Fit a random-intercept model: students nested within schools
+# math: student math achievement
+# effort: student-level predictor
+# school_id: grouping variable identifying schools
+fit_mlm <- lmer(math ~ effort + (1 | school_id), data = data)
+summary(fit_mlm)
+ 
+# Intraclass correlation coefficient (ICC):  
+# proportion of total variance attributable to differences between schools
+icc(fit_mlm)
+```
+
+
+## 2 Factor Analysis and Structural Equation Modeling
+
+
+**Common R Packages**
+
+
+- *psych*: for Exploratory Factor Analysis (EFA), reliability, and dimensionality assessment.
+
+
+- *lavaan*: for Confirmatory Factor Analysis (CFA) and Structural Equation Modeling (SEM).
+
+
+- *semPlot*: for visualizing CFA or SEM path diagrams.
+
+
+**Example 1: EFA**
+
+
+Suppose we have 10 survey items (i1–i10) that measure different aspects of student motivation, but we are unsure how many underlying factors exist. EFA helps identify these latent dimensions by examining how strongly each item correlates with potential factors.
+
+
+In the example below, the fa.parallel() function can help determine how many factors to retain. We use the fa() function from the psych package to extract three factors and apply an oblique rotation (oblimin), which allows the factors to be correlated.
+
+
+```{r}
+#| eval: false
+# install.packages("psych")
+library(psych)
+ 
+# Parallel analysis: suggests the optimal number of factors to retain
+fa.parallel(data[, paste0("i", 1:10)], fa = "fa")
+ 
+# Perform an Exploratory Factor Analysis with 3 factors
+efa_result <- fa(data[, paste0("i", 1:10)], nfactors = 3, rotate = "oblimin")
+ 
+# Display factor loadings (showing only loadings ≥ .30)
+print(efa_result$loadings, cutoff = .30)
+```
+**Example 2: CFA and SEM**
+
+
+In the example below, we use the lavaan package to specify and fit a simple model with three latent constructs: Engagement, Motivation, and Achievement. Each measured by three observed indicators. The model also includes directional paths hypothesizing that both Engagement and Motivation predict Achievement, and that Motivation influences Engagement.
+
+
+```{r}
+#| eval: false
+# install.packages(c("lavaan", "semPlot"))
+library(lavaan)
+library(semPlot)
+ 
+# Specify the CFA/SEM model
+model <- '
+  # Measurement model: how latent constructs are measured by observed variables
+  # engament is measured by variables i1, i2, i3; motivation by i4, i5, i6; achievement by i7, i8, i9  
+  Engagement =~ i1 + i2 + i3  
+  Motivation =~ i4 + i5 + i6  
+  Achievement =~ i7 + i8 + i9
+ 
+  # Structural model: hypothesized relationships among latent constructs
+  Achievement ~ Engagement + Motivation
+  Engagement ~ Motivation
+'
+ 
+# Fit the model
+fit_sem <- sem(model, data = data, std.lv = TRUE)
+ 
+# Summarize results with standardized estimates and fit indices
+summary(fit_sem, fit.measures = TRUE)
+ 
+# Visualize the model structure
+semPaths(fit_sem, what = "std", layout = "tree", edge.label.cex = 0.8)
+```
+
+
+
+
+The summary() function provides factor loadings, regression paths, and overall model fit indices such as the Comparative Fit Index (CFI), Tucker–Lewis Index (TLI), and Root Mean Square Error of Approximation (RMSEA). These indicators help evaluate whether the hypothesized model fits the observed data well.
+
+
+The semPaths() function from the semPlot package generates a path diagram of the model (similar to Figure 14.2; see example below), allowing you to visualize the relationships among latent and observed variables. In the diagram, rectangles represent observed indicators, circles represent latent factors, and arrows indicate the direction and strength of relationships.
+
+
+![Fig 14.6](chapter14/fig14-6.png){fig-align="center" width=80%}
+
+
+
+
+## 3    Meta-Analysis
+
+
+**Common R Packages**
+
+
+- *metafor*: the standard package for computing effect sizes, fitting fixed- and random-effects models, conducting moderator analyses, and producing diagnostic plots.
+
+
+- *meta*: user-friendly alternative with high-level functions for common effect size formats.
+
+
+- *robumeta*: for robust variance estimation when effect sizes are not independent (e.g., multiple effects per study).
+
+
+**Example: Random-Effects Meta-Analysis Using metafor**
+
+
+The example below illustrates a simple workflow for a random-effects meta-analysis. Suppose each study reports treatment and control group means, standard deviations, and sample sizes. We first compute standardized mean differences (Hedges’ $g$) and then fit a random-effects model to estimate the overall effect.
+
+
+```{r}
+#| eval: false
+# install.packages("metafor")
+library(metafor)
+ 
+# Example dataset with study-level treatment and control stats
+# m1i, sd1i, n1i: mean, SD, and sample size for treatment group
+# m2i, sd2i, n2i: mean, SD, and sample size for control group
+# Assume 'studies' is your data frame
+ 
+#(1) Compute effect sizes
+dat_es <- escalc(
+  measure = "SMD",             # Standardized Mean Difference (Hedges' g)
+  m1i = m_t, sd1i = sd_t, n1i = n_t,
+  m2i = m_c, sd2i = sd_c, n2i = n_c,
+  data = studies
+)
+# dat_es now contains two new columns: yi (effect sizes) and vi (variances)
+ 
+#(2) Fit a random-effects model
+fit_re <- rma(yi = yi, vi = vi, data = dat_es, method = "REML")
+#for fixed-effects model, use method="FE"
+summary(fit_re)
+```
+The output provides the estimated overall effect size, its standard error and confidence interval, Test of significance, and heterogeneity statistics ($Q, \, I^2$).
+
+
+
+
+
+
+## 4    Causal Analysis
+
+
+Multiple causal inference methods are iontroduced this chapter. Here we briefly recap and highlight the R packages used to implement them.
+
+
+### 4.1 Propensity Score Methods
+
+
+Used to create comparable treatment and control groups in observational data by balancing covariates.
+
+
+**Common R Packages**
+
+
+- *MatchIt*: propensity score matching (nearest neighbor, caliper, Mahalanobis, etc.).
+
+
+- *cobalt*: covariate balance diagnostics and visualizations.
+
+
+### 4.2 Instrumental Variables (IV)
+
+
+Used when treatment assignment is endogenous (e.g., correlated with unobserved confounders). IV methods rely on external instruments that affect treatment but not the outcome directly.
+
+
+**Common R Packages**
+
+
+- *AER*: *ivreg()* for two-stage least squares (2SLS) estimation.
+
+
+- *ivpack*, *fixest*: robust standard errors and diagnostics for IV models.
+
+
+
+
+### 4.3 Interrupted Time Series
+
+
+Evaluates whether a policy or intervention changes a trend or level of an outcome over time.
+
+
+**Common R Packages**
+
+
+- *segmented*: fits piecewise regression models to identify changes in slope or level.
+
+
+- *strucchange*: tests for structural breaks in time series data.
+
+
+- *CausalImpact*: Bayesian interrupted time series analysis with uncertainty intervals.
+
+
+
+
+## Summary of Advanced Methods in R
+
+
+In this chapter, we highlighted R implementation for a range of advanced quantitative methods commonly used in educational research. Researchers rarely master these methods all at once. Instead, building proficiency involves returning to these tools as new research questions arise, experimenting with models, and consulting documentation and examples. The goal of this section is not to provide an exhaustive manual but to help readers recognize key analytical approaches, identify the appropriate R ecosystem for each, and develop confidence in taking the next step toward more advanced analyses. With these foundations and example workflows, readers are now equipped to begin applying the advanced quantitative methods introduced in Chapter 14 and to explore further capabilities in R as their research questions grow in complexity. 
+
