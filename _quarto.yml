@@ -24,7 +24,7 @@ book:
     - chapter13.qmd
     - chapter14.qmd
     - answerkey.qmd
-appendices:
+  appendices:
     - appendix.qmd
 bibliography: references.bib
 
@@ -36,14 +36,12 @@ format:
     number-sections: true
     include-in-header: 
       - assets/hypothesis.html
+    include-after-body:
+      - assets/quiz.html
     code-copy: true
     theme: 
       - cosmo
-      - brand
     table:
       striped: true
-  pdf:
-    documentclass: scrreprt
-
 
 
