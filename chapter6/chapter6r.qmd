@@ -1,4 +1,4 @@
-# Exploring Sampling Distributions in R {.unnumbered}
+## Exploring Sampling Distributions in R 
 
 This section uses R to demonstrate the key concepts of **sampling distributions** and the **Central Limit Theorem**, using the MATHPERS variable (Effort and Persistence in Mathematics) as an example. Through hands-on simulation and data visualization, you will see how sample statistics behave, how sampling distributions form, and how the standard error is affected by sample size. 
 
@@ -10,7 +10,7 @@ library(haven)
 data <- read_sav("chapter6/chapter6data.sav") 
 ```
 
-## 1    Examining the “Population” Distribution {.unnumbered}
+###    Examining the “Population” Distribution
 ```{r}
 #| echo: true
 #| message: false
@@ -63,9 +63,9 @@ The mean is 0.26 and the standard deviation is about 0.98, with skewness (0.06) 
 
 Later, we will see how the sampling distribution of the mean becomes more normal even when the original data is only approximately normal. 
 
-## 2    Simulating the Sampling Distribution {.unnumbered}
+###    Simulating the Sampling Distribution 
 
-### 2.1	n = 5; 10,000 Samples {.unnumbered}
+#### 	n = 5; 10,000 Samples 
 
 Next, we simulate the process of taking many random samples (each of size 5) from our population. By calculating the mean of each sample, we can observe the shape and properties of the sampling distribution of the mean. 
 ```{r}
@@ -152,7 +152,7 @@ sem_5_emp
 **Interpretation:** 
 The theoretical standard error of the mean (SEM) for samples of size 5, calculated from the formula $SEM = \frac{SD}{\sqrt{n}}$, is 0.44. The empirical standard error, estimated directly from the simulated sampling distribution, is 0.48. These values are close, confirming that the standard error formula provides a good approximation of the variability in sample means. 
 
-### 2.2 n = 25; 10,000 Samples {.unnumbered}
+#### n = 25; 10,000 Samples 
 To see how increasing sample size affects the sampling distribution, we repeat the simulation using samples of size 25. 
 ```{r}
 #| echo: true

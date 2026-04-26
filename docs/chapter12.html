@@ -124,6 +124,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 
 <script src="https://hypothes.is/embed.js" async=""></script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DHHP4LF5C2"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+
+
+  gtag('config', 'G-DHHP4LF5C2');
+
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -357,34 +374,18 @@ window.Quarto = {
   <li><a href="#interpreting-logistic-regression-coefficients" id="toc-interpreting-logistic-regression-coefficients" class="nav-link" data-scroll-target="#interpreting-logistic-regression-coefficients"><span class="header-section-number">12.6.1</span> Interpreting Logistic Regression Coefficients</a></li>
   <li><a href="#assumptions-of-logistic-regression" id="toc-assumptions-of-logistic-regression" class="nav-link" data-scroll-target="#assumptions-of-logistic-regression"><span class="header-section-number">12.6.2</span> Assumptions of Logistic Regression</a></li>
   </ul></li>
+  <li><a href="#predicting-an-outcome-in-r" id="toc-predicting-an-outcome-in-r" class="nav-link" data-scroll-target="#predicting-an-outcome-in-r"><span class="header-section-number">12.7</span> Predicting an Outcome in R</a>
+  <ul class="collapse">
+  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression"><span class="header-section-number">12.7.1</span> Simple Linear Regression</a></li>
+  <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link" data-scroll-target="#multiple-linear-regression"><span class="header-section-number">12.7.2</span> Multiple Linear Regression</a></li>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression"><span class="header-section-number">12.7.3</span> Logistic Regression</a></li>
   </ul></li>
-  <li><a href="#predicting-an-outcome-in-r" id="toc-predicting-an-outcome-in-r" class="nav-link" data-scroll-target="#predicting-an-outcome-in-r">Predicting an Outcome in R</a>
+  <li><a href="#predicting-the-outcomes-in-spss" id="toc-predicting-the-outcomes-in-spss" class="nav-link" data-scroll-target="#predicting-the-outcomes-in-spss"><span class="header-section-number">12.8</span> Predicting the outcomes in SPSS</a>
   <ul class="collapse">
-  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression">1 Simple Linear Regression</a>
-  <ul class="collapse">
-  <li><a href="#fit-simple-linear-regression" id="toc-fit-simple-linear-regression" class="nav-link" data-scroll-target="#fit-simple-linear-regression">1.1 Fit Simple Linear Regression</a></li>
-  <li><a href="#assumptions-checking" id="toc-assumptions-checking" class="nav-link" data-scroll-target="#assumptions-checking">1.2 Assumptions Checking</a></li>
-  </ul></li>
-  <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link" data-scroll-target="#multiple-linear-regression">2 Multiple Linear Regression</a>
-  <ul class="collapse">
-  <li><a href="#fit-multiple-linear-regression" id="toc-fit-multiple-linear-regression" class="nav-link" data-scroll-target="#fit-multiple-linear-regression">2.1 Fit Multiple Linear Regression</a></li>
-  <li><a href="#multicollinearity-assumptions-checking" id="toc-multicollinearity-assumptions-checking" class="nav-link" data-scroll-target="#multicollinearity-assumptions-checking">2.2 Multicollinearity &amp; Assumptions Checking</a></li>
-  </ul></li>
-  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">3 Logistic Regression</a>
-  <ul class="collapse">
-  <li><a href="#prepare-outcome-variable" id="toc-prepare-outcome-variable" class="nav-link" data-scroll-target="#prepare-outcome-variable">3.1 Prepare Outcome Variable</a></li>
-  <li><a href="#fit-logistic-regression" id="toc-fit-logistic-regression" class="nav-link" data-scroll-target="#fit-logistic-regression">3.2 Fit Logistic Regression</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#predicting-the-outcomes-in-spss" id="toc-predicting-the-outcomes-in-spss" class="nav-link" data-scroll-target="#predicting-the-outcomes-in-spss">Predicting the outcomes in SPSS</a>
-  <ul class="collapse">
-  <li><a href="#simple-linear-regression-1" id="toc-simple-linear-regression-1" class="nav-link" data-scroll-target="#simple-linear-regression-1">1 Simple Linear Regression</a></li>
-  <li><a href="#fit-simple-linear-regression-1" id="toc-fit-simple-linear-regression-1" class="nav-link" data-scroll-target="#fit-simple-linear-regression-1"><span class="header-section-number">12.7</span> 1.1 Fit Simple Linear Regression</a></li>
-  <li><a href="#assumptions-checking-1" id="toc-assumptions-checking-1" class="nav-link" data-scroll-target="#assumptions-checking-1">1.2 Assumptions Checking</a></li>
-  <li><a href="#multiple-linear-regression-1" id="toc-multiple-linear-regression-1" class="nav-link" data-scroll-target="#multiple-linear-regression-1">2 Multiple Linear Regression</a>
-  <ul class="collapse">
-  <li><a href="#fit-multiple-linear-regression-1" id="toc-fit-multiple-linear-regression-1" class="nav-link" data-scroll-target="#fit-multiple-linear-regression-1">2.1 Fit Multiple Linear Regression</a></li>
-  <li><a href="#multicollinearity-assumptions-checking-1" id="toc-multicollinearity-assumptions-checking-1" class="nav-link" data-scroll-target="#multicollinearity-assumptions-checking-1">2.2 Multicollinearity &amp; Assumptions Checking</a></li>
+  <li><a href="#simple-linear-regression-1" id="toc-simple-linear-regression-1" class="nav-link" data-scroll-target="#simple-linear-regression-1"><span class="header-section-number">12.8.1</span> Simple Linear Regression</a></li>
+  <li><a href="#fit-simple-linear-regression-1" id="toc-fit-simple-linear-regression-1" class="nav-link" data-scroll-target="#fit-simple-linear-regression-1"><span class="header-section-number">12.8.2</span> Fit Simple Linear Regression</a></li>
+  <li><a href="#assumptions-checking-1" id="toc-assumptions-checking-1" class="nav-link" data-scroll-target="#assumptions-checking-1"><span class="header-section-number">12.8.3</span> Assumptions Checking</a></li>
+  <li><a href="#multiple-linear-regression-1" id="toc-multiple-linear-regression-1" class="nav-link" data-scroll-target="#multiple-linear-regression-1"><span class="header-section-number">12.8.4</span> Multiple Linear Regression</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
@@ -1603,9 +1604,8 @@ e^{0.0005} \sim 1.005
 <p>For educational researchers, logistic regression is particularly useful in analyzing outcomes related to student success, such as graduation likelihood, college acceptance, and course completion rates. By modeling the probability of categorical outcomes, educational researchers can identify key predictors of student achievement and inform policy decisions. For instance, understanding how standardized test scores, socioeconomic status, or attendance patterns impact student retention can help educators develop targeted interventions. Logistic regression provides a powerful method to translate complex educational data into actionable insights, ultimately contributing to more informed decision-making in educational settings.</p>
 </section>
 </section>
-</section>
-<section id="predicting-an-outcome-in-r" class="level1 unnumbered">
-<h1 class="unnumbered">Predicting an Outcome in R</h1>
+<section id="predicting-an-outcome-in-r" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="predicting-an-outcome-in-r"><span class="header-section-number">12.7</span> Predicting an Outcome in R</h2>
 <p>In this section, we will demonstrate how to conduct and interpret simple linear regression, multiple linear regression, and logistic regression using educational data. The examples use the following variables from the PISA dataset:</p>
 <ul>
 <li><p><strong>PV1MATH</strong>: Math achievement score (continuous, outcome variable for linear regression)</p></li>
@@ -1629,11 +1629,11 @@ e^{0.0005} \sim 1.005
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean/select variables </span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> <span class="fu">select</span>(PV1MATH, MATHPERS, GROSAGR, MATHEASE) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="simple-linear-regression" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="simple-linear-regression">1 Simple Linear Regression</h2>
+<section id="simple-linear-regression" class="level3" data-number="12.7.1">
+<h3 data-number="12.7.1" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">12.7.1</span> Simple Linear Regression</h3>
 <p><strong>Research Question</strong>: Does effort and persistence in mathematics (MATHPERS) predict math achievement (PV1MATH)?</p>
-<section id="fit-simple-linear-regression" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fit-simple-linear-regression">1.1 Fit Simple Linear Regression</h3>
+<section id="fit-simple-linear-regression" class="level4" data-number="12.7.1.1">
+<h4 data-number="12.7.1.1" class="anchored" data-anchor-id="fit-simple-linear-regression"><span class="header-section-number">12.7.1.1</span> Fit Simple Linear Regression</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>simple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1MATH <span class="sc">~</span> MATHPERS, <span class="at">data =</span> data) </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(simple_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1662,8 +1662,8 @@ F-statistic: 112.6 on 1 and 3948 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><strong>Interpretation</strong>:</p>
 <p>The regression analysis found a significant positive relationship: for each one point increase in effort and persistence, math achievement scores increased by approximately 16.13 points (<span class="math inline">\(b=16.13,SE=1.52,t=10.61,p&lt;.01\)</span>).The model explained about 2.8% of the variance in math achievement (<span class="math inline">\(R^2 = .028\)</span>). The residual standard error was 94.06, indicating that, on average, students’ actual math scores deviated from the predicted scores by about 94 points. Although the effect size is modest, the result suggests that students who put in more effort and persist in mathematics tend to score higher on the PISA math achievement test.</p>
 </section>
-<section id="assumptions-checking" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="assumptions-checking">1.2 Assumptions Checking</h3>
+<section id="assumptions-checking" class="level4" data-number="12.7.1.2">
+<h4 data-number="12.7.1.2" class="anchored" data-anchor-id="assumptions-checking"><span class="header-section-number">12.7.1.2</span> Assumptions Checking</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linearity, Homoscedasticity, Normality, Outliers </span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span>
@@ -1688,12 +1688,12 @@ F-statistic: 112.6 on 1 and 3948 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ul>
 </section>
 </section>
-<section id="multiple-linear-regression" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="multiple-linear-regression">2 Multiple Linear Regression</h2>
+<section id="multiple-linear-regression" class="level3" data-number="12.7.2">
+<h3 data-number="12.7.2" class="anchored" data-anchor-id="multiple-linear-regression"><span class="header-section-number">12.7.2</span> Multiple Linear Regression</h3>
 <p>For the multiple linear regression, we will include both effort and persistence and growth mindset as predictors of math achievement.</p>
 <p><strong>Research Question</strong>: Do effort and persistence (MATHPERS) and growth mindset (GROSAGR) jointly predict math achievement (PV1MATH)?</p>
-<section id="fit-multiple-linear-regression" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fit-multiple-linear-regression">2.1 Fit Multiple Linear Regression</h3>
+<section id="fit-multiple-linear-regression" class="level4" data-number="12.7.2.1">
+<h4 data-number="12.7.2.1" class="anchored" data-anchor-id="fit-multiple-linear-regression"><span class="header-section-number">12.7.2.1</span> Fit Multiple Linear Regression</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>multi_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(PV1MATH <span class="sc">~</span> MATHPERS <span class="sc">+</span> GROSAGR, <span class="at">data =</span> data) </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(multi_lm) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1725,8 +1725,8 @@ F-statistic: 141.9 on 2 and 3929 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The multiple linear regression show that both predictors have significant positive effects on math achievement: for each one point increase in effort and persistence, math scores increased by about 13.74 points (<span class="math inline">\(b=13.74,SE=1.51,p&lt;.01\)</span>), and for each one standard deviation increase in growth mindset, scores increased by about 23.65 points ($b=23.65,SE=1.83,p&lt;.01 <span class="math inline">\(). The model explained approximately 6.7% of the variance in math achievement scores (\)</span>R^2=.067$), with a residual standard error of 92.17.</p>
 <p>Compared to the previous simple regression model that included only effort and persistence, adding growth mindset as a second predictor increased the proportion of explained variance from 2.8% to 6.7%. This suggests that considering both effort and growth mindset provides a better prediction of students’ math achievement.</p>
 </section>
-<section id="multicollinearity-assumptions-checking" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="multicollinearity-assumptions-checking">2.2 Multicollinearity &amp; Assumptions Checking</h3>
+<section id="multicollinearity-assumptions-checking" class="level4" data-number="12.7.2.2">
+<h4 data-number="12.7.2.2" class="anchored" data-anchor-id="multicollinearity-assumptions-checking"><span class="header-section-number">12.7.2.2</span> Multicollinearity &amp; Assumptions Checking</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(multi_lm) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1753,11 +1753,11 @@ F-statistic: 141.9 on 2 and 3929 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The diagnostic plots (as those for the simple linear regression) indicate that the assumptions of linearity, homoscedasticity, normality of residuals, and the absence of influential outliers are generally met for this multiple linear regression model.</p>
 </section>
 </section>
-<section id="logistic-regression" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="logistic-regression">3 Logistic Regression</h2>
+<section id="logistic-regression" class="level3" data-number="12.7.3">
+<h3 data-number="12.7.3" class="anchored" data-anchor-id="logistic-regression"><span class="header-section-number">12.7.3</span> Logistic Regression</h3>
 <p><strong>Research Question</strong>: Does math achievement (PV1MATH) predict whether a student perceives mathematics as easier than other subjects (MATHEASE)?</p>
-<section id="prepare-outcome-variable" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="prepare-outcome-variable">3.1 Prepare Outcome Variable</h3>
+<section id="prepare-outcome-variable" class="level4" data-number="12.7.3.1">
+<h4 data-number="12.7.3.1" class="anchored" data-anchor-id="prepare-outcome-variable"><span class="header-section-number">12.7.3.1</span> Prepare Outcome Variable</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>MATHEASE <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>MATHEASE, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>)) </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>MATHEASE <span class="sc">|&gt;</span> <span class="fu">table</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1769,8 +1769,8 @@ F-statistic: 141.9 on 2 and 3929 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>Among the student sample, 3497 perceived mathematics as easier than other subjects, while 501 did not.</p>
 </section>
-<section id="fit-logistic-regression" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fit-logistic-regression">3.2 Fit Logistic Regression</h3>
+<section id="fit-logistic-regression" class="level4" data-number="12.7.3.2">
+<h4 data-number="12.7.3.2" class="anchored" data-anchor-id="fit-logistic-regression"><span class="header-section-number">12.7.3.2</span> Fit Logistic Regression</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>logit_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(MATHEASE <span class="sc">~</span> PV1MATH, <span class="at">data =</span> data, <span class="at">family =</span> <span class="st">"binomial"</span>) </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logit_model)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1801,8 +1801,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </section>
 </section>
 </section>
-<section id="predicting-the-outcomes-in-spss" class="level1 unnumbered">
-<h1 class="unnumbered">Predicting the outcomes in SPSS</h1>
+<section id="predicting-the-outcomes-in-spss" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="predicting-the-outcomes-in-spss"><span class="header-section-number">12.8</span> Predicting the outcomes in SPSS</h2>
 <p>In this section, we will demonstrate how to conduct and interpret simple linear regression, multiple linear regression, and logistic regression using educational data. The examples use the following variables from the PISA dataset:</p>
 <ul>
 <li><p><strong>PV1MATH</strong>: Math achievement score (continuous, outcome variable for linear regression)</p></li>
@@ -1810,12 +1810,12 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <li><p><strong>GROSAGR</strong>: Growth Mindset (continuous, additional predictor for multiple regression)</p></li>
 <li><p><strong>MATHEASE</strong>: Perception of Mathematics as easier than other subjects (binary (0=No/1-Yes), outcome for logistic regression)</p></li>
 </ul>
-<section id="simple-linear-regression-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="simple-linear-regression-1">1 Simple Linear Regression</h2>
+<section id="simple-linear-regression-1" class="level3" data-number="12.8.1">
+<h3 data-number="12.8.1" class="anchored" data-anchor-id="simple-linear-regression-1"><span class="header-section-number">12.8.1</span> Simple Linear Regression</h3>
 <p><strong>Research Question</strong>: Does effort and persistence in mathematics (MATHPERS) predict math achievement (PV1MATH)?</p>
 </section>
-<section id="fit-simple-linear-regression-1" class="level2" data-number="12.7">
-<h2 data-number="12.7" class="anchored" data-anchor-id="fit-simple-linear-regression-1"><span class="header-section-number">12.7</span> 1.1 Fit Simple Linear Regression</h2>
+<section id="fit-simple-linear-regression-1" class="level3" data-number="12.8.2">
+<h3 data-number="12.8.2" class="anchored" data-anchor-id="fit-simple-linear-regression-1"><span class="header-section-number">12.8.2</span> Fit Simple Linear Regression</h3>
 <p>To fit a simple linear regression model in SPSS, follow these steps:</p>
 <ol type="1">
 <li><p>Click Analyze &gt; Regression &gt; Linear…</p></li>
@@ -1839,8 +1839,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 <p><strong>Interpretation</strong>: The regression analysis found a significant positive relationship: for each one point increase in effort and persistence, math achievement scores increased by approximately 16.13 points (<span class="math inline">\(b=16.13, \,SE=1.52,\, t=10.61,\, p&lt;.05,\, 95\% \, CI [13.15, 19.11]\)</span>).The model explained about 2.8% of the variance in math achievement ( <span class="math inline">\(R^2 = .028\)</span>). The residual standard error was 94.06, indicating that, on average, students’ actual math scores deviated from the predicted scores by about 94 points. Although the effect size is modest, the result suggests that students who put in more effort and persist in mathematics tend to score higher on the PISA math achievement test.</p>
 </section>
-<section id="assumptions-checking-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="assumptions-checking-1">1.2 Assumptions Checking</h2>
+<section id="assumptions-checking-1" class="level3" data-number="12.8.3">
+<h3 data-number="12.8.3" class="anchored" data-anchor-id="assumptions-checking-1"><span class="header-section-number">12.8.3</span> Assumptions Checking</h3>
 <p>To check the regression assumptions in SPSS:</p>
 <ol type="1">
 <li><p>Go back to the Linear Regression dialog we used in</p></li>
@@ -1871,12 +1871,12 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p>In the <em>Scatterplot of Standardized Residuals vs.&nbsp;Predicted Values</em>, residuals are randomly scattered without a clear funnel pattern, suggesting <strong>linearity</strong> and <strong>homoscedasticity</strong>.</p>
 <p>Overall, the model meets the assumptions of linearity, homoscedasticity, and normality of residuals, with no problematic outliers. The regression results can be interpreted with confidence.</p>
 </section>
-<section id="multiple-linear-regression-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="multiple-linear-regression-1">2 Multiple Linear Regression</h2>
+<section id="multiple-linear-regression-1" class="level3" data-number="12.8.4">
+<h3 data-number="12.8.4" class="anchored" data-anchor-id="multiple-linear-regression-1"><span class="header-section-number">12.8.4</span> Multiple Linear Regression</h3>
 <p>For the multiple linear regression, we will include both effort and persistence and growth mindset as predictors of math achievement.</p>
 <p><strong>Research Question</strong>: Do effort and persistence (MATHPERS) and growth mindset (GROSAGR) jointly predict math achievement (PV1MATH)?</p>
-<section id="fit-multiple-linear-regression-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fit-multiple-linear-regression-1">2.1 Fit Multiple Linear Regression</h3>
+<section id="fit-multiple-linear-regression-1" class="level4" data-number="12.8.4.1">
+<h4 data-number="12.8.4.1" class="anchored" data-anchor-id="fit-multiple-linear-regression-1"><span class="header-section-number">12.8.4.1</span> Fit Multiple Linear Regression</h4>
 <p>To fit a multiple linear regression model in SPSS, follow the steps below:</p>
 <ol type="1">
 <li><p>Click Analyze &gt; Regression &gt; Linear…</p></li>
@@ -1903,8 +1903,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p>The multiple linear regression show that both predictors have significant positive effects on math achievement: for each one point increase in effort and persistence, math scores increased by about 13.74 points ($b=13.74, ,SE=1.51, ,p&lt;.01 <span class="math inline">\(), and for each one standard deviation increase in growth mindset, scores increased by about 23.65 points (\)</span>b=23.65,, SE=1.83,, p&lt;.01<span class="math inline">\(). The model explained approximately 6.7% of the variance in math achievement scores (\)</span>R^2=.067$), with a residual standard error of 92.17.</p>
 <p>Compared to the previous simple regression model that included only effort and persistence, adding growth mindset as a second predictor increased the proportion of explained variance from 2.8% to 6.7%. This suggests that considering both effort and growth mindset provides a better prediction of students’ math achievement.</p>
 </section>
-<section id="multicollinearity-assumptions-checking-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="multicollinearity-assumptions-checking-1">2.2 Multicollinearity &amp; Assumptions Checking</h3>
+<section id="multicollinearity-assumptions-checking-1" class="level4" data-number="12.8.4.2">
+<h4 data-number="12.8.4.2" class="anchored" data-anchor-id="multicollinearity-assumptions-checking-1"><span class="header-section-number">12.8.4.2</span> Multicollinearity &amp; Assumptions Checking</h4>
 <p>To check the regression assumptions in SPSS:</p>
 <ol type="1">
 <li><p>Go back to the Linear Regression dialog used in 2.1.</p></li>
@@ -1977,6 +1977,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </section>
 </section>
 </section>
+</section>
 <section id="conclusion" class="level1 unnumbered">
 <h1 class="unnumbered">Conclusion</h1>
 <p>Understanding and applying regression analysis is a critical skill for interpreting relationships between variables and making data-driven predictions. This chapter has provided a comprehensive exploration of both simple and multiple regression techniques, emphasizing their theoretical underpinnings, assumptions, and practical applications. By mastering these concepts, researchers and practitioners can build models that not only identify meaningful relationships but also provide robust predictions. Regression analysis is a powerful tool that, when used responsibly and with a solid theoretical foundation, enables a deeper understanding of complex phenomena. As you continue to practice these techniques, always remember to prioritize sound research design and thoughtful interpretation of results to ensure meaningful and actionable insights.</p>
@@ -2012,43 +2013,51 @@ The F test in regression helps determine whether the overall model explains a si
 </section>
 <section id="check-your-understanding" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
-<ol type="1">
-<li><p><strong>What does the slope (b) in a simple linear regression equation represent?</strong></p>
-<ol type="a">
-<li><p>The predicted value of Y when X = 0</p></li>
-<li><p>The change in X relative to Y</p></li>
-<li><p>The change in Y for a one-unit change in X</p></li>
-<li><p>The coefficient of determination</p></li>
-</ol></li>
-<li><p><strong>What does <span class="math inline">\(R^2\)</span> represent in simple linear regression analysis?</strong></p>
-<ol type="a">
-<li><p>The correlation between independent variables</p></li>
-<li><p>The proportion of variance in Y explained by X</p></li>
-<li><p>The slope of the regression line</p></li>
-<li><p>The standard error of the residuals</p></li>
-</ol></li>
-<li><p><strong>What does tolerance measure in regression analysis?</strong></p>
-<ol type="a">
-<li><p>The extent of multicollinearity among independent variables</p></li>
-<li><p>The proportion of variance in the dependent variable explained by predictors</p></li>
-<li><p>The normality of residuals</p></li>
-<li><p>The degree of model fit</p></li>
-</ol></li>
-<li><p><strong>What happens if a model includes highly correlated independent variables?</strong></p>
-<ol type="a">
-<li><p>The dependent variable becomes unreliable</p></li>
-<li><p>The coefficients of the independent variables become unstable</p></li>
-<li><p>The model fit (<span class="math inline">\(R^2\)</span>) will always decrease</p></li>
-<li><p>The assumption of linearity is violated</p></li>
-</ol></li>
-<li><p><strong>What does homoscedasticity mean in regression analysis?</strong></p>
-<ol type="a">
-<li><p>The residuals have a consistent spread across all predicted values</p></li>
-<li><p>The independent variables are not correlated</p></li>
-<li><p>The predictors have no relationship with the error term</p></li>
-<li><p>The regression coefficients are stable across models</p></li>
-</ol></li>
-</ol>
+<div class="quiz-question">
+<p>
+<strong>1.</strong> What does the slope (b) in a simple linear regression equation represent?
+</p>
+<p><label><input type="radio" name="12q1" value="a"> The predicted value of Y when X = 0</label><br> <label><input type="radio" name="12q1" value="b"> The change in X relative to Y</label><br> <label><input type="radio" name="12q1" value="c"> The change in Y for a one-unit change in X</label><br> <label><input type="radio" name="12q1" value="d"> The coefficient of determination</label><br></p>
+<button type="button" onclick="checkMC('12q1', 'c', 'fb59')">Check answer</button>
+<p id="fb59" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>2.</strong> What does R² represent in simple linear regression analysis?
+</p>
+<p><label><input type="radio" name="12q2" value="a"> The correlation between independent variables</label><br> <label><input type="radio" name="12q2" value="b"> The proportion of variance in Y explained by X</label><br> <label><input type="radio" name="12q2" value="c"> The slope of the regression line</label><br> <label><input type="radio" name="12q2" value="d"> The standard error of the residuals</label><br></p>
+<button type="button" onclick="checkMC('12q2', 'b', 'fb60')">Check answer</button>
+<p id="fb60" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>3.</strong> What does tolerance measure in regression analysis?
+</p>
+<p><label><input type="radio" name="12q3" value="a"> The extent of multicollinearity among independent variables</label><br> <label><input type="radio" name="12q3" value="b"> The proportion of variance in the dependent variable explained by predictors</label><br> <label><input type="radio" name="12q3" value="c"> The normality of residuals</label><br> <label><input type="radio" name="12q3" value="d"> The degree of model fit</label><br></p>
+<button type="button" onclick="checkMC('12q3', 'a', 'fb61')">Check answer</button>
+<p id="fb61" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>4.</strong> What happens if a model includes highly correlated independent variables?
+</p>
+<p><label><input type="radio" name="12q4" value="a"> The dependent variable becomes unreliable</label><br> <label><input type="radio" name="12q4" value="b"> The coefficients of the independent variables become unstable</label><br> <label><input type="radio" name="12q4" value="c"> The model fit (R²) will always decrease</label><br> <label><input type="radio" name="12q4" value="d"> The assumption of linearity is violated</label><br></p>
+<button type="button" onclick="checkMC('12q4', 'b', 'fb62')">Check answer</button>
+<p id="fb62" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>5.</strong> What does homoscedasticity mean in regression analysis?
+</p>
+<p><label><input type="radio" name="12q5" value="a"> The residuals have a consistent spread across all predicted values</label><br> <label><input type="radio" name="12q5" value="b"> The independent variables are not correlated</label><br> <label><input type="radio" name="12q5" value="c"> The predictors have no relationship with the error term</label><br> <label><input type="radio" name="12q5" value="d"> The regression coefficients are stable across models</label><br></p>
+<button type="button" onclick="checkMC('12q5', 'a', 'fb63')">Check answer</button>
+<p id="fb63" class="quiz-feedback">
+</p>
+</div>
 
 
 </section>

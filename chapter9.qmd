@@ -75,64 +75,62 @@ The **Mann-Whitney $U$ test** is a statistical procedure used to determine wheth
 
  
 ## Check Your Understanding  {.unnumbered}
+<div class="quiz-question">
+  <p><strong>1.</strong> What is the main difference between an independent-samples t test and a related-samples t test?</p>
 
-1. **What is the main difference between an independent-samples t test and a related-samples t test?** 
+  <label><input type="radio" name="9q1" value="a"> Independent-samples t tests compare two separate groups, while related-samples t tests compare two sets of scores from the same group or matched individuals.</label><br>
+  <label><input type="radio" name="9q1" value="b"> Independent-samples t tests compare means to a population value, while related-samples t tests compare variances.</label><br>
+  <label><input type="radio" name="9q1" value="c"> Independent-samples t tests require categorical data, while related-samples t tests require continuous data.</label><br>
+  <label><input type="radio" name="9q1" value="d"> There is no difference; they are used interchangeably.</label><br>
 
-    a. Independent-samples $t$ tests compare two separate groups, while related-samples t tests compare two sets of scores from the same group or matched individuals. 
+  <button type="button" onclick="checkMC('9q1', 'a', 'fb41')">Check answer</button>
+  <p id="fb41" class="quiz-feedback"></p>
+</div>
 
-    b. Independent-samples $t$ tests compare means to a population value, while related-samples t tests compare variances. 
+<div class="quiz-question">
+  <p><strong>2.</strong> Which assumption is unique to independent-samples t tests but not required for related-samples t tests?</p>
 
-    c. Independent-samples $t$ tests require categorical data, while related-samples t tests require continuous data. 
+  <label><input type="radio" name="9q2" value="a"> Normality</label><br>
+  <label><input type="radio" name="9q2" value="b"> Random sampling</label><br>
+  <label><input type="radio" name="9q2" value="c"> Equal variances</label><br>
+  <label><input type="radio" name="9q2" value="d"> Independence of scores within groups</label><br>
 
-    d. There is no difference; they are used interchangeably. 
+  <button type="button" onclick="checkMC('9q2', 'c', 'fb42')">Check answer</button>
+  <p id="fb42" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>3.</strong> When would you use a one-sample t test instead of an independent- or related-samples t test?</p>
 
-2. **Which assumption is unique to independent-samples t tests but not required for related-samples t tests?**
+  <label><input type="radio" name="9q3" value="a"> When you have two independent groups to compare.</label><br>
+  <label><input type="radio" name="9q3" value="b"> When you want to compare a single group to a known population mean.</label><br>
+  <label><input type="radio" name="9q3" value="c"> When you compare pre- and post-test scores from the same group.</label><br>
+  <label><input type="radio" name="9q3" value="d"> When you have categorical data.</label><br>
 
-    a. Normality 
+  <button type="button" onclick="checkMC('9q3', 'b', 'fb43')">Check answer</button>
+  <p id="fb43" class="quiz-feedback"></p>
+</div>
 
-    b. Random sampling 
+<div class="quiz-question">
+  <p><strong>4.</strong> You are conducting a study to compare the effectiveness of two teaching methods on student performance. You have a small sample size of just 16 students (8 students taught by different teachers in different classrooms – there is no reason to suggest they are related) and the scores in your dataset are not normally distributed. Which test should you use to compare these scores?</p>
 
-    c. Equal variances 
+  <label><input type="radio" name="9q4" value="a"> Mann-Whitney U test</label><br>
+  <label><input type="radio" name="9q4" value="b"> Wilcoxon Matched-Pairs Signed-Ranks Test</label><br>
+  <label><input type="radio" name="9q4" value="c"> Independent-samples t test</label><br>
+  <label><input type="radio" name="9q4" value="d"> One-sample t test</label><br>
 
-    d. Independence of scores within groups 
+  <button type="button" onclick="checkMC('9q4', 'a', 'fb44')">Check answer</button>
+  <p id="fb44" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>5.</strong> Which effect size measure is commonly reported for independent-samples t tests?</p>
 
-3. **When would you use a one-sample t test instead of an independent- or related-samples t test?** 
+  <label><input type="radio" name="9q5" value="a"> r²</label><br>
+  <label><input type="radio" name="9q5" value="b"> Phi coefficient</label><br>
+  <label><input type="radio" name="9q5" value="c"> Cohen’s d</label><br>
+  <label><input type="radio" name="9q5" value="d"> Omega</label><br>
 
-    a. When you have two independent groups to compare. 
-
-    b. When you want to compare a single group to a known population mean. 
-
-    c. When you compare pre- and post-test scores from the same group. 
-
-    d. When you have categorical data. 
-
- 
-
-4. **You are conducting a study to compare the effectiveness of two teaching methods on student performance. You have a small sample size of just 16 students (8 students taught by different teachers in different classrooms – there is no reason to suggest they are related) and the scores in your dataset are not normally distributed. Which test should you use to compare these scores?** 
-
-    a. Mann-Whitney $U$ test 
-
-    b. Wilcoxon Matched-Pairs Signed-Ranks Test 
-
-    c. Independent-samples $t$ test 
-
-    d. One-sample $t$ test 
-
- 
-
-5. **Which effect size measure is commonly reported for independent-samples t tests?** 
-
-    a. $r^2$ 
-
-    b. Phi coefficient 
-
-    c. Cohen’s $d$ 
-
-    d. Omega 
-  
-
- 
+  <button type="button" onclick="checkMC('9q5', 'c', 'fb45')">Check answer</button>
+  <p id="fb45" class="quiz-feedback"></p>
+</div>

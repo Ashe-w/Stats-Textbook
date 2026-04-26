@@ -63,63 +63,62 @@ A **propensity model** is used to estimate the likelihood (or propensity) of an 
  
 
 ## Check Your Understanding  {.unnumbered}
+<div class="quiz-question">
+  <p><strong>1.</strong> Which of the following is NOT a purpose of meta-analysis?</p>
 
-1. **Which of the following is NOT a purpose of meta-analysis?** 
+  <label><input type="radio" name="14q1" value="a"> Identifying the central tendency or common effect across studies</label><br>
+  <label><input type="radio" name="14q1" value="b"> Exploring variability in effect sizes</label><br>
+  <label><input type="radio" name="14q1" value="c"> Developing new experimental theories</label><br>
+  <label><input type="radio" name="14q1" value="d"> Explaining why variation in effect sizes occurs</label><br>
 
-    a. Identifying the central tendency or common effect across studies 
+  <button type="button" onclick="checkMC('14q1', 'c', 'fb70')">Check answer</button>
+  <p id="fb70" class="quiz-feedback"></p>
+</div>
 
-    b. Exploring variability in effect sizes 
+<div class="quiz-question">
+  <p><strong>2.</strong> A propensity model is typically used to:</p>
 
-    c. Developing new experimental theories 
+  <label><input type="radio" name="14q2" value="a"> Measure the direct effect of a treatment variable</label><br>
+  <label><input type="radio" name="14q2" value="b"> Estimate the likelihood of receiving a treatment based on observed characteristics</label><br>
+  <label><input type="radio" name="14q2" value="c"> Compare independent variables across different models</label><br>
+  <label><input type="radio" name="14q2" value="d"> Simplify complex data into manageable clusters</label><br>
 
-    d. Explaining why variation in effect sizes occurs 
+  <button type="button" onclick="checkMC('14q2', 'b', 'fb71')">Check answer</button>
+  <p id="fb71" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>3.</strong> What is a key requirement for using Multilevel Modeling (MLM) effectively?</p>
 
-2. **A propensity model is typically used to:** 
+  <label><input type="radio" name="14q3" value="a"> A minimum sample size of 50 participants</label><br>
+  <label><input type="radio" name="14q3" value="b"> Randomized controlled trials only</label><br>
+  <label><input type="radio" name="14q3" value="c"> Large datasets with at least 20–30 groups of 20–30 individuals per group</label><br>
+  <label><input type="radio" name="14q3" value="d"> A focus on theoretical over empirical studies</label><br>
 
-    a. Measure the direct effect of a treatment variable 
+  <button type="button" onclick="checkMC('14q3', 'c', 'fb72')">Check answer</button>
+  <p id="fb72" class="quiz-feedback"></p>
+</div>
 
-    b. Estimate the likelihood of receiving a treatment based on observed characteristics 
+<div class="quiz-question">
+  <p><strong>4.</strong> Which of the following is a key benefit of Structural Equation Modeling (SEM) over traditional regression analysis?</p>
 
-    c. Compare independent variables across different models 
+  <label><input type="radio" name="14q4" value="a"> It requires fewer participants to yield accurate results</label><br>
+  <label><input type="radio" name="14q4" value="b"> It eliminates the need for latent variables</label><br>
+  <label><input type="radio" name="14q4" value="c"> It allows the inclusion of multiple dependent variables and mediating variables</label><br>
+  <label><input type="radio" name="14q4" value="d"> It reduces data complexity by eliminating endogenous predictors</label><br>
 
-    d. Simplify complex data into manageable clusters 
+  <button type="button" onclick="checkMC('14q4', 'c', 'fb73')">Check answer</button>
+  <p id="fb73" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>5.</strong> What is the minimum number of studies generally required to conduct a meta-analysis that explores variation?</p>
 
-3. **What is a key requirement for using Multilevel Modeling (MLM) effectively?** 
+  <label><input type="radio" name="14q5" value="a"> Two studies</label><br>
+  <label><input type="radio" name="14q5" value="b"> Three studies</label><br>
+  <label><input type="radio" name="14q5" value="c"> Four studies</label><br>
+  <label><input type="radio" name="14q5" value="d"> Twenty studies</label><br>
 
-    a. A minimum sample size of 50 participants 
-
-    b. Randomized controlled trials only 
-
-    c. Large datasets with at least 20-30 groups of 20-30 individuals per group 
-
-    d. A focus on theoretical over empirical studies 
-
- 
-
-4. **Which of the following is a key benefit of Structural Equation Modeling (SEM) over traditional regression analysis?** 
-
-    a. It requires fewer participants to yield accurate results 
-
-    b. It eliminates the need for latent variables 
-
-    c. It allows the inclusion of multiple dependent variables and mediating variables 
-
-    d. It reduces data complexity by eliminating endogenous predictors 
-
- 
-
-5. **What is the minimum number of studies generally required to conduct a meta-analysis that explores variation?** 
-
-    a. Two studies 
-
-    b. Three studies 
-
-    c. Four studies 
-
-    d. Twenty studies  
-
- 
+  <button type="button" onclick="checkMC('14q5', 'b', 'fb74')">Check answer</button>
+  <p id="fb74" class="quiz-feedback"></p>
+</div>

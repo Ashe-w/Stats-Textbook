@@ -1,4 +1,4 @@
-# Chapter 3: Exploring Data Spread - Measures of Variability in R {.unnumbered}
+## Exploring Data Spread - Measures of Variability in R 
 
 In this section, we demonstrate how to compute and interpret measures of variability—**range, interquartile range (IQR), variance**, and **standard deviation**—using math achievement data from the U.S. sample in the Programme for International Student Assessment (PISA). We will use the PV1MATH variable (Math Plausible Value 1) as an illustrative example. 
 
@@ -16,7 +16,7 @@ data <- read_sav("chapter3/Clean-data_mar6.sav")
 math_achi <- data$PV1MATH 
 ```
 
-## 1    Calculating the Range{.unnumbered}
+###    Calculating the Range
 
 The range shows the spread between the smallest and largest scores. 
 ```{r}
@@ -35,7 +35,7 @@ range_diff <- diff(range_math) #calculate the difference between the two values
 range_diff 
 ```
 
-## 2    Calculating the Interquartile Range (IQR) {.unnumbered}
+###    Calculating the Interquartile Range (IQR) 
 IQR represents the middle 50% of the scores and is more robust to outliers. 
 ```{r}
 #| echo: true
@@ -52,7 +52,7 @@ iqr_math
 #return the 1st quartile (25th percentile), median (50th percentile), and 3rd quartile (75th percentile) 
 quantile(math_achi, probs = c(0.25, 0.5, 0.75)) 
 ```
-# 3	    Calculating the Variance and Standard Deviation {.unnumbered}
+###    Calculating the Variance and Standard Deviation 
 Variance shows the average squared distance from the mean, and the standard deviation is its square root. By default, R calculates the *sample* variance and *sample* standard deviation, which divide by $(n - 1)$: 
 ```{r}
 #| echo: true
@@ -78,7 +78,7 @@ n <- sum(!is.na(math_achi))
 pop_var_math <- var_math * (n - 1) / n  # Convert sample variance to population variance 
 pop_sd_math <- sqrt(pop_var_math) 
 ```
-## 4    Visualizing the Distribution with Mean and SD {.unnumbered}
+###    Visualizing the Distribution with Mean and SD 
 We can use a histogram to examine how the scores are spread around the mean. 
 ```{r}
 #| echo: true
@@ -106,9 +106,9 @@ within_2sd <- mean(math_achi > (mean_math - 2*sd_math) & math_achi < (mean_math 
 within_3sd <- mean(math_achi > (mean_math - 3*sd_math) & math_achi < (mean_math + 3*sd_math)) 
 c(within_1sd, within_2sd, within_3sd) 
 ```
-## 5    Interpreting Variability in Math Achievement Scores {.unnumbered}
+###    Interpreting Variability in Math Achievement Scores 
 
-### 5.1 5.1	Measures of Variability {.unnumbered}
+####	Measures of Variability 
 
 The analysis of math achievement scores (PV1MATH) from the PISA U.S. dataset provides key insights into the distribution using measures of variability. 
 
@@ -118,7 +118,7 @@ The analysis of math achievement scores (PV1MATH) from the PISA U.S. dataset pro
 
 - **Variance** and **Standard Deviation**: The sample variance is 9049.61, and the standard deviation is 95.13. This tells us that, on average, individual scores deviate by about 95 points from the mean score.  
 
-### 5.2	Visualizing Spread and Normality {.unnumbered}
+####	Visualizing Spread and Normality {.unnumbered}
 
 The histogram confirms a roughly symmetric distribution centered around the mean, with the bulk of scores falling within one standard deviation. 
 

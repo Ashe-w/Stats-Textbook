@@ -1,8 +1,8 @@
-# Analyzing Differences Between Two Groups in R {.unnumbered}
+## Analyzing Differences Between Two Groups in R 
 
 In this section, we demonstrate how to compare **two independent groups** (students who are more motivated vs. not more motivated in math) on **math achievement** (PV1MATH) from the PISA 2022 U.S. dataset using R. We illustrate both parametric (independent-samples t test) and nonparametric (Mann-Whitney U) methods, aligning with the chapter’s discussion of assumptions and alternatives. 
 
-## 1    Data Exploration {.unnumbered}
+###    Data Exploration 
 ```{r}
 #| echo: false
 #| message: false
@@ -37,15 +37,15 @@ ggplot(data %>% filter(!is.na(MATHMOT)), # Filter out missing values in MATHMOT
 Among the participants, 125 students reported being more motivated in math, while 3,885 students did not. The density plot above compares the distribution of math scores between two groups of students based on their self-reported math motivation. The score distribution of more motivated students (in cyan) appears slightly shifted to the right, suggesting higher overall performance in math. This visual pattern hints at a potential performance difference related to student motivation toward math, which will be formally tested in the next steps using statistical methods. 
 
 
-## 2	Two Independent-Sample t Test {.unnumbered}
+###	Two Independent-Sample t Test 
 
-### 2.1	Define Hypothesis {.unnumbered}
+####	Define Hypothesis 
 
 - $H_0$: The mean math scores are equal between the two groups ($\mu_0=\mu_1$). 
 
 - $H_a$: The mean math scores are different between the two groups ($\mu_0\ne \mu_1$₁).
 
-### 2.2 Conduct the Test {.unnumbered}
+#### Conduct the Test 
 ```{r}
 #| echo: true
 #| message: false
@@ -70,7 +70,7 @@ Levene’s Test for Equality of Variances yielded a statistically significant re
 
 The Welch’s $t$-test revealed no statistically significant difference in average math scores between students who reported being more motivated and those who did not, $t(130.44) = -1.24$, $p = .217$. The mean math score for students who were not more motivated was 466.66, compared to 478.66 for students who reported being more motivated. Although more motivated students scored slightly higher on average, the difference is not statistically meaningful, and could plausibly be due to random variation. 
 
-### 2.3	Effect Size (Cohen’s $d$) {.unnumbered}
+####	Effect Size (Cohen’s $d$) 
 ```{r}
 #| echo: true
 #| message: false
@@ -83,7 +83,7 @@ d_value
 **Interpretation**: 
 The effect size (Cohen’s $d$) was 0.13, which is considered small by conventional benchmarks. This suggests that the difference in math scores between more motivated and less motivated students is minimal in practical terms.
 
-## 3    Two Independent-Sample Mann-Whitney U Test {.unnumbered}
+###   Two Independent-Sample Mann-Whitney U Test 
 
 If the normality assumption is violated or the data are ordinal or highly skewed, the Mann-Whitney $U$ test is appropriate. In R, this test is implemented using the wilcox.test() function. Note this is not the same as the Wilcoxon’s Matched-Pairs Signed-Ranks Test, which is used for paired or related samples. 
 

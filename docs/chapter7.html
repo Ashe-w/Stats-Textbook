@@ -124,6 +124,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 
 <script src="https://hypothes.is/embed.js" async=""></script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DHHP4LF5C2"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+
+
+  gtag('config', 'G-DHHP4LF5C2');
+
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -332,19 +349,13 @@ window.Quarto = {
   <li><a href="#step-3-verify-that-data-meet-necessary-assumptions-for-the-statistical-method-and-calculate-the-test-statistic." id="toc-step-3-verify-that-data-meet-necessary-assumptions-for-the-statistical-method-and-calculate-the-test-statistic." class="nav-link" data-scroll-target="#step-3-verify-that-data-meet-necessary-assumptions-for-the-statistical-method-and-calculate-the-test-statistic.">Step 3: Verify that data meet necessary assumptions for the statistical method and calculate the test statistic.</a></li>
   <li><a href="#step-4-draw-a-conclusion-for-your-research-question." id="toc-step-4-draw-a-conclusion-for-your-research-question." class="nav-link" data-scroll-target="#step-4-draw-a-conclusion-for-your-research-question.">Step 4: Draw a conclusion for your research question.</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#hypothesis-testing-in-r" id="toc-hypothesis-testing-in-r" class="nav-link" data-scroll-target="#hypothesis-testing-in-r">Hypothesis Testing in R</a>
+  <li><a href="#hypothesis-testing-in-r" id="toc-hypothesis-testing-in-r" class="nav-link" data-scroll-target="#hypothesis-testing-in-r"><span class="header-section-number">7.3</span> Hypothesis Testing in R</a>
   <ul class="collapse">
-  <li><a href="#manual-implementation-of-the-one-sample-z-test" id="toc-manual-implementation-of-the-one-sample-z-test" class="nav-link" data-scroll-target="#manual-implementation-of-the-one-sample-z-test">1 Manual Implementation of the One-Sample z Test</a>
-  <ul class="collapse">
-  <li><a href="#state-the-hypotheses" id="toc-state-the-hypotheses" class="nav-link" data-scroll-target="#state-the-hypotheses">1.1 State the Hypotheses</a></li>
-  <li><a href="#set-the-decision-criteria" id="toc-set-the-decision-criteria" class="nav-link" data-scroll-target="#set-the-decision-criteria">1.2 Set the Decision Criteria</a></li>
-  <li><a href="#compute-the-test-statistic" id="toc-compute-the-test-statistic" class="nav-link" data-scroll-target="#compute-the-test-statistic">1.3 Compute the Test Statistic</a></li>
-  <li><a href="#compute-the-p-value-and-draw-a-conclusion" id="toc-compute-the-p-value-and-draw-a-conclusion" class="nav-link" data-scroll-target="#compute-the-p-value-and-draw-a-conclusion">1.4 Compute the p Value and Draw a Conclusion</a></li>
+  <li><a href="#manual-implementation-of-the-one-sample-z-test" id="toc-manual-implementation-of-the-one-sample-z-test" class="nav-link" data-scroll-target="#manual-implementation-of-the-one-sample-z-test"><span class="header-section-number">7.3.1</span> Manual Implementation of the One-Sample z Test</a></li>
+  <li><a href="#using-rs-built-in-functions" id="toc-using-rs-built-in-functions" class="nav-link" data-scroll-target="#using-rs-built-in-functions"><span class="header-section-number">7.3.2</span> Using R’s Built-in Functions</a></li>
   </ul></li>
-  <li><a href="#using-rs-built-in-functions" id="toc-using-rs-built-in-functions" class="nav-link" data-scroll-target="#using-rs-built-in-functions">2 Using R’s Built-in Functions</a></li>
+  <li><a href="#hypothesis-testing-in-spss" id="toc-hypothesis-testing-in-spss" class="nav-link" data-scroll-target="#hypothesis-testing-in-spss"><span class="header-section-number">7.4</span> Hypothesis Testing in SPSS</a></li>
   </ul></li>
-  <li><a href="#hypothesis-testing-in-spss" id="toc-hypothesis-testing-in-spss" class="nav-link" data-scroll-target="#hypothesis-testing-in-spss">Hypothesis Testing in SPSS</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
   <ul class="collapse">
   <li><a href="#key-takeaways-for-educational-researchers-from-chapter-7" id="toc-key-takeaways-for-educational-researchers-from-chapter-7" class="nav-link" data-scroll-target="#key-takeaways-for-educational-researchers-from-chapter-7">Key Takeaways for Educational Researchers from Chapter 7</a></li>
@@ -532,19 +543,18 @@ Figure&nbsp;7.4: Two-Sided Z-Test with Rejection and Non-Rejection Regions (α =
 </section>
 </section>
 </section>
-</section>
-<section id="hypothesis-testing-in-r" class="level1 unnumbered">
-<h1 class="unnumbered">Hypothesis Testing in R</h1>
+<section id="hypothesis-testing-in-r" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="hypothesis-testing-in-r"><span class="header-section-number">7.3</span> Hypothesis Testing in R</h2>
 <p>In this section, we will walk through the implementation of hypothesis testing in R, using the <strong>one-sample z test</strong> as introduced in this chapter. Our empirical example uses the PISA U.S. math achievement scores (PV1MATH) and compares them against the OECD mean of 500 points, as reported by OECD. Note that the OECD scaling assumes approximately normal distributions with a mean around 500 and a standard deviation of about 100.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter6/chapter6data.sav"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="manual-implementation-of-the-one-sample-z-test" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="manual-implementation-of-the-one-sample-z-test">1 Manual Implementation of the One-Sample z Test</h2>
+<section id="manual-implementation-of-the-one-sample-z-test" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="manual-implementation-of-the-one-sample-z-test"><span class="header-section-number">7.3.1</span> Manual Implementation of the One-Sample z Test</h3>
 <p>We will follow the four key steps of hypothesis testing:</p>
-<section id="state-the-hypotheses" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="state-the-hypotheses">1.1 State the Hypotheses</h3>
+<section id="state-the-hypotheses" class="level4" data-number="7.3.1.1">
+<h4 data-number="7.3.1.1" class="anchored" data-anchor-id="state-the-hypotheses"><span class="header-section-number">7.3.1.1</span> State the Hypotheses</h4>
 <p>Our research question is:</p>
 <p><em>Is the average math performance of U.S. students (<span class="math inline">\(\mu\)</span>) significantly different from the OECD mean of 500? </em></p>
 <p>The hypotheses are stated as:</p>
@@ -567,8 +577,8 @@ Figure&nbsp;7.4: Two-Sided Z-Test with Rejection and Non-Rejection Regions (α =
 </div>
 </div>
 </section>
-<section id="set-the-decision-criteria" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="set-the-decision-criteria">1.2 Set the Decision Criteria</h3>
+<section id="set-the-decision-criteria" class="level4" data-number="7.3.1.2">
+<h4 data-number="7.3.1.2" class="anchored" data-anchor-id="set-the-decision-criteria"><span class="header-section-number">7.3.1.2</span> Set the Decision Criteria</h4>
 <p>We adopt the conventional significance level:</p>
 <ul>
 <li><span class="math inline">\(\alpha=0.05\)</span></li>
@@ -576,8 +586,8 @@ Figure&nbsp;7.4: Two-Sided Z-Test with Rejection and Non-Rejection Regions (α =
 </ul>
 <p>If the <span class="math inline">\(p\)</span> value &lt; 0.05 (or equivalently, the test statistic falls beyond <span class="math inline">\(\pm1.96\)</span>), we will reject <span class="math inline">\(H_0\)</span>.</p>
 </section>
-<section id="compute-the-test-statistic" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="compute-the-test-statistic">1.3 Compute the Test Statistic</h3>
+<section id="compute-the-test-statistic" class="level4" data-number="7.3.1.3">
+<h4 data-number="7.3.1.3" class="anchored" data-anchor-id="compute-the-test-statistic"><span class="header-section-number">7.3.1.3</span> Compute the Test Statistic</h4>
 <p>Review Chapters 4 and 5 for normality assumption checking. Given our data meet the assumptions, we move on to compute the z statistic.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters </span></span>
@@ -596,8 +606,8 @@ Figure&nbsp;7.4: Two-Sided Z-Test with Rejection and Non-Rejection Regions (α =
 </div>
 <p>z = -25.72 indicates that the U.S. mean is 25.72 standard deviations below the OECD mean.</p>
 </section>
-<section id="compute-the-p-value-and-draw-a-conclusion" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="compute-the-p-value-and-draw-a-conclusion">1.4 Compute the p Value and Draw a Conclusion</h3>
+<section id="compute-the-p-value-and-draw-a-conclusion" class="level4" data-number="7.3.1.4">
+<h4 data-number="7.3.1.4" class="anchored" data-anchor-id="compute-the-p-value-and-draw-a-conclusion"><span class="header-section-number">7.3.1.4</span> Compute the p Value and Draw a Conclusion</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for two-tailed test </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z_value))) <span class="co">#1-pnorm(abs(z_value)) gives the upper tail probability  </span></span>
@@ -609,8 +619,8 @@ Figure&nbsp;7.4: Two-Sided Z-Test with Rejection and Non-Rejection Regions (α =
 <p>As <span class="math inline">\(p&lt;0.05\)</span>, we reject the null hypothesis and conclude that U.S. students’ average math score is significantly different from the OECD mean of 500.</p>
 </section>
 </section>
-<section id="using-rs-built-in-functions" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="using-rs-built-in-functions">2 Using R’s Built-in Functions</h2>
+<section id="using-rs-built-in-functions" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="using-rs-built-in-functions"><span class="header-section-number">7.3.2</span> Using R’s Built-in Functions</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BSDA) </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># two-tailed test: H0: mu = 500 vs. Ha: mu != 500 </span></span>
@@ -636,12 +646,13 @@ mean of x
 <p>The output confirms our manual calculations, with a <span class="math inline">\(z\)</span> statistic of -25.72 and a <span class="math inline">\(p\)</span> value close to 0, leading to the same conclusion: we reject the null hypothesis.</p>
 </section>
 </section>
-<section id="hypothesis-testing-in-spss" class="level1 unnumbered">
-<h1 class="unnumbered">Hypothesis Testing in SPSS</h1>
+<section id="hypothesis-testing-in-spss" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="hypothesis-testing-in-spss"><span class="header-section-number">7.4</span> Hypothesis Testing in SPSS</h2>
 <p>In this section, we introduce the logic of hypothesis testing and present the one-sample z-test. However, <strong>due to limitations in SPSS</strong>, we <strong>do not provide a worked SPSS example</strong> for this test in this chapter.</p>
 <p><strong><em>Limitation of SPSS</em></strong>: While SPSS is widely used for applied statistical analysis, it is not designed for analyses that require direct implementation of statistical formulas, such as the one-sample z-test with a known population standard deviation. SPSS is optimized for menu-driven procedures using built-in tests, rather than for custom calculations that rely on user-defined parameters.</p>
 <p>Although it is technically possible to compute a z-value manually in SPSS using the Compute Variable function, this process is inefficient and often <strong>more cumbersome than performing the calculation by hand</strong>. Because SPSS treats all variable computations as column-based operations, entering a constant formula results in a new variable where every case is assigned the same value. This output can be unintuitive and provides no native support for reporting the associated p-value or confidence interval, making it harder to interpret and communicate the result in standard hypothesis testing terms.</p>
 <p>In contrast, programming-based tools such as R are far more flexible and better suited for tasks like this. If you are interested in seeing how the one-sample z-test can be implemented in R, <strong>please refer to the section of this textbook that includes R code</strong>. In the corresponding chapter, a one-sample z-test is demonstrated by comparing U.S. students’ math scores (PV1MATH) to the OECD benchmark of 500, assuming a known population standard deviation of 100. The analysis is completed in just a few lines of code. While R requires some basic scripting skills, it is especially valuable for statistical procedures that are not natively supported in point-and-click software like SPSS.</p>
+</section>
 </section>
 <section id="conclusion" class="level1 unnumbered">
 <h1 class="unnumbered">Conclusion</h1>
@@ -684,40 +695,51 @@ mean of x
 </section>
 <section id="check-your-understanding" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
-<ol type="1">
-<li><p><strong>What is the purpose of setting an alpha level (α) in hypothesis testing?</strong></p>
-<pre><code> a. To determine the sample size required for the study 
-
- b. To set the threshold probability for rejecting the null hypothesis 
-
- c. To calculate the confidence interval for the population mean 
-
- d. To ensure the sample data are normally distributed </code></pre></li>
-<li><p><strong>A researcher hypothesizes that students from a particular school will outperform the state average on a given test. What type of test should be conducted?</strong></p>
-<pre><code> a. Directional test (two-tailed/two-sided) 
-
- b. Nondirectional test (one-tailed/one-sided)  </code></pre></li>
-<li><p><strong>A critical value defines the cutoff point that separates the rejection region from the non-rejection region in a hypothesis test.</strong></p>
-<pre><code> a. True 
-
- b. False </code></pre></li>
-<li><p><strong>What does a <span class="math inline">\(p\)</span> value indicate in hypothesis testing?</strong></p>
-<pre><code> a. The probability that the null hypothesis is true 
-
- b. The likelihood of obtaining the observed result, or something more extreme, if the null hypothesis is true 
-
- c. The size of the effect in the population 
-
- d. The risk of committing a Type II error </code></pre></li>
-<li><p><strong>What is the primary purpose of hypothesis testing in research?</strong></p>
-<pre><code> a. To organize data into meaningful groups 
-
- b. To differentiate real patterns from random chance in data 
-
- c. To calculate the average of a sample population 
-
- d. To ensure data is normally distributed </code></pre></li>
-</ol>
+<div class="quiz-question">
+<p>
+<strong>1.</strong> What is the purpose of setting an alpha level (α) in hypothesis testing?
+</p>
+<p><label><input type="radio" name="7q1" value="a"> To determine the sample size required for the study</label><br> <label><input type="radio" name="7q1" value="b"> To set the threshold probability for rejecting the null hypothesis</label><br> <label><input type="radio" name="7q1" value="c"> To calculate the confidence interval for the population mean</label><br> <label><input type="radio" name="7q1" value="d"> To ensure the sample data are normally distributed</label><br></p>
+<button type="button" onclick="checkMC('7q1', 'b', 'fb31')">Check answer</button>
+<p id="fb31" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>2.</strong> A researcher hypothesizes that students from a particular school will outperform the state average on a given test. What type of test should be conducted?
+</p>
+<p><label><input type="radio" name="7q2" value="a"> Directional test (one-tailed/one-sided)</label><br> <label><input type="radio" name="7q2" value="b"> Nondirectional test (two-tailed/two-sided)</label><br></p>
+<button type="button" onclick="checkMC('7q2', 'a', 'fb32')">Check answer</button>
+<p id="fb32" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>3.</strong> A critical value defines the cutoff point that separates the rejection region from the non-rejection region in a hypothesis test.
+</p>
+<p><label><input type="radio" name="7q3" value="a"> True</label><br> <label><input type="radio" name="7q3" value="b"> False</label><br></p>
+<button type="button" onclick="checkMC('7q3', 'a', 'fb33')">Check answer</button>
+<p id="fb33" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>4.</strong> What does a p value indicate in hypothesis testing?
+</p>
+<p><label><input type="radio" name="7q4" value="a"> The probability that the null hypothesis is true</label><br> <label><input type="radio" name="7q4" value="b"> The likelihood of obtaining the observed result, or something more extreme, if the null hypothesis is true</label><br> <label><input type="radio" name="7q4" value="c"> The size of the effect in the population</label><br> <label><input type="radio" name="7q4" value="d"> The risk of committing a Type II error</label><br></p>
+<button type="button" onclick="checkMC('7q4', 'b', 'fb34')">Check answer</button>
+<p id="fb34" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>5.</strong> What is the primary purpose of hypothesis testing in research?
+</p>
+<p><label><input type="radio" name="7q5" value="a"> To organize data into meaningful groups</label><br> <label><input type="radio" name="7q5" value="b"> To differentiate real patterns from random chance in data</label><br> <label><input type="radio" name="7q5" value="c"> To calculate the average of a sample population</label><br> <label><input type="radio" name="7q5" value="d"> To ensure data is normally distributed</label><br></p>
+<button type="button" onclick="checkMC('7q5', 'b', 'fb35')">Check answer</button>
+<p id="fb35" class="quiz-feedback">
+</p>
+</div>
 
 
 </section>

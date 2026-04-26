@@ -78,101 +78,98 @@ The **Kruskal-Wallis Test** is a nonparametric statistical method used to determ
 
 
 ## Check Your Understanding {.unnumbered}
+<div class="quiz-question">
+  <p><strong>1.</strong> What is the primary purpose of a One-Way ANOVA?</p>
 
-1. **What is the primary purpose of a One-Way ANOVA?** 
+  <label><input type="radio" name="10q1" value="a"> To compare the means of two groups</label><br>
+  <label><input type="radio" name="10q1" value="b"> To compare the means of three or more groups</label><br>
+  <label><input type="radio" name="10q1" value="c"> To analyze relationships between continuous variables</label><br>
+  <label><input type="radio" name="10q1" value="d"> To assess correlations between independent and dependent variables</label><br>
 
-        a. To compare the means of two groups 
+  <button type="button" onclick="checkMC('10q1', 'b', 'fb46')">Check answer</button>
+  <p id="fb46" class="quiz-feedback"></p>
+</div>
 
-        b. To compare the means of three or more groups 
+<div class="quiz-question">
+  <p><strong>2.</strong> Which of the following increases the risk of a Type I error when comparing multiple groups?</p>
 
-        c. To analyze relationships between continuous variables 
+  <label><input type="radio" name="10q2" value="a"> Failing to apply a correction for multiple comparisons (e.g., Bonferroni correction)</label><br>
+  <label><input type="radio" name="10q2" value="b"> Running multiple t tests on the same data set</label><br>
+  <label><input type="radio" name="10q2" value="c"> Including covariates in the analysis</label><br>
+  <label><input type="radio" name="10q2" value="d"> Increasing sample size</label><br>
 
-        d. To assess correlations between independent and dependent variables   
+  <button type="button" onclick="checkMC('10q2', 'b', 'fb47')">Check answer</button>
+  <p id="fb47" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>3.</strong> Which test is the most conservative post hoc method for controlling Type I error?</p>
 
-2. **Which of the following increases the risk of a Type I error when comparing multiple groups?**
+  <label><input type="radio" name="10q3" value="a"> Tukey’s HSD</label><br>
+  <label><input type="radio" name="10q3" value="b"> Fisher’s LSD</label><br>
+  <label><input type="radio" name="10q3" value="c"> Bonferroni test</label><br>
+  <label><input type="radio" name="10q3" value="d"> Kruskal-Wallis Test</label><br>
 
-        a. Failing to apply a correction for multiple comparisons (e.g., Bonferroni correction) 
+  <button type="button" onclick="checkMC('10q3', 'c', 'fb48')">Check answer</button>
+  <p id="fb48" class="quiz-feedback"></p>
+</div>
 
-        b. Running multiple t tests on the same data set 
+<div class="quiz-question">
+  <p><strong>4.</strong> The Kruskal-Wallis Test is best suited for which type of data?</p>
 
-        c. Including covariates in the analysis 
+  <label><input type="radio" name="10q4" value="a"> Ordinal data or non-normal distributions</label><br>
+  <label><input type="radio" name="10q4" value="b"> Normally distributed interval data</label><br>
+  <label><input type="radio" name="10q4" value="c"> Binary data</label><br>
+  <label><input type="radio" name="10q4" value="d"> Continuous data</label><br>
 
-        d. Increasing sample size 
+  <button type="button" onclick="checkMC('10q4', 'a', 'fb49')">Check answer</button>
+  <p id="fb49" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>5.</strong> What does homogeneity of variance mean in ANOVA?</p>
 
-3. **Which test is the most conservative post hoc method for controlling Type I error?** 
+  <label><input type="radio" name="10q5" value="a"> All groups have the same sample size</label><br>
+  <label><input type="radio" name="10q5" value="b"> The dependent variable is normally distributed</label><br>
+  <label><input type="radio" name="10q5" value="c"> The variances of the dependent variable are similar across groups</label><br>
+  <label><input type="radio" name="10q5" value="d"> There is no interaction effect between variables</label><br>
 
-        a. Tukey’s HSD 
+  <button type="button" onclick="checkMC('10q5', 'c', 'fb50')">Check answer</button>
+  <p id="fb50" class="quiz-feedback"></p>
+</div>
 
-        b. Fisher’s LSD 
+<div class="quiz-question">
+  <p><strong>6.</strong> What distinguishes a factorial ANOVA from a one-way ANOVA?</p>
 
-        c. Bonferroni test 
+  <label><input type="radio" name="10q6" value="a"> It compares means between more than two groups.</label><br>
+  <label><input type="radio" name="10q6" value="b"> It examines the effects of two or more independent variables and their interactions on a dependent variable.</label><br>
+  <label><input type="radio" name="10q6" value="c"> It includes covariates to control for variability in the dependent variable.</label><br>
+  <label><input type="radio" name="10q6" value="d"> It is used for nonparametric data.</label><br>
 
-        d. Kruskal-Wallis Test 
+  <button type="button" onclick="checkMC('10q6', 'b', 'fb51')">Check answer</button>
+  <p id="fb51" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>7.</strong> Which of the following is an example of a factorial ANOVA design?</p>
 
-4. **The Kruskal-Wallis Test is best suited for which type of data?**
+  <label><input type="radio" name="10q7" value="a"> Comparing the mean scores of students across three different teaching methods.</label><br>
+  <label><input type="radio" name="10q7" value="b"> Assessing the correlation between test scores and student motivation.</label><br>
+  <label><input type="radio" name="10q7" value="c"> Testing for differences in a single group’s test scores across three different time points.</label><br>
+  <label><input type="radio" name="10q7" value="d"> Analyzing the effects of teaching method (lecture vs. inquiry-based) and student age group (young vs. adult) on test scores.</label><br>
 
-        a. Ordinal data or non-normal distributions 
+  <button type="button" onclick="checkMC('10q7', 'd', 'fb52')">Check answer</button>
+  <p id="fb52" class="quiz-feedback"></p>
+</div>
 
-        b. Normally distributed interval data 
+<div class="quiz-question">
+  <p><strong>8.</strong> What is the effect size measure commonly used in ANOVA to estimate the proportion of variance explained by the independent variable?</p>
 
-        c. Binary data 
+  <label><input type="radio" name="10q8" value="a"> Pearson’s r</label><br>
+  <label><input type="radio" name="10q8" value="b"> Eta Squared</label><br>
+  <label><input type="radio" name="10q8" value="c"> Cronbach’s Alpha</label><br>
+  <label><input type="radio" name="10q8" value="d"> Chi-Squared</label><br>
 
-        d. Continuous data 
-
- 
-
-5. **What does homogeneity of variance mean in ANOVA?** 
-
-        a. All groups have the same sample size 
-
-        b. The dependent variable is normally distributed 
-
-        c. The variances of the dependent variable are similar across groups 
-
-        d. There is no interaction effect between variables 
-
- 
-
-**What distinguishes a factorial ANOVA from a one-way ANOVA?** 
-
-        a. It compares means between more than two groups. 
-
-        b. It examines the effects of two or more independent variables and their interactions on a dependent variable. 
-
-        c. It includes covariates to control for variability in the dependent variable. 
-
-        d. It is used for nonparametric data. 
-
- 
-
-7. **Which of the following is an example of a factorial ANOVA design?** 
-
-        a. Comparing the mean scores of students across three different teaching methods. 
-
-        b. Assessing the correlation between test scores and student motivation. 
-
-        c. Testing for differences in a single group’s test scores across three different time points. 
-
-        d. Analyzing the effects of teaching method (lecture vs. inquiry-based) and student age group (young vs. adult) on test scores. 
-
- 
-
-8. **What is the effect size measure commonly used in ANOVA to estimate the proportion of variance explained by the independent variable?**
-
-        a. Pearson’s r 
-
-        b. Eta Squared  
-
-        c. Cronbach’s Alpha 
-
-        d. Chi-Squared 
-
- 
-
-
+  <button type="button" onclick="checkMC('10q8', 'b', 'fb53')">Check answer</button>
+  <p id="fb53" class="quiz-feedback"></p>
+</div>

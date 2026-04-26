@@ -124,6 +124,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 
 <script src="https://hypothes.is/embed.js" async=""></script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DHHP4LF5C2"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+
+
+  gtag('config', 'G-DHHP4LF5C2');
+
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -331,21 +348,17 @@ window.Quarto = {
   <li><a href="#central-limit-theorem-in-action" id="toc-central-limit-theorem-in-action" class="nav-link" data-scroll-target="#central-limit-theorem-in-action"><span class="header-section-number">6.3.1</span> Central Limit Theorem in Action</a></li>
   </ul></li>
   <li><a href="#standard-error-of-the-mean" id="toc-standard-error-of-the-mean" class="nav-link" data-scroll-target="#standard-error-of-the-mean"><span class="header-section-number">6.4</span> Standard Error of the Mean</a></li>
-  </ul></li>
-  <li><a href="#exploring-sampling-distributions-in-r" id="toc-exploring-sampling-distributions-in-r" class="nav-link" data-scroll-target="#exploring-sampling-distributions-in-r">Exploring Sampling Distributions in R</a>
+  <li><a href="#exploring-sampling-distributions-in-r" id="toc-exploring-sampling-distributions-in-r" class="nav-link" data-scroll-target="#exploring-sampling-distributions-in-r"><span class="header-section-number">6.5</span> Exploring Sampling Distributions in R</a>
   <ul class="collapse">
-  <li><a href="#examining-the-population-distribution" id="toc-examining-the-population-distribution" class="nav-link" data-scroll-target="#examining-the-population-distribution">1 Examining the “Population” Distribution</a></li>
-  <li><a href="#simulating-the-sampling-distribution" id="toc-simulating-the-sampling-distribution" class="nav-link" data-scroll-target="#simulating-the-sampling-distribution">2 Simulating the Sampling Distribution</a>
-  <ul class="collapse">
-  <li><a href="#n-5-10000-samples" id="toc-n-5-10000-samples" class="nav-link" data-scroll-target="#n-5-10000-samples">2.1 n = 5; 10,000 Samples</a></li>
-  <li><a href="#n-25-10000-samples" id="toc-n-25-10000-samples" class="nav-link" data-scroll-target="#n-25-10000-samples">2.2 n = 25; 10,000 Samples</a></li>
+  <li><a href="#examining-the-population-distribution" id="toc-examining-the-population-distribution" class="nav-link" data-scroll-target="#examining-the-population-distribution"><span class="header-section-number">6.5.1</span> Examining the “Population” Distribution</a></li>
+  <li><a href="#simulating-the-sampling-distribution" id="toc-simulating-the-sampling-distribution" class="nav-link" data-scroll-target="#simulating-the-sampling-distribution"><span class="header-section-number">6.5.2</span> Simulating the Sampling Distribution</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#exploring-sampling-distributions-in-spss" id="toc-exploring-sampling-distributions-in-spss" class="nav-link" data-scroll-target="#exploring-sampling-distributions-in-spss">Exploring Sampling Distributions in SPSS</a>
+  <li><a href="#exploring-sampling-distributions-in-spss" id="toc-exploring-sampling-distributions-in-spss" class="nav-link" data-scroll-target="#exploring-sampling-distributions-in-spss"><span class="header-section-number">6.6</span> Exploring Sampling Distributions in SPSS</a>
   <ul class="collapse">
-  <li><a href="#examining-the-population-distribution-1" id="toc-examining-the-population-distribution-1" class="nav-link" data-scroll-target="#examining-the-population-distribution-1">1 Examining the “Population” Distribution</a></li>
-  <li><a href="#what-we-would-expect-to-see-from-simulation" id="toc-what-we-would-expect-to-see-from-simulation" class="nav-link" data-scroll-target="#what-we-would-expect-to-see-from-simulation">2 What We Would Expect to See from Simulation</a></li>
-  <li><a href="#exploring-full-simulation-in-r" id="toc-exploring-full-simulation-in-r" class="nav-link" data-scroll-target="#exploring-full-simulation-in-r">3 Exploring Full Simulation in R</a></li>
+  <li><a href="#examining-the-population-distribution-1" id="toc-examining-the-population-distribution-1" class="nav-link" data-scroll-target="#examining-the-population-distribution-1"><span class="header-section-number">6.6.1</span> Examining the “Population” Distribution</a></li>
+  <li><a href="#what-we-would-expect-to-see-from-simulation" id="toc-what-we-would-expect-to-see-from-simulation" class="nav-link" data-scroll-target="#what-we-would-expect-to-see-from-simulation"><span class="header-section-number">6.6.2</span> What We Would Expect to See from Simulation</a></li>
+  <li><a href="#exploring-full-simulation-in-r" id="toc-exploring-full-simulation-in-r" class="nav-link" data-scroll-target="#exploring-full-simulation-in-r"><span class="header-section-number">6.6.3</span> Exploring Full Simulation in R</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
   <ul class="collapse">
@@ -434,10 +447,20 @@ Figure&nbsp;6.1: Population distributions (top row) and sampling distributions o
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="central-limit-theorem-in-action"><span class="header-section-number">6.3.1</span> Central Limit Theorem in Action</h3>
 <p>The concept can be hard to understand, so let’s use the sampling distributions applet to walk through some scenarios. The starting point is a normal distribution with mean = 16 and standard deviation (SD) = 5. We are still in theoretical statistics world where we magically know the population parameters – remember that in the real world we usually do not know those. To make it more interesting, change the starting distribution to a skewed distribution.</p>
 <p>The concept can be hard to understand, so let’s use the <a href="https://onlinestatbook.com/stat_sim/sampling_dist/index.html">sampling distributions applet</a> to walk through some scenarios. The starting point is a normal distribution with mean = 16 and standard deviation (SD) = 5. We are still in theoretical statistics world where we magically know the population parameters – remember that in the real world we usually do not know those. To make it more interesting, change the starting distribution to a skewed distribution.</p>
-<p>(TODO fig 6.2)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter6/fig6-2.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 6.2</figcaption>
+</figure>
+</div>
 <p>On the left we can now see a new population mean of 8.08 and standard deviation of 6.22. Our next step is to take a sample of this data. In the applet, click on the word Animated and you will see what happens when you take a random sample of 5 from the population. Click it 4 more times, and you will have three distributions: the population at the top, which in the real world we do not have, your most recent 5-person sample, and then your sampling distribution. Do you notice how the sample mean is slightly different each time you take a sample? Then, each of those sample means are added to the third distribution.</p>
 <p>Rather than clicking Animate 100 times, let’s speed this up. Click on 10,000 to see what would happen if you pulled 10,000 samples from the original population. Do you notice how the mean of your sampling distribution is now very close to the true population mean? Your example will look a little different since each sample is random, but you should see something like this:</p>
-<p>(TODO fig 6.3)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter6/fig6-3.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 6.3</figcaption>
+</figure>
+</div>
 <p>Even though the distribution of scores in the original population was skewed, the distribution of sample means looks a lot more like a normal distribution.</p>
 </section>
 </section>
@@ -446,7 +469,6 @@ Figure&nbsp;6.1: Population distributions (top row) and sampling distributions o
 <p>Earlier in this chapter, we said we would explain why we can assume that our sample mean is close enough to the population mean, and that is what we just discussed. Because the sampling distribution is normal, we know that 95% of all possible sample means are within two standard deviations of the true population mean, and that is good enough. When we get into hypothesis testing, you will see how we manage the possibility that we randomly ended up with an oddball sample that is not a great estimate of the population, but for now, we are assuming that our sample mean is close.</p>
 <p>How close is it, though? We can’t say for sure, because remember, in the real world we only took one sample, and we don’t actually know the population parameters. But now we get to the second promise made earlier in the chapter: we can estimate how close our sample mean is likely to be to the population mean. We do this by calculating the standard error of the mean, which you will often see referred to as simply standard error. The standard error of mean (<span class="math inline">\(s_M\)</span> or SEM) quantifies how much a sample mean is likely to differ from the true population mean.</p>
 <p>Before getting into the calculations, think about this conceptually. What exactly are we doing here? We have a distribution of sample means, and we want to know how far the average sample mean is likely to be from the true population mean. This should sound very similar to what we learned in chapter 3 – standard deviation. Just like we can find the standard deviation of our distribution of SAT scores, we can find the standard deviation of our sampling distribution of sample means. Look back to figure 6.3, and you can see the standard deviation of the sampling distribution is 2.79. This tells us that the average sample mean is 2.79 points away from the true population mean. Figure 6.4 illustrates this.</p>
-<p>(TODO fig 6.4)</p>
 <p>Do you see a slight problem? We can quantify how far our sample mean is likely to be from the true population mean, but to get the standard deviation of the sampling distribution, we first must create a sampling distribution, and that doesn’t happen in the real world. So, what do we do? We can estimate it. Here is how you calculate an estimate of standard error:</p>
 <p><span class="math display">\[
 s_M = \frac{s}{\sqrt{n}}
@@ -456,20 +478,24 @@ s_M = \frac{s}{\sqrt{n}}
 <p>If you think about what would cause your standard error to be high or low, there are two main factors. First, the variability of the original distribution. Let’s go back to our SAT math score example. If your population is all students who took the SAT across the United States, there will be quite a bit of variation in scores. A random sample could end up including some major outliers, just by chance, and when that happens your sample mean will be farther away from the true population mean. In contrast, say your population was students admitted to an elite honors college. The SAT scores from that population will likely be more tightly clustered together near the higher end of the range of possible scores. Therefore, there are fewer outliers that could be included in your random sample.</p>
 <p>Look back at the formula above. The <span class="math inline">\(s\)</span> in the numerator is your sample standard deviation. As variability decreases, s decreases; a smaller numerator in the fraction means a smaller standard error.</p>
 <p>Next, let’s consider the other part of the fraction in our standard error formula: the sample size. If you take a very small sample, and you end up with one outlier, the outlier will have a greater influence on the sample mean than if it was just one of many scores. Let’s go back to the <a href="https://onlinestatbook.com/stat_sim/sampling_dist/index.html">sampling distribution applet</a> so you can see how this works. A screenshot of the sampling distribution after taking 10,000 samples of size <span class="math inline">\(n = 5\)</span> is located in figure 6.3. Go ahead and change that to <span class="math inline">\(n = 25\)</span> and click on the 10,000 button again. This is what it looked like in our example:</p>
-<p>(TODO fig 6.5)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter6/fig6-5.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Fig 6.5</figcaption>
+</figure>
+</div>
 <p>You should notice two things. First, the mean did not change very much. Even with a very small sample size, after we take 10,000 samples, we will have a very accurate estimate of the population mean. Changing the sample size to 25 did not get us much closer. But what changed? When our sample size was only 5, the sampling distribution was much wider. By random chance, there were some really oddball samples included that would have been pretty poor estimates of the population mean. The statistics showed the standard deviation of the sampling distribution (i.e., standard error of the mean) was 2.79 when n = 5. But in this second version, when n = 25, the standard error is much lower, at 1.24.</p>
 <p>Go back to the formula and you will see how this works out. The denominator of the fraction is the square root of the sample size. As sample size increases, the denominator gets bigger, and the standard error gets smaller.</p>
 </section>
-</section>
-<section id="exploring-sampling-distributions-in-r" class="level1 unnumbered">
-<h1 class="unnumbered">Exploring Sampling Distributions in R</h1>
+<section id="exploring-sampling-distributions-in-r" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="exploring-sampling-distributions-in-r"><span class="header-section-number">6.5</span> Exploring Sampling Distributions in R</h2>
 <p>This section uses R to demonstrate the key concepts of <strong>sampling distributions</strong> and the <strong>Central Limit Theorem</strong>, using the MATHPERS variable (Effort and Persistence in Mathematics) as an example. Through hands-on simulation and data visualization, you will see how sample statistics behave, how sampling distributions form, and how the standard error is affected by sample size.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter6/chapter6data.sav"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="examining-the-population-distribution" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="examining-the-population-distribution">1 Examining the “Population” Distribution</h2>
+<section id="examining-the-population-distribution" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="examining-the-population-distribution"><span class="header-section-number">6.5.1</span> Examining the “Population” Distribution</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych) </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
@@ -524,10 +550,10 @@ s_M = \frac{s}{\sqrt{n}}
 <p>The mean is 0.26 and the standard deviation is about 0.98, with skewness (0.06) and kurtosis (0.95) both within the range (-1, 1) considered approximately normal. However, the histogram and QQ plot suggest that the distribution is not perfectly normal: the QQ plot shows noticeable deviation from the straight line at both tails, and the histogram suggests slightly heavier tails (i.e., more extreme values) than expected in a true normal distribution.</p>
 <p>Later, we will see how the sampling distribution of the mean becomes more normal even when the original data is only approximately normal.</p>
 </section>
-<section id="simulating-the-sampling-distribution" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="simulating-the-sampling-distribution">2 Simulating the Sampling Distribution</h2>
-<section id="n-5-10000-samples" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="n-5-10000-samples">2.1 n = 5; 10,000 Samples</h3>
+<section id="simulating-the-sampling-distribution" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="simulating-the-sampling-distribution"><span class="header-section-number">6.5.2</span> Simulating the Sampling Distribution</h3>
+<section id="n-5-10000-samples" class="level4" data-number="6.5.2.1">
+<h4 data-number="6.5.2.1" class="anchored" data-anchor-id="n-5-10000-samples"><span class="header-section-number">6.5.2.1</span> n = 5; 10,000 Samples</h4>
 <p>Next, we simulate the process of taking many random samples (each of size 5) from our population. By calculating the mean of each sample, we can observe the shape and properties of the sampling distribution of the mean.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)  <span class="co"># For reproducibility </span></span>
@@ -611,8 +637,8 @@ s_M = \frac{s}{\sqrt{n}}
 </div>
 <p><strong>Interpretation:</strong> The theoretical standard error of the mean (SEM) for samples of size 5, calculated from the formula <span class="math inline">\(SEM = \frac{SD}{\sqrt{n}}\)</span>, is 0.44. The empirical standard error, estimated directly from the simulated sampling distribution, is 0.48. These values are close, confirming that the standard error formula provides a good approximation of the variability in sample means.</p>
 </section>
-<section id="n-25-10000-samples" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="n-25-10000-samples">2.2 n = 25; 10,000 Samples</h3>
+<section id="n-25-10000-samples" class="level4" data-number="6.5.2.2">
+<h4 data-number="6.5.2.2" class="anchored" data-anchor-id="n-25-10000-samples"><span class="header-section-number">6.5.2.2</span> n = 25; 10,000 Samples</h4>
 <p>To see how increasing sample size affects the sampling distribution, we repeat the simulation using samples of size 25.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>) </span>
@@ -689,11 +715,11 @@ s_M = \frac{s}{\sqrt{n}}
 </section>
 </section>
 </section>
-<section id="exploring-sampling-distributions-in-spss" class="level1 unnumbered">
-<h1 class="unnumbered">Exploring Sampling Distributions in SPSS</h1>
+<section id="exploring-sampling-distributions-in-spss" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="exploring-sampling-distributions-in-spss"><span class="header-section-number">6.6</span> Exploring Sampling Distributions in SPSS</h2>
 <p>This section uses SPSS to demonstrate the key concepts of sampling distributions and the Central Limit Theorem, using the MATHPERS variable (Effort and Persistence in Mathematics) as an example. By exploring the distribution of the variable and applying SPSS’s Bootstrapping procedure, you will see how sample statistics behave, how sampling distributions form, and how the standard error decreases as sample size increases.</p>
-<section id="examining-the-population-distribution-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="examining-the-population-distribution-1">1 Examining the “Population” Distribution</h2>
+<section id="examining-the-population-distribution-1" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="examining-the-population-distribution-1"><span class="header-section-number">6.6.1</span> Examining the “Population” Distribution</h3>
 <p>Before exploring sampling distributions, let’s first examine the full distribution of MATHPERS in our sample (treated as our “population”).</p>
 <p>To visualize and summarize MATHPERS :</p>
 <ol type="1">
@@ -725,8 +751,8 @@ s_M = \frac{s}{\sqrt{n}}
 <p>The mean is 0.26 and the standard deviation is about 0.98, with skewness (0.059) and kurtosis (0.952) both within the range (-1, 1) considered approximately normal. However, the histogram and QQ plot suggest that the distribution is not perfectly normal: the QQ plot shows noticeable deviation from the straight line at both tails, and the histogram suggests slightly heavier tails (i.e., more extreme values) than expected in a true normal distribution.</p>
 <p>Later, we will see how the sampling distribution of the mean becomes more normal even when the original data is only approximately normal.</p>
 </section>
-<section id="what-we-would-expect-to-see-from-simulation" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="what-we-would-expect-to-see-from-simulation">2 What We Would Expect to See from Simulation</h2>
+<section id="what-we-would-expect-to-see-from-simulation" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="what-we-would-expect-to-see-from-simulation"><span class="header-section-number">6.6.2</span> What We Would Expect to See from Simulation</h3>
 <p>The Central Limit Theorem states that the distribution of sample means becomes approximately normal as the sample size increases, even when the population distribution is not perfectly normal. This concept is best understood through simulation - by repeatedly drawing random samples from a population, calculating their means, and visualizing how the distribution of those means evolves as sample size increases.</p>
 <p>However, due to the limitations of SPSS, we are not able to simulate this process directly. SPSS does not support flexible, user-controlled simulations involving repeated random sampling with custom sample sizes and tracking of statistics across thousands of iterations. While it includes bootstrapping options for some analyses, these tools are not designed to illustrate the Central Limit Theorem in the way we intend here.</p>
 <p>Despite this limitation, we can still describe what would happen if such a simulation were performed. This conceptual illustration helps clarify how sampling distributions behave and why the standard error decreases with larger samples.</p>
@@ -742,9 +768,10 @@ s_M = \frac{s}{\sqrt{n}}
 \]</span></p>
 <p>This pattern is what the Central Limit Theorem guarantees: regardless of the population’s shape, the distribution of sample means will approach normality and become more precise as the sample size grows.</p>
 </section>
-<section id="exploring-full-simulation-in-r" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exploring-full-simulation-in-r">3 Exploring Full Simulation in R</h2>
+<section id="exploring-full-simulation-in-r" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="exploring-full-simulation-in-r"><span class="header-section-number">6.6.3</span> Exploring Full Simulation in R</h3>
 <p>If you are interested in seeing this process carried out through actual simulation and visualization, please refer to <strong>the section of this textbook that includes R code</strong>. That secion demonstrates how to generate repeated random samples, compute sample means, and visualize the resulting sampling distributions for different sample sizes. These simulations make the Central Limit Theorem more intuitive and clearly show how increasing the sample size leads to more normally distributed sample means and smaller standard errors.</p>
+</section>
 </section>
 </section>
 <section id="conclusion" class="level1 unnumbered">
@@ -782,43 +809,51 @@ s_M = \frac{s}{\sqrt{n}}
 </section>
 <section id="check-your-understanding" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
-<ol type="1">
-<li><p><strong>What is a sampling distribution?</strong></p>
-<ol type="a">
-<li><p>A distribution of a population’s characteristics</p></li>
-<li><p>A distribution of a statistic (like a mean or proportion) calculated from all possible samples of a specific size</p></li>
-<li><p>A list of all individual data points in a population</p></li>
-<li><p>A random collection of data from a single sample</p></li>
-</ol></li>
-<li><p><strong>According to the central limit theorem, what happens to the sampling distribution of the sample mean as the sample size increases?</strong></p>
-<ol type="a">
-<li><p>It becomes more skewed</p></li>
-<li><p>It approximates a normal distribution, regardless of the population distribution</p></li>
-<li><p>It moves closer to the smallest value in the sample</p></li>
-<li><p>It diverges from the population mean</p></li>
-</ol></li>
-<li><p><strong>Which sampling technique ensures that every member of the population has an equal chance of being selected?</strong></p>
-<ol type="a">
-<li><p>Convenience sampling</p></li>
-<li><p>Purposive sampling</p></li>
-<li><p>Random sampling</p></li>
-<li><p>Snowball sampling</p></li>
-</ol></li>
-<li><p><strong>What is the standard error of the mean (SEM), and how is it calculated?</strong></p>
-<ol type="a">
-<li><p>It is the variability of individual data points and is equal to the population standard deviation.</p></li>
-<li><p>It is the standard deviation of the sampling distribution of sample means, calculated by dividing the sample standard deviation by the square root of the sample size.</p></li>
-<li><p>It measures the deviation of a single data point from the sample mean, using the formula SD/n.&nbsp;</p></li>
-<li><p>It is a fixed value representing the population variance.</p></li>
-</ol></li>
-<li><p><strong>What happens to the sampling distribution of the sample mean if the population distribution is normal?</strong></p>
-<ol type="a">
-<li><p>The sampling distribution will always be skewed, regardless of sample size.</p></li>
-<li><p>The sampling distribution will only be normal if the sample size is large.</p></li>
-<li><p>The sampling distribution will match the population distribution for any sample size.</p></li>
-<li><p>The sampling distribution will be normal, regardless of sample size.</p></li>
-</ol></li>
-</ol>
+<div class="quiz-question">
+<p>
+<strong>1.</strong> What is a sampling distribution?
+</p>
+<p><label><input type="radio" name="6q1" value="a"> A distribution of a population’s characteristics</label><br> <label><input type="radio" name="6q1" value="b"> A distribution of a statistic (like a mean or proportion) calculated from all possible samples of a specific size</label><br> <label><input type="radio" name="6q1" value="c"> A list of all individual data points in a population</label><br> <label><input type="radio" name="6q1" value="d"> A random collection of data from a single sample</label><br></p>
+<button type="button" onclick="checkMC('6q1', 'b', 'fb26')">Check answer</button>
+<p id="fb26" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>2.</strong> According to the central limit theorem, what happens to the sampling distribution of the sample mean as the sample size increases?
+</p>
+<p><label><input type="radio" name="6q2" value="a"> It becomes more skewed</label><br> <label><input type="radio" name="6q2" value="b"> It approximates a normal distribution, regardless of the population distribution</label><br> <label><input type="radio" name="6q2" value="c"> It moves closer to the smallest value in the sample</label><br> <label><input type="radio" name="6q2" value="d"> It diverges from the population mean</label><br></p>
+<button type="button" onclick="checkMC('6q2', 'b', 'fb27')">Check answer</button>
+<p id="fb27" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>3.</strong> Which sampling technique ensures that every member of the population has an equal chance of being selected?
+</p>
+<p><label><input type="radio" name="6q3" value="a"> Convenience sampling</label><br> <label><input type="radio" name="6q3" value="b"> Purposive sampling</label><br> <label><input type="radio" name="6q3" value="c"> Random sampling</label><br> <label><input type="radio" name="6q3" value="d"> Snowball sampling</label><br></p>
+<button type="button" onclick="checkMC('6q3', 'c', 'fb28')">Check answer</button>
+<p id="fb28" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>4.</strong> What is the standard error of the mean (SEM), and how is it calculated?
+</p>
+<p><label><input type="radio" name="6q4" value="a"> It is the variability of individual data points and is equal to the population standard deviation.</label><br> <label><input type="radio" name="6q4" value="b"> It is the standard deviation of the sampling distribution of sample means, calculated by dividing the sample standard deviation by the square root of the sample size.</label><br> <label><input type="radio" name="6q4" value="c"> It measures the deviation of a single data point from the sample mean, using the formula SD/n.</label><br> <label><input type="radio" name="6q4" value="d"> It is a fixed value representing the population variance.</label><br></p>
+<button type="button" onclick="checkMC('6q4', 'b', 'fb29')">Check answer</button>
+<p id="fb29" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>5.</strong> What happens to the sampling distribution of the sample mean if the population distribution is normal?
+</p>
+<p><label><input type="radio" name="6q5" value="a"> The sampling distribution will always be skewed, regardless of sample size.</label><br> <label><input type="radio" name="6q5" value="b"> The sampling distribution will only be normal if the sample size is large.</label><br> <label><input type="radio" name="6q5" value="c"> The sampling distribution will match the population distribution for any sample size.</label><br> <label><input type="radio" name="6q5" value="d"> The sampling distribution will be normal, regardless of sample size.</label><br></p>
+<button type="button" onclick="checkMC('6q5', 'd', 'fb30')">Check answer</button>
+<p id="fb30" class="quiz-feedback">
+</p>
+</div>
 
 
 </section>

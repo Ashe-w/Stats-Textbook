@@ -1,4 +1,4 @@
-# Chapter 2: Central Tendency in R {.unnumbered}
+## Central Tendency in R 
 
 This section demonstrates how to calculate and interpret the mean, median, and mode in R using data from the Programme for International Student Assessment (PISA). Additionally, we will explore skewness on the distribution of math achievement scores. All examples below use R code that can be adapted for your own datasets. 
 
@@ -15,7 +15,7 @@ math_achi <- data$PV1MATH
 head(math_achi) #display the first few values 
 
 ```
-## 1	  Calculating the Mean {.unnumbered}
+###	  Calculating the Mean 
 
 ```{r}
 #| echo: true
@@ -26,7 +26,7 @@ mean_math_achi
 
 ```
 
-## 2    Calculating the Median {.unnumbered}
+###    Calculating the Median 
 ```{r}
 #| echo: true
 #| message: false
@@ -34,7 +34,7 @@ mean_math_achi
 median_math_achi <- median(math_achi) 
 median_math_achi 
 ```
-## 3    Calculating the Mode {.unnumbered}
+###    Calculating the Mode 
 Since R does not have a built-in function for mode, we will define a custom function. 
 ```{r}
 #| echo: true
@@ -51,7 +51,7 @@ calculate_mode <- function(x) {
 mode_math_achi <- calculate_mode(math_achi |> round()) 
 mode_math_achi 
 ```
-## 4 	  Examining Skewness {.unnumbered}
+### 	  Examining Skewness 
 ```{r}
 #| echo: true
 #| message: false

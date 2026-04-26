@@ -198,7 +198,8 @@ The concept can be hard to understand, so let’s use the sampling distributions
 
 The concept can be hard to understand, so let’s use the [sampling distributions applet](https://onlinestatbook.com/stat_sim/sampling_dist/index.html) to walk through some scenarios. The starting point is a normal distribution with mean = 16 and standard deviation (SD) = 5. We are still in theoretical statistics world where we magically know the population parameters – remember that in the real world we usually do not know those. To make it more interesting, change the starting distribution to a skewed distribution.  
 
- (TODO fig 6.2)
+
+![Fig 6.2](chapter6/fig6-2.png){fig-align="center" width=80%}
 
 On the left we can now see a new population mean of 8.08 and standard deviation of 6.22. Our next step is to take a sample of this data. In the applet, click on the word Animated and you will see what happens when you take a random sample of 5 from the population. Click it 4 more times, and you will have three distributions: the population at the top, which in the real world we do not have, your most recent 5-person sample, and then your sampling distribution. Do you notice how the sample mean is slightly different each time you take a sample? Then, each of those sample means are added to the third distribution.   
 
@@ -206,7 +207,7 @@ On the left we can now see a new population mean of 8.08 and standard deviation 
 
 Rather than clicking Animate 100 times, let’s speed this up. Click on 10,000 to see what would happen if you pulled 10,000 samples from the original population. Do you notice how the mean of your sampling distribution is now very close to the true population mean? Your example will look a little different since each sample is random, but you should see something like this: 
 
-(TODO fig 6.3)
+![Fig 6.3](chapter6/fig6-3.png){fig-align="center" width=80%}
 
 Even though the distribution of scores in the original population was skewed, the distribution of sample means looks a lot more like a normal distribution.  
 
@@ -222,7 +223,6 @@ How close is it, though? We can’t say for sure, because remember, in the real 
 
 Before getting into the calculations, think about this conceptually. What exactly are we doing here? We have a distribution of sample means, and we want to know how far the average sample mean is likely to be from the true population mean. This should sound very similar to what we learned in chapter 3 – standard deviation. Just like we can find the standard deviation of our distribution of SAT scores, we can find the standard deviation of our sampling distribution of sample means. Look back to figure 6.3, and you can see the standard deviation of the sampling distribution is 2.79. This tells us that the average sample mean is 2.79 points away from the true population mean. Figure 6.4 illustrates this.  
 
-(TODO fig 6.4)
 
 Do you see a slight problem? We can quantify how far our sample mean is likely to be from the true population mean, but to get the standard deviation of the sampling distribution, we first must create a sampling distribution, and that doesn’t happen in the real world. So, what do we do? We can estimate it. Here is how you calculate an estimate of standard error:  
 
@@ -246,7 +246,7 @@ Look back at the formula above. The $s$ in the numerator is your sample standard
 
 Next, let’s consider the other part of the fraction in our standard error formula: the sample size. If you take a very small sample, and you end up with one outlier, the outlier will have a greater influence on the sample mean than if it was just one of many scores. Let’s go back to the [sampling distribution applet](https://onlinestatbook.com/stat_sim/sampling_dist/index.html) so you can see how this works. A screenshot of the sampling distribution after taking 10,000 samples of size $n = 5$ is located in figure 6.3. Go ahead and change that to $n = 25$ and click on the 10,000 button again. This is what it looked like in our example: 
 
-(TODO fig 6.5)
+![Fig 6.5](chapter6/fig6-5.png){fig-align="center" width=60%}
 
 You should notice two things. First, the mean did not change very much. Even with a very small sample size, after we take 10,000 samples, we will have a very accurate estimate of the population mean. Changing the sample size to 25 did not get us much closer. But what changed? When our sample size was only 5, the sampling distribution was much wider. By random chance, there were some really oddball samples included that would have been pretty poor estimates of the population mean. The statistics showed the standard deviation of the sampling distribution (i.e., standard error of the mean) was 2.79 when n = 5. But in this second version, when n = 25, the standard error is much lower, at 1.24.  
 

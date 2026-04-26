@@ -1,4 +1,4 @@
-# Advanced Quantitative Methods in R
+## Advanced Quantitative Methods in R
 
 
 In this section, we provide an overview of how to implement several advanced quantitative methods introduced in this chapter using R. These methods—such as Multilevel Modeling (MLM), Factor Analysis and Structural Equation Modeling (FA/SEM), Meta-Analysis, and Causal Inference approaches (including Propensity Score Models, Instrumental Variables, Difference-in-Differences, and Regression Discontinuity), represent powerful tools for addressing complex research questions in educational studies.
@@ -7,7 +7,7 @@ In this section, we provide an overview of how to implement several advanced qua
 Rather than exploring each method in depth, our focus here is on introducing the key R packages used to perform these analyses and providing concise example codes to illustrate how they are implemented. Each example highlights the basic syntax, helping readers connect the statistical ideas discussed in the chapter with their practical application in R.
 
 
-## 1    Multilevel Modeling
+###    Multilevel Modeling
 
 
 **Common R Packages**
@@ -50,7 +50,7 @@ icc(fit_mlm)
 ```
 
 
-## 2 Factor Analysis and Structural Equation Modeling
+### Factor Analysis and Structural Equation Modeling
 
 
 **Common R Packages**
@@ -137,7 +137,7 @@ The semPaths() function from the semPlot package generates a path diagram of the
 
 
 
-## 3    Meta-Analysis
+###    Meta-Analysis
 
 
 **Common R Packages**
@@ -189,13 +189,13 @@ The output provides the estimated overall effect size, its standard error and co
 
 
 
-## 4    Causal Analysis
+###    Causal Analysis
 
 
 Multiple causal inference methods are iontroduced this chapter. Here we briefly recap and highlight the R packages used to implement them.
 
 
-### 4.1 Propensity Score Methods
+#### Propensity Score Methods
 
 
 Used to create comparable treatment and control groups in observational data by balancing covariates.
@@ -210,7 +210,7 @@ Used to create comparable treatment and control groups in observational data by 
 - *cobalt*: covariate balance diagnostics and visualizations.
 
 
-### 4.2 Instrumental Variables (IV)
+#### Instrumental Variables (IV)
 
 
 Used when treatment assignment is endogenous (e.g., correlated with unobserved confounders). IV methods rely on external instruments that affect treatment but not the outcome directly.
@@ -227,7 +227,7 @@ Used when treatment assignment is endogenous (e.g., correlated with unobserved c
 
 
 
-### 4.3 Interrupted Time Series
+#### Interrupted Time Series
 
 
 Evaluates whether a policy or intervention changes a trend or level of an outcome over time.
@@ -247,7 +247,7 @@ Evaluates whether a policy or intervention changes a trend or level of an outcom
 
 
 
-## Summary of Advanced Methods in R
+### Summary of Advanced Methods in R
 
 
 In this chapter, we highlighted R implementation for a range of advanced quantitative methods commonly used in educational research. Researchers rarely master these methods all at once. Instead, building proficiency involves returning to these tools as new research questions arise, experimenting with models, and consulting documentation and examples. The goal of this section is not to provide an exhaustive manual but to help readers recognize key analytical approaches, identify the appropriate R ecosystem for each, and develop confidence in taking the next step toward more advanced analyses. With these foundations and example workflows, readers are now equipped to begin applying the advanced quantitative methods introduced in Chapter 14 and to explore further capabilities in R as their research questions grow in complexity. 

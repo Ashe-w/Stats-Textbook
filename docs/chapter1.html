@@ -124,6 +124,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 
 <script src="https://hypothes.is/embed.js" async=""></script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DHHP4LF5C2"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+
+
+  gtag('config', 'G-DHHP4LF5C2');
+
+</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -305,31 +322,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#random-sampling-and-random-assignment" id="toc-random-sampling-and-random-assignment" class="nav-link" data-scroll-target="#random-sampling-and-random-assignment"><span class="header-section-number">1.4</span> Random Sampling and Random Assignment</a></li>
   <li><a href="#causality-in-educational-research" id="toc-causality-in-educational-research" class="nav-link" data-scroll-target="#causality-in-educational-research"><span class="header-section-number">1.5</span> Causality in Educational Research</a></li>
-  </ul></li>
-  <li><a href="#r-for-educational-research---a-gentle-introduction" id="toc-r-for-educational-research---a-gentle-introduction" class="nav-link" data-scroll-target="#r-for-educational-research---a-gentle-introduction">R for Educational Research - A Gentle Introduction</a>
+  <li><a href="#r-for-educational-research---a-gentle-introduction" id="toc-r-for-educational-research---a-gentle-introduction" class="nav-link" data-scroll-target="#r-for-educational-research---a-gentle-introduction"><span class="header-section-number">1.6</span> R for Educational Research - A Gentle Introduction</a>
   <ul class="collapse">
-  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r">1 What is R?</a>
-  <ul class="collapse">
-  <li><a href="#key-characteristics-of-r" id="toc-key-characteristics-of-r" class="nav-link" data-scroll-target="#key-characteristics-of-r">1.1 Key characteristics of R</a></li>
-  <li><a href="#why-we-choose-r-in-this-book" id="toc-why-we-choose-r-in-this-book" class="nav-link" data-scroll-target="#why-we-choose-r-in-this-book">1.2 Why We Choose R in This Book</a></li>
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r"><span class="header-section-number">1.6.1</span> What is R?</a></li>
+  <li><a href="#getting-started-with-r" id="toc-getting-started-with-r" class="nav-link" data-scroll-target="#getting-started-with-r"><span class="header-section-number">1.6.2</span> Getting Started with R</a></li>
+  <li><a href="#basic-operations-in-r" id="toc-basic-operations-in-r" class="nav-link" data-scroll-target="#basic-operations-in-r"><span class="header-section-number">1.6.3</span> Basic Operations in R</a></li>
+  <li><a href="#importing-data-into-r" id="toc-importing-data-into-r" class="nav-link" data-scroll-target="#importing-data-into-r"><span class="header-section-number">1.6.4</span> Importing Data Into R</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">1.6.5</span> Summary</a></li>
   </ul></li>
-  <li><a href="#getting-started-with-r" id="toc-getting-started-with-r" class="nav-link" data-scroll-target="#getting-started-with-r">2 Getting Started with R</a>
-  <ul class="collapse">
-  <li><a href="#installing-r-and-rstudio" id="toc-installing-r-and-rstudio" class="nav-link" data-scroll-target="#installing-r-and-rstudio">2.1 Installing R and RStudio</a></li>
-  <li><a href="#understanding-the-rstudio-interface" id="toc-understanding-the-rstudio-interface" class="nav-link" data-scroll-target="#understanding-the-rstudio-interface">2.2 Understanding the RStudio Interface</a></li>
-  </ul></li>
-  <li><a href="#basic-operations-in-r" id="toc-basic-operations-in-r" class="nav-link" data-scroll-target="#basic-operations-in-r">3 Basic Operations in R</a>
-  <ul class="collapse">
-  <li><a href="#r-as-a-calculator" id="toc-r-as-a-calculator" class="nav-link" data-scroll-target="#r-as-a-calculator">3.1 R as a Calculator</a></li>
-  <li><a href="#assigning-variables" id="toc-assigning-variables" class="nav-link" data-scroll-target="#assigning-variables">3.2 Assigning Variables</a></li>
-  <li><a href="#basic-vector-operations" id="toc-basic-vector-operations" class="nav-link" data-scroll-target="#basic-vector-operations">3.3 Basic Vector Operations</a></li>
-  </ul></li>
-  <li><a href="#importing-data-into-r" id="toc-importing-data-into-r" class="nav-link" data-scroll-target="#importing-data-into-r">4 Importing Data Into R</a>
-  <ul class="collapse">
-  <li><a href="#set-the-working-directory" id="toc-set-the-working-directory" class="nav-link" data-scroll-target="#set-the-working-directory">4.1 Set the Working Directory</a></li>
-  <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages">4.2 Load Packages</a></li>
-  </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">5 Summary</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
   <ul class="collapse">
@@ -481,15 +481,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In social science disciplines, causality is often hard to establish due to ethical and practical constraints. This is because we often cannot randomly assign participants to either experimental or treatment conditions to control for possible confounding variables because it is often impractical or unethical. For example, randomly assigning students to small or large class sizes could disrupt their education and raise fairness concerns. This limitation often leads educational researchers to use quasi-experimental designs or observational studies with statistical adjustments to approximate causal relationships.</p>
 <p>To navigate these challenges, developing a strong foundation in quantitative research methods is essential. Learning basic techniques such as descriptive statistics, correlation analysis, and simple regression can help you analyze data, identify trends, and make informed conclusions. As you build your skills, you will gain confidence in interpreting research findings and applying quantitative methods to real-world educational questions. Whether you are designing a study, evaluating an intervention, or examining patterns in student learning, quantitative methods provide valuable tools for drawing meaningful insights from data.</p>
 </section>
-</section>
-<section id="r-for-educational-research---a-gentle-introduction" class="level1 unnumbered">
-<h1 class="unnumbered">R for Educational Research - A Gentle Introduction</h1>
+<section id="r-for-educational-research---a-gentle-introduction" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="r-for-educational-research---a-gentle-introduction"><span class="header-section-number">1.6</span> R for Educational Research - A Gentle Introduction</h2>
 <p>To prepare for implementing the statistical analyses covered in this book, this section introduces the R programming language: a powerful, open-source environment widely used in educational, psychological, and social science research. Whether you have used SPSS, Excel, or another statistical tool before, this introduction will help you get comfortable with the basics of R so you can confidently follow the R demonstrations in later chapters.</p>
-<section id="what-is-r" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="what-is-r">1 What is R?</h2>
+<section id="what-is-r" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="what-is-r"><span class="header-section-number">1.6.1</span> What is R?</h3>
 <p>R is a free, open-source programming language designed for data analysis, statistics, and visualization. It was created by statisticians and has grown into one of the most widely used tools in academic research, government agencies, and data-driven industries.</p>
-<section id="key-characteristics-of-r" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="key-characteristics-of-r">1.1 Key characteristics of R</h3>
+<section id="key-characteristics-of-r" class="level4" data-number="1.6.1.1">
+<h4 data-number="1.6.1.1" class="anchored" data-anchor-id="key-characteristics-of-r"><span class="header-section-number">1.6.1.1</span> Key characteristics of R</h4>
 <ul>
 <li><p><strong>Open-source</strong>: entirely free to download, modify, and use;</p></li>
 <li><p><strong>Extensible</strong>: thousands of user-contributed packages for specialized methods;</p></li>
@@ -498,8 +497,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Widely adopted</strong>: used by educational researchers, psychometricians, data scientists, and analysts worldwide.</p></li>
 </ul>
 </section>
-<section id="why-we-choose-r-in-this-book" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="why-we-choose-r-in-this-book">1.2 Why We Choose R in This Book</h3>
+<section id="why-we-choose-r-in-this-book" class="level4" data-number="1.6.1.2">
+<h4 data-number="1.6.1.2" class="anchored" data-anchor-id="why-we-choose-r-in-this-book"><span class="header-section-number">1.6.1.2</span> Why We Choose R in This Book</h4>
 <p>Most advanced or modern techniques introduced in later chapters (e.g., multilevel modeling, structural equation modeling, complex survey analysis, propensity models) are best implemented (or only available) in R. Using R empowers you to:</p>
 <ul>
 <li><p>go beyond limited menu options;</p></li>
@@ -510,18 +509,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Even if R is new to you, the fundamentals are straightforward and will greatly expand your analytical toolkit.</p>
 </section>
 </section>
-<section id="getting-started-with-r" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="getting-started-with-r">2 Getting Started with R</h2>
-<section id="installing-r-and-rstudio" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="installing-r-and-rstudio">2.1 Installing R and RStudio</h3>
+<section id="getting-started-with-r" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="getting-started-with-r"><span class="header-section-number">1.6.2</span> Getting Started with R</h3>
+<section id="installing-r-and-rstudio" class="level4" data-number="1.6.2.1">
+<h4 data-number="1.6.2.1" class="anchored" data-anchor-id="installing-r-and-rstudio"><span class="header-section-number">1.6.2.1</span> Installing R and RStudio</h4>
 <p>R consists of the <strong>core language</strong>, while <strong>RStudio</strong> is a user-friendly interface that makes coding, visualizing, and managing files much easier.</p>
 <ol type="1">
 <li><p>Install R Download from <a href="https://cran.r-project.org/">this link</a></p></li>
 <li><p>Install RStudio Desktop Download from <a href="https://posit.co/download/rstudio-desktop/">this link</a></p></li>
 </ol>
 </section>
-<section id="understanding-the-rstudio-interface" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="understanding-the-rstudio-interface">2.2 Understanding the RStudio Interface</h3>
+<section id="understanding-the-rstudio-interface" class="level4" data-number="1.6.2.2">
+<h4 data-number="1.6.2.2" class="anchored" data-anchor-id="understanding-the-rstudio-interface"><span class="header-section-number">1.6.2.2</span> Understanding the RStudio Interface</h4>
 <p>RStudio organizes your workspace into four main panes:</p>
 <ul>
 <li><p><strong>Script Editor</strong> (top-left): Where you write and save your code, like a text editor where you write instructions for R to follow.</p></li>
@@ -537,10 +536,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="basic-operations-in-r" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="basic-operations-in-r">3 Basic Operations in R</h2>
-<section id="r-as-a-calculator" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="r-as-a-calculator">3.1 R as a Calculator</h3>
+<section id="basic-operations-in-r" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="basic-operations-in-r"><span class="header-section-number">1.6.3</span> Basic Operations in R</h3>
+<section id="r-as-a-calculator" class="level4" data-number="1.6.3.1">
+<h4 data-number="1.6.3.1" class="anchored" data-anchor-id="r-as-a-calculator"><span class="header-section-number">1.6.3.1</span> R as a Calculator</h4>
 <p>You can use R like a calculator to run simple calculations.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -561,8 +560,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="assigning-variables" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="assigning-variables">3.2 Assigning Variables</h3>
+<section id="assigning-variables" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="assigning-variables">Assigning Variables</h4>
 <p>Variables are like named storage boxes where you can keep data. You can assign a value to a variable using the assignment arrow (&lt;-).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># Assigning the value 5 to the variable x, check environment pane </span></span>
@@ -580,8 +579,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="basic-vector-operations" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="basic-vector-operations">3.3 Basic Vector Operations</h3>
+<section id="basic-vector-operations" class="level4" data-number="1.6.3.2">
+<h4 data-number="1.6.3.2" class="anchored" data-anchor-id="basic-vector-operations"><span class="header-section-number">1.6.3.2</span> Basic Vector Operations</h4>
 <p>Vectors are like lists that can hold multiple values. You can create a vector to store several numbers at once with the c() function, which concatenates multiple values into a vector.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a vector named numbers that contains the values 1, 2, 3, 4, and 5 </span></span>
@@ -637,10 +636,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="importing-data-into-r" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="importing-data-into-r">4 Importing Data Into R</h2>
-<section id="set-the-working-directory" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="set-the-working-directory">4.1 Set the Working Directory</h3>
+<section id="importing-data-into-r" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="importing-data-into-r"><span class="header-section-number">1.6.4</span> Importing Data Into R</h3>
+<section id="set-the-working-directory" class="level4" data-number="1.6.4.1">
+<h4 data-number="1.6.4.1" class="anchored" data-anchor-id="set-the-working-directory"><span class="header-section-number">1.6.4.1</span> Set the Working Directory</h4>
 <p>Before loading any data file, it is important to tell R where your files are located. The simplest way is to set your <strong>working directory</strong> to the folder that contains your dataset.</p>
 <ul>
 <li><p>You can set the working directory using Sessions &gt; Set Working Directory &gt; Choose Directory in RStudio.</p></li>
@@ -656,8 +655,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Once the working directory is correctly set and the data file is inside that folder, the following import commands will work without needing full file paths.</p>
 </section>
-<section id="load-packages" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="load-packages">4.2 Load Packages</h3>
+<section id="load-packages" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="load-packages">Load Packages</h4>
 <p>Educational researchers often work with data stored in <strong>Excel spreadsheets</strong> (.xlsx) or <strong>SPSS files</strong> (.sav). R can read these formats (and many others) easily, but only after we load the appropriate packages.</p>
 <p><strong>What are Packages?</strong></p>
 <ul>
@@ -723,14 +722,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="summary" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="summary">5 Summary</h2>
+<section id="summary" class="level3" data-number="1.6.5">
+<h3 data-number="1.6.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">1.6.5</span> Summary</h3>
 <p>You should now feel comfortable navigating the RStudio environment, running basic commands, assigning variables, and using vectors. You also know how to set your working directory, install/load packages, and import data files into R. With these fundamentals in place, you are ready to explore statistical analysis using R in the following chapters!</p>
 <p><strong>Further Reading</strong></p>
 <ul>
 <li><p><strong>Base R Cheatsheet</strong>: A handy reference guide for basic R commands and functions. IQSS Data Science Services. (n.d.). <em>Base R cheat sheet</em>. Harvard University. https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf</p></li>
 <li><p><strong>Learning R Textbook</strong>: A comprehensive textbook for learning R programming from scratch. Cotton, R. (2013). <em>Learning R: A step-by-step guide to data analysis and visualization</em>. https://duhi23.github.io/Analisis-de-datos/Cotton.pdf</p></li>
 </ul>
+</section>
 </section>
 </section>
 <section id="conclusion" class="level1 unnumbered">
@@ -777,8 +777,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>
 <strong>2.</strong> What type of variable can take on an infinite number of possible values within a given range?
 </p>
-<p><label><input type="radio" name="q1" value="a"> Discrete variable</label><br> <label><input type="radio" name="q1" value="b"> Continuous variabl</label><br> <label><input type="radio" name="q1" value="c"> Nominal variable </label><br> <label><input type="radio" name="q1" value="d"> Ordinal variable</label><br><br></p>
-<button type="button" onclick="checkMC('q1', 'b', 'fb2')">Check answer</button>
+<p><label><input type="radio" name="q2" value="a"> Discrete variable</label><br> <label><input type="radio" name="q2" value="b"> Continuous variabl</label><br> <label><input type="radio" name="q2" value="c"> Nominal variable </label><br> <label><input type="radio" name="q2" value="d"> Ordinal variable</label><br><br></p>
+<button type="button" onclick="checkMC('q2', 'b', 'fb2')">Check answer</button>
 <p id="fb2" class="quiz-feedback">
 </p>
 </div>

@@ -1,12 +1,12 @@
-# R for Educational Research - A Gentle Introduction {.unnumbered}
+## R for Educational Research - A Gentle Introduction
 
 To prepare for implementing the statistical analyses covered in this book, this section introduces the R programming language: a powerful, open-source environment widely used in educational, psychological, and social science research. Whether you have used SPSS, Excel, or another statistical tool before, this introduction will help you get comfortable with the basics of R so you can confidently follow the R demonstrations in later chapters. 
 
-## 1	What is R? {.unnumbered}
+### What is R? 
 
 R is a free, open-source programming language designed for data analysis, statistics, and visualization. It was created by statisticians and has grown into one of the most widely used tools in academic research, government agencies, and data-driven industries. 
 
-### 1.1	Key characteristics of R {.unnumbered}
+#### Key characteristics of R 
 
 - **Open-source**: entirely free to download, modify, and use; 
 
@@ -18,7 +18,7 @@ R is a free, open-source programming language designed for data analysis, statis
 
 - **Widely adopted**: used by educational researchers, psychometricians, data scientists, and analysts worldwide. 
 
-### 1.2	Why We Choose R in This Book {.unnumbered}
+####	Why We Choose R in This Book 
 
 Most advanced or modern techniques introduced in later chapters (e.g., multilevel modeling, structural equation modeling, complex survey analysis, propensity models) are best implemented (or only available) in R. Using R empowers you to: 
 
@@ -32,9 +32,9 @@ Most advanced or modern techniques introduced in later chapters (e.g., multileve
 
 Even if R is new to you, the fundamentals are straightforward and will greatly expand your analytical toolkit. 
 
-## 2	Getting Started with R {.unnumbered}
+### Getting Started with R 
 
-### 2.1	Installing R and RStudio {.unnumbered}
+#### Installing R and RStudio 
 
 R consists of the **core language**, while **RStudio** is a user-friendly interface that makes coding, visualizing, and managing files much easier. 
 
@@ -42,8 +42,7 @@ R consists of the **core language**, while **RStudio** is a user-friendly interf
 
 2. Install RStudio Desktop Download from [this link](https://posit.co/download/rstudio-desktop/) 
 
-### 2.2	Understanding the RStudio Interface {.unnumbered}
-
+####	Understanding the RStudio Interface 
 RStudio organizes your workspace into four main panes: 
 
 - **Script Editor** (top-left): Where you write and save your code, like a text editor where you write instructions for R to follow. 
@@ -56,9 +55,8 @@ RStudio organizes your workspace into four main panes:
 
 ![Fig 1.r.1](chapter1/fig1r-1.png){fig-align="center" width=60%}
 
-## 3	Basic Operations in R {.unnumbered}
-
-### 3.1	R as a Calculator {.unnumbered}
+###	Basic Operations in R 
+####	R as a Calculator 
 
 You can use R like a calculator to run simple calculations. 
 
@@ -82,7 +80,7 @@ You can use R like a calculator to run simple calculations.
 #| warning: true
 8 / 2 
 ```
-### 3.2	Assigning Variables {.unnumbered}
+####	Assigning Variables {.unnumbered}
 
 Variables are like named storage boxes where you can keep data. You can assign a value to a variable using the assignment arrow (<-). 
 ```{r}
@@ -100,7 +98,7 @@ Once you have assigned a value, you can use the variable in other operations.
 y <- x + 3 
 y 
 ```
-### 3.3	Basic Vector Operations {.unnumbered}
+####	Basic Vector Operations 
 
 Vectors are like lists that can hold multiple values. You can create a vector to store several numbers at once with the c() function, which concatenates multiple values into a vector. 
 ```{r}
@@ -167,10 +165,9 @@ numbers > 5    # R checks each element, is it greater than 5?
 #| warning: true
 numbers[numbers > 5]  # elements greater than 5 
 ```
-## 4    Importing Data Into R {.unnumbered}
+###   Importing Data Into R 
 
-### 4.1	Set the Working Directory {.unnumbered}
-
+####	Set the Working Directory 
 Before loading any data file, it is important to tell R where your files are located. The simplest way is to set your **working directory** to the folder that contains your dataset. 
 
 - You can set the working directory using Sessions > Set Working Directory > Choose Directory in RStudio. 
@@ -190,7 +187,7 @@ getwd()
 
 Once the working directory is correctly set and the data file is inside that folder, the following import commands will work without needing full file paths. 
 
-### 4.2	Load Packages {.unnumbered}
+####	Load Packages {.unnumbered}
 
 Educational researchers often work with data stored in **Excel spreadsheets** (.xlsx) or **SPSS files** (.sav). R can read these formats (and many others) easily, but only after we load the appropriate packages. 
 
@@ -256,7 +253,7 @@ head(data_spss) #view the first 6 rows of the data
 dim(data_spss) #check how many rows and columns are in your dataset
 ```
 
-## 5	Summary {.unnumbered}
+###	Summary 
 
 You should now feel comfortable navigating the RStudio environment, running basic commands, assigning variables, and using vectors. You also know how to set your working directory, install/load packages, and import data files into R. With these fundamentals in place, you are ready to explore statistical analysis using R in the following chapters! 
 

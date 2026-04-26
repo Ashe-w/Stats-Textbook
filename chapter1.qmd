@@ -105,12 +105,12 @@ A **statistic** is a numerical characteristic of a sample.
 <div class="quiz-question">
   <p><strong>2.</strong> What type of variable can take on an infinite number of possible values within a given range? </p>
 
-  <label><input type="radio" name="q1" value="a"> Discrete variable</label><br>
-  <label><input type="radio" name="q1" value="b"> Continuous variabl</label><br>
-  <label><input type="radio" name="q1" value="c"> Nominal variable </label><br>
-  <label><input type="radio" name="q1" value="d"> Ordinal variable</label><br><br>
+  <label><input type="radio" name="q2" value="a"> Discrete variable</label><br>
+  <label><input type="radio" name="q2" value="b"> Continuous variabl</label><br>
+  <label><input type="radio" name="q2" value="c"> Nominal variable </label><br>
+  <label><input type="radio" name="q2" value="d"> Ordinal variable</label><br><br>
 
-  <button type="button" onclick="checkMC('q1', 'b', 'fb2')">Check answer</button>
+  <button type="button" onclick="checkMC('q2', 'b', 'fb2')">Check answer</button>
   <p id="fb2" class="quiz-feedback"></p>
 </div>
 

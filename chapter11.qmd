@@ -93,61 +93,62 @@ A **confounding variable**, or third variable, is an extraneous variable that wa
  
 
 ## Check Your Understanding  {.unnumbered}
+<div class="quiz-question">
+  <p><strong>1.</strong> What is the main purpose of Pearson's correlation coefficient (<em>r</em>) in correlational analysis?</p>
 
-1. **What is the main purpose of Pearson's correlation coefficient ($r$) in correlational analysis?** 
+  <label><input type="radio" name="11q1" value="a"> To compare means across groups</label><br>
+  <label><input type="radio" name="11q1" value="b"> To measure the extent of causation between two variables</label><br>
+  <label><input type="radio" name="11q1" value="c"> To measure the direction and strength of a relationship between two variables</label><br>
+  <label><input type="radio" name="11q1" value="d"> To test for the significance of regression equations</label><br>
 
-    a. To compare means across groups 
+  <button type="button" onclick="checkMC('11q1', 'c', 'fb54')">Check answer</button>
+  <p id="fb54" class="quiz-feedback"></p>
+</div>
 
-    b. To measure the extent of causation between two variables 
+<div class="quiz-question">
+  <p><strong>2.</strong> Which of the following is NOT an assumption of correlational analysis?</p>
 
-    c. To measure the direction and strength of a relationship between two variables 
+  <label><input type="radio" name="11q2" value="a"> Linearity</label><br>
+  <label><input type="radio" name="11q2" value="b"> Homoscedasticity</label><br>
+  <label><input type="radio" name="11q2" value="c"> Causality</label><br>
+  <label><input type="radio" name="11q2" value="d"> Normality</label><br>
 
-    d. To test for the significance of regression equations 
+  <button type="button" onclick="checkMC('11q2', 'c', 'fb55')">Check answer</button>
+  <p id="fb55" class="quiz-feedback"></p>
+</div>
 
-    
+<div class="quiz-question">
+  <p><strong>3.</strong> What does a Pearson’s <em>r</em> value of 0 indicate?</p>
 
-2. **Which of the following is NOT an assumption of correlational analysis?** 
+  <label><input type="radio" name="11q3" value="a"> A strong positive correlation</label><br>
+  <label><input type="radio" name="11q3" value="b"> No correlation</label><br>
+  <label><input type="radio" name="11q3" value="c"> A strong negative correlation</label><br>
+  <label><input type="radio" name="11q3" value="d"> A perfect correlation</label><br>
 
-    a. Linearity 
+  <button type="button" onclick="checkMC('11q3', 'b', 'fb56')">Check answer</button>
+  <p id="fb56" class="quiz-feedback"></p>
+</div>
 
-    b. Homoscedasticity 
+<div class="quiz-question">
+  <p><strong>4.</strong> Which statistical method is used when investigating a relationship between a continuous variable and a dichotomous variable?</p>
 
-    c. Causality 
+  <label><input type="radio" name="11q4" value="a"> Pearson’s <em>r</em></label><br>
+  <label><input type="radio" name="11q4" value="b"> Spearman’s rho</label><br>
+  <label><input type="radio" name="11q4" value="c"> Point-biserial correlation</label><br>
+  <label><input type="radio" name="11q4" value="d"> ANOVA</label><br>
 
-    d. Normality 
+  <button type="button" onclick="checkMC('11q4', 'c', 'fb57')">Check answer</button>
+  <p id="fb57" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>5.</strong> What does the assumption of homoscedasticity in correlational analysis require?</p>
 
-3. **What does a Pearson’s $r$ value of 0 indicate?** 
+  <label><input type="radio" name="11q5" value="a"> The data must form a straight line.</label><br>
+  <label><input type="radio" name="11q5" value="b"> The variables must be normally distributed.</label><br>
+  <label><input type="radio" name="11q5" value="c"> The sample size must be large enough.</label><br>
+  <label><input type="radio" name="11q5" value="d"> The spread of data points must be consistent above and below the line across the entire range.</label><br>
 
-    a. A strong positive correlation 
-
-    b. No correlation 
-
-    c. A strong negative correlation 
-
-    d. A perfect correlation 
-
- 
-
-4. **Which statistical method is used when investigating a relationship between a continuous variable and a dichotomous variable?** 
-
-    a. Pearson’s $r$ 
-
-    b. Spearman’s rho 
-
-    c. Point-biserial correlation 
-
-    d. ANOVA 
-
- 
-
-5. **What does the assumption of homoscedasticity in correlational analysis require?** 
-
-    a. The data must form a straight line. 
-
-    b. The variables must be normally distributed. 
-
-    c. The sample size must be large enough. 
-
-    d. The spread of data points must be consistent above and below the line across the entire range. 
+  <button type="button" onclick="checkMC('11q5', 'd', 'fb58')">Check answer</button>
+  <p id="fb58" class="quiz-feedback"></p>
+</div>

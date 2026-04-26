@@ -1,8 +1,8 @@
-# Analyzing Differences Between Two Groups in SPSS {.unnumbered}
+## Analyzing Differences Between Two Groups in SPSS 
 
 In this section, we demonstrate how to compare two independent groups (students who are more motivated vs. not more motivated in math) on math achievement (PV1MATH) from the PISA 2022 U.S. dataset using SPSS. We illustrate both parametric (independent-samples t test) and nonparametric (Mann-Whitney $U$) methods, aligning with the chapter’s discussion of assumptions and alternatives. 
 
-## 1	Data Exploration {.unnumbered}
+###	Data Exploration 
 
 We first examine the grouping variable to understand how many students fall into each math motivation group. Follow these steps to check the frequency of MATHMOT, the variable indicating students' motivation to do well in mathematics: 
 
@@ -37,15 +37,15 @@ Then we follow the steps below to visualize the distribution of math scores (PV1
 
 The boxplot displays the distribution of math scores (PV1MATH) for students who are more motivated versus not more motivated to do well in mathematics. Visually, the more motivated group shows a slightly higher median math score, and the overall distribution appears slightly shifted upward compared to the less motivated group. Both groups exhibit a fairly wide range, and there are several outliers in the “Not more motivated” group. These visual differences suggest a possible group effect, which will be formally tested using statistical methods in the next steps. 
 
-## 2	Two Independent-Sample t Test {.unnumbered}
+###	Two Independent-Sample t Test 
 
-### 2.1 Define Hypothesis {.unnumbered}
+#### Define Hypothesis 
 
 $H_0$: The mean math scores are equal between the two groups ($\mu_0 = \mu_1$). 
 
 $H_a$: The mean math scores are different between the two groups ($\mu_0 \ne \mu_1$). 
 
-### 2.2	Conduct the Test {.unnumbered}
+####	Conduct the Test 
 
 Before conducting the independent-samples t-test, we first verify how the grouping variable is coded. This ensures we know which value corresponds to each group, which is essential for correctly setting up and interpreting the test. To do this, go to the Variable View in SPSS and locate the variable MATHMOT. In the Values column for that row, click the cell to view the assigned labels. You will see that 0 represents "Not more motivated…", and 1 represents "More motivated…". This coding information will be used when defining the groups in the upcoming independent-samples t-test. 
 
@@ -84,7 +84,7 @@ The Welch’s $t$-test revealed no statistically significant difference in avera
 
 From the table labeled “Independent Samples Effect Sizes,” the effect size (Cohen’s $d$) was -0.125, which is considered small by conventional benchmarks. This suggests that the difference in math scores between more motivated and less motivated students is minimal in practical terms. 
 
-## 3	Two Independent-Sample Mann-Whitney U Test {.unnumbered}
+###	Two Independent-Sample Mann-Whitney U Test 
 
 If the normality assumption is violated or the data are ordinal or highly skewed, the Mann-Whitney $U$ test is appropriate. Note this is not the same as the Wilcoxon’s Matched-Pairs Signed-Ranks Test, which is used for paired or related samples. 
 

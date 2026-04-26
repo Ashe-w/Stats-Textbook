@@ -124,6 +124,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 
 <script src="https://hypothes.is/embed.js" async=""></script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DHHP4LF5C2"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+
+
+  gtag('config', 'G-DHHP4LF5C2');
+
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -328,19 +345,19 @@ window.Quarto = {
   <li><a href="#advantages-and-disadvantages-of-the-mode-median-and-mean" id="toc-advantages-and-disadvantages-of-the-mode-median-and-mean" class="nav-link" data-scroll-target="#advantages-and-disadvantages-of-the-mode-median-and-mean"><span class="header-section-number">2.2</span> Advantages and Disadvantages of the Mode, Median and Mean</a></li>
   <li><a href="#skewness-and-measures-of-central-tendency" id="toc-skewness-and-measures-of-central-tendency" class="nav-link" data-scroll-target="#skewness-and-measures-of-central-tendency"><span class="header-section-number">2.3</span> Skewness and Measures of Central Tendency</a></li>
   <li><a href="#modal-distributions" id="toc-modal-distributions" class="nav-link" data-scroll-target="#modal-distributions"><span class="header-section-number">2.4</span> Modal Distributions</a></li>
-  </ul></li>
-  <li><a href="#chapter-2-central-tendency-in-r" id="toc-chapter-2-central-tendency-in-r" class="nav-link" data-scroll-target="#chapter-2-central-tendency-in-r">Chapter 2: Central Tendency in R</a>
+  <li><a href="#central-tendency-in-r" id="toc-central-tendency-in-r" class="nav-link" data-scroll-target="#central-tendency-in-r"><span class="header-section-number">2.5</span> Central Tendency in R</a>
   <ul class="collapse">
-  <li><a href="#calculating-the-mean" id="toc-calculating-the-mean" class="nav-link" data-scroll-target="#calculating-the-mean">1 Calculating the Mean</a></li>
-  <li><a href="#calculating-the-median" id="toc-calculating-the-median" class="nav-link" data-scroll-target="#calculating-the-median">2 Calculating the Median</a></li>
-  <li><a href="#calculating-the-mode" id="toc-calculating-the-mode" class="nav-link" data-scroll-target="#calculating-the-mode">3 Calculating the Mode</a></li>
-  <li><a href="#examining-skewness" id="toc-examining-skewness" class="nav-link" data-scroll-target="#examining-skewness">4 Examining Skewness</a></li>
+  <li><a href="#calculating-the-mean" id="toc-calculating-the-mean" class="nav-link" data-scroll-target="#calculating-the-mean"><span class="header-section-number">2.5.1</span> Calculating the Mean</a></li>
+  <li><a href="#calculating-the-median" id="toc-calculating-the-median" class="nav-link" data-scroll-target="#calculating-the-median"><span class="header-section-number">2.5.2</span> Calculating the Median</a></li>
+  <li><a href="#calculating-the-mode" id="toc-calculating-the-mode" class="nav-link" data-scroll-target="#calculating-the-mode"><span class="header-section-number">2.5.3</span> Calculating the Mode</a></li>
+  <li><a href="#examining-skewness" id="toc-examining-skewness" class="nav-link" data-scroll-target="#examining-skewness"><span class="header-section-number">2.5.4</span> Examining Skewness</a></li>
   </ul></li>
-  <li><a href="#understanding-the-center-measures-of-central-tendency-in-spss" id="toc-understanding-the-center-measures-of-central-tendency-in-spss" class="nav-link" data-scroll-target="#understanding-the-center-measures-of-central-tendency-in-spss">Understanding the Center: Measures of Central Tendency in SPSS</a>
+  <li><a href="#understanding-the-center-measures-of-central-tendency-in-spss" id="toc-understanding-the-center-measures-of-central-tendency-in-spss" class="nav-link" data-scroll-target="#understanding-the-center-measures-of-central-tendency-in-spss"><span class="header-section-number">2.6</span> Understanding the Center: Measures of Central Tendency in SPSS</a>
   <ul class="collapse">
-  <li><a href="#importing-data-into-spss" id="toc-importing-data-into-spss" class="nav-link" data-scroll-target="#importing-data-into-spss">1 Importing Data into SPSS</a></li>
-  <li><a href="#computing-mean-median-mode-and-skewness" id="toc-computing-mean-median-mode-and-skewness" class="nav-link" data-scroll-target="#computing-mean-median-mode-and-skewness">2 Computing Mean, Median, Mode, and Skewness</a></li>
-  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">3 Histogram</a></li>
+  <li><a href="#importing-data-into-spss" id="toc-importing-data-into-spss" class="nav-link" data-scroll-target="#importing-data-into-spss"><span class="header-section-number">2.6.1</span> Importing Data into SPSS</a></li>
+  <li><a href="#computing-mean-median-mode-and-skewness" id="toc-computing-mean-median-mode-and-skewness" class="nav-link" data-scroll-target="#computing-mean-median-mode-and-skewness"><span class="header-section-number">2.6.2</span> Computing Mean, Median, Mode, and Skewness</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">2.6.3</span> Histogram</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
   <ul class="collapse">
@@ -641,9 +658,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-</section>
-<section id="chapter-2-central-tendency-in-r" class="level1 unnumbered">
-<h1 class="unnumbered">Chapter 2: Central Tendency in R</h1>
+<section id="central-tendency-in-r" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="central-tendency-in-r"><span class="header-section-number">2.5</span> Central Tendency in R</h2>
 <p>This section demonstrates how to calculate and interpret the mean, median, and mode in R using data from the Programme for International Student Assessment (PISA). Additionally, we will explore skewness on the distribution of math achievement scores. All examples below use R code that can be adapted for your own datasets.</p>
 <p>To illustrate the calculations, let’s extract plausible value 1 math achievement (PV1MATH) from the PISA U.S. dataset.</p>
 <div class="cell">
@@ -656,8 +672,8 @@ window.Quarto = {
 <pre><code>[1] 575.451 442.014 680.277 461.899 501.214 322.342</code></pre>
 </div>
 </div>
-<section id="calculating-the-mean" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="calculating-the-mean">1 Calculating the Mean</h2>
+<section id="calculating-the-mean" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="calculating-the-mean"><span class="header-section-number">2.5.1</span> Calculating the Mean</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mean_math_achi <span class="ot">&lt;-</span> <span class="fu">mean</span>(math_achi) </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mean_math_achi </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -666,8 +682,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="calculating-the-median" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="calculating-the-median">2 Calculating the Median</h2>
+<section id="calculating-the-median" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="calculating-the-median"><span class="header-section-number">2.5.2</span> Calculating the Median</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>median_math_achi <span class="ot">&lt;-</span> <span class="fu">median</span>(math_achi) </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>median_math_achi </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -676,8 +692,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="calculating-the-mode" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="calculating-the-mode">3 Calculating the Mode</h2>
+<section id="calculating-the-mode" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="calculating-the-mode"><span class="header-section-number">2.5.3</span> Calculating the Mode</h3>
 <p>Since R does not have a built-in function for mode, we will define a custom function.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom function to calculate mode </span></span>
@@ -695,8 +711,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="examining-skewness" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="examining-skewness">4 Examining Skewness</h2>
+<section id="examining-skewness" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="examining-skewness"><span class="header-section-number">2.5.4</span> Examining Skewness</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych) <span class="co">#for skew function </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>skewness_math_achi <span class="ot">&lt;-</span> <span class="fu">skew</span>(math_achi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
@@ -724,12 +740,12 @@ window.Quarto = {
 </ul>
 </section>
 </section>
-<section id="understanding-the-center-measures-of-central-tendency-in-spss" class="level1 unnumbered">
-<h1 class="unnumbered">Understanding the Center: Measures of Central Tendency in SPSS</h1>
+<section id="understanding-the-center-measures-of-central-tendency-in-spss" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="understanding-the-center-measures-of-central-tendency-in-spss"><span class="header-section-number">2.6</span> Understanding the Center: Measures of Central Tendency in SPSS</h2>
 <p>Unlike statistical software such as R or SAS, which primarily rely on programming for data analysis, SPSS allows users to perform most statistical operations through an intuitive graphical user interface. For the procedures demonstrated in this book, the majority can be completed through menu selections without the need for coding.</p>
 <p>This document provides a step-by-step guide on calculating and interpreting measures of central tendency—including mean, median, mode, and skewness—in SPSS. The demonstration uses data from the 2022 Programme for International Student Assessment (PISA) U.S. dataset, specifically the variable PV1MATH. <a href="&quot;https://www.oecd.org/en/about/programmes/pisa.html&quot;">The dataset can be downloaded here from the OECD site</a></p>
-<section id="importing-data-into-spss" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="importing-data-into-spss">1 Importing Data into SPSS</h2>
+<section id="importing-data-into-spss" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="importing-data-into-spss"><span class="header-section-number">2.6.1</span> Importing Data into SPSS</h3>
 <p>To begin the analysis, the dataset must first be loaded into SPSS. Follow these steps to import the data:</p>
 <ol type="1">
 <li><p>Open SPSS.</p></li>
@@ -745,8 +761,8 @@ window.Quarto = {
 </ol>
 <p>Once the data is imported, it will be displayed in the Data View tab in SPSS.</p>
 </section>
-<section id="computing-mean-median-mode-and-skewness" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="computing-mean-median-mode-and-skewness">2 Computing Mean, Median, Mode, and Skewness</h2>
+<section id="computing-mean-median-mode-and-skewness" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="computing-mean-median-mode-and-skewness"><span class="header-section-number">2.6.2</span> Computing Mean, Median, Mode, and Skewness</h3>
 <p>After importing the dataset, the next step is to calculate key measures of central tendency and distribution. SPSS allows users to compute the <strong>mean, median, mode, and skewness</strong> through its menu-driven interface. Follow the steps below to perform this analysis:</p>
 <ol type="1">
 <li><p>Click on Analyze &gt; Descriptive Statistics &gt; Frequencies.</p></li>
@@ -770,8 +786,8 @@ window.Quarto = {
 </div>
 <p>You may notice that SPSS warns that multiple modes exist for PV1MATH because all values are unique. To better illustrate how the mode works, a new variable, PV1MATH_INT, was created by rounding all values to the nearest integer. Checking its mode in SPSS results in a unique value: 415.</p>
 </section>
-<section id="histogram" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="histogram">3 Histogram</h2>
+<section id="histogram" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="histogram"><span class="header-section-number">2.6.3</span> Histogram</h3>
 <p>To better visualize the distribution of PV1MATH, we can generate a histogram. To create the plot in SPSS, follow these steps:</p>
 <ol type="1">
 <li><p>Click Graphs &gt; Histogram.</p></li>
@@ -789,6 +805,7 @@ window.Quarto = {
 <li><p>a positive skewness value indicates a right-skewed distribution (longer tail on the right), which is consistent with the histogram above.</p></li>
 <li><p>when the data are right-skewed (here it is slightly right-skewed), the mean is greater than the median, and the mode is less than the median. These are consistent with what we observed in the calculations above.</p></li>
 </ul>
+</section>
 </section>
 </section>
 <section id="conclusion" class="level1 unnumbered">
@@ -820,37 +837,51 @@ window.Quarto = {
 </section>
 <section id="check-your-understanding" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
-<ol type="1">
-<li><p><strong>A researcher is investigating if any relationship exists between the hours a student sleeps at night and their math performance across a school district with more than 1,000 students. However, they can only survey 50 students. What notation below would be used to indicate the number of students surveyed?</strong></p>
-<ol type="a">
-<li><p>N = 50</p></li>
-<li><p>n = 50</p></li>
-</ol></li>
-<li><p><strong>The ______ is the value or values in a dataset that appear most frequently.</strong></p>
-<ol type="a">
-<li><p>Mean</p></li>
-<li><p>Median</p></li>
-<li><p>Mode</p></li>
-</ol></li>
-<li><p><strong>An educational researcher records the following sample of scores: 1, 2, 4, 4, 4, 5, 5, 7, 8, 10. Calculate the sample mean, median, and mode.</strong></p>
-<ol type="a">
-<li><p>Mean __________</p></li>
-<li><p>Median ________</p></li>
-<li><p>Mode ________</p></li>
-</ol></li>
-<li><p><strong>An educational researcher obtains the following sample scores: 1, 3, 3, 4, 6, 100. Using what method of central tendency to describe these sample scores might be problematic?</strong></p>
-<ol type="a">
-<li><p>Mean</p></li>
-<li><p>Median</p></li>
-<li><p>Mode</p></li>
-</ol></li>
-<li><p><strong>What direction of skewness is created by the following data? 1, 1, 2, 2, 10</strong></p>
-<ol type="a">
-<li><p>Positive skewness</p></li>
-<li><p>Negative skewness</p></li>
-<li><p>No skewness</p></li>
-</ol></li>
-</ol>
+<div class="quiz-question">
+<p>
+<strong>1.</strong> A researcher is investigating if any relationship exists between the hours a student sleeps at night and their math performance across a school district with more than 1,000 students. However, they can only survey 50 students. What notation below would be used to indicate the number of students surveyed?
+</p>
+<p><label><input type="radio" name="2q1" value="a"> N = 50</label><br> <label><input type="radio" name="2q1" value="b"> n = 50</label><br></p>
+<button type="button" onclick="checkMC('2q1', 'b', 'fb6')">Check answer</button>
+<p id="fb6" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>2.</strong> The ______ is the value or values in a dataset that appear most frequently.
+</p>
+<p><label><input type="radio" name="2q2" value="a"> Mean</label><br> <label><input type="radio" name="2q2" value="b"> Median</label><br> <label><input type="radio" name="2q2" value="c"> Mode</label><br></p>
+<button type="button" onclick="checkMC('2q2', 'c', 'fb7')">Check answer</button>
+<p id="fb7" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>3.</strong> An educational researcher records the following sample of scores: 1, 2, 4, 4, 4, 5, 5, 7, 8, 10. Calculate the sample mean, median, and mode.
+</p>
+<p><label><input type="radio" name="2q3" value="a"> Mean = 5, Median = 4.5, Mode = 4</label><br> <label><input type="radio" name="2q3" value="b"> Mean = 5, Median = 4, Mode = 4</label><br> <label><input type="radio" name="2q3" value="c"> Mean = 4.5, Median = 5, Mode = 5</label><br></p>
+<button type="button" onclick="checkMC('2q3', 'a', 'fb8')">Check answer</button>
+<p id="fb8" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>4.</strong> An educational researcher obtains the following sample scores: 1, 3, 3, 4, 6, 100. Using what method of central tendency to describe these sample scores might be problematic?
+</p>
+<p><label><input type="radio" name="2q4" value="a"> Mean</label><br> <label><input type="radio" name="2q4" value="b"> Median</label><br> <label><input type="radio" name="2q4" value="c"> Mode</label><br></p>
+<button type="button" onclick="checkMC('2q4', 'a', 'fb9')">Check answer</button>
+<p id="fb9" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>5.</strong> What direction of skewness is created by the following data? 1, 1, 2, 2, 10
+</p>
+<p><label><input type="radio" name="2q5" value="a"> Positive skewness</label><br> <label><input type="radio" name="2q5" value="b"> Negative skewness</label><br> <label><input type="radio" name="2q5" value="c"> No skewness</label><br></p>
+<button type="button" onclick="checkMC('2q5', 'a', 'fb10')">Check answer</button>
+<p id="fb10" class="quiz-feedback">
+</p>
+</div>
 
 
 </section>

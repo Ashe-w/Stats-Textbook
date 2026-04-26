@@ -1,4 +1,4 @@
-# Examining Relationships Between Two Variables in R {.unnumbered}
+## Examining Relationships Between Two Variables in R 
 
 In this section, we demonstrate how to implement several methods from this Chapter in R. We start with **Pearson’s correlation** for two continuous variables, then illustrate alternatives when data are **ordinal** or involve a **dichotomous variable**, and finish with a **chi-square test** for independence between two categorical variables. 
 
@@ -16,13 +16,13 @@ library(lsr)        # Cramer's V
  
 data <- read_sav("chapter6/chapter6data.sav") 
 ```
-## 1    Pearson’s Correlation {.unnumbered}
+### Correlation  
 
 Here, we examine the relationship between students’ Reasoning scores (PV1MPRE) and Change & Relationships scores (PV1MCCR), two mathematics sub-area scores from PISA reflecting different cognitive domains. 
 
-### 1.1 Visual Check of Assumptions {.unnumbered}
+#### Visual Check of Assumptions 
 
-#### 1.1.1  Linearity: Scatterplot {.unnumbered}
+**Linearity: Scatterplot**
 ```{r}
 #| echo: true
 #| message: false
@@ -41,7 +41,7 @@ Overall, the relationship between the two math scores appears strongly linear: t
 
 However, given the large sample size and the relatively small departure, **the linearity assumption is considered reasonably satisfied**, and Pearson’s correlation remains appropriate for quantifying the association. 
 
-#### 1.1.2	Homoscedasticity: Residuals vs Fitted plot {.unnumbered}
+**Homoscedasticity: Residuals vs Fitted plot**
 
 Residual plots from a simple linear regression model help confirm homoscedasticity. 
 
@@ -55,7 +55,7 @@ plot(m, which = 1)  #which = 1 indicates the 1st diagnostic plot: Residuals vs F
 
 The residuals appear to be fairly evenly scattered around zero across the entire range of fitted values, without forming a clear funnel shape or systematic curve. A few points are marked with observation numbers (e.g., 80, 3381, 3345), which are likely mild outliers. However, they are not extreme enough to indicate severe heteroscedasticity (i.e., unequal variance of residuals). Overall, this indicates that the variance of the residuals is approximately constant, meaning the **homoscedasticity assumption is reasonably satisfied**.
 
-#### 1.1.3	Normality: Q–Q plots {.unnumbered}
+**Normality: Q–Q plots**
 
 Q–Q plots check the approximate normality of each variable. 
 
@@ -77,7 +77,7 @@ In both plots, the points largely follow the 45-degree reference line, with only
 
 Although the chapter mentions checking **bivariate normality** (the joint normal distribution of the two variables), examining the **marginal normality** of each variable is often a practical and informative first step. If both variables are roughly normally distributed individually and the scatterplot of their relationship appears linear (as we already checked), this generally **supports the assumption of bivariate normality** . Together, these results justify the use of Pearson correlation to examine the linear relationship between these two math sub-area scores. 
 
-### 1.2	Computing Pearson’s r {.unnumbered}
+####	Computing Pearson’s r 
 ```{r}
 #| echo: true
 #| message: false
@@ -107,7 +107,7 @@ pear$estimate^2  # r-squared
 - **Variance Explained**: The squared correlation is $r^2=.726$, which means that about 72.6% of the variance in Change & Relationships scores can be explained by Math Reasoning scores (and vice versa). This indicates a very large effect size and strong shared variability between the two sub-areas. 
 
 
-## 2    Spearman’s Correlation {.unnumbered}
+###   Spearman’s Correlation 
 
 When variables are ordinal, Spearman’s $r_s$ is preferred. Here, we convert the two math subscores into quartiles (1–4) and compute Spearman’s correlation. 
 ```{r}
@@ -144,7 +144,7 @@ The Spearman’s Rank-Order correlation ($r_s = .799, \, p < .001$) indicates a 
 Compared with the Pearson correlation ($r=.852$), the Spearman’s $r_s$ is slightly lower. This is expected because transforming continuous scores into quartiles removes some of the fine-grained variability in the data, retaining only the relative rank order. As a result, Spearman’s $r_s$ captures the ordinal association but ignores within-quartile differences, leading to a slightly attenuated correlation coefficient.
 
 
-## 3    Point-Biserial Correlation {.unnumbered}
+###    Point-Biserial Correlation  
 
 Point-biserial correlation measures the relationship between a continuous variable and a dichotomous variable. Here we examine whether *students who perceive mathematics as easier than other subjects* (MATHEASE: 0 = No, 1 = Yes) have higher overall math scores (PV1MATH). 
 ```{r}
@@ -167,7 +167,7 @@ pb$p.value
 The point-biserial correlation between perception of mathematics as easier than other subjects and overall math score is $r_{pb} = .108$, with $p<.001$. This result indicates a significantly positive but small association between perceiving mathematics as easier and actual math performance: students who report finding mathematics easier tend to score slightly higher on average. 
 
 
-## 4    Chi-Square Test for Independence {.unnumbered}
+###   Chi-Square Test for Independence 
 
 When both variables are categorical, we use a chi-square test to evaluate independence. Here, we examine the relationship between Gender (ST004D01T, where 1 = Female and 2 = Male) and Math Motivation (MATHMOT, where 0 = Not more motivated to do well in mathematics than other subjects and 1 = More motivated to do well in mathematics than other subjects). 
 

@@ -67,63 +67,62 @@ A **table** is an organized arrangement of data in rows and columns, designed to
 ## Check Your Understanding  {.unnumbered}
 
  
+<div class="quiz-question">
+  <p><strong>1.</strong> What is the primary purpose of using a histogram in educational research?</p>
 
-1. **What is the primary purpose of using a histogram in educational research?** 
+  <label><input type="radio" name="4q1" value="a"> To compare categories of data.</label><br>
+  <label><input type="radio" name="4q1" value="b"> To display the relationship between two variables.</label><br>
+  <label><input type="radio" name="4q1" value="c"> To summarize the frequency of continuous data grouped into intervals.</label><br>
+  <label><input type="radio" name="4q1" value="d"> To show proportions of a whole.</label><br>
 
-    a. To compare categories of data. 
+  <button type="button" onclick="checkMC('4q1', 'c', 'fb16')">Check answer</button>
+  <p id="fb16" class="quiz-feedback"></p>
+</div>
 
-    b. To display the relationship between two variables. 
+<div class="quiz-question">
+  <p><strong>2.</strong> Which visualization method is best suited for identifying relationships or correlations between two variables?</p>
 
-    c. To summarize the frequency of continuous data grouped into intervals. 
+  <label><input type="radio" name="4q2" value="a"> Pie chart</label><br>
+  <label><input type="radio" name="4q2" value="b"> Box plot</label><br>
+  <label><input type="radio" name="4q2" value="c"> Scatterplot</label><br>
+  <label><input type="radio" name="4q2" value="d"> Stem-and-leaf plot</label><br>
 
-    d. To show proportions of a whole. 
+  <button type="button" onclick="checkMC('4q2', 'c', 'fb17')">Check answer</button>
+  <p id="fb17" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>3.</strong> In a box-and-whisker plot, the interquartile range (IQR) is represented by:</p>
 
-2. **Which visualization method is best suited for identifying relationships or correlations between two variables?** 
+  <label><input type="radio" name="4q3" value="a"> The lines extending from the box to the smallest and largest values.</label><br>
+  <label><input type="radio" name="4q3" value="b"> The box itself, showing the range between the 25th and 75th percentiles.</label><br>
+  <label><input type="radio" name="4q3" value="c"> The line in the center of the box representing the median.</label><br>
+  <label><input type="radio" name="4q3" value="d"> The individual dots outside the whiskers.</label><br>
 
-    a. Pie chart 
+  <button type="button" onclick="checkMC('4q3', 'b', 'fb18')">Check answer</button>
+  <p id="fb18" class="quiz-feedback"></p>
+</div>
 
-    b. Box plot 
+<div class="quiz-question">
+  <p><strong>4.</strong> What is a key advantage of tables in presenting data?</p>
 
-    c. Scatterplot 
+  <label><input type="radio" name="4q4" value="a"> They simplify relationships between variables visually.</label><br>
+  <label><input type="radio" name="4q4" value="b"> They display trends and patterns intuitively.</label><br>
+  <label><input type="radio" name="4q4" value="c"> They highlight outliers in large datasets.</label><br>
+  <label><input type="radio" name="4q4" value="d"> They summarize data with precise values for comparison.</label><br>
 
-    d. Stem-and-leaf plot 
+  <button type="button" onclick="checkMC('4q4', 'd', 'fb19')">Check answer</button>
+  <p id="fb19" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>5.</strong> What is the key difference between a bar chart and a histogram?</p>
 
-3. **In a box-and-whisker plot, the interquartile range (IQR) is represented by:** 
+  <label><input type="radio" name="4q5" value="a"> Bar charts use touching bars to represent continuous data, while histograms use separated bars for discrete data.</label><br>
+  <label><input type="radio" name="4q5" value="b"> Bar charts use separated bars for discrete data, while histograms use touching bars for continuous data.</label><br>
+  <label><input type="radio" name="4q5" value="c"> Bar charts are only used for percentages, while histograms are used for counts.</label><br>
+  <label><input type="radio" name="4q5" value="d"> There is no difference; the terms are interchangeable.</label><br>
 
-    a. The lines extending from the box to the smallest and largest values. 
-
-    b. The box itself, showing the range between the 25th and 75th percentiles. 
-
-    c. The line in the center of the box representing the median. 
-
-    d. The individual dots outside the whiskers. 
-
- 
-
-4. **What is a key advantage of tables in presenting data?** 
-
-    a. They simplify relationships between variables visually. 
-
-    b. They display trends and patterns intuitively. 
-
-    c. They highlight outliers in large datasets. 
-
-    d. They summarize data with precise values for comparison. 
-
- 
-
-5. **What is the key difference between a bar chart and a histogram?**
-
-    a. Bar charts use touching bars to represent continuous data, while histograms use separated bars for discrete data. 
-
-    b. Bar charts use separated bars for discrete data, while histograms use touching bars for continuous data. 
-
-    c. Bar charts are only used for percentages, while histograms are used for counts. 
-
-    d. There is no difference; the terms are interchangeable. 
-
- 
+  <button type="button" onclick="checkMC('4q5', 'b', 'fb20')">Check answer</button>
+  <p id="fb20" class="quiz-feedback"></p>
+</div>

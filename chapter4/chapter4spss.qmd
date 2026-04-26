@@ -1,8 +1,8 @@
-# Displaying Data Graphically in SPSS {.unnumbered}
+## Displaying Data Graphically in SPSS
 
 In this section, we demonstrate how to use different graphical methods (e.g., bar graphs, histograms, box plots, scatter plots) to summarize and communicate patterns, trends, and variability in categorical and continuous data. For demonstration purposes, we will continue using the continuous variable, PV1MATH (Math Plausible Value 1), along with a new categorical variable, SC014Q01TA (What kind of organization runs your school). In addition, three more continuous variables will be used specifically for creating scatterplots. 
 
-## 1    Data Exploration {.unnumbered}
+###    Data Exploration 
 
 Before creating visualizations, we begin by checking how many students are in each school organization category. This helps us understand how the grouping variable is distributed. 
 
@@ -24,7 +24,7 @@ In your results, you will see a frequency table showing that out of 4,552 studen
 
 There are 261 students (5.7%) with missing responses, including 170 no-response cases and 91 system-missing cases. The vast majority of students attend schools run by the government. This imbalance in group sizes should be kept in mind when comparing patterns across categories. 
 
-## 2    Pie Chart of School Organization Type {.unnumbered}
+###    Pie Chart of School Organization Type 
 
 To complement the frequency table, we use a pie chart to visualize the proportion of students in each school organization category. 
 
@@ -46,7 +46,7 @@ To create a pie chart:
 
 This pie chart provides a clear visual representation of how students are distributed across different types of school organizations. As shown, the majority attend government-run schools, with much smaller portions enrolled in schools run by religious or not-for-profit organizations. This visual confirms the proportions reported in the frequency table. 
 
-## 3    Bar Chart of Mean Math Scores by School Organization Type {.unnumbered}
+###    Bar Chart of Mean Math Scores by School Organization Type 
 
 To compare average math achievement across different types of school organizations, we use a bar chart that summarizes the mean of PV1MATH for each category of the variable SC014Q01TA (What kind of organization runs your school?). 
 
@@ -70,7 +70,7 @@ To create the bar chart:
 
 The bar chart shows the mean mathematics scores (PV1MATH) for students across different school organization types, based on the variable SC014Q01TA. Students attending schools run by a church or other religious organization and those run by the government had relatively higher average math scores. In contrast, students in schools operated by another not-for-profit organization had lower mean scores. 
 
-## 4    Histogram of PV1MATH {.unnumbered}
+###    Histogram of PV1MATH 
 
 A histogram allows us to examine the overall distribution of math scores (PV1MATH) across all students. 
 
@@ -90,7 +90,7 @@ To create the histogram:
 
 The histogram displays the overall distribution of math scores (PV1MATH) for all students, with a normal curve overlaid for reference. Unlike the bar chart used earlier  - which summarizes the mean score within each school category - the histogram focuses on how individual scores are spread across the full sample. It divides the continuous PV1MATH variable into score ranges (or bins) and shows how many students fall into each range. The bars are touching because the data represent a continuous scale. The distribution appears roughly symmetric and bell-shaped, centered around a mean of 461.87, with a standard deviation of 95.13. 
 
-## 5    Q-Q Plot of PV1MATH {.unnumbered}
+###    Q-Q Plot of PV1MATH 
 
 To supplement the histogram, we use a Q-Q (quantile-quantile) plot to more precisely evaluate whether the math scores follow a normal distribution. 
 
@@ -110,7 +110,7 @@ To create the Q-Q plot:
 
 The Q-Q plot compares the observed quantiles of PV1MATH to those expected under a normal distribution. If the values fall closely along the diagonal reference line, the distribution can be considered approximately normal. In this case, the math scores largely align with the line, showing only mild deviations at the tails. This confirms the roughly normal shape seen in the histogram and supports the use of statistical methods that assume normality. 
 
-## 6    Stem-and-Leaf Plot and Box Plot of PV1MATH {.unnumbered}
+###    Stem-and-Leaf Plot and Box Plot of PV1MATH 
 
 SPSS has a convenient function that allows us to create both a stem-and-leaf plot and a box plot together to gain detailed distributional insight: 
 
@@ -134,7 +134,7 @@ The stem-and-leaf plot above displays the distribution of PV1MATH scores in a co
 
 This box plot above displays the median math score (central line in the box), the interquartile range (the length of the box), and the range of most scores (whiskers). A few individual values fall outside the whiskers and are shown as small circles, indicating outliers. While this SPSS-generated plot does not label quartiles or display values for whisker endpoints, it still allows us to identify the general shape and spread of the distribution. Compared to the more detailed, annotated box plots found in some textbooks, SPSS provides a cleaner version focused on the essentials—useful for spotting asymmetry or unusually high/low scores. 
 
-## 7    Scatterplot Matrix of Math Subscales {.unnumbered}
+###    Scatterplot Matrix of Math Subscales 
 
 A scatterplot matrix is useful for examining the relationship between multiple continuous variables at once. In this case, we compare students’ scores across three mathematics subscales to explore potential associations between them. 
 

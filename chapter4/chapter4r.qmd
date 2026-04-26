@@ -1,4 +1,4 @@
-# Chapter 4: Displaying Data Graphically in R {.unnumbered}
+## Displaying Data Graphically in R 
 
 This section demonstrates various data visualization techniques using the PISA 2022 U.S. dataset. We will illustrate how to effectively present categorical and continuous variables using **pie charts, bar charts, histograms, stem-and-leaf plots, box plots, scatterplot matrices**, and **Q-Q plots**. 
 
@@ -19,7 +19,7 @@ library(ggpubr)     # for Q-Q plot
 data <- read_sav("chapter3/Clean-data_mar6.sav") 
 ```
 
-## 1    Pie Chart: Categorical Distribution {.unnumbered}
+###    Pie Chart: Categorical Distribution {.unnumbered}
 
 We begin by visualizing the distribution of school governance types (SC014Q01TA: “What kind of organization runs your school?”). 
 ```{r}
@@ -57,7 +57,7 @@ ggplot(school_org_df, aes(x = "", y = n, fill = OrgType)) +
 ```
 **Interpretation**: The frequency table and pie chart above indicates that, within this PISA sample, most students attend government-run schools (n=4013, 93.5%), while relatively few are enrolled in schools managed by religious (n=97, 2.3%) or other not-for-profit organizations (n=181, 4.2%). 
 
-## 2	Bar Chart: Comparing Mean Math Scores by School Type {.unnumbered}
+###	Bar Chart: Comparing Mean Math Scores by School Type {.unnumbered}
 We will now create a bar chart to compare the mean math scores (MATH) across different school governance types. 
 ```{r}
 #| echo: true
@@ -98,7 +98,7 @@ ggplot(mean_scores, aes(x = SchoolType, y = MeanMath, fill = OrgType)) +
   theme(legend.position = "none") 
 ```
 **Interpretation**: The bar chart shows that students in government-run schools have the highest average math score (464), closely followed by those in schools run by religious organizations (462). Students in schools operated by other not-for-profit organizations have a lower average math score (398). 
-## 3    Histogram: Overall Distribution of Math Scores {.unnumberred}
+###    Histogram: Overall Distribution of Math Scores 
 We now inspect the distribution of math scores (PV1MATH) across all students. 
 ```{r}
 #| echo: true
@@ -130,7 +130,7 @@ ggplot(data, aes(x = PV1MATH)) +
   theme_minimal() 
 ```
 **Interpretation**: The histogram shows the distribution of U.S. students’ math scores (PV1MATH) on the PISA assessment. The distribution is approximately symmetric and bell-shaped, centered around a mean of 461.9 with a standard deviation of 95.1.This pattern suggests that math achievement is fairly normally distributed in the sample. 
-## 4	Q-Q Plot: Assessing Normality of Math Scores {.unnumbered}
+###	Q-Q Plot: Assessing Normality of Math Scores 
 ```{r}
 #| echo: true
 #| message: false
@@ -143,7 +143,7 @@ ggqqplot(data$PV1MATH,
 
 Overall, the distribution of math scores appears reasonably normal, supporting the use of parametric statistical methods for further analysis, which will be introduced in the following chapters. 
 
-## 5    Stem-and-Leaf Plot and Box Plot {.unnumbered}
+###    Stem-and-Leaf Plot and Box Plot 
 We will create a stem-and-leaf plot and a box plot to further visualize the distribution of math scores (PV1MATH). 
 
 Note that the stem-and-leaf plots are best for small to moderate datasets (e.g., N < 100–200). For illustration, we will randomly select 100 math scores to create the plot. 
@@ -175,7 +175,7 @@ ggplot(data, aes(x = "", y = PV1MATH)) +
   theme_minimal() 
 ```
 **Interpretation**: The box plot shows that most students’ math scores are clustered in the mid-range, with a few students scoring exceptionally high. The distribution is slightly right-skewed, and the presence of upper outliers indicates that some students performed much better than their peers. 
-## 6 	Scatterplot Matrix: Exploring Relationships Between Math Subscores {.unnumberred}
+### 	Scatterplot Matrix: Exploring Relationships Between Math Subscores 
 We use a scatterplot matrix to explore relationships between different cognitive dimensions of math: reasoning (PV1MPRE), change & relationships (PV1MCCR), quantity (PV1MCQN). 
 ```{r}
 #| echo: true

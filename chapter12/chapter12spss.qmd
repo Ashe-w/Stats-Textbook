@@ -1,4 +1,4 @@
-# Predicting the outcomes in SPSS {.unnumbered}
+## Predicting the outcomes in SPSS 
 
 In this section, we will demonstrate how to conduct and interpret simple linear regression, multiple linear regression, and logistic regression using educational data. The examples use the following variables from the PISA dataset: 
 
@@ -12,11 +12,11 @@ In this section, we will demonstrate how to conduct and interpret simple linear 
 
  
 
-## 1	Simple Linear Regression {.unnumbered}
+### Simple Linear Regression 
 
 **Research Question**: Does effort and persistence in mathematics (MATHPERS) predict math achievement (PV1MATH)? 
 
-## 1.1	Fit Simple Linear Regression 
+### Fit Simple Linear Regression 
 
 To fit a simple linear regression model in SPSS, follow these steps: 
 
@@ -39,7 +39,7 @@ Then you will get the following results:
 **Interpretation**: The regression analysis found a significant positive relationship: for each one point increase in effort and persistence, math achievement scores increased by approximately 16.13 points ($b=16.13, \,SE=1.52,\, t=10.61,\, p<.05,\, 95\% \, CI [13.15, 19.11]$).The model explained about 2.8% of the variance in math achievement (
 $R^2 = .028$). The residual standard error was 94.06, indicating that, on average, students’ actual math scores deviated from the predicted scores by about 94 points. Although the effect size is modest, the result suggests that students who put in more effort and persist in mathematics tend to score higher on the PISA math achievement test. 
 
-## 1.2	Assumptions Checking {.unnumbered}
+### Assumptions Checking  
 
 To check the regression assumptions in SPSS: 
 
@@ -77,13 +77,13 @@ In the *Scatterplot of Standardized Residuals vs. Predicted Values*, residuals a
 Overall, the model meets the assumptions of linearity, homoscedasticity, and normality of residuals, with no problematic outliers. The regression results can be interpreted with confidence. 
 
 
-## 2	Multiple Linear Regression {.unnumbered}
+### Multiple Linear Regression  
 
 For the multiple linear regression, we will include both effort and persistence and growth mindset as predictors of math achievement. 
 
 **Research Question**: Do effort and persistence (MATHPERS) and growth mindset (GROSAGR) jointly predict math achievement (PV1MATH)? 
 
-### 2.1	Fit Multiple Linear Regression {.unnumbered}
+#### Fit Multiple Linear Regression  
 
 To fit a multiple linear regression model in SPSS, follow the steps below: 
 
@@ -113,7 +113,7 @@ The multiple linear regression show that both predictors have significant positi
 Compared to the previous simple regression model that included only effort and persistence, adding growth mindset as a second predictor increased the proportion of explained variance from 2.8% to 6.7%. This suggests that considering both effort and growth mindset provides a better prediction of students’ math achievement. 
 
 
-### 2.2	Multicollinearity & Assumptions Checking {.unnumbered}
+#### Multicollinearity & Assumptions Checking 
 
 To check the regression assumptions in SPSS: 
 

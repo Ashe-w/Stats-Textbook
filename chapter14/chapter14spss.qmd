@@ -1,4 +1,4 @@
-# Advanced Quantitative Methods in SPSS {.unnumbered}
+## Advanced Quantitative Methods in SPSS
 
 In this section, we provide an overview of how to implement several advanced quantitative methods introduced in this chapter using SPSS. The methods covered in Chapter 14 of the textbook, such as multilevel modeling (MLM), factor analysis and structural equation modeling (FA/SEM), meta-analysis, and causal inference approaches (including propensity score models, instrumental variables, difference-in-differences, and regression discontinuity), represent powerful tools for addressing complex research questions in educational studies. 
 
@@ -10,7 +10,7 @@ For the method mentioned in this section, we focus on its analytic purpose and p
 
  
 
-## 1	Multilevel Modeling {.unnumbered}
+###	Multilevel Modeling  
 
 Multilevel modeling is used when data have a hierarchical or nested structure, such as students nested within classrooms or schools. These models explicitly account for dependence among observations and allow researchers to separate within-group and between-group sources of variation. 
 
@@ -56,7 +56,7 @@ To fit the same random-intercept multilevel model using SPSS menus, follow these
 
  
 
-## 2	Meta-Analysis {.unnumbered}
+###	Meta-Analysis 
 
 **Example: Random-Effects Meta-Analysis**  
 
@@ -90,6 +90,6 @@ To fit a random-effects meta-analysis model using raw continuous outcome data in
 
  
 
-## Summary of Advanced Methods in R {.unnumbered}
+### Summary of Advanced Methods in R 
 
 This chapter introduced SPSS implementations of two advanced quantitative methods commonly used in educational research. Researchers may not master these methods at once; instead, proficiency develops through repeated use as new research questions arise and analytic needs evolve. The goal of this section is not to provide an exhaustive reference, but to illustrate core analytical approaches, clarify when each method is appropriate, and demonstrate how they can be implemented using SPSS procedures. With these examples as a foundation, readers are equipped to apply the methods introduced in Chapter 14 within SPSS and to recognize when additional tools or software environments may be required for more specialized analyses. 

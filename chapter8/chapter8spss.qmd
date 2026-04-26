@@ -1,12 +1,12 @@
-# One-Sample t Test and Goodness-of-Fit Analysis {.unnumbered}
+## One-Sample t Test and Goodness-of-Fit Analysis 
 
-## 1    Understanding the Key Variables - Plausible Values (PVs) {.unnumbered}
+###    Understanding the Key Variables - Plausible Values (PVs) 
 
 Plausible values (PVs) are multiple imputed estimates of a student's ability used in large-scale assessments, such as PISA and NAEP, to account for measurement error and improve population-level inferences. These values are not individual test scores but random draws from a posterior distribution, reflecting the uncertainty in estimating a student's true ability. 
 
 In proper statistical analyses, all plausible values should be used with appropriate weighting to ensure more accurate estimates. Using only a single plausible value may lead to incorrect conclusions. However, for the purpose of this demonstration, we will use a single plausible value (PV1) to illustrate how to conduct statistical analyses. In this chapter, we focus on performing a one-sample t-test in SPSS. For correct usage, refer to the last chapter, where the proper approach using multiple PVs and weights is demonstrated. 
 
-## 2    Conducting a One-Sample t-Test: Mean Comparison, Effect Size, and Confidence Interval {.unnumbered}
+###    Conducting a One-Sample t-Test: Mean Comparison, Effect Size, and Confidence Interval 
 
 In this example, we compare the mean of Plausible Value 1 for Math  (PV1MATH) among U.S. students to a benchmark value of 441, which represents the approximate mean of participants from all participating countries. 
 
@@ -47,7 +47,7 @@ The one-sample t-test compared the observed mean to 441, the expected population
 To assess the magnitude of this difference, Cohen’s d was computed as 0.219, suggesting a small effect size. 
 
 
-## 3    Conducting a Chi-Square Goodness-of-Fit Test {.unnumbered}
+###   Conducting a Chi-Square Goodness-of-Fit Test 
 
 In this example, we examine whether the distribution of students' perception of mathematics as easier than other subjects (a categorical variable with two categories) aligns with an expected distribution using a Chi-Square Goodness-of-Fit Test in SPSS. 
 

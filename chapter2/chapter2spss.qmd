@@ -1,10 +1,10 @@
-# Understanding the Center: Measures of Central Tendency in SPSS {.unnumbered}
+## Understanding the Center: Measures of Central Tendency in SPSS 
 
 Unlike statistical software such as R or SAS, which primarily rely on programming for data analysis, SPSS allows users to perform most statistical operations through an intuitive graphical user interface. For the procedures demonstrated in this book, the majority can be completed through menu selections without the need for coding. 
 
 This document provides a step-by-step guide on calculating and interpreting measures of central tendency—including mean, median, mode, and skewness—in SPSS. The demonstration uses data from the 2022 Programme for International Student Assessment (PISA) U.S. dataset, specifically the variable PV1MATH. [The dataset can be downloaded here from the OECD site]("https://www.oecd.org/en/about/programmes/pisa.html")
 
-## 1    Importing Data into SPSS {.unnumbered}
+###    Importing Data into SPSS 
 
 To begin the analysis, the dataset must first be loaded into SPSS. Follow these steps to import the data: 
 
@@ -26,7 +26,7 @@ SPSS supports various data formats, including but not limited to Excel and text 
 
 Once the data is imported, it will be displayed in the Data View tab in SPSS. 
 
-## 2    Computing Mean, Median, Mode, and Skewness {.unnumbered}
+###    Computing Mean, Median, Mode, and Skewness 
 
 After importing the dataset, the next step is to calculate key measures of central tendency and distribution. SPSS allows users to compute the **mean, median, mode, and skewness** through its menu-driven interface. Follow the steps below to perform this analysis: 
 
@@ -49,7 +49,7 @@ The results will be displayed in the Output Viewer, showing the computed values 
 
 You may notice that SPSS warns that multiple modes exist for PV1MATH because all values are unique. To better illustrate how the mode works, a new variable, PV1MATH_INT, was created by rounding all values to the nearest integer. Checking its mode in SPSS results in a unique value: 415. 
 
-## 3    Histogram  {.unnumbered}
+###    Histogram  
 
 To better visualize the distribution of PV1MATH, we can generate a histogram. To create the plot in SPSS, follow these steps: 
 

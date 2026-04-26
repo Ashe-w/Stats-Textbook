@@ -1,4 +1,4 @@
-# Analyzing Differences Among More Than Two Groups in SPSS {.unnumbered}
+## Analyzing Differences Among More Than Two Groups in SPSS 
 
  
 
@@ -6,7 +6,7 @@ In this section, we illustrate how to perform one-way and two-way ANOVAs and the
 
  
 
-## 1.   Data Cleaning  {.unnumbered}
+###   Data Cleaning  
 
 Before conducting any analysis, we first remove cases with missing values on any variables that will be used. In this example, the variables are PV1MATH, SC014Q01TA, and ST004D01T. Steps: 
 
@@ -27,15 +27,15 @@ Before conducting any analysis, we first remove cases with missing values on any
 
  
 
-## 2.   One-Way ANOVA - Comparing Math Scores by School Type {.unnumbered}
+###   One-Way ANOVA - Comparing Math Scores by School Type 
 
-### 2.1	Define Hypotheses {.unnumbered}
+####	Define Hypotheses 
 
 - $H_0$: Mean math scores are equal across all school types ($\mu_{Religious}=\mu_{Non−profit}=\mu_{Government}$)
 
 - $H_a$: At least one school type mean differs from the others. 
 
-## 2.2	 Perform One-Way ANOVA with All Outputs Together {.unnumbered}
+####	 Perform One-Way ANOVA with All Outputs Together
 
 SPSS allows us to obtain assumption checks, ANOVA, and post hoc tests in a single procedure. We will request: 
 
@@ -63,7 +63,7 @@ SPSS Steps:
 
 SPSS will generate all outputs together. 
 
-### 2.3  Check assumptions {.unnumbered}
+####  Check assumptions 
 
 By following the steps above, we checked the assumption of equal variances using Levene’s Test. The normality assumption can be examined visually using Q-Q plots or histograms (see Chapter 4 for details). 
 
@@ -74,7 +74,7 @@ Results:
 **Interpretation**:
 The p-values from all four versions of Levene’s Test (mean, median, trimmed mean, adjusted df) are less than .05, indicating that the assumption of equal variances is violated. However, given the large sample size and approximately equal group sizes, the one-way ANOVA is considered robust to this violation. We will proceed with the ANOVA test.
 
-### 2.4  One-Way ANOVA Test {.unnumbered}
+#### One-Way ANOVA Test
 
 Results: 
 
@@ -82,9 +82,9 @@ Results:
 
 Interpretation: The one-way ANOVA showed a statistically significant difference in mean math scores (PV1MATH) among the three school types ($F(2,4283) = 42.42, p<.001$). This means that at least one school type has a mean math score that differs significantly from the others. 
 
-### 2.5  Post-hoc Tests {.unnumbered}
+####  Post-hoc Tests
 
-#### 2.5.1	Bonferroni-Adjusted Pairwise t Tests {.unnumbered}
+**Bonferroni-Adjusted Pairwise t Tests**
 
 Bonferroni-adjusted t tests divide α by the number of comparisons for a conservative test. 
 
@@ -96,7 +96,7 @@ Results:
 
 The Bonferroni-adjusted pairwise t-tests indicate that students in non-profit schools have significantly different mean math scores compared to both government ($p  < .001$) and religious schools ($p < .001$), while government and religious schools do not significantly differ from each other ($p = 1$). 
 
-#### 2.5.2	Tukey’s HSD Test {.unnumbered}
+**Tukey’s HSD Test**
 
 Tukey’s HSD compares all pairs and controls familywise error rate. 
 
@@ -110,7 +110,7 @@ Interpretation: Tukey’s HSD confirms the Bonferroni results, showing that (1) 
 
 Tukey’s HSD homogeneous subsets further reinforce this finding, showing that the “Another not-for-profit” group forms its own subset with a significantly lower mean, whereas the “Church/Religious” and “Government” schools form a higher subset and do not differ significantly from each other. 
 
-### 2.6   Effect Size {.unnumbered}
+####   Effect Size 
 
 Results: 
 
@@ -120,7 +120,7 @@ Results:
 
 Both the $\eta^2$ and $\omega^2$ values are 0.02, meaning that about 2% of the variance in math scores is explained by school type. According to common benchmarks, this represents a small effect size. This suggests that other factors, beyond school type, account for most of the differences in performance. 
 
-## 3. Two-Way ANOVA - Comparing Math Scores by School Type and Gender {.unnumbered}
+### Two-Way ANOVA - Comparing Math Scores by School Type and Gender
 
 We add gender as a second independent variable to explore potential interaction effects. 
 
@@ -152,7 +152,7 @@ SPSS Steps:
 
 Interpretation: The two-way ANOVA results show a significant main effect of school type ($F(2, 4280) = 42.91, p < .001$), indicating that mean math scores differ significantly among the three school types (Government, Non-profit, Religious). In contrast, the main effect of gender is not significant ($F(1, 4280) = 0.58, p = .446$), suggesting that male and female students do not have statistically different average math scores.
 
-## 4. Nonparametric Alternative: Kruskal-Wallis Test {.unnumbered}
+### Nonparametric Alternative: Kruskal-Wallis Test
 
 If ANOVA assumptions (normality, homogeneity) are severely violated, use the Kruskal-Wallis Test as an alternative. 
 

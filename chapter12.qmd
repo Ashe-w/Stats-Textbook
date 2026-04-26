@@ -89,65 +89,62 @@ The **Variance Inflation Factor (VIF)** quantifies how much the variance of a re
  
 
 ## Check Your Understanding  {.unnumbered}
+<div class="quiz-question">
+  <p><strong>1.</strong> What does the slope (b) in a simple linear regression equation represent?</p>
 
-1. **What does the slope (b) in a simple linear regression equation represent?** 
+  <label><input type="radio" name="12q1" value="a"> The predicted value of Y when X = 0</label><br>
+  <label><input type="radio" name="12q1" value="b"> The change in X relative to Y</label><br>
+  <label><input type="radio" name="12q1" value="c"> The change in Y for a one-unit change in X</label><br>
+  <label><input type="radio" name="12q1" value="d"> The coefficient of determination</label><br>
 
-    a. The predicted value of Y when X = 0 
+  <button type="button" onclick="checkMC('12q1', 'c', 'fb59')">Check answer</button>
+  <p id="fb59" class="quiz-feedback"></p>
+</div>
 
-    b. The change in X relative to Y 
+<div class="quiz-question">
+  <p><strong>2.</strong> What does R² represent in simple linear regression analysis?</p>
 
-    c. The change in Y for a one-unit change in X 
+  <label><input type="radio" name="12q2" value="a"> The correlation between independent variables</label><br>
+  <label><input type="radio" name="12q2" value="b"> The proportion of variance in Y explained by X</label><br>
+  <label><input type="radio" name="12q2" value="c"> The slope of the regression line</label><br>
+  <label><input type="radio" name="12q2" value="d"> The standard error of the residuals</label><br>
 
-    d. The coefficient of determination 
+  <button type="button" onclick="checkMC('12q2', 'b', 'fb60')">Check answer</button>
+  <p id="fb60" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>3.</strong> What does tolerance measure in regression analysis?</p>
 
-2. **What does $R^2$ represent in simple linear regression analysis?** 
+  <label><input type="radio" name="12q3" value="a"> The extent of multicollinearity among independent variables</label><br>
+  <label><input type="radio" name="12q3" value="b"> The proportion of variance in the dependent variable explained by predictors</label><br>
+  <label><input type="radio" name="12q3" value="c"> The normality of residuals</label><br>
+  <label><input type="radio" name="12q3" value="d"> The degree of model fit</label><br>
 
-    a. The correlation between independent variables 
+  <button type="button" onclick="checkMC('12q3', 'a', 'fb61')">Check answer</button>
+  <p id="fb61" class="quiz-feedback"></p>
+</div>
 
-    b. The proportion of variance in Y explained by X 
+<div class="quiz-question">
+  <p><strong>4.</strong> What happens if a model includes highly correlated independent variables?</p>
 
-    c. The slope of the regression line 
+  <label><input type="radio" name="12q4" value="a"> The dependent variable becomes unreliable</label><br>
+  <label><input type="radio" name="12q4" value="b"> The coefficients of the independent variables become unstable</label><br>
+  <label><input type="radio" name="12q4" value="c"> The model fit (R²) will always decrease</label><br>
+  <label><input type="radio" name="12q4" value="d"> The assumption of linearity is violated</label><br>
 
-    d. The standard error of the residuals 
+  <button type="button" onclick="checkMC('12q4', 'b', 'fb62')">Check answer</button>
+  <p id="fb62" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>5.</strong> What does homoscedasticity mean in regression analysis?</p>
 
-3. **What does tolerance measure in regression analysis?** 
+  <label><input type="radio" name="12q5" value="a"> The residuals have a consistent spread across all predicted values</label><br>
+  <label><input type="radio" name="12q5" value="b"> The independent variables are not correlated</label><br>
+  <label><input type="radio" name="12q5" value="c"> The predictors have no relationship with the error term</label><br>
+  <label><input type="radio" name="12q5" value="d"> The regression coefficients are stable across models</label><br>
 
-    a. The extent of multicollinearity among independent variables 
-
-    b. The proportion of variance in the dependent variable explained by predictors 
-
-    c. The normality of residuals 
-
-    d. The degree of model fit 
-
- 
-
-4. **What happens if a model includes highly correlated independent variables?** 
-
-    a. The dependent variable becomes unreliable 
-
-    b. The coefficients of the independent variables become unstable 
-
-    c. The model fit ($R^2$) will always decrease 
-
-    d. The assumption of linearity is violated 
-
- 
-
-5. **What does homoscedasticity mean in regression analysis?** 
-
-    a. The residuals have a consistent spread across all predicted values 
-
-    b. The independent variables are not correlated 
-
-    c. The predictors have no relationship with the error term 
-
-    d. The regression coefficients are stable across models 
-
- 
-
- 
+  <button type="button" onclick="checkMC('12q5', 'a', 'fb63')">Check answer</button>
+  <p id="fb63" class="quiz-feedback"></p>
+</div>

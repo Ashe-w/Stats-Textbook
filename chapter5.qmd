@@ -41,57 +41,60 @@ A **z score** (standardized score) is a statistical measure that describes how f
 
 
 ## Check Your Understanding  {.unnumbered}
+<div class="quiz-question">
+  <p><strong>1.</strong> A distribution with high kurtosis has lighter tails than a normal distribution.</p>
 
-1. **A distribution with high kurtosis has lighter tails than a normal distribution.** 
+  <label><input type="radio" name="5q1" value="a"> True</label><br>
+  <label><input type="radio" name="5q1" value="b"> False</label><br>
 
-    a. True 
+  <button type="button" onclick="checkMC('5q1', 'b', 'fb21')">Check answer</button>
+  <p id="fb21" class="quiz-feedback"></p>
+</div>
 
-    b. False  
+<div class="quiz-question">
+  <p><strong>2.</strong> Which of the following values for skewness and kurtosis indicates that a distribution is approximately normal?</p>
 
- 
+  <label><input type="radio" name="5q2" value="a"> Skewness = 0.5, Kurtosis = 2.5</label><br>
+  <label><input type="radio" name="5q2" value="b"> Skewness = 0.25, Kurtosis = 0.5</label><br>
+  <label><input type="radio" name="5q2" value="c"> Skewness = 1.0, Kurtosis = 3.5</label><br>
+  <label><input type="radio" name="5q2" value="d"> Skewness = -2.0, Kurtosis = 4.0</label><br>
 
-2. **Which of the following values for skewness and kurtosis indicates that a distribution is approximately normal?** 
+  <button type="button" onclick="checkMC('5q2', 'b', 'fb22')">Check answer</button>
+  <p id="fb22" class="quiz-feedback"></p>
+</div>
 
-    a. Skewness = 0.5, Kurtosis = 2.5 
+<div class="quiz-question">
+  <p><strong>3.</strong> What is the probability of a data point falling within 1 standard deviation of the mean in a normal distribution?</p>
 
-    b. Skewness = 0.25, Kurtosis = 0.5 
+  <label><input type="radio" name="5q3" value="a"> 68%</label><br>
+  <label><input type="radio" name="5q3" value="b"> 95%</label><br>
+  <label><input type="radio" name="5q3" value="c"> 99.7%</label><br>
+  <label><input type="radio" name="5q3" value="d"> 50%</label><br>
 
-    c. Skewness = 1.0, Kurtosis = 3.5 
+  <button type="button" onclick="checkMC('5q3', 'a', 'fb23')">Check answer</button>
+  <p id="fb23" class="quiz-feedback"></p>
+</div>
 
-    d. Skewness = -2.0, Kurtosis = 4.0 
+<div class="quiz-question">
+  <p><strong>4.</strong> A standardized test has a mean score of 500 and a standard deviation of 100. What is the probability that a randomly selected student scores higher than 650?</p>
 
- 
+  <label><input type="radio" name="5q4" value="a"> 0.1056 (10.56%)</label><br>
+  <label><input type="radio" name="5q4" value="b"> 0.1587 (15.87%)</label><br>
+  <label><input type="radio" name="5q4" value="c"> 0.0668 (6.68%)</label><br>
+  <label><input type="radio" name="5q4" value="d"> 0.0228 (2.28%)</label><br>
 
-3. **What is the probability of a data point falling within 1 standard deviation of the mean in a normal distribution?** 
+  <button type="button" onclick="checkMC('5q4', 'c', 'fb24')">Check answer</button>
+  <p id="fb24" class="quiz-feedback"></p>
+</div>
 
-    a. 68% 
+<div class="quiz-question">
+  <p><strong>5.</strong> What is the purpose of converting raw data to z scores?</p>
 
-    b. 95% 
+  <label><input type="radio" name="5q5" value="a"> To reduce the range of the data.</label><br>
+  <label><input type="radio" name="5q5" value="b"> To standardize data for comparison across distributions.</label><br>
+  <label><input type="radio" name="5q5" value="c"> To eliminate outliers.</label><br>
+  <label><input type="radio" name="5q5" value="d"> To calculate the mean and median more accurately.</label><br>
 
-    c. 99.7% 
-
-    d. 50% 
-
- 
-
-4. **A standardized test has a mean score of 500 and a standard deviation of 100. What is the probability that a randomly selected student scores higher than 650? Use the z score formula and the standard normal distribution table to find the answer.** 
-
-    a. 0.1056 (10.56%) 
-
-    b. 0.1587 (15.87%) 
-
-    c. 0.0668 (6.68%) 
-
-    d. 0.0228 (2.28%) 
-
- 
-
-5. **What is the purpose of converting raw data to z scores?** 
-
-    a. To reduce the range of the data. 
-
-    b. To standardize data for comparison across distributions. 
-
-    c. To eliminate outliers. 
-
-    d. To calculate the mean and median more accurately. 
+  <button type="button" onclick="checkMC('5q5', 'b', 'fb25')">Check answer</button>
+  <p id="fb25" class="quiz-feedback"></p>
+</div>

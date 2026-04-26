@@ -1,4 +1,4 @@
-# Analyzing Change and Adjusting for Covariates in R {.unnumbered}
+## Analyzing Change and Adjusting for Covariates in R
 
 
 In this section, we demonstrate how to implement two of the central methods from this Chapter in R: **Repeated-Measures ANOVA** and **Analysis of Covariance (ANCOVA)**. Both approaches help educational researchers make more nuanced conclusions: the first by analyzing within-subject change across multiple measures, the second by adjusting for covariates to clarify between-group differences. 
@@ -11,7 +11,7 @@ library(haven)
 data <- read_sav("chapter13/chapter13data.sav") 
 ```
 
-## 1	Repeated-Measures ANOVA {.unnumbered}
+###	Repeated-Measures ANOVA  
 
 We will examine U.S. students’ math performance across three content areas from PISA: 
 
@@ -23,7 +23,7 @@ We will examine U.S. students’ math performance across three content areas fro
 
 These serve as within-subject factors (each student is measured in all three domains). For a between-subjects factor, we will include MATHMOT - Motivation to Do Well in Mathematics, a binary categorical variable. A value of 1 indicates that the student reported being more motivated to do well in mathematics than in other subjects, and 0 indicates they are not. 
 
-### 1.1	Preparing the data {.unnumbered}
+####	Preparing the data 
 
 ```{r}
 #| echo: true
@@ -46,7 +46,7 @@ rm_long <- rm_data %>%
 head(rm_long |> as.data.frame()) 
 ```
 
-### 1.2	Running the repeated-measures ANOVA {.unnumbered}
+####	Running the repeated-measures ANOVA 
 
 ```{r}
 #| echo: true
@@ -75,31 +75,31 @@ anova_table_rounded <- anova_table |>
 anova_table_rounded 
 ```
 
-#### 1.2.1	Between-Subjects Factor: MATHMOT {.unnumbered}
+**Between-Subjects Factor: MATHMOT**
 
 - Students with higher motivation in mathematics (MATHMOT) had significantly different scores across the math content areas overall, $F(1, 4008) = 4.16, \, p = .041$. 
 
 - The partial $\eta^2$ (eta_p2) is .001, indicating that although the effect is statistically significant, the effect size is extremely small (about 0.1% of the variance explained). This reveals that large samples can make very small effects look statistically significant. 
 
-#### 1.2.2	Within-Subjects Factor: ContentArea {.unnumbered}
+**Within-Subjects Factor: ContentArea**
 
 - There is a significant effect of Content Area on math scores, $F(2, 8016) = 123.92$, $p < .001$, indicating that students’ performance varies across the three content areas. 
 
 - The partial $\eta^2$ is .030, suggesting that about 3% of the variance in scores can be attributed to differences between content areas. This is a larger but still modest effect size. 
 
-#### 1.2.3	Interaction: MATHMOT × ContentArea {.unnumbered}
+**Interaction: MATHMOT × ContentArea**
 
 The interaction between MATHMOT and Content Area is not significant, $F(2, 8016) = 1.75, \, p= .174$. This means that although motivated students scored differently overall, their relative performance patterns across the three content areas were not significantly different from less motivated peers. In other words, motivation shifts the overall level but not the shape of the profile. 
 
-#### 1.2.4	Assumption Check: Sphericity {.unnumbered}
+**Assumption Check: Sphericity**
 
 - Mauchly’s Test ($W  = 0.983, \, p < .001$) is significant. This suggests the assumption of sphericity is formally violated: the variances of the differences between content areas are not perfectly equal. However, with such a large sample ($N > 4000$), Mauchly’s test is extremely sensitive — even tiny deviations from sphericity can become statistically significant. 
 
 - As the chapter explained, we apply corrections. For the effect of content areas: Greenhouse-Geisser (p[GG]) $p < .001$; Huynh-Feldt (p[HF]) $p < .001$. Both lead to the same conclusion: the ContentArea effect is robustly significant, even after adjustment. 
 
-### 1.3	Post Hoc Comparisons {.unnumbered}
+#### Post Hoc Comparisons  
 
-#### 1.3.1	Visualize the Means {.unnumbered}
+**Visualize the Means**  
 
 ```{r}
 #| echo: true
@@ -135,7 +135,7 @@ ggplot(means_plot, aes(x = ContentArea, y = mean_score, group = 1)) +
   ggtitle("Mean Math Scores Across Content Areas") 
 ```
 
-#### 1.3.2	Pairwise Comparisons (Repeated-Measures t-tests) {.unnumbered}
+**Pairwise Comparisons (Repeated-Measures t-tests)**
 
 We use pairwise.t.test() with Bonferroni correction. Since the data are within-subjects, we need to specify paired = TRUE. 
 
@@ -155,7 +155,7 @@ From the line plot, students scored lowest in Space & Shape (450), higher in Qua
 
 
 
-## 2	ANCOVA {.unnumbered}
+###	ANCOVA 
 
 Now we turn to ANCOVA， where the focus is where the focus is comparing the three types of schools on math performance, while controlling for growth mindset: 
 
@@ -165,7 +165,7 @@ Now we turn to ANCOVA， where the focus is where the focus is comparing the thr
 
 - **Covariate**: GROSAGR (Growth Mindset) 
 
-### 2.1	Running ANCOVA {.unnumbered}
+####	Running ANCOVA  
 
 ```{r}
 #| echo: true
@@ -202,7 +202,7 @@ summary(ancova_model)
 emmeans(ancova_model, pairwise ~ SchoolType) 
 ```
 
-### 2.1.1	School Type Effect {.unnumbered}
+**School Type Effect**
 
 - After controlling for growth mindset, there are still significant differences in math scores between school types, $F(2,3816)=41.68, \, p<.001$. This means that even if students had the same level of growth mindset, school type is still associated with different mean math achievement. 
 
@@ -217,14 +217,14 @@ emmeans(ancova_model, pairwise ~ SchoolType)
 Check the One-Way ANOVA results from Chapter 10 to see how these comparisons differ before controlling for growth mindset. 
 
 
-#### 2.1.2	Growth Mindset Effect (Covariate) {.unnumbered}
+**Growth Mindset Effect (Covariate)**
 
 Growth mindset has a significant effect on math achievement, $F(1,3816) = 188.65, \, p < .001$. 
 
 
-### 2.2	Checking assumptions {.unnumbered}
+####	Checking assumptions
 
-#### 2.2.1	Independence of covariate and IV {.unnumbered}
+**Independence of covariate and IV**
 
 Recall that one key assumption of ANCOVA is that the covariate (growth mindset) is associated with the dependent variable (math achievement) but not the independent variable (school type). We have shown that growth had a significant effect on math achievement. Now we check whether growth mindset differs by school type. 
 
@@ -239,7 +239,7 @@ summary(anova_cov)
 
 The ANOVA showed that growth mindset scores did not significantly differ across school types, $F(2,3817) = 1.60, \, p = .203$. This indicates that the covariate (growth mindset) is independent of the independent variable (school type), upholding the assumption for ANCOVA. 
 
-#### 2.2.2	Homogeneity of regression slopes {.unnumbered}
+**Homogeneity of regression slopes**
 
 Another assumption of ANCOVA is no interaction between the effect of the covariate and group membership. We test this by adding an interaction term between school type and growth mindset. 
 

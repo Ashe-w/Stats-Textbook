@@ -124,6 +124,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 
 <script src="https://hypothes.is/embed.js" async=""></script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DHHP4LF5C2"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+
+
+  gtag('config', 'G-DHHP4LF5C2');
+
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -350,33 +367,16 @@ window.Quarto = {
   <li><a href="#multiple-covariates" id="toc-multiple-covariates" class="nav-link" data-scroll-target="#multiple-covariates"><span class="header-section-number">13.5.8</span> Multiple Covariates</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">13.6</span> Summary</a></li>
+  <li><a href="#analyzing-change-and-adjusting-for-covariates-in-r" id="toc-analyzing-change-and-adjusting-for-covariates-in-r" class="nav-link" data-scroll-target="#analyzing-change-and-adjusting-for-covariates-in-r"><span class="header-section-number">13.7</span> Analyzing Change and Adjusting for Covariates in R</a>
+  <ul class="collapse">
+  <li><a href="#repeated-measures-anova" id="toc-repeated-measures-anova" class="nav-link" data-scroll-target="#repeated-measures-anova"><span class="header-section-number">13.7.1</span> Repeated-Measures ANOVA</a></li>
+  <li><a href="#ancova" id="toc-ancova" class="nav-link" data-scroll-target="#ancova"><span class="header-section-number">13.7.2</span> ANCOVA</a></li>
   </ul></li>
-  <li><a href="#analyzing-change-and-adjusting-for-covariates-in-r" id="toc-analyzing-change-and-adjusting-for-covariates-in-r" class="nav-link" data-scroll-target="#analyzing-change-and-adjusting-for-covariates-in-r">Analyzing Change and Adjusting for Covariates in R</a>
+  <li><a href="#analyzing-change-and-adjusting-for-covariates-in-spss" id="toc-analyzing-change-and-adjusting-for-covariates-in-spss" class="nav-link" data-scroll-target="#analyzing-change-and-adjusting-for-covariates-in-spss"><span class="header-section-number">13.8</span> Analyzing Change and Adjusting for Covariates in SPSS</a>
   <ul class="collapse">
-  <li><a href="#repeated-measures-anova" id="toc-repeated-measures-anova" class="nav-link" data-scroll-target="#repeated-measures-anova">1 Repeated-Measures ANOVA</a>
-  <ul class="collapse">
-  <li><a href="#preparing-the-data" id="toc-preparing-the-data" class="nav-link" data-scroll-target="#preparing-the-data">1.1 Preparing the data</a></li>
-  <li><a href="#running-the-repeated-measures-anova" id="toc-running-the-repeated-measures-anova" class="nav-link" data-scroll-target="#running-the-repeated-measures-anova">1.2 Running the repeated-measures ANOVA</a></li>
-  <li><a href="#post-hoc-comparisons-1" id="toc-post-hoc-comparisons-1" class="nav-link" data-scroll-target="#post-hoc-comparisons-1">1.3 Post Hoc Comparisons</a></li>
-  </ul></li>
-  <li><a href="#ancova" id="toc-ancova" class="nav-link" data-scroll-target="#ancova">2 ANCOVA</a>
-  <ul class="collapse">
-  <li><a href="#running-ancova" id="toc-running-ancova" class="nav-link" data-scroll-target="#running-ancova">2.1 Running ANCOVA</a></li>
-  <li><a href="#school-type-effect" id="toc-school-type-effect" class="nav-link" data-scroll-target="#school-type-effect">2.1.1 School Type Effect</a></li>
-  <li><a href="#checking-assumptions" id="toc-checking-assumptions" class="nav-link" data-scroll-target="#checking-assumptions">2.2 Checking assumptions</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#analyzing-change-and-adjusting-for-covariates-in-spss" id="toc-analyzing-change-and-adjusting-for-covariates-in-spss" class="nav-link" data-scroll-target="#analyzing-change-and-adjusting-for-covariates-in-spss">Analyzing Change and Adjusting for Covariates in SPSS</a>
-  <ul class="collapse">
-  <li><a href="#repeated-measures-anova-1" id="toc-repeated-measures-anova-1" class="nav-link" data-scroll-target="#repeated-measures-anova-1">1 Repeated-Measures ANOVA</a>
-  <ul class="collapse">
-  <li><a href="#running-the-repeated-measures-anova-1" id="toc-running-the-repeated-measures-anova-1" class="nav-link" data-scroll-target="#running-the-repeated-measures-anova-1">1.1 Running the repeated-measures ANOVA</a></li>
-  <li><a href="#post-hoc-comparisons-2" id="toc-post-hoc-comparisons-2" class="nav-link" data-scroll-target="#post-hoc-comparisons-2">1.2 Post Hoc Comparisons</a></li>
-  </ul></li>
-  <li><a href="#ancova-1" id="toc-ancova-1" class="nav-link" data-scroll-target="#ancova-1">2 ANCOVA</a></li>
-  <li><a href="#running-ancova-1" id="toc-running-ancova-1" class="nav-link" data-scroll-target="#running-ancova-1">2.1 Running ANCOVA</a>
-  <ul class="collapse">
-  <li><a href="#checking-assumptions-1" id="toc-checking-assumptions-1" class="nav-link" data-scroll-target="#checking-assumptions-1">2.2 Checking assumptions</a></li>
+  <li><a href="#repeated-measures-anova-1" id="toc-repeated-measures-anova-1" class="nav-link" data-scroll-target="#repeated-measures-anova-1"><span class="header-section-number">13.8.1</span> Repeated-Measures ANOVA</a></li>
+  <li><a href="#ancova-1" id="toc-ancova-1" class="nav-link" data-scroll-target="#ancova-1"><span class="header-section-number">13.8.2</span> ANCOVA</a></li>
+  <li><a href="#running-ancova-1" id="toc-running-ancova-1" class="nav-link" data-scroll-target="#running-ancova-1"><span class="header-section-number">13.8.3</span> Running ANCOVA</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
@@ -1447,16 +1447,15 @@ H_A: \text{At least one of the beta coefficients is not zero.}
 </ul>
 <p>The concept of ANCOVA can sometimes be difficult to understand. If you want another explanation, this <a href="https://www.youtube.com/watch?v=0e8BI2u6DU0">YouTube video</a> by Foltz (2017) has been helpful to our students.</p>
 </section>
-</section>
-<section id="analyzing-change-and-adjusting-for-covariates-in-r" class="level1 unnumbered">
-<h1 class="unnumbered">Analyzing Change and Adjusting for Covariates in R</h1>
+<section id="analyzing-change-and-adjusting-for-covariates-in-r" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="analyzing-change-and-adjusting-for-covariates-in-r"><span class="header-section-number">13.7</span> Analyzing Change and Adjusting for Covariates in R</h2>
 <p>In this section, we demonstrate how to implement two of the central methods from this Chapter in R: <strong>Repeated-Measures ANOVA</strong> and <strong>Analysis of Covariance (ANCOVA)</strong>. Both approaches help educational researchers make more nuanced conclusions: the first by analyzing within-subject change across multiple measures, the second by adjusting for covariates to clarify between-group differences.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"chapter13/chapter13data.sav"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="repeated-measures-anova" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="repeated-measures-anova">1 Repeated-Measures ANOVA</h2>
+<section id="repeated-measures-anova" class="level3" data-number="13.7.1">
+<h3 data-number="13.7.1" class="anchored" data-anchor-id="repeated-measures-anova"><span class="header-section-number">13.7.1</span> Repeated-Measures ANOVA</h3>
 <p>We will examine U.S. students’ math performance across three content areas from PISA:</p>
 <ul>
 <li><p>PV1MPRE: Reasoning</p></li>
@@ -1464,8 +1463,8 @@ H_A: \text{At least one of the beta coefficients is not zero.}
 <li><p>PV1MCSS: Space &amp; Shape</p></li>
 </ul>
 <p>These serve as within-subject factors (each student is measured in all three domains). For a between-subjects factor, we will include MATHMOT - Motivation to Do Well in Mathematics, a binary categorical variable. A value of 1 indicates that the student reported being more motivated to do well in mathematics than in other subjects, and 0 indicates they are not.</p>
-<section id="preparing-the-data" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="preparing-the-data">1.1 Preparing the data</h3>
+<section id="preparing-the-data" class="level4" data-number="13.7.1.1">
+<h4 data-number="13.7.1.1" class="anchored" data-anchor-id="preparing-the-data"><span class="header-section-number">13.7.1.1</span> Preparing the data</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
@@ -1493,8 +1492,8 @@ H_A: \text{At least one of the beta coefficients is not zero.}
 </div>
 </div>
 </section>
-<section id="running-the-repeated-measures-anova" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="running-the-repeated-measures-anova">1.2 Running the repeated-measures ANOVA</h3>
+<section id="running-the-repeated-measures-anova" class="level4" data-number="13.7.1.2">
+<h4 data-number="13.7.1.2" class="anchored" data-anchor-id="running-the-repeated-measures-anova"><span class="header-section-number">13.7.1.2</span> Running the repeated-measures ANOVA</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> </span>
@@ -1530,36 +1529,27 @@ H_A: \text{At least one of the beta coefficients is not zero.}
 4 0.000  0.000</code></pre>
 </div>
 </div>
-<section id="between-subjects-factor-mathmot" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="between-subjects-factor-mathmot">1.2.1 Between-Subjects Factor: MATHMOT</h4>
+<p><strong>Between-Subjects Factor: MATHMOT</strong></p>
 <ul>
 <li><p>Students with higher motivation in mathematics (MATHMOT) had significantly different scores across the math content areas overall, <span class="math inline">\(F(1, 4008) = 4.16, \, p = .041\)</span>.</p></li>
 <li><p>The partial <span class="math inline">\(\eta^2\)</span> (eta_p2) is .001, indicating that although the effect is statistically significant, the effect size is extremely small (about 0.1% of the variance explained). This reveals that large samples can make very small effects look statistically significant.</p></li>
 </ul>
-</section>
-<section id="within-subjects-factor-contentarea" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="within-subjects-factor-contentarea">1.2.2 Within-Subjects Factor: ContentArea</h4>
+<p><strong>Within-Subjects Factor: ContentArea</strong></p>
 <ul>
 <li><p>There is a significant effect of Content Area on math scores, <span class="math inline">\(F(2, 8016) = 123.92\)</span>, <span class="math inline">\(p &lt; .001\)</span>, indicating that students’ performance varies across the three content areas.</p></li>
 <li><p>The partial <span class="math inline">\(\eta^2\)</span> is .030, suggesting that about 3% of the variance in scores can be attributed to differences between content areas. This is a larger but still modest effect size.</p></li>
 </ul>
-</section>
-<section id="interaction-mathmot-contentarea" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="interaction-mathmot-contentarea">1.2.3 Interaction: MATHMOT × ContentArea</h4>
+<p><strong>Interaction: MATHMOT × ContentArea</strong></p>
 <p>The interaction between MATHMOT and Content Area is not significant, <span class="math inline">\(F(2, 8016) = 1.75, \, p= .174\)</span>. This means that although motivated students scored differently overall, their relative performance patterns across the three content areas were not significantly different from less motivated peers. In other words, motivation shifts the overall level but not the shape of the profile.</p>
-</section>
-<section id="assumption-check-sphericity" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="assumption-check-sphericity">1.2.4 Assumption Check: Sphericity</h4>
+<p><strong>Assumption Check: Sphericity</strong></p>
 <ul>
 <li><p>Mauchly’s Test (<span class="math inline">\(W  = 0.983, \, p &lt; .001\)</span>) is significant. This suggests the assumption of sphericity is formally violated: the variances of the differences between content areas are not perfectly equal. However, with such a large sample (<span class="math inline">\(N &gt; 4000\)</span>), Mauchly’s test is extremely sensitive — even tiny deviations from sphericity can become statistically significant.</p></li>
 <li><p>As the chapter explained, we apply corrections. For the effect of content areas: Greenhouse-Geisser (p[GG]) <span class="math inline">\(p &lt; .001\)</span>; Huynh-Feldt (p[HF]) <span class="math inline">\(p &lt; .001\)</span>. Both lead to the same conclusion: the ContentArea effect is robustly significant, even after adjustment.</p></li>
 </ul>
 </section>
-</section>
-<section id="post-hoc-comparisons-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="post-hoc-comparisons-1">1.3 Post Hoc Comparisons</h3>
-<section id="visualize-the-means" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="visualize-the-means">1.3.1 Visualize the Means</h4>
+<section id="post-hoc-comparisons-1" class="level4" data-number="13.7.1.3">
+<h4 data-number="13.7.1.3" class="anchored" data-anchor-id="post-hoc-comparisons-1"><span class="header-section-number">13.7.1.3</span> Post Hoc Comparisons</h4>
+<p><strong>Visualize the Means</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean plot by ContentArea </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
@@ -1601,9 +1591,7 @@ H_A: \text{At least one of the beta coefficients is not zero.}
 </div>
 </div>
 </div>
-</section>
-<section id="pairwise-comparisons-repeated-measures-t-tests" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="pairwise-comparisons-repeated-measures-t-tests">1.3.2 Pairwise Comparisons (Repeated-Measures t-tests)</h4>
+<p><strong>Pairwise Comparisons (Repeated-Measures t-tests)</strong></p>
 <p>We use pairwise.t.test() with Bonferroni correction. Since the data are within-subjects, we need to specify paired = TRUE.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairwise repeated-measures t-tests </span></span>
@@ -1628,17 +1616,16 @@ P value adjustment method: bonferroni </code></pre>
 <p>From the line plot, students scored lowest in Space &amp; Shape (450), higher in Quantity (458), and highest in Reasoning (461). The pairwise t-tests confirm that all three pairwise differences are statistically significant after Bonferroni correction (<span class="math inline">\(p &lt; .001\)</span> for all comparisons), although the largest gap is between Space &amp; Shape and the other two areas.</p>
 </section>
 </section>
-</section>
-<section id="ancova" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ancova">2 ANCOVA</h2>
+<section id="ancova" class="level3" data-number="13.7.2">
+<h3 data-number="13.7.2" class="anchored" data-anchor-id="ancova"><span class="header-section-number">13.7.2</span> ANCOVA</h3>
 <p>Now we turn to ANCOVA， where the focus is where the focus is comparing the three types of schools on math performance, while controlling for growth mindset:</p>
 <ul>
 <li><p><strong>DV</strong>: PV1MATH (overall math achievement)</p></li>
 <li><p><strong>IV</strong>: SC014Q01TA (School type: 1 - religious, 2 - non-profit, 4 - government)</p></li>
 <li><p><strong>Covariate</strong>: GROSAGR (Growth Mindset)</p></li>
 </ul>
-<section id="running-ancova" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="running-ancova">2.1 Running ANCOVA</h3>
+<section id="running-ancova" class="level4" data-number="13.7.2.1">
+<h4 data-number="13.7.2.1" class="anchored" data-anchor-id="running-ancova"><span class="header-section-number">13.7.2.1</span> Running ANCOVA</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1689,9 +1676,7 @@ $contrasts
 P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
 </div>
 </div>
-</section>
-<section id="school-type-effect" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="school-type-effect">2.1.1 School Type Effect</h3>
+<p><strong>School Type Effect</strong></p>
 <ul>
 <li><p>After controlling for growth mindset, there are still significant differences in math scores between school types, <span class="math inline">\(F(2,3816)=41.68, \, p&lt;.001\)</span>. This means that even if students had the same level of growth mindset, school type is still associated with different mean math achievement.</p></li>
 <li><p>From the post-hoc comparison, after controlling for growth mindset (i.e., adjusted means):</p>
@@ -1702,15 +1687,12 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 </ul></li>
 </ul>
 <p>Check the One-Way ANOVA results from Chapter 10 to see how these comparisons differ before controlling for growth mindset.</p>
-<section id="growth-mindset-effect-covariate" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="growth-mindset-effect-covariate">2.1.2 Growth Mindset Effect (Covariate)</h4>
+<p><strong>Growth Mindset Effect (Covariate)</strong></p>
 <p>Growth mindset has a significant effect on math achievement, <span class="math inline">\(F(1,3816) = 188.65, \, p &lt; .001\)</span>.</p>
 </section>
-</section>
-<section id="checking-assumptions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="checking-assumptions">2.2 Checking assumptions</h3>
-<section id="independence-of-covariate-and-iv" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="independence-of-covariate-and-iv">2.2.1 Independence of covariate and IV</h4>
+<section id="checking-assumptions" class="level4" data-number="13.7.2.2">
+<h4 data-number="13.7.2.2" class="anchored" data-anchor-id="checking-assumptions"><span class="header-section-number">13.7.2.2</span> Checking assumptions</h4>
+<p><strong>Independence of covariate and IV</strong></p>
 <p>Recall that one key assumption of ANCOVA is that the covariate (growth mindset) is associated with the dependent variable (math achievement) but not the independent variable (school type). We have shown that growth had a significant effect on math achievement. Now we check whether growth mindset differs by school type.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Does SchoolType predict Growth Mindset? </span></span>
@@ -1724,9 +1706,7 @@ Residuals   3817 2492.0  0.6529
 </div>
 </div>
 <p>The ANOVA showed that growth mindset scores did not significantly differ across school types, <span class="math inline">\(F(2,3817) = 1.60, \, p = .203\)</span>. This indicates that the covariate (growth mindset) is independent of the independent variable (school type), upholding the assumption for ANCOVA.</p>
-</section>
-<section id="homogeneity-of-regression-slopes-2" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="homogeneity-of-regression-slopes-2">2.2.2 Homogeneity of regression slopes</h4>
+<p><strong>Homogeneity of regression slopes</strong></p>
 <p>Another assumption of ANCOVA is no interaction between the effect of the covariate and group membership. We test this by adding an interaction term between school type and growth mindset.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add interaction term </span></span>
@@ -1748,16 +1728,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </section>
 </section>
 </section>
-</section>
-<section id="analyzing-change-and-adjusting-for-covariates-in-spss" class="level1 unnumbered">
-<h1 class="unnumbered">Analyzing Change and Adjusting for Covariates in SPSS</h1>
+<section id="analyzing-change-and-adjusting-for-covariates-in-spss" class="level2" data-number="13.8">
+<h2 data-number="13.8" class="anchored" data-anchor-id="analyzing-change-and-adjusting-for-covariates-in-spss"><span class="header-section-number">13.8</span> Analyzing Change and Adjusting for Covariates in SPSS</h2>
 <p>In this section, we demonstrate how to implement two of the central methods from this Chapter in R: Repeated-Measures ANOVA and Analysis of Covariance (ANCOVA). Both approaches help educational researchers make more nuanced conclusions: the first by analyzing within-subject change across multiple measures, the second by adjusting for covariates to clarify between-group differences.</p>
-<section id="repeated-measures-anova-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="repeated-measures-anova-1">1 Repeated-Measures ANOVA</h2>
+<section id="repeated-measures-anova-1" class="level3" data-number="13.8.1">
+<h3 data-number="13.8.1" class="anchored" data-anchor-id="repeated-measures-anova-1"><span class="header-section-number">13.8.1</span> Repeated-Measures ANOVA</h3>
 <p>We will examine U.S. students’ math performance across three content areas from PISA: - PV1MPRE: Reasoning - PV1MCQN: Quantity - PV1MCSS: Space &amp; Shape</p>
 <p>These serve as within-subject factors (each student is measured in all three domains). For a between-subjects factor, we will include MATHMOT - Motivation to Do Well in Mathematics, a binary categorical variable. A value of 1 indicates that the student reported being more motivated to do well in mathematics than in other subjects, and 0 indicates they are not.</p>
-<section id="running-the-repeated-measures-anova-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="running-the-repeated-measures-anova-1">1.1 Running the repeated-measures ANOVA</h3>
+<section id="running-the-repeated-measures-anova-1" class="level4" data-number="13.8.1.1">
+<h4 data-number="13.8.1.1" class="anchored" data-anchor-id="running-the-repeated-measures-anova-1"><span class="header-section-number">13.8.1.1</span> Running the repeated-measures ANOVA</h4>
 <p>Step-by-step procedure in SPSS</p>
 <ol type="1">
 <li><p>Click Analyze → General Linear Model → Repeated Measures</p></li>
@@ -1792,8 +1771,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </ol>
 <p>Click OK to run the analysis.</p>
 <p><strong><em>Note:</em></strong> The procedure may appear long and complicated, but Steps 1–4 are sufficient to run a basic repeated measures ANOVA and obtain the main and interaction effects. Step 5 is necessary if you wish to view estimated marginal means and conduct pairwise comparisons (e.g., Bonferroni adjustment). Step 6 generates line plots to help visualize interactions or group trends. Step 7 provides additional outputs such as descriptive statistics, effect size estimates, and assumption checks (e.g., Levene’s test).</p>
-<section id="assumption-checking" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="assumption-checking">1.1.1 Assumption checking</h4>
+<p><strong>Assumption checking</strong></p>
 <p>Before interpreting the results of a repeated-measures ANOVA, it is important to check key statistical assumptions. These assumptions not only ensure the validity of the test results and help control the Type I error rate, but they also determine which version of the results we should report. For example, if the assumption of sphericity is violated, we must use adjusted degrees of freedom rather than reporting the default F-test.</p>
 <p><strong><em>Mauchly’s Test of Sphericity</em></strong>:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -1812,9 +1790,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </figure>
 </div>
 <p>Box’s <span class="math inline">\(M = 8.050\)</span>, <span class="math inline">\(p = .240\)</span>, suggesting that the assumption of equal covariance matrices across groups is not violated.</p>
-</section>
-<section id="between-subjects-factor-mathmot-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="between-subjects-factor-mathmot-1">1.1.2 Between-Subjects Factor: MATHMOT</h4>
+<p><strong>Between-Subjects Factor: MATHMOT</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chapter13/fig13-11.png" class="img-fluid figure-img" style="width:60.0%"></p>
@@ -1825,9 +1801,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <li>Students with higher motivation in mathematics (MATHMOT) had significantly different scores across the math content areas overall, <span class="math inline">\(F(1, 4008) = 4.16\)</span>, <span class="math inline">\(p = .041\)</span>.</li>
 </ul>
 <p>The partial <span class="math inline">\(\eta^2\)</span> is .001, indicating that although the effect is statistically significant, the effect size is extremely small (about 0.1% of the variance explained). This reveals that large samples can make very small effects look statistically significant.</p>
-</section>
-<section id="within-subjects-factor-contentarea-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="within-subjects-factor-contentarea-1">1.1.3 Within-Subjects Factor: ContentArea</h4>
+<p><strong>Within-Subjects Factor: ContentArea</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chapter13/fig13-12.png" class="img-fluid figure-img" style="width:80.0%"></p>
@@ -1838,16 +1812,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <li><p>There is a significant effect of Content Area on math scores, <span class="math inline">\(F(1.968, 7886.516) = 7.884\)</span>, <span class="math inline">\(p  &lt; .001\)</span>, indicating that students’ performance varies across the three content areas.</p></li>
 <li><p>The partial <span class="math inline">\(\eta^2\)</span> is .002, suggesting that about only 0.2% of the variance in scores can be attributed to differences between content areas.</p></li>
 </ul>
-</section>
-<section id="interaction-mathmot-contentarea-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="interaction-mathmot-contentarea-1">1.1.4 Interaction: MATHMOT × ContentArea</h4>
+<p><strong>Interaction: MATHMOT × ContentArea</strong></p>
 <p>The interaction between MATHMOT and Content Area is not significant, <span class="math inline">\(F(1.968, 7886.516) = 1.749\)</span>, <span class="math inline">\(p = .175\)</span>. This means that although motivated students scored differently overall, their relative performance patterns across the three content areas were not significantly different from less motivated peers. In other words, motivation shifts the overall level but not the shape of the profile.</p>
 </section>
-</section>
-<section id="post-hoc-comparisons-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="post-hoc-comparisons-2">1.2 Post Hoc Comparisons</h3>
-<section id="visualize-the-means-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="visualize-the-means-1">1.2.1 Visualize the Means</h4>
+<section id="post-hoc-comparisons-2" class="level4" data-number="13.8.1.2">
+<h4 data-number="13.8.1.2" class="anchored" data-anchor-id="post-hoc-comparisons-2"><span class="header-section-number">13.8.1.2</span> Post Hoc Comparisons</h4>
+<p><strong>Visualize the Means</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chapter13/fig13-13.png" class="img-fluid figure-img" style="width:80.0%"></p>
@@ -1863,9 +1833,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </div>
 <p>This plot shows the estimated marginal means for each content area, split by students’ motivation to do well in math. Students who reported being more motivated tended to score higher across all three content areas.</p>
 <p>The overall performance pattern (Reasoning &gt; Quantity &gt; Space &amp; Shape) appears similar for both groups, suggesting that the relative differences across content areas are not strongly influenced by motivation. This visual pattern aligns with the non-significant interaction observed in the formal tests, offering further support for that finding.</p>
-</section>
-<section id="pairwise-comparisons" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="pairwise-comparisons">1.2.2 Pairwise Comparisons</h4>
+<p><strong>Pairwise Comparisons</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chapter13/fig13-15.png" class="img-fluid figure-img" style="width:60.0%"></p>
@@ -1876,9 +1844,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <p>Note that these comparisons are based on estimated marginal means, which adjust for the between-subjects factor (math motivation) and use a pooled error term, making them slightly more conservative than raw paired t-tests.</p>
 </section>
 </section>
-</section>
-<section id="ancova-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ancova-1">2 ANCOVA</h2>
+<section id="ancova-1" class="level3" data-number="13.8.2">
+<h3 data-number="13.8.2" class="anchored" data-anchor-id="ancova-1"><span class="header-section-number">13.8.2</span> ANCOVA</h3>
 <p>Now we turn to ANCOVA, where the focus is where the focus is comparing the three types of schools on math performance, while controlling for growth mindset:</p>
 <pre><code>**DV**: PV1MATH (overall math achievement) 
 
@@ -1886,8 +1853,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 **Covariate**: GROSAGR (Growth Mindset) </code></pre>
 </section>
-<section id="running-ancova-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="running-ancova-1">2.1 Running ANCOVA</h2>
+<section id="running-ancova-1" class="level3" data-number="13.8.3">
+<h3 data-number="13.8.3" class="anchored" data-anchor-id="running-ancova-1"><span class="header-section-number">13.8.3</span> Running ANCOVA</h3>
 <p>Step-by-step procedure in SPSS</p>
 <ol type="1">
 <li><p>Click Analyze → General Linear Model → Univariate</p></li>
@@ -1921,16 +1888,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <figcaption>Fig 13.16</figcaption>
 </figure>
 </div>
-<section id="school-type-effect-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="school-type-effect-1">2.1.1 School Type Effect</h4>
+<p><strong>School Type Effect</strong></p>
 <p>After controlling for growth mindset, there are still significant differences in math scores between school types, <span class="math inline">\(F(2,3816)=38.45\)</span>, <span class="math inline">\(p&lt;.001\)</span>. This means that even if students had the same level of growth mindset, school type is still associated with different mean math achievement.</p>
-</section>
-<section id="growth-mindset-effect-covariate-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="growth-mindset-effect-covariate-1">2.1.2 Growth Mindset Effect (Covariate)</h4>
+<p><strong>Growth Mindset Effect (Covariate)</strong></p>
 <p>Growth mindset has a significant effect on math achievement, <span class="math inline">\(F(1,3816)=188.65\)</span>, <span class="math inline">\(p&lt;.001\)</span>.</p>
-</section>
-<section id="pairwise-comparisons-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="pairwise-comparisons-1">2.1.3 Pairwise Comparisons</h4>
+<p><strong>Pairwise Comparisons</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chapter13/fig13-17.png" class="img-fluid figure-img" style="width:60.0%"></p>
@@ -1952,11 +1914,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </ul></li>
 </ul>
 <p>Check the One-Way ANOVA results from Chapter 10 to see how these comparisons differ before controlling for growth mindset.</p>
-</section>
-<section id="checking-assumptions-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="checking-assumptions-1">2.2 Checking assumptions</h3>
-<section id="independence-of-covariate-and-iv-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="independence-of-covariate-and-iv-1">2.2.1 Independence of covariate and IV</h4>
+<section id="checking-assumptions-1" class="level4" data-number="13.8.3.1">
+<h4 data-number="13.8.3.1" class="anchored" data-anchor-id="checking-assumptions-1"><span class="header-section-number">13.8.3.1</span> Checking assumptions</h4>
+<p><strong>Independence of covariate and IV</strong></p>
 <p>Recall that one key assumption of ANCOVA is that the covariate (growth mindset) is associated with the dependent variable (math achievement) but not the independent variable (school type). We have shown that growth had a significant effect on math achievement. Now we check whether growth mindset differs by school type.A table with numbers and letters</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1965,9 +1925,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </figure>
 </div>
 <p>The ANOVA showed that growth mindset scores did not significantly differ across school types, <span class="math inline">\(F(2,3817)=1.597\)</span>, <span class="math inline">\(p=.203\)</span>. This indicates that the covariate (growth mindset) is independent of the independent variable (school type), upholding the assumption for ANCOVA.</p>
-</section>
-<section id="homogeneity-of-regression-slopes-3" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="homogeneity-of-regression-slopes-3">2.2.2 Homogeneity of regression slopes</h4>
+<p><strong>Homogeneity of regression slopes</strong></p>
 <p>Another assumption of ANCOVA is no interaction between the effect of the covariate and group membership. We test this by adding an interaction term between school type and growth mindset.</p>
 <p><strong><em>Additional Step in SPSS</em></strong></p>
 <p>All steps are the same as in the standard ANCOVA procedure described above. The only change is in the Model… dialog:</p>
@@ -2022,55 +1980,69 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="check-your-understanding" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
 <ol type="1">
-<li><p><strong>What is the key advantage of using a repeated-measures ANOVA?</strong></p>
-<ol type="a">
-<li><p>It eliminates the need for a dependent variable.</p></li>
-<li><p>It reduces error variance by accounting for individual differences.</p></li>
-<li><p>It allows for the inclusion of multiple dependent variables.</p></li>
-<li><p>It does not require any statistical assumptions.</p></li>
-</ol></li>
-<li><p><strong>What does the term “sphericity” refer to in the context of repeated-measures ANOVA?</strong></p>
-<ol type="a">
-<li><p>Equal variances within each group.</p></li>
-<li><p>Equal sample sizes across groups.</p></li>
-<li><p>Equal variances of differences between all combinations of related groups.</p></li>
-<li><p>Equal means across all groups.</p></li>
-</ol></li>
-<li><p><strong>What is the recommended post hoc procedure for a repeated-measures ANOVA to control for Type I error?</strong></p>
-<ol type="a">
-<li><p>Tukey’s HSD</p></li>
-<li><p>Bonferroni correction</p></li>
-<li><p>Fisher’s LSD</p></li>
-<li><p>Scheffé test</p></li>
-</ol></li>
-<li><p><strong>What does a significant result in a repeated-measures ANOVA indicate?</strong></p>
-<ol type="a">
-<li><p>All group means are equal.</p></li>
-<li><p>The dependent variable is unrelated to the conditions tested.</p></li>
-<li><p>The assumptions of sphericity have been violated.</p></li>
-<li><p>There is a difference in at least one pair of group means.</p></li>
-</ol></li>
-<li><p><strong>What does “partial eta squared” (<span class="math inline">\(\eta^2_P\)</span>) represent in repeated-measures ANOVA?</strong></p>
-<ol type="a">
-<li><p>The total variation in the dependent variable.</p></li>
-<li><p>The proportion of total variance explained by between-groups effects after accounting for between-persons variance.</p></li>
-<li><p>The difference between the group means.</p></li>
-<li><p>The degree of correlation between independent and dependent variables.</p></li>
-</ol></li>
-<li><p><strong>What is the role of a covariate in ANCOVA?</strong></p>
-<ol type="a">
-<li><p>To control for variability in the dependent variable that is unrelated to the independent variable(s)</p></li>
-<li><p>To act as an additional independent variable</p></li>
-<li><p>To replace the independent variable in the model</p></li>
-<li><p>To reduce between-group variance</p></li>
-</ol></li>
+<li>**What is
+<div class="quiz-question">
+<p>
+<strong>1.</strong> What is the key advantage of using a repeated-measures ANOVA?
+</p>
+</div></li>
 </ol>
+<p><label><input type="radio" name="13q1" value="a"> It eliminates the need for a dependent variable.</label><br> <label><input type="radio" name="13q1" value="b"> It reduces error variance by accounting for individual differences.</label><br> <label><input type="radio" name="13q1" value="c"> It allows for the inclusion of multiple dependent variables.</label><br> <label><input type="radio" name="13q1" value="d"> It does not require any statistical assumptions.</label><br></p>
+<button type="button" onclick="checkMC('13q1', 'b', 'fb64')">Check answer</button>
+<p id="fb64" class="quiz-feedback">
+</p>
+</section></section></main></div>
+<div class="quiz-question">
+<p>
+<strong>2.</strong> What does the term “sphericity” refer to in the context of repeated-measures ANOVA?
+</p>
+<p><label><input type="radio" name="13q2" value="a"> Equal variances within each group.</label><br> <label><input type="radio" name="13q2" value="b"> Equal sample sizes across groups.</label><br> <label><input type="radio" name="13q2" value="c"> Equal variances of differences between all combinations of related groups.</label><br> <label><input type="radio" name="13q2" value="d"> Equal means across all groups.</label><br></p>
+<button type="button" onclick="checkMC('13q2', 'c', 'fb65')">Check answer</button>
+<p id="fb65" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>3.</strong> What is the recommended post hoc procedure for a repeated-measures ANOVA to control for Type I error?
+</p>
+<p><label><input type="radio" name="13q3" value="a"> Tukey’s HSD</label><br> <label><input type="radio" name="13q3" value="b"> Bonferroni correction</label><br> <label><input type="radio" name="13q3" value="c"> Fisher’s LSD</label><br> <label><input type="radio" name="13q3" value="d"> Scheffé test</label><br></p>
+<button type="button" onclick="checkMC('13q3', 'b', 'fb66')">Check answer</button>
+<p id="fb66" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>4.</strong> What does a significant result in a repeated-measures ANOVA indicate?
+</p>
+<p><label><input type="radio" name="13q4" value="a"> All group means are equal.</label><br> <label><input type="radio" name="13q4" value="b"> The dependent variable is unrelated to the conditions tested.</label><br> <label><input type="radio" name="13q4" value="c"> The assumptions of sphericity have been violated.</label><br> <label><input type="radio" name="13q4" value="d"> There is a difference in at least one pair of group means.</label><br></p>
+<button type="button" onclick="checkMC('13q4', 'd', 'fb67')">Check answer</button>
+<p id="fb67" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>5.</strong> What does “partial eta squared” (η²<sub>P</sub>) represent in repeated-measures ANOVA?
+</p>
+<p><label><input type="radio" name="13q5" value="a"> The total variation in the dependent variable.</label><br> <label><input type="radio" name="13q5" value="b"> The proportion of total variance explained by between-groups effects after accounting for between-persons variance.</label><br> <label><input type="radio" name="13q5" value="c"> The difference between the group means.</label><br> <label><input type="radio" name="13q5" value="d"> The degree of correlation between independent and dependent variables.</label><br></p>
+<button type="button" onclick="checkMC('13q5', 'b', 'fb68')">Check answer</button>
+<p id="fb68" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>6.</strong> What is the role of a covariate in ANCOVA?
+</p>
+<p><label><input type="radio" name="13q6" value="a"> To control for variability in the dependent variable that is unrelated to the independent variable(s)</label><br> <label><input type="radio" name="13q6" value="b"> To act as an additional independent variable</label><br> <label><input type="radio" name="13q6" value="c"> To replace the independent variable in the model</label><br> <label><input type="radio" name="13q6" value="d"> To reduce between-group variance</label><br></p>
+<button type="button" onclick="checkMC('13q6', 'a', 'fb69')">Check answer</button>
+<p id="fb69" class="quiz-feedback">
+</p>
+</div>
 
 
-</section>
-</section>
 
-</main> <!-- /main -->
+
+
+ <!-- /main -->
 <script src="assets/quiz.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2484,7 +2456,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
       </a>
   </div>
 </nav>
-</div> <!-- /content -->
+ <!-- /content -->
 
 
 

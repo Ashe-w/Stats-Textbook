@@ -1,8 +1,8 @@
-# Exploring Data Spread - Measures of Variability in SPSS {.unnumbered}
+## Exploring Data Spread - Measures of Variability in SPSS 
 
 In this section, we demonstrate how to compute and interpret measures of variability—**range, interquartile range (IQR), variance**, and **standard deviation**—using math achievement data from the U.S. sample in the Programme for International Student Assessment (PISA). We will use the PV1MATH variable (Math Plausible Value 1) as an illustrative example. 
 
-## 1    Computing and Visualizing Variability {.unnumbered}
+###   Computing and Visualizing Variability 
 
 The first step, as introduced in Chapter 2, is to import the data into SPSS. To examine the variability of PV1MATH, SPSS offers several approaches. In this section, we use the Explore function under Descriptive Statistics, which conveniently provides a full summary of key statistics and a visual distribution in one step. Although the method Descriptive Statistics → Descriptives (introduced in Chapter 2) can compute values such as the mean, standard deviation, and range, it does not include the interquartile range or quartile values. 
 
@@ -34,7 +34,7 @@ The Percentiles table also includes values at the 5th, 10th, 50th, 90th, and 95t
 
 ![Fig 3.3](chapter3/fig3-3.png){fig-align="center" width=60%}
 
-## 2    Examining Score Concentration Around the Mean {.unnumbered}
+###    Examining Score Concentration Around the Mean 
 
 After computing and visualizing variability, we can take a further step to examine how scores are distributed in relation to the mean. Specifically, we were interested in how many students scored within one, two, and three standard deviations from the average math score. 
 
@@ -76,9 +76,9 @@ According to the output, 66.1 percent of students scored within one standard dev
 ![Fig 3.4](chapter3/fig3-4.png){fig-align="center" width=40%}
 
 
-## 3    Interpreting Variability in Math Achievement Scores {.unnumbered}
+###    Interpreting Variability in Math Achievement Scores 
 
-### 3.1 Measures of Variability {.unnumbered}
+#### Measures of Variability 
 
 The analysis of math achievement scores (PV1MATH) from the PISA U.S. dataset provides key insights into the distribution using measures of variability. 
 
@@ -90,7 +90,7 @@ The analysis of math achievement scores (PV1MATH) from the PISA U.S. dataset pro
 
 The histogram confirms a roughly symmetric distribution centered around the mean, with the bulk of scores falling within one standard deviation. 
 
-### 3.2	Visualizing Spread and Normality {.unnumbered}
+####	Visualizing Spread and Normality 
 
 - About 66.1% of students scored within 1 SD of the mean (approximately between 366.74 and 557.00). 
 

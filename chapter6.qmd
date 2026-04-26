@@ -77,66 +77,62 @@ A **sampling distribution** is the probability distribution of a statistic (such
 
 ## Check Your Understanding {.unnumbered}
 
- 
+ <div class="quiz-question">
+  <p><strong>1.</strong> What is a sampling distribution?</p>
 
-1. **What is a sampling distribution?**
+  <label><input type="radio" name="6q1" value="a"> A distribution of a population's characteristics</label><br>
+  <label><input type="radio" name="6q1" value="b"> A distribution of a statistic (like a mean or proportion) calculated from all possible samples of a specific size</label><br>
+  <label><input type="radio" name="6q1" value="c"> A list of all individual data points in a population</label><br>
+  <label><input type="radio" name="6q1" value="d"> A random collection of data from a single sample</label><br>
 
-    a. A distribution of a population's characteristics 
+  <button type="button" onclick="checkMC('6q1', 'b', 'fb26')">Check answer</button>
+  <p id="fb26" class="quiz-feedback"></p>
+</div>
 
-    b. A distribution of a statistic (like a mean or proportion) calculated from all possible samples of a specific size 
+<div class="quiz-question">
+  <p><strong>2.</strong> According to the central limit theorem, what happens to the sampling distribution of the sample mean as the sample size increases?</p>
 
-    c. A list of all individual data points in a population 
+  <label><input type="radio" name="6q2" value="a"> It becomes more skewed</label><br>
+  <label><input type="radio" name="6q2" value="b"> It approximates a normal distribution, regardless of the population distribution</label><br>
+  <label><input type="radio" name="6q2" value="c"> It moves closer to the smallest value in the sample</label><br>
+  <label><input type="radio" name="6q2" value="d"> It diverges from the population mean</label><br>
 
-    d. A random collection of data from a single sample 
+  <button type="button" onclick="checkMC('6q2', 'b', 'fb27')">Check answer</button>
+  <p id="fb27" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>3.</strong> Which sampling technique ensures that every member of the population has an equal chance of being selected?</p>
 
-2. **According to the central limit theorem, what happens to the sampling distribution of the sample mean as the sample size increases?** 
+  <label><input type="radio" name="6q3" value="a"> Convenience sampling</label><br>
+  <label><input type="radio" name="6q3" value="b"> Purposive sampling</label><br>
+  <label><input type="radio" name="6q3" value="c"> Random sampling</label><br>
+  <label><input type="radio" name="6q3" value="d"> Snowball sampling</label><br>
 
-    a. It becomes more skewed 
+  <button type="button" onclick="checkMC('6q3', 'c', 'fb28')">Check answer</button>
+  <p id="fb28" class="quiz-feedback"></p>
+</div>
 
-    b. It approximates a normal distribution, regardless of the population distribution 
+<div class="quiz-question">
+  <p><strong>4.</strong> What is the standard error of the mean (SEM), and how is it calculated?</p>
 
-    c. It moves closer to the smallest value in the sample 
+  <label><input type="radio" name="6q4" value="a"> It is the variability of individual data points and is equal to the population standard deviation.</label><br>
+  <label><input type="radio" name="6q4" value="b"> It is the standard deviation of the sampling distribution of sample means, calculated by dividing the sample standard deviation by the square root of the sample size.</label><br>
+  <label><input type="radio" name="6q4" value="c"> It measures the deviation of a single data point from the sample mean, using the formula SD/n.</label><br>
+  <label><input type="radio" name="6q4" value="d"> It is a fixed value representing the population variance.</label><br>
 
-    d. It diverges from the population mean 
+  <button type="button" onclick="checkMC('6q4', 'b', 'fb29')">Check answer</button>
+  <p id="fb29" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>5.</strong> What happens to the sampling distribution of the sample mean if the population distribution is normal?</p>
 
-3. **Which sampling technique ensures that every member of the population has an equal chance of being selected?**
+  <label><input type="radio" name="6q5" value="a"> The sampling distribution will always be skewed, regardless of sample size.</label><br>
+  <label><input type="radio" name="6q5" value="b"> The sampling distribution will only be normal if the sample size is large.</label><br>
+  <label><input type="radio" name="6q5" value="c"> The sampling distribution will match the population distribution for any sample size.</label><br>
+  <label><input type="radio" name="6q5" value="d"> The sampling distribution will be normal, regardless of sample size.</label><br>
 
-    a. Convenience sampling 
-
-    b. Purposive sampling 
-
-    c. Random sampling 
-
-    d. Snowball sampling 
-
- 
-
-4. **What is the standard error of the mean (SEM), and how is it calculated?** 
-
-    a. It is the variability of individual data points and is equal to the population standard deviation. 
-
-    b. It is the standard deviation of the sampling distribution of sample means, calculated by dividing the sample standard deviation by the square root of the sample size. 
-
-    c. It measures the deviation of a single data point from the sample mean, using the formula SD/n. 
-
-    d. It is a fixed value representing the population variance. 
-
- 
-
-5. **What happens to the sampling distribution of the sample mean if the population distribution is normal?**
-
-    a. The sampling distribution will always be skewed, regardless of sample size. 
-
-    b. The sampling distribution will only be normal if the sample size is large. 
-
-    c. The sampling distribution will match the population distribution for any sample size. 
-
-    d. The sampling distribution will be normal, regardless of sample size. 
-
- 
-
- 
+  <button type="button" onclick="checkMC('6q5', 'd', 'fb30')">Check answer</button>
+  <p id="fb30" class="quiz-feedback"></p>
+</div>

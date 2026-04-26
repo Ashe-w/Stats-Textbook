@@ -124,6 +124,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 
 <script src="https://hypothes.is/embed.js" async=""></script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DHHP4LF5C2"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+
+
+  gtag('config', 'G-DHHP4LF5C2');
+
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -340,26 +357,17 @@ window.Quarto = {
   <li><a href="#using-a-confidence-interval-to-evaluate-a-null-hypothesis-1" id="toc-using-a-confidence-interval-to-evaluate-a-null-hypothesis-1" class="nav-link" data-scroll-target="#using-a-confidence-interval-to-evaluate-a-null-hypothesis-1"><span class="header-section-number">8.6.4</span> Using a Confidence Interval to Evaluate a Null Hypothesis</a></li>
   </ul></li>
   <li><a href="#chi-square-goodness-of-fit-test" id="toc-chi-square-goodness-of-fit-test" class="nav-link" data-scroll-target="#chi-square-goodness-of-fit-test"><span class="header-section-number">8.7</span> Chi-Square Goodness-of-Fit Test</a></li>
-  </ul></li>
-  <li><a href="#chapter-8-one-sample-t-test-and-goodness-of-fit-analysis-in-r" id="toc-chapter-8-one-sample-t-test-and-goodness-of-fit-analysis-in-r" class="nav-link" data-scroll-target="#chapter-8-one-sample-t-test-and-goodness-of-fit-analysis-in-r">Chapter 8: One-Sample t Test and Goodness-of-Fit Analysis in R</a>
+  <li><a href="#one-sample-t-test-and-goodness-of-fit-analysis-in-r" id="toc-one-sample-t-test-and-goodness-of-fit-analysis-in-r" class="nav-link" data-scroll-target="#one-sample-t-test-and-goodness-of-fit-analysis-in-r"><span class="header-section-number">8.8</span> One-Sample t Test and Goodness-of-Fit Analysis in R</a>
   <ul class="collapse">
-  <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link" data-scroll-target="#one-sample-t-test">1 One-Sample t Test</a>
-  <ul class="collapse">
-  <li><a href="#define-hypothesis" id="toc-define-hypothesis" class="nav-link" data-scroll-target="#define-hypothesis">1.1 Define Hypothesis</a></li>
-  <li><a href="#conduct-the-test" id="toc-conduct-the-test" class="nav-link" data-scroll-target="#conduct-the-test">1.2 Conduct the Test</a></li>
-  <li><a href="#calculate-effect-size-cohens-d" id="toc-calculate-effect-size-cohens-d" class="nav-link" data-scroll-target="#calculate-effect-size-cohens-d">1.3 Calculate Effect Size (Cohen’s d)</a></li>
+  <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link" data-scroll-target="#one-sample-t-test"><span class="header-section-number">8.8.1</span> One-Sample t Test</a></li>
+  <li><a href="#chi-square-goodness-of-fit-test-1" id="toc-chi-square-goodness-of-fit-test-1" class="nav-link" data-scroll-target="#chi-square-goodness-of-fit-test-1"><span class="header-section-number">8.8.2</span> Chi-Square Goodness-of-Fit Test</a></li>
   </ul></li>
-  <li><a href="#chi-square-goodness-of-fit-test-1" id="toc-chi-square-goodness-of-fit-test-1" class="nav-link" data-scroll-target="#chi-square-goodness-of-fit-test-1">2 Chi-Square Goodness-of-Fit Test</a>
+  <li><a href="#one-sample-t-test-and-goodness-of-fit-analysis" id="toc-one-sample-t-test-and-goodness-of-fit-analysis" class="nav-link" data-scroll-target="#one-sample-t-test-and-goodness-of-fit-analysis"><span class="header-section-number">8.9</span> One-Sample t Test and Goodness-of-Fit Analysis</a>
   <ul class="collapse">
-  <li><a href="#define-hypothesis-1" id="toc-define-hypothesis-1" class="nav-link" data-scroll-target="#define-hypothesis-1">2.1 Define Hypothesis</a></li>
-  <li><a href="#conduct-the-test-1" id="toc-conduct-the-test-1" class="nav-link" data-scroll-target="#conduct-the-test-1">2.2 Conduct the Test</a></li>
+  <li><a href="#understanding-the-key-variables---plausible-values-pvs" id="toc-understanding-the-key-variables---plausible-values-pvs" class="nav-link" data-scroll-target="#understanding-the-key-variables---plausible-values-pvs"><span class="header-section-number">8.9.1</span> Understanding the Key Variables - Plausible Values (PVs)</a></li>
+  <li><a href="#conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval" id="toc-conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval" class="nav-link" data-scroll-target="#conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval"><span class="header-section-number">8.9.2</span> Conducting a One-Sample t-Test: Mean Comparison, Effect Size, and Confidence Interval</a></li>
+  <li><a href="#conducting-a-chi-square-goodness-of-fit-test" id="toc-conducting-a-chi-square-goodness-of-fit-test" class="nav-link" data-scroll-target="#conducting-a-chi-square-goodness-of-fit-test"><span class="header-section-number">8.9.3</span> Conducting a Chi-Square Goodness-of-Fit Test</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#one-sample-t-test-and-goodness-of-fit-analysis" id="toc-one-sample-t-test-and-goodness-of-fit-analysis" class="nav-link" data-scroll-target="#one-sample-t-test-and-goodness-of-fit-analysis">One-Sample t Test and Goodness-of-Fit Analysis</a>
-  <ul class="collapse">
-  <li><a href="#understanding-the-key-variables---plausible-values-pvs" id="toc-understanding-the-key-variables---plausible-values-pvs" class="nav-link" data-scroll-target="#understanding-the-key-variables---plausible-values-pvs">1 Understanding the Key Variables - Plausible Values (PVs)</a></li>
-  <li><a href="#conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval" id="toc-conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval" class="nav-link" data-scroll-target="#conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval">2 Conducting a One-Sample t-Test: Mean Comparison, Effect Size, and Confidence Interval</a></li>
-  <li><a href="#conducting-a-chi-square-goodness-of-fit-test" id="toc-conducting-a-chi-square-goodness-of-fit-test" class="nav-link" data-scroll-target="#conducting-a-chi-square-goodness-of-fit-test">3 Conducting a Chi-Square Goodness-of-Fit Test</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
   <ul class="collapse">
@@ -798,16 +806,15 @@ CI(\mu) = \bar{X} \pm t_{\text{critical}} \times \frac{s}{\sqrt{n}}
 <p>A chi-square goodness-of-fit test was conducted to determine whether the state-level STEM enrichment program provides equitable access based on gender, with expected proportions for male and female participants. All assumptions for the analysis were met. The results indicated no statistically significant difference in the proportions of males and females selected for the program (<span class="math inline">\(\chi^2(1) = 3.72, \, p=0.054\)</span>). These findings suggest that the enrichment program provides equitable access by gender.</p>
 </section>
 </section>
-</section>
-<section id="chapter-8-one-sample-t-test-and-goodness-of-fit-analysis-in-r" class="level1 unnumbered">
-<h1 class="unnumbered">Chapter 8: One-Sample t Test and Goodness-of-Fit Analysis in R</h1>
+<section id="one-sample-t-test-and-goodness-of-fit-analysis-in-r" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="one-sample-t-test-and-goodness-of-fit-analysis-in-r"><span class="header-section-number">8.8</span> One-Sample t Test and Goodness-of-Fit Analysis in R</h2>
 <p>This section demonstrates how to conduct a One-Sample t Test and a Chi-Square Goodness-of-Fit Test using R. These tests are useful for evaluating whether a sample mean significantly differs from a known benchmark and for comparing observed frequencies to an expected distribution. We will use the PISA 2022 U.S. dataset to illustrate these methods.</p>
-<section id="one-sample-t-test" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="one-sample-t-test">1 One-Sample t Test</h2>
+<section id="one-sample-t-test" class="level3" data-number="8.8.1">
+<h3 data-number="8.8.1" class="anchored" data-anchor-id="one-sample-t-test"><span class="header-section-number">8.8.1</span> One-Sample t Test</h3>
 <p>Example: Comparing U.S. Math Scores to an International Benchmark</p>
 <p>We will compare PV1MATH (math plausible value 1) for U.S. students to a benchmark value of 441, which represents the approximate mean of participants from all participating countries.</p>
-<section id="define-hypothesis" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="define-hypothesis">1.1 Define Hypothesis</h3>
+<section id="define-hypothesis" class="level4" data-number="8.8.1.1">
+<h4 data-number="8.8.1.1" class="anchored" data-anchor-id="define-hypothesis"><span class="header-section-number">8.8.1.1</span> Define Hypothesis</h4>
 <p><span class="math display">\[
 \begin{aligned}
 H_0 &amp;: \text{The mean PV1MATH score is equal to } 441 \; (\mu = 441). \\
@@ -815,8 +822,8 @@ H_a &amp;: \text{The mean PV1MATH score is not equal to } 441 \; (\mu \ne 441).
 \end{aligned}
 \]</span></p>
 </section>
-<section id="conduct-the-test" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="conduct-the-test">1.2 Conduct the Test</h3>
+<section id="conduct-the-test" class="level4" data-number="8.8.1.2">
+<h4 data-number="8.8.1.2" class="anchored" data-anchor-id="conduct-the-test"><span class="header-section-number">8.8.1.2</span> Conduct the Test</h4>
 <p><strong>(Reading data is hidden right now, but maybe should include anyways?)</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract math scores </span></span>
@@ -844,8 +851,8 @@ mean of x
 </div>
 <p><strong>Interpretation</strong>: The results show that U.S. students scored significantly higher than the international benchmark of 441. With an average score of 461.87, the difference is large enough that it is very unlikely to have occurred by random chance (<span class="math inline">\((p &lt; 2.2 \times 10^{-16})\)</span>). The confidence interval [459.11, 464.64] tells us that, with 95% certainty, the true average score for U.S. students falls within this range. Since the entire confidence interval is above 441, we can confidently say that U.S. students outperform the international average in mathematics.</p>
 </section>
-<section id="calculate-effect-size-cohens-d" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="calculate-effect-size-cohens-d">1.3 Calculate Effect Size (Cohen’s d)</h3>
+<section id="calculate-effect-size-cohens-d" class="level4" data-number="8.8.1.3">
+<h4 data-number="8.8.1.3" class="anchored" data-anchor-id="calculate-effect-size-cohens-d"><span class="header-section-number">8.8.1.3</span> Calculate Effect Size (Cohen’s d)</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract math scores </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Cohen's d </span></span>
@@ -858,12 +865,12 @@ mean of x
 <p>Interpretation: With an effect size of 0.22, the difference between the U.S. mean and the international benchmark is statistically significant but relatively small. This means that while U.S. students score higher on average, the difference is not large enough to suggest a dramatic practical advantage.</p>
 </section>
 </section>
-<section id="chi-square-goodness-of-fit-test-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="chi-square-goodness-of-fit-test-1">2 Chi-Square Goodness-of-Fit Test</h2>
+<section id="chi-square-goodness-of-fit-test-1" class="level3" data-number="8.8.2">
+<h3 data-number="8.8.2" class="anchored" data-anchor-id="chi-square-goodness-of-fit-test-1"><span class="header-section-number">8.8.2</span> Chi-Square Goodness-of-Fit Test</h3>
 <p><strong>Example: Evaluating Perception of Mathematics as Easier Than Other Subjects </strong></p>
 <p>We will analyze MATHEASE, which is a binary variable (0 = No, 1 = Yes) measuring students’ perceptions of whether mathematics is easier than other subjects. The goal is to test whether responses are equally distributed (50/50).</p>
-<section id="define-hypothesis-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="define-hypothesis-1">2.1 Define Hypothesis</h3>
+<section id="define-hypothesis-1" class="level4" data-number="8.8.2.1">
+<h4 data-number="8.8.2.1" class="anchored" data-anchor-id="define-hypothesis-1"><span class="header-section-number">8.8.2.1</span> Define Hypothesis</h4>
 <p><span class="math display">\[
 \begin{aligned}
 H_0 &amp;: \text{The responses are equally distributed (50\% ``Yes'', 50\% ``No'').} \\
@@ -871,8 +878,8 @@ H_a &amp;: \text{The responses are not equally distributed (deviation from 50/50
 \end{aligned}
 \]</span></p>
 </section>
-<section id="conduct-the-test-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="conduct-the-test-1">2.2 Conduct the Test</h3>
+<section id="conduct-the-test-1" class="level4" data-number="8.8.2.2">
+<h4 data-number="8.8.2.2" class="anchored" data-anchor-id="conduct-the-test-1"><span class="header-section-number">8.8.2.2</span> Conduct the Test</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing values from MATHEASE </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mathease_data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(data<span class="sc">$</span>MATHEASE) </span>
@@ -918,15 +925,15 @@ X-squared = 2245.1, df = 1, p-value &lt; 2.2e-16</code></pre>
 </section>
 </section>
 </section>
-<section id="one-sample-t-test-and-goodness-of-fit-analysis" class="level1 unnumbered">
-<h1 class="unnumbered">One-Sample t Test and Goodness-of-Fit Analysis</h1>
-<section id="understanding-the-key-variables---plausible-values-pvs" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="understanding-the-key-variables---plausible-values-pvs">1 Understanding the Key Variables - Plausible Values (PVs)</h2>
+<section id="one-sample-t-test-and-goodness-of-fit-analysis" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="one-sample-t-test-and-goodness-of-fit-analysis"><span class="header-section-number">8.9</span> One-Sample t Test and Goodness-of-Fit Analysis</h2>
+<section id="understanding-the-key-variables---plausible-values-pvs" class="level3" data-number="8.9.1">
+<h3 data-number="8.9.1" class="anchored" data-anchor-id="understanding-the-key-variables---plausible-values-pvs"><span class="header-section-number">8.9.1</span> Understanding the Key Variables - Plausible Values (PVs)</h3>
 <p>Plausible values (PVs) are multiple imputed estimates of a student’s ability used in large-scale assessments, such as PISA and NAEP, to account for measurement error and improve population-level inferences. These values are not individual test scores but random draws from a posterior distribution, reflecting the uncertainty in estimating a student’s true ability.</p>
 <p>In proper statistical analyses, all plausible values should be used with appropriate weighting to ensure more accurate estimates. Using only a single plausible value may lead to incorrect conclusions. However, for the purpose of this demonstration, we will use a single plausible value (PV1) to illustrate how to conduct statistical analyses. In this chapter, we focus on performing a one-sample t-test in SPSS. For correct usage, refer to the last chapter, where the proper approach using multiple PVs and weights is demonstrated.</p>
 </section>
-<section id="conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval">2 Conducting a One-Sample t-Test: Mean Comparison, Effect Size, and Confidence Interval</h2>
+<section id="conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval" class="level3" data-number="8.9.2">
+<h3 data-number="8.9.2" class="anchored" data-anchor-id="conducting-a-one-sample-t-test-mean-comparison-effect-size-and-confidence-interval"><span class="header-section-number">8.9.2</span> Conducting a One-Sample t-Test: Mean Comparison, Effect Size, and Confidence Interval</h3>
 <p>In this example, we compare the mean of Plausible Value 1 for Math (PV1MATH) among U.S. students to a benchmark value of 441, which represents the approximate mean of participants from all participating countries.</p>
 <p>Since SPSS allows us to generate multiple results simultaneously, this section will demonstrate how to:</p>
 <ul>
@@ -961,8 +968,8 @@ X-squared = 2245.1, df = 1, p-value &lt; 2.2e-16</code></pre>
 <p>The one-sample t-test compared the observed mean to 441, the expected population mean. The results show a t-value of 14.804 with 4,551 degrees of freedom. The <span class="math inline">\(p\)</span>-value is &lt; .001, indicating a statistically significant difference. The mean difference is 20.87, with a 95% confidence interval ranging from 18.11 to 23.64, which does not include zero, confirming a significant difference. We can also use the formula to manually calculated the confidence interval.</p>
 <p>To assess the magnitude of this difference, Cohen’s d was computed as 0.219, suggesting a small effect size.</p>
 </section>
-<section id="conducting-a-chi-square-goodness-of-fit-test" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="conducting-a-chi-square-goodness-of-fit-test">3 Conducting a Chi-Square Goodness-of-Fit Test</h2>
+<section id="conducting-a-chi-square-goodness-of-fit-test" class="level3" data-number="8.9.3">
+<h3 data-number="8.9.3" class="anchored" data-anchor-id="conducting-a-chi-square-goodness-of-fit-test"><span class="header-section-number">8.9.3</span> Conducting a Chi-Square Goodness-of-Fit Test</h3>
 <p>In this example, we examine whether the distribution of students’ perception of mathematics as easier than other subjects (a categorical variable with two categories) aligns with an expected distribution using a Chi-Square Goodness-of-Fit Test in SPSS.</p>
 <p>We assume that if students’ perception of mathematics is equally distributed, approximately 50% of students would perceive math as easier than other subjects, while 50% would not. However, if the observed data significantly deviates from this expectation, it suggests that students’ perceptions are not equally split.</p>
 <p>Since SPSS allows us to generate multiple results simultaneously, this section will demonstrate how to: a. Compare observed frequencies to expected frequencies b. Perform a Chi-Square Goodness-of-Fit Test</p>
@@ -991,6 +998,7 @@ X-squared = 2245.1, df = 1, p-value &lt; 2.2e-16</code></pre>
 <p>The Chi-Square test statistic (<span class="math inline">\(\chi^2 = 2245.127\)</span>, <span class="math inline">\(p &lt; .001\)</span>) indicates a statistically significant difference between the observed and expected distributions. Since the <span class="math inline">\(p\)</span>-value is below 0.05, we reject the null hypothesis, confirming that students’ perceptions of mathematics as easier are not evenly distributed. Specifically, fewer students perceive math as easier than expected under a balanced 50/50 assumption.</p>
 </section>
 </section>
+</section>
 <section id="conclusion" class="level1 unnumbered">
 <h1 class="unnumbered">Conclusion</h1>
 <p>Hypothesis testing bridges theoretical research questions and practical data analysis, offering a structured framework for making evidence-based decisions. By understanding statistical significance, effect sizes, and confidence intervals, researchers can draw meaningful conclusions while accounting for uncertainty and variability. For educational researchers, it is particularly important to assess both statistical and practical significance when interpreting empirical results.</p>
@@ -1016,58 +1024,51 @@ X-squared = 2245.1, df = 1, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="check-your-understanding" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
-<ol type="1">
-<li><p><strong>When should a one-sample <em>t</em> test be used instead of a <em>z</em> test?</strong></p>
-<ol type="a">
-<li>When the population mean is known<br>
-</li>
-<li>When the population standard deviation is unknown<br>
-</li>
-<li>When the sample size is less than 30<br>
-</li>
-<li>When comparing two sample means</li>
-</ol></li>
-<li><p><strong>What is the formula for the degrees of freedom (<em>df</em> ) in a one-sample <em>t</em> test?</strong></p>
-<ol type="a">
-<li><em>df</em> = <em>n</em> + 1<br>
-</li>
-<li><em>df</em> = <em>n</em> × 2<br>
-</li>
-<li><em>df</em> = <em>n</em> − 1<br>
-</li>
-<li><em>df</em> = <em>n</em> / 2</li>
-</ol></li>
-<li><p><strong>Which of the following is <em>not</em> an assumption of the one-sample <em>t</em> test?</strong></p>
-<ol type="a">
-<li>Random sampling<br>
-</li>
-<li>Independence of observations<br>
-</li>
-<li>Population variance of 0<br>
-</li>
-<li>Dataset is approximately normally distributed</li>
-</ol></li>
-<li><p><strong>What is the purpose of calculating effect size, such as Cohen’s <em>d</em>?</strong></p>
-<ol type="a">
-<li>To determine statistical significance<br>
-</li>
-<li>To quantify the magnitude of a difference<br>
-</li>
-<li>To check if assumptions are met<br>
-</li>
-<li>To calculate degrees of freedom</li>
-</ol></li>
-<li><p><strong>What is the risk of using a one-tailed test when the actual effect is in the opposite direction?</strong></p>
-<ol type="a">
-<li>Type I error<br>
-</li>
-<li>Type II error<br>
-</li>
-<li>Type III error<br>
-</li>
-<li>Increased power</li>
-</ol></li>
-</ol>
+<div class="quiz-question">
+<p>
+<strong>1.</strong> When should a one-sample <em>t</em> test be used instead of a <em>z</em> test?
+</p>
+<p><label><input type="radio" name="8q1" value="a"> When the population mean is known</label><br> <label><input type="radio" name="8q1" value="b"> When the population standard deviation is unknown</label><br> <label><input type="radio" name="8q1" value="c"> When the sample size is less than 30</label><br> <label><input type="radio" name="8q1" value="d"> When comparing two sample means</label><br></p>
+<button type="button" onclick="checkMC('8q1', 'b', 'fb36')">Check answer</button>
+<p id="fb36" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>2.</strong> What is the formula for the degrees of freedom (<em>df</em>) in a one-sample <em>t</em> test?
+</p>
+<p><label><input type="radio" name="8q2" value="a"> df = n + 1</label><br> <label><input type="radio" name="8q2" value="b"> df = n × 2</label><br> <label><input type="radio" name="8q2" value="c"> df = n − 1</label><br> <label><input type="radio" name="8q2" value="d"> df = n / 2</label><br></p>
+<button type="button" onclick="checkMC('8q2', 'c', 'fb37')">Check answer</button>
+<p id="fb37" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>3.</strong> Which of the following is <em>not</em> an assumption of the one-sample <em>t</em> test?
+</p>
+<p><label><input type="radio" name="8q3" value="a"> Random sampling</label><br> <label><input type="radio" name="8q3" value="b"> Independence of observations</label><br> <label><input type="radio" name="8q3" value="c"> Population variance of 0</label><br> <label><input type="radio" name="8q3" value="d"> Dataset is approximately normally distributed</label><br></p>
+<button type="button" onclick="checkMC('8q3', 'c', 'fb38')">Check answer</button>
+<p id="fb38" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>4.</strong> What is the purpose of calculating effect size, such as Cohen’s <em>d</em>?
+</p>
+<p><label><input type="radio" name="8q4" value="a"> To determine statistical significance</label><br> <label><input type="radio" name="8q4" value="b"> To quantify the magnitude of a difference</label><br> <label><input type="radio" name="8q4" value="c"> To check if assumptions are met</label><br> <label><input type="radio" name="8q4" value="d"> To calculate degrees of freedom</label><br></p>
+<button type="button" onclick="checkMC('8q4', 'b', 'fb39')">Check answer</button>
+<p id="fb39" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>5.</strong> What is the risk of using a one-tailed test when the actual effect is in the opposite direction?
+</p>
+<p><label><input type="radio" name="8q5" value="a"> Type I error</label><br> <label><input type="radio" name="8q5" value="b"> Type II error</label><br> <label><input type="radio" name="8q5" value="c"> Type III error</label><br> <label><input type="radio" name="8q5" value="d"> Increased power</label><br></p>
+<button type="button" onclick="checkMC('8q5', 'c', 'fb40')">Check answer</button>
+<p id="fb40" class="quiz-feedback">
+</p>
+</div>
 
 
 </section>

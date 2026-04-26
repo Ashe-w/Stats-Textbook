@@ -104,55 +104,58 @@ A **statistical test** is a mathematical tool used to analyze data and evaluate 
  
 
 ## Check Your Understanding  {.unnumbered}
+<div class="quiz-question">
+  <p><strong>1.</strong> What is the purpose of setting an alpha level (α) in hypothesis testing?</p>
 
-1. **What is the purpose of setting an alpha level (α) in hypothesis testing?** 
+  <label><input type="radio" name="7q1" value="a"> To determine the sample size required for the study</label><br>
+  <label><input type="radio" name="7q1" value="b"> To set the threshold probability for rejecting the null hypothesis</label><br>
+  <label><input type="radio" name="7q1" value="c"> To calculate the confidence interval for the population mean</label><br>
+  <label><input type="radio" name="7q1" value="d"> To ensure the sample data are normally distributed</label><br>
 
-        a. To determine the sample size required for the study 
+  <button type="button" onclick="checkMC('7q1', 'b', 'fb31')">Check answer</button>
+  <p id="fb31" class="quiz-feedback"></p>
+</div>
 
-        b. To set the threshold probability for rejecting the null hypothesis 
+<div class="quiz-question">
+  <p><strong>2.</strong> A researcher hypothesizes that students from a particular school will outperform the state average on a given test. What type of test should be conducted?</p>
 
-        c. To calculate the confidence interval for the population mean 
+  <label><input type="radio" name="7q2" value="a"> Directional test (one-tailed/one-sided)</label><br>
+  <label><input type="radio" name="7q2" value="b"> Nondirectional test (two-tailed/two-sided)</label><br>
 
-        d. To ensure the sample data are normally distributed 
+  <button type="button" onclick="checkMC('7q2', 'a', 'fb32')">Check answer</button>
+  <p id="fb32" class="quiz-feedback"></p>
+</div>
 
- 
+<div class="quiz-question">
+  <p><strong>3.</strong> A critical value defines the cutoff point that separates the rejection region from the non-rejection region in a hypothesis test.</p>
 
-2. **A researcher hypothesizes that students from a particular school will outperform the state average on a given test. What type of test should be conducted?** 
+  <label><input type="radio" name="7q3" value="a"> True</label><br>
+  <label><input type="radio" name="7q3" value="b"> False</label><br>
 
-        a. Directional test (two-tailed/two-sided) 
+  <button type="button" onclick="checkMC('7q3', 'a', 'fb33')">Check answer</button>
+  <p id="fb33" class="quiz-feedback"></p>
+</div>
 
-        b. Nondirectional test (one-tailed/one-sided)  
+<div class="quiz-question">
+  <p><strong>4.</strong> What does a p value indicate in hypothesis testing?</p>
 
- 
+  <label><input type="radio" name="7q4" value="a"> The probability that the null hypothesis is true</label><br>
+  <label><input type="radio" name="7q4" value="b"> The likelihood of obtaining the observed result, or something more extreme, if the null hypothesis is true</label><br>
+  <label><input type="radio" name="7q4" value="c"> The size of the effect in the population</label><br>
+  <label><input type="radio" name="7q4" value="d"> The risk of committing a Type II error</label><br>
 
-3. **A critical value defines the cutoff point that separates the rejection region from the non-rejection region in a hypothesis test.** 
+  <button type="button" onclick="checkMC('7q4', 'b', 'fb34')">Check answer</button>
+  <p id="fb34" class="quiz-feedback"></p>
+</div>
 
-        a. True 
+<div class="quiz-question">
+  <p><strong>5.</strong> What is the primary purpose of hypothesis testing in research?</p>
 
-        b. False 
+  <label><input type="radio" name="7q5" value="a"> To organize data into meaningful groups</label><br>
+  <label><input type="radio" name="7q5" value="b"> To differentiate real patterns from random chance in data</label><br>
+  <label><input type="radio" name="7q5" value="c"> To calculate the average of a sample population</label><br>
+  <label><input type="radio" name="7q5" value="d"> To ensure data is normally distributed</label><br>
 
- 
-
-4. **What does a $p$ value indicate in hypothesis testing?**
-
-        a. The probability that the null hypothesis is true 
-
-        b. The likelihood of obtaining the observed result, or something more extreme, if the null hypothesis is true 
-
-        c. The size of the effect in the population 
-
-        d. The risk of committing a Type II error 
-
- 
-
-5. **What is the primary purpose of hypothesis testing in research?** 
-
-        a. To organize data into meaningful groups 
-
-        b. To differentiate real patterns from random chance in data 
-
-        c. To calculate the average of a sample population 
-
-        d. To ensure data is normally distributed 
-
- 
+  <button type="button" onclick="checkMC('7q5', 'b', 'fb35')">Check answer</button>
+  <p id="fb35" class="quiz-feedback"></p>
+</div>

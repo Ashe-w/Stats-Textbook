@@ -1,4 +1,4 @@
-# Hypothesis Testing in SPSS {.unnumbered}
+## Hypothesis Testing in SPSS 
 
 In this section, we introduce the logic of hypothesis testing and present the one-sample z-test. However, **due to limitations in SPSS**, we **do not provide a worked SPSS example** for this test in this chapter. 
 

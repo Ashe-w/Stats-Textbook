@@ -64,62 +64,62 @@ An **outlier** is a score that is much higher than the next highest score, or mu
  
 ## Check Your Understanding   {.unnumbered}
 
-1. **What is the range of the following dataset? (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)** 
+<div class="quiz-question">
+  <p><strong>1.</strong> What is the range of the following dataset? (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</p>
 
-    a. 10 
+  <label><input type="radio" name="3q1" value="a"> 10</label><br>
+  <label><input type="radio" name="3q1" value="b"> 9</label><br>
+  <label><input type="radio" name="3q1" value="c"> 1</label><br>
+  <label><input type="radio" name="3q1" value="d"> 0</label><br>
 
-    b. 9 
+  <button type="button" onclick="checkMC('3q1', 'b', 'fb11')">Check answer</button>
+  <p id="fb11" class="quiz-feedback"></p>
+</div>
 
-    c. 1 
+<div class="quiz-question">
+  <p><strong>2.</strong> The ______ is the square root of the variance?</p>
 
-    d. 0 
+  <label><input type="radio" name="3q2" value="a"> Interquartile Range</label><br>
+  <label><input type="radio" name="3q2" value="b"> Range</label><br>
+  <label><input type="radio" name="3q2" value="c"> Standard Deviation</label><br>
+  <label><input type="radio" name="3q2" value="d"> Mean</label><br>
 
- 
+  <button type="button" onclick="checkMC('3q2', 'c', 'fb12')">Check answer</button>
+  <p id="fb12" class="quiz-feedback"></p>
+</div>
 
-2. **The ______ is the square root of the variance?** 
+<div class="quiz-question">
+  <p><strong>3.</strong> What is the population variance of the following dataset? (1, 2, 3, 4, 5)</p>
 
-    a. Interquartile Range  
+  <label><input type="radio" name="3q3" value="a"> 1</label><br>
+  <label><input type="radio" name="3q3" value="b"> 2</label><br>
+  <label><input type="radio" name="3q3" value="c"> 2.5</label><br>
+  <label><input type="radio" name="3q3" value="d"> 3</label><br>
 
-    b. Range 
+  <button type="button" onclick="checkMC('3q3', 'b', 'fb13')">Check answer</button>
+  <p id="fb13" class="quiz-feedback"></p>
+</div>
 
-    c. Standard Deviation 
+<div class="quiz-question">
+  <p><strong>4.</strong> What is the population standard deviation of the following dataset? (1, 2, 3, 4, 5)</p>
 
-    d. Mean 
+  <label><input type="radio" name="3q4" value="a"> 1.41</label><br>
+  <label><input type="radio" name="3q4" value="b"> 1.73</label><br>
+  <label><input type="radio" name="3q4" value="c"> 4.00</label><br>
+  <label><input type="radio" name="3q4" value="d"> 9.00</label><br>
 
- 
+  <button type="button" onclick="checkMC('3q4', 'a', 'fb14')">Check answer</button>
+  <p id="fb14" class="quiz-feedback"></p>
+</div>
 
-3. **What is the population variance of the following dataset? (1, 2, 3, 4, 5)** 
+<div class="quiz-question">
+  <p><strong>5.</strong> What percentage of values fall within 1 SD of the mean if data are normally distributed?</p>
 
-    a. 1 
+  <label><input type="radio" name="3q5" value="a"> 50%</label><br>
+  <label><input type="radio" name="3q5" value="b"> 68%</label><br>
+  <label><input type="radio" name="3q5" value="c"> 95%</label><br>
+  <label><input type="radio" name="3q5" value="d"> 99.7%</label><br>
 
-    b. 2 
-
-    c. 2.5 
-
-    d. 3 
-
- 
-
-4. **What is the population standard deviation of the following dataset? (1, 2, 3, 4, 5)** 
-
-    a. 1.41 
-
-    b. 1.73 
-
-    c. 4.00 
-
-    d. 9.00 
-
- 
-
-5. **What percentage of values fall within 1 SD of the mean if data are normally distributed?** 
-        
-    a. 50% 
-
-    b. 68%
-
-    c. 95% 
-
-    d. 99.7% 
-
- 
+  <button type="button" onclick="checkMC('3q5', 'b', 'fb15')">Check answer</button>
+  <p id="fb15" class="quiz-feedback"></p>
+</div>

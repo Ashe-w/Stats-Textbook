@@ -1,8 +1,8 @@
-# Exploring Sampling Distributions in SPSS {.unnumbered}
+## Exploring Sampling Distributions in SPSS
 
 This section uses SPSS to demonstrate the key concepts of sampling distributions and the Central Limit Theorem, using the MATHPERS variable (Effort and Persistence in Mathematics) as an example. By exploring the distribution of the variable and applying SPSS’s Bootstrapping procedure, you will see how sample statistics behave, how sampling distributions form, and how the standard error decreases as sample size increases.  
 
-## 1	Examining the “Population” Distribution {.unnumbered}
+###	Examining the “Population” Distribution 
 
 Before exploring sampling distributions, let’s first examine the full distribution of MATHPERS in our sample (treated as our “population”). 
 
@@ -30,7 +30,7 @@ The mean is 0.26 and the standard deviation is about 0.98, with skewness (0.059)
 
 Later, we will see how the sampling distribution of the mean becomes more normal even when the original data is only approximately normal. 
 
-## 2	What We Would Expect to See from Simulation {.unnumbered}
+###	What We Would Expect to See from Simulation 
 
 The Central Limit Theorem states that the distribution of sample means becomes approximately normal as the sample size increases, even when the population distribution is not perfectly normal. This concept is best understood through simulation - by repeatedly drawing random samples from a population, calculating their means, and visualizing how the distribution of those means evolves as sample size increases. 
 
@@ -54,6 +54,6 @@ $$
 
 This pattern is what the Central Limit Theorem guarantees: regardless of the population’s shape, the distribution of sample means will approach normality and become more precise as the sample size grows. 
 
-## 3   Exploring Full Simulation in R {.unnumbered}
+###   Exploring Full Simulation in R
 
 If you are interested in seeing this process carried out through actual simulation and visualization, please refer to **the section of this textbook that includes R code**. That secion demonstrates how to generate repeated random samples, compute sample means, and visualize the resulting sampling distributions for different sample sizes. These simulations make the Central Limit Theorem more intuitive and clearly show how increasing the sample size leads to more normally distributed sample means and smaller standard errors. 

@@ -124,6 +124,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 
 <script src="https://hypothes.is/embed.js" async=""></script>
+<!-- Google tag (gtag.js) -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DHHP4LF5C2"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+
+
+  gtag('config', 'G-DHHP4LF5C2');
+
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -330,29 +347,19 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#common-misconceptions-about-variability" id="toc-common-misconceptions-about-variability" class="nav-link" data-scroll-target="#common-misconceptions-about-variability"><span class="header-section-number">3.3.1</span> Common Misconceptions About Variability</a></li>
   </ul></li>
+  <li><a href="#exploring-data-spread---measures-of-variability-in-r" id="toc-exploring-data-spread---measures-of-variability-in-r" class="nav-link" data-scroll-target="#exploring-data-spread---measures-of-variability-in-r"><span class="header-section-number">3.4</span> Exploring Data Spread - Measures of Variability in R</a>
+  <ul class="collapse">
+  <li><a href="#calculating-the-range" id="toc-calculating-the-range" class="nav-link" data-scroll-target="#calculating-the-range"><span class="header-section-number">3.4.1</span> Calculating the Range</a></li>
+  <li><a href="#calculating-the-interquartile-range-iqr" id="toc-calculating-the-interquartile-range-iqr" class="nav-link" data-scroll-target="#calculating-the-interquartile-range-iqr"><span class="header-section-number">3.4.2</span> Calculating the Interquartile Range (IQR)</a></li>
+  <li><a href="#calculating-the-variance-and-standard-deviation" id="toc-calculating-the-variance-and-standard-deviation" class="nav-link" data-scroll-target="#calculating-the-variance-and-standard-deviation"><span class="header-section-number">3.4.3</span> Calculating the Variance and Standard Deviation</a></li>
+  <li><a href="#visualizing-the-distribution-with-mean-and-sd" id="toc-visualizing-the-distribution-with-mean-and-sd" class="nav-link" data-scroll-target="#visualizing-the-distribution-with-mean-and-sd"><span class="header-section-number">3.4.4</span> Visualizing the Distribution with Mean and SD</a></li>
+  <li><a href="#interpreting-variability-in-math-achievement-scores" id="toc-interpreting-variability-in-math-achievement-scores" class="nav-link" data-scroll-target="#interpreting-variability-in-math-achievement-scores"><span class="header-section-number">3.4.5</span> Interpreting Variability in Math Achievement Scores</a></li>
   </ul></li>
-  <li><a href="#chapter-3-exploring-data-spread---measures-of-variability-in-r" id="toc-chapter-3-exploring-data-spread---measures-of-variability-in-r" class="nav-link" data-scroll-target="#chapter-3-exploring-data-spread---measures-of-variability-in-r">Chapter 3: Exploring Data Spread - Measures of Variability in R</a>
+  <li><a href="#exploring-data-spread---measures-of-variability-in-spss" id="toc-exploring-data-spread---measures-of-variability-in-spss" class="nav-link" data-scroll-target="#exploring-data-spread---measures-of-variability-in-spss"><span class="header-section-number">3.5</span> Exploring Data Spread - Measures of Variability in SPSS</a>
   <ul class="collapse">
-  <li><a href="#calculating-the-range" id="toc-calculating-the-range" class="nav-link" data-scroll-target="#calculating-the-range">1 Calculating the Range</a></li>
-  <li><a href="#calculating-the-interquartile-range-iqr" id="toc-calculating-the-interquartile-range-iqr" class="nav-link" data-scroll-target="#calculating-the-interquartile-range-iqr">2 Calculating the Interquartile Range (IQR)</a></li>
-  </ul></li>
-  <li><a href="#calculating-the-variance-and-standard-deviation" id="toc-calculating-the-variance-and-standard-deviation" class="nav-link" data-scroll-target="#calculating-the-variance-and-standard-deviation">3 Calculating the Variance and Standard Deviation</a>
-  <ul class="collapse">
-  <li><a href="#visualizing-the-distribution-with-mean-and-sd" id="toc-visualizing-the-distribution-with-mean-and-sd" class="nav-link" data-scroll-target="#visualizing-the-distribution-with-mean-and-sd">4 Visualizing the Distribution with Mean and SD</a></li>
-  <li><a href="#interpreting-variability-in-math-achievement-scores" id="toc-interpreting-variability-in-math-achievement-scores" class="nav-link" data-scroll-target="#interpreting-variability-in-math-achievement-scores">5 Interpreting Variability in Math Achievement Scores</a>
-  <ul class="collapse">
-  <li><a href="#measures-of-variability-1" id="toc-measures-of-variability-1" class="nav-link" data-scroll-target="#measures-of-variability-1">5.1 5.1 Measures of Variability</a></li>
-  <li><a href="#visualizing-spread-and-normality" id="toc-visualizing-spread-and-normality" class="nav-link" data-scroll-target="#visualizing-spread-and-normality">5.2 Visualizing Spread and Normality</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#exploring-data-spread---measures-of-variability-in-spss" id="toc-exploring-data-spread---measures-of-variability-in-spss" class="nav-link" data-scroll-target="#exploring-data-spread---measures-of-variability-in-spss">Exploring Data Spread - Measures of Variability in SPSS</a>
-  <ul class="collapse">
-  <li><a href="#computing-and-visualizing-variability" id="toc-computing-and-visualizing-variability" class="nav-link" data-scroll-target="#computing-and-visualizing-variability">1 Computing and Visualizing Variability</a></li>
-  <li><a href="#examining-score-concentration-around-the-mean" id="toc-examining-score-concentration-around-the-mean" class="nav-link" data-scroll-target="#examining-score-concentration-around-the-mean">2 Examining Score Concentration Around the Mean</a></li>
-  <li><a href="#interpreting-variability-in-math-achievement-scores-1" id="toc-interpreting-variability-in-math-achievement-scores-1" class="nav-link" data-scroll-target="#interpreting-variability-in-math-achievement-scores-1">3 Interpreting Variability in Math Achievement Scores</a>
-  <ul class="collapse">
-  <li><a href="#measures-of-variability-2" id="toc-measures-of-variability-2" class="nav-link" data-scroll-target="#measures-of-variability-2">3.1 Measures of Variability</a></li>
-  <li><a href="#visualizing-spread-and-normality-1" id="toc-visualizing-spread-and-normality-1" class="nav-link" data-scroll-target="#visualizing-spread-and-normality-1">3.2 Visualizing Spread and Normality</a></li>
+  <li><a href="#computing-and-visualizing-variability" id="toc-computing-and-visualizing-variability" class="nav-link" data-scroll-target="#computing-and-visualizing-variability"><span class="header-section-number">3.5.1</span> Computing and Visualizing Variability</a></li>
+  <li><a href="#examining-score-concentration-around-the-mean" id="toc-examining-score-concentration-around-the-mean" class="nav-link" data-scroll-target="#examining-score-concentration-around-the-mean"><span class="header-section-number">3.5.2</span> Examining Score Concentration Around the Mean</a></li>
+  <li><a href="#interpreting-variability-in-math-achievement-scores-1" id="toc-interpreting-variability-in-math-achievement-scores-1" class="nav-link" data-scroll-target="#interpreting-variability-in-math-achievement-scores-1"><span class="header-section-number">3.5.3</span> Interpreting Variability in Math Achievement Scores</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
@@ -588,9 +595,8 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 </ol>
 </section>
 </section>
-</section>
-<section id="chapter-3-exploring-data-spread---measures-of-variability-in-r" class="level1 unnumbered">
-<h1 class="unnumbered">Chapter 3: Exploring Data Spread - Measures of Variability in R</h1>
+<section id="exploring-data-spread---measures-of-variability-in-r" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="exploring-data-spread---measures-of-variability-in-r"><span class="header-section-number">3.4</span> Exploring Data Spread - Measures of Variability in R</h2>
 <p>In this section, we demonstrate how to compute and interpret measures of variability—<strong>range, interquartile range (IQR), variance</strong>, and <strong>standard deviation</strong>—using math achievement data from the U.S. sample in the Programme for International Student Assessment (PISA). We will use the PV1MATH variable (Math Plausible Value 1) as an illustrative example.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required package </span></span>
@@ -602,8 +608,8 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the math plausible value </span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>math_achi <span class="ot">&lt;-</span> data<span class="sc">$</span>PV1MATH </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="calculating-the-range" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="calculating-the-range">1 Calculating the Range</h2>
+<section id="calculating-the-range" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="calculating-the-range"><span class="header-section-number">3.4.1</span> Calculating the Range</h3>
 <p>The range shows the spread between the smallest and largest scores.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>range_math <span class="ot">&lt;-</span> <span class="fu">range</span>(math_achi) <span class="co">#return the minimum and maximum values </span></span>
@@ -620,8 +626,8 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 </div>
 </div>
 </section>
-<section id="calculating-the-interquartile-range-iqr" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="calculating-the-interquartile-range-iqr">2 Calculating the Interquartile Range (IQR)</h2>
+<section id="calculating-the-interquartile-range-iqr" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="calculating-the-interquartile-range-iqr"><span class="header-section-number">3.4.2</span> Calculating the Interquartile Range (IQR)</h3>
 <p>IQR represents the middle 50% of the scores and is more robust to outliers.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>iqr_math <span class="ot">&lt;-</span> <span class="fu">IQR</span>(math_achi) <span class="co"># Calculate the IQR </span></span>
@@ -639,9 +645,8 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 </div>
 </div>
 </section>
-</section>
-<section id="calculating-the-variance-and-standard-deviation" class="level1 unnumbered">
-<h1 class="unnumbered">3 Calculating the Variance and Standard Deviation</h1>
+<section id="calculating-the-variance-and-standard-deviation" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="calculating-the-variance-and-standard-deviation"><span class="header-section-number">3.4.3</span> Calculating the Variance and Standard Deviation</h3>
 <p>Variance shows the average squared distance from the mean, and the standard deviation is its square root. By default, R calculates the <em>sample</em> variance and <em>sample</em> standard deviation, which divide by <span class="math inline">\((n - 1)\)</span>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>var_math <span class="ot">&lt;-</span> <span class="fu">var</span>(math_achi) <span class="co"># Calculate the variance </span></span>
@@ -663,8 +668,9 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pop_var_math <span class="ot">&lt;-</span> var_math <span class="sc">*</span> (n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n  <span class="co"># Convert sample variance to population variance </span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>pop_sd_math <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pop_var_math) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="visualizing-the-distribution-with-mean-and-sd" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="visualizing-the-distribution-with-mean-and-sd">4 Visualizing the Distribution with Mean and SD</h2>
+</section>
+<section id="visualizing-the-distribution-with-mean-and-sd" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="visualizing-the-distribution-with-mean-and-sd"><span class="header-section-number">3.4.4</span> Visualizing the Distribution with Mean and SD</h3>
 <p>We can use a histogram to examine how the scores are spread around the mean.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
@@ -697,10 +703,10 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 </div>
 </div>
 </section>
-<section id="interpreting-variability-in-math-achievement-scores" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="interpreting-variability-in-math-achievement-scores">5 Interpreting Variability in Math Achievement Scores</h2>
-<section id="measures-of-variability-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="measures-of-variability-1">5.1 5.1 Measures of Variability</h3>
+<section id="interpreting-variability-in-math-achievement-scores" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="interpreting-variability-in-math-achievement-scores"><span class="header-section-number">3.4.5</span> Interpreting Variability in Math Achievement Scores</h3>
+<section id="measures-of-variability-1" class="level4" data-number="3.4.5.1">
+<h4 data-number="3.4.5.1" class="anchored" data-anchor-id="measures-of-variability-1"><span class="header-section-number">3.4.5.1</span> Measures of Variability</h4>
 <p>The analysis of math achievement scores (PV1MATH) from the PISA U.S. dataset provides key insights into the distribution using measures of variability.</p>
 <ul>
 <li><p><strong>Range</strong> : The math scores in the U.S. sample range from 188.35 to 819.51, giving a total spread of 631.16 points. This wide range suggests a broad performance gap among students, though extreme scores may influence this value.</p></li>
@@ -708,8 +714,8 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 <li><p><strong>Variance</strong> and <strong>Standard Deviation</strong>: The sample variance is 9049.61, and the standard deviation is 95.13. This tells us that, on average, individual scores deviate by about 95 points from the mean score.</p></li>
 </ul>
 </section>
-<section id="visualizing-spread-and-normality" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="visualizing-spread-and-normality">5.2 Visualizing Spread and Normality</h3>
+<section id="visualizing-spread-and-normality" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="visualizing-spread-and-normality">Visualizing Spread and Normality</h4>
 <p>The histogram confirms a roughly symmetric distribution centered around the mean, with the bulk of scores falling within one standard deviation.</p>
 <ul>
 <li><p>About 66.1% of students scored within 1 SD of the mean (approximately between 366.74 and 557.00).</p></li>
@@ -720,11 +726,11 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 </section>
 </section>
 </section>
-<section id="exploring-data-spread---measures-of-variability-in-spss" class="level1 unnumbered">
-<h1 class="unnumbered">Exploring Data Spread - Measures of Variability in SPSS</h1>
+<section id="exploring-data-spread---measures-of-variability-in-spss" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="exploring-data-spread---measures-of-variability-in-spss"><span class="header-section-number">3.5</span> Exploring Data Spread - Measures of Variability in SPSS</h2>
 <p>In this section, we demonstrate how to compute and interpret measures of variability—<strong>range, interquartile range (IQR), variance</strong>, and <strong>standard deviation</strong>—using math achievement data from the U.S. sample in the Programme for International Student Assessment (PISA). We will use the PV1MATH variable (Math Plausible Value 1) as an illustrative example.</p>
-<section id="computing-and-visualizing-variability" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="computing-and-visualizing-variability">1 Computing and Visualizing Variability</h2>
+<section id="computing-and-visualizing-variability" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="computing-and-visualizing-variability"><span class="header-section-number">3.5.1</span> Computing and Visualizing Variability</h3>
 <p>The first step, as introduced in Chapter 2, is to import the data into SPSS. To examine the variability of PV1MATH, SPSS offers several approaches. In this section, we use the Explore function under Descriptive Statistics, which conveniently provides a full summary of key statistics and a visual distribution in one step. Although the method Descriptive Statistics → Descriptives (introduced in Chapter 2) can compute values such as the mean, standard deviation, and range, it does not include the interquartile range or quartile values.</p>
 <p>To run the Explore procedure:</p>
 <ol type="1">
@@ -758,8 +764,8 @@ Figure&nbsp;3.2: Figure 3.2 Normal Distribution of Standardized Test Scores
 </figure>
 </div>
 </section>
-<section id="examining-score-concentration-around-the-mean" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="examining-score-concentration-around-the-mean">2 Examining Score Concentration Around the Mean</h2>
+<section id="examining-score-concentration-around-the-mean" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="examining-score-concentration-around-the-mean"><span class="header-section-number">3.5.2</span> Examining Score Concentration Around the Mean</h3>
 <p>After computing and visualizing variability, we can take a further step to examine how scores are distributed in relation to the mean. Specifically, we were interested in how many students scored within one, two, and three standard deviations from the average math score.</p>
 <p>To explore this, we used SPSS syntax commands rather than menu options. First, the AGGREGATE command was used to compute the overall mean and standard deviation of the PV1MATH variable, and these values were saved as new variables (mean_math and sd_math) for use in further calculations. Next, we created new variables to indicate whether each score fell within <span class="math inline">\(\pm1\)</span>, <span class="math inline">\(\pm2\)</span>, or <span class="math inline">\(\pm3\)</span> standard deviations of the mean. Finally, the FREQUENCIES command was used to calculate the proportion of students in each category by computing the mean of these binary indicators. The SPSS syntax is as below:</p>
 <div class="cell">
@@ -798,10 +804,10 @@ FREQUENCIES VARIABLES=within_1sd within_2sd within_3sd
 </figure>
 </div>
 </section>
-<section id="interpreting-variability-in-math-achievement-scores-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="interpreting-variability-in-math-achievement-scores-1">3 Interpreting Variability in Math Achievement Scores</h2>
-<section id="measures-of-variability-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="measures-of-variability-2">3.1 Measures of Variability</h3>
+<section id="interpreting-variability-in-math-achievement-scores-1" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="interpreting-variability-in-math-achievement-scores-1"><span class="header-section-number">3.5.3</span> Interpreting Variability in Math Achievement Scores</h3>
+<section id="measures-of-variability-2" class="level4" data-number="3.5.3.1">
+<h4 data-number="3.5.3.1" class="anchored" data-anchor-id="measures-of-variability-2"><span class="header-section-number">3.5.3.1</span> Measures of Variability</h4>
 <p>The analysis of math achievement scores (PV1MATH) from the PISA U.S. dataset provides key insights into the distribution using measures of variability.</p>
 <ul>
 <li><p><strong>Range</strong>: The math scores in the U.S. sample range from 188.35 to 819.51, giving a total spread of 631.16 points. This wide range suggests a broad performance gap among students, though extreme scores may influence this value.</p></li>
@@ -810,14 +816,15 @@ FREQUENCIES VARIABLES=within_1sd within_2sd within_3sd
 </ul>
 <p>The histogram confirms a roughly symmetric distribution centered around the mean, with the bulk of scores falling within one standard deviation.</p>
 </section>
-<section id="visualizing-spread-and-normality-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="visualizing-spread-and-normality-1">3.2 Visualizing Spread and Normality</h3>
+<section id="visualizing-spread-and-normality-1" class="level4" data-number="3.5.3.2">
+<h4 data-number="3.5.3.2" class="anchored" data-anchor-id="visualizing-spread-and-normality-1"><span class="header-section-number">3.5.3.2</span> Visualizing Spread and Normality</h4>
 <ul>
 <li><p>About 66.1% of students scored within 1 SD of the mean (approximately between 366.74 and 557.00).</p></li>
 <li><p>About 96.1% fell within 2 SDs, and 99.9% were within 3 SDs.</p></li>
 </ul>
 <p>These proportions align well with the 68-95-99.7% empirical rule, indicating that the distribution of math scores is approximately normal.</p>
 <p>In summary, these metrics offer a comprehensive picture of performance variation, helping educational researchers understand both how typical students perform and how much their scores vary. Such insights are essential for designing instruction, identifying gaps, and guiding data-informed decision-making.</p>
+</section>
 </section>
 </section>
 </section>
@@ -850,43 +857,51 @@ FREQUENCIES VARIABLES=within_1sd within_2sd within_3sd
 </section>
 <section id="check-your-understanding" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="check-your-understanding">Check Your Understanding</h2>
-<ol type="1">
-<li><p><strong>What is the range of the following dataset? (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</strong></p>
-<ol type="a">
-<li><p>10</p></li>
-<li><p>9</p></li>
-<li><p>1</p></li>
-<li><p>0</p></li>
-</ol></li>
-<li><p><strong>The ______ is the square root of the variance?</strong></p>
-<ol type="a">
-<li><p>Interquartile Range</p></li>
-<li><p>Range</p></li>
-<li><p>Standard Deviation</p></li>
-<li><p>Mean</p></li>
-</ol></li>
-<li><p><strong>What is the population variance of the following dataset? (1, 2, 3, 4, 5)</strong></p>
-<ol type="a">
-<li><p>1</p></li>
-<li><p>2</p></li>
-<li><p>2.5</p></li>
-<li><p>3</p></li>
-</ol></li>
-<li><p><strong>What is the population standard deviation of the following dataset? (1, 2, 3, 4, 5)</strong></p>
-<ol type="a">
-<li><p>1.41</p></li>
-<li><p>1.73</p></li>
-<li><p>4.00</p></li>
-<li><p>9.00</p></li>
-</ol></li>
-<li><p><strong>What percentage of values fall within 1 SD of the mean if data are normally distributed?</strong></p>
-<ol type="a">
-<li><p>50%</p></li>
-<li><p>68%</p></li>
-<li><p>95%</p></li>
-<li><p>99.7%</p></li>
-</ol></li>
-</ol>
+<div class="quiz-question">
+<p>
+<strong>1.</strong> What is the range of the following dataset? (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+</p>
+<p><label><input type="radio" name="3q1" value="a"> 10</label><br> <label><input type="radio" name="3q1" value="b"> 9</label><br> <label><input type="radio" name="3q1" value="c"> 1</label><br> <label><input type="radio" name="3q1" value="d"> 0</label><br></p>
+<button type="button" onclick="checkMC('3q1', 'b', 'fb11')">Check answer</button>
+<p id="fb11" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>2.</strong> The ______ is the square root of the variance?
+</p>
+<p><label><input type="radio" name="3q2" value="a"> Interquartile Range</label><br> <label><input type="radio" name="3q2" value="b"> Range</label><br> <label><input type="radio" name="3q2" value="c"> Standard Deviation</label><br> <label><input type="radio" name="3q2" value="d"> Mean</label><br></p>
+<button type="button" onclick="checkMC('3q2', 'c', 'fb12')">Check answer</button>
+<p id="fb12" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>3.</strong> What is the population variance of the following dataset? (1, 2, 3, 4, 5)
+</p>
+<p><label><input type="radio" name="3q3" value="a"> 1</label><br> <label><input type="radio" name="3q3" value="b"> 2</label><br> <label><input type="radio" name="3q3" value="c"> 2.5</label><br> <label><input type="radio" name="3q3" value="d"> 3</label><br></p>
+<button type="button" onclick="checkMC('3q3', 'b', 'fb13')">Check answer</button>
+<p id="fb13" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>4.</strong> What is the population standard deviation of the following dataset? (1, 2, 3, 4, 5)
+</p>
+<p><label><input type="radio" name="3q4" value="a"> 1.41</label><br> <label><input type="radio" name="3q4" value="b"> 1.73</label><br> <label><input type="radio" name="3q4" value="c"> 4.00</label><br> <label><input type="radio" name="3q4" value="d"> 9.00</label><br></p>
+<button type="button" onclick="checkMC('3q4', 'a', 'fb14')">Check answer</button>
+<p id="fb14" class="quiz-feedback">
+</p>
+</div>
+<div class="quiz-question">
+<p>
+<strong>5.</strong> What percentage of values fall within 1 SD of the mean if data are normally distributed?
+</p>
+<p><label><input type="radio" name="3q5" value="a"> 50%</label><br> <label><input type="radio" name="3q5" value="b"> 68%</label><br> <label><input type="radio" name="3q5" value="c"> 95%</label><br> <label><input type="radio" name="3q5" value="d"> 99.7%</label><br></p>
+<button type="button" onclick="checkMC('3q5', 'b', 'fb15')">Check answer</button>
+<p id="fb15" class="quiz-feedback">
+</p>
+</div>
 
 
 </section>
