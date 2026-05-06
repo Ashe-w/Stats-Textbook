@@ -465,15 +465,18 @@ Figure&nbsp;5.3: Distributions with K&gt;0, K=0, and K&lt;0 (true excess kurtosi
 <p><strong>Zero Kurtosis</strong> (K = 0): The green plot represents a standard normal distribution with neither exaggerated tails nor an unusually sharp peak.</p>
 <p><strong>Negative Kurtosis</strong> (K &lt; 0): The red plot represents a distribution with a flatter peak and thinner tails</p>
 <p>A true normal distribution will have skewness and kurtosis values of 0. The closer the reported values are to 0, the more normal the distribution. A common rule of thumb is that a distribution with skewness and kurtosis values between -1 and 1 can be considered approximately normal.</p>
-<p>(fig 5.4 here)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chapter5/fig5-4.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Fig 5.4</figcaption>
+</figure>
+</div>
 <p>A normal distribution can have any mean and any standard deviation – it is about the shape of the distribution, not the specific numbers. For example, if you are looking at the heights of people, the mean and standard deviation will be quite different depending on whether your sample includes all people in the United States or all kindergarten students in one elementary school. Both height distributions will likely be normal and have the same basic shape, but the average height and variation in heights will probably both be lower if we are just looking at kindergartners.</p>
-<p>(fig 5.5)</p>
 </section>
 <section id="z-scores-and-the-standard-normal-distribution" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="z-scores-and-the-standard-normal-distribution"><span class="header-section-number">5.2</span> <span class="math inline">\(z\)</span> Scores and the Standard Normal Distribution</h2>
 <p>We often convert raw data values in a normal distribution to z scores, or standardized scores. A z score is a statistical measure that describes how far a particular data point is from the mean, center, of its distribution. Instead of describing the difference between one score and the mean in terms of points, or inches, or whatever unit was used for the original distribution, we are using standard deviation units. This allows for the comparison of scores from different distributions or scales. We do this because simply knowing the difference between one score and the overall mean doesn’t tell us much. For example, you learn you scored 5 points above the mean. Is your performance a lot better than average? Is your performance barely above average? The answer depends on the standard deviation. If the standard deviation of this distribution were 20, your score of 5 points above the mean would be considered close to average. However, if the standard deviation were only 2, your score would be considered outstanding.</p>
 <p>Using the example above, if you scored 5 points above the mean and the standard deviation was 20, your z score would be 0.25. Your score would be a quarter of a standard deviation above the mean. However, if the standard deviation were 2, your z score would be 2.5. In this case, you would have scored 2.5 standard deviations above the mean. Remember this graph from chapter 3? Boxes have been added to illustrate our example to help visualize how far different z scores are from the mean.</p>
-<p>(fig 5.6)</p>
 <p>If we convert an entire distribution from raw scores to z scores, that means we are standardizing the dataset. The mean of the distribution then becomes 0, the standard deviation becomes 1, and we refer to the distribution as the <strong>standard normal distribution</strong>.</p>
 <p>What we have discussed so far are likely the most important concepts for you to understand. The rest of this chapter will mostly involve finding areas under the normal curve by using z scores and the z table. You will also learn how you can get to the same answer using online applets.</p>
 <section id="finding-areas-under-the-normal-curve" class="level3" data-number="5.2.1">
@@ -503,7 +506,6 @@ Figure&nbsp;5.4: Normal Distribution with Mean and Standard Deviation
 <p>Since we obtained information for the entire population of the United States: <span class="math inline">\(z = \frac{98.6 - 98.2}{.73} = .55\)</span></p>
 <p>Our z-score is 0.55. So, we can re-express the above shorthand notation like this: <span class="math inline">\(P(X \ge 98.6) = P(z \ge 0.55) = ?\)</span></p>
 <p>Therefore, the probability that we would obtain a temperature that is 98.6 degrees or higher is the same as the probability of obtaining a z score of 0.55 or higher. The probability is the area under the curve, to the right of a z score of 0.55, or to the right of the body temperature of 98.6. Figure 5.8 shows you this area—it is the area to the right of the red line.</p>
-<p>(fig 5.8 here… need to figure out how to do the little thought cloud … :/ )</p>
 <p>Now, let’s determine the probability of obtaining a body temperature of 98.6 or higher, which corresponds to a z score of 0.55 or above. Here, we want to introduce a <a href="https://homepage.divms.uiowa.edu/~mbognar/applets/normal.html">free applet</a> to help find the probability (Bognar, 2021). Enter the population mean, µ, of 98.2 and the standard deviation, <span class="math inline">\(\sigma\)</span>, of .73 to define the normal distribution as shown in Figure 5.9. You will see that the X-axis has been scaled using the specified mean and standard deviation. This is a good example of how the normal distribution can take on different values for μ and σ without changing shape.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

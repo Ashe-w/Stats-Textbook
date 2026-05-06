@@ -62,7 +62,7 @@ A good graph should NOT
 
 While graphical representations are powerful for identifying patterns and trends, there are instances where a structured, numerical representation is more effective. In cases where precision, exact comparisons, or detailed breakdowns are needed, tables serve as an essential tool for organizing and presenting data. 
 
- 
+## Tables
 
 A **table** is an organized arrangement of data in rows and columns, designed to systematically display values, frequencies, or relationships for easy comparison and interpretation. Tables are essential tools for summarizing data in educational contexts because they provide a clear, structured way to organize and present information. They allow educators, administrators, and policymakers to quickly interpret numerical and categorical data, making it easier to identify trends, compare variables, and draw meaningful conclusions. For instance, tables can display student performance across subjects, attendance rates, or resource allocation across schools, enabling stakeholders to make data-driven decisions. Unlike graphical displays, tables provide precise values, making them particularly useful when exact numbers are necessary for analysis or reporting. Moreover, tables are versatile, as they can accommodate large amounts of data and be customized to highlight specific details, such as subgroup comparisons or longitudinal trends, fostering better understanding and informed actions in educational settings. 
 
@@ -78,7 +78,7 @@ Let’s walk through a scenario to illustrate how tables and graphical displays 
 
 Another way we could visual this data is through the use of a **bar graph**. Bar graphs are particularly effective for displaying data across discrete categories, such as grade levels, school districts, or subject areas, making complex information easier to understand. For example, bar charts can be used to compare average test scores across grade levels, participation rates in extracurricular activities, or funding allocations across departments. Their straightforward design allows educators and administrators to quickly identify patterns, trends, and disparities, such as gaps in performance or resource distribution. Bar graphs also help communicate findings effectively to diverse audiences, including students, parents, and policymakers, as the visual format is easy to interpret. By simplifying the presentation of categorical data, bar graphs support data-driven decision-making and facilitate meaningful discussions about improving educational outcomes.  
 
- 
+## Bar Graphs
 
 Bar graphs use vertical bars to represent the data. The height of the bars often represents the frequencies of some dependent variable for the categories that are displayed along the X-axis. Note that by tradition, the X-axis (independent variable) is the horizontal axis and the Y-axis (dependent variable) is the vertical axis. The following bar graph shows the same information as the previous table.  
 
@@ -119,7 +119,7 @@ ggplot(df, aes(x = grade, y = avg_score, fill = grade)) +
   )
 ```
 
- 
+## Histograms
 
 **Histograms** summarize the frequency of continuous data that are grouped. Values of the independent variable are along the X-axis, grouped by equal intervals. Typically, the height of the rectangle, measured by the Y-axis, equals the frequency recorded for each interval. The base of each rectangle begins and ends at the lower and upper boundaries, seen from left to right, of each interval, and each rectangle touches adjacent rectangles at the boundaries of each interval. 
 
@@ -169,6 +169,8 @@ ggplot(df, aes(x = score)) +
   )
 ```
 
+## Stem-and-Leaf Plots
+
 A **stem-and-leaf plot** is a graphic display where each individual score from the original data set is listed in a relatively compact manner. Common digits shared by all scores are listed to the left, and the remaining digits for each score are listed to the right. So, the stems are the first digit(s) and the leaves are the last digit(s). Rather than giving a frequency count, this is a way of summarizing the data visually because you can see which stems have the most leaves while also displaying the actual scores. Stem-and-leaf plots are best suited for small datasets where all numbers are greater than 0 (Moore, McCabe, & Craig, 2021). Here is a stem-and-leaf plot for our example: 
 
 **Stem-and-Leaf Plot of Test Scores**
@@ -181,6 +183,8 @@ A **stem-and-leaf plot** is a graphic display where each individual score from t
 
 Key: 7 | 5 represents a score of 75
 ```
+
+## Box Plots
 
 A **box plot**, or box-and-whisker plot, is a graphical representation of data that shows its central tendency, variability, and distribution through a box indicating the interquartile range (IQR), a line for the median, and *whiskers* extending to the smallest and largest non-outlier values. They are typically oriented vertically, but the example below is horizontal for ease of displaying the various parts. At the center of the box plot is a line representing the median (50th percentile) for the data, surrounded by a box representing the inter-quartile range (IQR, or the 25th to 75th percentile). Then there are lines extending out from the box (these are the *whiskers*). Most often these will extend to the smallest and largest observed points in the dataset that are within 1.5 times the IQR. If there are outliers in the dataset that fall beyond the whiskers, they are typically represented by individual circles. 
 
@@ -337,9 +341,14 @@ ggplot(df, aes(x = grp, y = score)) +
     panel.grid.minor = element_blank()
   )
 ```
+
+## Scatterplots 
+
 A **scatterplot** is a graphical representation that displays individual data points based on two variables, with one variable plotted along the X-axis and the other along the Y-axis, allowing researchers to visualize relationships between them. In educational research, scatterplots are essential for identifying correlations and trends, such as the relationship between socioeconomic status and academic performance or hours spent studying and test scores. By highlighting patterns, such as positive, negative, or no correlation, scatterplots provide insights into potential causal or influential factors that can guide further investigation. Additionally, scatterplots help researchers detect outliers or anomalies, such as students performing significantly above or below the expected trend, which can inform targeted interventions or support. This ability to visually explore complex data relationships makes scatterplots a valuable tool in understanding and improving educational outcomes. Examples of scatterplots showing each individual test score are included below in Figure 4.5. 
 (figure 4.5 here)
 
+
+## Q-Q Plots
 
 A **Q-Q (Quantile-Quantile) plot** is a graphical tool used to assess whether a dataset follows a specific theoretical distribution, most commonly the normal distribution. In a Q-Q plot, the quantiles of the observed data are plotted against the quantiles of the chosen distribution (e.g., normal distribution). If the points in the plot fall approximately along a 45-degree reference line, it suggests that the data conforms to that distribution. Deviations from this line indicate departures from the expected distribution, such as skewness, kurtosis, or outliers. Q-Q plots are particularly valuable in educational research when determining if data, such as student test scores or survey responses, meet the assumptions required for parametric statistical tests that we will cover later in the book. For instance, a researcher analyzing standardized test scores might use a Q-Q plot to check for normality before conducting a t test or an analysis of variance (ANOVA) – we will learn both methods later. While histograms provide a general sense of distribution, Q-Q plots offer a more precise visual check by directly comparing observed data with a theoretical model. 
 
@@ -347,14 +356,15 @@ A **Q-Q (Quantile-Quantile) plot** is a graphical tool used to assess whether a 
 
 Imagine an educational researcher wants to assess whether a sample of students' math scores follows a normal distribution. The Q-Q plot below demonstrates how well the data aligns with a normal distribution. Most points fall along the 45-degree line, indicating normality, though a few points deviate slightly at the ends, suggesting potential outliers. 
 
-(fig 4.6 here)
 
 Including Q-Q plots in your data visualization toolkit enhances your ability to diagnose data distribution issues, ensuring that your chosen analytical methods are appropriate and reliable. This tool, combined with histograms, box plots, and other visualizations, provides a comprehensive approach to exploratory data analysis. 
 
  
+## Pie Charts
 
 A **pie chart** is a circular graph divided into slices, where each slice represents a proportion of a whole, making it ideal for visualizing percentages or relative frequencies. In educational research, pie charts are often used to illustrate the composition of groups or categories, such as the distribution of students by socioeconomic status, the percentage of students enrolled in various extracurricular activities, or the allocation of a school’s budget across different programs. For example, a pie chart could show the proportion of students achieving different performance levels on a standardized test, allowing researchers to identify the largest and smallest groups at a quick glance. Pie charts are particularly effective for presenting summary data to audiences who may not have extensive statistical training, as they provide an intuitive and visually engaging way to communicate the breakdown of categories. However, they are most useful when there are relatively few categories, as too many slices can make interpretation challenging. An example showing students enrollment across grades 6, 7, and 8 from the administrator’s middle school is included in figure 4.7. 
-(FIG 4.7)
+
+
 
 
 
